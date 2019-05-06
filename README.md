@@ -1,2 +1,2 @@
-# kwoc
-Single source of truth | Web app https://kwoc.kossiitkgp.org
+# KWoC
+Checkout [wiki](https://github.com/kossiitkgp/kwoc/wiki) for motivation.
