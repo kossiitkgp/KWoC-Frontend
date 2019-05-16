@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "HK Grotesk";
+}
+
+.container {
+  height: 100%;
+  padding: 10vh 10%;
+  display: flex;
+  justify-content: space-between;
+
+  background: url("illustration.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+
+.container .content {
+  width: 100%;
+  margin: 5vh 5%;
+}
+
+.container .content .text {
+  padding: 10vh 10%;
+  width: 58%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0px 20px 100px rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+  background: url("card-back.svg") #fff;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+}
+
+.container .content h1 {
+  font-family: "Playfair Display";
+  font-weight: 900;
+  font-size: 5rem;
+  line-height: 1;
+  margin: 0 0 3rem 0;
+  color: rgb(33, 53, 82);
+}
+
+.container .content .kwoc {
+  display: flex;
+  font-family: "HK Grotesk";
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1;
+  color: rgb(73, 128, 173);
+}
+
+
+.container .content .kwoc img {
+  height: 3rem;
+  margin: auto;
+}
+
+.container .content p {
+  padding: 0;
+  margin: 1rem 0;
+  color: rgb(83, 83, 83);
+  font-size: 1.7rem;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    padding: 5%;
+    background-position: bottom right;
+    background-position-y: 50vh;
+    background-size: 100vh;
+  }
+  .container .content .text {
+    width: 100%;
+    padding: 5vh;
+    height: 66%;
+  }
+  .container .content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .container .content .kwoc {
+    font-size: 1.75rem;
+  }
+
+  .container .content p {
+    font-size: 1.2rem;
+  }
+
+}
