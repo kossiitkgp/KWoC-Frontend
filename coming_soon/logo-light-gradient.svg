@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128px"
+   height="128px"
+   viewBox="0 0 128 128"
+   version="1.1"
+   id="SVGRoot"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="logo-light-gradient.svg"
+   inkscape:export-filename="/home/xypnox/Projects/KOSS/design/logo/exported/koss-logo-light-gradient-small.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="4"
+     inkscape:cx="-14.26849"
+     inkscape:cy="65.043919"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:grid-bbox="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-page="true"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="64,128"
+       orientation="1,0"
+       id="guide1523"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs916">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient846">
+      <stop
+         style="stop-color:#ff3079;stop-opacity:1"
+         offset="0"
+         id="stop840" />
+      <stop
+         id="stop842"
+         offset="0.24285854"
+         style="stop-color:#166ef2;stop-opacity:1" />
+      <stop
+         style="stop-color:#00d79e;stop-opacity:1"
+         offset="1"
+         id="stop844" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient969"
+       id="linearGradient926"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.15523734,0,0,0.15523734,4.5896377,-27.408152)"
+       x1="524.95026"
+       y1="806.75714"
+       x2="261.33142"
+       y2="419.06769" />
+    <linearGradient
+       id="linearGradient969"
+       inkscape:collect="always">
+      <stop
+         id="stop963"
+         offset="0"
+         style="stop-color:#ff3079;stop-opacity:1" />
+      <stop
+         style="stop-color:#166ef2;stop-opacity:1"
+         offset="0.24285854"
+         id="stop965" />
+      <stop
+         id="stop967"
+         offset="1"
+         style="stop-color:#00d79e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient846"
+       id="linearGradient928"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(3.3729223,0,0,3.3729223,-93.953551,-510.25591)"
+       x1="53.376583"
+       y1="180.28479"
+       x2="41.243637"
+       y2="162.44154" />
+  </defs>
+  <metadata
+     id="metadata919">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       inkscape:connector-curvature="0"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:url(#linearGradient926);fill-opacity:1;fill-rule:nonzero;stroke:url(#linearGradient928);stroke-width:1.6289866;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.5;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke markers fill;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       d="m 62.5919,15.036787 -18.562176,6.26897 -3.150196,4.798056 -0.0026,-0.0026 -2.468893,3.762871 v -9.925165 h -12.32789 v 36.481928 h 12.321316 l 0.0066,-0.458059 c 0.04727,-4.106101 0.01981,-8.024368 0.0058,-11.833491 l 7.462875,10.812385 16.678674,3.382532 -13.739317,-20.4217 z m 22.526791,1.281575 c -11.818001,0 -21.411408,9.564457 -21.411408,21.348567 0,11.785297 9.649201,20.840071 21.453576,20.840078 6.580445,0 12.063899,-2.923018 15.631081,-7.542283 6.0798,-1.698621 10.28131,-7.193402 10.28733,-13.454063 -0.006,-6.165707 -4.0829,-11.60057 -10.03846,-13.38213 C 97.470867,19.34489 91.86338,16.318362 85.118691,16.318362 Z M 60.482672,16.729295 48.244868,37.051771 41.445076,26.943863 44.62917,22.088758 Z m 24.636019,0.520895 c 6.03183,0 11.086342,2.490224 14.493375,6.52777 -0.873798,-0.169177 -1.762146,-0.256002 -2.652446,-0.259626 -4.138375,0.01474 -8.062451,1.825752 -10.73464,4.957631 -0.02066,-0.01474 -0.04119,-0.02502 -0.06201,-0.04051 -1.615982,-1.011576 -3.523865,-1.594117 -5.564518,-1.594117 -5.831451,0 -10.565142,4.775488 -10.565142,10.649479 0,5.873997 4.733692,10.64948 10.565142,10.64948 2.020638,0 3.909105,-0.572622 5.51491,-1.565998 0.02548,-0.01969 0.05141,-0.03188 0.07689,-0.04962 2.676017,3.149292 6.615163,4.970827 10.769366,4.979128 0.805265,-0.0026 1.609239,-0.07849 2.401922,-0.219108 -3.391021,3.890039 -8.327604,6.291299 -14.200685,6.291299 -11.329645,0 -20.522573,-8.631156 -20.522573,-19.909075 0,-11.279119 9.164387,-20.416739 20.480405,-20.416739 z m -58.106635,3.619004 h 10.465926 v 10.41301 l -3.864572,5.88946 3.865398,5.601725 c 0.01041,4.076353 0.04367,8.317298 -8.82e-4,12.716535 h -10.4659 z m 53.586391,6.903145 c 1.863019,0 3.597525,0.530419 5.070907,1.452727 1.523793,0.953833 3.013168,2.322826 4.047295,3.929892 0.639331,1.354384 0.974425,2.834962 0.980614,4.335031 -0.0059,1.501424 -0.340674,2.982675 -0.980614,4.338341 -1.042217,1.618663 -2.547581,2.995123 -4.089463,3.948905 -1.464047,0.905642 -3.183974,1.431231 -5.028739,1.431231 -5.323865,0 -9.634138,-4.342858 -9.634138,-9.717651 0,-5.374839 4.310273,-9.718476 9.634138,-9.718476 z m -36.73822,33.653347 -18.89373,11.122423 1.882673,15.324334 13.838538,6.708015 5.231307,-17.278117 19.684174,-10.911583 z m 41.228695,0.605233 -18.893731,11.121596 1.883504,15.325162 13.838538,6.708009 5.231307,-17.278112 19.68417,-10.911582 z M 44.01567,62.412917 63.021847,66.764479 27.604061,86.384992 25.961165,73.041721 Z M 85.244364,63.018144 104.25137,67.369719 68.833587,86.990225 67.18986,73.646127 Z M 49.786068,80.058968 45.088883,96.777329 24.456345,107.99152 c 7.448431,1.65312 14.895078,3.31366 22.342407,4.97169 l 18.40012,-10.8256 -1.826454,-15.297041 z m 41.599937,0.522555 -5.067596,16.060208 -20.632538,11.214199 c 7.448444,1.65304 14.895072,3.31365 22.342407,4.97168 L 106.4284,102.00202 104.60112,86.705791 Z m 12.453605,7.597669 1.58668,13.329208 -17.553457,10.33198 -19.549396,-4.35818 z M 62.610917,88.314791 64.197588,101.644 46.643314,111.97598 27.093912,107.61697 Z"
+       id="path1545"
+       inkscape:export-filename="/home/xypnox/koss-sticker.png"
+       inkscape:export-xdpi="650.23999"
+       inkscape:export-ydpi="650.23999" />
+  </g>
+</svg>
