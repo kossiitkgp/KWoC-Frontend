@@ -77,15 +77,14 @@ html, body {
 .button {
   text-align: center;
   margin: auto;
-  width: 20rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding: 3%;
   color: rgb(73, 128, 173);
 }
 
 .stats {
   max-width: 1200px;
-  margin: 2rem auto;
+  margin: 10rem auto 2rem;
   padding: 0 2rem;
 }
 
@@ -120,6 +119,7 @@ html, body {
 .updates {
   max-width: 600px;
   margin: 10rem auto;
+  padding: 0 2rem;
 }
 
 .updates h1 {
@@ -149,7 +149,7 @@ html, body {
   text-decoration: none;
   font-weight: normal;
   background: none;
-  color: rgb(33, 53, 82);
+  color: rgb(73, 128, 173);
   border: none;
   padding: 5% 0 5% 5%;
 }
@@ -171,10 +171,12 @@ html, body {
 
 .share .soc-btns {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .share .soc-btns a {
+  text-align: center;
   font-family: "HankenGroteskBold";
   font-size: 1.5rem;
   text-decoration: none;
@@ -232,6 +234,50 @@ footer a {
 
   .container .content p {
     font-size: 1.2rem;
+  }
+
+  .button {
+    display: none;
+  }
+
+  .stats {
+    margin: 4rem 0;
+  }
+
+  .stats h1 {
+    font-size: 2.5rem;
+  }
+
+  .stats .cards .card {
+    margin: 2rem 0;
+    padding: 4rem 2rem;
+  }
+
+  .updates {
+    margin: 4rem auto;
+  }
+
+  .updates input, .updates button{
+    font-size: 1rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .share {
+    margin: 4rem 0;
+  }
+
+  .share h1 {
+    font-size: 2.5rem;
+  }
+
+  .share .soc-btns a {
+    margin: 2rem auto;
+    font-size: 1.2rem;
+  }
+
+  footer {
+    padding: 2rem 0;
   }
 
 }
