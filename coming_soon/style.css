@@ -7,7 +7,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: "HK Grotesk";
+  font-family: "HKGroteskRegular";
 }
 
 .container {
@@ -73,6 +73,17 @@ html, body {
   font-size: 1.7rem;
 }
 
+.button {
+  text-align: center;
+  margin: -2rem auto 0;
+  background: #fff;
+  width: 20rem;
+  border-radius: 20rem;
+  font-size: 1.5rem;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.13);
+  padding: 1%;
+  color: rgb(73, 128, 173);
+}
 
 @media (max-width: 768px) {
   .container {

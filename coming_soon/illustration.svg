@@ -41,14 +41,37 @@
      id="namedview220"
      showgrid="false"
      inkscape:snap-page="true"
-     inkscape:zoom="1.2459295"
-     inkscape:cx="1064.4944"
-     inkscape:cy="384.58128"
+     inkscape:zoom="0.62296475"
+     inkscape:cx="34.227797"
+     inkscape:cy="465.68457"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="g2021"
-     showguides="false" />
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:bbox-nodes="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-text-baseline="true">
+    <sodipodi:guide
+       position="805.69253,82.726465"
+       orientation="0,1"
+       id="guide1022"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="579.39317,191.82634"
+       orientation="1,0"
+       id="guide1024"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
   <defs
      id="defs9">
     <linearGradient
