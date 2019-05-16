@@ -8,6 +8,7 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: "HKGroteskRegular";
+  background: #f0f0f0;
 }
 
 .container {
@@ -52,7 +53,7 @@ html, body {
 
 .container .content .kwoc {
   display: flex;
-  font-family: "HK Grotesk";
+  font-family: "HanKenGroteskBold";
   margin: 0;
   font-size: 2.5rem;
   font-weight: 600;
@@ -75,15 +76,52 @@ html, body {
 
 .button {
   text-align: center;
-  margin: -2rem auto 0;
-  background: #fff;
+  margin: auto;
   width: 20rem;
-  border-radius: 20rem;
   font-size: 1.5rem;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.13);
-  padding: 1%;
+  padding: 3%;
   color: rgb(73, 128, 173);
 }
+
+.stats {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.stats h1 {
+  font-size: 4rem;
+  font-family: "HankenGroteskBold";
+  color: rgb(33, 53, 82);
+}
+
+.stats .cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.stats .cards .card {
+  width: calc((1200px - 15%)/3);
+  padding: 5% 5% 10%;
+  background: url("card-stat.svg") #fff;
+  background-size: cover;
+  border-radius: 2rem;
+  box-shadow: 0px 10px 20px rgba(0, 52, 129, 0.2);
+}
+.stats .cards .card h1{
+  margin: 0;
+  color: rgb(73, 128, 173);
+}
+.stats .cards .card h2{
+  margin-bottom: 0;
+  color: rgb(83, 83, 83);
+}
+
+.updates {
+  max-width: 600px;
+  margin: auto;
+}
+
 
 @media (max-width: 768px) {
   .container {
