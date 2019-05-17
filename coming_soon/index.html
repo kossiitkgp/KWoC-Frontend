@@ -1,4 +1,5 @@
 <html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <head>
   <meta charset="UTF-8">
@@ -56,11 +57,47 @@
   </div>
 
   <div class="updates">
+
     <h1>Sign Up for Updates</h1>
-    <form>
-      <input type="text" placeholder="Email"><button type="submit">Subscribe</button>
+    <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off"> 
+        <input id="emailField" name="entry.973509097" placeholder="Email" type="email">
+        <button id="send" type="submit" class="common_btn">Subscribe</button>
     </form>
   </div>
+  <h3 id="success-msg" style="text-align: center !important; margin-top:190px !important; display:none; color: rgb(33, 53, 82)"> Thank you!!</h3>
+
+<script>
+function postToGoogle() {
+                var field1 = $("#emailField").val();
+				if(field1 == ""){
+					alert('Please Fill Your Email');
+					document.getElementById("emailField").focus();
+					return false;
+				}
+
+
+				
+	
+                $.ajax({
+                    url: "https://docs.google.com/forms/d/e/1FAIpQLScaTQ6d1Hg14F3haVQ8XG-L9g_LLSDdhmisIt3KWK6TDF6stQ/formResponse?",
+					data: {"entry.973509097": field1},
+                    type: "POST",
+                    dataType: "xml",
+                    success: function(d)
+					{
+					},
+					error: function(x, y, z)
+						{
+
+							$('#success-msg').show();
+							$('#form').hide();
+							
+						}
+                });
+				return false;
+            }
+</script>
+
 
   <div class="share">
     <h1>Spread the Word</h1>
