@@ -58,13 +58,13 @@
 
   <div class="updates">
 
-    <h1>Sign Up for Updates</h1>
+    <h1 id="sign-up">Sign Up for Updates</h1>
     <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off"> 
         <input id="emailField" name="entry.973509097" placeholder="Email" type="email">
         <button id="send" type="submit" class="common_btn">Subscribe</button>
     </form>
   </div>
-  <h3 id="success-msg" style="text-align: center !important; margin-top:190px !important; display:none; color: rgb(33, 53, 82)"> Thank you!!</h3>
+  <h3 id="success-msg"> Thank you! You've been subscribed to KWoC '19 updates.</h3>
 
 <script>
 function postToGoogle() {
@@ -91,6 +91,7 @@ function postToGoogle() {
 
 							$('#success-msg').show();
 							$('#form').hide();
+							$('#sign-up').hide();
 							
 						}
                 });

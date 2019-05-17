@@ -281,3 +281,10 @@ footer a {
   }
 
 }
+
+#success-msg {
+  text-align: center !important;
+  margin-top:190px !important;
+  display: none;
+  color: rgb(33, 53, 82);
+}
