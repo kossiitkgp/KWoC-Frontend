@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800px"
+   height="600px"
+   viewBox="0 0 800 600"
+   version="1.1"
+   id="SVGRoot"
+   sodipodi:docname="card-stat.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.22627417"
+     inkscape:cx="-20.212346"
+     inkscape:cy="-63.48912"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-page="true"
+     inkscape:snap-center="true"
+     inkscape:snap-grids="true"
+     inkscape:snap-to-guides="true" />
+  <defs
+     id="defs1950" />
+  <metadata
+     id="metadata1953">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       sodipodi:nodetypes="cacaccc"
+       inkscape:connector-curvature="0"
+       id="path1397"
+       d="m -318.75,666.8732 c 0,0 336.27938,-182.90311 521.85904,-204.45166 178.79297,-20.76052 255.48135,121.11631 534.53226,76.52811 373.7859,5.61488 420.0797,-203.77253 646.9141,-212.93857 74.252,-3.00041 132.3481,67.25827 216.6946,52.3901 V 666.8732 Z"
+       style="fill:#dfecff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <path
+       style="fill:#c2daff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m -318.75,666.8732 c 0,0 90.88647,-133.36648 162.24473,-157.98464 C 110.63472,416.7269 407.30595,644.5882 686.3569,600 878.3812,569.31733 887.9996,348.48842 1059.3878,357.65389 c 118.9779,6.36268 135.9442,48.97327 211.9507,74.80414 161.279,54.81074 268.173,-47.20219 329.9115,-181.38024 V 666.8732 Z"
+       id="path1374"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="casssccc" />
+    <path
+       sodipodi:nodetypes="caaaccc"
+       inkscape:connector-curvature="0"
+       id="path1395"
+       d="m -318.75,666.8732 c 0,0 107.39942,-84.86028 171.54455,-103.35432 268.32255,-77.36156 562.49953,31.91053 837.60295,-16.04681 116.256,-20.26629 219.9924,-88.64441 335.3784,-113.38797 188.4366,-40.40868 496.5682,192.81041 575.4741,-55.68291 v 288.47202 z"
+       style="fill:#a2c7ff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+</svg>

@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "HKGroteskRegular";
+  background: #eceff5;
+}
+
+.container {
+  height: 100%;
+  padding: 10vh 10%;
+  display: flex;
+  justify-content: space-between;
+
+  background: url("illustration.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+
+.container .content {
+  width: 100%;
+  margin: 5vh 5%;
+}
+
+.container .content .text {
+  padding: 10vh 10%;
+  width: 58%;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0px 20px 100px rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+  background: url("card-back.svg") #fff;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: contain;
+}
+
+.container .content h1 {
+  font-family: "Playfair Display";
+  font-weight: 900;
+  font-size: 5rem;
+  line-height: 1;
+  margin: 0 0 3rem 0;
+  color: rgb(33, 53, 82);
+}
+
+.container .content .kwoc {
+  display: flex;
+  font-family: "HanKenGroteskBold";
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1;
+  color: rgb(73, 128, 173);
+}
+
+
+.container .content .kwoc img {
+  height: 3rem;
+  margin: auto;
+}
+
+.container .content p {
+  padding: 0;
+  margin: 1rem 0;
+  color: rgb(83, 83, 83);
+  font-size: 1.7rem;
+}
+
+.button {
+  text-align: center;
+  margin: auto;
+  font-size: 1.2rem;
+  padding: 3%;
+  color: rgb(73, 128, 173);
+}
+
+.stats {
+  max-width: 1200px;
+  margin: 10rem auto 2rem;
+  padding: 0 2rem;
+}
+
+.stats h1 {
+  font-size: 4rem;
+  font-family: "HankenGroteskBold";
+  color: rgb(33, 53, 82);
+}
+
+.stats .cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.stats .cards .card {
+  width: calc((1200px - 15%)/3);
+  padding: 5% 5% 10%;
+  background: url("card-stat.svg") #fff;
+  background-size: cover;
+  border-radius: 2rem;
+  box-shadow: 0px 10px 20px rgba(0, 52, 129, 0.2);
+}
+.stats .cards .card h1{
+  margin: 0;
+  color: rgb(73, 128, 173);
+}
+.stats .cards .card h2{
+  margin-bottom: 0;
+  color: rgb(83, 83, 83);
+}
+
+.updates {
+  max-width: 600px;
+  margin: 10rem auto;
+  padding: 0 2rem;
+}
+
+.updates h1 {
+  color: rgb(33, 53, 82);
+  margin: 3rem 0;
+}
+.updates form {
+  background: url("card-form.svg") #fff;
+  background-size: cover;
+  background-position: bottom;
+  box-shadow: 0px 30px 50px rgba(0, 52, 129, 0.2);
+  padding: 1rem 0 1rem 1rem;
+  border-radius: 1rem;
+}
+
+.updates input {
+  font-size: 1.5rem;
+  background: none;
+  color: rgb(33, 53, 82);
+  border: none;
+  padding: 5%;
+  transition: 1s all;
+}
+
+.updates button {
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: normal;
+  background: none;
+  color: rgb(73, 128, 173);
+  border: none;
+  padding: 5% 0 5% 5%;
+}
+
+
+
+.share {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.share h1 {
+  font-size: 3rem;
+  text-align: center;
+  font-family: "HankenGroteskBold";
+  color: rgb(33, 53, 82);
+}
+
+.share .soc-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.share .soc-btns a {
+  text-align: center;
+  font-family: "HankenGroteskBold";
+  font-size: 1.5rem;
+  text-decoration: none;
+  padding: 2rem;
+  margin: 2rem;
+  color: #fff;
+  border-radius: 2rem;
+}
+
+.share .soc-btns a.fb {
+  box-shadow: 0px 30px 50px rgba(58, 87, 150, 0.5);
+  background: #3b5998;
+}
+
+
+.share .soc-btns a.twt {
+  box-shadow: 0px 30px 50px rgba(56, 161, 243, 0.5);
+  background: #38A1F3;
+}
+
+footer {
+  background: url("card-form.svg");
+  background-size: cover;
+  background-position: bottom;
+  padding: 6rem 0 10rem;
+  text-align: center;
+  color: #3b5998;
+}
+
+footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 5%;
+    background-position: bottom right;
+    background-position-y: 50vh;
+    background-size: 100vh;
+  }
+  .container .content .text {
+    width: 100%;
+    padding: 5vh;
+    height: 66%;
+  }
+  .container .content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .container .content .kwoc {
+    font-size: 1.75rem;
+  }
+
+  .container .content p {
+    font-size: 1.2rem;
+  }
+
+  .button {
+    display: none;
+  }
+
+  .stats {
+    margin: 4rem 0;
+  }
+
+  .stats h1 {
+    font-size: 2.5rem;
+  }
+
+  .stats .cards .card {
+    margin: 2rem 0;
+    padding: 4rem 2rem;
+  }
+
+  .updates {
+    margin: 4rem auto;
+  }
+
+  .updates input, .updates button{
+    font-size: 1rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .share {
+    margin: 4rem 0;
+  }
+
+  .share h1 {
+    font-size: 2.5rem;
+  }
+
+  .share .soc-btns a {
+    margin: 2rem auto;
+    font-size: 1.2rem;
+  }
+
+  footer {
+    padding: 2rem 0;
+  }
+
+}
+
+#success-msg {
+  text-align: center !important;
+  margin-top:190px !important;
+  display: none;
+  color: rgb(33, 53, 82);
+}

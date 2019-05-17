@@ -1,0 +1,119 @@
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+  <link rel="stylesheet" href="style.css">
+  <title>KWoC - We will be back</title>
+
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/hk-grotesk" type="text/css" />
+
+
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="text">
+        <h1>Coming <br /> Soon</h1>
+        <div class="kwoc">
+          Kharagpur <br />Winter of Code
+        </div>
+        <p>Exercise your fingers and Git ready! <br /> The Winter of Code is coming.</p>
+      </div>
+      <div class="button">
+        Scroll Down <br /> to Know More
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stats">
+    <h1>Stats for KWoC '19</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h1>600+</h1>
+        <h2>Pull Requests Sent</h2>
+      </div>
+
+      <div class="card">
+        <h1>3M+</h1>
+        <h2>Lines of code Written</h2>
+      </div>
+
+      <div class="card">
+        <h1>1600+</h1>
+        <h2>Registered Participants</h2>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="updates">
+
+    <h1 id="sign-up">Sign Up for Updates</h1>
+    <form id="form" target="_self" onsubmit="return postToGoogle();" action="" autocomplete="off"> 
+        <input id="emailField" name="entry.973509097" placeholder="Email" type="email">
+        <button id="send" type="submit" class="common_btn">Subscribe</button>
+    </form>
+  </div>
+  <h3 id="success-msg"> Thank you! You've been subscribed to KWoC '19 updates.</h3>
+
+<script>
+function postToGoogle() {
+                var field1 = $("#emailField").val();
+				if(field1 == ""){
+					alert('Please Fill Your Email');
+					document.getElementById("emailField").focus();
+					return false;
+				}
+
+
+				
+	
+                $.ajax({
+                    url: "https://docs.google.com/forms/d/e/1FAIpQLScaTQ6d1Hg14F3haVQ8XG-L9g_LLSDdhmisIt3KWK6TDF6stQ/formResponse?",
+					data: {"entry.973509097": field1},
+                    type: "POST",
+                    dataType: "xml",
+                    success: function(d)
+					{
+					},
+					error: function(x, y, z)
+						{
+
+							$('#success-msg').show();
+							$('#form').hide();
+							$('#sign-up').hide();
+							
+						}
+                });
+				return false;
+            }
+</script>
+
+
+  <div class="share">
+    <h1>Spread the Word</h1>
+    <div class="soc-btns">
+      <a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fkwoc.kossiitkgp.org%2F" class="fb">Share on
+        Facebook</a>
+      <a href="https://twitter.com/intent/tweet?text=%20A%20new%20season%20awaits%20for%20you%20-%20Kharagpur%20Winter%20of%20code%20organized%20by%20%40kossiitkgp%20https%3A%2F%2Fkwoc.kossiitkgp.org%2F%20%23kwoc2019"
+        class="twt">Tweet on Twitter</a>
+    </div>
+  </div>
+
+  <footer>
+    <img src="logo-light-gradient.svg" alt="">
+    <p>Created with &hearts; <br />by <a href="https://kossiitkgp.org">Kharagpur Open Source Society</a></p>
+  </footer>
+</body>
+
+</html>
