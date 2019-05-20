@@ -198,7 +198,7 @@ html, body {
 }
 
 footer {
-  background: url("card-form.svg");
+  background: url("images/card-form.svg");
   background-size: cover;
   background-position: bottom;
   padding: 6rem 0 10rem;
