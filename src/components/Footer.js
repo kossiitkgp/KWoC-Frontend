@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-import "../styles/footer.scss";
+import '../styles/footer.scss';
 
 export default function Footer() {
   return (
@@ -13,7 +13,10 @@ export default function Footer() {
             <h2>With &#10084; by KOSS</h2>
           </div>
           <div className="column">
-            <Link to="/manuals"> <b>Manuals</b></Link>
+            <Link to="/manuals">
+              {' '}
+              <b>Manuals</b>
+            </Link>
             <br />
             <Link to="/manual-student">Student Manual</Link>
             <Link to="/manual-mentor">Mentor Manual</Link>
@@ -33,5 +36,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
-};
+  );
+}

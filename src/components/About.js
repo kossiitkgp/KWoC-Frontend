@@ -9,16 +9,12 @@ export default function About() {
       <section class="hero is-fullheight is-info is-bold">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title">
-              Main hoon kaun main hun kaun
-              </h1>
-            <h2 class="subtitle">
-              main hun main hun main hun DON(xypnox)!
-              </h2>
+            <h1 class="title">Main hoon kaun main hun kaun</h1>
+            <h2 class="subtitle">main hun main hun main hun DON(xypnox)!</h2>
           </div>
         </div>
       </section>
       <Footer />
     </div>
-  )
+  );
 }

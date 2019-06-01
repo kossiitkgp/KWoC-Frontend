@@ -9,22 +9,16 @@ export default function Home() {
       <section class="hero is-fullheight is-primary is-bold">
         <div class="hero-body">
           <div class="container">
-            <h1 class="title">
-              Welcome to KWoC React
-            </h1>
-            <h2 class="subtitle">
-              The truth Redefined
-            </h2>
+            <h1 class="title">Welcome to KWoC React</h1>
+            <h2 class="subtitle">The truth Redefined</h2>
           </div>
         </div>
       </section>
 
       <section class="about">
-        <h1>
-
-        </h1>
+        <div className="container" />
       </section>
-      <Footer></Footer>
+      <Footer />
     </div>
-  )
+  );
 }
