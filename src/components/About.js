@@ -1,11 +1,12 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 export default function About() {
   return (
     <div className="about">
       <Navbar />
-      <section class="hero is-fullheight is-primary is-bold">
+      <section class="hero is-fullheight is-info is-bold">
         <div class="hero-body">
           <div class="container">
             <h1 class="title">
@@ -17,6 +18,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }
