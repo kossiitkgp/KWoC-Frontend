@@ -4,6 +4,13 @@
 
 KWoC website rewritten in React! Cause why not!
 
+## [Learn](learn.md)
+
+
+We are using several tools that you might be unfamiliar with, or would just like to refresh your basics for the same. This document lays out the tools we are using and the relevant docs and tutorials to learn them.
+
+You can find further instructions in [Learn](learn.md) Page.
+
 ## Install Instructions
 
 ```
