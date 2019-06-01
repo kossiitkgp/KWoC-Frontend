@@ -14,7 +14,6 @@ export default function Footer() {
           </div>
           <div className="column">
             <Link to="/manuals">
-              {' '}
               <b>Manuals</b>
             </Link>
             <br />
@@ -24,7 +23,7 @@ export default function Footer() {
           <div className="column">
             <Link to="/docs">Timeline</Link>
             <Link to="/docs">Social Groups</Link>
-            <Link to="/docs">FAQ</Link>
+            <Link to="/FAQ">FAQ</Link>
             <Link to="/docs">About KOSS</Link>
           </div>
           <div className="column">

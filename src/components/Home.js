@@ -6,16 +6,16 @@ export default function Home() {
   return (
     <div className="home">
       <Navbar />
-      <section class="hero is-fullheight is-primary is-bold">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">Welcome to KWoC React</h1>
-            <h2 class="subtitle">The truth Redefined</h2>
+      <section className="hero is-fullheight is-primary is-bold">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">Welcome to KWoC React</h1>
+            <h2 className="subtitle">The truth Redefined</h2>
           </div>
         </div>
       </section>
 
-      <section class="about">
+      <section className="about">
         <div className="container">
           <h1>About</h1>
           <p>
@@ -112,9 +112,9 @@ export default function Home() {
 
       <section className="why-kwoc">
         <div className="container">
-          <h2 id="whykwoc">Why KWoC?</h2>
+          <h2>Why KWoC?</h2>
 
-          <h3 id="introtoopensource">Intro to Open Source</h3>
+          <h3>Intro to Open Source</h3>
 
           <p>
             KWoC provides a great opportunity to get acquainted with Github along with Git commands
@@ -126,7 +126,7 @@ export default function Home() {
             get a glimpse of it and gives you a head start.
           </p>
 
-          <h3 id="prepareforgsoc">Prepare for GSoC</h3>
+          <h3>Prepare for GSoC</h3>
 
           <p>
             With KWoC, you get to know about how to select a project, interact with mentors and
