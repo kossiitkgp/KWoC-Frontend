@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Card from '../components/Card';
 
 export default function Home() {
   return (
@@ -138,14 +139,24 @@ export default function Home() {
       <section className="stats">
         <div className="container">
           <h1>Statistics: KWoC 2017</h1>
-
-          <ul>
-            <li>1850+ Participants</li>
-
-            <li>105+ Projects</li>
-
-            <li>70+ Mentors</li>
-          </ul>
+          <div className="columns">
+            <div className="column">
+              <Card heading="1850+ Participants" img={{link: "test.jpg", alt: "Image taken from Unplash", style: "fluid"}}/>
+            </div>
+            <div className="column">
+              <Card heading="105+ Projects" tags={
+                [
+                  {value: "ML", type: "primary"},
+                  {value: "NLP", type: "primary"},
+                  {value: "OS", type: "primary"},
+                  {value: "JavaScript & React", type: "primary"}
+                ]
+                } />
+            </div>
+            <div className="column">
+              <Card heading="70+ Mentors" body="Some Random Body"/>
+            </div>
+          </div>
 
           <p>
             KWoC 2017 carried forward the legacy set by the 2016 edition; and in many ways went past
