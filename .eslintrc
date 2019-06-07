@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "react-app",
-    "prettier",
-    "prettier/react"
-  ],
+  "extends": ["react-app"],
   "env": {
     "browser": true,
     "node": true
@@ -12,24 +8,10 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "no-console": 0,
-    "react/no-unused-state": 1,
-    "prettier/prettier": [
-      "warn",
-      {
-        "trailingComma": "es5",
-        "singleQuote": true,
-        "printWidth": 100
-      }
-    ]
-  },
-  "plugins": [
-    "prettier"
-  ]
+    "react/no-unused-state": 1
+  }
 }
