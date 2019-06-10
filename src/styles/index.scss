@@ -1,29 +1,29 @@
-@import "base.scss";
+@import 'base.scss';
 
 // import using ~
 // Import only what you need from Bulma
-@import "~bulma/sass/utilities/_all.sass";
-@import "~bulma/sass/base/generic.sass";
-@import "~bulma/sass/base/helpers.sass";
-@import "~bulma/sass/grid/columns.sass";
-@import "~bulma/sass/elements/button.sass";
-@import "~bulma/sass/elements/container.sass";
-@import "~bulma/sass/elements/image.sass";
-@import "~bulma/sass/form/_all.sass";
-@import "~bulma/sass/components/navbar.sass";
-@import "~bulma/sass/layout/hero.sass";
-@import "~bulma/sass/layout/section.sass";
+@import '~bulma/sass/utilities/_all.sass';
+@import '~bulma/sass/base/generic.sass';
+@import '~bulma/sass/base/helpers.sass';
+@import '~bulma/sass/grid/columns.sass';
+@import '~bulma/sass/elements/button.sass';
+@import '~bulma/sass/elements/container.sass';
+@import '~bulma/sass/elements/image.sass';
+@import '~bulma/sass/form/_all.sass';
+@import '~bulma/sass/components/navbar.sass';
+@import '~bulma/sass/layout/hero.sass';
+@import '~bulma/sass/layout/section.sass';
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }

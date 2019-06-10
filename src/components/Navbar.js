@@ -6,7 +6,7 @@ import '../styles/navbar.scss';
 class Navbar extends Component {
   state = {
     burgermenuIsVisible: false,
-    scrollClass: 'large',
+    scrollClass: 'large'
   };
 
   componentDidMount() {
@@ -20,11 +20,11 @@ class Navbar extends Component {
   handleClick = e => {
     if (this.state.burgermenuIsVisible) {
       this.setState({
-        burgermenuIsVisible: false,
+        burgermenuIsVisible: false
       });
     } else {
       this.setState({
-        burgermenuIsVisible: true,
+        burgermenuIsVisible: true
       });
     }
   };
@@ -32,7 +32,7 @@ class Navbar extends Component {
   closeNavbar = e => {
     if (this.state.burgermenuIsVisible) {
       this.setState({
-        burgermenuIsVisible: false,
+        burgermenuIsVisible: false
       });
     }
   };
@@ -43,11 +43,11 @@ class Navbar extends Component {
 
     if (distanceY > shrinkOn) {
       this.setState({
-        scrollClass: 'smaller',
+        scrollClass: 'smaller'
       });
     } else if (this.state.scrollClass === 'smaller' && distanceY < shrinkOn) {
       this.setState({
-        scrollClass: 'large',
+        scrollClass: 'large'
       });
     }
   };
@@ -56,46 +56,49 @@ class Navbar extends Component {
     const clickClass = this.state.burgermenuIsVisible ? 'is-active' : '';
 
     return (
-      <div className="navbar">
+      <div className='navbar'>
         <nav
           className={`navbar is-fixed-top  ${this.state.scrollClass}`}
-          role="navigation"
-          aria-label="main navigation"
+          role='navigation'
+          aria-label='main navigation'
         >
-          <div className="container">
-            <div className="navbar-brand">
-              <Link className="navbar-item" to="/">
+          <div className='container'>
+            <div className='navbar-brand'>
+              <Link className='navbar-item' to='/'>
                 KWoC
               </Link>
 
               <button
                 className={`navbar-burger burger ${clickClass}`}
-                aria-label="menu"
-                aria-expanded="false"
-                data-target="navbarBasicExample"
+                aria-label='menu'
+                aria-expanded='false'
+                data-target='navbarBasicExample'
                 onClick={this.handleClick}
               >
-                <span aria-hidden="true" />
-                <span aria-hidden="true" />
-                <span aria-hidden="true" />
+                <span aria-hidden='true' />
+                <span aria-hidden='true' />
+                <span aria-hidden='true' />
               </button>
             </div>
 
-            <div id="navbarBasicExample" className={`navbar-menu ${clickClass}`}>
-              <div className="navbar-end" onClick={this.closeNavbar}>
-                <Link className="navbar-item" to="/">
+            <div
+              id='navbarBasicExample'
+              className={`navbar-menu ${clickClass}`}
+            >
+              <div className='navbar-end' onClick={this.closeNavbar}>
+                <Link className='navbar-item' to='/'>
                   Home
                 </Link>
 
-                <Link className="navbar-item" to="/about">
+                <Link className='navbar-item' to='/about'>
                   About
                 </Link>
 
-                <Link className="navbar-item" to="/FAQ">
+                <Link className='navbar-item' to='/FAQ'>
                   FAQs
                 </Link>
 
-                <Link className="navbar-item" to="/testimonial">
+                <Link className='navbar-item' to='/testimonial'>
                   Testimonials
                 </Link>
               </div>
