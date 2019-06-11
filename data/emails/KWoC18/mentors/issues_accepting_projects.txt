@@ -1,0 +1,33 @@
+BASIC SYNTAX FOR ADDRESSING THE ISSUE TO MENTOR
+
+//Minor changes are acceptable
+
+	Greetings
+		I am <name> from KOSS! //If you are mailing from your personal email and not representing KOSS itself
+		
+		This is KOSS //If you are mailing from as KOSS itself
+		
+		This mail is to inform you regarding issues faced in acceptance of your project for KWoC this winter.
+		Presently your issue is :
+		    <issue>
+		Please address to this issue and give a confirmation reply as soon as possibly as Deadline is <Deadline>
+		Thanks
+	
+	
+Types of common problems(what to fill in <issues>):
+	
+	if(Lack of issues on the project):
+		 Please add more issues so that the mentees have a better idea of getting to know your project and
+		 work with it effectively
+		 
+	if(Invalid <Communication Link/Project Link/Any other link>):
+		Invalid <Communication Link/Project Link/Any Other Link>----<Given <Communication Link/Project Link/
+		Any other Link>>
+		Please provide a valid <Communication Link/Project Link/Any other Link>
+    
+        if(Absence of <Tags/Description/both> on the issues of the project):
+    	      Presence of <Tags/Description/both> of the project detailing certain things for the mentees will
+    	      be helpful for them to apply for specific issues
+
+Regards,
+Kharagpur Open Source Society

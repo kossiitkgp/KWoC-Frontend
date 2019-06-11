@@ -1,0 +1,25 @@
+Subject : KWoC 2017: Midterm evaluation results
+Body :
+
+Dear Student,
+
+Congratulations! You have passed the midterm evaluation. You may continue working in KWoC for the next few weeks.
+
+Here is a clarification that you should know : The project/mentor you have submitted for your evaluation will not be made public and hence you can declare your main project anytime you want. Although KWoC officially does not have a concept of any main project per student.
+
+Upcoming Deadlines are :
+
+December 31st : Pencils down date - You should start wrapping up the project you have been working on and send your last Pull Requests by this date. You are not expected to code beyond this date.
+
+January 7th : Endterm evaluation Report - You have to submit the endterm report by this date. The instructions are written below. You are also encouraged to spend this week writing documentation and tests for your work and the project(s). Both are as important as writing code for Open Source software.
+
+Important instructions about the final report :
+ - You will have to submit a report of your work at the end-term evaluation. Failing to do so will not result in successful participation.
+ - We encourage you to submit the report in the form of a blog post. You can choose any blogging medium you want. Few examples are Medium, GitHub static pages, WordPress and Blogspot.
+ - The report can be as descriptive as you want, but must contain the following
+points :
+   - List of projects you worked on
+   - List of Pull Requests you created
+   - Summary of your work
+
+Keep up the great work !

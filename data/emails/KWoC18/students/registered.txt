@@ -1,0 +1,14 @@
+Hello <student_name> !
+You have been successfully registered for Kharagpur Winter of Code. 
+
+
+Kharagpur Winter of Code is one of the many initiatives all around the world for introducing students to Open Source. Google organizes Google Summer of Code every summer where thousands of students apply and get selected in the program. They work the entire summer and get paid a handsome reward. This is a program similar to it, but on a smaller scale. 
+
+Now that you have registered for the program, you should go through the website and the student manual thoroughly. Make sure that you spend ample amount of time, going through the projects and choosing the one that best matches your skillset and interest. Feel free to talk to your mentor and ask whatever doubts you have. Just make sure you ask smart questions! In case of any trouble, email us back and we will help you through!
+Join the facebook group and interact with the community.
+Read the student manual.
+Read this blog to get a larger picture of the program.
+Go ahead with choosing your projects here.
+
+Regards,
+Kharagpur Open Source Society

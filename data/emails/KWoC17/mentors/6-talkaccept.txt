@@ -1,0 +1,26 @@
+Subject: [Action Required] Acceptance of Talk submitted in KWoC 2017 Open Source Summit
+Body:
+Hello {speaker_name}!
+
+Your submission for the KWoC 2017 Open Source Summit has been accepted.
+
+Please read through the following:
+1. I have attached a few important details in the email. Please send a reply with the correct values for 'MISSING' details and/or in case you want to change any other information.
+2. 'Speaker Bio' and 'Talk Abstract' will be displayed on the website. Please keep both around 3-5 lines. Adding important reference links will be helpful.
+3. Please CONFIRM your presence at the summit with a reply as soon as possible.
+
+Details :
+
+T-Shirt Size: {tshirt_size}
+Phone Number: {speaker_phone}
+Speaker Bio: {speaker_bio}
+From Kharagpur: {from_kgp}
+
+Talk Name: {talk_name}
+
+Talk Abstract: {talk_abstract}
+
+
+The date of the event is 21st January 2018. Schedule, Venue and other details about the summit will be sent to you as soon as possible. If you are not from Kharagpur, we will give you a call about the accommodation details.
+
+If you have any query you can email or call me at {my_phone_number}.

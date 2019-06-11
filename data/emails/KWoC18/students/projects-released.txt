@@ -1,0 +1,10 @@
+Greetings from KOSS,
+
+Now that you are geared up for KWoC, We are glad to announce the release of projects for KWoC 2018.
+
+You can go through the projects we have for you. See what excites you the most, get in touch with the mentor and join the communication channel. The coding period starts from 5th December. Use this time to figure head and tail of the Codebase. And while you are at it, start bonding with your team you will be working this winters. More projects will be added soon, so make sure that you keep checking the page regularly.
+
+Visit this link to view projects : https://kwoc.kossiitkgp.org/projects
+
+Regards,
+Kharagpur Open Source Society

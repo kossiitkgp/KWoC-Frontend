@@ -1,0 +1,15 @@
+Dear mentors,
+
+As mentioned in the timeline, KWoC's coding period officially begins today. We hope that you have set up your projects well with detailed Readme and opened up issues.
+
+Now that students have joined your communication channel and will start/have started working on your projects, there are a few things we would like to iterate:
+
+1. The students may be at a very beginner stage or maybe at their intermediate level. For the first kind, it would be helpful if you bear with their doubts and try getting them a smooth start.
+
+2. We will have the mid evaluation on 15th December. The evaluation guidelines will be shared with you soon.
+
+We leave the rest to your discretion. We hope the students learn a lot under your mentorship. Thanks.
+
+Regards,​​
+Kharagpur Open Source Society,
+Indian Institute of Technology, Kharagpur.

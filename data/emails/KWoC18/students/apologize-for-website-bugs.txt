@@ -1,0 +1,12 @@
+Greetings.
+
+We hope you are having a great time working through issues and interacting with your mentor(s).
+
+Due to the staggering and astonishing participation, we saw this season, our codes couldn't keep up. We deeply regret the inconvenience caused by the breaking of the statistics table and other accompanying issues. We also had reports of wrong dashboard data.
+
+Thanks to our amazing team and their dedicated efforts, we've managed to fix all the bugs and updated the statistics page, dashboard, and profile page; and added sharing capabilities so you can show your KWoC stats to your friends.
+
+Please make us aware if you observe any anomaly.
+
+Regards,
+Kharagpur Open Source Society

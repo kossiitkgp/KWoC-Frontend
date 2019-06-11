@@ -1,0 +1,17 @@
+Dear Student,
+
+We hope you are enjoying working with your mentor and community during these first few weeks of coding. Below is important information regarding your required midterm evaluations - please read everything very carefully.
+
+IMPORTANT DEADLINE: Mid Term Evaluations are open now and are due December 13th 23:59 IST (GMT +5:30)
+This midterm evaluation is a required part of your participation in KWoC 2017. If you do not fill this, you shall be automatically removed from the program.
+
+Link : https://kwoc.kossiitkgp.org/mid-term
+
+In the form, you have to choose the mentor you have been working with. The mentor you choose, shall be writing feedback for you. If you are working with multiple mentors, use your discretion and choose one.
+
+You also need to sign up on Kshitij website as well. If you have not already done, visit : http://ktj.in/sign-up (If the name of your college does not appear on Kshitij website, choose the first option and write to admin@ktj.in about missing college name)
+
+If you have any queries write to kwoc@kossiitkgp.org
+
+Regards,
+Kharagpur Open Source Society 

@@ -1,0 +1,12 @@
+Hi {} !
+
+KWoC Mid-Term evaluations are now open for mentors. In the students' mid-term feedback, we asked them to enlist one mentor they are working with, and few of them have nominated you as their mentor. We request you to be honest with the students, if you spot unsincere efforts and feel they are wasting your time, you should give them a Fail grade. While at the same time, if they have informed you of being busy with their exams, there is no harm in being generous towards them.
+
+Here is your unique link to the evaluation :
+{}
+Please fill it positively by December 16, 23:59 IST.
+
+We also look forward to hearing from you in the feedback. KWoC is not possible without mentors like you.
+
+Regards,
+Kharagpur Open Source Society 

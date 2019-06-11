@@ -1,0 +1,21 @@
+Dear Mentor {Name_of_mentor},
+Greetings from KOSS,
+
+KWoC Mid-Term evaluations are now open for mentors. 
+In the students' mid-term feedback, we asked them to enlist one mentor they are working with, and few of them have nominated you as their mentor.
+We request you to be honest with the students, if you spot unsincere efforts and feel they are wasting your time, you should give them a Fail grade.
+While at the same time, if they have informed you of being busy with their exams, there is no harm in being generous towards them.
+Note that the ones which are given as fail grade, will be removed from the KWoC programme.
+
+Here is your unique link for the evaluation :
+
+{URL_for_Mentor}
+
+Please fill it positively by December 27, 23:59 IST.
+We also look forward to hearing from you in the feedback. 
+
+We thank you for bearing with the doubts from your mentees and hope that your projects are growing.
+KWoC is not possible without dedicated efforts from mentors like you.
+
+Regards,
+Kharagpur Open Source Society

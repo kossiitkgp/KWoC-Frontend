@@ -1,0 +1,21 @@
+Dear Mentees,
+
+We hope that you are having a great time learning, coding and helping others.
+
+The dates for Mid Term Evaluations have been extended to December 23rd 23:59 IST (GMT +5:30).
+
+PLEASE READ THE FOLLOWING CAREFULLY
+
+To continue as a student in KWoC'18 you must clear your Mid-Term Evaluations.
+
+You are supposed to fill the mid-eval form by December 23rd 23:59 IST. For mid-evals, You need to select a project for which you prefer getting evaluated. In case you contributed to more than one project, use your discretion and select one. 
+The mentor for the chosen project will be giving your mid-term evaluation report. We recommend you to do so, even if you have a Work-In-Progress or unmerged PR.
+
+In case you haven't signed up for KTJ'19, please do so. We also expect you to give constructive suggestions to KOSS and your mentors(will not be shared with mentors) in your mid-eval form.
+
+You can find the link to the mid-eval form in your dashboard, once you have logged in.
+
+If you have any queries. Please let us know.
+
+Regards,
+Kharagpur Open Source Society.

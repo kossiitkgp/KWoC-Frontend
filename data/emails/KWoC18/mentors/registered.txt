@@ -1,0 +1,7 @@
+Hello <mentor_name>,
+
+Thank you for registering your project <project_name> in Kharagpur Winter of Code 2018. We will get in touch with you soon! 
+Meanwhile you can read the Mentor's manual here{link_to_mentors_manual}.
+
+Regards,
+Kharagpur Open Source Society
