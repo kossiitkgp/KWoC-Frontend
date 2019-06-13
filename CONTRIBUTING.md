@@ -20,6 +20,8 @@ Hi :wave: there, welcome to KWoC React project. We are glad that you considered 
   - Create the issue as necessary.
   - If you lack the technical knowhow, refer to [Learning Guide](learn.md) or ask for help to anyone.
 - Create a Branch and Commit your changes.
+  - Name the branch carefully. For example `feature-card-component`, `bugfix-overlay`. Do not use generic names such as `develop`, `work`, your username etc.
+  - Name the commits meaningfully. For help read [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
 - Check if the solution works by testing it locally.
 - Submit a PR with an appropriate name including the term `Fixes #{issue number}` if it fixes that particular issue.
 - Be attentive and respond to comments and suggestions in the opened PR.
@@ -69,6 +71,18 @@ This setup is recommended but not enforced. Please note that we expect clean wel
 We use [yarn](https://yarnpkg.com/en/) as the package manager. Please do not use `npm` with this project to manage dependencies. It will result in clashing dependencies and may cause unintended errors.
 
 To add new dependency use `yarn add`, so if you need to run `npm install <package>` run `yarn add <package>`.
+
+### Bulma
+
+We import only the styles we need and we import the style to [index.scss](src/styles/index.scss) file. For example,
+
+```js
+// import using ~
+// If I want to import button styles I write
+@import '~bulma/sass/elements/button.sass';
+```
+
+To know which files are where, browse [Bulma](https://github.com/jgthms/bulma/tree/master/sass)'s source.
 
 ### VSCode
 
