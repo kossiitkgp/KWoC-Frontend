@@ -1,5 +1,3 @@
-@import 'base.scss';
-
 // import using ~
 // Import only what you need from Bulma
 @import '~bulma/sass/utilities/_all.sass';
@@ -14,6 +12,15 @@
 @import '~bulma/sass/layout/hero.sass';
 @import '~bulma/sass/layout/section.sass';
 
+* {
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -26,4 +33,12 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App {
+  .hero {
+    h1 {
+      font-size: 5rem;
+    }
+  }
 }

@@ -5,7 +5,7 @@ import About from './components/About';
 import FAQ from './components/FAQ';
 import Testimonial from './components/Testimonials';
 
-import './styles/App.scss';
+import './styles/index.scss';
 
 function App() {
   return (

@@ -1,53 +1,51 @@
-@import "base.scss";
+@import 'index.scss';
 
-.card-container{
-    color: blue;
+.card-container {
+  color: blue;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 3px #6b6969ab;
+  border-width: 2px 2px 2px 2px;
+  border-color: black;
+  border-style: outset;
+
+  .card-head {
+    width: 100%;
+    text-align: center;
+  }
+
+  .card-body {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-right: 5px;
+  }
+
+  .card-tags {
+    list-style-type: none;
     display: flex;
-    flex-direction: column;
-    box-shadow: 5px 5px 3px #6b6969ab;
-    border-width: 2px 2px 2px 2px;
-    border-color: black;
-    border-style: outset;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
 
-    .card-head{
-        width: 100%;
-        text-align: center;
+    .card-tag-item {
+      margin-left: 3px;
+      margin-right: 3px;
+      margin-top: 2px;
+      margin-bottom: 2px;
+      padding: 4px 5px 4px 5px;
+      border-radius: 6px;
     }
 
-    .card-body{
-        width: 100%;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 5px;
-        padding-right: 5px;
+    .card-tag-primary {
+      background-color: blue;
+      color: white;
     }
+    /*TODO: Add tag types*/
+  }
 
-    .card-tags{
-        list-style-type: none;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        font-size: 0.9rem;
-
-        .card-tag-item{
-            margin-left: 3px;
-            margin-right: 3px;
-            margin-top: 2px;
-            margin-bottom: 2px;
-            padding: 4px 5px 4px 5px;
-            border-radius: 6px;
-        }
-
-        .card-tag-primary{
-            background-color: blue;
-            color: white;
-        }
-        /*TODO: Add tag types*/
-    }
-
-    /*TODO: Add img formatting.
+  /*TODO: Add img formatting.
     card-img-fluid is default.
     */
-
-
 }
