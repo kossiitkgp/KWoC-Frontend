@@ -1,0 +1,43 @@
+@import 'index.scss';
+
+@import '~bulma/sass/elements/box.sass';
+
+.box {
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 5%;
+  padding: 2%;
+}
+
+.checkbox {
+  margin: 1%;
+  margin-top: -1%;
+}
+
+#fontello-icon {
+  margin-top: 1%;
+  margin-left: 2%;
+}
+
+.radio + .radio {
+  margin-left: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+
+  .box {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  #vertical-in-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  #fontello-icon {
+    margin-top: 1.5%;
+  }
+}
