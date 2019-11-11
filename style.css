@@ -169,6 +169,15 @@ html, body {
   color: rgb(33, 53, 82);
 }
 
+
+
+.timeline span {
+  display: inline-flex;
+  text-align: end !important;
+  justify-content: right;
+  color: royalblue;
+}
+
 .share .soc-btns {
   display: flex;
   flex-wrap: wrap;
