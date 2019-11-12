@@ -42,7 +42,7 @@ html, body {
   background-size: contain;
 }
 
-.container .content h1 /home/parth/Workspace/kwoc-temp/kwoc/index.html{
+.container .content h1 {
   font-family: "Playfair Display";
   font-weight: 900;
   font-size: 5rem;
