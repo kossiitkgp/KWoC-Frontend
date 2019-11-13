@@ -187,9 +187,13 @@ html, body {
   border-radius: 2rem;
 }
 
-.share .soc-btns a.fb {
-  box-shadow: 0px 30px 50px rgba(58, 87, 150, 0.5);
+.share .soc-btns a.fb{
   background: #3b5998;
+  transition: 0.3s ease-in-out;
+}
+
+.share .soc-btns a.fb:hover {
+  box-shadow: 0px 30px 30px rgba(58, 87, 150, 0.5);
 }
 
 
@@ -373,9 +377,8 @@ width: 30px;
 height: 30px;
 border-radius: 50%;
 box-shadow: 0 0 0 4px #3b5998, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
-}
-.cd-timeline-img {
 background: #3b5998;
+
 }
 @media only screen and (min-width: 1170px) {
 .cd-timeline-img {
