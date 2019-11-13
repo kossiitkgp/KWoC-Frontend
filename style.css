@@ -188,7 +188,7 @@ html, body {
 }
 
 .share .soc-btns a.fb{
-  background: #3b5998;
+  background: #306ff2;
   transition: 0.3s ease-in-out;
 }
 
@@ -376,7 +376,7 @@ left: 12px;
 width: 30px;
 height: 30px;
 border-radius: 50%;
-box-shadow: 0 0 0 4px #3b5998, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+box-shadow: 0 0 0 4px #306ff2, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 background: #eceff5;
 
 }
@@ -397,7 +397,7 @@ background: #eceff5;
 position: relative;
 margin-left: 60px;
 margin-right: 30px;
-background: #3b5998;
+background: #306ff2;
 border-radius: 2px;
 padding: 1em;
 .timeline-content-info {
@@ -500,7 +500,7 @@ border-right: 7px solid #333C42;
   top: 24px;
   left: 100%;
   border-color: transparent;
-  border-left-color: #333C42;
+  border-left-color: #306ff2;
 }
 .cd-timeline-content .cd-date {
   position: absolute;
@@ -518,7 +518,7 @@ border-right: 7px solid #333C42;
   left: auto;
   right: 100%;
   border-color: transparent;
-  border-right-color: #333C42;
+  border-right-color: #306ff2;
 }
 .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
   float: right;
