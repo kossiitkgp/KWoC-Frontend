@@ -377,7 +377,7 @@ width: 30px;
 height: 30px;
 border-radius: 50%;
 box-shadow: 0 0 0 4px #3b5998, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
-background: #3b5998;
+background: #eceff5;
 
 }
 @media only screen and (min-width: 1170px) {
