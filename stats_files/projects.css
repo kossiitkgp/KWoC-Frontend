@@ -1,0 +1,363 @@
+
+.container2 {
+  display: flex;
+  -webkit-display: box;
+  -moz-display: box;
+  -ms-display: flexbox;
+  -webkit-display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  padding: 2rem 10rem;
+  width:100%;
+  box-sizing: border-box;
+}
+.cards {
+  display: flex;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.cards .card-item {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	width: 100%;
+	border-radius: 4px;
+	border: 1px solid #cdcdcd;
+	overflow: hidden;
+}
+.cards .card-item:hover .card-image {
+  opacity: 1;
+}
+.card-intro {
+	padding: 0 20px;
+}
+.cards .card-info {
+  display: flex;
+  padding-top: 1em;
+  flex: 1 1 auto;
+  flex-direction: column;
+  text-align: center;
+  line-height: 1.5em;
+}
+.cards .card-title {
+	font-size: 25px;
+	line-height: 1.1em;
+	color: #32325d;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+	margin-bottom: 15px;
+}
+hr{
+  height:1px;
+  width:100%;
+  background-color: grey;
+}
+
+.tags {
+	margin: auto;
+	text-align: center;
+	padding: 1em 0;
+	border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+}
+
+.custom {
+  width: 100%;
+  margin: 0 auto;
+}
+.tags li {
+	display: inline-block;
+	padding: 4px 15px;
+	color: #000;
+	font-weight: 100;
+	text-decoration: none;
+	font-family: "Open Sans";
+	font-size: 15px;
+	background: #CCC;
+	margin: 4px 4px;
+	border-radius: 5px;
+}
+.wrap {
+	padding: 1em 0;
+}
+.wrap a {
+    -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+    display: block;
+    margin: 0 auto;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 1.5em;
+    max-width: 150px;
+    text-align: center;
+    padding: 0.5em 0.5em;
+}
+
+.wrap a.button2 {
+	color: #222;
+	box-shadow: #222 0 0px 0px 2px inset;
+}
+
+.wrap a.button2:hover {
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: #222 0 0px 0px 40px inset;
+}
+.mentor h2{
+  font-size: 1.2em;
+  position: relative;
+  right:-50%;
+  padding-top: -1em;
+  padding-bottom: 1em;
+}
+
+.search {
+  padding-top: 2em;
+  width: 80%;
+  position: relative;
+  left:50%;
+  transform:translate(-50%);
+}
+.mentor {
+	text-align: center;
+	border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+}
+.searchTerm {
+	float: left;
+	width: 100%;
+	padding: 15px 40px;
+	border-radius: 5px !important;
+	outline: none;
+	color: black;
+	font-size:13px;
+}
+
+.fa-search{
+  color:white;
+}
+input::-webkit-input-placeholder {
+color:black;
+}
+
+.searchButton {
+	position: absolute;
+	color: #BBB;
+	font-size: 22px;
+	top: 40px;
+	left: 10px;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+  overflow: auto;
+  position: fixed;
+  z-index: 10000000;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+}
+/* Modal Content */
+.modal-content {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60%;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.modal-animated-in {
+  animation: fadeIn .3s ease;
+}
+.modal-animated-out {
+  animation: fadeOut .1s ease forwards;
+}
+.modal-header {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 2em;
+  z-index:1000;
+  border-bottom: none;
+  margin: 15px;
+}
+.modal-content .close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  color: #222 !important;
+  width: 60px;
+  height: 60px;
+  color: #fff;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .3s;
+}
+.modal-content .close:hover {
+  color: #CCC;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 0 20px;
+}
+.modal-body ul.require {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.modal-body ul.require li.need {
+  position: relative;
+  display: block;
+  margin-left: 20px;
+  color: #555;
+}
+.modal-body ul.require li::before {
+  position: absolute;
+  content: '\f00c';
+  color: #5cc560;
+  left: -20px;
+  top: 10px;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.modal-body ul.qwe {
+	width: 100%;
+	margin: 10px 5px;
+}
+
+.modal-body ul.tags {
+	padding-top: 0;
+	text-align: left;
+	border-bottom: none;
+}
+
+.modal-body ul.qwe li{
+  padding-left: 1em;
+  padding-right: 1em;
+  position: relative;
+  display: inline-block;
+  color: #222;
+  text-decoration: none;
+}
+.header-title{
+  font-size: 1em;
+  text-align: center;
+}
+.header-title i {
+	margin-right: 10px;
+}
+/* Modal Footer */
+.modal-footer {
+  background-color: #F3F5F6;
+  width: 100%;
+  padding-left: 20px;
+  border-top: none;
+}
+.modal-header h3, .modal-footer h3 {
+	color: #2B3038;
+	text-align: left;
+	font-family: "Open Sans";
+	font-weight: 300;
+	text-transform: capitalize;
+}
+
+/* Keyframes */
+@keyframes totop-in {
+  0% {
+    top: 600px;
+    opacity: 0;
+  }
+  100% {
+    top: 300px;
+    opacity: 1;
+  }
+}
+
+@keyframes totop-out {
+  0% {
+    top: 0px;
+    opacity: 1;
+  }
+  100% {
+    top: -100%;
+    opacity: 0;
+  }
+}
+@media only screen and (min-width: 769px)
+{
+  .cards {
+    width: 25%;
+  }
+  .container2{
+    padding:2rem 7rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .cards {
+    width: 33.3%;
+  }
+  .container2{
+    padding:2rem 3rem;
+  }
+  .modal-content {
+    width: 80%;
+  }
+  .modal-content .close {
+    right: 5px;
+    top: 5px;
+  }
+  .wrap a{
+      max-width: 120px;
+  }
+}
+@media only screen and (min-width: 200px) and (max-width:425px)
+{
+  .cards {
+    width: 100%;
+  }
+  .container2{
+    padding:2rem 1rem;
+  }
+  .modal-content .close {
+    right: 1px;
+    top: 1px;
+  }
+  .comm{
+    text-align: left;
+  }
+  .modal-content {
+    width: 75%;
+  }
+  .modal-footer {
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 426px) and (max-width:630px)
+{
+  .cards {
+    width: 50%;
+  }
+  .container2{
+    padding:2rem 2rem;
+  }
+  .modal-content {
+    width: 80%;
+  }
+  .modal-content .close {
+    right: 3px;
+    top: 3px;
+  }
+  .wrap a{
+      max-width: 120px;
+  }
+}
