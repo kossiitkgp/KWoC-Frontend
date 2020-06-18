@@ -4,7 +4,8 @@ import Home from './components/Home';
 import About from './components/About';
 import FAQ from './components/FAQ';
 import Testimonial from './components/Testimonials';
-import Form from './components/Form'
+import MentorForm from './components/MentorForm'
+import ProjectForm from './components/ProjectForm'
 
 import './styles/index.scss';
 
@@ -20,7 +21,10 @@ function App() {
 
         <Route exact path='/testimonial' component={Testimonial} />
 
-        <Route exact path='/form' component={Form} />
+        <Route exact path='/mentor' component={MentorForm} />
+        
+        <Route exact path='/project' component={ProjectForm} />
+
       </div>
     </BrowserRouter>
   );
