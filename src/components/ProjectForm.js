@@ -58,7 +58,7 @@ export default function Form() {
         <label className='label'>Project Description</label>
         <div className='control has-icons-left has-icons-right'>
           <textarea 
-          class="textarea" 
+          className="textarea" 
           placeholder="Briefly 50 words about your Project"
           onChange={e => setDesc(e.target.value)}
           />
@@ -107,7 +107,7 @@ export default function Form() {
       
       <div>
         <a 
-        class='button is-info is-rounded is-fullWidth column is-full'
+        className='button is-info is-rounded is-fullWidth column is-full'
         onClick={handleSubmit}
         >
         
@@ -117,3 +117,4 @@ export default function Form() {
     </div>
   );
 }
+
