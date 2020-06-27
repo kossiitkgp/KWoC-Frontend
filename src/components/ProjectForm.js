@@ -1,13 +1,92 @@
 import React, { useState }from 'react';
-import Colleges from '../data/colleges.js';
 import Tags from '../data/tags.js';
 import CreatableSelect from 'react-select/creatable';
+import axios from 'axios'
 
 import '../styles/Form.scss';
 import '../styles/css-fontello-github-circled/fontello.css';
 import '../styles/css-fontello-mail-alt/fontello.css';
 
 const options = Tags.map(item => { return {'value': item, 'label': item} }) 
+
+async function checkLink(link) {
+ let is_valid;  
+  await axios
+    .get(link)
+    .then(res => {
+      if(res.status === 200)
+        is_valid = true
+    })
+    .catch(err => {
+      is_valid = false
+    })
+
+    return is_valid
+  }
+
+async function checkRepo(repolink) {
+  const returnMsg = {
+    'status': true,
+    'message': ''
+  }
+
+  // remove the last trailing slash, if it exists
+  if (repolink.slice(-1) === "/") {
+    repolink = repolink.slice(0,-1)
+  }
+
+  const splitArr = repolink.split("/")
+  const len = splitArr.length
+
+  const repoName = splitArr[len-1]
+  const ownerName = splitArr[len-2]
+
+  const headers = {
+    "username": "adc3de3ce14dcf52af0afc0a40e6c3fee5d086e6",
+    
+  }
+
+  
+  // check for minimum number of issues, along with valid URL or not
+  const issuesURL = `https://api.github.com/repos/${ownerName}/${repoName}/issues?q=state:open`
+  await axios
+    .get(issuesURL, headers)
+    .then(res => {
+      const issues = res.data.filter(item => !item.hasOwnProperty('pull_request'))
+      const numOfIssues = issues.length
+      if(numOfIssues < 3)
+        returnMsg['message'] = `Repo has only ${numOfIssues}, Please maintain atleast 3 issues. `
+      })
+    .catch(err => {
+      console.log("Err is ",err)
+      if(err.response.status) {
+        returnMsg['message'] = `Please add a valid Github link repo with atleast 3 open issues. `
+      }
+
+    })
+
+
+  // check for a minimum README
+  const readmeURL = `https://api.github.com/repos/${ownerName}/${repoName}/readme`
+  await axios
+      .get(readmeURL, headers)
+      .then(res => {
+        if (res.data.size < 100) {
+          returnMsg['message'] += `Please add a more descriptive modified README of atleast 100 characters.`
+        }
+      })
+      .catch(err => {
+        if(err.response.status)
+        returnMsg['message'] += `Please add a descriptive README.md of atleast 100 characters. `
+      })
+
+  if (returnMsg['message'] === '')
+    return returnMsg
+    
+    returnMsg['status'] = false
+    return returnMsg
+}
+
 
 export default function Form() {
   
@@ -17,15 +96,33 @@ export default function Form() {
   const [channelLink, setChannelLink] = useState('')
   const [tags, setTags] = useState([])
 
+  const [errInRepo, setErrInRepo] = useState('')
+  const [errInLink, setErrInLink] = useState('')
+
   function handleChange(tags, action) {
-    console.log('tags are', tags);
     const selectedTags = tags.map(item => item.value)
     setTags(selectedTags)
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
+    // checking if repo meets requirements or not
+    const repoStatus = await checkRepo(repolink)
+    const isRepoValid = repoStatus['status']
+    if (!isRepoValid) {
+      setErrInRepo(repoStatus['message'])
+   
+    }
+    
+    // checking if communication channel is valid or not
+    const isLinkValid = await checkLink(channelLink)
+    if(!isLinkValid) {
+      setErrInLink('Please add a valid URL so that mentees can join.')
+    }
+
+    if(!(isRepoValid && isLinkValid))
+     return
     // data to be sent to backend
     const data = {
       'Name': name,
@@ -36,7 +133,7 @@ export default function Form() {
     }
 
     console.log('data to be sent ',data)
-    // make an axios request here
+    // make an axios request to BACKEND here
   }
 
   
@@ -79,6 +176,7 @@ export default function Form() {
             <i className='icon-github-circled' />
           </span>
         </div>
+        {errInRepo}
       </div>
 
       <div className='field'>
@@ -91,6 +189,7 @@ export default function Form() {
             onChange={e => setChannelLink(e.target.value)}
           />
         </div>
+        {errInLink}
       </div>
 
       <div className='field'>
@@ -110,7 +209,6 @@ export default function Form() {
         className='button is-info is-rounded is-fullWidth column is-full'
         onClick={handleSubmit}
         >
-        
         Submit
         </a>
       </div>
