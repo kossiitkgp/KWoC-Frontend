@@ -11,17 +11,15 @@ const options = Tags.map(item => { return {'value': item, 'label': item} })
 
 async function checkLink(link) {
  let is_valid;  
-  await axios
-    .get(link)
-    .then(res => {
-      if(res.status === 200)
-        is_valid = true
-    })
-    .catch(err => {
-      is_valid = false
-    })
-
-    return is_valid
+ try {
+    const res = await axios.get(link)
+    if(res.status === 200)
+          is_valid = true
+  }
+  catch(err) {
+    is_valid = false
+  }
+   return is_valid
   }
 
 async function checkRepo(repolink) {
@@ -49,36 +47,27 @@ async function checkRepo(repolink) {
   
   // check for minimum number of issues, along with valid URL or not
   const issuesURL = `https://api.github.com/repos/${ownerName}/${repoName}/issues?q=state:open`
-  await axios
-    .get(issuesURL, headers)
-    .then(res => {
-      const issues = res.data.filter(item => !item.hasOwnProperty('pull_request'))
-      const numOfIssues = issues.length
-      if(numOfIssues < 3)
-        returnMsg['message'] = `Repo has only ${numOfIssues}, Please maintain atleast 3 issues. `
-      })
-    .catch(err => {
-      console.log("Err is ",err)
-      if(err.response.status) {
-        returnMsg['message'] = `Please add a valid Github link repo with atleast 3 open issues. `
-      }
-
-    })
-
+  try {
+    const res = await axios.get(issuesURL, headers)
+    const issues = res.data.filter(item => !item.hasOwnProperty('pull_request'))
+    const numOfIssues = issues.length
+    if(numOfIssues < 4)
+      returnMsg['message'] = `Repo has only ${numOfIssues} issues, Please maintain atleast 4 issues. `
+  } 
+  catch(err) {
+    returnMsg['message'] = `Please add a valid Github link repo with atleast 4 open issues. `
+  }
 
   // check for a minimum README
   const readmeURL = `https://api.github.com/repos/${ownerName}/${repoName}/readme`
-  await axios
-      .get(readmeURL, headers)
-      .then(res => {
-        if (res.data.size < 100) {
-          returnMsg['message'] += `Please add a more descriptive modified README of atleast 100 characters.`
-        }
-      })
-      .catch(err => {
-        if(err.response.status)
-        returnMsg['message'] += `Please add a descriptive README.md of atleast 100 characters. `
-      })
+  try {
+    const res = axios.get(readmeURL, headers)
+    if(res.data.size < 100)
+    returnMsg['message'] += `Please add a more descriptive modified README of atleast 100 characters.`  
+  }
+  catch(err) {
+    returnMsg['message'] += `Please add a descriptive README.md of atleast 100 characters. `
+  }
 
   if (returnMsg['message'] === '')
     return returnMsg
@@ -112,7 +101,6 @@ export default function Form() {
     const isRepoValid = repoStatus['status']
     if (!isRepoValid) {
       setErrInRepo(repoStatus['message'])
-   
     }
     
     // checking if communication channel is valid or not
