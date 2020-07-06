@@ -98,9 +98,18 @@ class Navbar extends Component {
                   FAQs
                 </Link>
 
+                
+                <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b">Mentor Login</a>
+              
+
+                {/* <Link className='navbar-item' >
+                 <a>Mentee Login</a> 
+                </Link> */}
+
                 <Link className='navbar-item' to='/testimonial'>
                   Testimonials
                 </Link>
+
               </div>
             </div>
           </div>

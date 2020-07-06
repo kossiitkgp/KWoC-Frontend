@@ -1,20 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import Colleges from '../data/colleges.js';
 import '../styles/Form.scss';
 import '../styles/css-fontello-github-circled/fontello.css';
 import '../styles/css-fontello-mail-alt/fontello.css';
 
-export default function Form() {
+export default function Form(props) {
   
+  const [username, setUsername] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
+  useEffect(() => {
+    const { username, name, email } = props.location.state
+
+    // if all of them are filled send data to the backend to get the token
+    if(email !== '') {
+      const data = {
+        'username': username,
+        'name': name,
+        'email': email
+      }
+      console.log("SEND THIS DATA TO BACKEND AND GET TOKEN")
+    }
+    setUsername(username)
+    setName(name)
+    setEmail(email)
+  },[])
+  
   function handleSubmit(e) {
     e.preventDefault();
 
-    // data to be sent to backend
+    // data to be sent to backend, to get the token
     const data = {
-      'github_handle': '',
+      'username': '',
       'name': name,
       'email': email
     }
@@ -28,7 +46,21 @@ export default function Form() {
     <div className='box'>
 
     <h3>Welcome MENTOR_NAME</h3>
-      
+
+      <div className='field'>
+        <label className='label'>Github Username</label>
+        <div className='control'>
+          <input
+            className='input is-rounded is-info'
+            type='text'
+            placeholder='Name'
+            defaultValue={username}
+            onChange={e => setUsername(e.target.value)}
+          />
+        </div>
+      </div>
+
+
       <div className='field'>
         <label className='label'>Name</label>
         <div className='control'>
@@ -36,6 +68,7 @@ export default function Form() {
             className='input is-rounded is-info'
             type='text'
             placeholder='Name'
+            defaultValue={name}
             onChange={e => setName(e.target.value)}
           />
         </div>
@@ -48,6 +81,7 @@ export default function Form() {
             className='input is-rounded is-info'
             type='text'
             placeholder='Email'
+            defaultValue={email}
             onChange={e => setEmail(e.target.value)}
           />
           <span className='icon is-large is-left' id='fontello-icon'>
