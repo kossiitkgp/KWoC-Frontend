@@ -11,14 +11,15 @@ export default function Form(props) {
   const [email, setEmail] = useState('')
 
   useEffect(() => {
-    const { username, name, email } = props.location.state
+    const { username, name, email, type } = props.location.state
 
     // if all of them are filled send data to the backend to get the token
     if(email !== '') {
       const data = {
         'username': username,
         'name': name,
-        'email': email
+        'email': email,
+        'type': type
       }
       console.log("SEND THIS DATA TO BACKEND AND GET TOKEN")
     }
@@ -32,9 +33,10 @@ export default function Form(props) {
 
     // data to be sent to backend, to get the token
     const data = {
-      'username': '',
+      'username': username,
       'name': name,
-      'email': email
+      'email': email,
+      'type': props.location.state.type
     }
 
     console.log('sending this ',data)
@@ -45,7 +47,8 @@ export default function Form(props) {
   return (
     <div className='box'>
 
-    <h3>Welcome MENTOR_NAME</h3>
+  <h2>{props.location.state.type} Form</h2>
+    <h3>Welcome {props.location.state.name}</h3>
 
       <div className='field'>
         <label className='label'>Github Username</label>

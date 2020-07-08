@@ -4,9 +4,9 @@ import Home from './components/Home';
 import About from './components/About';
 import FAQ from './components/FAQ';
 import Testimonial from './components/Testimonials';
-import MentorForm from './components/MentorForm'
+import UserForm from './components/UserForm'
 import ProjectForm from './components/ProjectForm'
-import MentorOAuth from './components/MentorOAuth';
+import OAuth from './components/OAuth';
 
 import './styles/index.scss';
 
@@ -22,11 +22,11 @@ function App() {
 
         <Route exact path='/testimonial' component={Testimonial} />
 
-        <Route exact path='/form/mentor' component={MentorForm} />
+        <Route exact path='/form/user' component={UserForm} />
         
         <Route exact path='/form/project' component={ProjectForm} />
 
-        <Route exact path='/oauth/mentor' component={MentorOAuth} />
+        <Route  path='/oauth' component={OAuth} />
 
       </div>
     </BrowserRouter>
