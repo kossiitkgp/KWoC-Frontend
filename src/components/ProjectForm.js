@@ -9,17 +9,14 @@ import '../styles/css-fontello-mail-alt/fontello.css';
 
 const options = Tags.map(item => { return {'value': item, 'label': item} }) 
 
-async function checkLink(link) {
- let is_valid;  
- try {
-    const res = await axios.get(link)
-    if(res.status === 200)
-          is_valid = true
-  }
-  catch(err) {
-    is_valid = false
-  }
-   return is_valid
+ function checkLink(link) {
+ const  pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+ '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+ '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+ '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+ '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+ '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+  return !!pattern.test(link);
   }
 
 async function checkRepo(repolink) {
@@ -104,7 +101,7 @@ export default function Form() {
     }
     
     // checking if communication channel is valid or not
-    const isLinkValid = await checkLink(channelLink)
+    const isLinkValid =  checkLink(channelLink)
     if(!isLinkValid) {
       setErrInLink('Please add a valid URL so that mentees can join.')
     }
