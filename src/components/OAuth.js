@@ -6,26 +6,28 @@ export default function MentorOAuth(props){
     useEffect(() => {
         const params = new URLSearchParams(window.location.search)
         const code = params.get('code')
+        const state = params.get('state')
         console.log("Send this to backend ", code)
-        const URL = "http://localhost:5000/mentor/oauth"
+        const URL = "http://localhost:5000/oauth"
         const data = {
             "code": code,
-            "state": "PAKKA RANDOM"
+            "state": state
         }
        
         axios
             .post(URL, data)
             .then(res => {
                 let email = res.data.email === null ? '' : res.data.email
-                const mentorData = {
+                const userData = {
                     "username": res.data.username,
                     "name": res.data.name,
-                    "email": email
+                    "email": email,
+                    "type": res.data.type
                 }
 
                 props.history.push({
-                    pathname: '/form/mentor',
-                    state: mentorData
+                    pathname: '/form/user',
+                    state: userData
                 })
             })
             .catch(err => {
