@@ -94,6 +94,10 @@ class Navbar extends Component {
                   About
                 </Link>
 
+                <Link className='navbar-item' to='/projects'>
+                  Projects
+                </Link>
+
                 <Link className='navbar-item' to='/FAQ'>
                   FAQs
                 </Link>
