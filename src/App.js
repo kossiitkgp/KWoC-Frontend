@@ -8,6 +8,7 @@ import UserForm from './components/UserForm'
 import ProjectForm from './components/ProjectForm'
 import OAuth from './components/OAuth';
 import StudentDashboard from './components/dashboard/StudentDashboard';
+import MentorDashboard from './components/dashboard/MentorDashboard/MentorDashboard';
 import Projects from './components/projects/Projects'
 
 import './styles/index.scss';
@@ -29,6 +30,8 @@ function App() {
         <Route exact path='/form/project' component={ProjectForm} />
 
         <Route exact path='/dashboard/student' component={StudentDashboard} />
+
+        <Route exact path='/dashboard/mentor' component={MentorDashboard} />
 
         <Route  path='/oauth' component={OAuth} />
 
