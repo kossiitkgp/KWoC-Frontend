@@ -2,9 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Card from './ProjectCard';
+import Fuse from 'fuse.js';
 
 import '../../styles/projects.scss';
 
+const searchOptions = {
+  "keys": [
+    "name",
+    "desc",
+    "mentor",
+    "tags"
+  ],
+  // the threshold value should be decreased to be more strict in getting search results
+  "threshold": 0.5
+}
 // temporary data for testing purpose
 const dummyProjects = [
   {
@@ -28,14 +39,23 @@ const dummyProjects = [
 ]
 
 export default function Projects() {
-
+  const [searchText, setSearchText] = useState('')
+  
   const [allProjects, setAllProjects] = useState([])
+  const [searchedProjects, setSearchedProjects] = useState([])
 
   useEffect(() => {
     // Fetching all projects from backend or Frontend
     setAllProjects(dummyProjects)
   }, [])
 
+  function handleSearch(e) {
+    const fuse = new Fuse(allProjects, searchOptions)
+    setSearchText(e.target.value)
+    const results = fuse.search(e.target.value).map(i => i.item)
+    setSearchedProjects(results)
+  }
+  
   return (
     <div className='projects'>
       <Navbar />
@@ -53,25 +73,40 @@ export default function Projects() {
         <div className='container'>
             <div class="field">
                 <div class="control">
-                    <input class="input is-primary is-medium" type="text" placeholder="Search projects"></input>
+                    <input class="input is-primary is-medium" type="text" placeholder="Search projects" onChange={handleSearch}></input>
                 </div>
             </div>
             <div class="columns is-multiline is-centered">
-            {allProjects.map((project,id) => (
+            {
+            searchText === ''
+            ?
+            allProjects.map((project,id) => (
               <div key={id} class="column is-centered project-card">
-            <Card 
-            name={project.name}
-            desc={project.desc}
-            mentor={project.mentor}
-            tags={project.tags}
-            ></Card>
-            </div>
-            ))}
+                <Card 
+                name={project.name}
+                desc={project.desc}
+                mentor={project.mentor}
+                tags={project.tags}
+                >
+                </Card>
+              </div>
+             ))
+            :
+            searchedProjects.map((project, id) => (
+              <div key={id} class="column is-centered project-card">
+                <Card 
+                name={project.name}
+                desc={project.desc}
+                mentor={project.mentor}
+                tags={project.tags}
+                >
+                </Card>
+              </div>
+              ))
+            }
             </div>
         </div>
-        
-        
-        <Footer />
+       <Footer />
     </div>
   );
 }
