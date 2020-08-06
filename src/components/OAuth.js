@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 
 export default function MentorOAuth(props){
     
@@ -13,26 +12,44 @@ export default function MentorOAuth(props){
             "code": code,
             "state": state
         }
-       
-        axios
-            .post(URL, data)
-            .then(res => {
-                let email = res.data.email === null ? '' : res.data.email
+
+        fetch(URL, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(res => {
+            // if a new user, send him to the form
+            if(res.isNewUser) {
                 const userData = {
-                    "username": res.data.username,
-                    "name": res.data.name,
-                    "email": email,
-                    "type": res.data.type
+                    "username": res.username,
+                    "name": res.name,
+                    "email": res.email,
+                    "type": res.type
                 }
 
                 props.history.push({
                     pathname: '/form/user',
                     state: userData
                 })
-            })
-            .catch(err => {
-                console.log("err is ",err)
-            })
+            }
+            // if an already existing user then save the token and redirect to dashboard
+            else {
+                if(res.type === "mentor") {
+                    localStorage.setItem('mentor_jwt', res.jwt)
+                    localStorage.setItem('mentor_username', res.username)
+                    props.history.push('/dashboard/mentor')
+                } else {
+                    localStorage.setItem('student_jwt', res.jwt)
+                    localStorage.setItem('student_username', res.username)
+                    props.history.push('/dashboard/student')
+                }
+            }
+        })
+        .catch(err => {
+            console.log("err fetch ", err)
+            alert('Server Error! Please try again')
+        })
     },[])
     
     return (
