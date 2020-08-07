@@ -1,28 +1,18 @@
 import React, { useState, useEffect  } from 'react';
-import Colleges from '../data/colleges.js';
-import '../styles/Form.scss';
-import '../styles/css-fontello-github-circled/fontello.css';
-import '../styles/css-fontello-mail-alt/fontello.css';
+import '../../styles/Form.scss';
+import '../../styles/css-fontello-github-circled/fontello.css';
+import '../../styles/css-fontello-mail-alt/fontello.css';
 
 export default function Form(props) {
   
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [college, setCollege] = useState('')
 
   useEffect(() => {
-    const { username, name, email, type } = props.location.state
-
-    // if all of them are filled send data to the backend to get the token
-    if(email !== '') {
-      const data = {
-        'username': username,
-        'name': name,
-        'email': email,
-        'type': type
-      }
-      console.log("SEND THIS DATA TO BACKEND AND GET TOKEN")
-    }
+    const { username, name, email } = props.location.state
+    // filling the default values in the form using the data obtained from github OAuth
     setUsername(username)
     setName(name)
     setEmail(email)
@@ -31,15 +21,28 @@ export default function Form(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    // data to be sent to backend, to get the token
+    const URL = "http://localhost:5000/form/student"
     const data = {
       'username': username,
       'name': name,
       'email': email,
-      'type': props.location.state.type
+      'college': college,
+      'jwt': localStorage.getItem('student_jwt')
     }
+    
+    fetch(URL, {
+      method: 'POST',
+      data: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+      if(res.status === 200)
+        props.history.push('/dashboard/student')
+    })
+    .catch(err => {
+      console.log('err in student form ', err)
+    })
 
-    console.log('sending this ',data)
   }
 
   
@@ -47,24 +50,10 @@ export default function Form(props) {
   return (
     <div className='box'>
 
-  <h2>{props.location.state.type} Form</h2>
-    <h3>Welcome {props.location.state.name}</h3>
+    <h2>Student Form</h2>
+      <h3>Welcome {username}</h3>
 
-      <div className='field'>
-        <label className='label'>Github Username</label>
-        <div className='control'>
-          <input
-            className='input is-rounded is-info'
-            type='text'
-            placeholder='Name'
-            defaultValue={username}
-            onChange={e => setUsername(e.target.value)}
-          />
-        </div>
-      </div>
-
-
-      <div className='field'>
+          <div className='field'>
         <label className='label'>Name</label>
         <div className='control'>
           <input
@@ -92,6 +81,20 @@ export default function Form(props) {
           </span>
         </div>
       </div>
+
+
+      <div className='field'>
+        <label className='label'>College</label>
+        <div className='control'>
+          <input
+            className='input is-rounded is-info'
+            type='text'
+            placeholder='College name'
+            onChange={e => setCollege(e.target.value)}
+          />
+        </div>
+      </div>
+
 
       <div>
         <a class='button is-info is-rounded is-fullWidth column is-full' onClick={handleSubmit}>

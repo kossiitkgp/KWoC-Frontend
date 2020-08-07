@@ -19,32 +19,34 @@ export default function MentorOAuth(props){
         })
         .then(res => res.json())
         .then(res => {
-            // if a new user, send him to the form
-            if(res.isNewUser) {
-                const userData = {
-                    "username": res.username,
-                    "name": res.name,
-                    "email": res.email,
-                    "type": res.type
-                }
-
-                props.history.push({
-                    pathname: '/form/user',
-                    state: userData
-                })
-            }
-            // if an already existing user then save the token and redirect to dashboard
-            else {
-                if(res.type === "mentor") {
-                    localStorage.setItem('mentor_jwt', res.jwt)
-                    localStorage.setItem('mentor_username', res.username)
+            //storing the respective JWT and username in localStorage
+            // and if a old user, redirecting them to their dashboards
+            if(res.type === "mentor") {
+                localStorage.setItem('mentor_jwt', res.jwt)
+                localStorage.setItem('mentor_username', res.username)
+                if(!res.isNewUser)
                     props.history.push('/dashboard/mentor')
-                } else {
-                    localStorage.setItem('student_jwt', res.jwt)
-                    localStorage.setItem('student_username', res.username)
+            } 
+            else if (res.type === "student") {
+                localStorage.setItem('student_jwt', res.jwt)
+                localStorage.setItem('student_username', res.username)
+                if(!res.isNewUser)
                     props.history.push('/dashboard/student')
-                }
             }
+
+            // if a new user, redirect to their respective form
+            const userData = {
+                "username": res.username,
+                "name": res.name,
+                "email": res.email,
+            }
+
+            props.history.push({
+                pathname: `/form/${res.type}`,
+                state: userData
+            })
+
+            
         })
         .catch(err => {
             console.log("err fetch ", err)
