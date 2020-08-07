@@ -4,7 +4,8 @@ import Home from './components/Home';
 import About from './components/About';
 import FAQ from './components/FAQ';
 import Testimonial from './components/Testimonials';
-import UserForm from './components/UserForm'
+import MentorForm from './components/form/MentorForm'
+import StudentForm from './components/form/StudentForm'
 import ProjectForm from './components/ProjectForm'
 import OAuth from './components/OAuth';
 import StudentDashboard from './components/dashboard/StudentDashboard';
@@ -25,8 +26,10 @@ function App() {
 
         <Route exact path='/testimonial' component={Testimonial} />
 
-        <Route exact path='/form/user' component={UserForm} />
+        <Route exact path='/form/mentor' component={MentorForm} />
         
+        <Route exact path='/form/student' component={StudentForm} />
+                
         <Route exact path='/form/project' component={ProjectForm} />
 
         <Route exact path='/dashboard/student' component={StudentDashboard} />
