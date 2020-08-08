@@ -56,7 +56,13 @@ export default function Projects() {
     setSearchedProjects(results)
   }
   
-  return (
+  let displayedProjects = []
+  if(searchText === "")
+    displayedProjects = allProjects
+  else
+    displayedProjects = searchedProjects
+  
+    return (
     <div className='projects'>
       <Navbar />
       <section class='hero is-medium is-danger is-bold'>
@@ -78,30 +84,16 @@ export default function Projects() {
             </div>
             <div class="columns is-multiline is-centered">
             {
-            searchText === ''
-            ?
-            allProjects.map((project,id) => (
-              <div key={id} class="column is-centered project-card">
-                <Card 
-                name={project.name}
-                desc={project.desc}
-                mentor={project.mentor}
-                tags={project.tags}
-                >
-                </Card>
-              </div>
-             ))
-            :
-            searchedProjects.map((project, id) => (
-              <div key={id} class="column is-centered project-card">
-                <Card 
-                name={project.name}
-                desc={project.desc}
-                mentor={project.mentor}
-                tags={project.tags}
-                >
-                </Card>
-              </div>
+             displayedProjects.map((project,id) => (
+                <div key={id} class="column is-centered project-card">
+                  <Card 
+                  name={project.name}
+                  desc={project.desc}
+                  mentor={project.mentor}
+                  tags={project.tags}
+                  >
+                  </Card>
+                </div>
               ))
             }
             </div>
