@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
-
+import { BACKEND_URL } from '../../constants/constants'
 import './StudentDashboard.scss';
 
 export default function Dashboard() {
+  
+  useEffect(() => {
+    const URL = `${BACKEND_URL}/dashboard/student`
+    const data = {
+        "username": localStorage.getItem("student_username"),
+        "jwt": localStorage.getItem("student_jwt")
+    }
+    // using the jwt and username to fetch details for Dashboard
+    fetch(URL, {
+        method: 'POST',
+        data: JSON.stringify(data)
+    })
+    .then(res => {
+        console.log("res.data ", res.data)
+    })
+    .catch(err => {
+        if(err.response.status === 400)
+            alert("Invalid Request")
+        else 
+            alert("Server Error, Please try again")
+    })
+}, [])
+
+  // dummy data for test purpose
   let data = {
     name: 'Aditya Vikram Singh',
     github: 'xypnox',

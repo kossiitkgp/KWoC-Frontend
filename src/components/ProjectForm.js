@@ -2,6 +2,7 @@ import React, { useState }from 'react';
 import Tags from '../data/tags.js';
 import CreatableSelect from 'react-select/creatable';
 import axios from 'axios'
+import { BACKEND_URL } from '../constants/constants'
 
 import '../styles/Form.scss';
 import '../styles/css-fontello-github-circled/fontello.css';
@@ -74,7 +75,7 @@ async function checkRepo(repolink) {
 }
 
 
-export default function Form() {
+export default function Form(props) {
   
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
@@ -108,8 +109,10 @@ export default function Form() {
 
     if(!(isRepoValid && isLinkValid))
      return
-    // data to be sent to backend
-    const data = {
+    
+    
+    const URL = `${BACKEND_URL}/project/add`
+     const data = {
       'Name': name,
       'Desc': desc,
       'RepoLink': repolink,
@@ -119,6 +122,24 @@ export default function Form() {
 
     console.log('data to be sent ',data)
     // make an axios request to BACKEND here
+    fetch(URL, {
+      method: 'POST',
+      data: JSON.stringify(data)
+    })
+    .then(res => {
+      if(res.status === 200)
+        alert("Project Submitted Successfully")
+      // if the below fails, try using window.location.pathname = "/dashboard/mentor"
+      props.history.push("/dashboard/mentor")
+    })
+    .catch(err => {
+      console.log("Err is ", err)
+    if(err.response.status === 400)
+      alert("Invalid Request")
+    else 
+      alert("Server Error, Please try again")
+    })
+    
   }
 
   
