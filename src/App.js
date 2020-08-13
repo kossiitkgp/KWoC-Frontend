@@ -12,6 +12,8 @@ import StudentDashboard from './components/dashboard/StudentDashboard';
 import MentorDashboard from './components/dashboard/MentorDashboard/MentorDashboard';
 import Projects from './components/projects/Projects'
 
+import StudentsTable from './components/tables/StudentsTable/StudentsTable'
+
 import './styles/index.scss';
 
 function App() {
@@ -31,10 +33,12 @@ function App() {
         <Route exact path='/form/student' component={StudentForm} />
                 
         <Route exact path='/form/project' component={ProjectForm} />
-
+        {/* Dashboard of Student and Mentor */}
         <Route exact path='/dashboard/student' component={StudentDashboard} />
 
         <Route exact path='/dashboard/mentor' component={MentorDashboard} />
+        {/* Stats Table for Students and Mentors */}
+        <Route exact path='/stats/students' component={StudentsTable} />
 
         <Route  path='/oauth' component={OAuth} />
 
