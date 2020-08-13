@@ -11,7 +11,7 @@ export default function StudentsTable() {
     const columnDefs =  [{
         headerName: "Name of Student", field: "name", sortable:true, filter: true,
       }, {
-        headerName: "Github Username", field: "username", sortable:true, filter: true,
+        headerName: "Github Username", field: "username", sortable:true, filter: true,cellRenderer:cellRenderer,
       }, {
         headerName: "PRs(Merged/Open)", field: "prs", sortable:true, filter: true,
       },{
@@ -30,11 +30,19 @@ export default function StudentsTable() {
         
     }, [])
 
+    function cellRenderer(params) {
+        const username = params.data.username
+        const withHref =  `<a href="/stat/student/${username}">${username}</a>`
+        return withHref
+    }
+
     
     return(
        <div style={{textAlign: 'center'}}>
         <h3>Last Update at {lastUpdatedTime}. Stats are updated for every 3 hours </h3>
         <h5>You can sort the rows by clicking on headers, and also filter by clicking on the button by hovering</h5>
+        <h5>Click on username to get detailed Stats</h5>
+        
             <div
                 className="ag-theme-alpine"
                 style={{
