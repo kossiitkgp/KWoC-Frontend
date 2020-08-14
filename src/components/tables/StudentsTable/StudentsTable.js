@@ -32,7 +32,7 @@ export default function StudentsTable() {
 
     function cellRenderer(params) {
         const username = params.data.username
-        const withHref =  `<a href="/stat/student/${username}">${username}</a>`
+        const withHref =  `<a href="/stats/student/${username}">${username}</a>`
         return withHref
     }
 

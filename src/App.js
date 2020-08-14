@@ -11,6 +11,7 @@ import OAuth from './components/OAuth';
 import StudentDashboard from './components/dashboard/StudentDashboard';
 import MentorDashboard from './components/dashboard/MentorDashboard/MentorDashboard';
 import Projects from './components/projects/Projects'
+import StudentStats from './components/indivStats/studentStats/StudentStats'
 
 import StudentsTable from './components/tables/StudentsTable/StudentsTable'
 
@@ -40,6 +41,9 @@ function App() {
         {/* Stats Table for Students and Mentors */}
         <Route exact path='/stats/students' component={StudentsTable} />
 
+        {/* Individual stats for Student and Mentor */}
+        <Route exact path='/stats/student/:id' component={StudentStats} />
+        
         <Route  path='/oauth' component={OAuth} />
 
         <Route  path='/projects' component={Projects} />
