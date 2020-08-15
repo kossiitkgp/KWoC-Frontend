@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { AgGridReact } from 'ag-grid-react';
+import axios from 'axios'
+
+import { STATS_API } from '../../../constants/constants'
+
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
@@ -22,10 +26,18 @@ export default function StudentsTable() {
     ]
 
     useEffect(() => {
-        setRowData([
-            { "name": "sammammmm", "username": "q", "prs": "11/2", "commits": 10, "lines": "+11/-11"},
-            { "name": "qqaaaaaaa", "username": "qqq", "prs": "1333/2", "commits": 910, "lines": "+2311/-11"}
-        ])
+      axios
+        .get(`${STATS_API}/stats/students`)
+        .then(res => {
+          console.log('res.data ', res.data)
+          setRowData(res.data["stats"])
+        })
+        .catch(err => {
+          console.log('err is ', err)
+          alert('Server Error, Try again')
+        })
+
+        
         setLastUpdatedTime('TIME_FROM_BACKEND')
         
     }, [])
