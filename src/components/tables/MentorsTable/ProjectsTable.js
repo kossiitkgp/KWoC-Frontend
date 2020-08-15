@@ -3,19 +3,19 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 
-export default function StudentsTable() {
+export default function ProjectsTable() {
 
     const [lastUpdatedTime, setLastUpdatedTime] = useState('')
     const [rowData, setRowData] = useState([])
 
     const columnDefs =  [{
-        headerName: "Name of Student", field: "name", sortable:true, filter: true,cellStyle: { textAlign: 'left'},
+        headerName: "Project", field: "project", sortable:true, filter: true,cellStyle: { textAlign: 'left'},
       }, {
-        headerName: "Github Username", field: "username", sortable:true, filter: true,cellRenderer:cellRenderer,cellStyle: { textAlign: 'left'},
+        headerName: "Mentor", field: "mentor", sortable:true, filter: true,cellRenderer:cellRenderer,cellStyle: { textAlign: 'left'},
       }, {
-        headerName: "PRs(Merged/Open)", field: "prs", sortable:true, filter: true,cellStyle: { textAlign: 'left'},
+        headerName: "Number of Contributors", field: "contris", sortable:true, filter: true,
       },{
-        headerName: "Commits", field: "commits", sortable:true, filter: true,cellStyle: { textAlign: 'left'},
+        headerName: "Number of Commits", field: "commits", sortable:true, filter: true,
       },{
         headerName: "Lines(Added/Removed)", field: "lines", sortable:true, filter: true,
       }
@@ -23,16 +23,16 @@ export default function StudentsTable() {
 
     useEffect(() => {
         setRowData([
-            { "name": "sammammmm", "username": "q", "prs": "11/2", "commits": 10, "lines": "+11/-11"},
-            { "name": "qqaaaaaaa", "username": "qqq", "prs": "1333/2", "commits": 910, "lines": "+2311/-11"}
+         { "project": 'aaa', 'mentor': 'aaa', 'contris': 111, 'commits': 11, lines: '+111/-12' },
+         { "project": 'bbaaa', 'mentor': 'baaa', 'contris': 3111, 'commits': 114, lines: '+22111/-12' }
         ])
         setLastUpdatedTime('TIME_FROM_BACKEND')
         
     }, [])
 
     function cellRenderer(params) {
-        const username = params.data.username
-        const withHref =  `<a href="/stats/student/${username}">${username}</a>`
+        const mentor = params.data.mentor
+        const withHref =  `<a href="/stats/mentor/${mentor}">${mentor}</a>`
         return withHref
     }
 

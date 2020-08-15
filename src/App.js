@@ -14,6 +14,7 @@ import Projects from './components/projects/Projects'
 import StudentStats from './components/indivStats/studentStats/StudentStats'
 
 import StudentsTable from './components/tables/StudentsTable/StudentsTable'
+import ProjectsTable from './components/tables/MentorsTable/ProjectsTable'
 
 import './styles/index.scss';
 
@@ -40,6 +41,7 @@ function App() {
         <Route exact path='/dashboard/mentor' component={MentorDashboard} />
         {/* Stats Table for Students and Mentors */}
         <Route exact path='/stats/students' component={StudentsTable} />
+        <Route exact path='/stats/projects' component={ProjectsTable} />
 
         {/* Individual stats for Student and Mentor */}
         <Route exact path='/stats/student/:id' component={StudentStats} />
