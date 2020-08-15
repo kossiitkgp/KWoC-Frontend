@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Tag from './Tag'
 import './StudentStats.scss'
 
 export default function StudentStats(props) {
@@ -97,33 +98,31 @@ export default function StudentStats(props) {
         },[])
     
     return (
-        <div>
-            <img src={stats['avatar_url']} />
+        <div className="student-stats">
+            <img  className="student-avatar" src={stats['avatar_url']} />
             <h1>{stats['name']}</h1>
             <h3>{stats['affiliation']}</h3>
             <h3>Commits : {stats["no_of_commits"]}</h3>
             <h3>PRs Open,Closed : {stats["pr_open"]},{stats["pr_closed"]}</h3>
             <h3>Total Lines Added, Removed: +{stats["lines_added"]},-{stats["lines_removed"]}</h3>
             <h4>Languages involved</h4>
-            {stats["languages"] !== undefined ? stats["languages"].map(item => <ul><li>{item}</li></ul>) : ''}
+            {stats["languages"] !== undefined ? stats["languages"].map(item => <Tag content={item}/>) : ''}
             <h4>Projects Worked</h4>
             
             {stats["projects"] !== undefined ? stats["projects"].map(item => 
                     {
                     return (
-                        <ul>
-                            <li><a href={`https://github.com/${item}`}>{item}</a></li>
-                        </ul>
+                        <span className="tag is-light is-large"><a href={`https://github.com/${item}`}>{item}</a></span>
                         )
                     }
                 ) 
                 : ''}
            <h3>Contributions Table</h3>
-           <table border="1">
+           <table  className="table is-bordered is-striped">
                <th>Project</th>
                <th>Commit</th>
                <th>+Lines Added,-Lines Removed</th>
-
+                <tbody>
                {stats["commits"] != undefined ? 
                stats["commits"].map(item => {
                    return (
@@ -136,6 +135,7 @@ export default function StudentStats(props) {
                })
                
                : ''}
+               </tbody>
             </table>
             
         </div>
