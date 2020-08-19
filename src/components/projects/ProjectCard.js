@@ -4,7 +4,7 @@ import '../../styles/projects.scss';
 
 export default function Card(props) {
   return (
-    <div class="is-centered" className='about'>
+    <div class="is-centered" className='about' >
       <div class="card is-one-quarter">
         <header class="card-header has-background-link has-text-white">
             <p class="card-header-title has-text-white">

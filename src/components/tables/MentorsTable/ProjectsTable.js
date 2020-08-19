@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import axios from 'axios'
+import { STATS_API } from '../../../constants/constants'
 
 export default function ProjectsTable() {
 
@@ -22,10 +24,15 @@ export default function ProjectsTable() {
     ]
 
     useEffect(() => {
-        setRowData([
-         { "project": 'aaa', 'mentor': 'aaa', 'contris': 111, 'commits': 11, lines: '+111/-12' },
-         { "project": 'bbaaa', 'mentor': 'baaa', 'contris': 3111, 'commits': 114, lines: '+22111/-12' }
-        ])
+      axios
+      .get(`${STATS_API}/stats/projects`)
+      .then(res => {
+        setRowData(res.data["stats"])
+      })
+      .catch(err => {
+        console.log("Err is ", err)
+        alert("Server Error,try again")
+      })
         setLastUpdatedTime('TIME_FROM_BACKEND')
         
     }, [])
