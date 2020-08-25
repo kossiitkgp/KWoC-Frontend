@@ -19,32 +19,42 @@ export default function MentorOAuth(props){
         })
         .then(res => res.json())
         .then(res => {
+            console.log("res is ", res['isNewUser'])
+            console.log("res is ", res['isNewUser'] == false)
+
             //storing the respective JWT and username in localStorage
             // and if a old user, redirecting them to their dashboards
-            if(res.type === "mentor") {
-                localStorage.setItem('mentor_jwt', res.jwt)
-                localStorage.setItem('mentor_username', res.username)
-                if(!res.isNewUser)
-                    props.history.push('/dashboard/mentor')
-            } 
-            else if (res.type === "student") {
-                localStorage.setItem('student_jwt', res.jwt)
-                localStorage.setItem('student_username', res.username)
-                if(!res.isNewUser)
-                    props.history.push('/dashboard/student')
-            }
-
-            // if a new user, redirect to their respective form
-            const userData = {
+             const userData = {
                 "username": res.username,
                 "name": res.name,
                 "email": res.email,
             }
 
-            props.history.push({
-                pathname: `/form/${res.type}`,
-                state: userData
-            })
+            if(res.type === "mentor") {
+                localStorage.setItem('mentor_jwt', res.jwt)
+                localStorage.setItem('mentor_username', res.username)
+                if(!res['isNewUser'])
+                    props.history.push('/dashboard/mentor')
+                else
+                    props.history.push({
+                        pathname: `/form/${res.type}`,
+                        state: userData
+                    }) 
+            } 
+            else if (res.type === "student") {
+                localStorage.setItem('student_jwt', res.jwt)
+                localStorage.setItem('student_username', res.username)
+                if(!res['isNewUser'])
+                    props.history.push('/dashboard/student')
+                else
+                    props.history.push({
+                        pathname: `/form/${res.type}`,
+                        state: userData
+                    })
+            }
+
+           
+            
 
             
         })

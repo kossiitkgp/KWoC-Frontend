@@ -105,7 +105,7 @@ class Navbar extends Component {
                 
                 <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor">Mentor Login</a>
               
-                <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentee">Mentee Login</a>
+                <a href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student">Student Login</a>
                 {/* <Link className='navbar-item' >
                  <a>Mentee Login</a> 
                 </Link> */}

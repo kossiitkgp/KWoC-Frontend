@@ -21,17 +21,21 @@ export default function Form(props) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const URL = "http://localhost:5000/form/student"
+    const URL = "http://localhost:5000/student/form"
     const data = {
       'username': username,
       'name': name,
       'email': email,
       'college': college,
-      'jwt': localStorage.getItem('student_jwt')
-    }
+     }
+
+     console.log("data is ",JSON.stringify(data))
     
     fetch(URL, {
       method: 'POST',
+      headers: {
+        'Bearer': localStorage.getItem('student_jwt')
+      },
       data: JSON.stringify(data)
     })
     .then(res => res.json())
