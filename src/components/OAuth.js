@@ -52,11 +52,7 @@ export default function MentorOAuth(props){
                         state: userData
                     })
             }
-
-           
-            
-
-            
+      
         })
         .catch(err => {
             console.log("err fetch ", err)

@@ -59,12 +59,12 @@ async function checkRepo(repolink) {
   // check for a minimum README
   const readmeURL = `https://api.github.com/repos/${ownerName}/${repoName}/readme`
   try {
-    const res = axios.get(readmeURL, headers)
-    if(res.data.size < 100)
-    returnMsg['message'] += `Please add a more descriptive modified README of atleast 100 characters.`  
+    const res = await axios.get(readmeURL, headers)
+    if(res.data.size < 50)
+    returnMsg['message'] += `Please add a more descriptive modified README of atleast 50 characters.`  
   }
   catch(err) {
-    returnMsg['message'] += `Please add a descriptive README.md of atleast 100 characters. `
+    returnMsg['message'] += `Please add a descriptive README.md of atleast 50 characters. `
   }
 
   if (returnMsg['message'] === '')
@@ -113,17 +113,21 @@ export default function Form(props) {
     
     const URL = `${BACKEND_URL}/project/add`
      const data = {
-      'Name': name,
-      'Desc': desc,
-      'RepoLink': repolink,
-      'channelLink': channelLink,
-      'Tags': tags
+      'username': localStorage.getItem('mentor_username'), 
+      'name': name,
+      'desc': desc,
+      'repoLink': repolink,
+      'comChannel': channelLink,
+      'tags': JSON.stringify(tags)
     }
 
     console.log('data to be sent ',data)
     // make an axios request to BACKEND here
     fetch(URL, {
       method: 'POST',
+      headers: {
+        'Bearer': localStorage.getItem('mentor_jwt')
+      },
       data: JSON.stringify(data)
     })
     .then(res => {
@@ -134,10 +138,7 @@ export default function Form(props) {
     })
     .catch(err => {
       console.log("Err is ", err)
-    if(err.response.status === 400)
-      alert("Invalid Request")
-    else 
-      alert("Server Error, Please try again")
+      alert('Server Error Try again')
     })
     
   }
