@@ -1,147 +1,54 @@
-import React, { useEffect } from 'react';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
-import { BACKEND_URL } from '../../constants/constants'
-import './StudentDashboard.scss';
+import React, { useState, useEffect } from 'react'
+import { STATS_API } from '../../constants/constants'
+import StudentAnnouncements from './StudentAnnouncements'
 
-export default function Dashboard() {
+import { MidsFail, MidsCleared, EndEvalsFormSubmitted } from '../evals/evalsStatus'
+import EndEvalsForm from '../evals/EndEvalsForm'
+
+export default function StudentDashboard() {
   
+  const [isMidsCleared, setIsMidsCleared] = useState(0)
+  const [isEndsCleared, setIsEndsCleared] = useState(0)
+
   useEffect(() => {
-    const URL = `${BACKEND_URL}/dashboard/student`
-    const data = {
-        "username": localStorage.getItem("student_username"),
-        "jwt": localStorage.getItem("student_jwt")
-    }
-    // using the jwt and username to fetch details for Dashboard
-    fetch(URL, {
-        method: 'POST',
-        data: JSON.stringify(data)
-    })
+    const username = localStorage.getItem('student_username')
+    fetch
+    (`${STATS_API}/student/${username}`)
+    .then(res => res.json())
     .then(res => {
-        console.log("res.data ", res.data)
+      setIsMidsCleared(res.isMidsCleared)
+      setIsEndsCleared(res.isEndsCleared)
     })
     .catch(err => {
-        if(err.response.status === 400)
-            alert("Invalid Request")
-        else 
-            alert("Server Error, Please try again")
+      console.log('err is ',err)
+      alert('Server Error Try again')
     })
-}, [])
 
-  // dummy data for test purpose
-  let data = {
-    name: 'Aditya Vikram Singh',
-    github: 'xypnox',
-    college: 'IIT Kharagpur',
-    commits: {
-      count: 235,
-      commits: [
-        {
-          hash: '234rrt',
-          project: 'xypnox/xyplot',
-          messsage: 'Compress residual images for faster loading speed'
-        },
-        {
-          hash: 'aw3548',
-          project: 'kossiitkgp/darkHorse',
-          messsage: 'Fix: Typo and spacing'
-        },
-        {
-          hash: 'hhstb32',
-          project: 'xypnox/todxpy',
-          messsage: 'Introduce new sorting for todos'
-        },
-        {
-          hash: 'y67eb6',
-          project: 'kossiitkgp/KWoC',
-          messsage: 'Replace navbar with footer for fun'
-        }
-      ]
-    },
-    pullRequests: {
-      count: 12,
-      open: 5,
-      closed: 6
-    },
-    linesOfCode: {
-      count: '126k'
-    },
-    languages: ['Python', 'Javascript', 'HTML', 'CSS'],
-    projects: ['darkHorse', 'todxpy', 'KWoC']
-  };
-  return (
-    <div className='dashboard'>
-      <Navbar className='is-black' />
+  }, [])
+  
+  let status = ``
+  if(isMidsCleared == 0) {
+    status = <MidsFail />
+  } else {
+    if(isEndsCleared == 0)
+      status = <MidsCleared />
+    else 
+      status = <EndEvalsFormSubmitted />
+  }
 
-      <div className='intro container'>
-        <div className='data-panel'>
-          <h1 className='title'>Dashboard</h1>
-          <h2>{data.name}</h2>
-
-          <div className='data-cards'>
-            <div className='data-card'>
-              <h1>{data.commits.count}</h1>
-              <h2>Commits</h2>
-            </div>
-            <div className='data-card'>
-              <h1>{data.pullRequests.count}</h1>
-              <h2>Pull Requests</h2>
-            </div>
-            <div className='data-card'>
-              <h1>{data.linesOfCode.count}</h1>
-              <h2>Lines of Code</h2>
-            </div>
-          </div>
-        </div>
-
-        <div className='profile-panel'>
-          <img src='https://avatars2.githubusercontent.com/u/25076171' alt='' />
-          <br />
-          <b>{data.name}</b>
-          <p>{data.github}</p>
-          <p>{data.college}</p>
-        </div>
-      </div>
-
-      {/* <section className='container share-links'>
-        <h1>Share your progress</h1>
-        <div className='links'>
-          <a href='#a'>Facebook</a>
-          <a href='#a'>Twitter</a>
-          <a href='#a'>LinkedIn</a>
-        </div>
-      </section> */}
-
-      <section className='container projects'>
-        <h1>Projects</h1>
-        <div className='links'>
-          {data.projects.map(project => {
-            return <a href='#a'>{project}</a>;
-          })}
-        </div>
-      </section>
-
-      <section className='container commits'>
-        <h1>Latest Commits</h1>
-        <table>
-          <thead>
-            <th>Hash</th>
-            <th>Project</th>
-            <th>Commit Messsage</th>
-          </thead>
-          {data.commits.commits.map(commit => {
-            return (
-              <tr>
-                <td>{commit.hash}</td>
-                <td>{commit.project}</td>
-                <td>{commit.messsage}</td>
-              </tr>
-            );
-          })}
-        </table>
-      </section>
-
-      <Footer />
+  return(
+    <div>
+      {/* 
+      Plans to include the following in student Dashboard
+      -> Useful links - kwoc blog by apoorv, how to write good commit messages, git links
+      -> Important Announcements :- midevals are coming, u have cleared/failed mid evals, u have submitted endevals form
+      -> Stats of student ???
+      */}
+      {/* The below component to be showed only after midevals, before that comment it out */}
+      {status}
+      {/* The below is the endevals form show this only if midsCleared and endsForm not yet Filled, this to be shown while endevals, till then comment it out */}
+      { isMidsCleared == 1 && isEndsCleared == 0 ? <EndEvalsForm /> : ''}
+      <StudentAnnouncements />
     </div>
-  );
+  )
 }

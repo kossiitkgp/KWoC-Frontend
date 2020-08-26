@@ -8,7 +8,7 @@ import MentorForm from './components/form/MentorForm'
 import StudentForm from './components/form/StudentForm'
 import ProjectForm from './components/ProjectForm'
 import OAuth from './components/OAuth';
-import StudentDashboard from './components/dashboard/StudentDashboard';
+import StudentDashboard from './components/dashboard/OldStudentDashboard';
 import MentorDashboard from './components/dashboard/MentorDashboard/MentorDashboard';
 import Projects from './components/projects/Projects'
 

@@ -28,7 +28,12 @@ export default function MentorDashboard() {
 
     return (
         <div>
-            {/* Mentor Dashboard here */}
+            {/* Mentor Dashboard here
+            Plans to include the following
+             -> Useful links - how to write README, others if any?
+             -> Important Announcements
+             -> Stats of indiv Mentor ???
+            */}
             <h1>Mentor Dashboard</h1>
         </div>
     )
