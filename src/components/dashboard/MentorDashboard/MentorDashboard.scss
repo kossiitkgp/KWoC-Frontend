@@ -11,10 +11,18 @@
 @import '~bulma/sass/components/navbar.sass';
 @import '~bulma/sass/layout/hero.sass';
 @import '~bulma/sass/layout/section.sass';
+@import url('/font-awesome-4.6.3/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 .mentor-dashboard {
   font-weight: bold;
   color: black;
+
+  p,
+  h1 {
+    padding: 0px;
+    margin: 0px;
+  }
 }
 
 .intro-card {
@@ -35,15 +43,15 @@
   flex-grow: 1;
   text-align: center;
 
-  margin: 1%;
-  margin-right: 0.5%;
+  // margin: 1%;
+  // margin-right: 0.5%;
 
   padding-top: 3%;
   padding-bottom: 3%;
 
   box-shadow: 0px;
   background: rgba(0, 0, 0, 0);
-
+  background-color: #d3d2d2;
   // transition: 1s;
 
   // :hover {
@@ -59,11 +67,11 @@
 
 .mentor-stats {
   background: rgba(0, 0, 0, 0);
-
+  background-color: #c4c4c4;
   max-width: 70%;
 
-  margin: 1%;
-  margin-left: 0.5%;
+  // margin: 1%;
+  // margin-left: 0.5%;
 
   flex-grow: 1;
   display: flex;
@@ -86,7 +94,7 @@
 
   font-weight: bold;
   font-size: 2.5vw;
-  box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+  // box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
 }
 
 .mentor-stats-header {
@@ -116,12 +124,12 @@
   margin-right: 20%;
 
   border-color: black;
-  background-color: white;
+  background-color: #c4c4c4;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   border-radius: 4px;
 
   font-size: 20px;
-  box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+  // box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
   p {
     padding: 0px;
     margin: 0px;
@@ -133,8 +141,8 @@
 }
 
 #avatar-img {
-  max-width: 200px;
-  max-height: 200px;
+  max-width: 150px;
+  max-height: 150px;
   box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
 
   border-radius: 4px;
@@ -153,37 +161,70 @@
   box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
 }
 
-.projects,
+.projects {
+  display: flex;
+  flex-direction: column;
+  background-color: #bfbcbc;
+}
+
 .students {
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0);
-  margin: 1%;
-}
 
-.project-card,
+  background-color: #d3d2d2;
+}
+// seems like projectcard is used in bulma
+.projectcard,
 .student-card {
-  flex-grow: 1;
   display: flex;
   flex-direction: row;
 }
 
 .project-c,
 .student-c {
-  margin: 1%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  margin: 2%;
   padding: 1%;
-  margin-left: 0.5%;
-  margin-right: 0.5%;
+  // margin-left: 0.5%;
+  // margin-right: 0.5%;
   background-color: white;
 
-  max-height: 140px;
-  height: 13%; //100/8 , 8 cards at a time. Also represents Width
+  max-width: 250px;
+  max-height: 200px;
+
+  height: 200px;
+  width: 400px;
+
+  p,
+  h1 {
+    padding: 0px;
+    margin: 0px;
+  }
 }
 
-#project-name,
-#student-name {
+.project-name,
+.student-name {
   font-weight: bold;
   font-size: 140%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  height: 100%;
+  width: 100%;
+}
+
+.anchor-align {
+  flex-grow: 1;
+  height: 30%;
+
+  border-radius: 12px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
 }
 
 .project-header,
@@ -199,4 +240,52 @@
   padding: 1%;
 
   font-family: 'Kaushan Script', cursive;
+}
+
+.announcements {
+  padding: 1%;
+
+  background-color: #bfbcbc;
+}
+
+.anc-card {
+  p,
+  h1 {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  margin: 1%;
+  padding: 1%;
+  background-color: white;
+}
+
+.git-lines {
+  font-family: 'Staatliches', cursive;
+}
+
+.add {
+  background-color: green;
+}
+
+.rem {
+  background-color: red;
+}
+
+.project-content,
+.student-content {
+  margin: 1%;
+  padding: 2%;
+
+  height: 50%;
+
+  flex-grow: 1;
+}
+
+.project-button,
+.student-button {
+  margin: 1%;
+  padding: 1%;
+  height: 20%;
+  flex-grow: 1;
 }

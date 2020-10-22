@@ -90,6 +90,11 @@ export default function MentorDashboard() {
         href='https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap'
         rel='stylesheet'
       ></link>
+      <link rel='stylesheet' href='font-awesome/css/font-awesome.css'></link>
+      <link
+        href='https://fonts.googleapis.com/css2?family=Staatliches&display=swap'
+        rel='stylesheet'
+      ></link>
       {/*
 
          Mentor Dashboard here
@@ -100,7 +105,7 @@ export default function MentorDashboard() {
       */}
       <Navbar className='is-black' />
       <div className='intro-card'>
-        <div className='avatar card-component'>
+        <div className='avatar'>
           <img
             src={`https://github.com/${data.github}.png`}
             id='avatar-img'
@@ -113,7 +118,7 @@ export default function MentorDashboard() {
           </div>
         </div>
 
-        <div className='mentor-stats card-component'>
+        <div className='mentor-stats '>
           <div className='mentor-stats-header'>
             <h1>Mentor Dashboard</h1>
           </div>
@@ -127,39 +132,61 @@ export default function MentorDashboard() {
               <p>{data.student.length}</p>
             </div>
             <div className='card-component mstats'>
-              <p>Days to {data.evals}</p>
+              <p>Days Left</p>
               <p>12</p>
             </div>
           </div>
-          <div className='card-component badges'>
+          {/*<div className='card-component badges'>
             <h1>Badges</h1>
           </div>
+          */}
         </div>
       </div>
 
-      <div className='projects card-component'>
+      <div className='projects'>
         <div className='project-header'>
           <h1>Projects</h1>
         </div>
-        <div className='project-card'>
+        <div className='projectcard'>
           {data.projects.map((value, index) => {
             return (
               <div className='project-c card-component'>
-                <a
-                  id='project-name'
-                  href={`https://github.com/${data.github}/${value}`}
-                >
-                  {value}
-                </a>
-                <p> Open PRs : 2</p>
-                <p> Closed PRs : 1</p>
+                <div className='anchor-align'>
+                  <a
+                    className='project-name'
+                    href={`https://github.com/${data.github}/${value}`}
+                  >
+                    {value}
+                  </a>
+                </div>
+
+                <div className='project-content'>
+                  <p> Open PRs : 2</p>
+                  <p> Closed PRs : 1</p>
+                </div>
+                <div className='project-buttons'>
+                  <button
+                    id='repo'
+                    class='button is-success is-outlined is-pulled-left'
+                    href='#'
+                  >
+                    Repo
+                  </button>
+                  <button
+                    id='issues'
+                    class='button is-success is-outlined is-pulled-right'
+                    href='#'
+                  >
+                    Issues
+                  </button>
+                </div>
               </div>
             );
           })}
         </div>
       </div>
 
-      <div className='students card-component'>
+      <div className='students'>
         <div className='student-header'>
           <h1>Students</h1>
         </div>
@@ -167,23 +194,50 @@ export default function MentorDashboard() {
           {data.student.map((value, index) => {
             return (
               <div className='student-c card-component'>
-                <a id='student-name' href={`https://github.com/${value}`}>
-                  {value}
-                </a>
-                <br />
-                <button href='#'>Fill {data.evals}</button>
+                <div className='anchor-align'>
+                  <a
+                    className='student-name'
+                    href={`https://github.com/${value}`}
+                  >
+                    {value}
+                  </a>
+                </div>
+                <div className='student-content'>
+                  <p className='commits-header'>
+                    Commits : {data.commits.count}
+                  </p>
+                  <p className='git-lines add'>+12</p>
+                  <p className='git-lines rem'>-10</p>
+                </div>
+                <div className='student-button'>
+                  <button
+                    className='profile'
+                    class='button is-success is-outlined is-pulled-left'
+                    href='#'
+                  >
+                    Profile
+                  </button>
+                  <button
+                    className='fill-evals'
+                    class='button is-success is-outlined is-pulled-right'
+                    href='#'
+                  >
+                    Fill Evals
+                  </button>
+                </div>
               </div>
             );
           })}
         </div>
       </div>
 
-      <div className='mentor-info-board card-component'>
+      <div className='announcements'>
         <h1>Announcements</h1>
 
         {data.announcement.map((value, index) => {
           return (
-            <div>
+            <div className='anc-card card-component'>
+              <h1>Dated : 12/12/20</h1>
               <p>{value}</p>
             </div>
           );
