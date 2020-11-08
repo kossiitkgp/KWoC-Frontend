@@ -1,15 +1,42 @@
-@import 'index.scss';
+@import "index.scss";
+.home {
+	.footer-btm {
+		background-image: linear-gradient(135deg, #e4ccac 0%, #000000 50%);
+		margin: 0;
+		padding: 0;
+		.container {
+			footer {
+				margin: 3rem 0;
+				height: 40vh;
+				padding: 20px;
+				margin-bottom: -20px;
+				.container {
+					.column {
+						align-items: flex-end;
+					}
+				}
+				h1 {
+					font-size: 1.5rem;
+					color: #fff;
+				}
+				h2 {
+					font-size: 1rem;
+					color: #fff;
+				}
 
-footer {
-  margin: 3rem 0;
-  h1 {
-    font-size: 1.5rem;
-  }
-  h2 {
-    font-size: 1rem;
-  }
-
-  a {
-    display: block;
-  }
+				a {
+					display: block;
+					color: #ff8a30;
+					text-decoration: none;
+					font-size: 16px;
+					line-height: 30px;
+				}
+				a:hover {
+					color: #ffa25b;
+					font-size: 17px;
+					font-weight: 500;
+				}
+			}
+		}
+	}
 }

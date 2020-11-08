@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import Card from "../components/Card";
 import Timeline from "./timelinedata/Timeline";
 import "../styles/timeline.scss";
+import "../styles/footer.scss";
 export default function Home() {
 	return (
 		<div className="home">
@@ -207,7 +208,11 @@ export default function Home() {
 					</ol>
 				</div>
 			</section>
-			<Footer />
+			<section className="footer-btm">
+				<div className="container">
+					<Footer />
+				</div>
+			</section>
 		</div>
 	);
 }
