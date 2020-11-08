@@ -43,8 +43,8 @@
 					padding-right: 0px;
 					padding-left: 30px;
 					& .timeline-item-content {
-						align-items: flex-start;
-						text-align: left;
+						align-items: center;
+						text-align: center;
 
 						&::after {
 							right: auto;
@@ -63,13 +63,12 @@
 				}
 				& .timeline-item-content {
 					background-color: #fff;
-
 					border-radius: 5px;
 					// box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 					width: 600px;
 					display: flex;
 					flex-direction: column;
-					align-items: flex-end;
+					align-items: center;
 					padding: 25px 15px 10px;
 					max-width: 100%;
 					text-align: right;
@@ -96,7 +95,7 @@
 					}
 					& .time {
 						color: #777;
-						font-size: 12px;
+						font-size: 14px;
 					}
 					& p {
 						font-size: 15px;
