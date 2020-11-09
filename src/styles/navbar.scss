@@ -2,3 +2,69 @@ button {
   background: #fff;
   border: none;
 }
+
+#navbar-container {
+  background: #0077b3;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+
+  // taken from https://www.cssmatic.com/box-shadow
+  -webkit-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.75);
+}
+
+#kwoc-logo,
+#home-button,
+#about-button,
+#project-button,
+#faq-button,
+#mentor-login,
+#mentee-login,
+#leaderboard-button,
+#testimonial-button {
+  color: whitesmoke;
+}
+
+#functional-buttons,
+#darkmode {
+  background: #13587a;
+  // color: white;
+  margin: 1rem;
+  // margin-left: 2rem;
+  // align-content: center;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
+}
+
+#darkmode {
+  // padding: 1rem;
+  background: #13587a;
+  margin-right: 2px;
+}
+
+// .flexbox {
+//   background: black;
+// }
+
+#login-buttons {
+  padding: 1rem;
+  background: #13587a;
+  margin-right: 2rem;
+  // align-content: center;
+  position: absolute;
+  right: 0;
+
+  background: #13587a;
+  // color: white;
+  margin: 1rem;
+  // margin-left: 2rem;
+  // align-content: center;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
+}
