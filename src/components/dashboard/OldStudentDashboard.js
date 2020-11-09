@@ -1,32 +1,31 @@
 import React, { useEffect } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
-import { BACKEND_URL } from '../../constants/constants'
+import { BACKEND_URL } from '../../constants/constants';
 import './StudentDashboard.scss';
 
 export default function Dashboard() {
-  
   useEffect(() => {
-    const URL = `${BACKEND_URL}/dashboard/student`
+    const URL = `${BACKEND_URL}/dashboard/student`;
     const data = {
-        "username": localStorage.getItem("student_username"),
-        "jwt": localStorage.getItem("student_jwt")
-    }
+      username: localStorage.getItem('student_username'),
+      jwt: localStorage.getItem('student_jwt'),
+    };
     // using the jwt and username to fetch details for Dashboard
-    fetch(URL, {
-        method: 'POST',
-        data: JSON.stringify(data)
-    })
-    .then(res => {
-        console.log("res.data ", res.data)
-    })
-    .catch(err => {
-        if(err.response.status === 400)
-            alert("Invalid Request")
-        else 
-            alert("Server Error, Please try again")
-    })
-}, [])
+    // fetch(URL, {
+    //     method: 'POST',
+    //     data: JSON.stringify(data)
+    // })
+    // .then(res => {
+    //     console.log("res.data ", res.data)
+    // })
+    // .catch(err => {
+    //     if(err.response.status === 400)
+    //         alert("Invalid Request")
+    //     else
+    //         alert("Server Error, Please try again")
+    // })
+  }, []);
 
   // dummy data for test purpose
   let data = {
@@ -39,35 +38,35 @@ export default function Dashboard() {
         {
           hash: '234rrt',
           project: 'xypnox/xyplot',
-          messsage: 'Compress residual images for faster loading speed'
+          messsage: 'Compress residual images for faster loading speed',
         },
         {
           hash: 'aw3548',
           project: 'kossiitkgp/darkHorse',
-          messsage: 'Fix: Typo and spacing'
+          messsage: 'Fix: Typo and spacing',
         },
         {
           hash: 'hhstb32',
           project: 'xypnox/todxpy',
-          messsage: 'Introduce new sorting for todos'
+          messsage: 'Introduce new sorting for todos',
         },
         {
           hash: 'y67eb6',
           project: 'kossiitkgp/KWoC',
-          messsage: 'Replace navbar with footer for fun'
-        }
-      ]
+          messsage: 'Replace navbar with footer for fun',
+        },
+      ],
     },
     pullRequests: {
       count: 12,
       open: 5,
-      closed: 6
+      closed: 6,
     },
     linesOfCode: {
-      count: '126k'
+      count: '126k',
     },
     languages: ['Python', 'Javascript', 'HTML', 'CSS'],
-    projects: ['darkHorse', 'todxpy', 'KWoC']
+    projects: ['darkHorse', 'todxpy', 'KWoC'],
   };
   return (
     <div className='dashboard'>
@@ -115,7 +114,7 @@ export default function Dashboard() {
       <section className='container projects'>
         <h1>Projects</h1>
         <div className='links'>
-          {data.projects.map(project => {
+          {data.projects.map((project) => {
             return <a href='#a'>{project}</a>;
           })}
         </div>
@@ -129,7 +128,7 @@ export default function Dashboard() {
             <th>Project</th>
             <th>Commit Messsage</th>
           </thead>
-          {data.commits.commits.map(commit => {
+          {data.commits.commits.map((commit) => {
             return (
               <tr>
                 <td>{commit.hash}</td>

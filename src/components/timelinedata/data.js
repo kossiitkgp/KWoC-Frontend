@@ -1,77 +1,35 @@
 const data = [
 	{
-		text: "KWoC Commences after 100 exiciting days",
-		date: " November 2018",
-		category: {
-			tag: "low",
-			color: "#00d43c",
-		},
-		link: {
-			url: "",
-			text: "Read More",
-		},
+		text: "Registraions for both Students And Projects Begin",
+		date: "26 November 2020",
 	},
 	{
-		text: "Project Submission Begins",
-		date: " November 2018",
-		category: {
-			tag: "high",
-			color: "#d40000",
-		},
-		link: {
-			url: "",
-			text: "Read More",
-		},
+		text: "End of Registrations",
+		date: "4 December 2020",
 	},
 	{
-		text:
-			"Mentor registration starts and they begin submitting their projects.",
-		date: " November 2018",
-		category: {
-			tag: "medium",
-			color: "#ff9130",
-		},
-		link: {
-			url: "",
-			text: "Read More",
-		},
+		text: "Coding Period starts",
+		date: "6 December 2020",
+		
 	},
 	{
-		text: "Accepting Student Applications",
-		date: " November 2018",
-		category: {
-			tag: "medium",
-			color: "#ff9130",
-		},
+		text: "Mid Evaluations",
+		date: "18 December 2020",
 		link: {
 			url: "",
 			text: "Read More",
 		},
+		
 	},
 	{
-		text: "Student's register and gear up for the program.",
-		date: "  26th Nov 2018",
-		category: {
-			tag: "medium",
-			color: "#ff9130",
-		},
+		text: "End Evaluations",
+		date: "4 January 2021",
 		link: {
 			url: "",
 			text: "Read More",
 		},
 	},
-	{
-		text: "Selected Projects Released.",
-		date: " November 2018",
-		category: {
-			tag: "medium",
-			color: "#ff9130",
-		},
-		link: {
-			url: "",
-			text: "Read More",
-		},
-	},
+	
 ];
 
 export default data;
