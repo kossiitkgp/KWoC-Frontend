@@ -8,7 +8,10 @@ export default function Footer() {
 		<footer className="footer">
 			<div className="container">
 				<div className="columns is-vcentered">
-					<div className="column">
+					<div
+						className="column"
+						id="neon"
+						data-text="[Kharagpur Winter of Code]">
 						<h1>Kharagpur Winter of Code</h1>
 						<h2>With &#10084; by KOSS</h2>
 					</div>
@@ -17,7 +20,9 @@ export default function Footer() {
 						<Link to="/manuals">
 							<strong>Manuals</strong>
 						</Link>
-						<Link to="/manual-student">Student Manual</Link>
+						<a href="https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCStudentManual.pdf">
+							Student Manual
+						</a>
 						<Link to="/manual-mentor">Mentor Manual</Link>
 					</div>
 					<div className="column">

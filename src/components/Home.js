@@ -2,9 +2,11 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
+import { Link } from "react-router-dom";
 import Timeline from "./timelinedata/Timeline";
 import "../styles/timeline.scss";
 import "../styles/footer.scss";
+import "../styles/about.scss";
 export default function Home() {
 	return (
 		<div className="home">
@@ -43,7 +45,7 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="timeline">
+			<section className="timeline" id="tline">
 				<div className="container">
 					<h1>Kwoc Timeline</h1>
 					<Timeline />
@@ -209,9 +211,34 @@ export default function Home() {
 				</div>
 			</section>
 			<section className="footer-btm">
-				<div className="container">
-					<Footer />
-				</div>
+				<footer>
+					<div className="container">
+						<div className="columns is-vcentered">
+							<div className="column">
+								<h1>Kharagpur Winter of Code</h1>
+								<h2>With &#10084; by KOSS</h2>
+							</div>
+							<div className="column"></div>
+							<div className="column">
+								<a>Manuals</a>
+								<a href="https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCStudentManual.pdf">
+									Student Manual
+								</a>
+								<a href="https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCMentorManual.pdf">
+									Mentor Manual
+								</a>
+							</div>
+							<div className="column">
+								<a href="#tline">Timeline</a>
+								<a href="https://www.facebook.com/groups/kwoc2016">
+									Social Groups
+								</a>
+								<Link to="/FAQ">FAQ</Link>
+								<Link to="/about">About KOSS</Link>
+							</div>
+						</div>
+					</div>
+				</footer>
 			</section>
 		</div>
 	);
