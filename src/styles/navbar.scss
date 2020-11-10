@@ -1,3 +1,5 @@
+@import "index.scss";
+
 button {
   background: #fff;
   border: none;
@@ -20,8 +22,6 @@ button {
 #about-button,
 #project-button,
 #faq-button,
-#mentor-login,
-#mentee-login,
 #leaderboard-button,
 #testimonial-button {
   color: whitesmoke;
@@ -50,16 +50,14 @@ button {
 //   background: black;
 // }
 
-#login-buttons {
+#login-buttons,
+#stat-buttons {
   padding: 1rem;
-  background: #13587a;
   margin-right: 2rem;
   // align-content: center;
-  position: absolute;
   right: 0;
 
   background: #13587a;
-  // color: white;
   margin: 1rem;
   // margin-left: 2rem;
   // align-content: center;
@@ -67,4 +65,12 @@ button {
   -webkit-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
+
+  .navbar-link {
+    color: white;
+  }
+
+  .navbar-item {
+    color: #1e8ec4;
+  }
 }
