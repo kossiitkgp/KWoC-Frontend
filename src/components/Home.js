@@ -7,17 +7,55 @@ import Timeline from "./timelinedata/Timeline";
 import "../styles/timeline.scss";
 import "../styles/footer.scss";
 import "../styles/about.scss";
+import "../styles/home.scss";
+import Particles from 'react-particles-js';
+
 export default function Home() {
 	return (
 		<div className="home">
 			<Navbar />
-			<section className="hero is-fullheight is-primary is-bold">
-				<div className="hero-body">
-					<div className="container">
-						<h1 className="title">Welcome to KWoC React</h1>
-						<h2 className="subtitle">The truth Redefined</h2>
+			<section className="hero is-fullheight is-dark is-bold">
+			<Particles
+				params={{
+					"particles": {
+						"number": {
+							"value": 160,
+							"density": {
+								"enable": false
+							}
+						},
+						"size": {
+							"value": 20,
+							"random": true
+						},
+						"move": {
+							"direction": "bottom",
+							"out_mode": "out"
+						},
+						"line_linked": {
+							"enable": false
+						}
+					},
+					"interactivity": {
+						"events": {
+							"onclick": {
+								"enable": true,
+								"mode": "remove"
+							}
+						},
+						"modes": {
+							"remove": {
+								"particles_nb": 10
+							}
+						}
+					}
+				}} />
+			<div className="hero-body">
+					<div className="container"  >
+						<h1 className="title" id="hero">Welcome to KWoC React</h1>
+						<h2 className="subtitle" id="hero">The truth Redefined</h2>
 					</div>
-				</div>
+			</div>
 			</section>
 
 			<section className="about">
