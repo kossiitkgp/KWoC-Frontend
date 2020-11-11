@@ -16,6 +16,23 @@
 @import "~bulma/sass/grid/_all.sass";
 @import "~bulma/sass/elements/tag.sass";
 
+// ref:https://blog.prototypr.io/designing-a-dark-mode-for-your-ios-app-the-ultimate-guide-6b043303b941
+// colors for dark mode
+// background
+$primary-background-black: #000000; // pure black, used by apple
+$primary-background-grey: #121212; // used by google
+$secondary-background-grey: #3A3A3C;
+
+// text
+$primary-text-white: #FFFFFF; // titles and text
+$secondary-text-light-grey: #EBEBF5; // text below title and too much in length
+$tertiary-text-grey: #767680; // text for placeholder
+
+// other colors for sub sub titles
+$blue-for-darkmode: #64D2FF;
+$violet-for-darkmode: #C66DF3;
+$seperator-line:  #545458;
+
 * {
 	text-rendering: optimizeLegibility;
 	box-sizing: border-box;
