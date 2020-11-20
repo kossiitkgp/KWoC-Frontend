@@ -90,10 +90,6 @@ class Navbar extends Component {
                 onClick={this.closeNavbar}
                 id='functional-buttons'
               >
-                <Link className='navbar-item' to='/' id='home-button'>
-                  Home
-                </Link>
-
                 <Link className='navbar-item' to='/about' id='about-button'>
                   About
                 </Link>
@@ -110,16 +106,12 @@ class Navbar extends Component {
                   FAQs
                 </Link>
 
-                <Link
-                  className='navbar-item'
-                  to='/about'
-                  id='leaderboard-button'
-                >
-                  Leaderboard
-                </Link>
+                <a className='navbar-item' href='/#tline' id='tline-button'>
+                  Timeline
+                </a>
 
                 {/* <Link className='navbar-item' >
-             <a>Mentee Login</a> 
+             <a>Mentee Login</a>
             </Link> */}
 
                 <Link
@@ -138,25 +130,54 @@ class Navbar extends Component {
                 </div>
               </div>
               */}
-              <div
-                className='navbar-end'
-                onClick={this.closeNavbar}
-                id='login-buttons'
-              >
-                <a
-                  className='button is-outlined is-inverted is-warning'
-                  id='mentor-login'
-                  href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor'
+              <div className='navbar-end' onClick={this.closeNavbar}>
+                <div
+                  className='navbar-item has-dropdown is-hoverable'
+                  id='login-buttons'
                 >
-                  Mentor Login
-                </a>
-                <a
-                  className='button is-outlined is-inverted is-warning'
-                  id='mentee-login'
-                  href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student'
+                  <a className='navbar-link'>Login</a>
+                  <div className='navbar-dropdown'>
+                    <a
+                      className='navbar-item'
+                      id='mentor-login'
+                      href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor'
+                    >
+                      Mentor Login
+                    </a>
+
+                    <a
+                      className='navbar-item'
+                      id='mentee-login'
+                      href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student'
+                    >
+                      Mentee Login
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  className='navbar-item has-dropdown is-hoverable'
+                  id='stat-buttons'
                 >
-                  Mentee Login
-                </a>
+                  <a className='navbar-link'>Stats</a>
+                  <div className='navbar-dropdown'>
+                    <Link
+                      className='navbar-item'
+                      id='mentor-login'
+                      to='/stats/students'
+                    >
+                      Student Stats
+                    </Link>
+
+                    <Link
+                      className='navbar-item'
+                      id='mentor-login'
+                      to='/stats/projects'
+                    >
+                      Project Stats
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
