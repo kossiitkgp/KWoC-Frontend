@@ -1,48 +1,43 @@
 @import 'index.scss';
 
 button {
-  background: #fff;
+  background: $primary-background-grey;
   border: none;
 }
 
 #navbar-container {
-  background: #0077b3;
+  background: $primary-background-black;
   border-radius: 5px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 
-  // taken from https://www.cssmatic.com/box-shadow
-  -webkit-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.75);
+  .navbar-burger {
+    background: $primary-background-black;
+  }
 }
 
 #kwoc-logo,
-#home-button,
 #about-button,
 #project-button,
 #faq-button,
 #tline-button,
 #testimonial-button {
-  color: whitesmoke;
+  color: $secondary-text-light-grey;
 }
 
 #functional-buttons,
 #darkmode {
-  background: #13587a;
+  background: $primary-background-grey;
   // color: white;
   margin: 1rem;
   // margin-left: 2rem;
   // align-content: center;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
 }
 
 #darkmode {
   // padding: 1rem;
-  background: #13587a;
+  background: $blue-for-darkmode;
   margin-right: 2px;
 }
 
@@ -57,20 +52,31 @@ button {
   // align-content: center;
   right: 0;
 
-  background: #13587a;
+  background: $primary-background-grey;
   margin: 1rem;
   // margin-left: 2rem;
   // align-content: center;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.75);
 
   .navbar-link {
-    color: white;
+    color: $secondary-text-light-grey;
   }
 
-  .navbar-item {
-    color: #1e8ec4;
+  .navbar-dropdown {
+    background-color: $secondary-background-grey;
+    border: $secondary-background-grey;
+
+    .navbar-item {
+      color: $secondary-text-light-grey;
+      border: $secondary-background-grey;
+
+      a {
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: $secondary-text-light-grey;
+      }
+    }
   }
 }
