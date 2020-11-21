@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAIA,AAAA,cAAc,CAAC;EACX,UAAU,EAAE,MAAM;CACrB;;AAED,AAAA,eAAe,CAAC;EACZ,aAAa,EAAE,GAAG;EAClB,KAAK,EAAE,GAAG;CACb",
+    "sources": [
+        "StudentStats.scss"
+    ],
+    "names": [],
+    "file": "StudentStats.css"
+}

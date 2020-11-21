@@ -1,5 +1,15 @@
 @import "index.scss";
 
 #hero {
-    color: $primary-text-white;
+	color: $primary-text-white;
+}
+
+.container p {
+	font-family: Route159;
+}
+.container h1 {
+	font-family: Vegur;
+}
+.tags {
+	height: 50vh;
 }

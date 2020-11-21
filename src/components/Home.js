@@ -8,54 +8,60 @@ import "../styles/timeline.scss";
 import "../styles/footer.scss";
 import "../styles/about.scss";
 import "../styles/home.scss";
-import Particles from 'react-particles-js';
+import "../styles/why.scss";
+import Particles from "react-particles-js";
 
 export default function Home() {
 	return (
 		<div className="home">
 			<Navbar />
 			<section className="hero is-fullheight is-dark is-bold">
-			<Particles
-				params={{
-					"particles": {
-						"number": {
-							"value": 160,
-							"density": {
-								"enable": false
-							}
+				<Particles
+					params={{
+						particles: {
+							number: {
+								value: 160,
+								density: {
+									enable: false,
+								},
+							},
+							size: {
+								value: 20,
+								random: true,
+							},
+							move: {
+								direction: "bottom",
+								out_mode: "out",
+							},
+							line_linked: {
+								enable: false,
+							},
 						},
-						"size": {
-							"value": 20,
-							"random": true
+						interactivity: {
+							events: {
+								onclick: {
+									enable: true,
+									mode: "remove",
+								},
+							},
+							modes: {
+								remove: {
+									particles_nb: 10,
+								},
+							},
 						},
-						"move": {
-							"direction": "bottom",
-							"out_mode": "out"
-						},
-						"line_linked": {
-							"enable": false
-						}
-					},
-					"interactivity": {
-						"events": {
-							"onclick": {
-								"enable": true,
-								"mode": "remove"
-							}
-						},
-						"modes": {
-							"remove": {
-								"particles_nb": 10
-							}
-						}
-					}
-				}} />
-			<div className="hero-body">
-					<div className="container"  >
-						<h1 className="title" id="hero">Welcome to KWoC React</h1>
-						<h2 className="subtitle" id="hero">The truth Redefined</h2>
+					}}
+				/>
+				<div className="hero-body">
+					<div className="container">
+						<h1 className="title" id="hero">
+							Welcome to KWoC React
+						</h1>
+						<h2 className="subtitle" id="hero">
+							The truth Redefined
+						</h2>
 					</div>
-			</div>
+				</div>
 			</section>
 
 			<section className="about">
@@ -71,28 +77,47 @@ export default function Home() {
 				</div>
 			</section>
 
+			<section className="timeline" id="tline">
+				<div className="container">
+					<h1> Timeline</h1>
+					<Timeline />
+				</div>
+			</section>
 			<section className="tags">
 				<div className="container">
 					<h1>Tags</h1>
-					<p>
-						Machine learning Android Computer Vision Gaming Backend Natural
-						Language Processing Scrapping Cognition Front End Deep Learning
-						Operating System DBMS OOP Networking Compilers Security Data Mining
-						Simulations Artificial Intelligence
-					</p>
-				</div>
-			</section>
 
-			<section className="timeline" id="tline">
-				<div className="container">
-					<h1>Kwoc Timeline</h1>
-					<Timeline />
+					<p>
+						<span class="tag is-dark is-medium">Machine learning</span>
+						<span class="tag is-light is-medium" style={{ background: "" }}>
+							{" "}
+							Android
+						</span>
+						<span class="tag is-dark is-medium">Computer Vision</span>
+						<span class="tag is-light is-medium"> Gaming</span>
+						<span class="tag is-dark is-medium"> Backend</span>
+						<span class="tag is-light is-medium">
+							Natural Language Processing
+						</span>
+						<span class="tag is-dark is-medium"> Scrapping</span>
+						<span class="tag is-light is-medium"> Cognition</span>
+						<span class="tag is-dark is-medium"> Front End</span>
+						<span class="tag is-light is-medium">Deep Learning</span>
+						<span class="tag is-dark is-medium">Operating System</span>
+						<span class="tag is-light is-medium"> DBMS</span>
+						<span class="tag is-dark is-medium"> OOP </span>
+						<span class="tag is-light is-medium"> Compilers</span>
+						<span class="tag is-dark is-medium">Security</span>
+						<span class="tag is-light is-medium">Data Mining</span>
+						<span class="tag is-dark is-medium">Simulations</span>
+						<span class="tag is-light is-medium">Artificial Intelligence</span>
+					</p>
 				</div>
 			</section>
 
 			<section className="why-kwoc">
 				<div className="container">
-					<h2>Why KWoC?</h2>
+					<h1>Why KWoC?</h1>
 
 					<h3>Intro to Open Source</h3>
 
