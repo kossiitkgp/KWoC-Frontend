@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect }from 'react';
 import Tags from '../data/tags.js';
 import CreatableSelect from 'react-select/creatable';
 import axios from 'axios'
@@ -39,7 +39,6 @@ async function checkRepo(repolink) {
 
   const headers = {
     "username": "adc3de3ce14dcf52af0afc0a40e6c3fee5d086e6",
-    
   }
 
   
@@ -60,11 +59,12 @@ async function checkRepo(repolink) {
   const readmeURL = `https://api.github.com/repos/${ownerName}/${repoName}/readme`
   try {
     const res = await axios.get(readmeURL, headers)
-    if(res.data.size < 50)
+    console.log('size is ',res.data.size)
+    if(res.data.size < 100)
     returnMsg['message'] += `Please add a more descriptive modified README of atleast 50 characters.`  
   }
   catch(err) {
-    returnMsg['message'] += `Please add a descriptive README.md of atleast 50 characters. `
+    returnMsg['message'] += `Please add a descriptive README.md`
   }
 
   if (returnMsg['message'] === '')
@@ -84,13 +84,41 @@ export default function Form(props) {
   const [repolink, setRepolink] = useState('')
   const [channelLink, setChannelLink] = useState('')
   const [tags, setTags] = useState([])
+  const [mentorRepos, setMentorRepos] = useState([])
 
   const [errInRepo, setErrInRepo] = useState('')
   const [errInLink, setErrInLink] = useState('')
 
+  useEffect(() => {
+    const headers = {
+      "username": "adc3de3ce14dcf52af0afc0a40e6c3fee5d086e6",
+    }
+    // const username = localStorage.getItem('mentor_username')
+    const username = 'rakaar' // uncomment rakaar when testing finally
+    axios
+    .get(`https://api.github.com/users/${username}/repos`, headers)
+    .then(res => {
+      const repos = res.data.map(item => { 
+        return { 'name': item.full_name, 'value': item.html_url, 'label': item.full_name.split('/')[1] }
+      })
+      setMentorRepos(repos)
+      console.log('repos are ',repos)
+    })
+    .catch(err => {
+      console.log('err in fetching all repos is ', err)
+    })
+  }, [])
+  
   function handleChange(tags, action) {
     const selectedTags = tags.map(item => item.value)
     setTags(selectedTags)
+  }
+
+  function handleProjectLink(tag, action) {
+    if(tag != null) {
+      console.log('link of hte project is ',tag.value);
+      setRepolink(tag.value)
+    }
   }
 
   async function handleSubmit(e) {
@@ -179,7 +207,7 @@ export default function Form(props) {
         </div>
       </div>
 
-      <div className='field'>
+      {/* <div className='field'>
         <label className='label'>Github link to the Repo</label>
         <div className='control has-icons-left has-icons-right'>
           <input
@@ -188,6 +216,22 @@ export default function Form(props) {
             placeholder={`https://github.com/mentor/project`}
             onChange={e => setRepolink(e.target.value)}
           />
+          <span className='icon is-large is-left' id='fontello-icon'>
+            <i className='icon-github-circled' />
+          </span>
+        </div>
+        {errInRepo}
+      </div> */}
+
+      <div className='field'>
+        <label className='label'>Github Link to the Project</label>
+        <div className='control'>
+           <CreatableSelect
+              isClearable
+              onChange={handleProjectLink}
+              options={mentorRepos}
+              placeholder='Search your Repos or Paste the link'
+            />
           <span className='icon is-large is-left' id='fontello-icon'>
             <i className='icon-github-circled' />
           </span>
