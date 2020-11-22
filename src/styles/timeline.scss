@@ -1,5 +1,5 @@
 @import "index.scss";
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+//@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
 
 .timeline {
 	& .container {
@@ -10,11 +10,14 @@
 		flex-direction: column;
 		min-height: 100vh;
 		max-width: 100%;
-		font-family: "Lato";
+
 		margin: 0;
 		& h1 {
 			text-align: center;
-			color: white;
+			color: rgb(223, 222, 222);
+			font-family: Vegur;
+			font-size: 40px;
+			letter-spacing: 2px;
 		}
 		& .timeline-container {
 			display: flex;

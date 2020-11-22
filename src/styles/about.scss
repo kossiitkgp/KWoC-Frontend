@@ -17,8 +17,10 @@
 .tags {
 	.container {
 		h1 {
-			font-size: 30px;
+			font-size: 40px;
 			align-items: center;
 		}
+		max-height: 100vh;
+		margin-bottom: 20px;
 	}
 }
