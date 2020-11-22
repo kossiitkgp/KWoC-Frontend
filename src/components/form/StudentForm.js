@@ -5,6 +5,8 @@ import '../../styles/css-fontello-mail-alt/fontello.css';
 
 export default function Form(props) {
   
+  const [isSubmitDisabled, disableSubmit] = useState(false)
+
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -20,6 +22,7 @@ export default function Form(props) {
   
   function handleSubmit(e) {
     e.preventDefault();
+    disableSubmit(true)
 
     const URL = "http://localhost:5000/student/form"
     const data = {
@@ -45,6 +48,7 @@ export default function Form(props) {
     })
     .catch(err => {
       console.log('err in student form ', err)
+      disableSubmit(false)
     })
 
   }
@@ -88,7 +92,7 @@ export default function Form(props) {
 
 
       <div className='field'>
-        <label className='label'>College</label>
+        <label className='label'>Name of Institution</label>
         <div className='control'>
           <input
             className='input is-rounded is-info'
@@ -101,7 +105,10 @@ export default function Form(props) {
 
 
       <div>
-        <a class='button is-info is-rounded is-fullWidth column is-full' onClick={handleSubmit}>
+        <a class='button is-info is-rounded is-fullWidth column is-full' 
+        onClick={handleSubmit}
+        disabled={isSubmitDisabled}
+        >
           Submit
         </a>
       </div>

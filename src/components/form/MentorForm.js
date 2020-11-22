@@ -4,6 +4,8 @@ import '../../styles/css-fontello-github-circled/fontello.css';
 import '../../styles/css-fontello-mail-alt/fontello.css';
 
 export default function Form(props) {
+
+  const [isSubmitDisabled, disableSubmit] = useState(false)
   
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
@@ -25,6 +27,7 @@ export default function Form(props) {
   
   function handleSubmit(e) {
     e.preventDefault();
+    disableSubmit(true)
     const URL = "http://localhost:5000/form/student"
     const data = {
       'username': username,
@@ -43,7 +46,8 @@ export default function Form(props) {
         props.history.push('/dashboard/mentor')
     })
     .catch(err => {
-      console.log('err in student form ', err)
+      console.log('err in student form ', err);
+      disableSubmit(false)
     })
   }
 
@@ -85,7 +89,10 @@ export default function Form(props) {
       </div>
 
       <div>
-        <a class='button is-info is-rounded is-fullWidth column is-full' onClick={handleSubmit}>
+        <a class='button is-info is-rounded is-fullWidth column is-full' 
+        onClick={handleSubmit}
+        disabled={isSubmitDisabled}
+        >
           Submit
         </a>
       </div>
