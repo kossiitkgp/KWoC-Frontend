@@ -124,16 +124,16 @@ export default function MentorDashboard() {
           </div>
           <div className='mentor-stats-content'>
             <div className='card-component mstats'>
-              <p>Projects</p>
-              <p>{data.projects.length}</p>
+              <p className='font-mentor-header'>Projects</p>
+              <p className='font-mentor-stats'>{data.projects.length}</p>
+            </div>
+            <div className='card-component mstats students-mstats-card'>
+              <p className='font-mentor-header'>Students</p>
+              <p className='font-mentor-stats'>{data.student.length}</p>
             </div>
             <div className='card-component mstats'>
-              <p>Students</p>
-              <p>{data.student.length}</p>
-            </div>
-            <div className='card-component mstats'>
-              <p>Days Left</p>
-              <p>12</p>
+              <p className='font-mentor-header'>Before Midevals</p>
+              <p className='font-mentor-stats'>12</p>
             </div>
           </div>
           {/*<div className='card-component badges'>
@@ -148,36 +148,21 @@ export default function MentorDashboard() {
           <h1>Projects</h1>
         </div>
         <div className='projectcard'>
-          {data.projects.map((value, index) => {
+          {data.projects.map((projectName, index) => {
             return (
               <div className='project-c card-component'>
                 <div className='anchor-align'>
-                  <a
-                    className='project-name'
-                    href={`https://github.com/${data.github}/${value}`}
-                  >
-                    {value}
-                  </a>
-                </div>
-
-                <div className='project-content'>
-                  <p> Open PRs : 2</p>
-                  <p> Closed PRs : 1</p>
+                  <p className='project-name'>{projectName}</p>
                 </div>
                 <div className='project-buttons'>
-                  <button
-                    id='repo'
-                    class='button is-success is-outlined is-pulled-left'
-                    href='#'
-                  >
-                    Repo
+                  <button id='repo' className='project-button-small' href='#'>
+                    GitHub
                   </button>
-                  <button
-                    id='issues'
-                    class='button is-success is-outlined is-pulled-right'
-                    href='#'
-                  >
+                  <button id='issues' className='project-button-small' href='#'>
                     Issues
+                  </button>
+                  <button id='prs' className='project-button-small' href='#'>
+                    PRs
                   </button>
                 </div>
               </div>

@@ -17,7 +17,7 @@
 .mentor-dashboard {
   font-weight: bold;
   color: black;
-
+  background-color: #f0f4f7;
   p,
   h1 {
     padding: 0px;
@@ -28,14 +28,14 @@
 .intro-card {
   display: flex;
   margin-top: 3%;
+  padding-top: 5%;
 }
 
 .card-component {
   // Taken from  https://www.cssmatic.com/box-shadow
-
-  border-radius: 6px;
-
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  // background-color: #f0f4f7;
+  box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
+  border-radius: 30px;
 }
 
 .avatar {
@@ -51,23 +51,23 @@
 
   box-shadow: 0px;
   background: rgba(0, 0, 0, 0);
-  background-color: #d3d2d2;
-  // transition: 1s;
+  background-color: #f0f4f7;
 
-  // :hover {
-  //   box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
-  // }
+  box-shadow: inset 10px 23px 63px -4px rgba(219, 226, 235, 1);
+  // border-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .mentor-stats-content {
   display: flex;
-  max-height: 45%;
   flex-grow: 1;
+  padding-top: 4.5%;
 }
 
 .mentor-stats {
   background: rgba(0, 0, 0, 0);
-  background-color: #c4c4c4;
+  background-color: #f0f4f7;
   max-width: 70%;
 
   // margin: 1%;
@@ -78,17 +78,43 @@
   flex-direction: column;
 }
 
+.students-mstats-card {
+  background: linear-gradient(135deg, #b57aff 50%, #9552ea 100%);
+}
+
+.font-mentor-stats {
+  font-size: 5vw;
+}
+// taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+@media screen and (min-width: 1200px) {
+  .font-mentor-stats {
+    font-size: 60px;
+  }
+}
+
+.font-mentor-header {
+  font-size: 3vw;
+}
+// taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+@media screen and (min-width: 1200px) {
+  .font-mentor-header {
+    font-size: 36px;
+  }
+}
+
 .mstats {
   p {
     padding: 0px;
     margin: 0px;
   }
 
-  flex-grow: 1;
   text-align: center;
   margin-left: 1.5%;
   margin-right: 1.5%;
   margin-bottom: 1.5%;
+
+  flex-grow: 1;
+  flex-basis: 0;
 
   padding: 1.5%;
 
@@ -124,7 +150,7 @@
   margin-right: 20%;
 
   border-color: black;
-  background-color: #c4c4c4;
+  // background-color: #c4c4c4;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   border-radius: 4px;
 
@@ -164,14 +190,14 @@
 .projects {
   display: flex;
   flex-direction: column;
-  background-color: #bfbcbc;
+  // background-color: #bfbcbc;
 }
 
 .students {
   display: flex;
   flex-direction: column;
 
-  background-color: #d3d2d2;
+  // background-color: #d3d2d2;
 }
 // seems like projectcard is used in bulma
 .projectcard,
@@ -205,7 +231,21 @@
   }
 }
 
-.project-name,
+.project-button-small {
+  background-color: yellow;
+}
+
+.project-name {
+  font-size: 3vw;
+}
+
+// taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+@media screen and (min-width: 1200px) {
+  .font-mentor-header {
+    font-size: 36px;
+  }
+}
+
 .student-name {
   font-weight: bold;
   font-size: 140%;
@@ -219,13 +259,13 @@
   width: 100%;
 }
 
-.anchor-align {
-  flex-grow: 1;
-  height: 30%;
+// .anchor-align {
+//   flex-grow: 1;
+//   height: 30%;
 
-  border-radius: 12px;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
-}
+//   border-radius: 12px;
+//   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+// }
 
 .project-header,
 .student-header {
