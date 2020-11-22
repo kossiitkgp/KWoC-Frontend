@@ -49,8 +49,8 @@ async function checkRepo(repolink) {
     const res = await axios.get(issuesURL, headers)
     const issues = res.data.filter(item => !item.hasOwnProperty('pull_request'))
     const numOfIssues = issues.length
-    if(numOfIssues < 4)
-      returnMsg['message'] = `Repo has only ${numOfIssues} issues, Please maintain atleast 4 issues. `
+    if(numOfIssues < 2)
+      returnMsg['message'] = `Repo has only ${numOfIssues} issues, Please maintain atleast 2 issues. `
   } 
   catch(err) {
     returnMsg['message'] = `Please add a valid Github link repo with atleast 4 open issues. `
@@ -76,6 +76,8 @@ async function checkRepo(repolink) {
 
 
 export default function Form(props) {
+
+  const [isSubmitDisabled, disableSubmit] = useState(false)
   
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
@@ -93,22 +95,28 @@ export default function Form(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    disableSubmit(true)
 
     // checking if repo meets requirements or not
     const repoStatus = await checkRepo(repolink)
     const isRepoValid = repoStatus['status']
     if (!isRepoValid) {
       setErrInRepo(repoStatus['message'])
+      disableSubmit(false)
     }
     
     // checking if communication channel is valid or not
     const isLinkValid =  checkLink(channelLink)
     if(!isLinkValid) {
       setErrInLink('Please add a valid URL so that mentees can join.')
+      disableSubmit(false)
     }
 
-    if(!(isRepoValid && isLinkValid))
-     return
+    if(!(isRepoValid && isLinkValid)) {
+      disableSubmit(false)  
+      return
+    }
+     
     
     
     const URL = `${BACKEND_URL}/project/add`
@@ -139,6 +147,7 @@ export default function Form(props) {
     .catch(err => {
       console.log("Err is ", err)
       alert('Server Error Try again')
+      disableSubmit(false)
     })
     
   }
@@ -215,6 +224,7 @@ export default function Form(props) {
         <a 
         className='button is-info is-rounded is-fullWidth column is-full'
         onClick={handleSubmit}
+        disabled={isSubmitDisabled}
         >
         Submit
         </a>
