@@ -4,10 +4,9 @@ import Footer from '../components/Footer';
 import Card from '../components/Card';
 import { Link } from 'react-router-dom';
 import Timeline from './timelinedata/Timeline';
-import '../styles/timeline.scss';
-import '../styles/footer.scss';
 import '../styles/about.scss';
 import '../styles/home.scss';
+import '../styles/why.scss';
 import Particles from 'react-particles-js';
 
 export default function Home() {
@@ -131,47 +130,47 @@ export default function Home() {
         </div>
       </section>
 
-			<section className="timeline" id="tline">
-				<div className="container">
-					<h1> Timeline</h1>
-					<Timeline />
-				</div>
-			</section>
-			<section className="tags">
-				<div className="container">
-					<h1>Tags</h1>
+      <section className='timeline' id='tline'>
+        <div className='container'>
+          <h1> Timeline</h1>
+          <Timeline />
+        </div>
+      </section>
+      <section className='tags'>
+        <div className='container'>
+          <h1>Tags</h1>
 
-					<p>
-						<span class="tag is-dark is-medium">Machine learning</span>
-						<span class="tag is-light is-medium" style={{ background: "" }}>
-							{" "}
-							Android
-						</span>
-						<span class="tag is-dark is-medium">Computer Vision</span>
-						<span class="tag is-light is-medium"> Gaming</span>
-						<span class="tag is-dark is-medium"> Backend</span>
-						<span class="tag is-light is-medium">
-							Natural Language Processing
-						</span>
-						<span class="tag is-dark is-medium"> Scrapping</span>
-						<span class="tag is-light is-medium"> Cognition</span>
-						<span class="tag is-dark is-medium"> Front End</span>
-						<span class="tag is-light is-medium">Deep Learning</span>
-						<span class="tag is-dark is-medium">Operating System</span>
-						<span class="tag is-light is-medium"> DBMS</span>
-						<span class="tag is-dark is-medium"> OOP </span>
-						<span class="tag is-light is-medium"> Compilers</span>
-						<span class="tag is-dark is-medium">Security</span>
-						<span class="tag is-light is-medium">Data Mining</span>
-						<span class="tag is-dark is-medium">Simulations</span>
-						<span class="tag is-light is-medium">Artificial Intelligence</span>
-					</p>
-				</div>
-			</section>
+          <p>
+            <span class='tag is-dark is-medium'>Machine learning</span>
+            <span class='tag is-light is-medium' style={{ background: '' }}>
+              {' '}
+              Android
+            </span>
+            <span class='tag is-dark is-medium'>Computer Vision</span>
+            <span class='tag is-light is-medium'> Gaming</span>
+            <span class='tag is-dark is-medium'> Backend</span>
+            <span class='tag is-light is-medium'>
+              Natural Language Processing
+            </span>
+            <span class='tag is-dark is-medium'> Scrapping</span>
+            <span class='tag is-light is-medium'> Cognition</span>
+            <span class='tag is-dark is-medium'> Front End</span>
+            <span class='tag is-light is-medium'>Deep Learning</span>
+            <span class='tag is-dark is-medium'>Operating System</span>
+            <span class='tag is-light is-medium'> DBMS</span>
+            <span class='tag is-dark is-medium'> OOP </span>
+            <span class='tag is-light is-medium'> Compilers</span>
+            <span class='tag is-dark is-medium'>Security</span>
+            <span class='tag is-light is-medium'>Data Mining</span>
+            <span class='tag is-dark is-medium'>Simulations</span>
+            <span class='tag is-light is-medium'>Artificial Intelligence</span>
+          </p>
+        </div>
+      </section>
 
-			<section className="why-kwoc">
-				<div className="container">
-					<h1>Why KWoC?</h1>
+      <section className='why-kwoc'>
+        <div className='container'>
+          <h1>Why KWoC?</h1>
 
           <h3>Intro to Open Source</h3>
 
@@ -254,36 +253,7 @@ export default function Home() {
           </ol>
         </div>
       </section>
-      <section className='footer-btm'>
-        <footer>
-          <div className='container'>
-            <div className='columns is-vcentered'>
-              <div className='column'>
-                <h1>Kharagpur Winter of Code</h1>
-                <h2>With &#10084; by KOSS</h2>
-              </div>
-              <div className='column'></div>
-              <div className='column'>
-                <a>Manuals</a>
-                <a href='https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCStudentManual.pdf'>
-                  Student Manual
-                </a>
-                <a href='https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCMentorManual.pdf'>
-                  Mentor Manual
-                </a>
-              </div>
-              <div className='column'>
-                <a href='#tline'>Timeline</a>
-                <a href='https://www.facebook.com/groups/kwoc2016'>
-                  Social Groups
-                </a>
-                <Link to='/FAQ'>FAQ</Link>
-                <Link to='/about'>About KOSS</Link>
-              </div>
-            </div>
-          </div>
-        </footer>
-      </section>
+      <Footer />
     </div>
   );
 }
