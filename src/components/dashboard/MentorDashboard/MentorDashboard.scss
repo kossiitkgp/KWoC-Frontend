@@ -218,13 +218,13 @@ $button-color: black;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin: 2%;
   padding: 1%;
 
   border-radius: 10px;
 
-  max-width: 250px;
+  max-width: 350px;
   max-height: 200px;
 
   // height: 200px;
@@ -239,29 +239,49 @@ $button-color: black;
   }
 }
 
-.project-name {
+.project-name,
+.student-name {
   font-size: 3vw;
 }
 
 // taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
 @media screen and (min-width: 1200px) {
-  .project-name {
+  .project-name,
+  .student-name {
     font-size: 36px;
   }
 }
 
-.student-name {
-  font-weight: bold;
-  font-size: 140%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-
-  height: 100%;
-  width: 100%;
+.avatar-students-card {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 5%;
+  align-items: center;
+  margin-top: 3%;
 }
+
+.student-card-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.student-name {
+  margin-left: 2%;
+}
+
+// .student-name {
+//   font-weight: bold;
+//   font-size: 140%;
+
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   text-align: center;
+
+//   height: 100%;
+//   width: 100%;
+// }
 
 .project-buttons {
   display: flex;
@@ -269,13 +289,14 @@ $button-color: black;
   padding-top: 5%;
 }
 
-.project-button-small {
+.project-button-small,
+.student-button-small {
   height: 45px;
   background-color: #e5e9f0;
   border-radius: 8px;
   color: #8794a1;
 
-  display: block;
+  display: flex;
   text-align: center;
 
   // margin: 2%;
@@ -291,11 +312,16 @@ $button-color: black;
 }
 
 .github-svg {
-  padding-top: 25%;
+  padding-top: 20%;
 }
 
 .project-button-small:active {
   background-color: #a0a3f4;
+}
+
+.fill-evals {
+  pointer-events: none;
+  background-color: #eff1f6;
 }
 
 .project-header,
@@ -315,8 +341,10 @@ $button-color: black;
 
 .announcements {
   padding: 1%;
-
-  background-color: #bfbcbc;
+  background-color: #f0f4f7;
+  box-shadow: inset 15px 15px 50px #dbe2eb;
+  border-radius: 20px;
+  margin: 2%;
 }
 
 .anc-card {
@@ -325,10 +353,22 @@ $button-color: black;
     padding: 0px;
     margin: 0px;
   }
+  background-color: #ffe6b3;
+  h1 {
+    font-size: 2.3vw;
+    color: #5f6e7d;
+  }
+
+  p {
+    font-size: 1.6vw;
+    color: #5f6e7d;
+  }
 
   margin: 1%;
+  margin-bottom: 2%;
   padding: 1%;
-  background-color: white;
+
+  border-radius: 10px;
 }
 
 .git-lines {
@@ -352,21 +392,11 @@ $button-color: black;
   color: #e5e9f0;
 }
 
-// .issues {
-//   flex-grow: 44;
-//   max-width: 107px;
-
-//   padding-left: 2px;
-//   padding-right: 2px;
-// }
-
-// .prs {
-//   flex-grow: 32;
-//   max-width: 92px;
-
-//   padding-left: 2px;
-//   padding-right: 2px;
-// }
+.student-profile {
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
 
 .project-content,
 .student-content {
@@ -382,6 +412,9 @@ $button-color: black;
 .student-button {
   margin: 1%;
   padding: 1%;
+  max-height: 45px;
+
   height: 20%;
   flex-grow: 1;
+  display: flex;
 }
