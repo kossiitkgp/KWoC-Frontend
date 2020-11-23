@@ -155,15 +155,21 @@ export default function MentorDashboard() {
                   <p className='project-name'>{projectName}</p>
                 </div>
                 <div className='project-buttons'>
-                  <button id='repo' className='project-button-small' href='#'>
-                    GitHub
-                  </button>
-                  <button id='issues' className='project-button-small' href='#'>
-                    Issues
-                  </button>
-                  <button id='prs' className='project-button-small' href='#'>
-                    PRs
-                  </button>
+                  <a href='http://stackoverflow.com' className='github'>
+                    <button className='project-button-small '>
+                      <text className='button-text-project'>GH</text>
+                    </button>
+                  </a>
+                  <a href='https://www.google.com' className='issues'>
+                    <button className='project-button-small'>
+                      <text className='button-text-project'>Issues</text>
+                    </button>
+                  </a>
+                  <a href='https://www.google.com' className='prs'>
+                    <button className='project-button-small'>
+                      <text className='button-text-project'>PRs</text>
+                    </button>
+                  </a>
                 </div>
               </div>
             );
