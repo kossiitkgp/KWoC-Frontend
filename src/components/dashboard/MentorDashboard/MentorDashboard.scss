@@ -1,16 +1,19 @@
+$button-background-color: black;
+$button-color: black;
+
 // import using ~
 // Import only what you need from Bulma
 @import '~bulma/sass/utilities/_all.sass';
 @import '~bulma/sass/base/generic.sass';
 @import '~bulma/sass/base/helpers.sass';
 @import '~bulma/sass/grid/columns.sass';
-@import '~bulma/sass/elements/button.sass';
 @import '~bulma/sass/elements/container.sass';
 @import '~bulma/sass/elements/image.sass';
 @import '~bulma/sass/form/_all.sass';
 @import '~bulma/sass/components/navbar.sass';
 @import '~bulma/sass/layout/hero.sass';
 @import '~bulma/sass/layout/section.sass';
+@import '~bulma/sass/elements/button.sass';
 @import url('/font-awesome-4.6.3/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
@@ -93,12 +96,12 @@
 }
 
 .font-mentor-header {
-  font-size: 3vw;
+  font-size: 3.3vw;
 }
 // taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
 @media screen and (min-width: 1200px) {
   .font-mentor-header {
-    font-size: 36px;
+    font-size: 40px;
   }
 }
 
@@ -272,12 +275,27 @@
   border-radius: 8px;
   color: #8794a1;
 
-  font-size: 1.2vw;
+  display: block;
+  text-align: center;
+
+  // margin: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+
+  padding-left: 5%;
+  padding-right: 5%;
+  // padding: 5%;
+  font-size: 1.6vw;
   align-items: center;
   cursor: pointer;
 }
 
-.button-text-project {
+.github-svg {
+  padding-top: 25%;
+}
+
+.project-button-small:active {
+  background-color: #a0a3f4;
 }
 
 .project-header,
@@ -325,28 +343,30 @@
   background-color: red;
 }
 
-.github {
+.button {
   flex-grow: 24;
   width: 70px;
   padding-left: 2px;
   padding-right: 2px;
+
+  color: #e5e9f0;
 }
 
-.issues {
-  flex-grow: 44;
-  max-width: 107px;
+// .issues {
+//   flex-grow: 44;
+//   max-width: 107px;
 
-  padding-left: 2px;
-  padding-right: 2px;
-}
+//   padding-left: 2px;
+//   padding-right: 2px;
+// }
 
-.prs {
-  flex-grow: 32;
-  max-width: 92px;
+// .prs {
+//   flex-grow: 32;
+//   max-width: 92px;
 
-  padding-left: 2px;
-  padding-right: 2px;
-}
+//   padding-left: 2px;
+//   padding-right: 2px;
+// }
 
 .project-content,
 .student-content {
