@@ -6,16 +6,24 @@
   height: 100%;
 }
 
-#hero {
-	color: $primary-text-white;
+.hero {
+  #hero {
+    color: $primary-text-white;
+  }
+
+  .button {
+    background-color: $primary-background-black;
+    border-color: $primary-background-black;
+    color: $primary-text-white;
+  }
 }
 
 .container p {
-	font-family: Route159;
+  font-family: Route159;
 }
 .container h1 {
-	font-family: Vegur;
+  font-family: Vegur;
 }
 .tags {
-	height: 50vh;
+  height: 50vh;
 }
