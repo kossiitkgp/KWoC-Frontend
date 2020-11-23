@@ -124,16 +124,16 @@ export default function MentorDashboard() {
           </div>
           <div className='mentor-stats-content'>
             <div className='card-component mstats'>
-              <p>Projects</p>
-              <p>{data.projects.length}</p>
+              <p className='font-mentor-header'>Projects</p>
+              <p className='font-mentor-stats'>{data.projects.length}</p>
+            </div>
+            <div className='card-component mstats students-mstats-card'>
+              <p className='font-mentor-header'>Students</p>
+              <p className='font-mentor-stats'>{data.student.length}</p>
             </div>
             <div className='card-component mstats'>
-              <p>Students</p>
-              <p>{data.student.length}</p>
-            </div>
-            <div className='card-component mstats'>
-              <p>Days Left</p>
-              <p>12</p>
+              <p className='font-mentor-header'>Before Midevals</p>
+              <p className='font-mentor-stats'>12</p>
             </div>
           </div>
           {/*<div className='card-component badges'>
@@ -148,37 +148,28 @@ export default function MentorDashboard() {
           <h1>Projects</h1>
         </div>
         <div className='projectcard'>
-          {data.projects.map((value, index) => {
+          {data.projects.map((projectName, index) => {
             return (
               <div className='project-c card-component'>
                 <div className='anchor-align'>
-                  <a
-                    className='project-name'
-                    href={`https://github.com/${data.github}/${value}`}
-                  >
-                    {value}
-                  </a>
-                </div>
-
-                <div className='project-content'>
-                  <p> Open PRs : 2</p>
-                  <p> Closed PRs : 1</p>
+                  <p className='project-name'>{projectName}</p>
                 </div>
                 <div className='project-buttons'>
-                  <button
-                    id='repo'
-                    class='button is-success is-outlined is-pulled-left'
-                    href='#'
+                  <a
+                    href='http://stackoverflow.com'
+                    className='project-button-small'
                   >
-                    Repo
-                  </button>
-                  <button
-                    id='issues'
-                    class='button is-success is-outlined is-pulled-right'
-                    href='#'
+                    <img src='/github.svg' className='github-svg'></img>
+                  </a>
+                  <a
+                    href='https://www.google.com'
+                    className='project-button-small'
                   >
                     Issues
-                  </button>
+                  </a>
+                  <a href='https://www.fb.com' className='project-button-small'>
+                    PRs
+                  </a>
                 </div>
               </div>
             );
@@ -191,39 +182,27 @@ export default function MentorDashboard() {
           <h1>Students</h1>
         </div>
         <div className='student-card'>
-          {data.student.map((value, index) => {
+          {data.student.map((studentName, index) => {
             return (
               <div className='student-c card-component'>
-                <div className='anchor-align'>
-                  <a
-                    className='student-name'
-                    href={`https://github.com/${value}`}
-                  >
-                    {value}
-                  </a>
+                <div className='student-card-header'>
+                  <img
+                    src={`https://github.com/${studentName}.png`}
+                    className='avatar-students-card'
+                  ></img>
+                  <p className='student-name'>{studentName}</p>
                 </div>
-                <div className='student-content'>
-                  <p className='commits-header'>
-                    Commits : {data.commits.count}
-                  </p>
-                  <p className='git-lines add'>+12</p>
-                  <p className='git-lines rem'>-10</p>
-                </div>
+
                 <div className='student-button'>
-                  <button
-                    className='profile'
-                    class='button is-success is-outlined is-pulled-left'
-                    href='#'
+                  <a
+                    className='student-profile student-button-small'
+                    href={`https://github.com/${studentName}`}
                   >
-                    Profile
-                  </button>
-                  <button
-                    className='fill-evals'
-                    class='button is-success is-outlined is-pulled-right'
-                    href='#'
-                  >
+                    <img src='/github.svg' className='github-svg-student'></img>
+                  </a>
+                  <a className='fill-evals student-button-small' href='#'>
                     Fill Evals
-                  </button>
+                  </a>
                 </div>
               </div>
             );
@@ -237,15 +216,14 @@ export default function MentorDashboard() {
         {data.announcement.map((value, index) => {
           return (
             <div className='anc-card card-component'>
-              <h1>Dated : 12/12/20</h1>
+              <h1>12th December</h1>
               <p>{value}</p>
             </div>
           );
         })}
       </div>
-      {/*
-         <Footer />
-      */}
+
+      <Footer />
     </div>
   );
 }

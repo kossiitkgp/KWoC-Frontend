@@ -1,23 +1,26 @@
+$button-background-color: black;
+$button-color: black;
+
 // import using ~
 // Import only what you need from Bulma
 @import '~bulma/sass/utilities/_all.sass';
 @import '~bulma/sass/base/generic.sass';
 @import '~bulma/sass/base/helpers.sass';
 @import '~bulma/sass/grid/columns.sass';
-@import '~bulma/sass/elements/button.sass';
 @import '~bulma/sass/elements/container.sass';
 @import '~bulma/sass/elements/image.sass';
 @import '~bulma/sass/form/_all.sass';
 @import '~bulma/sass/components/navbar.sass';
 @import '~bulma/sass/layout/hero.sass';
 @import '~bulma/sass/layout/section.sass';
+@import '~bulma/sass/elements/button.sass';
 @import url('/font-awesome-4.6.3/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 
 .mentor-dashboard {
   font-weight: bold;
   color: black;
-
+  background-color: #f0f4f7;
   p,
   h1 {
     padding: 0px;
@@ -28,14 +31,14 @@
 .intro-card {
   display: flex;
   margin-top: 3%;
+  padding-top: 5%;
 }
 
 .card-component {
   // Taken from  https://www.cssmatic.com/box-shadow
-
-  border-radius: 6px;
-
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  // background-color: #f0f4f7;
+  box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
+  border-radius: 30px;
 }
 
 .avatar {
@@ -51,31 +54,52 @@
 
   box-shadow: 0px;
   background: rgba(0, 0, 0, 0);
-  background-color: #d3d2d2;
-  // transition: 1s;
+  background-color: #f0f4f7;
 
-  // :hover {
-  //   box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
-  // }
+  box-shadow: inset 10px 23px 63px -4px rgba(219, 226, 235, 1);
+  // border-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .mentor-stats-content {
   display: flex;
-  max-height: 45%;
   flex-grow: 1;
+  padding-top: 4.5%;
 }
 
 .mentor-stats {
   background: rgba(0, 0, 0, 0);
-  background-color: #c4c4c4;
+  background-color: #f0f4f7;
   max-width: 70%;
-
-  // margin: 1%;
-  // margin-left: 0.5%;
 
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+}
+
+.students-mstats-card {
+  background: linear-gradient(135deg, #b57aff 50%, #9552ea 100%);
+}
+
+.font-mentor-stats {
+  font-size: 5vw;
+}
+// taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+@media screen and (min-width: 1200px) {
+  .font-mentor-stats {
+    font-size: 60px;
+  }
+}
+
+.font-mentor-header {
+  font-size: 3.3vw;
+}
+// taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+@media screen and (min-width: 1200px) {
+  .font-mentor-header {
+    font-size: 40px;
+  }
 }
 
 .mstats {
@@ -84,11 +108,17 @@
     margin: 0px;
   }
 
-  flex-grow: 1;
   text-align: center;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+
   margin-left: 1.5%;
   margin-right: 1.5%;
   margin-bottom: 1.5%;
+
+  flex-grow: 1;
+  flex-basis: 0;
 
   padding: 1.5%;
 
@@ -124,7 +154,7 @@
   margin-right: 20%;
 
   border-color: black;
-  background-color: #c4c4c4;
+  // background-color: #c4c4c4;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   border-radius: 4px;
 
@@ -164,14 +194,14 @@
 .projects {
   display: flex;
   flex-direction: column;
-  background-color: #bfbcbc;
+  // background-color: #bfbcbc;
 }
 
 .students {
   display: flex;
   flex-direction: column;
 
-  background-color: #d3d2d2;
+  // background-color: #d3d2d2;
 }
 // seems like projectcard is used in bulma
 .projectcard,
@@ -185,46 +215,100 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-
+  // justify-content: space-between;
   margin: 2%;
   padding: 1%;
-  // margin-left: 0.5%;
-  // margin-right: 0.5%;
-  background-color: white;
 
-  max-width: 250px;
+  border-radius: 10px;
+
+  max-width: 350px;
   max-height: 200px;
 
-  height: 200px;
-  width: 400px;
+  min-width: 350px;
+  min-height: 120px;
+
+  // height: 200px;
+  // width: 400px;
 
   p,
   h1 {
     padding: 0px;
     margin: 0px;
+
+    text-align: center;
   }
 }
 
 .project-name,
 .student-name {
-  font-weight: bold;
-  font-size: 140%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-
-  height: 100%;
-  width: 100%;
+  font-size: 3vw;
 }
 
-.anchor-align {
-  flex-grow: 1;
-  height: 30%;
+// taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+@media screen and (min-width: 1200px) {
+  .project-name,
+  .student-name {
+    font-size: 36px;
+  }
+}
 
-  border-radius: 12px;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+.avatar-students-card {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 5%;
+  align-items: center;
+  margin-top: 3%;
+}
+
+.student-card-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.student-name {
+  margin-left: 2%;
+}
+
+.project-buttons {
+  display: flex;
+  // justify-content: space-between;
+  padding-top: 5%;
+}
+
+.project-button-small,
+.student-button-small {
+  height: 45px;
+  background-color: #e5e9f0;
+  border-radius: 8px;
+  color: #8794a1;
+
+  display: flex;
+  text-align: center;
+
+  // margin: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+
+  padding-left: 5%;
+  padding-right: 5%;
+  // padding: 5%;
+  font-size: 1.6vw;
+  align-items: center;
+  cursor: pointer;
+}
+
+.github-svg {
+  padding-top: 20%;
+}
+
+.project-button-small:active {
+  background-color: #a0a3f4;
+}
+
+.fill-evals {
+  pointer-events: none;
+  background-color: #eff1f6;
 }
 
 .project-header,
@@ -244,8 +328,10 @@
 
 .announcements {
   padding: 1%;
-
-  background-color: #bfbcbc;
+  background-color: #f0f4f7;
+  box-shadow: inset 15px 15px 50px #dbe2eb;
+  border-radius: 20px;
+  margin: 2%;
 }
 
 .anc-card {
@@ -254,10 +340,22 @@
     padding: 0px;
     margin: 0px;
   }
+  background-color: #ffe6b3;
+  h1 {
+    font-size: 2.3vw;
+    color: #5f6e7d;
+  }
+
+  p {
+    font-size: 1.6vw;
+    color: #5f6e7d;
+  }
 
   margin: 1%;
+  margin-bottom: 2%;
   padding: 1%;
-  background-color: white;
+
+  border-radius: 10px;
 }
 
 .git-lines {
@@ -270,6 +368,21 @@
 
 .rem {
   background-color: red;
+}
+
+.button {
+  flex-grow: 24;
+  width: 70px;
+  padding-left: 2px;
+  padding-right: 2px;
+
+  color: #e5e9f0;
+}
+
+.student-profile {
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .project-content,
@@ -286,6 +399,9 @@
 .student-button {
   margin: 1%;
   padding: 1%;
+  max-height: 45px;
+
   height: 20%;
   flex-grow: 1;
+  display: flex;
 }
