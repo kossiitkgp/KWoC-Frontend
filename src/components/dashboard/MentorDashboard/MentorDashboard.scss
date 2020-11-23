@@ -73,9 +73,6 @@ $button-color: black;
   background-color: #f0f4f7;
   max-width: 70%;
 
-  // margin: 1%;
-  // margin-left: 0.5%;
-
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -227,6 +224,9 @@ $button-color: black;
   max-width: 350px;
   max-height: 200px;
 
+  min-width: 350px;
+  min-height: 120px;
+
   // height: 200px;
   // width: 400px;
 
@@ -269,19 +269,6 @@ $button-color: black;
 .student-name {
   margin-left: 2%;
 }
-
-// .student-name {
-//   font-weight: bold;
-//   font-size: 140%;
-
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   text-align: center;
-
-//   height: 100%;
-//   width: 100%;
-// }
 
 .project-buttons {
   display: flex;
