@@ -3,6 +3,7 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { BACKEND_URL } from '../../constants/constants';
 import './StudentDashboard.scss';
+import StudentAnnouncements from './StudentAnnouncements';
 
 export default function Dashboard() {
   useEffect(() => {
@@ -67,6 +68,11 @@ export default function Dashboard() {
     },
     languages: ['Python', 'Javascript', 'HTML', 'CSS'],
     projects: ['darkHorse', 'todxpy', 'KWoC'],
+    announcement: [
+      'Hi the KWOC has just started!',
+      'Make sure you have submitted the mideval feedback for the student!',
+      'Hi \n, the end evals have been finished!',
+    ],
   };
   return (
     <div className='dashboard'>
@@ -164,7 +170,18 @@ export default function Dashboard() {
           })}
         </table>
       </section>
+      <div className='announcements'>
+        <h1>Announcements</h1>
 
+        {data.announcement.map((value, index) => {
+          return (
+            <div className='anc-card card-component'>
+              <h1>12th December</h1>
+              <p>{value}</p>
+            </div>
+          );
+        })}
+      </div>
       <Footer />
     </div>
   );
