@@ -3,6 +3,7 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { BACKEND_URL } from '../../constants/constants';
 import './StudentDashboard.scss';
+import StudentAnnouncements from './StudentAnnouncements';
 
 export default function Dashboard() {
   useEffect(() => {
@@ -67,6 +68,11 @@ export default function Dashboard() {
     },
     languages: ['Python', 'Javascript', 'HTML', 'CSS'],
     projects: ['darkHorse', 'todxpy', 'KWoC'],
+    announcement: [
+      'Hi the KWOC has just started!',
+      'Make sure you have submitted the mideval feedback for the student!',
+      'Hi \n, the end evals have been finished!',
+    ],
   };
   return (
     <div className='dashboard'>
@@ -111,14 +117,35 @@ export default function Dashboard() {
         </div>
       </section> */}
 
-      <section className='container projects'>
+      <div className='container projects'>
         <h1>Projects</h1>
-        <div className='links'>
-          {data.projects.map((project) => {
-            return <a href='#a'>{project}</a>;
+        <div className='project-card-list'>
+          {data.projects.map((projectName) => {
+            return (
+              <div className='project-card'>
+                <p>{projectName}</p>
+                <div className='project-buttons'>
+                  <a
+                    href='http://stackoverflow.com'
+                    className='project-button-small'
+                  >
+                    <img src='/github.svg' className='github-svg'></img>
+                  </a>
+                  <a
+                    href='https://www.google.com'
+                    className='project-button-small'
+                  >
+                    Issues
+                  </a>
+                  <a href='https://www.fb.com' className='project-button-small'>
+                    PRs
+                  </a>
+                </div>
+              </div>
+            );
           })}
         </div>
-      </section>
+      </div>
 
       <section className='container commits'>
         <h1>Latest Commits</h1>
@@ -131,7 +158,11 @@ export default function Dashboard() {
           {data.commits.commits.map((commit) => {
             return (
               <tr>
-                <td>{commit.hash}</td>
+                <td>
+                  <a href='https://www.google.com'>
+                    <div>{commit.hash}</div>
+                  </a>
+                </td>
                 <td>{commit.project}</td>
                 <td>{commit.messsage}</td>
               </tr>
@@ -139,7 +170,18 @@ export default function Dashboard() {
           })}
         </table>
       </section>
+      <div className='announcements'>
+        <h1>Announcements</h1>
 
+        {data.announcement.map((value, index) => {
+          return (
+            <div className='anc-card card-component'>
+              <h1>12th December</h1>
+              <p>{value}</p>
+            </div>
+          );
+        })}
+      </div>
       <Footer />
     </div>
   );
