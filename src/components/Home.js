@@ -111,7 +111,7 @@ export default function Home() {
               Welcome to KWoC
             </h1>
 
-            <div className='reg-btns field is-grouped'>
+            <div className='reg-btns field is-grouped is-grouped-centered'>
               <p className='control'>
                 <a
                   className='button is-fullwidth is-medium'
@@ -130,7 +130,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className='manual-btns field is-grouped'>
+            <div className='manual-btns field is-grouped is-grouped-centered'>
               <p className='control'>
                 <a
                   className='button is-fullwidth is-medium'
