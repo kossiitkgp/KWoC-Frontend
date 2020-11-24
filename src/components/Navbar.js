@@ -150,7 +150,7 @@ class Navbar extends Component {
                       id='mentee-login'
                       href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student'
                     >
-                      Mentee Login
+                      Student Login
                     </a>
                   </div>
                 </div>

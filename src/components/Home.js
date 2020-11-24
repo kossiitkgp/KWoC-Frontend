@@ -108,11 +108,46 @@ export default function Home() {
         <div className='hero-body'>
           <div className='container'>
             <h1 className='title' id='hero'>
-              Welcome to KWoC React
+              Welcome to KWoC
             </h1>
-            <h2 className='subtitle' id='hero'>
-              The truth Redefined
-            </h2>
+
+            <div className='reg-btns field is-grouped is-grouped-centered'>
+              <p className='control'>
+                <a
+                  className='button is-fullwidth is-medium'
+                  href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student'
+                >
+                  Student Registration
+                </a>
+              </p>
+              <p className='control'>
+                <a
+                  className='button is-fullwidth is-medium'
+                  href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor'
+                >
+                  Mentor Registration
+                </a>
+              </p>
+            </div>
+
+            <div className='manual-btns field is-grouped is-grouped-centered'>
+              <p className='control'>
+                <a
+                  className='button is-fullwidth is-medium'
+                  href='https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCStudentManual.pdf'
+                >
+                  Student Manual
+                </a>
+              </p>
+              <p className='control'>
+                <a
+                  className='button is-fullwidth is-medium'
+                  href='https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCMentorManual.pdf'
+                >
+                  Mentor Manual
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -232,25 +267,6 @@ export default function Home() {
             contributions to open source during KWoC, and mentors, who saw their
             projects surpass their own expectations by the end of the program.
           </p>
-        </div>
-      </section>
-
-      <section className='steps'>
-        <div className='container'>
-          <h1>Steps</h1>
-
-          <ol>
-            <li>
-              Apply on the student registration page and wait for an email from
-              us (Please check Promotions and Spam as well).
-            </li>
-
-            <li>
-              Choose project(s) that you want to contribute to, contact the
-              assigned mentor(s) and work through December, learning the art of
-              software development on the way.
-            </li>
-          </ol>
         </div>
       </section>
       <Footer />
