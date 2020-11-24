@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Tag from './Tag';
 import axios from 'axios';
 import Navbar from '../../Navbar';
+import Footer from '../../Footer';
 import { STATS_API } from '../../../constants/constants';
 import './StudentStats.scss';
 
 export default function StudentStats(props) {
   const [stats, setStats] = useState({});
-
+  const username_from_window = window.location.pathname.split('/')[3];
   useEffect(() => {
-    const username_from_window = window.location.pathname.split('/')[3];
-
     axios
       .get(`${STATS_API}/stats/student/${username_from_window}`)
       .then((res) => {
@@ -29,11 +28,9 @@ export default function StudentStats(props) {
         <div className='profile-card'>
           <img className='avatar-img' src={stats['avatar_url']}></img>
           <br />
-          <div className='avatar-content-card'>
-            <p id='student-name'>{stats['name']}</p>
-            <p>github</p>
-            <p>{stats['affiliation']}</p>
-          </div>
+          <b id='student-name'>{stats['name']}</b>
+          <p>{username_from_window}</p>
+          <p>{stats['affiliation']}</p>
         </div>
         <div className='stats-card-list'>
           <div className='stats-row-1'>
@@ -53,55 +50,33 @@ export default function StudentStats(props) {
           <div className='stats-row-2'>
             <div className='stats-card'>
               <p>{stats['lines_added']}</p>
-              <p className='stats-header'>Lines Added</p>
+              <p className='stats-header'>+ Added</p>
             </div>
             <div className='stats-card'>
               <p>{stats['lines_removed']}</p>
-              <p className='stats-header'> Lines Removed</p>
+              <p className='stats-header'>- Removed</p>
             </div>
           </div>
         </div>
       </div>
       <div className='language-card'>
         <p>Languages involved</p>
-        {stats['languages'] !== undefined
-          ? stats['languages'].map((item) => <Tag content={item} />)
-          : ''}
+        <div className='language-tag'>
+          {stats['languages'] !== undefined
+            ? stats['languages'].map((item) => <Tag content={item} />)
+            : ''}
+        </div>
       </div>
       <div className='project-card'>
         <p>Projects Worked</p>
-
-        {stats['projects'] !== undefined
-          ? stats['projects'].map((item) => {
-              return (
-                <span className='tag is-light is-large'>
-                  <a href={`https://github.com/${item}`}>{item}</a>
-                </span>
-              );
-            })
-          : ''}
-      </div>
-      <div className='contri-card'>
         <table className='table is-bordered is-striped'>
-          <th>Project</th>
-          <th>Commit</th>
-          <th>+Lines Added,-Lines Removed</th>
           <tbody>
-            {stats['commits'] !== undefined
-              ? stats['commits'].map((item) => {
+            {stats['projects'] !== undefined
+              ? stats['projects'].map((item) => {
                   return (
                     <tr>
                       <td>
-                        <a href={`https://github.com/${item['project']}`}>
-                          {item['project']}
-                        </a>
-                      </td>
-                      d
-                      <td>
-                        <a href={item['html_url']}>{item['message']}</a>
-                      </td>
-                      <td>
-                        +{item['lines_added']},-{item['lines_removed']}
+                        <a href={`https://github.com/${item}`}>{item}</a>
                       </td>
                     </tr>
                   );
@@ -110,6 +85,44 @@ export default function StudentStats(props) {
           </tbody>
         </table>
       </div>
+      <section className='contri-card'>
+        <div className='contri-header'>
+          <p>Commit History</p>
+        </div>
+
+        <table className='table is-bordered is-striped'>
+          <th>Project</th>
+          <th>Commit</th>
+          <th>+Add/-Rem</th>
+          <tbody>
+            {stats['commits'] !== undefined
+              ? stats['commits'].map((item) => {
+                  const mentorName = item['project'].split('/')[0];
+                  return (
+                    <tr>
+                      <td>
+                        <a href={`https://github.com/${item['project']}`}>
+                          <img
+                            src={`https://github.com/${mentorName}.png`}
+                            className='mentor-avatar'
+                            alt='project'
+                          ></img>
+                        </a>
+                      </td>
+                      <td>
+                        <a href={item['html_url']}>{item['message']}</a>
+                      </td>
+                      <td>
+                        +{item['lines_added']}/-{item['lines_removed']}
+                      </td>
+                    </tr>
+                  );
+                })
+              : ''}
+          </tbody>
+        </table>
+      </section>
+      <Footer />
     </div>
   );
 }
