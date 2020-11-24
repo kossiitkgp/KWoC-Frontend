@@ -61,36 +61,35 @@ button {
 }
 
 .dashboard {
-  background: url('/images/code.jpg') #000;
+  background: url('/images/code.jpg') $background-color-page;
   background-size: fill;
   background-repeat: no-repeat;
-  color: #ffffff;
+  color: #5f6e7d;
+
   .intro {
     padding: 10rem 0 0;
     display: flex;
     justify-content: space-between;
-
+    margin: 0px;
+    margin-left: 5rem;
     h1 {
       font-size: 5rem;
     }
     h2 {
-      color: #ffffffb3;
+      color: #5f6e7d;
     }
 
     .data-panel {
       h1 {
         margin: 0 0 1rem 0;
       }
+
       .data-cards {
         display: flex;
         .data-card {
           padding: 12px 30px 26px;
           margin-right: 5rem;
-          background: linear-gradient(
-            -45deg,
-            rgba(#ffffff, 0.09),
-            rgba(#ffffff, 0.05)
-          );
+          box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
           border-radius: $border;
           text-align: center;
           h1,
@@ -108,11 +107,20 @@ button {
       align-self: center;
       font-size: 1.4rem;
       margin-top: 1rem;
-      width: 20%;
+      width: 30%;
       text-align: center;
+      padding: 1rem;
+
+      box-shadow: inset 10px 23px 63px -4px rgba(219, 226, 235, 1);
+      // border-radius: 20px;
+      border-bottom-left-radius: 20px;
+      border-top-left-radius: 20px;
       img {
-        border-radius: $border-small;
+        border-radius: 6px;
         margin-bottom: 1rem;
+        padding: 1rem;
+        max-width: 250px;
+        max-height: 250px;
       }
       p {
         margin: 0rem;
@@ -130,21 +138,21 @@ button {
       font-size: 20px;
       width: 100%;
       th {
-        color: #ffffffb3;
+        color: #5f6e7d;
         border: none;
       }
       td {
         border: none;
-        color: #ffffffb3;
+        color: #5f6e7d;
       }
       td:nth-child(3) {
-        color: #fff;
+        color: #5f6e7d;
       }
       tr:hover {
         background: rgba(#ffffff, 0.1);
         td {
           border: none;
-          color: #ffffff;
+          color: black;
         }
       }
     }
@@ -155,11 +163,41 @@ button {
     .links {
       font-size: 20px;
       a {
-        color: #ffffffb3;
+        color: #5f6e7d;
         padding: 0;
         margin-right: 2rem;
         &:hover {
-          color: #fff;
+          color: black;
+        }
+      }
+    }
+
+    .project-card-list {
+      display: flex;
+      flex-direction: row;
+
+      .project-card {
+        display: flex;
+        flex-direction: column;
+
+        margin-left: 1rem;
+        margin-right: 1rem;
+        p {
+          color: black;
+          font-size: 36px;
+          text-align: center;
+          margin: 0px;
+          padding-top: 1rem;
+        }
+        box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
+        border-radius: $border;
+
+        width: 350px;
+        height: 150px;
+
+        .project-buttons {
+          display: flex;
+          justify-content: space-evenly;
         }
       }
     }
