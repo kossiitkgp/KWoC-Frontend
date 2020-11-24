@@ -1,12 +1,96 @@
-// @import 'index.scss';
-
-// @import '~bulma/sass/elements/table.sass';
-
-.student-stats {
-    text-align: center;
+* {
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
 }
 
-.student-avatar {
-    border-radius: 50%;
-    width: 10%;
+html {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  .hero {
+    h1 {
+      font-size: 5rem;
+    }
+  }
+}
+
+.student-stats {
+  margin-top: 4.5%;
+  .profile-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .profile-card {
+    flex-grow: 3;
+    // background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    align-items: center;
+
+    .avatar-img {
+      flex-grow: 1;
+      width: 200px;
+      height: 200px;
+    }
+
+    .avatar-content-card {
+      flex-grow: 1;
+      box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+      border-radius: 4px;
+
+      font-size: 20px;
+    }
+  }
+  .stats-card-list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 7;
+    justify-content: space-evenly;
+    .stats-row-1,
+    .stats-row-2 {
+      display: flex;
+      justify-content: space-evenly;
+      margin: 1% 0 1% 0;
+      padding: 1%;
+      .stats-card {
+        height: 200px;
+        width: 200px;
+        box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
+        border-radius: 30px;
+
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        p {
+          font-size: 60px;
+          text-align: center;
+          padding: 0px;
+          margin: 0px;
+        }
+
+        .stats-header {
+          font-size: 32px;
+        }
+      }
+    }
+  }
 }
