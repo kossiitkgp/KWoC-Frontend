@@ -24,7 +24,7 @@ export default function Form(props) {
     e.preventDefault();
     disableSubmit(true)
 
-    const URL = "http://localhost:5000/student/form"
+    const URL = "https://kwoc.metamehta.me/student/form"
     const data = {
       'username': username,
       'name': name,
@@ -33,11 +33,12 @@ export default function Form(props) {
      }
 
      console.log("data is ",JSON.stringify(data))
-    
-    fetch(URL, {
+     console.log("token is ", localStorage.getItem('student_jwt'))
+
+     fetch(URL, {
       method: 'POST',
       headers: {
-        'Bearer': localStorage.getItem('student_jwt')
+        Bearer: localStorage.getItem('student_jwt')
       },
       data: JSON.stringify(data)
     })

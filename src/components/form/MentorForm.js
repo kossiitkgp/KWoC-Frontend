@@ -28,16 +28,21 @@ export default function Form(props) {
   function handleSubmit(e) {
     e.preventDefault();
     disableSubmit(true)
-    const URL = "http://localhost:5000/form/student"
+    const URL = "https://kwoc.metamehta.me/mentor/form"
     const data = {
       'username': username,
       'name': name,
       'email': email,
-      'jwt': localStorage.getItem('mentor_jwt')
     }
     
+    console.log("data is ",JSON.stringify(data))
+     console.log("token is ", localStorage.getItem('mentor_jwt'))
+
     fetch(URL, {
       method: 'POST',
+      headers: {
+        Bearer: localStorage.getItem('mentor_jwt')
+      },
       data: JSON.stringify(data)
     })
     .then(res => res.json())

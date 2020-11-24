@@ -7,20 +7,22 @@ export default function MentorOAuth(props){
         const code = params.get('code')
         const state = params.get('state')
         console.log("Send this to backend ", code)
-        const URL = "http://localhost:5000/oauth"
+        const URL = "https://kwoc.metamehta.me/oauth"
         const data = {
             "code": code,
             "state": state
         }
 
+        console.log("data is ",data)
         fetch(URL, {
             method: 'POST',
             body: JSON.stringify(data)
         })
         .then(res => res.json())
         .then(res => {
-            console.log("res is ", res['isNewUser'])
-            console.log("res is ", res['isNewUser'] == false)
+            console.log("Res is ", res)
+            console.log("res.isNewUser is ", res['isNewUser'])
+            console.log("res.isNewuser == false is ", res['isNewUser'] == false)
 
             //storing the respective JWT and username in localStorage
             // and if a old user, redirecting them to their dashboards

@@ -162,7 +162,7 @@ export default function Form(props) {
     fetch(URL, {
       method: 'POST',
       headers: {
-        'Bearer': localStorage.getItem('mentor_jwt')
+        Bearer: localStorage.getItem('mentor_jwt')
       },
       data: JSON.stringify(data)
     })
