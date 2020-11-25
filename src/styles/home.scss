@@ -1,30 +1,31 @@
-@import 'index.scss';
+@import "index.scss";
 
 .particles {
-  position: absolute !important;
-  width: 100%;
-  height: 100%;
+	position: absolute !important;
+	width: 100%;
+	height: 100%;
 }
 
 .hero {
-  #hero {
-    color: $primary-text-white;
-    text-align: center;
-  }
+	#hero {
+		color: $primary-text-white;
+		text-align: center;
+		margin: 0;
+	}
 
-  .button {
-    background-color: $primary-background-black;
-    border-color: $primary-background-black;
-    color: $primary-text-white;
-  }
+	.button {
+		background-color: $primary-background-black;
+		border-color: $primary-background-black;
+		color: $primary-text-white;
+	}
 }
 
 .container p {
-  font-family: Route159;
+	font-family: Route159;
 }
 .container h1 {
-  font-family: Vegur;
+	font-family: Vegur;
 }
 .tags {
-  height: 50vh;
+	height: 50vh;
 }

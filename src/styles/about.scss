@@ -1,26 +1,40 @@
-@import 'index.scss';
+@import "index.scss";
 
 .about {
-  .container {
-    h1 {
-      font-size: 40px;
-      align-items: center;
-    }
-    display: grid;
-    place-items: center;
-    p {
-      font-size: 17px;
-    }
-  }
+	.container {
+		h1 {
+			font-size: 40px;
+			align-items: center;
+		}
+		display: grid;
+		place-items: center;
+		p {
+			font-size: 17px;
+		}
+	}
 }
 
 .tags {
-  .container {
-    h1 {
-      font-size: 40px;
-      align-items: center;
-    }
-    max-height: 100vh;
-    margin-bottom: 20px;
-  }
+	.container {
+		h1 {
+			font-size: 40px;
+			align-items: center;
+		}
+		max-height: 100vh;
+		margin-bottom: 20px;
+	}
+}
+.stats {
+	.container {
+		h1 {
+			font-size: 40px;
+			text-align: center;
+		}
+		.columns {
+			padding: 20px;
+			.column {
+				padding-left: 10%;
+			}
+		}
+	}
 }
