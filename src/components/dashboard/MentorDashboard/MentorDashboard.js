@@ -4,22 +4,30 @@ import './MentorDashboard.scss';
 import Navbar from '../../Navbar';
 import Footer from '../../Footer';
 
-export default function MentorDashboard() {
+function countDaysLeft(date, mon, year) {
+  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  const secondDate = new Date();
+  const firstDate = new Date(year, mon - 1, date);
+  const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+  return diffDays;
+}
 
+export default function MentorDashboard() {
   /*
   set fullName -> ''
   projects -> []
   once cors issue is fixed by shubham mishra
   */
-  const [fullName, setFullName]  = useState('')
-  const [projects, setProjects] = useState([])
+  const [fullName, setFullName] = useState('');
+  const [projects, setProjects] = useState([]);
 
- const announcements= [
-   {
-     'date': 'November 28, 2020',
-     'content': 'Please register your projects, registrations close on December 6, 2020'
-   }
-  ]
+  const announcements = [
+    {
+      date: 'November 28, 2020',
+      content:
+        'Please register your projects, registrations close on December 6, 2020',
+    },
+  ];
 
   const resources = [
     {
@@ -44,8 +52,7 @@ export default function MentorDashboard() {
       message: 'What being a Google Summer of Code mentor taught me?',
       url:
         'https://hackernoon.com/what-being-a-google-summer-of-code-mentor-taught-me-8c97aad503a5',
-      avatar:
-        'https://hackernoon.com/avatars/pwtNTVrD7BPYArwg776n1wGXP193.png',
+      avatar: 'https://hackernoon.com/avatars/pwtNTVrD7BPYArwg776n1wGXP193.png',
     },
     {
       message: 'Official GSoC Mentoring Guide',
@@ -57,27 +64,27 @@ export default function MentorDashboard() {
       url: 'https://www.bwplotka.dev/2020/how-to-became-oss-maintainer/',
       avatar: 'https://www.bwplotka.dev/images/profile.jpg',
     },
-  ]
+  ];
   useEffect(() => {
     const URL = `${BACKEND_URL}/mentor/dashboard`;
     const data = {
       username: localStorage.getItem('mentor_username'),
     };
-    console.log("data is ", data)
+    console.log('data is ', data);
     fetch(URL, {
-        method: 'POST',
-        body: JSON.stringify(data)
+      method: 'POST',
+      body: JSON.stringify(data),
     })
-    .then(res => res.json())
-    .then(res => {
-        console.log("res is  ", res)
-        setFullName(res.name)
-        setProjects(res.projects)
-    })
-    .catch(err => {
-     console.log('err is ',err)    
-     alert('Server Error, Please try again')    
-    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('res is  ', res);
+        setFullName(res.name);
+        setProjects(res.projects);
+      })
+      .catch((err) => {
+        console.log('err is ', err);
+        alert('Server Error, Please try again');
+      });
   }, []);
 
   // sample data kept for future reference
@@ -195,7 +202,9 @@ export default function MentorDashboard() {
       <div className='intro-card'>
         <div className='avatar grow-card'>
           <img
-            src={`https://github.com/${localStorage.getItem('mentor_username')}.png`}
+            src={`https://github.com/${localStorage.getItem(
+              'mentor_username'
+            )}.png`}
             id='avatar-img'
           ></img>
           <br />
@@ -229,7 +238,6 @@ export default function MentorDashboard() {
           */}
         </div>
       </div>
-
       <div className='projects'>
         <div className='project-header'>
           <h1>Projects</h1>
@@ -274,7 +282,9 @@ export default function MentorDashboard() {
                 <a href='/form/project'>
                   <button className='add-project-button '>
                     <p className='plus-sign'>+</p>
-                    <p className='text-add-project' href='/form/project'>Add Projects</p>
+                    <p className='text-add-project' href='/form/project'>
+                      Add Projects
+                    </p>
                   </button>
                 </a>
               </div>
@@ -282,8 +292,7 @@ export default function MentorDashboard() {
           )}
         </div>
       </div>
-
-      {/* <div className='students'>
+      {/*<div className='students'>
         <div className='student-header'>
           <h1>Students</h1>
         </div>
@@ -323,9 +332,9 @@ export default function MentorDashboard() {
                 <p>You don't have a student working on a project</p>
               </div>
               <div className='add-project-button-div'>
-                {/**
+                
                 Once we have a slack channel, add in the invite/link to the slack channel
-                */}
+                
                 <a href='#'>
                   <button className='add-project-button '>
                     <p className='plus-sign'>+</p>
@@ -336,7 +345,8 @@ export default function MentorDashboard() {
             </div>
           )}
         </div>
-      </div> */}
+      </div>
+      */}
 
       <section className='resource-card'>
         <div className='resource-header'>
@@ -375,7 +385,6 @@ export default function MentorDashboard() {
           </tbody>
         </table>
       </section>
-
       <div className='announcements'>
         <h1>Announcements</h1>
 
@@ -388,7 +397,6 @@ export default function MentorDashboard() {
           );
         })}
       </div>
-
       <Footer />
     </div>
   );
