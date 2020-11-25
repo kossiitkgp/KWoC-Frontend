@@ -138,7 +138,7 @@ export default function MentorDashboard() {
       */}
       <Navbar className='is-black' />
       <div className='intro-card'>
-        <div className='avatar'>
+        <div className='avatar grow-card'>
           <img
             src={`https://github.com/${data.github}.png`}
             id='avatar-img'
@@ -156,15 +156,15 @@ export default function MentorDashboard() {
             <h1>Mentor Dashboard</h1>
           </div>
           <div className='mentor-stats-content'>
-            <div className='card-component mstats'>
+            <div className='card-component mstats grow-card'>
               <p className='font-mentor-header'>Projects</p>
               <p className='font-mentor-stats'>{data.projects.length}</p>
             </div>
-            <div className='card-component mstats students-mstats-card'>
+            <div className='card-component mstats students-mstats-card grow-card'>
               <p className='font-mentor-header'>Students</p>
               <p className='font-mentor-stats'>{data.student.length}</p>
             </div>
-            <div className='card-component mstats'>
+            <div className='card-component mstats grow-card'>
               <p className='font-mentor-header'>Before Midevals</p>
               <p className='font-mentor-stats'>12</p>
             </div>
@@ -183,7 +183,7 @@ export default function MentorDashboard() {
         <div className='projectcard'>
           {data.projects.map((projectName, index) => {
             return (
-              <div className='project-c card-component'>
+              <div className='project-c card-component grow-card'>
                 <div className='anchor-align'>
                   <p className='project-name'>{projectName}</p>
                 </div>
@@ -217,7 +217,7 @@ export default function MentorDashboard() {
         <div className='student-card'>
           {data.student.map((studentName, index) => {
             return (
-              <div className='student-c card-component'>
+              <div className='student-c card-component grow-card'>
                 <div className='student-card-header'>
                   <img
                     src={`https://github.com/${studentName}.png`}
@@ -286,7 +286,7 @@ export default function MentorDashboard() {
 
         {data.announcement.map((value, index) => {
           return (
-            <div className='anc-card card-component'>
+            <div className='anc-card card-component grow-card'>
               <h1>12th December</h1>
               <p>{value}</p>
             </div>
