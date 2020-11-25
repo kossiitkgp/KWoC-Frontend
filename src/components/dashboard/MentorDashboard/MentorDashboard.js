@@ -270,7 +270,9 @@ export default function MentorDashboard() {
                     </a>
                   </td>
                   <td>
-                    <p>{message}</p>
+                    <a href={url}>
+                      <p>{message}</p>
+                    </a>
                   </td>
                 </tr>
               );
