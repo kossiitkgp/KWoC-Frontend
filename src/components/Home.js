@@ -12,7 +12,7 @@ import "../styles/why.scss";
 
 import Particles from "react-particles-js";
 import group from "../images/grp.png";
-import web from "../images/web4.png";
+import web from "../images/web5.png";
 import mentor from "../images/mentor.png";
 
 export default function Home() {
