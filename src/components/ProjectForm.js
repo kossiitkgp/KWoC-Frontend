@@ -52,7 +52,7 @@ async function checkRepo(repolink) {
       returnMsg['message'] = `Repo has only ${numOfIssues} issues, Please maintain atleast 2 issues. `
   } 
   catch(err) {
-    returnMsg['message'] = `Please add a valid Github link repo with atleast 4 open issues. `
+    returnMsg['message'] = `The link should be in format of https://github.com/USERNAME/REPO. Please add a valid Github link repo with atleast 4 open issues. `
   }
 
   // check for a minimum README
@@ -61,7 +61,7 @@ async function checkRepo(repolink) {
     const res = await axios.get(readmeURL, headers)
     console.log('size is ',res.data.size)
     if(res.data.size < 100)
-    returnMsg['message'] += `Please add a more descriptive modified README of atleast 50 characters.`  
+    returnMsg['message'] += `Please add a more descriptive modified README. It is too short`  
   }
   catch(err) {
     returnMsg['message'] += `Please add a descriptive README.md`
@@ -90,11 +90,18 @@ export default function Form(props) {
   const [errInLink, setErrInLink] = useState('')
 
   useEffect(() => {
+
+    if(localStorage.getItem('mentor_jwt') === null || localStorage.getItem('mentor_jwt') === undefined)
+      props.history.push('/')
+
+
+
+    // fetch all the projects of mentor
     const headers = {
       "username": "adc3de3ce14dcf52af0afc0a40e6c3fee5d086e6",
     }
-    // const username = localStorage.getItem('mentor_username')
-    const username = 'rakaar' // uncomment rakaar when testing finally
+    const username = localStorage.getItem('mentor_username')
+    // const username = 'rakaar' // uncomment rakaar when testing finally
     axios
     .get(`https://api.github.com/users/${username}/repos`, headers)
     .then(res => {
@@ -136,7 +143,7 @@ export default function Form(props) {
     // checking if communication channel is valid or not
     const isLinkValid =  checkLink(channelLink)
     if(!isLinkValid) {
-      setErrInLink('Please add a valid URL so that mentees can join.')
+      setErrInLink('Please add a valid URL as an invite link for your communication channel')
       disableSubmit(false)
     }
 
@@ -147,9 +154,10 @@ export default function Form(props) {
      
     
     
-    const URL = `${BACKEND_URL}/project/add`
+    const URL = "https://kwoc.metamehta.me/project/add"
      const data = {
-      'username': localStorage.getItem('mentor_username'), 
+      'username': localStorage.getItem('mentor_username'),
+      // 'username': 'rakaar', 
       'name': name,
       'desc': desc,
       'repoLink': repolink,
@@ -157,15 +165,18 @@ export default function Form(props) {
       'tags': JSON.stringify(tags)
     }
 
-    console.log('data to be sent ',data)
+    console.log('data to be sent ',JSON.stringify(data))
+    console.log('mentor jwt is ',localStorage.getItem('mentor_jwt'))
     // make an axios request to BACKEND here
-    fetch(URL, {
+    fetch(URL, 
+      {
       method: 'POST',
       headers: {
         Bearer: localStorage.getItem('mentor_jwt')
       },
       data: JSON.stringify(data)
     })
+    .then(res => res.json())
     .then(res => {
       if(res.status === 200)
         alert("Project Submitted Successfully")
