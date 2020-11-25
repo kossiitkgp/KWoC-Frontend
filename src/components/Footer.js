@@ -12,18 +12,8 @@ export default function Footer() {
               <h1>Kharagpur Winter of Code</h1>
               <h2>With &#10084; by KOSS</h2>
             </div>
-            <div className='column'></div>
             <div className='column'>
-              <a>Manuals</a>
-              <a href='https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCStudentManual.pdf'>
-                Student Manual
-              </a>
-              <a href='https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCMentorManual.pdf'>
-                Mentor Manual
-              </a>
-            </div>
-            <div className='column'>
-              <a href='/#tline'>Timeline</a>
+              <a href='#tline'>Timeline</a>
               <a href='https://www.facebook.com/groups/kwoc2016'>
                 Social Groups
               </a>

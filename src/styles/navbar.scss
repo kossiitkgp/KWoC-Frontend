@@ -25,9 +25,8 @@ button {
   color: $secondary-text-light-grey;
 }
 
-#functional-buttons,
-#darkmode {
-  background: $primary-background-grey;
+#functional-buttons {
+  background: rgba(#b57aff, 0.75);
   // color: white;
   margin: 1rem;
   // margin-left: 2rem;
@@ -52,7 +51,7 @@ button {
   // align-content: center;
   right: 0;
 
-  background: $primary-background-grey;
+  background: rgba(#b57aff, 0.75);
   margin: 1rem;
   // margin-left: 2rem;
   // align-content: center;
@@ -63,7 +62,7 @@ button {
   }
 
   .navbar-dropdown {
-    background-color: $secondary-background-grey;
+    background-color: rgba(#b57aff, 0.5);
     border: $secondary-background-grey;
 
     .navbar-item {
