@@ -4,27 +4,24 @@ import { Link } from 'react-router-dom';
 import '../styles/navbar.scss';
 
 class Navbar extends Component {
-  
   state = {
     burgermenuIsVisible: false,
-    scrollClass: 'large',
     is_mentor_loggedin: false,
-    is_student_loggedin: false
+    is_student_loggedin: false,
   };
 
   componentDidMount() {
-    window.addEventListener('scroll', this.getWindowHeight);
-    this.setState({ 
-      is_mentor_loggedin:localStorage.getItem('mentor_jwt') === null || localStorage.getItem('student_jwt') === undefined
-    })
+    this.setState({
+      is_mentor_loggedin:
+        localStorage.getItem('mentor_jwt') === null ||
+        localStorage.getItem('student_jwt') === undefined,
+    });
 
     this.setState({
-      is_student_loggedin: localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined
-    })
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.getWindowHeight);
+      is_student_loggedin:
+        localStorage.getItem('student_jwt') === null ||
+        localStorage.getItem('student_jwt') === undefined,
+    });
   }
 
   handleClick = (e) => {
@@ -62,16 +59,16 @@ class Navbar extends Component {
   };
 
   logoutMentor = () => {
-    localStorage.removeItem('mentor_jwt')
-    localStorage.removeItem('mentor_username')
-    window.location.pathname = ''
-  }
+    localStorage.removeItem('mentor_jwt');
+    localStorage.removeItem('mentor_username');
+    window.location.pathname = '';
+  };
 
   logoutStudent = () => {
-    localStorage.removeItem('student_jwt')
-    localStorage.removeItem('student_username')
-    window.location.pathname = ''
-  }
+    localStorage.removeItem('student_jwt');
+    localStorage.removeItem('student_username');
+    window.location.pathname = '';
+  };
 
   render() {
     const clickClass = this.state.burgermenuIsVisible ? 'is-active' : '';
@@ -159,63 +156,59 @@ class Navbar extends Component {
                 >
                   <a className='navbar-link'>Login</a>
                   <div className='navbar-dropdown'>
-                    {
-                     this.state.is_mentor_loggedin === true
-                      ?
+                    {this.state.is_mentor_loggedin === true ? (
                       <a
-                      className='navbar-item'
-                      id='mentor-login'
-                      href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor'
-                    >
-                     Mentor Login
-                    </a>
-                    : 
-                    <React.Fragment>
-                    <a
-                      className='navbar-item'
-                      id='mentor-login'
-                      href='dashboard/mentor'
+                        className='navbar-item'
+                        id='mentor-login'
+                        href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor'
                       >
-                        Mentor Dashboard
-                    </a>
-                    <a
-                      className='navbar-item'
-                      id='mentor-login'
-                      onClick={this.logoutMentor}
-                      >
-                        Logout(Mentor)
-                    </a>
-                    </React.Fragment>
-                  }
-                  {
-                     this.state.is_student_loggedin === true
-                      ?
+                        Mentor Login
+                      </a>
+                    ) : (
+                      <React.Fragment>
+                        <a
+                          className='navbar-item'
+                          id='mentor-login'
+                          href='dashboard/mentor'
+                        >
+                          Mentor Dashboard
+                        </a>
+                        <a
+                          className='navbar-item'
+                          id='mentor-login'
+                          onClick={this.logoutMentor}
+                        >
+                          Logout(Mentor)
+                        </a>
+                      </React.Fragment>
+                    )}
+                    {this.state.is_student_loggedin === true ? (
                       <a
-                      className='navbar-item'
-                      id='mentee-login'
-                      href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student'
-                    >
-                     Student Login
-                    </a>
-                    : 
-                    <React.Fragment>
-                    <a
-                      className='navbar-item'
-                      id='mentee-login'
-                      href='dashboard/student'
+                        className='navbar-item'
+                        id='mentee-login'
+                        href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student'
                       >
-                        Student Dashboard
-                    </a>
-                    <a
-                      className='navbar-item'
-                      id='mentor-login'
-                      onClick={this.logoutStudent}
-                      >
-                        Logout(Student)
-                    </a>
-                    </React.Fragment>
-                  }
-                  
+                        Student Login
+                      </a>
+                    ) : (
+                      <React.Fragment>
+                        <a
+                          className='navbar-item'
+                          id='mentee-login'
+                          href='dashboard/student'
+                        >
+                          Student Dashboard
+                        </a>
+                        <a
+                          className='navbar-item'
+                          id='mentor-login'
+                          onClick={this.logoutStudent}
+                        >
+                          Logout(Student)
+                        </a>
+                      </React.Fragment>
+                    )}
+
                     {/* <a
                       className='navbar-item'
                       id='mentee-login'
