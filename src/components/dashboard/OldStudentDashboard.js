@@ -4,42 +4,41 @@ import Footer from '../Footer';
 import { BACKEND_URL } from '../../constants/constants';
 import './StudentDashboard.scss';
 import StudentAnnouncements from './StudentAnnouncements';
+import numFormatter from '../helper';
 
 export default function Dashboard() {
+  const [fullName, setFullName] = useState('');
+  const [collegeName, setCollegeName] = useState('');
 
-  const [fullName, setFullName] = useState('')
-  const [collegeName, setCollegeName] = useState('')
- 
   useEffect(() => {
     const URL = `${BACKEND_URL}/student/dashboard`;
     const data = {
       username: localStorage.getItem('student_username'),
     };
     fetch(URL, {
-          method: 'POST',
-          body: JSON.stringify(data)
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setFullName(res.name);
+        setCollegeName(res.college);
       })
-      .then(res => res.json())
-      .then(res => {
-        setFullName(res.name)
-        setCollegeName(res.college)
-      })
-      .catch(err => {
-      console.log('err is ',err)    
-      alert('Server Error, Please try again')    
-      })
+      .catch((err) => {
+        console.log('err is ', err);
+        alert('Server Error, Please try again');
+      });
   }, []);
 
-
-  const announcements= [
+  const announcements = [
     {
-      'date': '28Nov, 2020',
-      'content': 'Coding Period begins from 6th of December! Till then have a look at the resources in the dashboard'
-    }
-   ]
+      date: '28Nov, 2020',
+      content:
+        'Coding Period begins from 6th of December! Till then have a look at the resources in the dashboard',
+    },
+  ];
 
-
-   const resources= [
+  const resources = [
     {
       message: 'Writing Kickass READMEs',
       url: 'http://www.bauva.com/blog/Writing-Kickass-READMEs/',
@@ -71,7 +70,7 @@ export default function Dashboard() {
       url: 'https://guides.github.com/activities/hello-world/',
       avatar: 'https://guides.github.com/favicon.ico',
     },
-  ]
+  ];
   // dummy data for test purpose
   // let data = {
   //   name: 'Aditya Vikram Singh',
@@ -117,7 +116,7 @@ export default function Dashboard() {
   //     'Make sure you have submitted the mideval feedback for the student!',
   //     'Hi \n, the end evals have been finished!',
   //   ]
-    
+
   // };
   return (
     <div className='dashboard'>
@@ -126,7 +125,9 @@ export default function Dashboard() {
       <div className='intro container'>
         <div className='data-panel'>
           <h1 className='title'>Dashboard</h1>
-          <h3>Stats will be updated in the Dashboard once Coding Period beings</h3>
+          <h3>
+            Stats will be updated in the Dashboard once Coding Period beings
+          </h3>
 
           <div className='data-cards '>
             <div className='data-card grow-card'>
@@ -145,7 +146,12 @@ export default function Dashboard() {
         </div>
 
         <div className='profile-panel grow-card'>
-          <img src={`https://github.com/${localStorage.getItem('student_username')}.png`} alt='' />
+          <img
+            src={`https://github.com/${localStorage.getItem(
+              'student_username'
+            )}.png`}
+            alt=''
+          />
           <br />
           <b>{fullName}</b>
           <p>{localStorage.getItem('student_username')}</p>
@@ -165,30 +171,53 @@ export default function Dashboard() {
       {/* <div className='container projects'>
         <h1>Projects</h1>
         <div className='project-card-list'>
-          {data.projects.map((projectName) => {
-            return (
-              <div className='project-card grow-card'>
-                <p>{projectName}</p>
-                <div className='project-buttons'>
-                  <a
-                    href='http://stackoverflow.com'
-                    className='project-button-small'
-                  >
-                    <img src='/github.svg' className='github-svg'></img>
-                  </a>
-                  <a
-                    href='https://www.google.com'
-                    className='project-button-small'
-                  >
-                    Issues
-                  </a>
-                  <a href='https://www.fb.com' className='project-button-small'>
-                    PRs
-                  </a>
+          {data.projects !== undefined ? (
+            data.projects.map((projectName) => {
+              return (
+                <div className='project-card grow-card'>
+                  <p>{projectName}</p>
+                  <div className='project-buttons'>
+                    <a
+                      href={`https://www.github.com/${projectName}`}
+                      className='project-button-small'
+                    >
+                      <img
+                        src='/github.svg'
+                        className='github-svg'
+                        alt='gh'
+                      ></img>
+                    </a>
+                    <a
+                      href={`https://www.github.com/${projectName}/issues`}
+                      className='project-button-small'
+                    >
+                      Issues
+                    </a>
+                    <a
+                      href={`https://www.github.com/${projectName}/pulls`}
+                      className='project-button-small'
+                    >
+                      PRs
+                    </a>
+                  </div>
                 </div>
+              );
+            })
+          ) : (
+            <div className='add-project-card'>
+              <div className='header-add-project-card'>
+                <p>You haven't solved issue from a project yet</p>
               </div>
-            );
-          })}
+              <div className='add-project-button-div'>
+                <a href='/projects'>
+                  <button className='add-project-button '>
+                    <p className='plus-sign'>+</p>
+                    <p className='text-add-project'>Choose Project</p>
+                  </button>
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </div> */}
 
@@ -198,7 +227,7 @@ export default function Dashboard() {
           <thead>
             <th>Hash</th>
             <th>Project</th>
-            <th>Commit Messsage</th>
+            <th>Commit Message</th>
           </thead>
           {data.commits.commits.map((commit) => {
             return (
@@ -209,7 +238,7 @@ export default function Dashboard() {
                   </a>
                 </td>
                 <td>{commit.project}</td>
-                <td>{commit.messsage}</td>
+                <td>{commit.message}</td>
               </tr>
             );
           })}

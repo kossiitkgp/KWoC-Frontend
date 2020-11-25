@@ -288,31 +288,53 @@ export default function MentorDashboard() {
           <h1>Students</h1>
         </div>
         <div className='student-card'>
-          {data.student.map((studentName, index) => {
-            return (
-              <div className='student-c card-component grow-card'>
-                <div className='student-card-header'>
-                  <img
-                    src={`https://github.com/${studentName}.png`}
-                    className='avatar-students-card'
-                  ></img>
-                  <p className='student-name'>{studentName}</p>
-                </div>
+          {data.student !== undefined ? (
+            data.student.map((studentName, index) => {
+              return (
+                <div className='student-c card-component grow-card'>
+                  <div className='student-card-header'>
+                    <img
+                      src={`https://github.com/${studentName}.png`}
+                      className='avatar-students-card'
+                    ></img>
+                    <p className='student-name'>{studentName}</p>
+                  </div>
 
-                <div className='student-button'>
-                  <a
-                    className='student-profile student-button-small'
-                    href={`https://github.com/${studentName}`}
-                  >
-                    <img src='/github.svg' className='github-svg-student'></img>
-                  </a>
-                  <a className='fill-evals student-button-small' href='#'>
-                    Fill Evals
-                  </a>
+                  <div className='student-button'>
+                    <a
+                      className='student-profile student-button-small'
+                      href={`https://github.com/${studentName}`}
+                    >
+                      <img
+                        src='/github.svg'
+                        className='github-svg-student'
+                      ></img>
+                    </a>
+                    <a className='fill-evals student-button-small' href='#'>
+                      Fill Evals
+                    </a>
+                  </div>
                 </div>
+              );
+            })
+          ) : (
+            <div className='add-project-card'>
+              <div className='header-add-project-card'>
+                <p>You don't have a student working on a project</p>
               </div>
-            );
-          })}
+              <div className='add-project-button-div'>
+                {/**
+                Once we have a slack channel, add in the invite/link to the slack channel
+                */}
+                <a href='#'>
+                  <button className='add-project-button '>
+                    <p className='plus-sign'>+</p>
+                    <p className='text-add-project'>Invite Students</p>
+                  </button>
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </div> */}
 
