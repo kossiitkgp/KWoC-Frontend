@@ -73,6 +73,39 @@ export default function Dashboard() {
       'Make sure you have submitted the mideval feedback for the student!',
       'Hi \n, the end evals have been finished!',
     ],
+    resources: [
+      {
+        message: 'Writing Kickass READMEs',
+        url: 'http://www.bauva.com/blog/Writing-Kickass-READMEs/',
+        avatar: 'http://www.bauva.com/images/bio-photo.jpg',
+      },
+      {
+        message: 'Everything you need to ace KWoC',
+        url:
+          'https://medium.com/kharagpur-open-source-society/an-informal-introduction-to-kwoc-62fc5e686f79',
+        avatar: 'https://miro.medium.com/max/66/1*S7YHjDmgGnBEJcE116qQ7w.jpeg',
+      },
+      {
+        message: 'How to choose a Project for KWoC',
+        url: 'https://telegra.ph/How-to-choose-a-Project-for-KWoC-12-01',
+        avatar: 'https://telegra.ph/favicon.ico',
+      },
+      {
+        message: 'Codeacademy: Learn Git',
+        url: 'https://www.codecademy.com/learn/learn-git',
+        avatar: 'https://www.codecademy.com/favicon.ico',
+      },
+      {
+        message: 'Git Flight Rules: Cookbook for Git',
+        url: 'https://github.com/k88hudson/git-flight-rules',
+        avatar: 'https://github.com/k88hudson.png',
+      },
+      {
+        message: 'GitHub: Hello World Tutorial',
+        url: 'https://guides.github.com/activities/hello-world/',
+        avatar: 'https://guides.github.com/favicon.ico',
+      },
+    ],
   };
   return (
     <div className='dashboard'>
@@ -170,6 +203,45 @@ export default function Dashboard() {
           })}
         </table>
       </section>
+
+      <section className='resource-card'>
+        <div className='resource-header'>
+          <b>Resources</b>
+        </div>
+
+        <table className='table is-bordered is-striped'>
+          <th>Resource Link</th>
+          <th>Details</th>
+
+          <tbody>
+            {data.resources.map((resourceCard) => {
+              const message = resourceCard.message;
+              const url = resourceCard.url;
+              const avatar = resourceCard.avatar;
+
+              return (
+                <tr>
+                  <td>
+                    <a href={url}>
+                      <img
+                        src={avatar}
+                        className='avatar-resource'
+                        alt='link'
+                      ></img>
+                    </a>
+                  </td>
+                  <td>
+                    <a href={url}>
+                      <p>{message}</p>
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
+
       <div className='announcements'>
         <h1>Announcements</h1>
 

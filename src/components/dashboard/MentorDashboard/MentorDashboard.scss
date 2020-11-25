@@ -405,3 +405,64 @@ $button-color: black;
   flex-grow: 1;
   display: flex;
 }
+
+.resource-card {
+  padding: 2% 3% 2% 3%;
+
+  .resource-header {
+    b {
+      font-size: 32px;
+      font-family: Vegur;
+      color: #5f6e7d;
+    }
+  }
+
+  .avatar-resource {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: 5%;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .table {
+    border-collapse: collapse;
+    font-size: 20px;
+    width: 100%;
+
+    th {
+      color: #5f6e7d;
+      border: none;
+      padding-top: 2%;
+      padding-bottom: 2%;
+    }
+    td {
+      border: none;
+      color: #5f6e7d;
+      align-items: center;
+
+      .resource-link {
+        margin: 2% 0 2% 0;
+      }
+
+      p {
+        margin: 2% 0 2% 0;
+      }
+    }
+    td:nth-child(3) {
+      color: #5f6e7d;
+    }
+    tr {
+      align-items: center;
+    }
+    tr:hover {
+      background: rgba(#a0a3f4, 0.2);
+      td {
+        border: none;
+        color: black;
+      }
+    }
+  }
+}
