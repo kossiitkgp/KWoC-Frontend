@@ -95,9 +95,9 @@ export default function MentorDashboard() {
     })
     .then(res => res.json())
     .then(res => {
-        console.log("res.data ", res.data)
-        setFullName(res.data.name)
-        setProjects(res.data.projects)
+        console.log("res is  ", res)
+        setFullName(res.name)
+        setProjects(res.projects)
     })
     .catch(err => {
      console.log('err is ',err)    

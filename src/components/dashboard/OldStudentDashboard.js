@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { BACKEND_URL } from '../../constants/constants';
@@ -6,107 +6,119 @@ import './StudentDashboard.scss';
 import StudentAnnouncements from './StudentAnnouncements';
 
 export default function Dashboard() {
+
+  const [fullName, setFullName] = useState('Aditya vikram singh')
+  const [collegeName, setCollegeName] = useState('IIT KGP')
+ 
   useEffect(() => {
-    const URL = `${BACKEND_URL}/dashboard/student`;
+    const URL = `${BACKEND_URL}/student/dashboard`;
     const data = {
       username: localStorage.getItem('student_username'),
-      jwt: localStorage.getItem('student_jwt'),
     };
-    // using the jwt and username to fetch details for Dashboard
-    // fetch(URL, {
-    //     method: 'POST',
-    //     data: JSON.stringify(data)
-    // })
-    // .then(res => {
-    //     console.log("res.data ", res.data)
-    // })
-    // .catch(err => {
-    //     if(err.response.status === 400)
-    //         alert("Invalid Request")
-    //     else
-    //         alert("Server Error, Please try again")
-    // })
+    fetch(URL, {
+          method: 'POST',
+          data: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(res => {
+        setFullName(res.name)
+        setCollegeName(res.college)
+      })
+      .catch(err => {
+      console.log('err is ',err)    
+      alert('Server Error, Please try again')    
+      })
   }, []);
 
+
+  const announcements= [
+    {
+      'date': '28Nov, 2020',
+      'content': 'Coding Period begins from 6th of December! Till then have a look at the resources in the dashboard'
+    }
+   ]
+
+
+   const resources= [
+    {
+      message: 'Writing Kickass READMEs',
+      url: 'http://www.bauva.com/blog/Writing-Kickass-READMEs/',
+      avatar: 'http://www.bauva.com/images/bio-photo.jpg',
+    },
+    {
+      message: 'Everything you need to ace KWoC',
+      url:
+        'https://medium.com/kharagpur-open-source-society/an-informal-introduction-to-kwoc-62fc5e686f79',
+      avatar: 'https://miro.medium.com/max/66/1*S7YHjDmgGnBEJcE116qQ7w.jpeg',
+    },
+    {
+      message: 'How to choose a Project for KWoC',
+      url: 'https://telegra.ph/How-to-choose-a-Project-for-KWoC-12-01',
+      avatar: 'https://telegra.ph/favicon.ico',
+    },
+    {
+      message: 'Codeacademy: Learn Git',
+      url: 'https://www.codecademy.com/learn/learn-git',
+      avatar: 'https://www.codecademy.com/favicon.ico',
+    },
+    {
+      message: 'Git Flight Rules: Cookbook for Git',
+      url: 'https://github.com/k88hudson/git-flight-rules',
+      avatar: 'https://github.com/k88hudson.png',
+    },
+    {
+      message: 'GitHub: Hello World Tutorial',
+      url: 'https://guides.github.com/activities/hello-world/',
+      avatar: 'https://guides.github.com/favicon.ico',
+    },
+  ]
   // dummy data for test purpose
-  let data = {
-    name: 'Aditya Vikram Singh',
-    github: 'xypnox',
-    college: 'IIT Kharagpur',
-    commits: {
-      count: 235,
-      commits: [
-        {
-          hash: '234rrt',
-          project: 'xypnox/xyplot',
-          messsage: 'Compress residual images for faster loading speed',
-        },
-        {
-          hash: 'aw3548',
-          project: 'kossiitkgp/darkHorse',
-          messsage: 'Fix: Typo and spacing',
-        },
-        {
-          hash: 'hhstb32',
-          project: 'xypnox/todxpy',
-          messsage: 'Introduce new sorting for todos',
-        },
-        {
-          hash: 'y67eb6',
-          project: 'kossiitkgp/KWoC',
-          messsage: 'Replace navbar with footer for fun',
-        },
-      ],
-    },
-    pullRequests: {
-      count: 12,
-      open: 5,
-      closed: 6,
-    },
-    linesOfCode: {
-      count: '126k',
-    },
-    languages: ['Python', 'Javascript', 'HTML', 'CSS'],
-    projects: ['darkHorse', 'todxpy', 'KWoC'],
-    announcement: [
-      'Hi the KWOC has just started!',
-      'Make sure you have submitted the mideval feedback for the student!',
-      'Hi \n, the end evals have been finished!',
-    ],
-    resources: [
-      {
-        message: 'Writing Kickass READMEs',
-        url: 'http://www.bauva.com/blog/Writing-Kickass-READMEs/',
-        avatar: 'http://www.bauva.com/images/bio-photo.jpg',
-      },
-      {
-        message: 'Everything you need to ace KWoC',
-        url:
-          'https://medium.com/kharagpur-open-source-society/an-informal-introduction-to-kwoc-62fc5e686f79',
-        avatar: 'https://miro.medium.com/max/66/1*S7YHjDmgGnBEJcE116qQ7w.jpeg',
-      },
-      {
-        message: 'How to choose a Project for KWoC',
-        url: 'https://telegra.ph/How-to-choose-a-Project-for-KWoC-12-01',
-        avatar: 'https://telegra.ph/favicon.ico',
-      },
-      {
-        message: 'Codeacademy: Learn Git',
-        url: 'https://www.codecademy.com/learn/learn-git',
-        avatar: 'https://www.codecademy.com/favicon.ico',
-      },
-      {
-        message: 'Git Flight Rules: Cookbook for Git',
-        url: 'https://github.com/k88hudson/git-flight-rules',
-        avatar: 'https://github.com/k88hudson.png',
-      },
-      {
-        message: 'GitHub: Hello World Tutorial',
-        url: 'https://guides.github.com/activities/hello-world/',
-        avatar: 'https://guides.github.com/favicon.ico',
-      },
-    ],
-  };
+  // let data = {
+  //   name: 'Aditya Vikram Singh',
+  //   github: 'xypnox',
+  //   college: 'IIT Kharagpur',
+  //   commits: {
+  //     count: 235,
+  //     commits: [
+  //       {
+  //         hash: '234rrt',
+  //         project: 'xypnox/xyplot',
+  //         messsage: 'Compress residual images for faster loading speed',
+  //       },
+  //       {
+  //         hash: 'aw3548',
+  //         project: 'kossiitkgp/darkHorse',
+  //         messsage: 'Fix: Typo and spacing',
+  //       },
+  //       {
+  //         hash: 'hhstb32',
+  //         project: 'xypnox/todxpy',
+  //         messsage: 'Introduce new sorting for todos',
+  //       },
+  //       {
+  //         hash: 'y67eb6',
+  //         project: 'kossiitkgp/KWoC',
+  //         messsage: 'Replace navbar with footer for fun',
+  //       },
+  //     ],
+  //   },
+  //   pullRequests: {
+  //     count: 12,
+  //     open: 5,
+  //     closed: 6,
+  //   },
+  //   linesOfCode: {
+  //     count: '126k',
+  //   },
+  //   languages: ['Python', 'Javascript', 'HTML', 'CSS'],
+  //   projects: ['darkHorse', 'todxpy', 'KWoC'],
+  //   announcement: [
+  //     'Hi the KWOC has just started!',
+  //     'Make sure you have submitted the mideval feedback for the student!',
+  //     'Hi \n, the end evals have been finished!',
+  //   ]
+    
+  // };
   return (
     <div className='dashboard'>
       <Navbar className='is-black' />
@@ -114,30 +126,30 @@ export default function Dashboard() {
       <div className='intro container'>
         <div className='data-panel'>
           <h1 className='title'>Dashboard</h1>
-          <h2>{data.name}</h2>
+          <h3>Stats will be updated in the Dashboard once Coding Period beings</h3>
 
           <div className='data-cards '>
             <div className='data-card grow-card'>
-              <h1>{data.commits.count}</h1>
+              <h1>0</h1>
               <h2>Commits</h2>
             </div>
             <div className='data-card grow-card'>
-              <h1>{data.pullRequests.count}</h1>
+              <h1>0</h1>
               <h2>Pull Requests</h2>
             </div>
             <div className='data-card grow-card'>
-              <h1>{data.linesOfCode.count}</h1>
+              <h1>0</h1>
               <h2>Lines of Code</h2>
             </div>
           </div>
         </div>
 
         <div className='profile-panel grow-card'>
-          <img src='https://avatars2.githubusercontent.com/u/25076171' alt='' />
+          <img src={`https://github.com/${localStorage.getItem('student_username')}.png`} alt='' />
           <br />
-          <b>{data.name}</b>
-          <p>{data.github}</p>
-          <p>{data.college}</p>
+          <b>{fullName}</b>
+          <p>{localStorage.getItem('student_username')}</p>
+          <p>{collegeName}</p>
         </div>
       </div>
 
@@ -150,7 +162,7 @@ export default function Dashboard() {
         </div>
       </section> */}
 
-      <div className='container projects'>
+      {/* <div className='container projects'>
         <h1>Projects</h1>
         <div className='project-card-list'>
           {data.projects.map((projectName) => {
@@ -178,9 +190,9 @@ export default function Dashboard() {
             );
           })}
         </div>
-      </div>
+      </div> */}
 
-      <section className='container commits'>
+      {/* <section className='container commits'>
         <h1>Latest Commits</h1>
         <table>
           <thead>
@@ -202,7 +214,7 @@ export default function Dashboard() {
             );
           })}
         </table>
-      </section>
+      </section> */}
 
       <section className='resource-card'>
         <div className='resource-header'>
@@ -214,7 +226,7 @@ export default function Dashboard() {
           <th>Details</th>
 
           <tbody>
-            {data.resources.map((resourceCard) => {
+            {resources.map((resourceCard) => {
               const message = resourceCard.message;
               const url = resourceCard.url;
               const avatar = resourceCard.avatar;
@@ -245,11 +257,11 @@ export default function Dashboard() {
       <div className='announcements'>
         <h1>Announcements</h1>
 
-        {data.announcement.map((value, index) => {
+        {announcements.map((item, index) => {
           return (
             <div className='anc-card card-component grow-card'>
-              <h1>12th December</h1>
-              <p>{value}</p>
+              <h1>{item.date}</h1>
+              <p>{item.content}</p>
             </div>
           );
         })}
