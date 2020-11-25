@@ -74,7 +74,7 @@ export default function Form(props) {
 				<div className="control has-icons-left has-icons-right">
 					<input
 						className="input is-rounded "
-						type="text"
+						type="email"
 						placeholder="Email"
 						defaultValue={email}
 						onChange={(e) => setEmail(e.target.value)}

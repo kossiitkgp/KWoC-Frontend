@@ -211,7 +211,7 @@ export default function Form(props) {
         <div className='control has-icons-left has-icons-right'>
           <textarea 
           className="textarea" 
-          placeholder="Briefly 50 words about your Project"
+          placeholder="Briefly about your Project"
           onChange={e => setDesc(e.target.value)}
           />
           
