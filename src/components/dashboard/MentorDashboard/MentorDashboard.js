@@ -67,8 +67,41 @@ export default function MentorDashboard() {
     languages: ['Python', 'Javascript', 'HTML', 'CSS'],
     projects: ['darkHorse', 'todxpy', 'KWoC'],
     resources: [
-      'https://www.makeareadme.com/',
-      'https://blog.bitsrc.io/how-to-write-beautiful-and-meaningful-readme-md-for-your-next-project-897045e3f991',
+      {
+        message: 'Writing Kickass READMEs',
+        url: 'http://www.bauva.com/blog/Writing-Kickass-READMEs/',
+        avatar: 'http://www.bauva.com/images/bio-photo.jpg',
+      },
+      {
+        message: 'Make a README',
+        url: 'https://www.makeareadme.com/',
+        avatar:
+          'https://d33wubrfki0l68.cloudfront.net/ca149ad795cbdbe3a450dd7985baf0d763cc2fb6/0220f/images/owlbert.jpg',
+      },
+      {
+        message: 'How to Write Beautiful and Meaningful README.md',
+        url:
+          'https://blog.bitsrc.io/how-to-write-beautiful-and-meaningful-readme-md-for-your-next-project-897045e3f991',
+        avatar:
+          'https://miro.medium.com/fit/c/96/96/1*50FKErsxynOeSmrUZk5Bsw.jpeg',
+      },
+      {
+        message: 'What being a Google Summer of Code mentor taught me?',
+        url:
+          'https://hackernoon.com/what-being-a-google-summer-of-code-mentor-taught-me-8c97aad503a5',
+        avatar:
+          'https://hackernoon.com/avatars/pwtNTVrD7BPYArwg776n1wGXP193.png',
+      },
+      {
+        message: 'Official GSoC Mentoring Guide',
+        url: 'https://google.github.io/gsocguides/mentor/mind-the-gap',
+        avatar: 'https://google.github.io/gsocguides/images/sun-small.png',
+      },
+      {
+        message: 'OSS Maintainer and being a Mentor',
+        url: 'https://www.bwplotka.dev/2020/how-to-became-oss-maintainer/',
+        avatar: 'https://www.bwplotka.dev/images/profile.jpg',
+      },
     ],
     student: ['yashrsharma44', 'rakaar', 'orkohunter'],
     announcement: [
@@ -209,6 +242,42 @@ export default function MentorDashboard() {
           })}
         </div>
       </div>
+
+      <section className='resource-card'>
+        <div className='resource-header'>
+          <b>Resources</b>
+        </div>
+
+        <table className='table is-bordered is-striped'>
+          <th>Resource Link</th>
+          <th>Details</th>
+
+          <tbody>
+            {data.resources.map((resourceCard) => {
+              const message = resourceCard.message;
+              const url = resourceCard.url;
+              const avatar = resourceCard.avatar;
+
+              return (
+                <tr>
+                  <td>
+                    <a href={url}>
+                      <img
+                        src={avatar}
+                        className='avatar-resource'
+                        alt='link'
+                      ></img>
+                    </a>
+                  </td>
+                  <td>
+                    <p>{message}</p>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </section>
 
       <div className='announcements'>
         <h1>Announcements</h1>

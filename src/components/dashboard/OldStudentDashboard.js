@@ -210,9 +210,9 @@ export default function Dashboard() {
         </div>
 
         <table className='table is-bordered is-striped'>
-          <th>Resource Head</th>
+          <th>Resource Link</th>
           <th>Details</th>
-          <th>Link</th>
+
           <tbody>
             {data.resources.map((resourceCard) => {
               const message = resourceCard.message;
@@ -232,9 +232,6 @@ export default function Dashboard() {
                   </td>
                   <td>
                     <p>{message}</p>
-                  </td>
-                  <td>
-                    <a href={url}>Link</a>
                   </td>
                 </tr>
               );
