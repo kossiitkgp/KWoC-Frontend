@@ -15,12 +15,14 @@
   }
 
   .button {
-    background-color: rgba(#b57aff, 0.7);
-    border-color: rgba(#b57aff, 0.7);
+    background-color: rgba(#b57aff, 0.5);
+    border-color: rgba(#b57aff, 0.5);
     color: $primary-text-white;
   }
 
   a:hover {
+    background-color: rgba(#b57aff, 0.75);
+    border-color: rgba(#b57aff, 0.75);
     color: #000;
     transform: scale(1.05);
   }
