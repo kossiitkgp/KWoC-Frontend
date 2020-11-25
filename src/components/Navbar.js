@@ -169,7 +169,7 @@ class Navbar extends Component {
                         <a
                           className='navbar-item'
                           id='mentor-login'
-                          href='dashboard/mentor'
+                          href='/dashboard/mentor'
                         >
                           Mentor Dashboard
                         </a>
@@ -195,7 +195,7 @@ class Navbar extends Component {
                         <a
                           className='navbar-item'
                           id='mentee-login'
-                          href='dashboard/student'
+                          href='/dashboard/student'
                         >
                           Student Dashboard
                         </a>
@@ -219,7 +219,7 @@ class Navbar extends Component {
                   </div>
                 </div>
 
-                <div
+                {/* <div
                   className='navbar-item has-dropdown is-hoverable'
                   id='stat-buttons'
                 >
@@ -241,7 +241,7 @@ class Navbar extends Component {
                       Project Stats
                     </Link>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
