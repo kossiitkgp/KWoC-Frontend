@@ -39,7 +39,7 @@ export default function Form(props) {
 			headers: {
 				Bearer: localStorage.getItem("student_jwt"),
 			},
-			data: JSON.stringify(data),
+			body: JSON.stringify(data),
 		})
 			.then((res) => res.json())
 			.then((res) => {
