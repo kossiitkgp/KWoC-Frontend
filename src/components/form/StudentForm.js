@@ -11,13 +11,13 @@ export default function Form(props) {
 	const [email, setEmail] = useState("");
 	const [college, setCollege] = useState("");
 
-	// useEffect(() => {
-	//   const { username, name, email } = props.location.state
-	//   // filling the default values in the form using the data obtained from github OAuth
-	//   setUsername(username)
-	//   setName(name)
-	//   setEmail(email)
-	// },[])
+	useEffect(() => {
+	  const { username, name, email } = props.location.state
+	  // filling the default values in the form using the data obtained from github OAuth
+	  setUsername(username)
+	  setName(name)
+	  setEmail(email)
+	},[])
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -43,7 +43,7 @@ export default function Form(props) {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				if (res.status === 200) props.history.push("/dashboard/student");
+				if (res == "success") props.history.push("/dashboard/student");
 			})
 			.catch((err) => {
 				console.log("err in student form ", err);

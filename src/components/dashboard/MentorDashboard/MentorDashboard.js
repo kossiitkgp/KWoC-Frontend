@@ -11,33 +11,8 @@ export default function MentorDashboard() {
   projects -> []
   once cors issue is fixed by shubham mishra
   */
-  const [fullName, setFullName]  = useState('Aditya Vikram Singh')
-  const [projects, setProjects] = useState([
-    {
-       "ID":10,
-       "CreatedAt":"2020-08-25T12:59:05.576749433+05:30",
-       "UpdatedAt":"2020-08-25T12:59:05.576749433+05:30",
-       "DeletedAt":null,
-       "Name":"Project name 1",
-       "Desc":"string",
-       "Tags":"string",
-       "RepoLink":"https://github.com/kossiitkgp/kwoc-stats-api",
-       "ComChannel":"string",
-       "MentorID":5
-    },
-    {
-       "ID":11,
-       "CreatedAt":"2020-08-25T13:03:08.432410139+05:30",
-       "UpdatedAt":"2020-08-25T13:03:08.432410139+05:30",
-       "DeletedAt":null,
-       "Name":"Project name 2",
-       "Desc":"string",
-       "Tags":"string",
-       "RepoLink":"https://github.com/kossiitkgp/kwoc-stats-api",
-       "ComChannel":"string",
-       "MentorID":5
-    }
- ])
+  const [fullName, setFullName]  = useState('')
+  const [projects, setProjects] = useState([])
 
  const announcements= [
    {

@@ -7,8 +7,8 @@ import StudentAnnouncements from './StudentAnnouncements';
 
 export default function Dashboard() {
 
-  const [fullName, setFullName] = useState('Aditya vikram singh')
-  const [collegeName, setCollegeName] = useState('IIT KGP')
+  const [fullName, setFullName] = useState('')
+  const [collegeName, setCollegeName] = useState('')
  
   useEffect(() => {
     const URL = `${BACKEND_URL}/student/dashboard`;

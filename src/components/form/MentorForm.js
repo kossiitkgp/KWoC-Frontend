@@ -47,7 +47,7 @@ export default function Form(props) {
     })
     .then(res => res.json())
     .then(res => {
-      if(res.status === 200)
+      if(res == "success")
         props.history.push('/dashboard/mentor')
     })
     .catch(err => {
