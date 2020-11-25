@@ -181,32 +181,51 @@ export default function MentorDashboard() {
           <h1>Projects</h1>
         </div>
         <div className='projectcard'>
-          {data.projects.map((projectName, index) => {
-            return (
-              <div className='project-c card-component grow-card'>
-                <div className='anchor-align'>
-                  <p className='project-name'>{projectName}</p>
+          {data.projects !== undefined ? (
+            data.projects.map((projectName, index) => {
+              return (
+                <div className='project-c card-component grow-card'>
+                  <div className='anchor-align'>
+                    <p className='project-name'>{projectName}</p>
+                  </div>
+                  <div className='project-buttons'>
+                    <a
+                      href='http://stackoverflow.com'
+                      className='project-button-small'
+                    >
+                      <img src='/github.svg' className='github-svg'></img>
+                    </a>
+                    <a
+                      href='https://www.google.com'
+                      className='project-button-small'
+                    >
+                      Issues
+                    </a>
+                    <a
+                      href='https://www.fb.com'
+                      className='project-button-small'
+                    >
+                      PRs
+                    </a>
+                  </div>
                 </div>
-                <div className='project-buttons'>
-                  <a
-                    href='http://stackoverflow.com'
-                    className='project-button-small'
-                  >
-                    <img src='/github.svg' className='github-svg'></img>
-                  </a>
-                  <a
-                    href='https://www.google.com'
-                    className='project-button-small'
-                  >
-                    Issues
-                  </a>
-                  <a href='https://www.fb.com' className='project-button-small'>
-                    PRs
-                  </a>
-                </div>
+              );
+            })
+          ) : (
+            <div className='add-project-card'>
+              <div className='header-add-project-card'>
+                <p>You haven't added any projects yet</p>
               </div>
-            );
-          })}
+              <div className='add-project-button-div'>
+                <a href='/form/project'>
+                  <button className='add-project-button '>
+                    <p className='plus-sign'>+</p>
+                    <p className='text-add-project'>Add Projects</p>
+                  </button>
+                </a>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

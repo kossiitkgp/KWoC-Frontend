@@ -208,6 +208,7 @@ $button-color: black;
 .student-card {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .project-c,
@@ -472,4 +473,145 @@ $button-color: black;
 }
 .grow-card:hover {
   transform: scale(1.1);
+}
+
+.resource-card {
+  padding: 2% 3% 2% 3%;
+
+  .resource-header {
+    b {
+      font-size: 32px;
+      font-family: Vegur;
+      color: #5f6e7d;
+    }
+  }
+
+  .avatar-resource {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: 5%;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .table {
+    border-collapse: collapse;
+    font-size: 20px;
+    width: 100%;
+
+    th {
+      color: #5f6e7d;
+      border: none;
+      padding-top: 2%;
+      padding-bottom: 2%;
+    }
+    td {
+      border: none;
+      color: #5f6e7d;
+      align-items: center;
+
+      .resource-link {
+        margin: 2% 0 2% 0;
+      }
+
+      p {
+        margin: 2% 0 2% 0;
+      }
+    }
+    td:nth-child(3) {
+      color: #5f6e7d;
+    }
+    tr {
+      align-items: center;
+    }
+    tr:hover {
+      background: rgba(#a0a3f4, 0.2);
+      td {
+        border: none;
+        color: black;
+      }
+    }
+  }
+}
+
+.add-project-card {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+
+  width: 1200px;
+  height: 200px;
+
+  // margin: 1%;
+  border: 10px dashed #5f6e7d;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  .header-add-project-card {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 7% 0 7% 7%;
+    p {
+      font-size: 32px;
+    }
+  }
+  .add-project-button-div {
+    flex-grow: 1;
+    flex-basis: 0;
+
+    .add-project-button:hover {
+      cursor: pointer;
+    }
+
+    .add-project-button:active {
+      background-color: linear-gradient(135deg, #9552ea 50%, #b57aff 100%);
+
+      .text-add-project {
+        color: black;
+      }
+      .plus-sign {
+        color: black;
+      }
+    }
+
+    .add-project-button {
+      outline: none;
+      height: 60px;
+      width: 300px;
+
+      font-size: 28px;
+
+      display: flex;
+      justify-content: space-evenly;
+      padding: 0px;
+
+      align-items: center;
+
+      background: linear-gradient(135deg, #b57aff 50%, #9552ea 100%);
+      box-shadow: 0px 25px 50px rgba(181, 122, 255, 0.33);
+      border-radius: 10px;
+
+      .plus-sign {
+        padding-left: 2%;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 58px;
+        height: 70px;
+        color: white;
+        margin: 0px;
+      }
+
+      .text-add-project {
+        font-weight: bold;
+        color: white;
+      }
+    }
+  }
 }
