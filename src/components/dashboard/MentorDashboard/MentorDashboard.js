@@ -91,7 +91,7 @@ export default function MentorDashboard() {
     console.log("data is ", data)
     fetch(URL, {
         method: 'POST',
-        data: JSON.stringify(data)
+        body: JSON.stringify(data)
     })
     .then(res => res.json())
     .then(res => {

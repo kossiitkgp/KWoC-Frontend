@@ -18,7 +18,7 @@ export default function EndEvalsForm() {
         
         fetch(URL, {
           method: 'POST',
-          data: JSON.stringify(data)
+          body: JSON.stringify(data)
         })
         .then(res => res.json())
         .then(res => {

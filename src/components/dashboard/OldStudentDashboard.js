@@ -17,7 +17,7 @@ export default function Dashboard() {
     };
     fetch(URL, {
           method: 'POST',
-          data: JSON.stringify(data)
+          body: JSON.stringify(data)
       })
       .then(res => res.json())
       .then(res => {
