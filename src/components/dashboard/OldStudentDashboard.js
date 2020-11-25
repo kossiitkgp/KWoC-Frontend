@@ -116,23 +116,23 @@ export default function Dashboard() {
           <h1 className='title'>Dashboard</h1>
           <h2>{data.name}</h2>
 
-          <div className='data-cards'>
-            <div className='data-card'>
+          <div className='data-cards '>
+            <div className='data-card grow-card'>
               <h1>{data.commits.count}</h1>
               <h2>Commits</h2>
             </div>
-            <div className='data-card'>
+            <div className='data-card grow-card'>
               <h1>{data.pullRequests.count}</h1>
               <h2>Pull Requests</h2>
             </div>
-            <div className='data-card'>
+            <div className='data-card grow-card'>
               <h1>{data.linesOfCode.count}</h1>
               <h2>Lines of Code</h2>
             </div>
           </div>
         </div>
 
-        <div className='profile-panel'>
+        <div className='profile-panel grow-card'>
           <img src='https://avatars2.githubusercontent.com/u/25076171' alt='' />
           <br />
           <b>{data.name}</b>
@@ -155,7 +155,7 @@ export default function Dashboard() {
         <div className='project-card-list'>
           {data.projects.map((projectName) => {
             return (
-              <div className='project-card'>
+              <div className='project-card grow-card'>
                 <p>{projectName}</p>
                 <div className='project-buttons'>
                   <a
@@ -247,7 +247,7 @@ export default function Dashboard() {
 
         {data.announcement.map((value, index) => {
           return (
-            <div className='anc-card card-component'>
+            <div className='anc-card card-component grow-card'>
               <h1>12th December</h1>
               <p>{value}</p>
             </div>
