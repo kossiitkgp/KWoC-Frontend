@@ -25,10 +25,10 @@ export default function Form(props) {
 
 		const URL = "https://kwoc.metamehta.me/student/form";
 		const data = {
-			username: username,
-			name: name,
-			email: email,
-			college: college,
+			"username": username,
+			"name": name,
+			"email": email,
+			"college": college,
 		};
 
 		console.log("data is ", JSON.stringify(data));
