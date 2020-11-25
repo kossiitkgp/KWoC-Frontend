@@ -271,6 +271,7 @@ export default function Form(props) {
               isClearable
               onChange={handleChange}
               options={options}
+              placeholder='Select or Create Tags'
             />
         </div>
       </div>
