@@ -1,3 +1,5 @@
+If your purpose to be with us is pure, and you are deemed worthy; then yes!
+
 
 # Navigation
 
@@ -160,9 +162,6 @@ Please make sure to read the website. If after reading through it you still don'
 
 There is absolutely no selection criteria for students. You are selected in the program as soon as you register. So you don't have to ask your mentors "How to get selected for your project?", but instead go ahead with "How can I contribute to your project?".
 
-#### My college is not there in the drop down menu of Kshitij registration form, What should I do?
-
-If can not find your college name on Kshitij Website, simply drop an email at admin@ktj.in and move ahead with the projects.
 
 #### My mentor is not replying, What should I do?
 
@@ -170,7 +169,7 @@ Please be patient with your mentor(s). If you do not get a response on the commu
 
 #### What is the last date of student registration?
 
-Students registration deadline is 10th December. The contribution chart goes live at the same time, so be quick, early bird catches the worm :) .
+Students registration deadline is 4th December. The contribution chart goes live at the same time, so be quick, early bird catches the worm :) .
 
 #### Can I show the contributions that I have made in KWoC for participating in any competitions?
 
@@ -180,7 +179,7 @@ All the contributions that you will make in KWoC will be displayed on your GitHu
 
 Sure ! Our program is open to all students irrespective of college !
 Is there any eligibility criteria and pre-requisites?
-There is no strict eligibility criteria as such. Read this Quora answer by Pranit Bauva : Answer
+There is no strict eligibility criteria as such. Read [this](https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016) Quora answer by Pranit Bauva.
 
 #### Can you provide me any advice so that I can start preparing for it beforehand?
 
