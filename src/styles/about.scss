@@ -1,7 +1,6 @@
 @import "index.scss";
 
 .about {
-	margin-bottom: 0;
 	background-image: linear-gradient(135deg, #9545f7 0%, #000000 50%);
 	color: white;
 	padding-bottom: 5rem;
@@ -24,6 +23,7 @@
 		h1 {
 			font-size: 40px;
 			align-items: center;
+			color: #000;
 		}
 		max-height: 100vh;
 		margin-bottom: 20px;
@@ -43,12 +43,6 @@
 				img {
 					width: 200px;
 					height: 200px;
-				}
-				h3 {
-					&:hover {
-						font-size: 20px;
-						color: #b57aff;
-					}
 				}
 			}
 		}

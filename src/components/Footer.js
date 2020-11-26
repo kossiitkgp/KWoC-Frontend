@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/footer.scss';
-
+import Part from './Part';
 export default function Footer() {
 	return (
 		<section className="footer-btm">
+			
 			<footer>
 				<div className="container">
 					<div className="columns is-vcentered">
