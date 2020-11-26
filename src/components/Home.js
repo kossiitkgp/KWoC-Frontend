@@ -7,137 +7,71 @@ import Timeline from './timelinedata/Timeline';
 import '../styles/about.scss';
 import '../styles/home.scss';
 import '../styles/why.scss';
-
+import Part from './Part';
 import Particles from 'react-particles-js';
-import group from '../images/grp.png';
-import web from '../images/web6.png';
-import mentor from '../images/mentor.png';
+import group from '../images/people.svg';
+import github from '../images/github.svg';
+import pullRequest from '../images/git-pull-request.svg';
 
 export default function Home() {
+	const tags = [
+		'Machine learning',
+		'Android',
+		'Computer Vision',
+		'Gaming',
+		'Backend',
+		'Natural Language Processing',
+		'Scrapping',
+		'Cognition',
+		'Front End',
+		'Deep Learning',
+		'Operating System',
+		'DBMS',
+		'OOP',
+		'Compilers',
+		'Security',
+		'Data Mining',
+		'Simulations',
+		'Artificial Intelligence'
+	];
+
 	return (
 		<div className="home">
 			<Navbar />
 			<section className="hero is-fullheight is-dark is-bold">
-				<Particles
-					className="particles"
-					params={{
-						particles: {
-							number: {
-								value: 350,
-								density: {
-									enable: true,
-									value_area: 1000
-								}
-							},
-							color: {
-								value: [ '#B57AFF', '#9552EA' ]
-							},
-							shape: {
-								type: 'circle'
-							},
-							opacity: {
-								value: 0.5,
-								random: true,
-								anim: {
-									enable: true,
-									speed: 1,
-									opacity_min: 0.1,
-									sync: false
-								}
-							},
-							size: {
-								value: 18,
-								random: true,
-								anim: {
-									enable: false,
-									speed: 40,
-									size_min: 0.1,
-									sync: false
-								}
-							},
-							line_linked: {
-								enable: false
-							},
-							move: {
-								enable: true,
-								speed: 4,
-								direction: 'bottom',
-								random: false,
-								straight: false,
-								out_mode: 'out',
-								bounce: false,
-								attract: {
-									enable: false,
-									rotateX: 600,
-									rotateY: 1200
-								}
-							}
-						},
-						interactivity: {
-							detect_on: 'canvas',
-							events: {
-								onhover: {
-									enable: true,
-									mode: 'bubble'
-								},
-								onclick: {
-									enable: true,
-									mode: 'repulse'
-								},
-								resize: true
-							},
-							modes: {
-								bubble: {
-									distance: 400,
-									size: 4,
-									duration: 0.3,
-									opacity: 1,
-									speed: 3
-								},
-								repulse: {
-									distance: 200,
-									duration: 0.4
-								},
-								push: {
-									particles_nb: 4
-								},
-								remove: {
-									particles_nb: 2
-								}
-							}
-						},
-						retina_detect: true
-					}}
-				/>
+				<Part />
 				<div className="hero-body">
 					<div className="container">
 						<h1 className="title" id="hero">
 							Welcome to KWoC
 						</h1>
 
-						<div className="reg-btns field is-grouped is-grouped-centered">
+						<div className="reg-btns " style={{ padding: '0 20%', marginBottom: '20px' }}>
 							<p className="control">
 								<a
-									className="button is-fullwidth is-medium"
+									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
+									style={{ marginBottom: '20px' }}
 								>
 									Student Registration
 								</a>
 							</p>
 							<p className="control">
 								<a
-									className="button is-fullwidth is-medium"
+									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
+									style={{ marginBottom: '20px' }}
 								>
 									Mentor Registration
 								</a>
 							</p>
 						</div>
 
-						<div className="manual-btns field is-grouped is-grouped-centered">
+						<div className="manual-btns" style={{ marginBottom: '20px', padding: '0 20%' }}>
 							<p className="control">
 								<a
-									className="button is-fullwidth is-medium"
+									style={{ marginBottom: '20px' }}
+									className="button is-fullwidth"
 									href="https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCStudentManual.pdf"
 								>
 									Student Manual
@@ -145,7 +79,7 @@ export default function Home() {
 							</p>
 							<p className="control">
 								<a
-									className="button is-fullwidth is-medium"
+									className="button is-fullwidth "
 									href="https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCMentorManual.pdf"
 								>
 									Mentor Manual
@@ -159,7 +93,7 @@ export default function Home() {
 			{/* <section className="about">
 				<div className="container" />
 			</section> */}
-			<section className="why-kwoc">
+			<section className="why-kwoc" id="about">
 				<div className="container">
 					<h1>About</h1>
 					<p>
@@ -193,218 +127,51 @@ export default function Home() {
 					</p>
 				</div>
 			</section>
-
-			<section className="timeline" id="tline">
-				<div className="container">
-				
-					<Particles
-						className="particles"
-						params={{
-							particles: {
-								number: {
-									value: 350,
-									density: {
-										enable: true,
-										value_area: 1000
-									}
-								},
-								color: {
-									value: [ '#B57AFF', '#9552EA' ]
-								},
-								shape: {
-									type: 'circle'
-								},
-								opacity: {
-									value: 0.5,
-									random: true,
-									anim: {
-										enable: true,
-										speed: 1,
-										opacity_min: 0.1,
-										sync: false
-									}
-								},
-								size: {
-									value: 18,
-									random: true,
-									anim: {
-										enable: false,
-										speed: 40,
-										size_min: 0.1,
-										sync: false
-									}
-								},
-								line_linked: {
-									enable: false
-								},
-								move: {
-									enable: true,
-									speed: 4,
-									direction: 'bottom',
-									random: false,
-									straight: false,
-									out_mode: 'out',
-									bounce: false,
-									attract: {
-										enable: false,
-										rotateX: 600,
-										rotateY: 1200
-									}
-								}
-							},
-							interactivity: {
-								detect_on: 'canvas',
-								events: {
-									onhover: {
-										enable: true,
-										mode: 'bubble'
-									},
-									onclick: {
-										enable: true,
-										mode: 'repulse'
-									},
-									resize: true
-								},
-								modes: {
-									bubble: {
-										distance: 400,
-										size: 4,
-										duration: 0.3,
-										opacity: 1,
-										speed: 3
-									},
-									repulse: {
-										distance: 200,
-										duration: 0.4
-									},
-									push: {
-										particles_nb: 4
-									},
-									remove: {
-										particles_nb: 2
-									}
-								}
-							},
-							retina_detect: true
-						}}
-					/>
-
-					<Timeline />
-				</div>
-			</section>
 			<section className="tags">
 				<div className="container">
 					<h1>Tags</h1>
 
 					<p>
-						<span id="dark" class="tag is-dark is-medium">
-							Machine learning
-						</span>
-						<span id="light" class="tag is-light is-medium">
-							Android
-						</span>
-						<span id="dark" class="tag is-dark is-medium">
-							Computer Vision
-						</span>
-						<span id="light" class="tag is-light is-medium">
-							Gaming
-						</span>
-						<span id="dark" class="tag is-dark is-medium">
-							Backend
-						</span>
-						<span id="light" class="tag is-light is-medium">
-							Natural Language Processing
-						</span>
-						<span id="dark" class="tag is-dark is-medium">
-							Scrapping
-						</span>
-						<span id="light" class="tag is-light is-medium">
-							Cognition
-						</span>
-						<span id="dark" class="tag is-dark is-medium">
-							Front End
-						</span>
-						<span id="light" class="tag is-light is-medium">
-							Deep Learning
-						</span>
-						<span id="dark" class="tag is-dark is-medium">
-							Operating System
-						</span>
-						<span id="light" class="tag is-light is-medium">
-							DBMS
-						</span>
-						<span id="dark" class="tag is-dark is-medium">
-							OOP
-						</span>
-						<span id="light" class="tag is-light is-medium">
-							Compilers
-						</span>
-						<span id="dark" class="tag is-dark is-medium">
-							Security
-						</span>
-						<span id="light" class="tag is-light is-medium">
-							Data Mining
-						</span>
-						<span id="dark" class="tag is-dark is-medium">
-							Simulations
-						</span>
-						<span id="light" class="tag is-light is-medium">
-							Artificial Intelligence
-						</span>
+						{tags.map((tag) => (
+							<span key={tag} class="tag cust-tag is-primary is-medium">
+								{tag}
+							</span>
+						))}
 					</p>
+				</div>
+			</section>
+			<section className="timeline" id="tline">
+				<div className="container">
+					<h1 style={{ zIndex: 10 }}>Timeline</h1>
+					<Part />
+					<Timeline />
 				</div>
 			</section>
 
 			<section className="stats">
 				<div className="container">
 					<h1>Statistics: KWoC 2019</h1>
-					<div className="columns">
-						<div className="column">
+					<div className="columns is-centered">
+						<div className="column has-text-centered">
 							<img src={group} alt="Group" />
 
 							<h3>2000+ Participants</h3>
 						</div>
-						<div className="column">
-							<img src={mentor} alt="Mentor" />
+						<div className="column has-text-centered">
+							<img src={pullRequest} alt="pullRequest" />
 
-							<h3>2000+ Mentors</h3>
+							<h3>600+ Pull Requests</h3>
 						</div>
-						<div className="column">
+						<div className="column has-text-centered">
 							{/* <Card heading="70+ Mentors" body="Some Random Body" /> */}
-							<img src={web} alt="Project" />
+							<img src={github} alt="Project" />
 
-							<h3>2000+ Projects</h3>
+							<h3>150+ Projects</h3>
 						</div>
 					</div>
-
-					{/* <p>
-						KWoC 2017 carried forward the legacy set by the 2016 edition; and in
-						many ways went past the set milestones. It was staggering
-						participation from students, many of them made their first
-						contributions to open source during KWoC, and mentors, who saw their
-						projects surpass their own expectations by the end of the program.
-					</p> */}
 				</div>
 			</section>
 
-			<section className="steps">
-				{/* <div className="container">
-					<h1>Steps</h1>
-
-					<ol>
-						<li>
-							Apply on the student registration page and wait for an email from
-							us (Please check Promotions and Spam as well).
-						</li>
-
-						<li>
-							Choose project(s) that you want to contribute to, contact the
-							assigned mentor(s) and work through December, learning the art of
-							software development on the way.
-						</li>
-					</ol>
-				</div> */}
-			</section>
 			<Footer />
 		</div>
 	);

@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './components/Home';
-import About from './components/About';
 import FAQ from './components/FAQ';
 import Testimonial from './components/Testimonials';
 import MentorForm from './components/form/MentorForm';
@@ -30,8 +29,6 @@ function App() {
     <BrowserRouter>
       <div className='App'>
         <Route onChange={ScrollToTop} exact path='/' component={Home} />
-
-        <Route onChange={ScrollToTop} exact path='/about' component={About} />
 
         <Route onChange={ScrollToTop} exact path='/FAQ' component={FAQ} />
 
