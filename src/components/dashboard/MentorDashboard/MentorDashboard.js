@@ -383,7 +383,7 @@ export default function MentorDashboard() {
                 </p>
               </div>
               <div className='add-project-button-div'>
-                <a href='https://www.kwoc-koss.slack.com'>
+                <a href='https://join.slack.com/t/kwoc-koss/shared_invite/zt-jch6e9gn-puizWuKSw5~K9Eq4YfFrFg'>
                   <button className='add-project-button '>
                     <p className='plus-sign'>+</p>
                     <p className='text-add-project'>Invite Students</p>
