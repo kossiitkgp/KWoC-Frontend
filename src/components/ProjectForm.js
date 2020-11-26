@@ -3,7 +3,7 @@ import Tags from '../data/tags.js';
 import CreatableSelect from 'react-select/creatable';
 import axios from 'axios'
 import { BACKEND_URL } from '../constants/constants'
-
+import Navbar from './Navbar'
 import '../styles/Form.scss';
 import '../styles/css-fontello-github-circled/fontello.css';
 import '../styles/css-fontello-mail-alt/fontello.css';
@@ -193,12 +193,14 @@ export default function Form(props) {
 
   
   return (
+    <React.Fragment>
+      <Navbar />
     <div className='box'>
       <div className='field'>
         <label className='label'>Project Name</label>
         <div className='control'>
           <input
-            className='input is-rounded is-info'
+            className='input is-rounded'
             type='text'
             placeholder='Cool name of your project'
             onChange={e => setName(e.target.value)}
@@ -243,9 +245,9 @@ export default function Form(props) {
               options={mentorRepos}
               placeholder='Search your Repos or Paste the link'
             />
-          <span className='icon is-large is-left' id='fontello-icon'>
+          {/* <span className='icon is-large is-left' id='fontello-icon'>
             <i className='icon-github-circled' />
-          </span>
+          </span> */}
         </div>
         {errInRepo}
       </div>
@@ -254,7 +256,7 @@ export default function Form(props) {
         <label className='label'>Communication channel</label>
         <div className='control'>
           <input
-            className='input is-rounded is-info'
+            className='input is-rounded'
             type='text'
             placeholder='Slack invite link for example'
             onChange={e => setChannelLink(e.target.value)}
@@ -278,7 +280,7 @@ export default function Form(props) {
       
       <div>
         <a 
-        className='button is-info is-rounded is-fullWidth column is-full'
+        className='button is-rounded is-fullWidth column is-full'
         onClick={handleSubmit}
         disabled={isSubmitDisabled}
         >
@@ -286,6 +288,7 @@ export default function Form(props) {
         </a>
       </div>
     </div>
+    </React.Fragment>
   );
 }
 

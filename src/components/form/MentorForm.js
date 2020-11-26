@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/Form.scss';
 import '../../styles/css-fontello-github-circled/fontello.css';
 import '../../styles/css-fontello-mail-alt/fontello.css';
-
+import Navbar from '../Navbar'
 export default function Form(props) {
 	const [ isSubmitDisabled, disableSubmit ] = useState(false);
 
@@ -55,6 +55,8 @@ export default function Form(props) {
 	}
 
 	return (
+		<React.Fragment>
+			<Navbar/>
 		<div className="box">
 			<h2>Mentor Form</h2>
 			<h3>Welcome {username}</h3>
@@ -98,5 +100,6 @@ export default function Form(props) {
 				</a>
 			</div>
 		</div>
+		</React.Fragment>
 	);
 }

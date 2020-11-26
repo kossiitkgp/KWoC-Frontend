@@ -52,7 +52,9 @@ export default function Home() {
 									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
 									style={{ marginBottom: '20px' }}
-								>
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
 									Student Registration
 								</a>
 							</p>
@@ -61,7 +63,9 @@ export default function Home() {
 									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
 									style={{ marginBottom: '20px' }}
-								>
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
 									Mentor Registration
 								</a>
 							</p>
