@@ -1,12 +1,17 @@
 @import "index.scss";
 
 .about {
+	margin-bottom: 0;
+	background-image: linear-gradient(135deg, #9545f7 0%, #000000 50%);
+	color: white;
+	padding-bottom: 5rem;
 	.container {
 		h1 {
 			font-size: 40px;
 			align-items: center;
 		}
 		display: grid;
+
 		place-items: center;
 		p {
 			font-size: 17px;

@@ -156,7 +156,10 @@ export default function Home() {
 				</div>
 			</section>
 
-			<section className="about">
+			{/* <section className="about">
+				<div className="container" />
+			</section> */}
+			<section className="why-kwoc">
 				<div className="container">
 					<h1>About</h1>
 					<p>
@@ -165,12 +168,127 @@ export default function Home() {
 						also prepares them for many open source summer programs; Google Summer of Code being one of
 						them.
 					</p>
+					<br />
+					<br />
+					<h2>Why KWoC?</h2>
+
+					<h3>Intro to Open Source</h3>
+
+					<p>
+						KWoC provides a great opportunity to get acquainted with Github along with Git commands and
+						contribute to open source efficiently. Brush up your coding skills
+					</p>
+
+					<p>
+						If you love coding and want to learn about software development then KWoC helps you to get a
+						glimpse of it and gives you a head start.
+					</p>
+					<br />
+					<br />
+					<h3>Prepare for GSoC</h3>
+
+					<p>
+						With KWoC, you get to know about how to select a project, interact with mentors and learn all
+						other things that prepare you in the best way for the next GSoC.
+					</p>
 				</div>
 			</section>
 
 			<section className="timeline" id="tline">
 				<div className="container">
-					<h1> Timeline</h1>
+				
+					<Particles
+						className="particles"
+						params={{
+							particles: {
+								number: {
+									value: 350,
+									density: {
+										enable: true,
+										value_area: 1000
+									}
+								},
+								color: {
+									value: [ '#B57AFF', '#9552EA' ]
+								},
+								shape: {
+									type: 'circle'
+								},
+								opacity: {
+									value: 0.5,
+									random: true,
+									anim: {
+										enable: true,
+										speed: 1,
+										opacity_min: 0.1,
+										sync: false
+									}
+								},
+								size: {
+									value: 18,
+									random: true,
+									anim: {
+										enable: false,
+										speed: 40,
+										size_min: 0.1,
+										sync: false
+									}
+								},
+								line_linked: {
+									enable: false
+								},
+								move: {
+									enable: true,
+									speed: 4,
+									direction: 'bottom',
+									random: false,
+									straight: false,
+									out_mode: 'out',
+									bounce: false,
+									attract: {
+										enable: false,
+										rotateX: 600,
+										rotateY: 1200
+									}
+								}
+							},
+							interactivity: {
+								detect_on: 'canvas',
+								events: {
+									onhover: {
+										enable: true,
+										mode: 'bubble'
+									},
+									onclick: {
+										enable: true,
+										mode: 'repulse'
+									},
+									resize: true
+								},
+								modes: {
+									bubble: {
+										distance: 400,
+										size: 4,
+										duration: 0.3,
+										opacity: 1,
+										speed: 3
+									},
+									repulse: {
+										distance: 200,
+										duration: 0.4
+									},
+									push: {
+										particles_nb: 4
+									},
+									remove: {
+										particles_nb: 2
+									}
+								}
+							},
+							retina_detect: true
+						}}
+					/>
+
 					<Timeline />
 				</div>
 			</section>
@@ -233,32 +351,6 @@ export default function Home() {
 						<span id="light" class="tag is-light is-medium">
 							Artificial Intelligence
 						</span>
-					</p>
-				</div>
-			</section>
-
-			<section className="why-kwoc">
-				<div className="container">
-					<h1>Why KWoC?</h1>
-
-					<h3>Intro to Open Source</h3>
-
-					<p>
-						KWoC provides a great opportunity to get acquainted with Github along with Git commands and
-						contribute to open source efficiently. Brush up your coding skills
-					</p>
-
-					<p>
-						If you love coding and want to learn about software development then KWoC helps you to get a
-						glimpse of it and gives you a head start.
-					</p>
-					<br />
-					<br />
-					<h3>Prepare for GSoC</h3>
-
-					<p>
-						With KWoC, you get to know about how to select a project, interact with mentors and learn all
-						other things that prepare you in the best way for the next GSoC.
 					</p>
 				</div>
 			</section>
