@@ -52,8 +52,7 @@ export default function Home() {
 									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
 									style={{ marginBottom: '20px' }}
-                  rel="noopener noreferrer"
-                  target="_blank"
+                  
                 >
 									Student Registration
 								</a>
@@ -63,8 +62,7 @@ export default function Home() {
 									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
 									style={{ marginBottom: '20px' }}
-                  rel="noopener noreferrer"
-                  target="_blank"
+                 
                 >
 									Mentor Registration
 								</a>
@@ -76,7 +74,9 @@ export default function Home() {
                 <a
                   className='button is-fullwidth'
                   href='https://drive.google.com/file/d/1_K30Crr3vVgRS-NGFVC2obQypD22jTuq/view'
-                >
+                  rel="noopener noreferrer"
+                  target="_blank"
+		>
                   Student Manual
                 </a>
               </p>
@@ -84,7 +84,9 @@ export default function Home() {
                 <a
                   className='button is-fullwidth '
                   href='https://drive.google.com/file/d/1P7F-Jfi_XdUeptc4t5KM09PtTJRatjj1/view'
-                >
+                  rel="noopener noreferrer"
+                  target="_blank"
+		>
                   Mentor Manual
                 </a>
               </p>
