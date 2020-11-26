@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from '../images/circle.svg';
 import '../styles/navbar.scss';
 
 class Navbar extends Component {
@@ -22,10 +22,12 @@ class Navbar extends Component {
 				localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined
 		});
 
-		const mentor_loggedout = localStorage.getItem('mentor_jwt') === null || localStorage.getItem('student_jwt') === undefined
-		const student_loggedout = localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined
+		const mentor_loggedout =
+			localStorage.getItem('mentor_jwt') === null || localStorage.getItem('student_jwt') === undefined;
+		const student_loggedout =
+			localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined;
 
-		this.setState({is_atleast_one_logged_in: !mentor_loggedout || !student_loggedout })
+		this.setState({ is_atleast_one_logged_in: !mentor_loggedout || !student_loggedout });
 	}
 
 	handleClick = (e) => {
@@ -88,7 +90,7 @@ class Navbar extends Component {
 					<div className="container">
 						<div className="navbar-brand">
 							<Link className="navbar-item" to="/" id="kwoc-logo">
-								KWoC
+								<img src={logo} alt="logo" style={{ width: '50px' }} />
 							</Link>
 
 							<button
@@ -106,7 +108,7 @@ class Navbar extends Component {
 
 						<div id="navbarBasicExample" className={`navbar-menu ${clickClass}`}>
 							<div className="navbar-end" onClick={this.closeNavbar} id="functional-buttons">
-								<a className="navbar-item" href='/#about' id="about-button">
+								<a className="navbar-item" href="/#about" id="about-button">
 									About
 								</a>
 
@@ -126,7 +128,13 @@ class Navbar extends Component {
              <a>Mentee Login</a>
             </Link> */}
 
-								<a className="navbar-item" href="https://github.com/kossiitkgp/kwoc-bugs" target="_blank" rel="noreferrer" id="testimonial-button">
+								<a
+									className="navbar-item"
+									href="https://github.com/kossiitkgp/kwoc-bugs"
+									target="_blank"
+									rel="noreferrer"
+									id="testimonial-button"
+								>
 									Bug Report
 								</a>
 							</div>
@@ -205,10 +213,10 @@ class Navbar extends Component {
                     >
                       Student Login
                     </a> */}
-                  </div>
-                </div>
+									</div>
+								</div>
 
-                {/* <div
+								{/* <div
                   className='navbar-item has-dropdown is-hoverable'
                   id='stat-buttons'
                 >
@@ -231,13 +239,13 @@ class Navbar extends Component {
                     </Link>
                   </div>
                 </div> */}
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    );
-  }
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+		);
+	}
 }
 
 export default Navbar;
