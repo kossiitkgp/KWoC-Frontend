@@ -11,7 +11,7 @@ import Part from './Part';
 import Particles from 'react-particles-js';
 import group from '../images/grp.png';
 import web from '../images/web6.png';
-import mentor from '../images/mentor.png';
+import pullRequest from '../images/git-pull-request-512.png';
 
 export default function Home() {
   return (
@@ -186,7 +186,7 @@ export default function Home() {
               <h3>2000+ Participants</h3>
             </div>
             <div className='column has-text-centered'>
-              <img src={mentor} alt='Mentor' />
+              <img src={pullRequest} alt='pullRequest' />
 
               <h3>600+ Pull Requests</h3>
             </div>
