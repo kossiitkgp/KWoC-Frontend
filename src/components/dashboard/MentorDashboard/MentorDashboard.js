@@ -89,9 +89,10 @@ export default function MentorDashboard() {
   ];
   useEffect(() => {
     // check that its not null
-    const mentor_loggedout = localStorage.getItem('mentor_jwt') === null || localStorage.getItem('mentor_jwt') === undefined
-    if (mentor_loggedout)
-      window.location.pathname = ''
+    const mentor_loggedout =
+      localStorage.getItem('mentor_jwt') === null ||
+      localStorage.getItem('mentor_jwt') === undefined;
+    if (mentor_loggedout) window.location.pathname = '';
 
     const URL = `${BACKEND_URL}/mentor/dashboard`;
     const data = {
@@ -382,7 +383,7 @@ export default function MentorDashboard() {
                 </p>
               </div>
               <div className='add-project-button-div'>
-                <a href='#'>
+                <a href='https://www.kwoc-koss.slack.com'>
                   <button className='add-project-button '>
                     <p className='plus-sign'>+</p>
                     <p className='text-add-project'>Invite Students</p>
