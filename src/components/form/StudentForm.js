@@ -1,52 +1,52 @@
-import React, { useState, useEffect } from "react";
-import "../../styles/Form.scss";
-import "../../styles/css-fontello-github-circled/fontello.css";
-import "../../styles/css-fontello-mail-alt/fontello.css";
+import React, { useState, useEffect } from 'react';
+import '../../styles/Form.scss';
+import '../../styles/css-fontello-github-circled/fontello.css';
+import '../../styles/css-fontello-mail-alt/fontello.css';
 
 export default function Form(props) {
-	const [isSubmitDisabled, disableSubmit] = useState(false);
+	const [ isSubmitDisabled, disableSubmit ] = useState(false);
 
-	const [username, setUsername] = useState("");
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
-	const [college, setCollege] = useState("");
+	const [ username, setUsername ] = useState('');
+	const [ name, setName ] = useState('');
+	const [ email, setEmail ] = useState('');
+	const [ college, setCollege ] = useState('');
 
 	useEffect(() => {
-	  const { username, name, email } = props.location.state
-	  // filling the default values in the form using the data obtained from github OAuth
-	  setUsername(username)
-	  setName(name)
-	  setEmail(email)
-	},[])
+		const { username, name, email } = props.location.state;
+		// filling the default values in the form using the data obtained from github OAuth
+		setUsername(username);
+		setName(name);
+		setEmail(email);
+	}, []);
 
 	function handleSubmit(e) {
 		e.preventDefault();
 		disableSubmit(true);
 
-		const URL = "https://kwoc.metamehta.me/student/form";
+		const URL = 'https://kwoc.metamehta.me/student/form';
 		const data = {
-			"username": username,
-			"name": name,
-			"email": email,
-			"college": college,
+			username: username,
+			name: name,
+			email: email,
+			college: college
 		};
 
-		console.log("data is ", JSON.stringify(data));
-		console.log("token is ", localStorage.getItem("student_jwt"));
+		console.log('data is ', JSON.stringify(data));
+		console.log('token is ', localStorage.getItem('student_jwt'));
 
 		fetch(URL, {
-			method: "POST",
+			method: 'POST',
 			headers: {
-				Bearer: localStorage.getItem("student_jwt"),
+				Bearer: localStorage.getItem('student_jwt')
 			},
-			body: JSON.stringify(data),
+			body: JSON.stringify(data)
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				if (res == "success") props.history.push("/dashboard/student");
+				if (res == 'success') props.history.push('/dashboard/student');
 			})
 			.catch((err) => {
-				console.log("err in student form ", err);
+				console.log('err in student form ', err);
 				disableSubmit(false);
 			});
 	}
@@ -101,7 +101,8 @@ export default function Form(props) {
 				<a
 					class="button  is-rounded is-fullWidth column is-full"
 					onClick={handleSubmit}
-					disabled={isSubmitDisabled}>
+					disabled={isSubmitDisabled}
+				>
 					Submit
 				</a>
 			</div>

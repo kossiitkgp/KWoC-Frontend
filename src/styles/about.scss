@@ -34,6 +34,17 @@
 			padding: 20px;
 			.column {
 				padding-left: 10%;
+
+				img {
+					width: 200px;
+					height: 200px;
+				}
+				h3 {
+					&:hover {
+						font-size: 20px;
+						color: #b57aff;
+					}
+				}
 			}
 		}
 	}
