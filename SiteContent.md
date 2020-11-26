@@ -203,7 +203,7 @@ If you remain with us till the end of the program, then you'll receive a certifi
 
 #### Will I receive a stipend for participating in KWoC?
 
-No, we do not offer any stipend for participation in KWoC.
+Unfortunately, we do not offer any stipend for participation in KWoC. This is a program designed for onboarding students with Open Source culture.
 
 #### Which programming language(s) do I need to be fluent in?
 
