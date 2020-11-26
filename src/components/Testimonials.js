@@ -3,13 +3,16 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/testimonials.scss';
 import '../styles/footer.scss';
+import Particles from 'react-particles-js';
 export default function Testimonial() {
 	return (
 		<div className="FAQs">
 			<Navbar />
 			<section className="hero is-medium is-warning is-bold">
-				<div className="hero-body">
+				<div className="hero-body" id="testimonial">
 					<div className="container">
+					
+
 						<h1 className="title">Testimonials</h1>
 						<h2 className="subtitle">Check out how enjoyable KWoC was for the previous participants</h2>
 					</div>

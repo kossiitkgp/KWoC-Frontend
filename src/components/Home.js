@@ -7,7 +7,7 @@ import Timeline from './timelinedata/Timeline';
 import '../styles/about.scss';
 import '../styles/home.scss';
 import '../styles/why.scss';
-
+import Part from './Part';
 import Particles from 'react-particles-js';
 import group from '../images/grp.png';
 import web from '../images/web6.png';
@@ -18,97 +18,7 @@ export default function Home() {
 		<div className="home">
 			<Navbar />
 			<section className="hero is-fullheight is-dark is-bold">
-				<Particles
-					className="particles"
-					params={{
-						particles: {
-							number: {
-								value: 350,
-								density: {
-									enable: true,
-									value_area: 1000
-								}
-							},
-							color: {
-								value: [ '#B57AFF', '#9552EA' ]
-							},
-							shape: {
-								type: 'circle'
-							},
-							opacity: {
-								value: 0.5,
-								random: true,
-								anim: {
-									enable: true,
-									speed: 1,
-									opacity_min: 0.1,
-									sync: false
-								}
-							},
-							size: {
-								value: 18,
-								random: true,
-								anim: {
-									enable: false,
-									speed: 40,
-									size_min: 0.1,
-									sync: false
-								}
-							},
-							line_linked: {
-								enable: false
-							},
-							move: {
-								enable: true,
-								speed: 4,
-								direction: 'bottom',
-								random: false,
-								straight: false,
-								out_mode: 'out',
-								bounce: false,
-								attract: {
-									enable: false,
-									rotateX: 600,
-									rotateY: 1200
-								}
-							}
-						},
-						interactivity: {
-							detect_on: 'canvas',
-							events: {
-								onhover: {
-									enable: true,
-									mode: 'bubble'
-								},
-								onclick: {
-									enable: true,
-									mode: 'repulse'
-								},
-								resize: true
-							},
-							modes: {
-								bubble: {
-									distance: 400,
-									size: 4,
-									duration: 0.3,
-									opacity: 1,
-									speed: 3
-								},
-								repulse: {
-									distance: 200,
-									duration: 0.4
-								},
-								push: {
-									particles_nb: 4
-								},
-								remove: {
-									particles_nb: 2
-								}
-							}
-						},
-						retina_detect: true
-					}}
-				/>
+				<Part />
 				<div className="hero-body">
 					<div className="container">
 						<h1 className="title" id="hero">
@@ -118,7 +28,7 @@ export default function Home() {
 						<div className="reg-btns field is-grouped is-grouped-centered">
 							<p className="control">
 								<a
-									className="button is-fullwidth is-medium"
+									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
 								>
 									Student Registration
@@ -126,7 +36,7 @@ export default function Home() {
 							</p>
 							<p className="control">
 								<a
-									className="button is-fullwidth is-medium"
+									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
 								>
 									Mentor Registration
@@ -137,7 +47,7 @@ export default function Home() {
 						<div className="manual-btns field is-grouped is-grouped-centered">
 							<p className="control">
 								<a
-									className="button is-fullwidth is-medium"
+									className="button is-fullwidth"
 									href="https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCStudentManual.pdf"
 								>
 									Student Manual
@@ -145,7 +55,7 @@ export default function Home() {
 							</p>
 							<p className="control">
 								<a
-									className="button is-fullwidth is-medium"
+									className="button is-fullwidth "
 									href="https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCMentorManual.pdf"
 								>
 									Mentor Manual
@@ -191,105 +101,6 @@ export default function Home() {
 						With KWoC, you get to know about how to select a project, interact with mentors and learn all
 						other things that prepare you in the best way for the next GSoC.
 					</p>
-				</div>
-			</section>
-
-			<section className="timeline" id="tline">
-				<div className="container">
-				
-					<Particles
-						className="particles"
-						params={{
-							particles: {
-								number: {
-									value: 350,
-									density: {
-										enable: true,
-										value_area: 1000
-									}
-								},
-								color: {
-									value: [ '#B57AFF', '#9552EA' ]
-								},
-								shape: {
-									type: 'circle'
-								},
-								opacity: {
-									value: 0.5,
-									random: true,
-									anim: {
-										enable: true,
-										speed: 1,
-										opacity_min: 0.1,
-										sync: false
-									}
-								},
-								size: {
-									value: 18,
-									random: true,
-									anim: {
-										enable: false,
-										speed: 40,
-										size_min: 0.1,
-										sync: false
-									}
-								},
-								line_linked: {
-									enable: false
-								},
-								move: {
-									enable: true,
-									speed: 4,
-									direction: 'bottom',
-									random: false,
-									straight: false,
-									out_mode: 'out',
-									bounce: false,
-									attract: {
-										enable: false,
-										rotateX: 600,
-										rotateY: 1200
-									}
-								}
-							},
-							interactivity: {
-								detect_on: 'canvas',
-								events: {
-									onhover: {
-										enable: true,
-										mode: 'bubble'
-									},
-									onclick: {
-										enable: true,
-										mode: 'repulse'
-									},
-									resize: true
-								},
-								modes: {
-									bubble: {
-										distance: 400,
-										size: 4,
-										duration: 0.3,
-										opacity: 1,
-										speed: 3
-									},
-									repulse: {
-										distance: 200,
-										duration: 0.4
-									},
-									push: {
-										particles_nb: 4
-									},
-									remove: {
-										particles_nb: 2
-									}
-								}
-							},
-							retina_detect: true
-						}}
-					/>
-
-					<Timeline />
 				</div>
 			</section>
 			<section className="tags">
@@ -354,6 +165,14 @@ export default function Home() {
 					</p>
 				</div>
 			</section>
+			<section className="timeline" id="tline">
+				<div className="container">
+					
+					<Part />
+
+					<Timeline />
+				</div>
+			</section>
 
 			<section className="stats">
 				<div className="container">
@@ -376,35 +195,9 @@ export default function Home() {
 							<h3>2000+ Projects</h3>
 						</div>
 					</div>
-
-					{/* <p>
-						KWoC 2017 carried forward the legacy set by the 2016 edition; and in
-						many ways went past the set milestones. It was staggering
-						participation from students, many of them made their first
-						contributions to open source during KWoC, and mentors, who saw their
-						projects surpass their own expectations by the end of the program.
-					</p> */}
 				</div>
 			</section>
 
-			<section className="steps">
-				{/* <div className="container">
-					<h1>Steps</h1>
-
-					<ol>
-						<li>
-							Apply on the student registration page and wait for an email from
-							us (Please check Promotions and Spam as well).
-						</li>
-
-						<li>
-							Choose project(s) that you want to contribute to, contact the
-							assigned mentor(s) and work through December, learning the art of
-							software development on the way.
-						</li>
-					</ol>
-				</div> */}
-			</section>
 			<Footer />
 		</div>
 	);
