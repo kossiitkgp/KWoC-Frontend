@@ -88,6 +88,11 @@ export default function MentorDashboard() {
     },
   ];
   useEffect(() => {
+    // check that its not null
+    const mentor_loggedout = localStorage.getItem('mentor_jwt') === null || localStorage.getItem('mentor_jwt') === undefined
+    if (mentor_loggedout)
+      window.location.pathname = ''
+
     const URL = `${BACKEND_URL}/mentor/dashboard`;
     const data = {
       username: localStorage.getItem('mentor_username'),

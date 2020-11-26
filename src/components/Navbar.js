@@ -7,7 +7,8 @@ class Navbar extends Component {
 	state = {
 		burgermenuIsVisible: false,
 		is_mentor_loggedin: false,
-		is_student_loggedin: false
+		is_student_loggedin: false,
+		is_atleast_one_logged_in: false
 	};
 
 	componentDidMount() {
@@ -20,6 +21,11 @@ class Navbar extends Component {
 			is_student_loggedin:
 				localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined
 		});
+
+		const mentor_loggedout = localStorage.getItem('mentor_jwt') === null || localStorage.getItem('student_jwt') === undefined
+		const student_loggedout = localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined
+
+		this.setState({is_atleast_one_logged_in: !mentor_loggedout || !student_loggedout })
 	}
 
 	handleClick = (e) => {
@@ -100,9 +106,9 @@ class Navbar extends Component {
 
 						<div id="navbarBasicExample" className={`navbar-menu ${clickClass}`}>
 							<div className="navbar-end" onClick={this.closeNavbar} id="functional-buttons">
-								<Link className="navbar-item" to="/about" id="about-button">
+								<a className="navbar-item" href='/#about' id="about-button">
 									About
-								</Link>
+								</a>
 
 								<Link className="navbar-item" to="/projects" id="project-button">
 									Projects
@@ -120,11 +126,15 @@ class Navbar extends Component {
              <a>Mentee Login</a>
             </Link> */}
 
-								<Link className="navbar-item" to="/testimonial" id="testimonial-button">
-									Testimonials
-								</Link>
-							</div>
-							{/*
+                <Link
+                  className='navbar-item'
+                  to='/testimonial'
+                  id='testimonial-button'
+                >
+                  Testimonials
+                </Link>
+              </div>
+              {/*
               <div className='field' id='darkmode'>
                 <div className='buttons has-addons'>
                   <span className='button is-selected'>Light</span>
@@ -134,7 +144,9 @@ class Navbar extends Component {
               */}
 							<div className="navbar-end" onClick={this.closeNavbar}>
 								<div className="navbar-item has-dropdown is-hoverable" id="login-buttons">
-									<a className="navbar-link">Login</a>
+									<a className="navbar-link">
+										{this.state.is_atleast_one_logged_in == true ? 'Manage Account' : 'Login'}
+									</a>
 									<div className="navbar-dropdown">
 										{this.state.is_mentor_loggedin === true ? (
 											<a
@@ -188,10 +200,10 @@ class Navbar extends Component {
                     >
                       Student Login
                     </a> */}
-									</div>
-								</div>
+                  </div>
+                </div>
 
-								{/* <div
+                {/* <div
                   className='navbar-item has-dropdown is-hoverable'
                   id='stat-buttons'
                 >
@@ -214,13 +226,13 @@ class Navbar extends Component {
                     </Link>
                   </div>
                 </div> */}
-							</div>
-						</div>
-					</div>
-				</nav>
-			</div>
-		);
-	}
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  }
 }
 
 export default Navbar;
