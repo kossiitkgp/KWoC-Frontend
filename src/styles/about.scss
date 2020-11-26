@@ -1,50 +1,50 @@
-@import "index.scss";
+@import 'index.scss';
 
 .about {
-	background-image: linear-gradient(135deg, #9545f7 0%, #000000 50%);
-	color: white;
-	padding-bottom: 5rem;
-	.container {
-		h1 {
-			font-size: 40px;
-			align-items: center;
-		}
-		display: grid;
+  background-image: linear-gradient(135deg, #9545f7 0%, #000000 50%);
+  color: white;
+  padding-bottom: 5rem;
+  .container {
+    h1 {
+      font-size: 40px;
+      align-items: center;
+    }
+    display: grid;
 
-		place-items: center;
-		p {
-			font-size: 17px;
-		}
-	}
+    place-items: center;
+    p {
+      font-size: 17px;
+    }
+  }
 }
 
 .tags {
-	.container {
-		h1 {
-			font-size: 40px;
-			align-items: center;
-			color: #000;
-		}
-		max-height: 100vh;
-		margin-bottom: 20px;
-	}
+  .container {
+    h1 {
+      font-size: 40px;
+      align-items: center;
+      color: #000;
+    }
+    max-height: 100vh;
+    margin-bottom: 20px;
+  }
 }
 .stats {
-	.container {
-		h1 {
-			font-size: 40px;
-			text-align: center;
-		}
-		.columns {
-			padding: 20px;
-			.column {
-				padding-left: 10%;
+  .container {
+    h1 {
+      font-size: 40px;
+      text-align: center;
+    }
+    .columns {
+      padding: 20px;
+      .column {
+        padding-left: 10%;
 
-				img {
-					width: 200px;
-					height: 200px;
-				}
-			}
-		}
-	}
+        img {
+          width: 55%;
+          height: 55%;
+        }
+      }
+    }
+  }
 }

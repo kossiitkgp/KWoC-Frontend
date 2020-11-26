@@ -28,17 +28,25 @@
 	}
 
 	.button {
-		background-color: rgba(#b57aff, 0.5);
-		border-color: rgba(#b57aff, 0.5);
+		background-color: transparent;
+		border: 3px solid #fff;
+		padding: 20px 30px;
+		border-radius: 5px;
 		color: $primary-text-white;
+		transition: all 0.5s;
+
+		&:hover {
+			background-color:#fff;
+			border-color: #fff;
+			color: #000;
+			transform: scale(1.05);
+		}
 	}
 
-	a:hover {
-		background-color: rgba(#b57aff, 0.75);
-		border-color: rgba(#b57aff, 0.75);
-		color: #000;
-		transform: scale(1.05);
-	}
+}
+
+.hero-body .container {
+	margin-bottom: 10rem;
 }
 
 .container p {
@@ -60,4 +68,11 @@
 			background-color: #fff;
 		}
 	}
+}
+
+.tag.is-medium.is-primary {
+    background: #222;
+    border-radius: 15px;
+	color: #eee;
+	cursor: pointer;
 }

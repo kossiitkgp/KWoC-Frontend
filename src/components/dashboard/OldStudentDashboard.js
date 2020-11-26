@@ -16,7 +16,12 @@ export default function Dashboard() {
   ]);
 
   useEffect(() => {
-    const URL = `${BACKEND_URL}/student/dashboard`;
+    // checking if student logged out or not
+    const student_loggedout = localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined
+    if (student_loggedout)
+      window.location.pathname = ''
+    
+      const URL = `${BACKEND_URL}/student/dashboard`;
     const data = {
       username: localStorage.getItem('student_username'),
     };

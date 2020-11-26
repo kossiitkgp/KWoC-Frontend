@@ -154,7 +154,7 @@ Nothing makes us happier than people spreading words about open-source; to begin
 
 #### What if I have a question not answered in this FAQ?
 
-Please make sure to read the website. If after reading through it you still don't have an answer please consider reaching out to us on our mail address (available in the footer).
+Please make sure to read the website. If after reading through it you still don't have an answer please consider reaching out to us on our mail address admin@kossiitkgp.org.
 
 ### Students
 
@@ -201,17 +201,21 @@ GSoC requires 40 hours per week in summers. For KWoC, you may give 1-2 hours dai
 
 If you remain with us till the end of the program, then you'll receive a certificate for completion of the program.
 
+#### Will I receive a stipend for participating in KWoC?
+
+Unfortunately, we do not offer any stipend for participation in KWoC. This is a program designed for onboarding students with Open Source culture.
+
 #### Which programming language(s) do I need to be fluent in?
 
 Programming languages are just like communication languages; it is sufficient to know one or two, but the more you know the better it is.
 
 #### Will taking part in KWoC help me in being a part of KOSS?
 
-If your purpose to be with us is pure, and you are deemed worthy; then yes!
+If your purpose to be with us is pure, and you are deemed worthy, then yes!
 
 #### Can I work on more than one project?
 
-Yes! You can even work in parallel on them. Well if you are a beginner it is advisable to focus your attention at one thing at a time. But the choice rests with you.
+Yes! You can even work in parallel on them. Well, if you are a beginner it is advisable to focus your attention at one thing at a time. But the choice rests with you.
 
 #### What if I am unable to meet the deadlines due to some unavoidable reasons?
 
