@@ -9,6 +9,11 @@ import numFormatter from '../helper';
 export default function Dashboard() {
   const [fullName, setFullName] = useState('');
   const [collegeName, setCollegeName] = useState('');
+  const [projects, setProjectList] = useState([
+    'xypnox/xyplot',
+    'kossiitkgp/darkHorse',
+    'kossiitkgp/KWoC',
+  ]);
 
   useEffect(() => {
     const URL = `${BACKEND_URL}/student/dashboard`;
@@ -32,9 +37,11 @@ export default function Dashboard() {
 
   const announcements = [
     {
-      date: '28Nov, 2020',
+      date: 'November 28, 2020',
       content:
-        'Coding Period begins from 6th of December! Till then have a look at the resources in the dashboard',
+        'Coding Period begins from 6th of December! Till then look at the \
+        resources in the resource tab, and approach your mentors for getting \
+        an idea for approaching a project of your choice.',
     },
   ];
 
@@ -126,7 +133,7 @@ export default function Dashboard() {
         <div className='data-panel'>
           <h1 className='title'>Dashboard</h1>
           <h3>
-            Stats will be updated in the Dashboard once Coding Period beings
+            Stats will be updated in the Dashboard once Coding Period begins.
           </h3>
 
           <div className='data-cards '>
@@ -168,11 +175,11 @@ export default function Dashboard() {
         </div>
       </section> */}
 
-      {/* <div className='container projects'>
+      <div className='container projects'>
         <h1>Projects</h1>
         <div className='project-card-list'>
-          {data.projects !== undefined ? (
-            data.projects.map((projectName) => {
+          {projects.length !== 0 ? (
+            projects.map((projectName) => {
               return (
                 <div className='project-card grow-card'>
                   <p>{projectName}</p>
@@ -206,7 +213,10 @@ export default function Dashboard() {
           ) : (
             <div className='add-project-card'>
               <div className='header-add-project-card'>
-                <p>You haven't solved issue from a project yet</p>
+                <p>
+                  Coding period starts from 6th December. You can browse some
+                  added projects.
+                </p>
               </div>
               <div className='add-project-button-div'>
                 <a href='/projects'>
@@ -218,8 +228,19 @@ export default function Dashboard() {
               </div>
             </div>
           )}
+
+          {projects.length !== 0 ? (
+            <div className='add-project-card project-card card-component grow-card add-project-card-small'>
+              <a href='/form/project'>
+                <h4>Add Projects</h4>
+                <text>+</text>
+              </a>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
-      </div> */}
+      </div>
 
       {/* <section className='container commits'>
         <h1>Latest Commits</h1>

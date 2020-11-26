@@ -175,13 +175,16 @@ button {
     .project-card-list {
       display: flex;
       flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: wrap;
 
       .project-card {
         display: flex;
         flex-direction: column;
+        flex-basis: 0.33;
 
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin: 1rem;
+        margin-right: auto;
         p {
           color: black;
           font-size: 36px;
@@ -198,6 +201,57 @@ button {
         .project-buttons {
           display: flex;
           justify-content: space-evenly;
+        }
+      }
+
+      .add-project-card-small {
+        max-width: 350px;
+        max-height: 200px;
+
+        min-width: 350px;
+        min-height: 120px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        a {
+          display: flex;
+          align-items: center;
+          color: #8794a1;
+          h4 {
+            text-align: center;
+            font-size: 32px;
+          }
+
+          text {
+            padding-left: 1%;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 120px;
+
+            color: #8794a1;
+            margin: 5px;
+            padding-bottom: 5px;
+            align-items: center;
+          }
+        }
+
+        a:hover {
+          color: #363636;
+
+          text {
+            color: #363636;
+          }
+        }
+
+        a:active {
+          color: black;
+
+          text {
+            color: black;
+          }
         }
       }
     }
