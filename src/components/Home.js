@@ -14,16 +14,21 @@ import github from '../images/github.svg';
 import pullRequest from '../images/git-pull-request.svg';
 
 export default function Home() {
-  return (
-    <div className='home'>
-      <Navbar />
-      <section className='hero is-fullheight is-dark is-bold'>
-        <Part />
-        <div className='hero-body'>
-          <div className='container'>
-            <h1 className='title' id='hero'>
-              Welcome to KWoC
-            </h1>
+	const tags = ["Machine learning","Android", "Computer Vision", "Gaming", "Backend", 
+	"Natural Language Processing", "Scrapping", "Cognition", "Front End", 
+	"Deep Learning", "Operating System", "DBMS", "OOP", "Compilers", "Security", 
+	"Data Mining", "Simulations", "Artificial Intelligence"];
+
+	return (
+		<div className="home">
+			<Navbar />
+			<section className="hero is-fullheight is-dark is-bold">
+				<Part />
+				<div className="hero-body">
+					<div className="container">
+						<h1 className="title" id="hero">
+							Welcome to KWoC
+						</h1>
 
             <div className='reg-btns field is-grouped is-grouped-centered'>
               <p className='control'>
@@ -110,71 +115,22 @@ export default function Home() {
         <div className='container'>
           <h1>Tags</h1>
 
-          <p>
-            <span id='dark' class='tag is-dark is-medium'>
-              Machine learning
-            </span>
-            <span id='light' class='tag is-light is-medium'>
-              Android
-            </span>
-            <span id='dark' class='tag is-dark is-medium'>
-              Computer Vision
-            </span>
-            <span id='light' class='tag is-light is-medium'>
-              Gaming
-            </span>
-            <span id='dark' class='tag is-dark is-medium'>
-              Backend
-            </span>
-            <span id='light' class='tag is-light is-medium'>
-              Natural Language Processing
-            </span>
-            <span id='dark' class='tag is-dark is-medium'>
-              Scrapping
-            </span>
-            <span id='light' class='tag is-light is-medium'>
-              Cognition
-            </span>
-            <span id='dark' class='tag is-dark is-medium'>
-              Front End
-            </span>
-            <span id='light' class='tag is-light is-medium'>
-              Deep Learning
-            </span>
-            <span id='dark' class='tag is-dark is-medium'>
-              Operating System
-            </span>
-            <span id='light' class='tag is-light is-medium'>
-              DBMS
-            </span>
-            <span id='dark' class='tag is-dark is-medium'>
-              OOP
-            </span>
-            <span id='light' class='tag is-light is-medium'>
-              Compilers
-            </span>
-            <span id='dark' class='tag is-dark is-medium'>
-              Security
-            </span>
-            <span id='light' class='tag is-light is-medium'>
-              Data Mining
-            </span>
-            <span id='dark' class='tag is-dark is-medium'>
-              Simulations
-            </span>
-            <span id='light' class='tag is-light is-medium'>
-              Artificial Intelligence
-            </span>
-          </p>
-        </div>
-      </section>
-      <section className='timeline' id='tline'>
-        <div className='container'>
-          <Part />
-
-          <Timeline />
-        </div>
-      </section>
+					<p>
+						{tags.map(tag => (
+							<span key={tag} class="tag cust-tag is-primary is-medium">
+								{tag}
+							</span>
+						))}
+					</p>
+				</div>
+			</section>
+			<section className="timeline" id="tline">
+				<div className="container">
+					<h1 style={{zIndex: 10}}>Timeline</h1>
+					<Part />
+					<Timeline />
+				</div>
+			</section>
 
       <section className='stats'>
         <div className='container'>
