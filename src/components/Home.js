@@ -67,28 +67,27 @@ export default function Home() {
 							</p>
 						</div>
 
-						<div className="manual-btns" style={{ marginBottom: '20px', padding: '0 20%' }}>
-							<p className="control">
-								<a
-									style={{ marginBottom: '20px' }}
-									className="button is-fullwidth"
-									href="https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCStudentManual.pdf"
-								>
-									Student Manual
-								</a>
-							</p>
-							<p className="control">
-								<a
-									className="button is-fullwidth "
-									href="https://github.com/kossiitkgp/kwoc-2018/blob/master/static/files/KWoCMentorManual.pdf"
-								>
-									Mentor Manual
-								</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
+            <div className='manual-btns field is-grouped is-grouped-centered'>
+              <p className='control'>
+                <a
+                  className='button is-fullwidth'
+                  href='https://drive.google.com/file/d/1_K30Crr3vVgRS-NGFVC2obQypD22jTuq/view'
+                >
+                  Student Manual
+                </a>
+              </p>
+              <p className='control'>
+                <a
+                  className='button is-fullwidth '
+                  href='https://drive.google.com/file/d/1P7F-Jfi_XdUeptc4t5KM09PtTJRatjj1/view'
+                >
+                  Mentor Manual
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
 			{/* <section className="about">
 				<div className="container" />
