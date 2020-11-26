@@ -1,31 +1,34 @@
-@import "index.scss";
+@import 'index.scss';
 
 .why-kwoc {
-	color: rgb(223, 222, 222);
-	margin-bottom: 0;
-	background-image: linear-gradient(135deg, #9545f7 0%, #000000 50%);
-	.container {
-		padding: 30px 0 30px 0;
+  color: rgb(223, 222, 222);
+  margin-bottom: 0;
+  // background-image: linear-gradient(-135deg, #58182d 0%, #130816 50%);
+  background-color: #170f1a;
+  .container {
+    padding: 30px 20% 5rem;
 
-		h1 {
-			font-size: 42px;
-			text-align: center;
-		}
-		h2 {
-			font-size: 30px;
-			text-align: center;
-		}
-		p {
-			font-size: 18px;
-			padding: 0 20%;
-			color: linear-gradient(135deg, #fff 50%, #000 50%);
-		}
-		h3 {
-			padding: 0 20%;
-			color: #a86df5;
-			font-size: 25px;
-			letter-spacing: 2px;
-			font-family: Vegur;
-		}
-	}
+    h1 {
+      color: #c395ff;
+      text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
+      font-size: 64px;
+      text-align: center;
+    }
+    h2 {
+      color: #c395ff;
+      text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
+      font-size: 48px;
+      text-align: center;
+    }
+    p {
+      font-size: 18px;
+      color: linear-gradient(135deg, #fff 50%, #000 50%);
+    }
+    h3 {
+      color: #c395ff;
+      font-size: 25px;
+      letter-spacing: 2px;
+      font-family: Vegur;
+    }
+  }
 }

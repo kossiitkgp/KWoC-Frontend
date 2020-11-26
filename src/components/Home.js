@@ -9,26 +9,42 @@ import '../styles/home.scss';
 import '../styles/why.scss';
 import Part from './Part';
 import Particles from 'react-particles-js';
-import group from '../images/grp.png';
+import group from '../images/people.svg';
 import github from '../images/github.svg';
 import pullRequest from '../images/git-pull-request.svg';
 
 export default function Home() {
-	const tags = ["Machine learning","Android", "Computer Vision", "Gaming", "Backend", 
-	"Natural Language Processing", "Scrapping", "Cognition", "Front End", 
-	"Deep Learning", "Operating System", "DBMS", "OOP", "Compilers", "Security", 
-	"Data Mining", "Simulations", "Artificial Intelligence"];
+  const tags = [
+    'Machine learning',
+    'Android',
+    'Computer Vision',
+    'Gaming',
+    'Backend',
+    'Natural Language Processing',
+    'Scrapping',
+    'Cognition',
+    'Front End',
+    'Deep Learning',
+    'Operating System',
+    'DBMS',
+    'OOP',
+    'Compilers',
+    'Security',
+    'Data Mining',
+    'Simulations',
+    'Artificial Intelligence',
+  ];
 
-	return (
-		<div className="home">
-			<Navbar />
-			<section className="hero is-fullheight is-dark is-bold">
-				<Part />
-				<div className="hero-body">
-					<div className="container">
-						<h1 className="title" id="hero">
-							Welcome to KWoC
-						</h1>
+  return (
+    <div className='home'>
+      <Navbar />
+      <section className='hero is-fullheight is-dark is-bold'>
+        <Part />
+        <div className='hero-body'>
+          <div className='container'>
+            <h1 className='title' id='hero'>
+              Welcome to KWoC
+            </h1>
 
             <div className='reg-btns field is-grouped is-grouped-centered'>
               <p className='control'>
@@ -115,22 +131,22 @@ export default function Home() {
         <div className='container'>
           <h1>Tags</h1>
 
-					<p>
-						{tags.map(tag => (
-							<span key={tag} class="tag cust-tag is-primary is-medium">
-								{tag}
-							</span>
-						))}
-					</p>
-				</div>
-			</section>
-			<section className="timeline" id="tline">
-				<div className="container">
-					<h1 style={{zIndex: 10}}>Timeline</h1>
-					<Part />
-					<Timeline />
-				</div>
-			</section>
+          <p>
+            {tags.map((tag) => (
+              <span key={tag} class='tag cust-tag is-primary is-medium'>
+                {tag}
+              </span>
+            ))}
+          </p>
+        </div>
+      </section>
+      <section className='timeline' id='tline'>
+        <div className='container'>
+          <h1 style={{ zIndex: 10 }}>Timeline</h1>
+          <Part />
+          <Timeline />
+        </div>
+      </section>
 
       <section className='stats'>
         <div className='container'>
