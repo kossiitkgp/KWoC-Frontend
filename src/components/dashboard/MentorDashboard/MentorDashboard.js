@@ -20,27 +20,27 @@ export default function MentorDashboard() {
   */
   const [fullName, setFullName] = useState('');
   const [projects, setProjects] = useState([
-    {
-      Name: 'darkHorse',
-      RepoLink: 'https://github.com/kossiitkgp/darkHorse',
-      owner: 'kossiitkgp',
-    },
-    {
-      Name: 'todxpy',
-      RepoLink: 'https://github.com/xypnox/todxpy',
-      owner: 'xypnox',
-    },
-    {
-      Name: 'KWoC',
-      RepoLink: 'https://github.com/kossiitkgp/KWoC',
-      owner: 'kossiitkgp',
-    },
+    // {
+    //   Name: 'darkHorse',
+    //   RepoLink: 'https://github.com/kossiitkgp/darkHorse',
+    //   owner: 'kossiitkgp',
+    // },
+    // {
+    //   Name: 'todxpy',
+    //   RepoLink: 'https://github.com/xypnox/todxpy',
+    //   owner: 'xypnox',
+    // },
+    // {
+    //   Name: 'KWoC',
+    //   RepoLink: 'https://github.com/kossiitkgp/KWoC',
+    //   owner: 'kossiitkgp',
+    // },
   ]);
   const [students, setStudents] = useState([
-    'yashrsharma44',
-    'rakaar',
-    'orkohunter',
-    'adarshkumar712',
+    // 'yashrsharma44',
+    // 'rakaar',
+    // 'orkohunter',
+    // 'adarshkumar712',
   ]);
 
   const announcements = [

@@ -10,9 +10,9 @@ export default function Dashboard() {
   const [fullName, setFullName] = useState('');
   const [collegeName, setCollegeName] = useState('');
   const [projects, setProjectList] = useState([
-    'xypnox/xyplot',
-    'kossiitkgp/darkHorse',
-    'kossiitkgp/KWoC',
+    // 'xypnox/xyplot',
+    // 'kossiitkgp/darkHorse',
+    // 'kossiitkgp/KWoC',
   ]);
 
   useEffect(() => {
