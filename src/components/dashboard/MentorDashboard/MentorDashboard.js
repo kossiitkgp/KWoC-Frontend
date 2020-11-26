@@ -20,9 +20,21 @@ export default function MentorDashboard() {
   */
   const [fullName, setFullName] = useState('');
   const [projects, setProjects] = useState([
-    { Name: 'darkHorse', RepoLink: 'https://github.com/kossiitkgp/darkHorse' },
-    { Name: 'todxpy', RepoLink: 'https://github.com/xypnox/todxpy' },
-    { Name: 'KWoC', RepoLink: 'https://github.com/kossiitkgp/KWoC' },
+    {
+      Name: 'darkHorse',
+      RepoLink: 'https://github.com/kossiitkgp/darkHorse',
+      owner: 'kossiitkgp',
+    },
+    {
+      Name: 'todxpy',
+      RepoLink: 'https://github.com/xypnox/todxpy',
+      owner: 'xypnox',
+    },
+    {
+      Name: 'KWoC',
+      RepoLink: 'https://github.com/kossiitkgp/KWoC',
+      owner: 'kossiitkgp',
+    },
   ]);
   const [students, setStudents] = useState([]);
 
@@ -253,6 +265,10 @@ export default function MentorDashboard() {
               return (
                 <div className='project-c card-component grow-card'>
                   <div className='anchor-align'>
+                    <img
+                      className='project-card-avatar'
+                      src={`https://github.com/${item.owner}.png`}
+                    ></img>
                     <p className='project-name'>{item.Name}</p>
                   </div>
                   <div className='project-buttons'>

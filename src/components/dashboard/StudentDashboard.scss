@@ -185,13 +185,33 @@ button {
 
         margin: 1rem;
         margin-right: auto;
-        p {
-          color: black;
-          font-size: 36px;
-          text-align: center;
-          margin: 0px;
-          padding-top: 1rem;
+
+        .header-div {
+          display: flex;
+          flex-direction: row;
+
+          align-items: center;
+
+          .project-card-avatar {
+            height: 40px;
+            width: 40px;
+            margin-top: 1rem;
+            margin-right: 2rem;
+            margin-left: 1rem;
+            // padding-left: 1rem;
+
+            border-radius: 50%;
+          }
+
+          p {
+            color: black;
+            font-size: 36px;
+            text-align: center;
+            margin: 0px;
+            padding-top: 1rem;
+          }
         }
+
         box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
         border-radius: $border;
 

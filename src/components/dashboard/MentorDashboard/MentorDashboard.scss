@@ -217,7 +217,6 @@ $button-color: black;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-
   flex-basis: 0.33;
 
   // justify-content: space-between;
@@ -278,7 +277,8 @@ $button-color: black;
 
 .project-buttons {
   display: flex;
-  // justify-content: space-between;
+
+  justify-content: space-around;
   padding-top: 5%;
 }
 
@@ -670,5 +670,31 @@ $button-color: black;
         color: white;
       }
     }
+  }
+}
+
+.anchor-align {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  .project-card-avatar {
+    height: 40px;
+    width: 40px;
+    margin-top: 1rem;
+    margin-right: 2rem;
+    margin-left: 1rem;
+    // padding-left: 1rem;
+
+    border-radius: 50%;
+  }
+
+  p {
+    color: black;
+    font-size: 36px;
+    text-align: center;
+    margin: 0px;
+    padding-top: 1rem;
   }
 }

@@ -180,9 +180,18 @@ export default function Dashboard() {
         <div className='project-card-list'>
           {projects.length !== 0 ? (
             projects.map((projectName) => {
+              const projectOwner = projectName.split('/')[0];
+
               return (
                 <div className='project-card grow-card'>
-                  <p>{projectName}</p>
+                  <div className='header-div'>
+                    <img
+                      className='project-card-avatar'
+                      src={`https://github.com/${projectOwner}.png`}
+                    ></img>
+                    <p>{projectName.split('/')[1]}</p>
+                  </div>
+
                   <div className='project-buttons'>
                     <a
                       href={`https://www.github.com/${projectName}`}
