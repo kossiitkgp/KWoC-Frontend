@@ -10,8 +10,8 @@ import '../styles/why.scss';
 import Part from './Part';
 import Particles from 'react-particles-js';
 import group from '../images/grp.png';
-import web from '../images/web6.png';
-import pullRequest from '../images/git-pull-request-512.png';
+import github from '../images/github.svg';
+import pullRequest from '../images/git-pull-request.svg';
 
 export default function Home() {
   return (
@@ -192,7 +192,7 @@ export default function Home() {
             </div>
             <div className='column has-text-centered'>
               {/* <Card heading="70+ Mentors" body="Some Random Body" /> */}
-              <img src={web} alt='Project' />
+              <img src={github} alt='Project' />
 
               <h3>150+ Projects</h3>
             </div>
