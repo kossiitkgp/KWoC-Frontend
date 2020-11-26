@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/footer.scss';
-import Part from './Part';
 export default function Footer() {
 	return (
 		<section className="footer-btm">
@@ -20,6 +19,10 @@ export default function Footer() {
 						<div className="column">
 							<Link to="/FAQ">FAQ</Link>
 							<Link to="/about">About KOSS</Link>
+						</div>
+						<div className="column">
+							<p>Found a glitch?</p>
+							<a target="_blank" rel="noreferrer" href="https://github.com/kossiitkgp/kwoc-bugs">Report a Bug!</a>
 						</div>
 					</div>
 				</div>
