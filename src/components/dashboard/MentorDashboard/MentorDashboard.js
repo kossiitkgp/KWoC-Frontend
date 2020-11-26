@@ -19,7 +19,12 @@ export default function MentorDashboard() {
   once cors issue is fixed by shubham mishra
   */
   const [fullName, setFullName] = useState('');
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState([
+    { Name: 'darkHorse', RepoLink: 'https://github.com/kossiitkgp/darkHorse' },
+    { Name: 'todxpy', RepoLink: 'https://github.com/xypnox/todxpy' },
+    { Name: 'KWoC', RepoLink: 'https://github.com/kossiitkgp/KWoC' },
+  ]);
+  const [students, setStudents] = useState([]);
 
   const announcements = [
     {
@@ -70,21 +75,21 @@ export default function MentorDashboard() {
     const data = {
       username: localStorage.getItem('mentor_username'),
     };
-    console.log('data is ', data);
-    fetch(URL, {
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log('res is  ', res);
-        setFullName(res.name);
-        setProjects(res.projects);
-      })
-      .catch((err) => {
-        console.log('err is ', err);
-        alert('Server Error, Please try again');
-      });
+    // console.log('data is ', data);
+    // fetch(URL, {
+    //   method: 'POST',
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log('res is  ', res);
+    //     setFullName(res.name);
+    //     setProjects(res.projects);
+    //   })
+    //   .catch((err) => {
+    //     console.log('err is ', err);
+    //     alert('Server Error, Please try again');
+    //   });
   }, []);
 
   // sample data kept for future reference
@@ -290,15 +295,25 @@ export default function MentorDashboard() {
               </div>
             </div>
           )}
+          {projects.length !== 0 ? (
+            <div className='add-project-card project-c card-component grow-card add-project-card-small'>
+              <a href='/form/project'>
+                <h4>Add Projects</h4>
+                <text>+</text>
+              </a>
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </div>
-      {/*<div className='students'>
+      <div className='students'>
         <div className='student-header'>
           <h1>Students</h1>
         </div>
         <div className='student-card'>
-          {data.student !== undefined ? (
-            data.student.map((studentName, index) => {
+          {students.length !== 0 ? (
+            students.map((studentName, index) => {
               return (
                 <div className='student-c card-component grow-card'>
                   <div className='student-card-header'>
@@ -329,12 +344,12 @@ export default function MentorDashboard() {
           ) : (
             <div className='add-project-card'>
               <div className='header-add-project-card'>
-                <p>You don't have a student working on a project</p>
+                <p>
+                  Coding period starts from 6th December. You can invite
+                  students meanwhile.
+                </p>
               </div>
               <div className='add-project-button-div'>
-                
-                Once we have a slack channel, add in the invite/link to the slack channel
-                
                 <a href='#'>
                   <button className='add-project-button '>
                     <p className='plus-sign'>+</p>
@@ -346,7 +361,6 @@ export default function MentorDashboard() {
           )}
         </div>
       </div>
-      */}
 
       <section className='resource-card'>
         <div className='resource-header'>
