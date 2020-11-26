@@ -126,6 +126,11 @@ class Navbar extends Component {
              <a>Mentee Login</a>
             </Link> */}
 
+								<a className="navbar-item" href="https://github.com/kossiitkgp/kwoc-bugs" target="_blank" rel="noreferrer" id="testimonial-button">
+									Bug Report
+								</a>
+							</div>
+							{/*
                 <Link
                   className='navbar-item'
                   to='/testimonial'

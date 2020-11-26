@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/footer.scss';
-import Part from './Part';
 export default function Footer() {
 	return (
 		<section className="footer-btm">
@@ -11,7 +10,7 @@ export default function Footer() {
 					<div className="columns is-vcentered">
 						<div className="column">
 							<h1>Kharagpur Winter of Code</h1>
-							<h2>With &#10084; by KOSS</h2>
+							<h2><a href="https://kossiitkgp.org">With &#10084; by KOSS</a></h2>
 						</div>
 						<div className="column">
 							<a href="#tline">Timeline</a>
@@ -20,6 +19,10 @@ export default function Footer() {
 						<div className="column">
 							<Link to="/FAQ">FAQ</Link>
 							<Link to="/about">About KOSS</Link>
+						</div>
+						<div className="column">
+							<h2>Found a glitch?</h2>
+							<a target="_blank" rel="noreferrer" href="https://github.com/kossiitkgp/kwoc-bugs">Report a Bug!</a>
 						</div>
 					</div>
 				</div>
