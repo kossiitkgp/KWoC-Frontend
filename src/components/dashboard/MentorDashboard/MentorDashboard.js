@@ -92,21 +92,21 @@ export default function MentorDashboard() {
     const data = {
       username: localStorage.getItem('mentor_username'),
     };
-    // console.log('data is ', data);
-    // fetch(URL, {
-    //   method: 'POST',
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     console.log('res is  ', res);
-    //     setFullName(res.name);
-    //     setProjects(res.projects);
-    //   })
-    //   .catch((err) => {
-    //     console.log('err is ', err);
-    //     alert('Server Error, Please try again');
-    //   });
+    console.log('data is ', data);
+    fetch(URL, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log('res is  ', res);
+        setFullName(res.name);
+        setProjects(res.projects);
+      })
+      .catch((err) => {
+        console.log('err is ', err);
+        alert('Server Error, Please try again');
+      });
   }, []);
 
   // sample data kept for future reference
