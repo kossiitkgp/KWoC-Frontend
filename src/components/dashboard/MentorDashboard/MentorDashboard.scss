@@ -208,7 +208,8 @@ $button-color: black;
 .student-card {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .project-c,
@@ -216,9 +217,12 @@ $button-color: black;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  flex-basis: 0.33;
+
   // justify-content: space-between;
   margin: 2%;
   padding: 1%;
+  margin-right: auto;
 
   border-radius: 10px;
 
@@ -273,7 +277,8 @@ $button-color: black;
 
 .project-buttons {
   display: flex;
-  // justify-content: space-between;
+
+  justify-content: space-around;
   padding-top: 5%;
 }
 
@@ -536,6 +541,57 @@ $button-color: black;
   }
 }
 
+.add-project-card-small {
+  max-width: 350px;
+  max-height: 200px;
+
+  min-width: 350px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: #8794a1;
+    h4 {
+      text-align: center;
+      font-size: 32px;
+    }
+
+    text {
+      padding-left: 1%;
+      font-family: Inter;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 120px;
+
+      color: #8794a1;
+      margin: 5px;
+      padding-bottom: 5px;
+      align-items: center;
+    }
+  }
+
+  a:hover {
+    color: #363636;
+
+    text {
+      color: #363636;
+    }
+  }
+
+  a:active {
+    color: black;
+
+    text {
+      color: black;
+    }
+  }
+}
+
 .add-project-card {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -567,6 +623,7 @@ $button-color: black;
 
     .add-project-button:hover {
       cursor: pointer;
+      transform: scale(1.05);
     }
 
     .add-project-button:active {
@@ -584,7 +641,7 @@ $button-color: black;
       outline: none;
       height: 60px;
       width: 300px;
-
+      transition: all 0.2s ease-in-out;
       font-size: 28px;
 
       display: flex;
@@ -613,5 +670,31 @@ $button-color: black;
         color: white;
       }
     }
+  }
+}
+
+.anchor-align {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+
+  .project-card-avatar {
+    height: 40px;
+    width: 40px;
+    margin-top: 1rem;
+    margin-right: 2rem;
+    margin-left: 1rem;
+    // padding-left: 1rem;
+
+    border-radius: 50%;
+  }
+
+  p {
+    color: black;
+    font-size: 36px;
+    text-align: center;
+    margin: 0px;
+    padding-top: 1rem;
   }
 }
