@@ -15,7 +15,7 @@ export default function Part() {
 						}
 					},
 					color: {
-						value: [ '#B57AFF', '#9552EA' ]
+						value: [ '#fff', '#9552EA' ]
 					},
 					shape: {
 						type: 'circle'
@@ -31,7 +31,7 @@ export default function Part() {
 						}
 					},
 					size: {
-						value: 18,
+						value: 10,
 						random: true,
 						anim: {
 							enable: false,
@@ -45,7 +45,7 @@ export default function Part() {
 					},
 					move: {
 						enable: true,
-						speed: 4,
+						speed: 3,
 						direction: 'bottom',
 						random: false,
 						straight: false,
