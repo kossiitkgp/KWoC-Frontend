@@ -36,7 +36,12 @@ export default function MentorDashboard() {
       owner: 'kossiitkgp',
     },
   ]);
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState([
+    'yashrsharma44',
+    'rakaar',
+    'orkohunter',
+    'adarshkumar712',
+  ]);
 
   const announcements = [
     {
@@ -352,6 +357,12 @@ export default function MentorDashboard() {
                     </a>
                     <a className='fill-evals student-button-small' href='#'>
                       Fill Evals
+                    </a>
+                    <a
+                      className='student-button-small'
+                      href={`/stats/student/${studentName}`}
+                    >
+                      Stats
                     </a>
                   </div>
                 </div>
