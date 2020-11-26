@@ -1,5 +1,9 @@
 @import 'index.scss';
 
+#projects { 
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(https://raw.githubusercontent.com/kossiitkgp/kwoc-2017/master/static/images/intro-background.jpg);
+    background-size: cover;
+}
 .project-card{
     max-width: 412px;
 }

@@ -65,18 +65,18 @@ export default function Projects() {
     return (
     <div className='projects'>
       <Navbar />
-      <section class='hero is-medium is-danger is-bold'>
+      <section class='hero is-medium is-danger is-bold' id='projects'>
         <div class='hero-body'>
             <div class='container'>
                 <h1 class='title'>Projects</h1>
-                <h2 class='subtitle'>
-                    Find yourself a project in your preferred language, category or topic.
+                <h2>
+                    KWoC '20 Projects will be updated on 6th December,2020. Till then have a look at previous year projects <a  style ={{ color: "white"}} href="https://kwoc19.kossiitkgp.org/projects.html"><u>here</u></a>
                 </h2>
           </div>
         </div>
       </section>
         
-        <div className='container'>
+        {/* <div className='container'>
             <div class="field">
                 <div class="control">
                     <input class="input is-primary is-medium" type="text" placeholder="Search projects" onChange={handleSearch}></input>
@@ -97,7 +97,7 @@ export default function Projects() {
               ))
             }
             </div>
-        </div>
+        </div> */}
        <Footer />
     </div>
   );
