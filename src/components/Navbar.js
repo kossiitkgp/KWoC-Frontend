@@ -123,6 +123,9 @@ class Navbar extends Component {
 								<Link className="navbar-item" to="/testimonial" id="testimonial-button">
 									Testimonials
 								</Link>
+								<a className="navbar-item" href="https://github.com/kossiitkgp/kwoc-bugs" target="_blank" rel="noreferrer" id="testimonial-button">
+									Bug Report
+								</a>
 							</div>
 							{/*
               <div className='field' id='darkmode'>
