@@ -70,7 +70,7 @@ export default function Projects() {
             <div class='container'>
                 <h1 class='title'>Projects</h1>
                 <h2>
-                    KWoC '20 Projects will be updated on 6th December,2020. Till then have a look at previous year projects <a  style ={{ color: "white"}} href="https://kwoc19.kossiitkgp.org/projects.html"><u>here</u></a>
+                    KWoC '20 Projects will be updated on 6th December,2020. Till then have a look at <a  style ={{ color: "white"}} href="https://kwoc19.kossiitkgp.org/projects.html"><u>previous year projects</u></a>
                 </h2>
           </div>
         </div>
