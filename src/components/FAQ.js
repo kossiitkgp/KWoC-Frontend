@@ -1,16 +1,17 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import './faq.scss';
 
 export default function FAQ() {
   return (
     <div className='FAQs'>
       <Navbar />
-      <section className='hero is-medium is-warning is-bold'>
+      <section className='hero is-medium is-warning is-bold' id="faq">
         <div className='hero-body'>
-          <div className='container'>
-            <h1 className='title'>Frequently Asked Questions</h1>
-            <h2 className='subtitle'>
+          <div className='container' id="content-faq">
+            <h1 className='title' style={{'color': 'white'}}>Frequently Asked Questions</h1>
+            <h2 className='subtitle' style={{'color': 'white'}}>
               Wanna Ask us a question? Check these first!
             </h2>
           </div>
