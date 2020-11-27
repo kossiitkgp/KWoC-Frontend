@@ -26,675 +26,647 @@ $button-color: black;
     padding: 0px;
     margin: 0px;
   }
-}
 
-.intro-card {
-  display: flex;
-  margin-top: 3%;
-  padding-top: 5%;
-}
+  // Classes which are used by all components, so not nested
+  .add-project-card {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 
-.card-component {
-  // Taken from  https://www.cssmatic.com/box-shadow
-  // background-color: #f0f4f7;
-  box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
-  border-radius: 30px;
-}
+    width: 1200px;
+    height: 200px;
 
-.avatar {
-  max-width: 30%;
-  flex-grow: 1;
-  text-align: center;
+    // margin: 1%;
+    border: 10px dashed #5f6e7d;
 
-  // margin: 1%;
-  // margin-right: 0.5%;
+    border-radius: 10px;
 
-  padding-top: 3%;
-  padding-bottom: 3%;
-
-  box-shadow: 0px;
-  background: rgba(0, 0, 0, 0);
-  background-color: #f0f4f7;
-
-  box-shadow: inset 10px 23px 63px -4px rgba(219, 226, 235, 1);
-  // border-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.mentor-stats-content {
-  display: flex;
-  flex-grow: 1;
-  padding-top: 4.5%;
-}
-
-.mentor-stats {
-  background: rgba(0, 0, 0, 0);
-  background-color: #f0f4f7;
-  max-width: 70%;
-
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.students-mstats-card {
-  background: linear-gradient(135deg, #b57aff 50%, #9552ea 100%);
-}
-
-.font-mentor-stats {
-  font-size: 5vw;
-}
-// taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
-@media screen and (min-width: 1200px) {
-  .font-mentor-stats {
-    font-size: 60px;
-  }
-}
-
-.font-mentor-header {
-  font-size: 3.3vw;
-}
-// taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
-@media screen and (min-width: 1200px) {
-  .font-mentor-header {
-    font-size: 40px;
-  }
-}
-
-.mstats {
-  p {
-    padding: 0px;
-    margin: 0px;
-  }
-
-  text-align: center;
-  flex-direction: column;
-  display: flex;
-  justify-content: space-between;
-
-  margin-left: 1.5%;
-  margin-right: 1.5%;
-  margin-bottom: 1.5%;
-
-  flex-grow: 1;
-  flex-basis: 0;
-
-  padding: 1.5%;
-
-  font-weight: bold;
-  font-size: 2.5vw;
-  // box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
-}
-
-.mentor-stats-header {
-  h1 {
-    padding: 0px;
-    margin: 0px;
-  }
-
-  text-align: center;
-  font-size: 1.8vw;
-  max-height: 25%;
-
-  flex-grow: 1;
-
-  padding: 1%;
-
-  font-family: 'Kaushan Script', cursive;
-}
-
-#mentor-dashboard-p {
-  padding: 0px;
-}
-
-.avatar-content {
-  margin-top: 10%;
-  margin-left: 20%;
-  margin-right: 20%;
-
-  border-color: black;
-  // background-color: #c4c4c4;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
-  border-radius: 4px;
-
-  font-size: 20px;
-  // box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
-  p {
-    padding: 0px;
-    margin: 0px;
-  }
-}
-
-#mentor-name {
-  font-weight: bold;
-}
-
-#avatar-img {
-  max-width: 150px;
-  max-height: 150px;
-  box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
-
-  border-radius: 4px;
-}
-
-.badges {
-  p,
-  h1 {
-    padding: 0px;
-    margin: 0px;
-  }
-  flex-grow: 1;
-  margin: 1.5%;
-  padding: 1%;
-  background-color: white;
-  box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
-}
-
-.projects {
-  display: flex;
-  flex-direction: column;
-  // background-color: #bfbcbc;
-}
-
-.students {
-  display: flex;
-  flex-direction: column;
-
-  // background-color: #d3d2d2;
-}
-// seems like projectcard is used in bulma
-.projectcard,
-.student-card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.project-c,
-.student-c {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  flex-basis: 0.33;
-
-  // justify-content: space-between;
-  margin: 2%;
-  padding: 1%;
-  margin-right: auto;
-
-  border-radius: 10px;
-
-  max-width: 350px;
-  max-height: 200px;
-
-  min-width: 350px;
-  min-height: 120px;
-
-  // height: 200px;
-  // width: 400px;
-
-  p,
-  h1 {
-    padding: 0px;
-    margin: 0px;
-
-    text-align: center;
-  }
-}
-
-.project-name,
-.student-name {
-  font-size: 3vw;
-}
-
-// taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
-@media screen and (min-width: 1200px) {
-  .project-name,
-  .student-name {
-    font-size: 36px;
-  }
-}
-
-.avatar-students-card {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  margin-right: 5%;
-  align-items: center;
-  margin-top: 3%;
-}
-
-.student-card-header {
-  display: flex;
-  flex-direction: row;
-}
-
-.student-name {
-  margin-left: 2%;
-}
-
-.project-buttons {
-  display: flex;
-
-  justify-content: space-around;
-  padding-top: 5%;
-}
-
-.project-button-small,
-.student-button-small {
-  height: 45px;
-  background-color: #e5e9f0;
-  border-radius: 8px;
-  color: #8794a1;
-
-  display: flex;
-  text-align: center;
-
-  // margin: 2%;
-  margin-left: 2%;
-  margin-right: 2%;
-
-  padding-left: 5%;
-  padding-right: 5%;
-  // padding: 5%;
-  font-size: 1.6vw;
-  align-items: center;
-  cursor: pointer;
-}
-
-.github-svg {
-  padding-top: 20%;
-}
-
-.project-button-small:active {
-  background-color: #a0a3f4;
-}
-
-.fill-evals {
-  pointer-events: none;
-  background-color: #eff1f6;
-}
-
-.project-header,
-.student-header {
-  p,
-  h1 {
-    padding: 0px;
-    margin: 0px;
-  }
-
-  flex-grow: 1;
-
-  padding: 1%;
-
-  font-family: 'Kaushan Script', cursive;
-}
-
-.announcements {
-  padding: 1%;
-  background-color: #f0f4f7;
-  box-shadow: inset 15px 15px 50px #dbe2eb;
-  border-radius: 20px;
-  margin: 2%;
-}
-
-.anc-card {
-  p,
-  h1 {
-    padding: 0px;
-    margin: 0px;
-  }
-  background-color: #ffe6b3;
-  h1 {
-    font-size: 2.3vw;
-    color: #5f6e7d;
-  }
-
-  p {
-    font-size: 1.6vw;
-    color: #5f6e7d;
-  }
-
-  margin: 1%;
-  margin-bottom: 2%;
-  padding: 1%;
-
-  border-radius: 10px;
-}
-
-.git-lines {
-  font-family: 'Staatliches', cursive;
-}
-
-.add {
-  background-color: green;
-}
-
-.rem {
-  background-color: red;
-}
-
-.button {
-  flex-grow: 24;
-  width: 70px;
-  padding-left: 2px;
-  padding-right: 2px;
-
-  color: #e5e9f0;
-}
-
-.student-profile {
-  padding-top: 2%;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
-.project-content,
-.student-content {
-  margin: 1%;
-  padding: 2%;
-
-  height: 50%;
-
-  flex-grow: 1;
-}
-
-.project-button,
-.student-button {
-  margin: 1%;
-  padding: 1%;
-  max-height: 45px;
-
-  height: 20%;
-  flex-grow: 1;
-  display: flex;
-}
-
-.resource-card {
-  padding: 2% 3% 2% 3%;
-
-  .resource-header {
-    b {
-      font-size: 32px;
-      font-family: Vegur;
-      color: #5f6e7d;
-    }
-  }
-
-  .avatar-resource {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    margin: 5%;
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-
-  .table {
-    border-collapse: collapse;
-    font-size: 20px;
-    width: 100%;
-
-    th {
-      color: #5f6e7d;
-      border: none;
-      padding-top: 2%;
-      padding-bottom: 2%;
-    }
-    td {
-      border: none;
-      color: #5f6e7d;
-      align-items: center;
-
-      .resource-link {
-        margin: 2% 0 2% 0;
-      }
-
-      p {
-        margin: 2% 0 2% 0;
-      }
-    }
-    td:nth-child(3) {
-      color: #5f6e7d;
-    }
-    tr {
-      align-items: center;
-    }
-    tr:hover {
-      background: rgba(#a0a3f4, 0.2);
-      td {
-        border: none;
-        color: black;
-      }
-    }
-  }
-}
-
-.grow-card {
-  transition: all 0.2s ease-in-out;
-}
-.grow-card:hover {
-  transform: scale(1.1);
-}
-
-.resource-card {
-  padding: 2% 3% 2% 3%;
-
-  .resource-header {
-    b {
-      font-size: 32px;
-      font-family: Vegur;
-      color: #5f6e7d;
-    }
-  }
-
-  .avatar-resource {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    margin: 5%;
-    &:hover {
-      opacity: 0.5;
-    }
-  }
-
-  .table {
-    border-collapse: collapse;
-    font-size: 20px;
-    width: 100%;
-
-    th {
-      color: #5f6e7d;
-      border: none;
-      padding-top: 2%;
-      padding-bottom: 2%;
-    }
-    td {
-      border: none;
-      color: #5f6e7d;
-      align-items: center;
-
-      .resource-link {
-        margin: 2% 0 2% 0;
-      }
-
-      p {
-        margin: 2% 0 2% 0;
-      }
-    }
-    td:nth-child(3) {
-      color: #5f6e7d;
-    }
-    tr {
-      align-items: center;
-    }
-    tr:hover {
-      background: rgba(#a0a3f4, 0.2);
-      td {
-        border: none;
-        color: black;
-      }
-    }
-  }
-}
-
-.add-project-card-small {
-  max-width: 350px;
-  max-height: 200px;
-
-  min-width: 350px;
-  min-height: 120px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  a {
     display: flex;
+
     align-items: center;
-    color: #8794a1;
-    h4 {
+
+    .header-add-project-card {
+      flex-grow: 1;
+      flex-basis: 0;
+      padding: 7% 0 7% 7%;
+      p {
+        font-size: 32px;
+      }
+    }
+    .add-project-button-div {
+      flex-grow: 1;
+      flex-basis: 0;
+
+      .add-project-button:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+      }
+
+      .add-project-button:active {
+        background-color: linear-gradient(135deg, #9552ea 50%, #b57aff 100%);
+
+        .text-add-project {
+          color: black;
+        }
+        .plus-sign {
+          color: black;
+        }
+      }
+
+      .add-project-button {
+        outline: none;
+        height: 60px;
+        width: 300px;
+        transition: all 0.2s ease-in-out;
+        font-size: 28px;
+
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0px;
+
+        align-items: center;
+
+        background: linear-gradient(135deg, #b57aff 50%, #9552ea 100%);
+        box-shadow: 0px 25px 50px rgba(181, 122, 255, 0.33);
+        border-radius: 10px;
+
+        .plus-sign {
+          padding-left: 2%;
+          font-family: Inter;
+          font-style: normal;
+          font-weight: 800;
+          font-size: 58px;
+          height: 70px;
+          color: white;
+          margin: 0px;
+        }
+
+        .text-add-project {
+          font-weight: bold;
+          color: white;
+        }
+      }
+    }
+  }
+
+  .card-component {
+    // Taken from  https://www.cssmatic.com/box-shadow
+    // background-color: #f0f4f7;
+    box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
+    border-radius: 30px;
+  }
+
+  .github-svg {
+    padding-top: 20%;
+  }
+
+  // Above classes are used by all components, so not nested
+
+  .intro-card {
+    display: flex;
+    margin-top: 3%;
+    padding-top: 5%;
+
+    .avatar {
+      max-width: 30%;
+      flex-grow: 1;
       text-align: center;
-      font-size: 32px;
-    }
 
-    text {
-      padding-left: 1%;
-      font-family: Inter;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 120px;
+      // margin: 1%;
+      // margin-right: 0.5%;
 
-      color: #8794a1;
-      margin: 5px;
-      padding-bottom: 5px;
-      align-items: center;
-    }
-  }
+      padding-top: 3%;
+      padding-bottom: 3%;
 
-  a:hover {
-    color: #363636;
+      box-shadow: 0px;
+      background: rgba(0, 0, 0, 0);
+      background-color: #f0f4f7;
 
-    text {
-      color: #363636;
-    }
-  }
+      box-shadow: inset 10px 23px 63px -4px rgba(219, 226, 235, 1);
+      // border-radius: 20px;
+      border-bottom-right-radius: 20px;
+      border-top-right-radius: 20px;
 
-  a:active {
-    color: black;
+      #avatar-img {
+        max-width: 150px;
+        max-height: 150px;
+        box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
 
-    text {
-      color: black;
-    }
-  }
-}
-
-.add-project-card {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-
-  width: 1200px;
-  height: 200px;
-
-  // margin: 1%;
-  border: 10px dashed #5f6e7d;
-
-  border-radius: 10px;
-
-  display: flex;
-
-  align-items: center;
-
-  .header-add-project-card {
-    flex-grow: 1;
-    flex-basis: 0;
-    padding: 7% 0 7% 7%;
-    p {
-      font-size: 32px;
-    }
-  }
-  .add-project-button-div {
-    flex-grow: 1;
-    flex-basis: 0;
-
-    .add-project-button:hover {
-      cursor: pointer;
-      transform: scale(1.05);
-    }
-
-    .add-project-button:active {
-      background-color: linear-gradient(135deg, #9552ea 50%, #b57aff 100%);
-
-      .text-add-project {
-        color: black;
+        border-radius: 4px;
       }
-      .plus-sign {
-        color: black;
+
+      .avatar-content {
+        margin-top: 10%;
+        margin-left: 20%;
+        margin-right: 20%;
+
+        border-color: black;
+        // background-color: #c4c4c4;
+        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+        border-radius: 4px;
+
+        font-size: 20px;
+        // box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+        p {
+          padding: 0px;
+          margin: 0px;
+        }
+
+        #mentor-name {
+          font-weight: bold;
+        }
       }
     }
 
-    .add-project-button {
-      outline: none;
-      height: 60px;
-      width: 300px;
-      transition: all 0.2s ease-in-out;
-      font-size: 28px;
+    .mentor-stats {
+      background: rgba(0, 0, 0, 0);
+      background-color: #f0f4f7;
+      max-width: 70%;
 
+      flex-grow: 1;
       display: flex;
-      justify-content: space-evenly;
-      padding: 0px;
+      flex-direction: column;
 
-      align-items: center;
+      .mentor-stats-header {
+        h1 {
+          padding: 0px;
+          margin: 0px;
+        }
 
-      background: linear-gradient(135deg, #b57aff 50%, #9552ea 100%);
-      box-shadow: 0px 25px 50px rgba(181, 122, 255, 0.33);
-      border-radius: 10px;
+        text-align: center;
+        font-size: 1.8vw;
+        max-height: 25%;
 
-      .plus-sign {
-        padding-left: 2%;
-        font-family: Inter;
-        font-style: normal;
-        font-weight: 800;
-        font-size: 58px;
-        height: 70px;
-        color: white;
+        flex-grow: 1;
+
+        padding: 1%;
+
+        font-family: 'Kaushan Script', cursive;
+      }
+
+      .mentor-stats-content {
+        display: flex;
+        flex-grow: 1;
+        padding-top: 4.5%;
+
+        .font-mentor-header {
+          font-size: 3.3vw;
+        }
+
+        .font-mentor-stats {
+          font-size: 5vw;
+        }
+
+        // taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+        @media screen and (min-width: 1200px) {
+          .font-mentor-stats {
+            font-size: 60px;
+          }
+        }
+
+        // taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+        @media screen and (min-width: 1200px) {
+          .font-mentor-header {
+            font-size: 40px;
+          }
+        }
+
+        .mstats {
+          p {
+            padding: 0px;
+            margin: 0px;
+          }
+
+          text-align: center;
+          flex-direction: column;
+          display: flex;
+          justify-content: space-between;
+
+          margin-left: 1.5%;
+          margin-right: 1.5%;
+          margin-bottom: 1.5%;
+
+          flex-grow: 1;
+          flex-basis: 0;
+
+          padding: 1.5%;
+
+          font-weight: bold;
+          font-size: 2.5vw;
+          // box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+        }
+
+        .students-mstats-card {
+          background: linear-gradient(135deg, #b57aff 50%, #9552ea 100%);
+        }
+      }
+
+      .badges {
+        p,
+        h1 {
+          padding: 0px;
+          margin: 0px;
+        }
+        flex-grow: 1;
+        margin: 1.5%;
+        padding: 1%;
+        background-color: white;
+        box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+
+    .project-header {
+      p,
+      h1 {
+        padding: 0px;
         margin: 0px;
       }
 
-      .text-add-project {
-        font-weight: bold;
-        color: white;
+      flex-grow: 1;
+
+      padding: 1%;
+
+      font-family: 'Kaushan Script', cursive;
+    }
+
+    .projectcard {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .project-c {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        flex-basis: 0.33;
+
+        // justify-content: space-between;
+        margin: 2%;
+        padding: 1%;
+        margin-right: auto;
+
+        border-radius: 10px;
+
+        max-width: 350px;
+        max-height: 200px;
+
+        min-width: 350px;
+        min-height: 120px;
+
+        // height: 200px;
+        // width: 400px;
+
+        p,
+        h1 {
+          padding: 0px;
+          margin: 0px;
+
+          text-align: center;
+        }
+
+        .anchor-align {
+          display: flex;
+          flex-direction: row;
+
+          align-items: center;
+
+          .project-card-avatar {
+            height: 40px;
+            width: 40px;
+            margin-top: 1rem;
+            margin-right: 2rem;
+            margin-left: 1rem;
+            // padding-left: 1rem;
+
+            border-radius: 50%;
+          }
+
+          p {
+            color: black;
+            font-size: 36px;
+            text-align: center;
+            margin: 0px;
+            padding-top: 1rem;
+          }
+
+          .project-name {
+            font-size: 3vw;
+          }
+
+          // taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
+          @media screen and (min-width: 1200px) {
+            .project-name {
+              font-size: 36px;
+            }
+          }
+        }
+
+        .project-buttons {
+          display: flex;
+
+          justify-content: space-around;
+          padding-top: 5%;
+
+          .project-button-small {
+            height: 45px;
+            background-color: #e5e9f0;
+            border-radius: 8px;
+            color: #8794a1;
+
+            display: flex;
+            text-align: center;
+
+            // margin: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
+
+            padding-left: 5%;
+            padding-right: 5%;
+            // padding: 5%;
+            font-size: 1.6vw;
+            align-items: center;
+            cursor: pointer;
+          }
+
+          .project-button-small:active {
+            background-color: #a0a3f4;
+          }
+        }
+      }
+
+      .add-project-card-small {
+        max-width: 350px;
+        max-height: 200px;
+
+        min-width: 350px;
+        min-height: 120px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        a {
+          display: flex;
+          align-items: center;
+          color: #8794a1;
+          h4 {
+            text-align: center;
+            font-size: 32px;
+          }
+
+          text {
+            padding-left: 1%;
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 120px;
+
+            color: #8794a1;
+            margin: 5px;
+            padding-bottom: 5px;
+            align-items: center;
+          }
+        }
+
+        a:hover {
+          color: #363636;
+
+          text {
+            color: #363636;
+          }
+        }
+
+        a:active {
+          color: black;
+
+          text {
+            color: black;
+          }
+        }
       }
     }
   }
-}
 
-.anchor-align {
-  display: flex;
-  flex-direction: row;
+  .students {
+    display: flex;
+    flex-direction: column;
 
-  align-items: center;
+    .student-header {
+      p,
+      h1 {
+        padding: 0px;
+        margin: 0px;
+      }
 
-  .project-card-avatar {
-    height: 40px;
-    width: 40px;
-    margin-top: 1rem;
-    margin-right: 2rem;
-    margin-left: 1rem;
-    // padding-left: 1rem;
+      flex-grow: 1;
 
-    border-radius: 50%;
+      padding: 1%;
+
+      font-family: 'Kaushan Script', cursive;
+    }
+
+    .student-card {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+      .student-c {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        flex-basis: 0.33;
+
+        // justify-content: space-between;
+        margin: 2%;
+        padding: 1%;
+        margin-right: auto;
+
+        border-radius: 10px;
+
+        max-width: 350px;
+        max-height: 200px;
+
+        min-width: 350px;
+        min-height: 120px;
+
+        // height: 200px;
+        // width: 400px;
+
+        p,
+        h1 {
+          padding: 0px;
+          margin: 0px;
+
+          text-align: center;
+        }
+
+        .student-card-header {
+          display: flex;
+          flex-direction: row;
+
+          .avatar-students-card {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 5%;
+            align-items: center;
+            margin-top: 3%;
+          }
+
+          .student-name {
+            font-size: 3vw;
+            margin-left: 2%;
+          }
+
+          @media screen and (min-width: 1200px) {
+            .student-name {
+              font-size: 36px;
+            }
+          }
+        }
+
+        .student-button {
+          margin: 1%;
+          padding: 1%;
+          max-height: 45px;
+
+          height: 20%;
+          flex-grow: 1;
+          display: flex;
+
+          .student-profile {
+            padding-top: 2%;
+            padding-left: 5%;
+            padding-right: 5%;
+          }
+
+          .student-button-small {
+            height: 45px;
+            background-color: #e5e9f0;
+            border-radius: 8px;
+            color: #8794a1;
+
+            display: flex;
+            text-align: center;
+
+            // margin: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
+
+            padding-left: 5%;
+            padding-right: 5%;
+            // padding: 5%;
+            font-size: 1.6vw;
+            align-items: center;
+            cursor: pointer;
+          }
+
+          .fill-evals {
+            pointer-events: none;
+            background-color: #eff1f6;
+          }
+        }
+      }
+    }
   }
 
-  p {
-    color: black;
-    font-size: 36px;
-    text-align: center;
-    margin: 0px;
-    padding-top: 1rem;
+  .resource-card {
+    padding: 2% 3% 2% 3%;
+
+    .resource-header {
+      b {
+        font-size: 32px;
+        font-family: Vegur;
+        color: #5f6e7d;
+      }
+    }
+
+    .avatar-resource {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      margin: 5%;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+
+    .table {
+      border-collapse: collapse;
+      font-size: 20px;
+      width: 100%;
+
+      th {
+        color: #5f6e7d;
+        border: none;
+        padding-top: 2%;
+        padding-bottom: 2%;
+      }
+      td {
+        border: none;
+        color: #5f6e7d;
+        align-items: center;
+
+        .resource-link {
+          margin: 2% 0 2% 0;
+        }
+
+        p {
+          margin: 2% 0 2% 0;
+        }
+      }
+      td:nth-child(3) {
+        color: #5f6e7d;
+      }
+      tr {
+        align-items: center;
+      }
+      tr:hover {
+        background: rgba(#a0a3f4, 0.2);
+        td {
+          border: none;
+          color: black;
+        }
+      }
+    }
+  }
+
+  .announcements {
+    padding: 1%;
+    background-color: #f0f4f7;
+    box-shadow: inset 15px 15px 50px #dbe2eb;
+    border-radius: 20px;
+    margin: 2%;
+
+    .anc-card {
+      p,
+      h1 {
+        padding: 0px;
+        margin: 0px;
+      }
+      background-color: #ffe6b3;
+      h1 {
+        font-size: 2.3vw;
+        color: #5f6e7d;
+      }
+
+      p {
+        font-size: 1.6vw;
+        color: #5f6e7d;
+      }
+
+      margin: 1%;
+      margin-bottom: 2%;
+      padding: 1%;
+
+      border-radius: 10px;
+    }
   }
 }
