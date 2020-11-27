@@ -14,7 +14,7 @@ export default function Footer() {
               </h2>
             </div>
             <div className='column'>
-              <a href='#tline'>Timeline</a>
+              <a href='/#tline'>Timeline</a>
               <a href='https://www.facebook.com/groups/kwoc2016'>
                 Social Groups
               </a>
