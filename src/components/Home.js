@@ -88,7 +88,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   target="_blank"
 		>
-                  Student Manual
+                  Mentor Manual
                 </a>
               </p>
             </div>
