@@ -57,6 +57,11 @@ $button-color: black;
       padding: 3% 0 3% 3%;
       p {
         font-size: 32px;
+        @media (max-width: 767px) {
+          text-align: center;
+          font-size: 28px;
+
+      }
       }
     }
     .add-project-button-div {
