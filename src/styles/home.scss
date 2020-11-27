@@ -58,11 +58,12 @@
   font-family: Vegur;
 }
 .tags {
-  height: 50vh;
+  min-height: 50vh;
   background-image: linear-gradient(135deg, #58182d 0%, #130816 50%);
 
   margin-bottom: 0 !important;
   .container {
+    padding-bottom: 20px;
     #dark {
       color: #000;
       background-color: #b57aff;
@@ -89,4 +90,17 @@
   border-radius: 15px;
   color: #eee;
   cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .hero {
+    .manual-btns {
+      flex-direction: column;
+      padding: 0 20%;
+      .control:not(:last-child) {
+        margin-right: 0 !important;
+      }
+    }
+  }
+  
 }
