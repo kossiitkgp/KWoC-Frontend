@@ -166,6 +166,11 @@ $button-color: black;
     margin-top: 3%;
     padding-top: 5%;
 
+    @media (max-width: 767px) {
+      flex-direction: column;
+      justify-content: center;
+  }
+
     .avatar {
       max-width: 30%;
       flex-grow: 1;
