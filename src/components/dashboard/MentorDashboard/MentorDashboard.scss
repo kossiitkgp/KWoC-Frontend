@@ -85,6 +85,14 @@ $button-color: black;
       }
 
       .add-project-button {
+
+        @media (max-width: 767px) {
+          height: 50px;
+          width: 200px;
+          font-size: 20px;
+          margin-bottom: 2%;
+        }
+
         outline: none;
         height: 60px;
         width: 300px;
