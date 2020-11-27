@@ -16,6 +16,8 @@ $button-color: black;
 @import '~bulma/sass/elements/button.sass';
 @import url('/font-awesome-4.6.3/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap');
 
 .mentor-dashboard {
   font-weight: bold;
@@ -125,6 +127,19 @@ $button-color: black;
   }
   .grow-card:hover {
     transform: scale(1.1);
+  }
+
+  .title-dashboard{
+    display:block;
+    // padding-top:2%;
+    margin-top: 2%;
+    // align-items: center;
+    text-align: center;
+    // font-family: 'Roboto Slab', serif;
+    font-family: Vegur;
+    font-size: 32px;
+    @media (max-width: 767px) {
+      font-size: 20px;
   }
 
   // Above classes are used by all components, so not nested
