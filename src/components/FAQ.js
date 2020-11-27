@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import './faq.scss';
+import '../styles/faq.scss';
 
 export default function FAQ() {
   return (
@@ -18,7 +18,7 @@ export default function FAQ() {
         </div>
       </section>
 
-      <div className='container'>
+      <div className='container' style={{margin: '40px 6%'}}>
         <h1>General</h1>
 
         <h4>
