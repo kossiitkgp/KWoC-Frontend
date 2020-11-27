@@ -6,3 +6,11 @@
 #content-faq {
     color: white !important;
 }
+@media (max-width: 768px) {
+    #faq {
+        .title {
+            font-size: 4rem;
+            line-height: 1.3;
+        }
+    }
+}
