@@ -44,6 +44,13 @@
       color: #000;
       transform: scale(1.05);
     }
+
+    &:visited {
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      border: 0px solid #fff;
+      color: $primary-text-white;
+      transition: all 0.5s ease-in-out;
+    }
   }
 }
 
@@ -102,5 +109,4 @@
       }
     }
   }
-  
 }
