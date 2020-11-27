@@ -173,6 +173,9 @@ $button-color: black;
 
     .avatar {
       max-width: 30%;
+      @media (max-width: 767px) {
+        max-width: 100%;
+    }
       flex-grow: 1;
       text-align: center;
 
