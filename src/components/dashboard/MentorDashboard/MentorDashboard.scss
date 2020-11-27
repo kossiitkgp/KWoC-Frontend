@@ -120,6 +120,13 @@ $button-color: black;
     padding-top: 20%;
   }
 
+  .grow-card {
+    transition: all 0.2s ease-in-out;
+  }
+  .grow-card:hover {
+    transform: scale(1.1);
+  }
+
   // Above classes are used by all components, so not nested
 
   .intro-card {
