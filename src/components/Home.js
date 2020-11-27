@@ -38,7 +38,7 @@ export default function Home() {
 	return (
 		<div className="home">
 			<Navbar />
-			<section className="hero is-fullheight is-dark is-bold">
+			<section className="hero is-fullheight is-dark is-bold" style={{position: 'relative'}}>
 				<Part />
 				<div className="hero-body">
 					<div className="container">
@@ -76,6 +76,7 @@ export default function Home() {
                   href='https://drive.google.com/file/d/1_K30Crr3vVgRS-NGFVC2obQypD22jTuq/view'
                   rel="noopener noreferrer"
                   target="_blank"
+				  style={{ marginBottom: '20px' }}
 		>
                   Student Manual
                 </a>
