@@ -60,8 +60,7 @@ $button-color: black;
         @media (max-width: 767px) {
           text-align: center;
           font-size: 28px;
-
-      }
+        }
       }
     }
     .add-project-button-div {
@@ -85,7 +84,6 @@ $button-color: black;
       }
 
       .add-project-button {
-
         @media (max-width: 767px) {
           height: 50px;
           width: 200px;
@@ -146,8 +144,8 @@ $button-color: black;
     transform: scale(1.04);
   }
 
-  .title-dashboard{
-    display:block;
+  .title-dashboard {
+    display: block;
     // padding-top:2%;
     margin-top: 2%;
     // align-items: center;
@@ -157,6 +155,7 @@ $button-color: black;
     font-size: 32px;
     @media (max-width: 767px) {
       font-size: 20px;
+    }
   }
 
   // Above classes are used by all components, so not nested
@@ -169,13 +168,13 @@ $button-color: black;
     @media (max-width: 767px) {
       flex-direction: column;
       justify-content: center;
-  }
+    }
 
     .avatar {
       max-width: 30%;
       @media (max-width: 767px) {
         max-width: 100%;
-    }
+      }
       flex-grow: 1;
       text-align: center;
 
@@ -231,7 +230,7 @@ $button-color: black;
       max-width: 70%;
       @media (max-width: 767px) {
         max-width: 100%;
-    }
+      }
 
       flex-grow: 1;
       display: flex;
@@ -244,7 +243,6 @@ $button-color: black;
           margin: 0px;
         }
 
-
         text-align: center;
         font-size: 1.8vw;
         max-height: 25%;
@@ -253,7 +251,7 @@ $button-color: black;
 
         padding: 1%;
 
-        font-family: "Fira Code";
+        font-family: 'Fira Code';
       }
 
       .mentor-stats-content {
@@ -344,7 +342,7 @@ $button-color: black;
 
       padding: 1%;
 
-      font-family: 'Kaushan Script', cursive;
+      font-family: 'Fira Code', monospace;
     }
 
     .projectcard {
@@ -513,15 +511,16 @@ $button-color: black;
     .student-header {
       p,
       h1 {
-        padding: 0px;
-        margin: 0px;
+        padding: 2%;
+        margin: 2%;
+        text-align: center;
       }
 
       flex-grow: 1;
 
       padding: 1%;
 
-      font-family: 'Kaushan Script', cursive;
+      font-family: 'Fira Code', monospace;
     }
 
     .student-card {
