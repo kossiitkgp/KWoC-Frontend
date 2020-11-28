@@ -8,6 +8,7 @@ import StudentForm from './components/form/StudentForm';
 import ProjectForm from './components/ProjectForm';
 import OAuth from './components/OAuth';
 import StudentDashboard from './components/dashboard/OldStudentDashboard';
+import NewStudentDashboard from './components/dashboard/NewStudentDashboard'
 import MentorDashboard from './components/dashboard/MentorDashboard/MentorDashboard';
 import Projects from './components/projects/Projects';
 
@@ -27,7 +28,8 @@ const ScrollToTop = () => {
 function App() {
   return (
     <BrowserRouter>
-      <div className='App'>
+      <div 
+      className='App'>
         <Route onChange={ScrollToTop} exact path='/' component={Home} />
 
         <Route onChange={ScrollToTop} exact path='/FAQ' component={FAQ} />
@@ -64,7 +66,7 @@ function App() {
           onChange={ScrollToTop}
           exact
           path='/dashboard/student'
-          component={StudentDashboard}
+          component={NewStudentDashboard}
         />
 
         <Route
