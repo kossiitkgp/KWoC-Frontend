@@ -16,6 +16,8 @@ $button-color: black;
 @import '~bulma/sass/elements/button.sass';
 @import url('/font-awesome-4.6.3/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@600&display=swap');
 
 .mentor-dashboard {
   font-weight: bold;
@@ -34,7 +36,7 @@ $button-color: black;
     -webkit-box-sizing: border-box;
 
     width: 1200px;
-    height: 200px;
+    // height: 200px;
 
     // margin: 1%;
     border: 10px dashed #5f6e7d;
@@ -45,12 +47,20 @@ $button-color: black;
 
     align-items: center;
 
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+
     .header-add-project-card {
       flex-grow: 1;
       flex-basis: 0;
-      padding: 7% 0 7% 7%;
+      padding: 3% 0 3% 3%;
       p {
         font-size: 32px;
+        @media (max-width: 767px) {
+          text-align: center;
+          font-size: 28px;
+        }
       }
     }
     .add-project-button-div {
@@ -74,6 +84,13 @@ $button-color: black;
       }
 
       .add-project-button {
+        @media (max-width: 767px) {
+          height: 50px;
+          width: 200px;
+          font-size: 20px;
+          margin-bottom: 2%;
+        }
+
         outline: none;
         height: 60px;
         width: 300px;
@@ -124,7 +141,21 @@ $button-color: black;
     transition: all 0.2s ease-in-out;
   }
   .grow-card:hover {
-    transform: scale(1.1);
+    transform: scale(1.04);
+  }
+
+  .title-dashboard {
+    display: block;
+    // padding-top:2%;
+    margin-top: 2%;
+    // align-items: center;
+    text-align: center;
+    // font-family: 'Roboto Slab', serif;
+    font-family: Vegur;
+    font-size: 32px;
+    @media (max-width: 767px) {
+      font-size: 20px;
+    }
   }
 
   // Above classes are used by all components, so not nested
@@ -134,8 +165,16 @@ $button-color: black;
     margin-top: 3%;
     padding-top: 5%;
 
+    @media (max-width: 767px) {
+      flex-direction: column;
+      justify-content: center;
+    }
+
     .avatar {
       max-width: 30%;
+      @media (max-width: 767px) {
+        max-width: 100%;
+      }
       flex-grow: 1;
       text-align: center;
 
@@ -189,10 +228,14 @@ $button-color: black;
       background: rgba(0, 0, 0, 0);
       background-color: #f0f4f7;
       max-width: 70%;
+      @media (max-width: 767px) {
+        max-width: 100%;
+      }
 
       flex-grow: 1;
       display: flex;
       flex-direction: column;
+      justify-content: center;
 
       .mentor-stats-header {
         h1 {
@@ -208,7 +251,7 @@ $button-color: black;
 
         padding: 1%;
 
-        font-family: 'Kaushan Script', cursive;
+        font-family: 'Fira Code';
       }
 
       .mentor-stats-content {
@@ -290,15 +333,16 @@ $button-color: black;
     .project-header {
       p,
       h1 {
-        padding: 0px;
-        margin: 0px;
+        padding: 2%;
+        margin: 2%;
+        text-align: center;
       }
 
       flex-grow: 1;
 
       padding: 1%;
 
-      font-family: 'Kaushan Script', cursive;
+      font-family: 'Fira Code', monospace;
     }
 
     .projectcard {
@@ -467,15 +511,16 @@ $button-color: black;
     .student-header {
       p,
       h1 {
-        padding: 0px;
-        margin: 0px;
+        padding: 2%;
+        margin: 2%;
+        text-align: center;
       }
 
       flex-grow: 1;
 
       padding: 1%;
 
-      font-family: 'Kaushan Script', cursive;
+      font-family: 'Fira Code', monospace;
     }
 
     .student-card {

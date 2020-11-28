@@ -227,6 +227,7 @@ export default function MentorDashboard() {
              -> Stats of indiv Mentor ???
       */}
       <Navbar className='is-black' />
+      <div className='title-dashboard'><h1>Mentor Dashboard</h1></div>
       <div className='intro-card'>
         <div className='avatar grow-card'>
           <img
@@ -244,7 +245,7 @@ export default function MentorDashboard() {
 
         <div className='mentor-stats '>
           <div className='mentor-stats-header'>
-            <h1>Mentor Dashboard</h1>
+            <h1>Your Stats</h1>
           </div>
           <div className='mentor-stats-content'>
             <div className='card-component mstats grow-card'>
