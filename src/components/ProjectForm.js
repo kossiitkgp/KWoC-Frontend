@@ -103,7 +103,7 @@ export default function Form(props) {
     const username = localStorage.getItem('mentor_username')
     // const username = 'rakaar' // uncomment rakaar when testing finally
     axios
-    .get(`https://api.github.com/users/${username}/repos`, headers)
+    .get(`https://api.github.com/users/${username}/repos?per_page=100`, headers)
     .then(res => {
       const repos = res.data.map(item => { 
         return { 'name': item.full_name, 'value': item.html_url, 'label': item.full_name.split('/')[1] }
