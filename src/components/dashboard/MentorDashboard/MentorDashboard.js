@@ -4,20 +4,8 @@ import './MentorDashboard.scss';
 import Navbar from '../../Navbar';
 import Footer from '../../Footer';
 
-function countDaysLeft(date, mon, year) {
-  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-  const secondDate = new Date();
-  const firstDate = new Date(year, mon - 1, date);
-  const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
-  return diffDays;
-}
 
 export default function MentorDashboard() {
-  /*
-  set fullName -> ''
-  projects -> []
-  once cors issue is fixed by shubham mishra
-  */
   const [fullName, setFullName] = useState('');
   const [projects, setProjects] = useState([
     // {

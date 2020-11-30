@@ -150,9 +150,8 @@ export default function Form(props) {
     }
 
 
-
-    const URL = "https://kwoc.metamehta.me/project/add"
-     const data = {
+    const URL = `${BACKEND_URL}/project/add`;
+    const data = {
       'username': localStorage.getItem('mentor_username'),
       // 'username': 'rakaar',
       'name': name,

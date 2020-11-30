@@ -1,14 +1,11 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Card from '../components/Card';
-import { Link } from 'react-router-dom';
 import Timeline from './timelinedata/Timeline';
 import '../styles/about.scss';
 import '../styles/home.scss';
 import '../styles/why.scss';
 import Part from './Part';
-import Particles from 'react-particles-js';
 import group from '../images/people.svg';
 import github from '../images/github.svg';
 import pullRequest from '../images/git-pull-request.svg';

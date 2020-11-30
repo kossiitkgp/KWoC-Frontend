@@ -3,8 +3,6 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { BACKEND_URL } from '../../constants/constants';
 import './StudentDashboard.scss';
-import StudentAnnouncements from './StudentAnnouncements';
-import numFormatter from '../helper';
 
 export default function Dashboard() {
   const [fullName, setFullName] = useState('');

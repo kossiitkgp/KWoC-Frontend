@@ -12,8 +12,7 @@ export default function StudentDashboard() {
 
   useEffect(() => {
     const username = localStorage.getItem('student_username')
-    fetch
-    (`${STATS_API}/student/${username}`)
+    fetch(`${STATS_API}/student/${username}`)
     .then(res => res.json())
     .then(res => {
       setIsMidsCleared(res.isMidsCleared)
