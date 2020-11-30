@@ -136,7 +136,7 @@ export default function Home() {
 
 					<p>
 						{tags.map((tag) => (
-							<span key={tag} class="tag cust-tag is-primary is-medium">
+							<span key={tag} className="tag cust-tag is-primary is-medium">
 								{tag}
 							</span>
 						))}

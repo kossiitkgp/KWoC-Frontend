@@ -13,12 +13,6 @@ export default function Form(props) {
 	useEffect(() => {
 		const { username, name, email } = props.location.state;
 
-		const data = {
-			username: username,
-			name: name,
-			email: email
-		};
-
 		setUsername(username);
 		setName(name);
 		setEmail(email);
@@ -43,7 +37,7 @@ export default function Form(props) {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				if (res == 'success') props.history.push('/dashboard/mentor');
+				if (res === 'success') props.history.push('/dashboard/mentor');
 			})
 			.catch((err) => {
 				disableSubmit(false);

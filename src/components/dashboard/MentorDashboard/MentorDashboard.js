@@ -4,7 +4,7 @@ import './MentorDashboard.scss';
 import Navbar from '../../Navbar';
 import Footer from '../../Footer';
 
-function countDaysLeft(MID_EVAL_DATE) {
+function countDaysLeft() {
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
   const today = new Date();
   const midEvals = new Date(MID_EVAL_DATE);
@@ -227,6 +227,7 @@ export default function MentorDashboard() {
               'mentor_username'
             )}.png`}
             id='avatar-img'
+            alt="GitHub Avatar"
           ></img>
           <br />
           <div className='avatar-content'>
@@ -272,6 +273,7 @@ export default function MentorDashboard() {
                     <img
                       className='project-card-avatar'
                       src={`https://github.com/${item.owner}.png`}
+                      alt=""
                     ></img>
                     <p className='project-name'>{item.Name}</p>
                   </div>
@@ -280,7 +282,7 @@ export default function MentorDashboard() {
                       href={`${item.RepoLink}`}
                       className='project-button-small'
                     >
-                      <img src='/github.svg' className='github-svg'></img>
+                      <img src='/github.svg' className='github-svg' alt="GitHub Logo"></img>
                     </a>
                     <a
                       href={`${item.RepoLink}/issues`}
@@ -340,6 +342,7 @@ export default function MentorDashboard() {
                     <img
                       src={`https://github.com/${studentName}.png`}
                       className='avatar-students-card'
+                      alt=""
                     ></img>
                     <p className='student-name'>{studentName}</p>
                   </div>
@@ -352,6 +355,7 @@ export default function MentorDashboard() {
                       <img
                         src='/github.svg'
                         className='github-svg-student'
+                        alt=""
                       ></img>
                     </a>
                     <a className='fill-evals student-button-small' href='#'>

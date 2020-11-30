@@ -58,7 +58,7 @@ export default function MentorStats() {
 
     return(
         <div className="mentor-stats">
-            <img  className="mentor-avatar" src={`https://github.com/${username}.png`} />
+            <img  className="mentor-avatar" src={`https://github.com/${username}.png`} alt="GitHub Avatar"/>
             <h1>{mentorName}</h1>
 
             {Object.entries(stats).map(item => {

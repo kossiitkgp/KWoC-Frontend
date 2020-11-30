@@ -178,7 +178,7 @@ class Navbar extends Component {
                   id='login-buttons'
                 >
                   <a className='navbar-link'>
-                    {this.state.is_atleast_one_logged_in == true
+                    {this.state.is_atleast_one_logged_in === true
                       ? 'Manage Account'
                       : 'Login'}
                   </a>

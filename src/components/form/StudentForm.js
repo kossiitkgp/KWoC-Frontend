@@ -41,7 +41,7 @@ export default function Form(props) {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				if (res == 'success') props.history.push('/dashboard/student');
+				if (res === 'success') props.history.push('/dashboard/student');
 			})
 			.catch((err) => {
 				disableSubmit(false);

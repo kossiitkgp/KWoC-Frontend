@@ -197,6 +197,7 @@ export default function NewStudentDashboard() {
               'mentor_username'
             )}.png`}
             id='avatar-img'
+            alt="Mentor's GitHub Avatar"
           ></img>
           <br />
           <div className='avatar-content'>
