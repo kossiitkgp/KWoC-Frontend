@@ -3,8 +3,6 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { BACKEND_URL } from '../../constants/constants';
 import './StudentDashboard.scss';
-import StudentAnnouncements from './StudentAnnouncements';
-import numFormatter from '../helper';
 
 export default function Dashboard() {
   const [fullName, setFullName] = useState('');
@@ -20,7 +18,7 @@ export default function Dashboard() {
     const student_loggedout = localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined
     if (student_loggedout)
       window.location.pathname = ''
-    
+
       const URL = `${BACKEND_URL}/student/dashboard`;
     const data = {
       username: localStorage.getItem('student_username'),
@@ -35,7 +33,6 @@ export default function Dashboard() {
         setCollegeName(res.college);
       })
       .catch((err) => {
-        console.log('err is ', err);
         alert('Server Error, Please try again');
       });
   }, []);

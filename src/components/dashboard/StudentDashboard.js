@@ -6,39 +6,37 @@ import { MidsFail, MidsCleared, EndEvalsFormSubmitted } from '../evals/evalsStat
 import EndEvalsForm from '../evals/EndEvalsForm'
 
 export default function StudentDashboard() {
-  
+
   const [isMidsCleared, setIsMidsCleared] = useState(0)
   const [isEndsCleared, setIsEndsCleared] = useState(0)
 
   useEffect(() => {
     const username = localStorage.getItem('student_username')
-    fetch
-    (`${STATS_API}/student/${username}`)
+    fetch(`${STATS_API}/student/${username}`)
     .then(res => res.json())
     .then(res => {
       setIsMidsCleared(res.isMidsCleared)
       setIsEndsCleared(res.isEndsCleared)
     })
     .catch(err => {
-      console.log('err is ',err)
       alert('Server Error Try again')
     })
 
   }, [])
-  
+
   let status = ``
   if(isMidsCleared == 0) {
     status = <MidsFail />
   } else {
     if(isEndsCleared == 0)
       status = <MidsCleared />
-    else 
+    else
       status = <EndEvalsFormSubmitted />
   }
 
   return(
     <div>
-      {/* 
+      {/*
       Plans to include the following in student Dashboard
       -> Useful links - kwoc blog by apoorv, how to write good commit messages, git links
       -> Important Announcements :- midevals are coming, u have cleared/failed mid evals, u have submitted endevals form

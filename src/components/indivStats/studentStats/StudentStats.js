@@ -16,7 +16,6 @@ export default function StudentStats(props) {
         setStats(res.data[username_from_window]);
       })
       .catch((err) => {
-        console.log('Err ', err);
         alert('Server error, Try again');
       });
   }, []);
@@ -26,7 +25,7 @@ export default function StudentStats(props) {
       <Navbar className='is-black' />
       <div className='profile-container'>
         <div className='profile-card'>
-          <img className='avatar-img' src={stats['avatar_url']}></img>
+          <img className='avatar-img' src={stats['avatar_url']} alt="GitHub Avatar"></img>
           <br />
           <b id='student-name'>{stats['name']}</b>
           <p>{username_from_window}</p>

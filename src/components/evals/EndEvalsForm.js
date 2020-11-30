@@ -15,7 +15,7 @@ export default function EndEvalsForm() {
           'blogLink': blogLink,
           'feedback': feedback
         }
-        
+
         fetch(URL, {
           method: 'POST',
           body: JSON.stringify(data)
@@ -26,10 +26,9 @@ export default function EndEvalsForm() {
             alert('You have submitted the form successfully')
         })
         .catch(err => {
-          console.log('err in student form ', err)
         })
       }
-    
+
 return (
         <div className='box'>
 

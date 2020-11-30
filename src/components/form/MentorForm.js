@@ -13,12 +13,6 @@ export default function Form(props) {
 	useEffect(() => {
 		const { username, name, email } = props.location.state;
 
-		const data = {
-			username: username,
-			name: name,
-			email: email
-		};
-
 		setUsername(username);
 		setName(name);
 		setEmail(email);
@@ -34,9 +28,6 @@ export default function Form(props) {
 			email: email
 		};
 
-		console.log('data is ', JSON.stringify(data));
-		console.log('token is ', localStorage.getItem('mentor_jwt'));
-
 		fetch(URL, {
 			method: 'POST',
 			headers: {
@@ -46,10 +37,9 @@ export default function Form(props) {
 		})
 			.then((res) => res.json())
 			.then((res) => {
-				if (res == 'success') props.history.push('/dashboard/mentor');
+				if (res === 'success') props.history.push('/dashboard/mentor');
 			})
 			.catch((err) => {
-				console.log('err in student form ', err);
 				disableSubmit(false);
 			});
 	}

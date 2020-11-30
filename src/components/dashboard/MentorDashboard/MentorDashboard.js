@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { BACKEND_URL } from '../../../constants/constants';
+import { BACKEND_URL, MID_EVAL_DATE} from '../../../constants/constants';
 import './MentorDashboard.scss';
 import Navbar from '../../Navbar';
 import Footer from '../../Footer';
 
-function countDaysLeft(date, mon, year) {
-  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-  const secondDate = new Date();
-  const firstDate = new Date(year, mon - 1, date);
-  const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+function countDaysLeft() {
+  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+  const today = new Date();
+  const midEvals = new Date(MID_EVAL_DATE);
+  const diffDays = Math.ceil(Math.abs((midEvals - today) / _MS_PER_DAY));
   return diffDays;
 }
 
 export default function MentorDashboard() {
-  /*
-  set fullName -> ''
-  projects -> []
-  once cors issue is fixed by shubham mishra
-  */
   const [fullName, setFullName] = useState('');
   const [projects, setProjects] = useState([
     // {
@@ -98,19 +93,16 @@ export default function MentorDashboard() {
     const data = {
       username: localStorage.getItem('mentor_username'),
     };
-    console.log('data is ', data);
     fetch(URL, {
       method: 'POST',
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log('res is  ', res);
         setFullName(res.name);
         setProjects(res.projects);
       })
       .catch((err) => {
-        console.log('err is ', err);
         alert('Server Error, Please try again');
       });
   }, []);
@@ -235,6 +227,7 @@ export default function MentorDashboard() {
               'mentor_username'
             )}.png`}
             id='avatar-img'
+            alt="GitHub Avatar"
           ></img>
           <br />
           <div className='avatar-content'>
@@ -258,7 +251,7 @@ export default function MentorDashboard() {
             </div> */}
             <div className='card-component mstats students-mstats-card grow-card'>
               <p className='font-mentor-header'>Days Before Midevals</p>
-              <p className='font-mentor-stats'>10</p>
+              <p className='font-mentor-stats'>{countDaysLeft()}</p>
             </div>
           </div>
           {/*<div className='card-component badges'>
@@ -280,6 +273,7 @@ export default function MentorDashboard() {
                     <img
                       className='project-card-avatar'
                       src={`https://github.com/${item.owner}.png`}
+                      alt=""
                     ></img>
                     <p className='project-name'>{item.Name}</p>
                   </div>
@@ -288,7 +282,7 @@ export default function MentorDashboard() {
                       href={`${item.RepoLink}`}
                       className='project-button-small'
                     >
-                      <img src='/github.svg' className='github-svg'></img>
+                      <img src='/github.svg' className='github-svg' alt="GitHub Logo"></img>
                     </a>
                     <a
                       href={`${item.RepoLink}/issues`}
@@ -348,6 +342,7 @@ export default function MentorDashboard() {
                     <img
                       src={`https://github.com/${studentName}.png`}
                       className='avatar-students-card'
+                      alt=""
                     ></img>
                     <p className='student-name'>{studentName}</p>
                   </div>
@@ -360,6 +355,7 @@ export default function MentorDashboard() {
                       <img
                         src='/github.svg'
                         className='github-svg-student'
+                        alt=""
                       ></img>
                     </a>
                     <a className='fill-evals student-button-small' href='#'>

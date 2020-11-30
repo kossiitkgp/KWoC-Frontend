@@ -1,14 +1,11 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Card from '../components/Card';
-import { Link } from 'react-router-dom';
 import Timeline from './timelinedata/Timeline';
 import '../styles/about.scss';
 import '../styles/home.scss';
 import '../styles/why.scss';
 import Part from './Part';
-import Particles from 'react-particles-js';
 import group from '../images/people.svg';
 import github from '../images/github.svg';
 import pullRequest from '../images/git-pull-request.svg';
@@ -52,7 +49,7 @@ export default function Home() {
 									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
 									style={{ marginBottom: '20px' }}
-                  
+
                 >
 									Student Registration
 								</a>
@@ -62,7 +59,7 @@ export default function Home() {
 									className="button is-fullwidth "
 									href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
 									style={{ marginBottom: '20px' }}
-                 
+
                 >
 									Mentor Registration
 								</a>
@@ -139,7 +136,7 @@ export default function Home() {
 
 					<p>
 						{tags.map((tag) => (
-							<span key={tag} class="tag cust-tag is-primary is-medium">
+							<span key={tag} className="tag cust-tag is-primary is-medium">
 								{tag}
 							</span>
 						))}
