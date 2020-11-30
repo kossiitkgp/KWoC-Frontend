@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { BACKEND_URL } from '../../../constants/constants';
+import { BACKEND_URL, MID_EVAL_DATE} from '../../../constants/constants';
 import './MentorDashboard.scss';
 import Navbar from '../../Navbar';
 import Footer from '../../Footer';
 
+function countDaysLeft(MID_EVAL_DATE) {
+  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+  const today = new Date();
+  const midEvals = new Date(MID_EVAL_DATE);
+  const diffDays = Math.ceil(Math.abs((midEvals - today) / _MS_PER_DAY));
+  return diffDays;
+}
 
 export default function MentorDashboard() {
   const [fullName, setFullName] = useState('');
@@ -243,7 +250,7 @@ export default function MentorDashboard() {
             </div> */}
             <div className='card-component mstats students-mstats-card grow-card'>
               <p className='font-mentor-header'>Days Before Midevals</p>
-              <p className='font-mentor-stats'>10</p>
+              <p className='font-mentor-stats'>{countDaysLeft()}</p>
             </div>
           </div>
           {/*<div className='card-component badges'>
