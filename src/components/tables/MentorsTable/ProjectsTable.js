@@ -30,11 +30,10 @@ export default function ProjectsTable() {
         setRowData(res.data["stats"])
       })
       .catch(err => {
-        console.log("Err is ", err)
         alert("Server Error,try again")
       })
         setLastUpdatedTime('TIME_FROM_BACKEND')
-        
+
     }, [])
 
     function cellRenderer(params) {
@@ -43,13 +42,13 @@ export default function ProjectsTable() {
         return withHref
     }
 
-    
+
     return(
        <div style={{textAlign: 'center'}}>
         <h3>Last Update at {lastUpdatedTime}. Stats are updated for every 3 hours </h3>
         <h5>You can sort the rows by clicking on headers, and also filter by clicking on the button by hovering</h5>
         <h5>Click on username to get detailed Stats</h5>
-        
+
             <div
                 className="ag-theme-alpine"
                 style={{
@@ -59,7 +58,7 @@ export default function ProjectsTable() {
                 left: '50%',
                 right: '50%',
                 transform: 'translateX(-50%)' }}
-                >   
+                >
                     <AgGridReact
                         columnDefs={columnDefs}
                         rowData={rowData}>

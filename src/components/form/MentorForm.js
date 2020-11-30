@@ -34,9 +34,6 @@ export default function Form(props) {
 			email: email
 		};
 
-		console.log('data is ', JSON.stringify(data));
-		console.log('token is ', localStorage.getItem('mentor_jwt'));
-
 		fetch(URL, {
 			method: 'POST',
 			headers: {
@@ -49,7 +46,6 @@ export default function Form(props) {
 				if (res == 'success') props.history.push('/dashboard/mentor');
 			})
 			.catch((err) => {
-				console.log('err in student form ', err);
 				disableSubmit(false);
 			});
 	}

@@ -20,7 +20,7 @@ export default function Dashboard() {
     const student_loggedout = localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined
     if (student_loggedout)
       window.location.pathname = ''
-    
+
       const URL = `${BACKEND_URL}/student/dashboard`;
     const data = {
       username: localStorage.getItem('student_username'),
@@ -35,7 +35,6 @@ export default function Dashboard() {
         setCollegeName(res.college);
       })
       .catch((err) => {
-        console.log('err is ', err);
         alert('Server Error, Please try again');
       });
   }, []);

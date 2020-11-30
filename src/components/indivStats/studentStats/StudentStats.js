@@ -16,7 +16,6 @@ export default function StudentStats(props) {
         setStats(res.data[username_from_window]);
       })
       .catch((err) => {
-        console.log('Err ', err);
         alert('Server error, Try again');
       });
   }, []);

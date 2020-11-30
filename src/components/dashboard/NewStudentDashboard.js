@@ -5,11 +5,11 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 
 export default function NewStudentDashboard() {
-    
+
     const [fullName, setFullName] = useState('');
     const [collegeName, setCollegeName] = useState('');
-    
-  
+
+
 
   const announcements = [
     {
@@ -69,12 +69,10 @@ export default function NewStudentDashboard() {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log('res is  ', res);
         setFullName(res.name);
         setCollegeName(res.college);
       })
       .catch((err) => {
-        console.log('err is ', err);
         alert('Server Error, Please try again');
       });
   }, []);
@@ -219,7 +217,7 @@ export default function NewStudentDashboard() {
               <p className='font-mentor-header'>Commits</p>
               <p className='font-mentor-stats'>0</p>
             </div>
-          
+
             <div className='card-component mstats grow-card'>
               <p className='font-mentor-header'>Pull Requests</p>
               <p className='font-mentor-stats'>0</p>
@@ -231,7 +229,7 @@ export default function NewStudentDashboard() {
             </div>
         </div>
       </div>
-     
+
       </div>
 
       <div className='projects'>
@@ -239,7 +237,7 @@ export default function NewStudentDashboard() {
               <h1>Projects</h1>
               <h2 style ={{ textAlign: 'center'}}>Coding period starts from 6th December. You can browse some added projects <a href='/projects'>here</a></h2>
           </div>
-         
+
       </div>
 
       <section className='resource-card'>
