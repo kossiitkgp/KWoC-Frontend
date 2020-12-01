@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BACKEND_URL, MID_EVAL_DATE} from '../../../constants/constants';
+import { BACKEND_URL, MID_EVAL_DATE } from '../../../constants/constants';
 import './MentorDashboard.scss';
 import Navbar from '../../Navbar';
 import Footer from '../../Footer';
@@ -13,29 +13,29 @@ function countDaysLeft() {
 }
 
 export default function MentorDashboard() {
-  const [fullName, setFullName] = useState('');
+  const [fullName, setFullName] = useState('yashrsharma44');
   const [projects, setProjects] = useState([
-    // {
-    //   Name: 'darkHorse',
-    //   RepoLink: 'https://github.com/kossiitkgp/darkHorse',
-    //   owner: 'kossiitkgp',
-    // },
-    // {
-    //   Name: 'todxpy',
-    //   RepoLink: 'https://github.com/xypnox/todxpy',
-    //   owner: 'xypnox',
-    // },
-    // {
-    //   Name: 'KWoC',
-    //   RepoLink: 'https://github.com/kossiitkgp/KWoC',
-    //   owner: 'kossiitkgp',
-    // },
+    {
+      Name: 'darkHorse',
+      RepoLink: 'https://github.com/kossiitkgp/darkHorse',
+      owner: 'kossiitkgp',
+    },
+    {
+      Name: 'todxpy',
+      RepoLink: 'https://github.com/xypnox/todxpy',
+      owner: 'xypnox',
+    },
+    {
+      Name: 'KWoC',
+      RepoLink: 'https://github.com/kossiitkgp/KWoC',
+      owner: 'kossiitkgp',
+    },
   ]);
   const [students, setStudents] = useState([
-    // 'yashrsharma44',
-    // 'rakaar',
-    // 'orkohunter',
-    // 'adarshkumar712',
+    'yashrsharma44',
+    'rakaar',
+    'orkohunter',
+    'adarshkumar712',
   ]);
 
   const announcements = [
@@ -84,27 +84,26 @@ export default function MentorDashboard() {
   ];
   useEffect(() => {
     // check that its not null
-    const mentor_loggedout =
-      localStorage.getItem('mentor_jwt') === null ||
-      localStorage.getItem('mentor_jwt') === undefined;
-    if (mentor_loggedout) window.location.pathname = '';
-
-    const URL = `${BACKEND_URL}/mentor/dashboard`;
-    const data = {
-      username: localStorage.getItem('mentor_username'),
-    };
-    fetch(URL, {
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setFullName(res.name);
-        setProjects(res.projects);
-      })
-      .catch((err) => {
-        alert('Server Error, Please try again');
-      });
+    // const mentor_loggedout =
+    //   localStorage.getItem('mentor_jwt') === null ||
+    //   localStorage.getItem('mentor_jwt') === undefined;
+    // if (mentor_loggedout) window.location.pathname = '';
+    // const URL = `${BACKEND_URL}/mentor/dashboard`;
+    // const data = {
+    //   username: localStorage.getItem('mentor_username'),
+    // };
+    // fetch(URL, {
+    //   method: 'POST',
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     setFullName(res.name);
+    //     setProjects(res.projects);
+    //   })
+    //   .catch((err) => {
+    //     alert('Server Error, Please try again');
+    //   });
   }, []);
 
   // sample data kept for future reference
@@ -201,15 +200,6 @@ export default function MentorDashboard() {
 
   return (
     <div className='mentor-dashboard'>
-      <link
-        href='https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap'
-        rel='stylesheet'
-      ></link>
-      <link rel='stylesheet' href='font-awesome/css/font-awesome.css'></link>
-      <link
-        href='https://fonts.googleapis.com/css2?family=Staatliches&display=swap'
-        rel='stylesheet'
-      ></link>
       {/*
 
          Mentor Dashboard here
@@ -219,7 +209,9 @@ export default function MentorDashboard() {
              -> Stats of indiv Mentor ???
       */}
       <Navbar className='is-black' />
-      <div className='title-dashboard'><h1>Mentor Dashboard</h1></div>
+      {/**<div className='title-dashboard'>
+        <h1>Mentor Dashboard</h1>
+    </div>*/}
       <div className='intro-card'>
         <div className='avatar grow-card'>
           <img
@@ -227,18 +219,18 @@ export default function MentorDashboard() {
               'mentor_username'
             )}.png`}
             id='avatar-img'
-            alt="GitHub Avatar"
+            alt='GitHub Avatar'
           ></img>
           <br />
           <div className='avatar-content'>
             <p id='mentor-name'>{fullName}</p>
-            <p>({localStorage.getItem('mentor_username')})</p>
+            <p>{localStorage.getItem('mentor_username')}</p>
           </div>
         </div>
 
         <div className='mentor-stats '>
           <div className='mentor-stats-header'>
-            <h1>Your Stats</h1>
+            <h1>Mentor Dashboard</h1>
           </div>
           <div className='mentor-stats-content'>
             <div className='card-component mstats grow-card'>
@@ -250,7 +242,7 @@ export default function MentorDashboard() {
               <p className='font-mentor-stats'>{data.student.length}</p>
             </div> */}
             <div className='card-component mstats students-mstats-card grow-card'>
-              <p className='font-mentor-header'>Days Before Midevals</p>
+              <p className='font-mentor-header'>Before Midevals</p>
               <p className='font-mentor-stats'>{countDaysLeft()}</p>
             </div>
           </div>
@@ -273,7 +265,7 @@ export default function MentorDashboard() {
                     <img
                       className='project-card-avatar'
                       src={`https://github.com/${item.owner}.png`}
-                      alt=""
+                      alt=''
                     ></img>
                     <p className='project-name'>{item.Name}</p>
                   </div>
@@ -282,7 +274,11 @@ export default function MentorDashboard() {
                       href={`${item.RepoLink}`}
                       className='project-button-small'
                     >
-                      <img src='/github.svg' className='github-svg' alt="GitHub Logo"></img>
+                      <img
+                        src='/github.svg'
+                        className='github-svg'
+                        alt='GitHub Logo'
+                      ></img>
                     </a>
                     <a
                       href={`${item.RepoLink}/issues`}
@@ -342,7 +338,7 @@ export default function MentorDashboard() {
                     <img
                       src={`https://github.com/${studentName}.png`}
                       className='avatar-students-card'
-                      alt=""
+                      alt=''
                     ></img>
                     <p className='student-name'>{studentName}</p>
                   </div>
@@ -355,7 +351,7 @@ export default function MentorDashboard() {
                       <img
                         src='/github.svg'
                         className='github-svg-student'
-                        alt=""
+                        alt=''
                       ></img>
                     </a>
                     <a className='fill-evals student-button-small' href='#'>
