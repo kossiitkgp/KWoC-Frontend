@@ -29,15 +29,18 @@
 }
 
 // VARIABLES
-$font-dashboard: Route159, Vegur;
+$dashboard-font: Route159, Vegur;
+$background-color-dashboard: #26292b;
+$text-color: white;
 // ---------
 
 .mentor-dashboard {
   border: 10px dashed #5f6e7d;
-  font-family: $font-dashboard;
+  background-color: $background-color-dashboard;
+  font-family: $dashboard-font;
+  color: $text-color;
+
   font-weight: bold;
-  color: black;
-  background-color: #f0f4f7;
 
   max-width: 1200px;
   margin: auto;
@@ -146,9 +149,10 @@ $font-dashboard: Route159, Vegur;
   }
 
   .card-component {
-    // Taken from  https://www.cssmatic.com/box-shadow
-    // background-color: #f0f4f7;
-    box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
+    background: #272a2b;
+    /* Neumorphic Shadow */
+
+    box-shadow: -25px -25px 50px #2e2f32, 25px 25px 50px #1c1e23;
     border-radius: 30px;
   }
 
@@ -203,21 +207,15 @@ $font-dashboard: Route159, Vegur;
       padding-top: 3%;
       padding-bottom: 3%;
 
-      box-shadow: 0px;
-      background: rgba(0, 0, 0, 0);
-      background-color: #f0f4f7;
+      background: #26292a;
+      box-shadow: inset 15px 15px 50px #2e2f32;
 
-      box-shadow: inset 10px 23px 63px -4px rgba(219, 226, 235, 1);
-      // border-radius: 20px;
-      border-bottom-right-radius: 20px;
-      border-top-right-radius: 20px;
-
-      #avatar-img {
+      .avatar-img {
         max-width: 150px;
         max-height: 150px;
         box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
 
-        border-radius: 4px;
+        border-radius: 25px;
       }
 
       .avatar-content {
@@ -239,13 +237,16 @@ $font-dashboard: Route159, Vegur;
 
         #mentor-name {
           font-weight: bold;
+          font-size: 2vw;
+        }
+
+        #mentor-username {
+          font-size: 1.5vw;
         }
       }
     }
 
     .mentor-stats {
-      background: rgba(0, 0, 0, 0);
-      background-color: #f0f4f7;
       max-width: 70%;
       @media (max-width: 767px) {
         max-width: 100%;
@@ -255,6 +256,8 @@ $font-dashboard: Route159, Vegur;
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      background-color: $background-color-dashboard;
 
       .mentor-stats-header {
         h1 {
@@ -270,7 +273,7 @@ $font-dashboard: Route159, Vegur;
 
         padding: 1%;
 
-        // font-family: 'Fira Code';
+        font-family: $dashboard-font;
       }
 
       .mentor-stats-content {
@@ -339,7 +342,7 @@ $font-dashboard: Route159, Vegur;
         flex-grow: 1;
         margin: 1.5%;
         padding: 1%;
-        background-color: white;
+
         box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
       }
     }
@@ -415,6 +418,8 @@ $font-dashboard: Route159, Vegur;
             // padding-left: 1rem;
 
             border-radius: 50%;
+
+            border: 1.5px solid black;
           }
 
           p {

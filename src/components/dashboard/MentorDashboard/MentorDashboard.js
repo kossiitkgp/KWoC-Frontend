@@ -13,7 +13,7 @@ function countDaysLeft() {
 }
 
 export default function MentorDashboard() {
-  const [fullName, setFullName] = useState('yashrsharma44');
+  const [fullName, setFullName] = useState('Yash Sharma');
   const [projects, setProjects] = useState([
     {
       Name: 'darkHorse',
@@ -218,13 +218,15 @@ export default function MentorDashboard() {
             src={`https://github.com/${localStorage.getItem(
               'mentor_username'
             )}.png`}
-            id='avatar-img'
+            className='avatar-img'
             alt='GitHub Avatar'
           ></img>
           <br />
           <div className='avatar-content'>
             <p id='mentor-name'>{fullName}</p>
-            <p>{localStorage.getItem('mentor_username')}</p>
+            <p id='mentor-username'>
+              {localStorage.getItem('mentor_username')}
+            </p>
           </div>
         </div>
 
