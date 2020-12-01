@@ -31,6 +31,12 @@
 // VARIABLES
 $dashboard-font: Route159, Vegur;
 $background-color-dashboard: #26292b;
+$header-color: #b57aff;
+
+$project-stats-header: #8794a1;
+$project-card-header: #c1d3e5;
+$project-buttons: #3e4345, 100%;
+
 $text-color: white;
 // ---------
 
@@ -237,11 +243,11 @@ $text-color: white;
 
         #mentor-name {
           font-weight: bold;
-          font-size: 2vw;
+          font-size: 26px;
         }
 
         #mentor-username {
-          font-size: 1.5vw;
+          font-size: 18px;
         }
       }
     }
@@ -256,6 +262,8 @@ $text-color: white;
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      margin-bottom: 5%;
 
       background-color: $background-color-dashboard;
 
@@ -272,35 +280,23 @@ $text-color: white;
         flex-grow: 1;
 
         padding: 1%;
-
+        color: $header-color;
         font-family: $dashboard-font;
       }
 
       .mentor-stats-content {
         display: flex;
+        justify-content: space-around;
         flex-grow: 1;
         padding-top: 4.5%;
 
         .font-mentor-header {
-          font-size: 3.3vw;
+          font-size: 28px;
         }
 
         .font-mentor-stats {
-          font-size: 5vw;
-        }
-
-        // taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
-        @media screen and (min-width: 1200px) {
-          .font-mentor-stats {
-            font-size: 60px;
-          }
-        }
-
-        // taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
-        @media screen and (min-width: 1200px) {
-          .font-mentor-header {
-            font-size: 40px;
-          }
+          font-size: 85px;
+          font-weight: 600;
         }
 
         .mstats {
@@ -314,22 +310,45 @@ $text-color: white;
           display: flex;
           justify-content: space-between;
 
-          margin-left: 1.5%;
-          margin-right: 1.5%;
-          margin-bottom: 1.5%;
+          margin: 0 1.5% 1.5% 1.5%;
+          max-width: 210px;
+          max-height: 180px;
+
+          min-width: 210px;
+          max-height: 180px;
 
           flex-grow: 1;
           flex-basis: 0;
 
           padding: 1.5%;
 
-          font-weight: bold;
-          font-size: 2.5vw;
-          // box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+          font-family: Inter;
+          font-style: normal;
+
+          color: $project-stats-header;
         }
 
-        .students-mstats-card {
+        .purple-card {
           background: linear-gradient(135deg, #b57aff 50%, #9552ea 100%);
+          color: $text-color;
+        }
+
+        .non-purple-card {
+          .font-mentor-stats {
+            color: $header-color;
+          }
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .mentor-stats-content {
+          display: flex;
+          flex-direction: column;
+          margin: auto;
+
+          .mstats {
+            margin-top: 10px;
+          }
         }
       }
 
@@ -355,16 +374,17 @@ $text-color: white;
     .project-header {
       p,
       h1 {
-        padding: 2%;
-        margin: 2%;
-        text-align: center;
+        padding: 0 1% 0 1%;
+        margin: 0 1% 0 1%;
+        text-align: left;
       }
 
       flex-grow: 1;
 
       padding: 1%;
-
-      // font-family: 'Fira Code', monospace;
+      font-family: $dashboard-font;
+      font-size: 20px;
+      color: $header-color;
     }
 
     .projectcard {
@@ -372,6 +392,7 @@ $text-color: white;
       flex-direction: row;
       justify-content: space-around;
       flex-wrap: wrap;
+      margin: 0 1% 0 1%;
 
       .project-c {
         flex-grow: 1;
@@ -382,10 +403,9 @@ $text-color: white;
         // justify-content: space-between;
         margin: 2%;
         padding: 1%;
-        margin-right: auto;
+        margin: 0 auto 2% auto;
 
         border-radius: 10px;
-
         max-width: 350px;
         max-height: 200px;
 
@@ -410,8 +430,8 @@ $text-color: white;
           align-items: center;
 
           .project-card-avatar {
-            height: 40px;
-            width: 40px;
+            height: 60px;
+            width: 60px;
             margin-top: 1rem;
             margin-right: 2rem;
             margin-left: 1rem;
@@ -419,11 +439,11 @@ $text-color: white;
 
             border-radius: 50%;
 
-            border: 1.5px solid black;
+            border: 2px solid $project-card-header;
           }
 
           p {
-            color: black;
+            color: $project-card-header;
             font-size: 36px;
             text-align: center;
             margin: 0px;
@@ -431,14 +451,7 @@ $text-color: white;
           }
 
           .project-name {
-            font-size: 3vw;
-          }
-
-          // taken from https://stackoverflow.com/questions/40528290/how-to-implement-max-font-size
-          @media screen and (min-width: 1200px) {
-            .project-name {
-              font-size: 36px;
-            }
+            font-size: 36px;
           }
         }
 
@@ -450,9 +463,9 @@ $text-color: white;
 
           .project-button-small {
             height: 45px;
-            background-color: #e5e9f0;
+            background: #3e4345;
             border-radius: 8px;
-            color: #8794a1;
+            color: #bfb3c8;
 
             display: flex;
             text-align: center;
@@ -464,13 +477,17 @@ $text-color: white;
             padding-left: 5%;
             padding-right: 5%;
             // padding: 5%;
-            font-size: 1.6vw;
+            font-size: 20px;
             align-items: center;
             cursor: pointer;
           }
 
           .project-button-small:active {
             background-color: #a0a3f4;
+          }
+
+          .project-button-small:hover {
+            color: black;
           }
         }
       }
@@ -510,19 +527,25 @@ $text-color: white;
         }
 
         a:hover {
-          color: #363636;
-
-          text {
-            color: #363636;
-          }
-        }
-
-        a:active {
           color: black;
 
           text {
             color: black;
           }
+        }
+
+        a:active {
+          color: white;
+
+          text {
+            color: white;
+          }
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .project-c {
+          margin: 10px 0 10px 0;
         }
       }
     }
@@ -535,16 +558,18 @@ $text-color: white;
     .student-header {
       p,
       h1 {
-        padding: 2%;
-        margin: 2%;
-        text-align: center;
+        padding: 0 1% 0 1%;
+        margin: 0 1% 0 1%;
+        text-align: left;
       }
 
       flex-grow: 1;
 
       padding: 1%;
 
-      // font-family: 'Fira Code', monospace;
+      font-family: $dashboard-font;
+      font-size: 20px;
+      color: $header-color;
     }
 
     .student-card {
@@ -552,6 +577,8 @@ $text-color: white;
       flex-direction: row;
       justify-content: space-around;
       flex-wrap: wrap;
+
+      margin: 0 1% 0 1%;
 
       .student-c {
         flex-grow: 1;
@@ -562,8 +589,8 @@ $text-color: white;
         // justify-content: space-between;
         margin: 2%;
         padding: 1%;
-        margin-right: auto;
 
+        margin: 0 auto 2% auto;
         border-radius: 10px;
 
         max-width: 350px;
@@ -587,18 +614,26 @@ $text-color: white;
           display: flex;
           flex-direction: row;
 
+          align-items: center;
+
           .avatar-students-card {
-            height: 40px;
-            width: 40px;
+            height: 60px;
+            width: 60px;
+
+            margin: 1rem;
+
             border-radius: 50%;
-            margin-right: 5%;
-            align-items: center;
-            margin-top: 3%;
+
+            border: 2px solid $project-card-header;
           }
 
           .student-name {
-            font-size: 3vw;
+            font-size: 36px;
             margin-left: 2%;
+            color: $project-card-header;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
           @media screen and (min-width: 1200px) {
@@ -609,6 +644,8 @@ $text-color: white;
         }
 
         .student-button {
+          display: flex;
+          justify-content: space-around;
           margin: 1%;
           padding: 1%;
           max-height: 45px;
@@ -625,9 +662,10 @@ $text-color: white;
 
           .student-button-small {
             height: 45px;
-            background-color: #e5e9f0;
+
+            background: #3e4345;
             border-radius: 8px;
-            color: #8794a1;
+            color: #bfb3c8;
 
             display: flex;
             text-align: center;
@@ -639,16 +677,38 @@ $text-color: white;
             padding-left: 5%;
             padding-right: 5%;
             // padding: 5%;
-            font-size: 1.6vw;
+            font-size: 20px;
             align-items: center;
             cursor: pointer;
           }
 
           .fill-evals {
             pointer-events: none;
-            background-color: #eff1f6;
+            background-color: #3e4345;
+          }
+
+          a:hover {
+            color: black;
+
+            text {
+              color: black;
+            }
+          }
+
+          a:active {
+            color: white;
+            background-color: #a0a3f4;
+            text {
+              color: white;
+            }
           }
         }
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .student-card {
+        margin: 10px 0 10px 0;
       }
     }
   }

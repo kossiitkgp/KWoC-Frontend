@@ -235,16 +235,17 @@ export default function MentorDashboard() {
             <h1>Mentor Dashboard</h1>
           </div>
           <div className='mentor-stats-content'>
-            <div className='card-component mstats grow-card'>
+            <div className='card-component mstats non-purple-card grow-card'>
               <p className='font-mentor-header'>Projects</p>
               <p className='font-mentor-stats'>{projects.length}</p>
             </div>
-            {/* <div className='card-component mstats students-mstats-card grow-card'>
+
+            {/**<div className='card-component mstats purple-card grow-card'>
               <p className='font-mentor-header'>Students</p>
-              <p className='font-mentor-stats'>{data.student.length}</p>
-            </div> */}
-            <div className='card-component mstats students-mstats-card grow-card'>
-              <p className='font-mentor-header'>Before Midevals</p>
+              <p className='font-mentor-stats'>0</p>
+  </div>*/}
+            <div className='card-component mstats purple-card grow-card'>
+              <p className='font-mentor-header'>Midevals</p>
               <p className='font-mentor-stats'>{countDaysLeft()}</p>
             </div>
           </div>
@@ -357,7 +358,7 @@ export default function MentorDashboard() {
                       ></img>
                     </a>
                     <a className='fill-evals student-button-small' href='#'>
-                      Fill Evals
+                      Evals
                     </a>
                     <a
                       className='student-button-small'
