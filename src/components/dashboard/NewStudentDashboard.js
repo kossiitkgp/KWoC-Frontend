@@ -194,7 +194,7 @@ export default function NewStudentDashboard() {
         <div className='avatar grow-card'>
           <img
             src={`https://github.com/${localStorage.getItem(
-              'mentor_username'
+              'student_username'
             )}.png`}
             id='avatar-img'
             alt="Mentor's GitHub Avatar"
