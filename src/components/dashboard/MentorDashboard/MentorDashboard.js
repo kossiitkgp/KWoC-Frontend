@@ -42,7 +42,7 @@ export default function MentorDashboard() {
     {
       date: 'November 28, 2020',
       content:
-        'Please register your projects, registrations close on December 6, 2020',
+        'Please register your projects, registrations close on December 6, 2020.',
     },
   ];
 
@@ -199,8 +199,9 @@ export default function MentorDashboard() {
   }
 
   return (
-    <div className='mentor-dashboard'>
-      {/*
+    <div className='mentor-dashboard-body'>
+      <div className='mentor-dashboard'>
+        {/*
 
          Mentor Dashboard here
             Plans to include the following
@@ -208,237 +209,238 @@ export default function MentorDashboard() {
              -> Important Announcements
              -> Stats of indiv Mentor ???
       */}
-      <Navbar className='is-black' />
-      {/**<div className='title-dashboard'>
+        <Navbar className='is-black' />
+        {/**<div className='title-dashboard'>
         <h1>Mentor Dashboard</h1>
     </div>*/}
-      <div className='intro-card'>
-        <div className='avatar grow-card'>
-          <img
-            src={`https://github.com/${localStorage.getItem(
-              'mentor_username'
-            )}.png`}
-            className='avatar-img'
-            alt='GitHub Avatar'
-          ></img>
-          <br />
-          <div className='avatar-content'>
-            <p id='mentor-name'>{fullName}</p>
-            <p id='mentor-username'>
-              {localStorage.getItem('mentor_username')}
-            </p>
-          </div>
-        </div>
-
-        <div className='mentor-stats '>
-          <div className='mentor-stats-header'>
-            <h1>Mentor Dashboard</h1>
-          </div>
-          <div className='mentor-stats-content'>
-            <div className='card-component mstats non-purple-card grow-card'>
-              <p className='font-mentor-header'>Projects</p>
-              <p className='font-mentor-stats'>{projects.length}</p>
+        <div className='intro-card'>
+          <div className='avatar grow-card'>
+            <img
+              src={`https://github.com/${localStorage.getItem(
+                'mentor_username'
+              )}.png`}
+              className='avatar-img'
+              alt='GitHub Avatar'
+            ></img>
+            <br />
+            <div className='avatar-content'>
+              <p id='mentor-name'>{fullName}</p>
+              <p id='mentor-username'>
+                {localStorage.getItem('mentor_username')}
+              </p>
             </div>
+          </div>
 
-            {/**<div className='card-component mstats purple-card grow-card'>
+          <div className='mentor-stats '>
+            <div className='mentor-stats-header'>
+              <h1>Mentor Dashboard</h1>
+            </div>
+            <div className='mentor-stats-content'>
+              <div className='card-component mstats non-purple-card grow-card'>
+                <p className='font-mentor-header'>Projects</p>
+                <p className='font-mentor-stats'>{projects.length}</p>
+              </div>
+              {/** 
+            <div className='card-component mstats purple-card grow-card'>
               <p className='font-mentor-header'>Students</p>
               <p className='font-mentor-stats'>0</p>
-  </div>*/}
-            <div className='card-component mstats purple-card grow-card'>
-              <p className='font-mentor-header'>Midevals</p>
-              <p className='font-mentor-stats'>{countDaysLeft()}</p>
+            </div>*/}
+              <div className='card-component mstats purple-card grow-card'>
+                <p className='font-mentor-header'>Midevals</p>
+                <p className='font-mentor-stats'>{countDaysLeft()}</p>
+              </div>
             </div>
-          </div>
-          {/*<div className='card-component badges'>
+            {/*<div className='card-component badges'>
             <h1>Badges</h1>
           </div>
           */}
+          </div>
         </div>
-      </div>
-      <div className='projects'>
-        <div className='project-header'>
-          <h1>Projects</h1>
-        </div>
-        <div className='projectcard'>
-          {projects.length !== 0 ? (
-            projects.map((item, index) => {
-              return (
-                <div className='project-c card-component grow-card'>
-                  <div className='anchor-align'>
-                    <img
-                      className='project-card-avatar'
-                      src={`https://github.com/${item.owner}.png`}
-                      alt=''
-                    ></img>
-                    <p className='project-name'>{item.Name}</p>
-                  </div>
-                  <div className='project-buttons'>
-                    <a
-                      href={`${item.RepoLink}`}
-                      className='project-button-small'
-                    >
+        <div className='projects'>
+          <div className='project-header'>
+            <h1>Projects</h1>
+          </div>
+          <div className='projectcard'>
+            {projects.length !== 0 ? (
+              projects.map((item, index) => {
+                return (
+                  <div className='project-c card-component grow-card'>
+                    <div className='anchor-align'>
                       <img
-                        src='/github.svg'
-                        className='github-svg'
-                        alt='GitHub Logo'
-                      ></img>
-                    </a>
-                    <a
-                      href={`${item.RepoLink}/issues`}
-                      className='project-button-small'
-                    >
-                      Issues
-                    </a>
-                    <a
-                      href={`${item.RepoLink}/pulls`}
-                      className='project-button-small'
-                    >
-                      PRs
-                    </a>
-                  </div>
-                </div>
-              );
-            })
-          ) : (
-            <div className='add-project-card'>
-              <div className='header-add-project-card'>
-                <p>You haven't added any projects yet</p>
-              </div>
-              <div className='add-project-button-div'>
-                <a href='/form/project'>
-                  <button className='add-project-button '>
-                    <p className='plus-sign'>+</p>
-                    <p className='text-add-project' href='/form/project'>
-                      Add Projects
-                    </p>
-                  </button>
-                </a>
-              </div>
-            </div>
-          )}
-          {projects.length !== 0 ? (
-            <div className='add-project-card project-c card-component grow-card add-project-card-small'>
-              <a href='/form/project'>
-                <h4>Add Projects</h4>
-                <text>+</text>
-              </a>
-            </div>
-          ) : (
-            ''
-          )}
-        </div>
-      </div>
-      <div className='students'>
-        <div className='student-header'>
-          <h1>Students</h1>
-        </div>
-        <div className='student-card'>
-          {students.length !== 0 ? (
-            students.map((studentName, index) => {
-              return (
-                <div className='student-c card-component grow-card'>
-                  <div className='student-card-header'>
-                    <img
-                      src={`https://github.com/${studentName}.png`}
-                      className='avatar-students-card'
-                      alt=''
-                    ></img>
-                    <p className='student-name'>{studentName}</p>
-                  </div>
-
-                  <div className='student-button'>
-                    <a
-                      className='student-profile student-button-small'
-                      href={`https://github.com/${studentName}`}
-                    >
-                      <img
-                        src='/github.svg'
-                        className='github-svg-student'
+                        className='project-card-avatar'
+                        src={`https://github.com/${item.owner}.png`}
                         alt=''
                       ></img>
-                    </a>
-                    <a className='fill-evals student-button-small' href='#'>
-                      Evals
-                    </a>
-                    <a
-                      className='student-button-small'
-                      href={`/stats/student/${studentName}`}
-                    >
-                      Stats
-                    </a>
+                      <p className='project-name'>{item.Name}</p>
+                    </div>
+                    <div className='project-buttons'>
+                      <a
+                        href={`${item.RepoLink}`}
+                        className='project-button-small'
+                      >
+                        <img
+                          src='/github.svg'
+                          className='github-svg'
+                          alt='GitHub Logo'
+                        ></img>
+                      </a>
+                      <a
+                        href={`${item.RepoLink}/issues`}
+                        className='project-button-small'
+                      >
+                        Issues
+                      </a>
+                      <a
+                        href={`${item.RepoLink}/pulls`}
+                        className='project-button-small'
+                      >
+                        PRs
+                      </a>
+                    </div>
                   </div>
+                );
+              })
+            ) : (
+              <div className='add-project-card'>
+                <div className='header-add-project-card'>
+                  <p>You haven't added any projects yet</p>
                 </div>
-              );
-            })
-          ) : (
-            <div className='add-project-card'>
-              <div className='header-add-project-card'>
-                <p>
-                  Coding period starts from 6th December. You can invite
-                  students meanwhile.
-                </p>
+                <div className='add-project-button-div'>
+                  <a href='/form/project'>
+                    <button className='add-project-button '>
+                      <p className='plus-sign'>+</p>
+                      <p className='text-add-project' href='/form/project'>
+                        Add Projects
+                      </p>
+                    </button>
+                  </a>
+                </div>
               </div>
-              <div className='add-project-button-div'>
-                <a href='https://join.slack.com/t/kwoc-koss/shared_invite/zt-jch6e9gn-puizWuKSw5~K9Eq4YfFrFg'>
-                  <button className='add-project-button '>
-                    <p className='plus-sign'>+</p>
-                    <p className='text-add-project'>Invite Students</p>
-                  </button>
+            )}
+            {projects.length !== 0 ? (
+              <div className='add-project-card project-c card-component grow-card add-project-card-small'>
+                <a href='/form/project'>
+                  <h4>Add Projects</h4>
+                  <text>+</text>
                 </a>
               </div>
-            </div>
-          )}
+            ) : (
+              ''
+            )}
+          </div>
         </div>
-      </div>
-
-      <section className='resource-card'>
-        <div className='resource-header'>
-          <b>Resources</b>
-        </div>
-
-        <table className='table is-bordered is-striped'>
-          <th>Resource Link</th>
-          <th>Details</th>
-
-          <tbody>
-            {resources.map((resourceCard) => {
-              const message = resourceCard.message;
-              const url = resourceCard.url;
-              const avatar = resourceCard.avatar;
-
-              return (
-                <tr>
-                  <td>
-                    <a href={url}>
+        <div className='students'>
+          <div className='student-header'>
+            <h1>Students</h1>
+          </div>
+          <div className='student-card'>
+            {students.length !== 0 ? (
+              students.map((studentName, index) => {
+                return (
+                  <div className='student-c card-component grow-card'>
+                    <div className='student-card-header'>
                       <img
-                        src={avatar}
-                        className='avatar-resource'
-                        alt='link'
+                        src={`https://github.com/${studentName}.png`}
+                        className='avatar-students-card'
+                        alt=''
                       ></img>
-                    </a>
-                  </td>
-                  <td>
-                    <a href={url}>
-                      <p>{message}</p>
-                    </a>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </section>
-      <div className='announcements'>
-        <h1>Announcements</h1>
+                      <p className='student-name'>{studentName}</p>
+                    </div>
 
-        {announcements.map((item, index) => {
-          return (
-            <div className='anc-card card-component grow-card'>
-              <h1>{item.date}</h1>
-              <p>{item.content}</p>
-            </div>
-          );
-        })}
+                    <div className='student-button'>
+                      <a
+                        className='student-profile student-button-small'
+                        href={`https://github.com/${studentName}`}
+                      >
+                        <img
+                          src='/github.svg'
+                          className='github-svg-student'
+                          alt=''
+                        ></img>
+                      </a>
+                      <a className='fill-evals student-button-small' href='#'>
+                        Evals
+                      </a>
+                      <a
+                        className='student-button-small'
+                        href={`/stats/student/${studentName}`}
+                      >
+                        Stats
+                      </a>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className='add-project-card'>
+                <div className='header-add-project-card'>
+                  <p>
+                    Coding period starts from 6th December. You can invite
+                    students meanwhile.
+                  </p>
+                </div>
+                <div className='add-project-button-div'>
+                  <a href='https://join.slack.com/t/kwoc-koss/shared_invite/zt-jch6e9gn-puizWuKSw5~K9Eq4YfFrFg'>
+                    <button className='add-project-button '>
+                      <p className='plus-sign'>+</p>
+                      <p className='text-add-project'>Invite Students</p>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <section className='resource-card'>
+          <div className='resource-header'>
+            <h1>Resources</h1>
+          </div>
+
+          <table className='table is-bordered is-striped'>
+            <th>Resource Link</th>
+            <th>Details</th>
+
+            <tbody>
+              {resources.map((resourceCard) => {
+                const message = resourceCard.message;
+                const url = resourceCard.url;
+                const avatar = resourceCard.avatar;
+
+                return (
+                  <tr>
+                    <td>
+                      <a href={url}>
+                        <img
+                          src={avatar}
+                          className='avatar-resource'
+                          alt='link'
+                        ></img>
+                      </a>
+                    </td>
+                    <td>
+                      <a href={url}>
+                        <p>{message}</p>
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </section>
+        <div className='announcements'>
+          <h1 className='announcement-header'>Announcements</h1>
+
+          {announcements.map((item, index) => {
+            return (
+              <div className='anc-card card-component grow-card'>
+                <h1>{item.date}</h1>
+                <p>{item.content}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <Footer />
     </div>
