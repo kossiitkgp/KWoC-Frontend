@@ -219,7 +219,8 @@ $text-color: white;
         padding-bottom: 3%;
 
         background: #26292a;
-        box-shadow: inset 15px 15px 50px #2e2f32;
+        box-shadow: inset 15px 15px 50px #3d3e42;
+        border-radius: 0 30px 30px 0;
 
         .avatar-img {
           max-width: 150px;
@@ -500,6 +501,7 @@ $text-color: white;
 
             .project-button-small:hover {
               color: black;
+              background: linear-gradient(#3e4345, rgb(44, 43, 43));
             }
           }
         }
@@ -703,6 +705,7 @@ $text-color: white;
 
             a:hover {
               color: black;
+              background: linear-gradient(#3e4345, rgb(44, 43, 43));
 
               text {
                 color: black;
@@ -785,12 +788,18 @@ $text-color: white;
             color: black;
           }
         }
+
+        tr:active {
+          td {
+            color: white;
+          }
+        }
       }
     }
 
     .announcements {
       background: #26292a;
-      box-shadow: inset 15px 15px 50px #2e2f32;
+      box-shadow: inset 15px 15px 50px #3d3e42;
       padding: 1%;
 
       h1 {
