@@ -186,7 +186,11 @@ $text-color: white;
       text-align: center;
       // font-family: 'Roboto Slab', serif;
       // font-family: Vegur;
-      font-size: 32px;
+      font-family: $dashboard-font;
+      font-size: 26px; // taken from https://css-tricks.com/snippets/css/gradient-text/
+      background: -webkit-linear-gradient(#b57aff 50%, #9552ea 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       @media (max-width: 767px) {
         font-size: 20px;
       }
