@@ -84,9 +84,10 @@ button {
 }
 
 .dashboard {
-  background: url('/images/code.jpg') $background-color-page;
-  background-size: fill;
-  background-repeat: no-repeat;
+  background: $background-color-page;
+  // background-size: fill;
+  // background-repeat: no-repeat;
+
   color: #5f6e7d;
 
   .intro {

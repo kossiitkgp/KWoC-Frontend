@@ -184,7 +184,7 @@ export default function NewStudentDashboard() {
   }
 
   return (
-    <div className='mentor-dashboard-body'>
+    <div className='student-dashboard-body'>
       <div className='mentor-dashboard'>
         <link
           href='https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap'
@@ -241,14 +241,14 @@ export default function NewStudentDashboard() {
                 <p className='font-mentor-stats'>0</p>
               </div>
 
-              <div className='card-component purple-card mstats grow-card'>
-                <p className='font-mentor-header'>PRs</p>
-                <p className='font-mentor-stats'>0</p>
+              <div className='card-component purple-card mstats  grow-card'>
+                <p className='font-mentor-header'>Pull Requests</p>
+                <p className='font-mentor-stats small-stats-font'>0</p>
               </div>
 
-              <div className='card-component non-purple-card mstats grow-card'>
-                <p className='font-mentor-header'>LOCs</p>
-                <p className='font-mentor-stats'>0</p>
+              <div className='card-component non-purple-card mstats  grow-card'>
+                <p className='font-mentor-header'>Lines of Code</p>
+                <p className='font-mentor-stats small-stats-font'>0</p>
               </div>
             </div>
           </div>

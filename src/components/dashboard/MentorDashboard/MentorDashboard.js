@@ -246,8 +246,10 @@ export default function MentorDashboard() {
               <p className='font-mentor-stats'>0</p>
             </div>*/}
               <div className='card-component mstats purple-card grow-card'>
-                <p className='font-mentor-header'>Midevals</p>
-                <p className='font-mentor-stats'>{countDaysLeft()}</p>
+                <p className='font-mentor-header'>Days to Midevals</p>
+                <p className='font-mentor-stats small-stats-font'>
+                  {countDaysLeft()}
+                </p>
               </div>
             </div>
             {/*<div className='card-component badges'>

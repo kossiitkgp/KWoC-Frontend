@@ -29,6 +29,7 @@
 }
 
 // VARIABLES
+$dashboard-body-background: #35393b;
 $dashboard-font: Route159, Vegur;
 $background-color-dashboard: #26292b;
 $header-color: #b57aff;
@@ -41,7 +42,11 @@ $text-color: white;
 // ---------
 
 .mentor-dashboard-body {
-  background: url('../../../images/code.jpg') $background-color-dashboard;
+  // background: url('../../../images/code.jpeg') $background-color-dashboard;
+  // background-size: fill;
+  // background-repeat: no-repeat;
+
+  background: $dashboard-body-background;
 
   .mentor-dashboard {
     border: 10px dashed #5f6e7d;
@@ -307,6 +312,10 @@ $text-color: white;
           .font-mentor-stats {
             font-size: 85px;
             font-weight: 600;
+          }
+
+          .small-stats-font {
+            font-size: 50px;
           }
 
           .mstats {

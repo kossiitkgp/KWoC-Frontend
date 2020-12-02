@@ -40,8 +40,8 @@ $project-buttons: #3e4345, 100%;
 $text-color: white;
 // ---------
 
-.mentor-dashboard-body {
-  background: url('../../images/code.jpg') $background-color-dashboard;
+.student-dashboard-body {
+  background: $background-color-dashboard;
 
   .mentor-dashboard {
     border: 10px dashed #5f6e7d;
@@ -318,6 +318,10 @@ $text-color: white;
           .font-mentor-stats {
             font-size: 85px;
             font-weight: 600;
+          }
+
+          .small-stats-font {
+            font-size: 50px;
           }
 
           .mstats {
