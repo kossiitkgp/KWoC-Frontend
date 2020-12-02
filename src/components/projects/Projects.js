@@ -90,7 +90,7 @@ export default function Projects() {
         </div>
       </section>
 
-      <div className='container'>
+      {/*<div className='container'>
         <div class='field'>
           <div class='control'>
             <input
@@ -118,7 +118,7 @@ export default function Projects() {
           ))}
         </div>
       </div>
-      <br />
+      <br />*/}
       <Footer />
     </div>
   );
