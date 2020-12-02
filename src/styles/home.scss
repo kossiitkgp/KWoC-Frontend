@@ -64,7 +64,8 @@
 .container h1 {
   font-family: Vegur;
 }
-.tags {
+#tags {
+  text-align: center;
   min-height: 50vh;
   background-image: linear-gradient(135deg, #58182d 0%, #130816 50%);
 
@@ -82,7 +83,7 @@
   }
 }
 
-.tags {
+#tags {
   .container {
     h1 {
       font-size: 40px;
@@ -91,12 +92,12 @@
     }
     max-height: 100vh;
   }
-}
-.tag.is-medium.is-primary {
-  background: rgba(#fff, 0.1);
-  border-radius: 15px;
-  color: #eee;
-  cursor: pointer;
+  .tag.is-medium {
+    background: rgba(#fff, 0.1);
+    border-radius: 15px;
+    color: #eee;
+    cursor: pointer;
+  }
 }
 
 @media (max-width: 400px) {
