@@ -8,21 +8,21 @@ export default function NewStudentDashboard() {
   const [fullName, setFullName] = useState('Yash Sharma');
   const [collegeName, setCollegeName] = useState('IIT Kharagpur');
   const [projects, setProjectName] = useState([
-    {
-      Name: 'darkHorse',
-      RepoLink: 'https://github.com/kossiitkgp/darkHorse',
-      owner: 'kossiitkgp',
-    },
-    {
-      Name: 'todxpy',
-      RepoLink: 'https://github.com/xypnox/todxpy',
-      owner: 'xypnox',
-    },
-    {
-      Name: 'KWoC',
-      RepoLink: 'https://github.com/kossiitkgp/KWoC',
-      owner: 'kossiitkgp',
-    },
+    // {
+    //   Name: 'darkHorse',
+    //   RepoLink: 'https://github.com/kossiitkgp/darkHorse',
+    //   owner: 'kossiitkgp',
+    // },
+    // {
+    //   Name: 'todxpy',
+    //   RepoLink: 'https://github.com/xypnox/todxpy',
+    //   owner: 'xypnox',
+    // },
+    // {
+    //   Name: 'KWoC',
+    //   RepoLink: 'https://github.com/kossiitkgp/KWoC',
+    //   owner: 'kossiitkgp',
+    // },
   ]);
 
   const announcements = [
@@ -69,25 +69,26 @@ export default function NewStudentDashboard() {
 
   useEffect(() => {
     // check that its not null
-    // const student_loggedout = localStorage.getItem('student_jwt') === null || localStorage.getItem('student_jwt') === undefined
-    // if (student_loggedout)
-    //   window.location.pathname = ''
-    // const URL = `${BACKEND_URL}/student/dashboard`;
-    // const data = {
-    //   username: localStorage.getItem('student_username'),
-    // };
-    // fetch(URL, {
-    //   method: 'POST',
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     setFullName(res.name);
-    //     setCollegeName(res.college);
-    //   })
-    //   .catch((err) => {
-    //     alert('Server Error, Please try again');
-    //   });
+    const student_loggedout =
+      localStorage.getItem('student_jwt') === null ||
+      localStorage.getItem('student_jwt') === undefined;
+    if (student_loggedout) window.location.pathname = '';
+    const URL = `${BACKEND_URL}/student/dashboard`;
+    const data = {
+      username: localStorage.getItem('student_username'),
+    };
+    fetch(URL, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setFullName(res.name);
+        setCollegeName(res.college);
+      })
+      .catch((err) => {
+        alert('Server Error, Please try again');
+      });
   }, []);
 
   // sample data kept for future reference
@@ -210,7 +211,7 @@ export default function NewStudentDashboard() {
           <div className='avatar grow-card'>
             <img
               src={`https://github.com/${localStorage.getItem(
-                'mentor_username'
+                'student_username'
               )}.png`}
               className='avatar-img'
               alt="Mentor's GitHub Avatar"
