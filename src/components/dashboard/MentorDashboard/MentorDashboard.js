@@ -13,7 +13,7 @@ function countDaysLeft() {
 }
 
 export default function MentorDashboard() {
-  const [fullName, setFullName] = useState('Yash Sharma');
+  const [fullName, setFullName] = useState('');
   const [projects, setProjects] = useState([
     // {
     //   Name: 'darkHorse',

@@ -5,8 +5,8 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 
 export default function NewStudentDashboard() {
-  const [fullName, setFullName] = useState('Yash Sharma');
-  const [collegeName, setCollegeName] = useState('IIT Kharagpur');
+  const [fullName, setFullName] = useState('');
+  const [collegeName, setCollegeName] = useState('');
   const [projects, setProjectName] = useState([
     // {
     //   Name: 'darkHorse',
