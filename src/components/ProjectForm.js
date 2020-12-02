@@ -38,7 +38,7 @@ async function checkRepo(repolink) {
   const ownerName = splitArr[len-2]
 
   const headers = {
-    "username": "adc3de3ce14dcf52af0afc0a40e6c3fee5d086e6",
+    "username": "c7674ee677fb39761be11ce056107525b8e8d24c",
   }
 
 
