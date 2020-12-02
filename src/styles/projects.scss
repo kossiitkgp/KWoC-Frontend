@@ -1,22 +1,33 @@
 @import 'index.scss';
 
-#projects { 
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(https://raw.githubusercontent.com/kossiitkgp/kwoc-2017/master/static/images/intro-background.jpg);
-    background-size: cover;
-}
-.project-card{
-    max-width: 412px;
+#projects {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(https://raw.githubusercontent.com/kossiitkgp/kwoc-2017/master/static/images/intro-background.jpg);
+  background-size: cover;
 }
 
-.input{
-    margin-top: 32px;
-    margin-bottom: 32px;
+.card {
+  .card-content {
+    .button {
+      margin-top: 0;
+    }
+
+    p {
+      margin-top: auto;
+    }
+  }
 }
 
-.footer-btn{
-    margin: 20px;
+.input {
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
-.tags{
-    text-align: center;
+.footer-btn {
+  margin: 20px;
+}
+
+#projectTags {
+  background-color: white;
+  text-align: center;
 }

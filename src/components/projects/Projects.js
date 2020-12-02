@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Fuse from 'fuse.js';
+import Card from './ProjectCard.js';
 
 import '../../styles/projects.scss';
 
@@ -17,20 +18,29 @@ const dummyProjects = [
     desc:
       'The students need to improve an app which will enable the user to control the pointer in a PC. Implementation - acceleration/gyroscope of the phone as input, which needs to be converted to mouse pointer output.',
     mentor: 'Soumyajit Chakraborty',
+    mentorEmail: 'soumyajit1729@gmail.com',
+    projectLink: 'https://github.com/soumyajit1729/AndyMouse-kWoC',
+    communicationLink: '#',
     tags: ['Android studio (java)', 'Basic python'],
   },
   {
-    name: 'cat cat',
+    name: 'Cat Cat',
     desc:
       'The students need to improve an app which will enable the user to control the pointer in a PC. Implementation - acceleration/gyroscope of the phone as input, which needs to be converted to mouse pointer output.',
     mentor: 'test Chakraborty',
-    tags: ['html', 'html5'],
+    mentorEmail: 'mentor@gmail.com',
+    projectLink: 'https://www.google.co.in/',
+    communicationLink: '#',
+    tags: ['html', 'html5', 'css', 'javascript'],
   },
   {
-    name: 'tom and jerry',
+    name: 'Tom & Jerry',
     desc:
       'The students need to improve an app which will enable the user to control the pointer in a PC. Implementation - acceleration/gyroscope of the phone as input, which needs to be converted to mouse pointer output.',
     mentor: 'test1111',
+    mentorEmail: 'mentor@gmail.com',
+    projectLink: 'https://www.google.co.in/',
+    communicationLink: '#',
     tags: ['Android studio (java)', 'Basic python'],
   },
 ];
@@ -80,28 +90,35 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* <div className='container'>
-            <div class="field">
-                <div class="control">
-                    <input class="input is-primary is-medium" type="text" placeholder="Search projects" onChange={handleSearch}></input>
-                </div>
+      <div className='container'>
+        <div class='field'>
+          <div class='control'>
+            <input
+              class='input is-primary is-medium'
+              type='text'
+              placeholder='Search projects'
+              onChange={handleSearch}
+            ></input>
+          </div>
+        </div>
+
+        <div class='columns is-multiline is-centered'>
+          {displayedProjects.map((project, id) => (
+            <div key={id} class='column has-text-centered is-4'>
+              <Card
+                name={project.name}
+                desc={project.desc}
+                mentor={project.mentor}
+                tags={project.tags}
+                mentorId={project.mentorEmail}
+                projectLink={project.projectLink}
+                commLink={project.communicationLink}
+              ></Card>
             </div>
-            <div class="columns is-multiline is-centered">
-            {
-             displayedProjects.map((project,id) => (
-                <div key={id} class="column is-centered project-card">
-                  <Card
-                  name={project.name}
-                  desc={project.desc}
-                  mentor={project.mentor}
-                  tags={project.tags}
-                  >
-                  </Card>
-                </div>
-              ))
-            }
-            </div>
-        </div> */}
+          ))}
+        </div>
+      </div>
+      <br />
       <Footer />
     </div>
   );
