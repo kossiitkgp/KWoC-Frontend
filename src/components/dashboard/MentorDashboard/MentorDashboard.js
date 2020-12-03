@@ -240,7 +240,7 @@ export default function MentorDashboard() {
                 <p className='font-mentor-header'>Projects</p>
                 <p className='font-mentor-stats'>{projects.length}</p>
               </div>
-              {/** 
+              {/**
             <div className='card-component mstats purple-card grow-card'>
               <p className='font-mentor-header'>Students</p>
               <p className='font-mentor-stats'>0</p>
@@ -400,9 +400,6 @@ export default function MentorDashboard() {
           </div>
 
           <table className='table is-bordered is-striped'>
-            <th>Resource Link</th>
-            <th>Details</th>
-
             <tbody>
               {resources.map((resourceCard) => {
                 const message = resourceCard.message;
@@ -436,7 +433,7 @@ export default function MentorDashboard() {
 
           {announcements.map((item, index) => {
             return (
-              <div className='anc-card card-component grow-card'>
+              <div className='anc-card card-component'>
                 <h1>{item.date}</h1>
                 <p>{item.content}</p>
               </div>

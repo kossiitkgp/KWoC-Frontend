@@ -49,7 +49,7 @@ $text-color: white;
   background: $dashboard-body-background;
 
   .mentor-dashboard {
-    border: 10px dashed #5f6e7d;
+    border: 10px dashed #5f6e7d22;
     border-radius: 30px;
     background-color: $background-color-dashboard;
     font-family: $dashboard-font;
@@ -59,6 +59,7 @@ $text-color: white;
 
     max-width: 1200px;
     margin: auto;
+    margin-bottom: 5rem;
 
     p,
     h1 {
@@ -76,9 +77,9 @@ $text-color: white;
       // height: 200px;
 
       // margin: 1%;
-      border: 10px dashed #5f6e7d;
+      border: 5px dashed #5f6e7d;
 
-      border-radius: 10px;
+      border-radius: 20px;
 
       display: flex;
 
@@ -94,7 +95,7 @@ $text-color: white;
         flex-basis: 0;
         padding: 3% 0 3% 3%;
         p {
-          font-size: 32px;
+          font-size: 24px;
           @media (max-width: 767px) {
             text-align: center;
             font-size: 28px;
@@ -202,7 +203,7 @@ $text-color: white;
     .intro-card {
       display: flex;
       margin-top: -3% !important;
-      padding-top: 5%;
+      padding-top: 10%;
 
       @media (max-width: 767px) {
         flex-direction: column;
@@ -210,6 +211,10 @@ $text-color: white;
       }
 
       .avatar {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
         max-width: 30%;
         @media (max-width: 767px) {
           max-width: 100%;
@@ -230,7 +235,7 @@ $text-color: white;
         .avatar-img {
           max-width: 150px;
           max-height: 150px;
-          box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 10px 21px 0px rgba(0, 0, 0, 0.5);
 
           border-radius: 25px;
         }
@@ -239,11 +244,6 @@ $text-color: white;
           margin-top: 10%;
           margin-left: 20%;
           margin-right: 20%;
-
-          border-color: black;
-          // background-color: #c4c4c4;
-          box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
-          border-radius: 4px;
 
           font-size: 20px;
           // box-shadow: 1px 0px 11px 0px rgba(0, 0, 0, 0.75);
@@ -389,8 +389,10 @@ $text-color: white;
     .projects {
       display: flex;
       flex-direction: column;
+      margin: 3rem 0;
 
       .project-header {
+        z-index: 10;
         p,
         h1 {
           padding: 0 1% 0 1%;
@@ -403,6 +405,7 @@ $text-color: white;
         padding: 1%;
         font-family: $dashboard-font;
         font-size: 20px;
+        margin: 0 0 2rem 0;
         // taken from https://css-tricks.com/snippets/css/gradient-text/
         background: -webkit-linear-gradient(#b57aff 50%, #9552ea 100%);
         -webkit-background-clip: text;
@@ -420,6 +423,7 @@ $text-color: white;
           flex-grow: 1;
           display: flex;
           flex-direction: column;
+          justify-content: center;
           flex-basis: 0.33;
 
           // justify-content: space-between;
@@ -452,11 +456,11 @@ $text-color: white;
             align-items: center;
 
             .project-card-avatar {
-              height: 60px;
-              width: 60px;
-              margin-top: 1rem;
-              margin-right: 2rem;
-              margin-left: 1rem;
+              height: 40px;
+              width: 40px;
+              margin-top: 0rem;
+              margin-right: 1rem;
+              margin-left: 1.5rem;
               // padding-left: 1rem;
 
               border-radius: 50%;
@@ -473,7 +477,9 @@ $text-color: white;
             }
 
             .project-name {
-              font-size: 36px;
+              font-size: 32px;
+              margin-top: 0;
+              padding-top: 0;
             }
           }
 
@@ -484,7 +490,7 @@ $text-color: white;
             padding-top: 5%;
 
             .project-button-small {
-              height: 45px;
+              height: 40px;
               background: #3e4345;
               border-radius: 8px;
               color: #bfb3c8;
@@ -499,9 +505,14 @@ $text-color: white;
               padding-left: 5%;
               padding-right: 5%;
               // padding: 5%;
-              font-size: 20px;
+              font-size: 16px;
               align-items: center;
               cursor: pointer;
+
+              img {
+                filter: invert(100%);
+                opacity: 0.75;
+              }
             }
 
             .project-button-small:active {
@@ -509,7 +520,7 @@ $text-color: white;
             }
 
             .project-button-small:hover {
-              color: black;
+              color: #ad6fff;
               background: linear-gradient(#3e4345, rgb(44, 43, 43));
             }
           }
@@ -517,7 +528,7 @@ $text-color: white;
 
         .add-project-card-small {
           max-width: 350px;
-          max-height: 200px;
+          max-height: 140px;
 
           min-width: 350px;
           min-height: 120px;
@@ -532,7 +543,7 @@ $text-color: white;
             color: #8794a1;
             h4 {
               text-align: center;
-              font-size: 32px;
+              font-size: 24px;
             }
 
             text {
@@ -577,7 +588,7 @@ $text-color: white;
     .students {
       display: flex;
       flex-direction: column;
-
+      margin: 3rem 0;
       .student-header {
         p,
         h1 {
@@ -754,7 +765,7 @@ $text-color: white;
         height: 40px;
         width: 40px;
         border-radius: 50%;
-        margin: 5%;
+        margin: 5% 0;
         &:hover {
           opacity: 0.5;
         }
@@ -781,7 +792,17 @@ $text-color: white;
           }
 
           p {
-            margin: 2% 0 2% 0;
+            margin: 1% 0 1% 0;
+          }
+        }
+        td:nth-child(1) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
         td:nth-child(3) {
@@ -794,7 +815,9 @@ $text-color: white;
           background: rgba(#a0a3f4, 0.2);
           td {
             border: none;
-            color: black;
+            a {
+              color: rgb(255, 255, 255);
+            }
           }
         }
 
@@ -816,6 +839,8 @@ $text-color: white;
         background: -webkit-linear-gradient(#b57aff 50%, #9552ea 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        z-index: 10;
+        margin: 1rem 1rem 2rem;
       }
 
       border-radius: 20px;
@@ -827,15 +852,19 @@ $text-color: white;
           padding: 0px;
           margin: 0px;
         }
-        background-color: #ffb67a;
+        background: linear-gradient(-125deg, #ffb67aaa, #ff730038 25%);
         h1 {
-          font-size: 32px;
-          color: #5f6e7d;
+          font-size: 16px;
+          color: #a3a3a3;
+          background: none;
+          -webkit-background-clip: inherit;
+
+          -webkit-text-fill-color: inherit;
         }
 
         p {
-          font-size: 26px;
-          color: #5f6e7d;
+          font-size: 24px;
+          color: #d6d6d6;
         }
 
         margin: 1%;
