@@ -214,6 +214,9 @@ $text-color: white;
       @media (max-width: 767px) {
         flex-direction: column;
         justify-content: center;
+        .avatar {
+          padding: 2rem 0;
+        }
       }
 
       .avatar {
