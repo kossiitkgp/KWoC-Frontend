@@ -227,16 +227,10 @@ $text-color: white;
         }
         flex-grow: 1;
         text-align: center;
-        margin-left: -1rem;
-        // margin: 1%;
-        // margin-right: 0.5%;
-
-        padding-top: 3%;
-        padding-bottom: 3%;
 
         background: #26292a;
         box-shadow: inset 15px 15px 50px #3d3e42;
-        border-radius: 0 30px 30px 0;
+        border-radius: 2rem;
 
         .avatar-img {
           max-width: 150px;
@@ -280,14 +274,12 @@ $text-color: white;
         flex-direction: column;
         justify-content: center;
 
-        margin-bottom: 5%;
-
         background-color: $background-color-dashboard;
 
         .mentor-stats-header {
           h1 {
             padding: 0px;
-            margin: 0px;
+            margin: 0px 0px 2rem;
             // taken from https://css-tricks.com/snippets/css/gradient-text/
             background: -webkit-linear-gradient(#b57aff 50%, #9552ea 100%);
             -webkit-background-clip: text;
