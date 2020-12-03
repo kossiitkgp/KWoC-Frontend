@@ -52,7 +52,7 @@ export default function Projects() {
   return (
     <div className='projects'>
       <Navbar />
-      <section class='hero is-medium is-danger is-bold' id='projects'>
+      {/* <section class='hero is-medium is-danger is-bold' id='projects'>
         <div class='hero-body'>
           <div class='container'>
             <h1 class='title' style={{ color: 'white' }}>
@@ -60,7 +60,9 @@ export default function Projects() {
             </h1>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <h1 style={{ textAlign: 'center'}} className='title'>Projects</h1>
 
       <div className='container'>
         <div class='field'>
