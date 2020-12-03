@@ -82,6 +82,7 @@ export default function MentorDashboard() {
       avatar: 'https://www.bwplotka.dev/images/profile.jpg',
     },
   ];
+
   useEffect(() => {
     // check that its not null
     const mentor_loggedout =
@@ -197,6 +198,10 @@ export default function MentorDashboard() {
   for (const [index, elements] in resources.entries()) {
     resourceList.push(<li key={index}>{elements}</li>);
   }
+
+  projects.forEach((projectItem) => {
+    projectItem['owner'] = projectItem['RepoLink'].split('/').slice(-2)[0];
+  });
 
   return (
     <div className='mentor-dashboard-body'>
