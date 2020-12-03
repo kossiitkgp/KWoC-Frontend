@@ -58,16 +58,6 @@ export default function Projects() {
             <h1 class='title' style={{ color: 'white' }}>
               Projects
             </h1>
-            <h2>
-              KWoC '20 Projects will be updated on 6th December, 2020. Till then
-              have a look at{' '}
-              <a
-                style={{ color: 'white' }}
-                href='https://kwoc19.kossiitkgp.org/projects.html'
-              >
-                <u>previous year projects</u>
-              </a>
-            </h2>
           </div>
         </div>
       </section>
@@ -78,7 +68,7 @@ export default function Projects() {
             <input
               class='input is-primary is-medium'
               type='text'
-              placeholder='Search projects'
+              placeholder='Search projects using project name, topics and mentor'
               onChange={handleSearch}
             ></input>
           </div>

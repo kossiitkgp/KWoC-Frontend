@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactReadMoreReadLess from 'react-read-more-read-less';
 
 import '../../styles/projects.scss';
 
@@ -23,13 +24,27 @@ export default function Card(props) {
   const LEN = TAG_TYPES.length;
   return (
     <div className='card'>
-      <header className='card-header has-background-link has-text-white'>
+      <header className='card-header has-text-white'>
         <p className='card-header-title has-text-white is-centered'>
           {props.name}
         </p>
       </header>
       <div className='card-content'>
-        <div className='content'>{props.desc}</div>
+        <div className='content'>
+          {' '}
+          <ReactReadMoreReadLess
+            charLimit={420}
+            readMoreStyle={{
+              fontWeight: 'bold',
+              cursor: 'pointer',
+            }}
+            readLessStyle={{ fontWeight: 'bold', cursor: 'pointer' }}
+            readMoreText={'Read more ▼'}
+            readLessText={'Read less ▲'}
+          >
+            {props.desc}
+          </ReactReadMoreReadLess>
+        </div>
         <br />
         <section className='tags' id='projectTags'>
           <div className='container'>
@@ -56,7 +71,14 @@ export default function Card(props) {
                   <a href={`https://github.com/${props.mentorUsername[index]}`}>
                     {props.mentor[index]}
                   </a>
-                  <br />({props.mentorId[index]})
+                  <br />(
+                  <a
+                    style={{ color: '#4A4A4A' }}
+                    href={`mailto:${props.mentorId[index]}`}
+                  >
+                    {props.mentorId[index]}
+                  </a>{' '}
+                  )
                 </div>
               );
             })}

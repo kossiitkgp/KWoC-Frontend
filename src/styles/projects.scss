@@ -4,6 +4,7 @@
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(https://raw.githubusercontent.com/kossiitkgp/kwoc-2017/master/static/images/intro-background.jpg);
   background-size: cover;
+  height: 45vh;
 }
 
 .card {
@@ -21,6 +22,10 @@
   }
 }
 
+.card-header {
+  background-color: #000;
+}
+
 .input {
   margin-top: 32px;
   margin-bottom: 32px;
@@ -29,6 +34,8 @@
 .card-footer {
   .footer-btn {
     margin: 20px;
+
+    background-color: #b57aff !important;
   }
 }
 
