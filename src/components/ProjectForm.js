@@ -52,7 +52,7 @@ async function checkRepo(repolink) {
       returnMsg['message'] = `Repo has only ${numOfIssues} issues, Please maintain atleast 2 issues. `
   }
   catch(err) {
-    returnMsg['message'] = `The link should be in format of https://github.com/USERNAME/REPO. Please add a valid Github link repo with atleast 4 open issues. `
+    returnMsg['message'] = `The link should be in format of https://github.com/USERNAME/REPO. Please add a valid Github link repo with atleast 2 open issues. `
   }
 
   // check for a minimum README
