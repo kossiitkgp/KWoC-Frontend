@@ -7,11 +7,14 @@
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   .card-content {
+    flex: auto;
     .button {
       margin-top: 0;
     }
-
     p {
       margin-top: auto;
     }
@@ -23,8 +26,10 @@
   margin-bottom: 32px;
 }
 
-.footer-btn {
-  margin: 20px;
+.card-footer {
+  .footer-btn {
+    margin: 20px;
+  }
 }
 
 #projectTags {

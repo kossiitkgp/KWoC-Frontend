@@ -3,47 +3,14 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Fuse from 'fuse.js';
 import Card from './ProjectCard.js';
-
+import axios from 'axios';
 import '../../styles/projects.scss';
 
 const searchOptions = {
-  keys: ['name', 'desc', 'mentor', 'tags'],
+  keys: ['ProjectName', 'ProjectDesc', 'MentorName', 'ProjectTags'],
   // the threshold value should be decreased to be more strict in getting search results
   threshold: 0.5,
 };
-// temporary data for testing purpose
-const dummyProjects = [
-  {
-    name: 'ANDYMOUSE',
-    desc:
-      'The students need to improve an app which will enable the user to control the pointer in a PC. Implementation - acceleration/gyroscope of the phone as input, which needs to be converted to mouse pointer output.',
-    mentor: 'Soumyajit Chakraborty',
-    mentorEmail: 'soumyajit1729@gmail.com',
-    projectLink: 'https://github.com/soumyajit1729/AndyMouse-kWoC',
-    communicationLink: '#',
-    tags: ['Android studio (java)', 'Basic python'],
-  },
-  {
-    name: 'Cat Cat',
-    desc:
-      'The students need to improve an app which will enable the user to control the pointer in a PC. Implementation - acceleration/gyroscope of the phone as input, which needs to be converted to mouse pointer output.',
-    mentor: 'test Chakraborty',
-    mentorEmail: 'mentor@gmail.com',
-    projectLink: 'https://www.google.co.in/',
-    communicationLink: '#',
-    tags: ['html', 'html5', 'css', 'javascript'],
-  },
-  {
-    name: 'Tom & Jerry',
-    desc:
-      'The students need to improve an app which will enable the user to control the pointer in a PC. Implementation - acceleration/gyroscope of the phone as input, which needs to be converted to mouse pointer output.',
-    mentor: 'test1111',
-    mentorEmail: 'mentor@gmail.com',
-    projectLink: 'https://www.google.co.in/',
-    communicationLink: '#',
-    tags: ['Android studio (java)', 'Basic python'],
-  },
-];
 
 export default function Projects() {
   const [searchText, setSearchText] = useState('');
@@ -51,9 +18,24 @@ export default function Projects() {
   const [allProjects, setAllProjects] = useState([]);
   const [searchedProjects, setSearchedProjects] = useState([]);
 
+  const URL = 'https://kwoc.metamehta.me/project/all';
+
   useEffect(() => {
-    // Fetching all projects from backend or Frontend
-    setAllProjects(dummyProjects);
+    axios
+      .get(URL)
+      .then((response) => {
+        setAllProjects(
+          response.data.sort((a, b) =>
+            a.ProjectDesc.length + a.ProjectTags.length <
+            b.ProjectDesc.length + b.ProjectTags.length
+              ? 1
+              : -1
+          )
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   function handleSearch(e) {
@@ -106,13 +88,15 @@ export default function Projects() {
           {displayedProjects.map((project, id) => (
             <div key={id} class='column has-text-centered is-4'>
               <Card
-                name={project.name}
-                desc={project.desc}
-                mentor={project.mentor}
-                tags={project.tags}
-                mentorId={project.mentorEmail}
-                projectLink={project.projectLink}
-                commLink={project.communicationLink}
+                name={project.ProjectName}
+                desc={project.ProjectDesc}
+                mentor={project.MentorName}
+                tags={JSON.parse(project.ProjectTags)}
+                mentorId={project.MentorEmail}
+                mentorUsername={project.MentorUsername}
+                projectLink={project.ProjectRepoLink}
+                commLink={project.ProjectComChannel}
+                length={project.MentorName.length}
               ></Card>
             </div>
           ))}

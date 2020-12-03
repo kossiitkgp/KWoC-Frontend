@@ -3,6 +3,24 @@ import React from 'react';
 import '../../styles/projects.scss';
 
 export default function Card(props) {
+  const TAG_TYPES = [
+    'is-primary',
+    'is-link',
+    'is-info',
+    'is-success',
+    'is-warning',
+    'is-danger',
+    'is-black',
+    'is-dark',
+    'is-light',
+    'is-primary is-light',
+    'is-link is-light',
+    'is-info is-light',
+    'is-success is-light',
+    'is-warning is-light',
+    'is-danger is-light',
+  ];
+  const LEN = TAG_TYPES.length;
   return (
     <div className='card'>
       <header className='card-header has-background-link has-text-white'>
@@ -17,28 +35,42 @@ export default function Card(props) {
           <div className='container'>
             <p>
               {props.tags.map((tag) => (
-                <span key={tag} className='tag cust-tag is-dark is-medium'>
+                <span
+                  key={tag}
+                  className={`tag cust-tag ${
+                    TAG_TYPES[Math.floor(Math.random() * LEN)]
+                  } is-medium`}
+                >
                   {tag}
                 </span>
               ))}
             </p>
           </div>
         </section>
-        <br />
-        <p>
-          Mentored by: {props.mentor}
-          <br /> ({props.mentorId})
-        </p>
-        <p>
-          Communication Channel:
-          <a
-            className='footer-btn button is-link is-outlined'
-            href={props.commLink}
-            target='_blank'
-          >
-            Join Now
-          </a>
-        </p>
+        <section className='details'>
+          <p>
+            <b>Mentored by:</b>
+            {[...Array(props.length).keys()].map((index) => {
+              return (
+                <div>
+                  <a href={`https://github.com/${props.mentorUsername[index]}`}>
+                    {props.mentor[index]}
+                  </a>
+                  <br />({props.mentorId[index]})
+                </div>
+              );
+            })}
+          </p>
+          <p>
+            <a
+              className='footer-btn button is-link is-outlined'
+              href={props.commLink}
+              target='_blank'
+            >
+              Join Channel
+            </a>
+          </p>
+        </section>
       </div>
 
       <footer className='card-footer is-centered'>
