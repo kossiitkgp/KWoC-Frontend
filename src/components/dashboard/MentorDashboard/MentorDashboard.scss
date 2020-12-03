@@ -60,6 +60,11 @@ $text-color: white;
     max-width: 1200px;
     margin: auto;
     margin-bottom: 5rem;
+    padding: 0 1rem;
+
+    .navbar {
+      background-color: #000;
+    }
 
     p,
     h1 {
@@ -221,7 +226,7 @@ $text-color: white;
         }
         flex-grow: 1;
         text-align: center;
-
+        margin-left: -1rem;
         // margin: 1%;
         // margin-right: 0.5%;
 
@@ -289,14 +294,20 @@ $text-color: white;
           }
 
           text-align: center;
-          font-size: 1.8vw;
+          font-size: 2rem;
           max-height: 25%;
+          z-index: 10;
 
           flex-grow: 1;
 
           padding: 1%;
           color: $header-color;
           font-family: $dashboard-font;
+
+          @media (max-width: 600px) {
+            font-size: 1rem;
+            margin: 1rem 0;
+          }
         }
 
         .mentor-stats-content {
@@ -306,7 +317,7 @@ $text-color: white;
           padding-top: 4.5%;
 
           .font-mentor-header {
-            font-size: 28px;
+            font-size: 24px;
           }
 
           .font-mentor-stats {
@@ -360,13 +371,18 @@ $text-color: white;
         }
 
         @media screen and (max-width: 600px) {
+          .font-mentor-stats {
+            margin-top: -0.5rem !important;
+          }
           .mentor-stats-content {
             display: flex;
             flex-direction: column;
             margin: auto;
+            justify-content: center;
 
             .mstats {
               margin-top: 10px;
+              padding: 2rem 0;
             }
           }
         }
@@ -799,11 +815,15 @@ $text-color: white;
           display: flex;
           justify-content: center;
           align-items: center;
+          min-width: 60px;
           a {
             display: flex;
             justify-content: center;
             align-items: center;
           }
+        }
+        td {
+          padding: 1rem 0;
         }
         td:nth-child(3) {
           color: #5f6e7d;
@@ -872,6 +892,10 @@ $text-color: white;
         padding: 1%;
 
         border-radius: 10px;
+
+        @media screen and (max-width: 600px) {
+          padding: 12px;
+        }
       }
     }
   }
