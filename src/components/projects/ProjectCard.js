@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactReadMoreReadLess from 'react-read-more-read-less';
 
 import '../../styles/projects.scss';
 
 export default function Card(props) {
+  const [loggedIn, setLoggedIn] = useState(true);
+
+  useEffect(() => {
+    const student_loggedout =
+      localStorage.getItem('student_jwt') === null ||
+      localStorage.getItem('student_jwt') === undefined;
+
+    const mentor_loggedout =
+      localStorage.getItem('mentor_jwt') === null ||
+      localStorage.getItem('mentor_jwt') === undefined;
+
+    if (student_loggedout && mentor_loggedout) {
+      setLoggedIn(false)
+    }
+
+  }, []);
+
   const TAG_TYPES = [
     'is-primary',
     'is-link',
@@ -71,14 +88,16 @@ export default function Card(props) {
                   <a href={`https://github.com/${props.mentorUsername[index]}`}>
                     {props.mentor[index]}
                   </a>
-                  <br />(
-                  <a
-                    style={{ color: '#4A4A4A' }}
-                    href={`mailto:${props.mentorId[index]}`}
-                  >
-                    {props.mentorId[index]}
-                  </a>{' '}
-                  )
+                  <br />
+                  {loggedIn &&
+                    <p>(
+                      <a
+                        style={{ color: '#4A4A4A' }}
+                        href={`mailto:${props.mentorId[index]}`}
+                      >
+                      {props.mentorId[index]}
+                    </a>)</p>
+                  }
                 </div>
               );
             })}
@@ -88,6 +107,7 @@ export default function Card(props) {
               className='footer-btn button is-link is-outlined'
               href={props.commLink}
               target='_blank'
+              rel="noopener noreferrer"
             >
               Join Channel
             </a>
@@ -100,6 +120,7 @@ export default function Card(props) {
           className='footer-btn button is-primary is-medium is-fullwidth'
           href={props.projectLink}
           target='_blank'
+          rel="noopener noreferrer"
         >
           View Project
         </a>
