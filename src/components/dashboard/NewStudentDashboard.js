@@ -307,10 +307,10 @@ export default function NewStudentDashboard() {
                   </p>
                 </div>
                 <div className='add-project-button-div'>
-                  <a href='/project'>
+                  <a href='/projects'>
                     <button className='add-project-button '>
                       <p className='plus-sign'>+</p>
-                      <p className='text-add-project' href='/project'>
+                      <p className='text-add-project' href='/projects'>
                         Browse Projects
                       </p>
                     </button>
@@ -321,7 +321,7 @@ export default function NewStudentDashboard() {
 
             {projects.length !== 0 ? (
               <div className='add-project-card project-c card-component grow-card add-project-card-small'>
-                <a href='/project'>
+                <a href='/projects'>
                   <h4>Browse Projects</h4>
                   <text>+</text>
                 </a>
