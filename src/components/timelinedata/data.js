@@ -5,7 +5,7 @@ const data = [
   },
   {
     text: 'End of Registrations',
-    date: '4 December 2020',
+    date: '6 December 2020',
   },
   {
     text: 'Coding Period starts',

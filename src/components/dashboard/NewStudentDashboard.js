@@ -29,7 +29,7 @@ export default function NewStudentDashboard() {
     {
       date: 'November 28, 2020',
       content:
-        'Please register your projects, registrations close on December 6, 2020',
+        'Coding Period begins on 6th December!',
     },
   ];
 
