@@ -438,7 +438,7 @@ $text-color: white;
           justify-content: center;
           flex-basis: 0.33;
 
-          // justify-content: space-between;
+          justify-content: space-around;
           margin: 2%;
           padding: 1%;
           margin: 0 auto 2% auto;
@@ -486,12 +486,18 @@ $text-color: white;
               text-align: center;
               margin: 0px;
               padding-top: 1rem;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
             }
 
             .project-name {
-              font-size: 32px;
               margin-top: 0;
               padding-top: 0;
+              font-size: 36px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
             }
           }
 
@@ -634,7 +640,7 @@ $text-color: white;
           flex-direction: column;
           flex-basis: 0.33;
 
-          // justify-content: space-between;
+          justify-content: space-around;
           margin: 2%;
           padding: 1%;
 
@@ -682,6 +688,7 @@ $text-color: white;
 
               overflow: hidden;
               text-overflow: ellipsis;
+              white-space: nowrap;
             }
 
             @media screen and (min-width: 1200px) {
