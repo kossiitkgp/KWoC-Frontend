@@ -6,6 +6,94 @@ import Card from './ProjectCard.js';
 import axios from 'axios';
 import '../../styles/projects.scss';
 
+function shuffleArray(array) {
+  /* Durstenfeld shuffle
+   * Source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+   * Accessed on: 05-Dec-2020
+   */
+
+  for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+}
+
+
+function projectSortPolicy(arr){
+  /* Sorts an array of Projects using a given policy
+   * Current policy: Club sorted list of projects into groups of 3 of "similar" description length.
+   * Then choose a strata size within which projects are randomized.
+   */
+
+   let sortedProjs = arr.sort((a, b) =>
+                                a.ProjectDesc.length + a.ProjectTags.length <
+                                b.ProjectDesc.length + b.ProjectTags.length
+                                  ? 1
+                                  : -1
+                             );
+
+   let clubbedProjs = [];
+   let clubbing = [];
+   for (let i = 0; i < sortedProjs.length; i++){
+     clubbing.push(sortedProjs[i]);
+     if (i % 3 == 2){
+       let copyClub = [];
+       clubbing.forEach(elt => {
+         copyClub.push(elt);
+       });
+       clubbedProjs.push(copyClub);
+       clubbing = [];
+     }
+   }
+
+   if (clubbing.length != 0){
+    clubbedProjs.push(clubbing);
+   }
+
+   const STRATA_SIZE = 6;
+
+   let stratifiedProjs = [];
+   let strata = [];
+   
+   for (let i = 0; i < clubbedProjs.length; i++){
+    strata.push(clubbedProjs[i]);
+    if (i % STRATA_SIZE == STRATA_SIZE - 1){
+      let copyStrata = [];
+      strata.forEach(elt => {
+        copyStrata.push(elt);
+      });
+      stratifiedProjs.push(copyStrata);
+      strata = [];
+    }
+   }
+
+   if (strata.length != 0){
+    stratifiedProjs.push(strata);
+   }
+
+
+   for (let i = 0; i < stratifiedProjs.length; i++){
+     shuffleArray(stratifiedProjs[i]);
+   }
+
+
+   let finalOrder = [];
+   stratifiedProjs.forEach(elt => {
+      elt.forEach(projList => {
+        projList.forEach(proj => { 
+          finalOrder.push(proj);
+        });
+      });
+   });
+
+   return finalOrder;
+           
+}
+
+
+
 const searchOptions = {
   keys: ['ProjectName', 'ProjectDesc', 'MentorName', 'ProjectTags'],
   // the threshold value should be decreased to be more strict in getting search results
@@ -25,12 +113,7 @@ export default function Projects() {
       .get(URL)
       .then((response) => {
         setAllProjects(
-          response.data.sort((a, b) =>
-            a.ProjectDesc.length + a.ProjectTags.length <
-            b.ProjectDesc.length + b.ProjectTags.length
-              ? 1
-              : -1
-          )
+          projectSortPolicy(response.data)
         );
       })
       .catch((error) => {
