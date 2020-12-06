@@ -9,26 +9,56 @@ h1 {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(https://raw.githubusercontent.com/kossiitkgp/kwoc-2017/master/static/images/intro-background.jpg);
   background-size: cover;
-  
 }
 
 .card {
   display: flex;
   flex-direction: column;
   height: 100%;
+  text-align: left;
+  box-shadow: 0px 10px 20px rgba(76, 78, 105, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+
+  .card-header a {
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+    margin: 1rem 0 0;
+    font-weight: 700;
+    font-size: 2rem;
+    &:hover {
+      text-decoration: underline dotted $violet-for-darkmode;
+    }
+  }
   .card-content {
     flex: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .button {
       margin-top: 0;
     }
+    .content {
+      margin-bottom: 1rem;
+    }
     p {
       margin-top: auto;
+      text-align: left;
+      margin: 0;
+    }
+
+    .channel-link {
+      margin: 0.5rem 0 0;
+    }
+
+    .details {
+      margin-bottom: 0;
     }
   }
 }
 
 .card-header {
-  background-color: #000;
+  background: linear-gradient(90deg, #000, rgb(60, 30, 78));
 }
 
 .input {
@@ -47,4 +77,5 @@ h1 {
 #projectTags {
   background-color: white;
   text-align: center;
+  padding: 1rem 0;
 }
