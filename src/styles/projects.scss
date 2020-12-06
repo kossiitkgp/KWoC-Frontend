@@ -20,21 +20,35 @@ h1 {
   border-radius: 12px;
   overflow: hidden;
 
-  .card-header p {
+  .card-header a {
     justify-content: flex-start;
     padding-left: 1.5rem;
     margin: 1rem 0 0;
     font-weight: 700;
     font-size: 2rem;
+    &:hover {
+      text-decoration: underline dotted $violet-for-darkmode;
+    }
   }
   .card-content {
     flex: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .button {
       margin-top: 0;
+    }
+    .content {
+      margin-bottom: 1rem;
     }
     p {
       margin-top: auto;
       text-align: left;
+      margin: 0;
+    }
+
+    .channel-link {
+      margin: 0.5rem 0 0;
     }
 
     .details {
@@ -63,4 +77,5 @@ h1 {
 #projectTags {
   background-color: white;
   text-align: center;
+  padding: 1rem 0;
 }

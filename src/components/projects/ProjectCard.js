@@ -41,7 +41,14 @@ export default function Card(props) {
   return (
     <div className='card'>
       <header className='card-header has-text-white'>
-        <p className='card-header-title has-text-white'>{props.name}</p>
+        <a
+          className='card-header-title has-text-white'
+          href={props.projectLink}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          {props.name}
+        </a>
       </header>
       <div className='card-content'>
         <div className='content'>
@@ -104,7 +111,7 @@ export default function Card(props) {
           </p>
           <p>
             <a
-              className='footer-btn button is-link is-outlined'
+              className='footer-btn button is-link is-outlined channel-link'
               href={props.commLink}
               target='_blank'
               rel='noopener noreferrer'
