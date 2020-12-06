@@ -77,6 +77,7 @@ export default function NewStudentDashboard() {
   ];
 
   useEffect(() => {
+    const student_username = localStorage.getItem('student_username')
     // check that its not null
     const student_loggedout =
       localStorage.getItem('student_jwt') === null ||
@@ -100,10 +101,10 @@ export default function NewStudentDashboard() {
       });
 
       axios
-      .get(`${STATS_API}/stats/student/soumyajit1729`)
+      .get(`${STATS_API}/stats/student/${student_username}`)
       .then((res) => {
-        setStats(res.data['soumyajit1729']);
-        console.log(res.data['soumyajit1729'])
+        setStats(res.data[student_username]);
+        console.log(res.data[student_username])
       })
       .catch((err) => {
         alert('Server error, Try again');
@@ -259,17 +260,17 @@ export default function NewStudentDashboard() {
             <div className='mentor-stats-content'>
               <div className='card-component non-purple-card mstats grow-card'>
                 <p className='font-mentor-header'>Commits</p>
-                <p className='font-mentor-stats'>0</p>
+                <p className='font-mentor-stats'>{stats['no_of_commits']}</p>
               </div>
 
               <div className='card-component purple-card mstats  grow-card'>
-                <p className='font-mentor-header'>Pull Requests</p>
-                <p className='font-mentor-stats'>0</p>
+                <p className='font-mentor-header'>Pull Requests(open/closed)</p>
+                <p className='font-mentor-stats'>{stats['pr_open']}/{stats['pr_closed']}</p>
               </div>
 
               <div className='card-component non-purple-card mstats  grow-card'>
                 <p className='font-mentor-header'>Lines of Code</p>
-                <p className='font-mentor-stats'>0</p>
+                <p className='font-mentor-stats'>+{stats['lines_added']}/-{stats['lines_removed']}</p>
               </div>
             </div>
           </div>

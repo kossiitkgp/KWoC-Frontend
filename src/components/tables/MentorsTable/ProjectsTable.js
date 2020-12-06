@@ -16,16 +16,13 @@ export default function ProjectsTable() {
     () => [
       {
         Header: 'Project',
-        accessor: 'project',
+        accessor: 'title',
+        // Cell: (e) => <a href={e.value}>{e.value}</a>
       },
-      {
-        Header: 'Mentor',
-        accessor: 'mentor',
-        Cell: (e) => <b><a href={`/stats/mentor/${e.value}`}>{e.value} </a></b>,
-      },
+      
       {
         Header: 'Number of Contributors',
-        accessor: 'contris',
+        accessor: 'contri',
       },
       {
         Header: 'Number of Commits',
@@ -43,16 +40,20 @@ export default function ProjectsTable() {
     axios
       .get(`${STATS_API}/stats/projects`)
       .then((res) => {
-        setRowData(res.data['stats']);
+        setRowData(res.data['stats'].sort((a,b) => (parseInt(a.commits) < parseInt(b.commits)) ? 1 : -1));
+        console.log(res.data['stats'])
       })
       .catch((err) => {
         alert('Server Error,try again');
       });
-    let date = new Date()
-    let hour = date.getHours()
-    if(hour % 2 == 1)
-      hour = hour - 1
-    setLastUpdatedTime(`${hour.toString()}:00 IST`);
+    let currentTime = new Date()
+    let currentOffset = currentTime.getTimezoneOffset();
+    let ISTOffset = 330;
+    let ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+    let hoursIST = ISTTime.getHours()
+    if(hoursIST.toString().length == 1)
+      hoursIST = '0'+ hoursIST.toString()
+    setLastUpdatedTime(`${hoursIST.toString()}:00 IST`);
   }, []);
 
   function cellRenderer(params) {
@@ -75,15 +76,14 @@ export default function ProjectsTable() {
       <div className='stats'>
         <div style={{ textAlign: 'center' }}>
           <h3>
-            Last Update at {lastUpdatedTime}. Stats are updated for every 2
-            hours{' '}
+            Last Update at {lastUpdatedTime}. Stats are updated for every 1
+            hour{' '}
           </h3>
           <h5>
             You can sort the rows by clicking on headers, and also filter by
             clicking on the button by hovering
           </h5>
-          <h5>Click on username to get detailed Stats</h5>
-
+      
           <div className='table-container'>
             <table {...getTableProps()}>
               <thead>

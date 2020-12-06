@@ -44,13 +44,20 @@ export default function StudentsTable() {
     axios
       .get(`${STATS_API}/stats/students`)
       .then((res) => {
-        setRowData(res.data['stats']);
+        setRowData(res.data['stats'].sort((a,b) => (parseInt(a.commits) < parseInt(b.commits)) ? 1 : -1));
       })
       .catch((err) => {
         alert('Server Error, Try again');
       });
+      let currentTime = new Date()
+    let currentOffset = currentTime.getTimezoneOffset();
+    let ISTOffset = 330;
+    let ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+    let hoursIST = ISTTime.getHours()
+    if(hoursIST.toString().length == 1)
+      hoursIST = '0'+ hoursIST.toString()
+    setLastUpdatedTime(`${hoursIST.toString()}:00 IST`);
 
-    setLastUpdatedTime('TIME_FROM_BACKEND');
   }, []);
 
   const {
@@ -66,7 +73,7 @@ export default function StudentsTable() {
       <Navbar />
       <div className='stats'>
         <h3>
-          Last Update at {lastUpdatedTime}. Stats are updated for every 3 hours{' '}
+          Last Update at {lastUpdatedTime}. Stats are updated for every 1 hour{' '}
         </h3>
         <h5>
           You can sort the rows by clicking on headers, and also filter by
