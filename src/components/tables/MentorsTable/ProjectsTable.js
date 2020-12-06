@@ -21,7 +21,7 @@ export default function ProjectsTable() {
       {
         Header: 'Mentor',
         accessor: 'mentor',
-        Cell: (e) => <a href={`/stats/mentor/${e.value}`}> {e.value} </a>,
+        Cell: (e) => <b><a href={`/stats/mentor/${e.value}`}>{e.value} </a></b>,
       },
       {
         Header: 'Number of Contributors',
@@ -48,7 +48,11 @@ export default function ProjectsTable() {
       .catch((err) => {
         alert('Server Error,try again');
       });
-    setLastUpdatedTime('TIME_FROM_BACKEND');
+    let date = new Date()
+    let hour = date.getHours()
+    if(hour % 2 == 1)
+      hour = hour - 1
+    setLastUpdatedTime(`${hour.toString()}:00 IST`);
   }, []);
 
   function cellRenderer(params) {
@@ -71,7 +75,7 @@ export default function ProjectsTable() {
       <div className='stats'>
         <div style={{ textAlign: 'center' }}>
           <h3>
-            Last Update at {lastUpdatedTime}. Stats are updated for every 3
+            Last Update at {lastUpdatedTime}. Stats are updated for every 2
             hours{' '}
           </h3>
           <h5>
