@@ -21,6 +21,7 @@ export default function ProjectsTable() {
       {
         Header: 'Mentor',
         accessor: 'mentor',
+        Cell: (e) => <a href={`/stats/mentor/${e.value}`}> {e.value} </a>,
       },
       {
         Header: 'Number of Contributors',

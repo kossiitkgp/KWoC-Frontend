@@ -22,6 +22,7 @@ export default function StudentsTable() {
       {
         Header: 'Github Username',
         accessor: 'username',
+        Cell: (e) => <a href={`/stats/student/${e.value}`}> {e.value} </a>,
       },
       {
         Header: 'PRs(Merged/Open)',
@@ -52,11 +53,6 @@ export default function StudentsTable() {
     setLastUpdatedTime('TIME_FROM_BACKEND');
   }, []);
 
-  function cellRenderer(params) {
-    const username = params.data.username;
-    const withHref = `<a href="/stats/student/${username}">${username}</a>`;
-    return withHref;
-  }
   const {
     getTableProps,
     getTableBodyProps,
