@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { BACKEND_URL, MID_EVAL_DATE } from '../../../constants/constants';
-import './MentorDashboard.scss';
-import Navbar from '../../Navbar';
-import Footer from '../../Footer';
+import { BACKEND_URL, MID_EVAL_DATE } from '../../constants/constants';
+import './dashboard.scss';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 
 function countDaysLeft() {
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -204,8 +204,8 @@ export default function MentorDashboard() {
   });
 
   return (
-    <div className='mentor-dashboard-body'>
-      <div className='mentor-dashboard'>
+    <div className='mentor-dashboard-body dashboard-container'>
+      <div className='dashboard'>
         {/*
 
          Mentor Dashboard here

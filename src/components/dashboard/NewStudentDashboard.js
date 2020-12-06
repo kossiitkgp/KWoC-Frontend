@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BACKEND_URL } from '../../constants/constants';
-import './NewStudentDashboard.scss';
+import './dashboard.scss';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 
@@ -28,8 +28,7 @@ export default function NewStudentDashboard() {
   const announcements = [
     {
       date: 'November 28, 2020',
-      content:
-        'Coding Period begins on 6th December!',
+      content: 'Coding Period begins on 6th December!',
     },
   ];
 
@@ -184,8 +183,8 @@ export default function NewStudentDashboard() {
   }
 
   return (
-    <div className='student-dashboard-body'>
-      <div className='mentor-dashboard'>
+    <div className='student-dashboard-body dashboard-container'>
+      <div className='dashboard'>
         <link
           href='https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap'
           rel='stylesheet'
@@ -243,12 +242,12 @@ export default function NewStudentDashboard() {
 
               <div className='card-component purple-card mstats  grow-card'>
                 <p className='font-mentor-header'>Pull Requests</p>
-                <p className='font-mentor-stats small-stats-font'>0</p>
+                <p className='font-mentor-stats'>0</p>
               </div>
 
               <div className='card-component non-purple-card mstats  grow-card'>
                 <p className='font-mentor-header'>Lines of Code</p>
-                <p className='font-mentor-stats small-stats-font'>0</p>
+                <p className='font-mentor-stats'>0</p>
               </div>
             </div>
           </div>
@@ -338,9 +337,6 @@ export default function NewStudentDashboard() {
           </div>
 
           <table className='table is-bordered is-striped'>
-            <th>Resource Link</th>
-            <th>Details</th>
-
             <tbody>
               {resources.map((resourceCard) => {
                 const message = resourceCard.message;
@@ -381,8 +377,8 @@ export default function NewStudentDashboard() {
             );
           })}
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 }
