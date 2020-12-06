@@ -306,7 +306,7 @@ $text-color: white;
           }
 
           .font-mentor-stats {
-            font-size: 85px;
+            font-size: 50px;
             font-weight: 600;
           }
 
@@ -911,19 +911,61 @@ $text-color: white;
 }
 
 #commits-table {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  transform: translateX(-50%);
-  font-size: 120%;
-  td{
-    padding: 1%;
+  table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   }
-  .project-in-commit-table:hover {
-    color: whitesmoke;
+
+  th,
+  td {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    a {
+      color: #a2b5f7;
+      font-weight: bold;
+      &:hover {
+        text-decoration: underline dotted #c66df3;
+      }
+    }
   }
-  .project-in-commit-table {
-    color: #b57aff;
+
+  th {
+    text-align: left;
   }
- 
+
+  thead {
+    position: sticky;
+    top: 1;
+    z-index: 1;
+    th {
+      background-color: #859cff;
+    }
+  }
+
+  tbody {
+    margin-top: 30px;
+    tr {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+    td {
+      position: relative;
+      &:hover {
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -9999px;
+          bottom: -9999px;
+          background-color: rgba(255, 255, 255, 0.2);
+          z-index: -1;
+        }
+      }
+    }
+  }
 }
