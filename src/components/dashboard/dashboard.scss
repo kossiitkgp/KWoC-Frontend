@@ -306,12 +306,12 @@ $text-color: white;
           }
 
           .font-mentor-stats {
-            font-size: 85px;
+            font-size: 30px;
             font-weight: 600;
           }
 
           .small-stats-font {
-            font-size: 50px;
+            font-size: 30px;
           }
 
           .mstats {
@@ -904,6 +904,66 @@ $text-color: white;
         margin-bottom: -3rem;
         @media screen and (max-width: 600px) {
           margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+#commits-table {
+  table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  th,
+  td {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    a {
+      color: #a2b5f7;
+      font-weight: bold;
+      &:hover {
+        text-decoration: underline dotted #c66df3;
+      }
+    }
+  }
+
+  th {
+    text-align: left;
+  }
+
+  thead {
+    position: sticky;
+    top: 1;
+    z-index: 1;
+    th {
+      background-color: #859cff;
+    }
+  }
+
+  tbody {
+    margin-top: 30px;
+    tr {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+    td {
+      position: relative;
+      &:hover {
+        &:before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: -9999px;
+          bottom: -9999px;
+          background-color: rgba(255, 255, 255, 0.2);
+          z-index: -1;
         }
       }
     }

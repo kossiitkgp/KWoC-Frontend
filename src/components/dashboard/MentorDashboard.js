@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { BACKEND_URL, MID_EVAL_DATE } from '../../constants/constants';
+import { BACKEND_URL, MID_EVAL_DATE, STATS_API } from '../../constants/constants';
 import './dashboard.scss';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import axios  from 'axios'
 
 function countDaysLeft() {
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -39,6 +40,11 @@ export default function MentorDashboard() {
   ]);
 
   const announcements = [
+    {
+      date: 'December 6, 2020',
+      content:
+        'Coding Period has begun!',
+    },
     {
       date: 'November 28, 2020',
       content:
@@ -101,10 +107,56 @@ export default function MentorDashboard() {
       .then((res) => {
         setFullName(res.name);
         setProjects(res.projects);
+        
+        const repoNames = res.projects.map(item => {
+          let link = item['RepoLink']
+          // cleaning the trailing slash
+          if(link[link.length-1] == '/')
+              link.slice(0,-1)
+          let split_array = link.split('/')
+          let split_array_length = split_array.length
+          return split_array[split_array_length-2] + '/' + split_array[split_array_length-1]
+        })
+        
+        const repoNamesJson = {
+          "projects": repoNames
+        }
+        
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+  
+        var raw = JSON.stringify(repoNamesJson);
+  
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+  
+        fetch("https://stats.metamehta.me/stats/mentors", requestOptions)
+          .then(response => response.text())
+          .then(result => {
+            setStudents(JSON.parse(result)['students'])
+          })
+          .catch(error => console.log('error', error));
       })
       .catch((err) => {
         alert('Server Error, Please try again');
       });
+      
+      
+      
+     
+      // fetch(`${STATS_API}/stats/mentor`, {
+      //   method: 'POST',
+      //   body: JSON.stringify({ 'projects': repoNames}),
+      // })
+      // .then((res) => res.json())
+      // .then((res) => {
+      //   console.log("res. is ",res)
+      // })
+
   }, []);
 
   // sample data kept for future reference
@@ -364,9 +416,6 @@ export default function MentorDashboard() {
                           className='github-svg-student'
                           alt=''
                         ></img>
-                      </a>
-                      <a className='fill-evals student-button-small' href='#'>
-                        Evals
                       </a>
                       <a
                         className='student-button-small'

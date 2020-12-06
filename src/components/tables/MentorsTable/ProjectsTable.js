@@ -1,69 +1,134 @@
-import React, { useState, useEffect } from 'react'
-import { AgGridReact } from 'ag-grid-react';
-import 'ag-grid-community/dist/styles/ag-grid.css';
-import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
-import axios from 'axios'
-import { STATS_API } from '../../../constants/constants'
+import React, { useState, useEffect, useMemo } from 'react';
+import axios from 'axios';
+import Navbar from '../../Navbar.js';
+import Footer from '../../Footer.js';
 
+import { STATS_API } from '../../../constants/constants';
+
+import { useTable, useSortBy } from 'react-table';
+
+import '../tables.scss';
 export default function ProjectsTable() {
+  const [lastUpdatedTime, setLastUpdatedTime] = useState('');
+  const [rowData, setRowData] = useState([]);
 
-    const [lastUpdatedTime, setLastUpdatedTime] = useState('')
-    const [rowData, setRowData] = useState([])
+  const columnDefs = useMemo(
+    () => [
+      {
+        Header: 'Project',
+        accessor: 'title',
+        // Cell: (e) => <a href={e.value}>{e.value}</a>
+      },
+      
+      {
+        Header: 'Number of Contributors',
+        accessor: 'contri',
+      },
+      {
+        Header: 'Number of Commits',
+        accessor: 'commits',
+      },
+      {
+        Header: 'Lines(Added/Removed)',
+        accessor: 'lines',
+      },
+    ],
+    []
+  );
 
-    const columnDefs =  [{
-        headerName: "Project", field: "project", sortable:true, filter: true,cellStyle: { textAlign: 'left'},
-      }, {
-        headerName: "Mentor", field: "mentor", sortable:true, filter: true,cellRenderer:cellRenderer,cellStyle: { textAlign: 'left'},
-      }, {
-        headerName: "Number of Contributors", field: "contris", sortable:true, filter: true,
-      },{
-        headerName: "Number of Commits", field: "commits", sortable:true, filter: true,
-      },{
-        headerName: "Lines(Added/Removed)", field: "lines", sortable:true, filter: true,
-      }
-    ]
-
-    useEffect(() => {
-      axios
+  useEffect(() => {
+    axios
       .get(`${STATS_API}/stats/projects`)
-      .then(res => {
-        setRowData(res.data["stats"])
+      .then((res) => {
+        setRowData(res.data['stats'].sort((a,b) => (parseInt(a.commits) < parseInt(b.commits)) ? 1 : -1));
+        console.log(res.data['stats'])
       })
-      .catch(err => {
-        alert("Server Error,try again")
-      })
-        setLastUpdatedTime('TIME_FROM_BACKEND')
+      .catch((err) => {
+        alert('Server Error,try again');
+      });
+    let currentTime = new Date()
+    let currentOffset = currentTime.getTimezoneOffset();
+    let ISTOffset = 330;
+    let ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
+    let hoursIST = ISTTime.getHours()
+    if(hoursIST.toString().length == 1)
+      hoursIST = '0'+ hoursIST.toString()
+    setLastUpdatedTime(`${hoursIST.toString()}:00 IST`);
+  }, []);
 
-    }, [])
+  function cellRenderer(params) {
+    const mentor = params.data.mentor;
+    const withHref = `<a href="/stats/mentor/${mentor}">${mentor}</a>`;
+    return withHref;
+  }
 
-    function cellRenderer(params) {
-        const mentor = params.data.mentor
-        const withHref =  `<a href="/stats/mentor/${mentor}">${mentor}</a>`
-        return withHref
-    }
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable({ columns: columnDefs, data: rowData }, useSortBy);
 
-
-    return(
-       <div style={{textAlign: 'center'}}>
-        <h3>Last Update at {lastUpdatedTime}. Stats are updated for every 3 hours </h3>
-        <h5>You can sort the rows by clicking on headers, and also filter by clicking on the button by hovering</h5>
-        <h5>Click on username to get detailed Stats</h5>
-
-            <div
-                className="ag-theme-alpine"
-                style={{
-                height: '90vh',
-                width: '58vw',
-                position: 'absolute',
-                left: '50%',
-                right: '50%',
-                transform: 'translateX(-50%)' }}
-                >
-                    <AgGridReact
-                        columnDefs={columnDefs}
-                        rowData={rowData}>
-                    </AgGridReact>
-            </div>
-       </div>
-    )
+  return (
+    <div>
+      <Navbar />
+      <div className='stats'>
+        <div style={{ textAlign: 'center' }}>
+          <h3>
+            Last Update at {lastUpdatedTime}. Stats are updated for every 1
+            hour{' '}
+          </h3>
+          <h5>
+            You can sort the rows by clicking on headers, and also filter by
+            clicking on the button by hovering
+          </h5>
+      
+          <div className='table-container'>
+            <table {...getTableProps()}>
+              <thead>
+                {headerGroups.map((headerGroup) => (
+                  <tr {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map((column) => (
+                      <th
+                        {...column.getHeaderProps(
+                          column.getSortByToggleProps()
+                        )}
+                      >
+                        {column.render('Header')}
+                        <span>
+                          {column.isSorted
+                            ? column.isSortedDesc
+                              ? ' 🔽'
+                              : ' 🔼'
+                            : ''}
+                        </span>
+                      </th>
+                    ))}
+                  </tr>
+                ))}
+              </thead>
+              <tbody {...getTableBodyProps()}>
+                {rows.map((row) => {
+                  prepareRow(row);
+                  return (
+                    <tr {...row.getRowProps()}>
+                      {row.cells.map((cell) => {
+                        return (
+                          <td {...cell.getCellProps()}>
+                            {cell.render('Cell')}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
 }

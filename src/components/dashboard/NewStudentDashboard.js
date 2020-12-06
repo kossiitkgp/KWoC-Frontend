@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { BACKEND_URL } from '../../constants/constants';
+import { BACKEND_URL, STATS_API } from '../../constants/constants';
 import './dashboard.scss';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import axios from 'axios';
 
+function trim_message(message) {
+  if (message.length > 40) return message.trim(0, 40) + '...';
+  else return message;
+}
 export default function NewStudentDashboard() {
   const [fullName, setFullName] = useState('');
   const [collegeName, setCollegeName] = useState('');
@@ -25,7 +30,14 @@ export default function NewStudentDashboard() {
     // },
   ]);
 
+  const [stats, setStats] = useState({});
+
   const announcements = [
+    {
+      date: 'December 6, 2020',
+      content:
+        'Coding Period has begun!',
+    },
     {
       date: 'November 28, 2020',
       content: 'Coding Period begins on 6th December!',
@@ -67,6 +79,7 @@ export default function NewStudentDashboard() {
   ];
 
   useEffect(() => {
+    const student_username = localStorage.getItem('student_username');
     // check that its not null
     const student_loggedout =
       localStorage.getItem('student_jwt') === null ||
@@ -87,6 +100,16 @@ export default function NewStudentDashboard() {
       })
       .catch((err) => {
         alert('Server Error, Please try again');
+      });
+
+    axios
+      .get(`${STATS_API}/stats/student/${student_username}`)
+      .then((res) => {
+        setStats(res.data[student_username]);
+        console.log(res.data[student_username]);
+      })
+      .catch((err) => {
+        alert('Server error, Try again');
       });
   }, []);
 
@@ -237,17 +260,25 @@ export default function NewStudentDashboard() {
             <div className='mentor-stats-content'>
               <div className='card-component non-purple-card mstats grow-card'>
                 <p className='font-mentor-header'>Commits</p>
-                <p className='font-mentor-stats'>0</p>
+                <p className='font-mentor-stats'>{stats['no_of_commits']}</p>
               </div>
 
               <div className='card-component purple-card mstats  grow-card'>
-                <p className='font-mentor-header'>Pull Requests</p>
-                <p className='font-mentor-stats'>0</p>
+                <p className='font-mentor-header'>
+                  Pull Requests <br />
+                  (open/closed)
+                </p>
+                <p className='font-mentor-stats'>
+                  {stats['pr_open']}/{stats['pr_closed']}
+                </p>
               </div>
 
               <div className='card-component non-purple-card mstats  grow-card'>
                 <p className='font-mentor-header'>Lines of Code</p>
-                <p className='font-mentor-stats'>0</p>
+                   <h1>(+/-)</h1>
+                <p className='font-mentor-stats'>
+                  {stats['lines_added']}/{stats['lines_removed']}
+                </p>
               </div>
             </div>
           </div>
@@ -255,76 +286,85 @@ export default function NewStudentDashboard() {
 
         <div className='projects'>
           <div className='project-header'>
+            <h1>Languages involved</h1>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            {stats['languages'] != undefined &&
+              stats['languages'].map((item) => (
+                <span
+                  className='tag is-dark is-large'
+                  style={{ margin: '5px' }}
+                >
+                  {item}
+                </span>
+              ))}
+          </div>
+        </div>
+
+        <div className='projects'>
+          <div className='project-header'>
             <h1>Projects</h1>
           </div>
-          <div className='projectcard'>
-            {projects.length !== 0 ? (
-              projects.map((item, index) => {
-                return (
-                  <div className='project-c card-component grow-card'>
-                    <div className='anchor-align'>
-                      <img
-                        className='project-card-avatar'
-                        src={`https://github.com/${item.owner}.png`}
-                        alt=''
-                      ></img>
-                      <p className='project-name'>{item.Name}</p>
-                    </div>
-                    <div className='project-buttons'>
-                      <a
-                        href={`${item.RepoLink}`}
-                        className='project-button-small'
-                      >
-                        <img
-                          src='/github.svg'
-                          className='github-svg'
-                          alt='GitHub Logo'
-                        ></img>
-                      </a>
-                      <a
-                        href={`${item.RepoLink}/issues`}
-                        className='project-button-small'
-                      >
-                        Issues
-                      </a>
-                      <a
-                        href={`${item.RepoLink}/pulls`}
-                        className='project-button-small'
-                      >
-                        PRs
-                      </a>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div className='add-project-card'>
-                <div className='header-add-project-card'>
-                  <p>
-                    Coding period starts from 6th December. You can browse some
-                    added projects.
-                  </p>
-                </div>
-                <div className='add-project-button-div'>
-                  <a href='/projects'>
-                    <button className='add-project-button '>
-                      <p className='plus-sign'>+</p>
-                      <p className='text-add-project' href='/projects'>
-                        Browse Projects
-                      </p>
-                    </button>
+          <div style={{ textAlign: 'center' }}>
+            {stats['projects'] != undefined &&
+              stats['projects'].map((item) => (
+                <span
+                  className='tag is-dark is-large is-info'
+                  style={{ margin: '5px' }}
+                >
+                  <a
+                    href={`https://github.com/${item}`}
+                    style={{ color: 'white' }}
+                  >
+                    {item}
                   </a>
-                </div>
-              </div>
-            )}
+                </span>
+              ))}
+          </div>
+        </div>
 
-            {projects.length !== 0 ? (
-              <div className='add-project-card project-c card-component grow-card add-project-card-small'>
-                <a href='/projects'>
-                  <h4>Browse Projects</h4>
-                  <text>+</text>
-                </a>
-              </div>
+        <div className='projects'>
+          <div className='project-header'>
+            <h1>Commits</h1>
+          </div>
+          <div>
+            {stats['commits'] != undefined ? (
+              <table id='commits-table' className='table is-striped'>
+                <thead>
+                  <tr>
+                    <th style={{ color: 'white' }}>
+                      <h3>Project</h3>
+                    </th>
+                    <th style={{ color: 'white' }}>
+                      <h3>Commit</h3>
+                    </th>
+                    <th style={{ color: 'white' }}>
+                      <h3>Lines</h3>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {stats['commits'].map((item) => {
+                    return (
+                      <tr>
+                        <td>
+                          <a
+                            className='project-in-commit-table'
+                            href={`https://github.com/${item['project']}`}
+                          >
+                            {item['project']}
+                          </a>
+                        </td>
+                        <td><a style={{color: 'white'}} href={item['html_url']}>{trim_message(item['message'])}</a></td>
+                        <td>
+                          +{item['lines_added']},-{item['lines_removed']}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             ) : (
               ''
             )}

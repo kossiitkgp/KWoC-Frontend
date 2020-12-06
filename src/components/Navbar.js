@@ -161,6 +161,22 @@ class Navbar extends Component {
                 >
                   Bug Report
                 </a>
+                <div
+                  className='navbar-item has-dropdown is-hoverable'
+                >
+                    <a className='navbar-link' id='testimonial-button'>
+                    Stats
+                    </a>
+
+                    <div className='navbar-dropdown'>
+                      <a className='navbar-item' href='/stats/students'>
+                          Students
+                      </a>
+                      <a className='navbar-item' href='/stats/projects'>
+                          Projects
+                      </a>
+                    </div>
+                </div>
               </div>
 
               {/*  </div>
