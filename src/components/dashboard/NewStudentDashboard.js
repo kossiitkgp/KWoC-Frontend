@@ -34,6 +34,11 @@ export default function NewStudentDashboard() {
 
   const announcements = [
     {
+      date: 'December 6, 2020',
+      content:
+        'Coding Period has begun!',
+    },
+    {
       date: 'November 28, 2020',
       content: 'Coding Period begins on 6th December!',
     },
@@ -270,8 +275,9 @@ export default function NewStudentDashboard() {
 
               <div className='card-component non-purple-card mstats  grow-card'>
                 <p className='font-mentor-header'>Lines of Code</p>
+                   <h1>(+/-)</h1>
                 <p className='font-mentor-stats'>
-                  +{stats['lines_added']}/-{stats['lines_removed']}
+                  {stats['lines_added']}/{stats['lines_removed']}
                 </p>
               </div>
             </div>
@@ -350,7 +356,7 @@ export default function NewStudentDashboard() {
                             {item['project']}
                           </a>
                         </td>
-                        <td>{trim_message(item['message'])}</td>
+                        <td><a style={{color: 'white'}} href={item['html_url']}>{trim_message(item['message'])}</a></td>
                         <td>
                           +{item['lines_added']},-{item['lines_removed']}
                         </td>

@@ -41,6 +41,11 @@ export default function MentorDashboard() {
 
   const announcements = [
     {
+      date: 'December 6, 2020',
+      content:
+        'Coding Period has begun!',
+    },
+    {
       date: 'November 28, 2020',
       content:
         'Please register your projects, registrations close on December 6, 2020.',
