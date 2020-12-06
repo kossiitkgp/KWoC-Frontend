@@ -909,3 +909,21 @@ $text-color: white;
     }
   }
 }
+
+#commits-table {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  font-size: 120%;
+  td{
+    padding: 1%;
+  }
+  .project-in-commit-table:hover {
+    color: whitesmoke;
+  }
+  .project-in-commit-table {
+    color: #b57aff;
+  }
+ 
+}

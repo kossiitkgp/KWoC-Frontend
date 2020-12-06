@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { BACKEND_URL } from '../../constants/constants';
+import { BACKEND_URL, STATS_API } from '../../constants/constants';
 import './dashboard.scss';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import axios from 'axios'
 
+function trim_message(message) {
+  if(message.length > 40)
+    return message.trim(0,40) + "..."
+  else
+    return message
+}
 export default function NewStudentDashboard() {
   const [fullName, setFullName] = useState('');
   const [collegeName, setCollegeName] = useState('');
   const [projects, setProjectName] = useState([
+  
     // {
     //   Name: 'darkHorse',
     //   RepoLink: 'https://github.com/kossiitkgp/darkHorse',
@@ -24,6 +32,8 @@ export default function NewStudentDashboard() {
     //   owner: 'kossiitkgp',
     // },
   ]);
+
+  const [stats, setStats] = useState({})
 
   const announcements = [
     {
@@ -88,6 +98,18 @@ export default function NewStudentDashboard() {
       .catch((err) => {
         alert('Server Error, Please try again');
       });
+
+      axios
+      .get(`${STATS_API}/stats/student/soumyajit1729`)
+      .then((res) => {
+        setStats(res.data['soumyajit1729']);
+        console.log(res.data['soumyajit1729'])
+      })
+      .catch((err) => {
+        alert('Server error, Try again');
+      });
+
+    
   }, []);
 
   // sample data kept for future reference
@@ -252,6 +274,61 @@ export default function NewStudentDashboard() {
             </div>
           </div>
         </div>
+
+        <div className = 'projects'>
+          <div className = 'project-header'>
+              <h1>Languages involved</h1>
+          </div>
+          <div style={{'textAlign': 'center'}}>
+            {stats['languages'] != undefined && stats['languages'].map(item => <span className='tag is-dark is-large' style={{'margin': '5px'}}>{item}</span>)}
+          </div>
+        </div>
+
+        <div className = 'projects'>
+          <div className = 'project-header'>
+              <h1>Projects Worked</h1>
+          </div>
+          <div style={{'textAlign': 'center'}}>
+            {stats['projects'] != undefined && stats['projects'].map(item => <span className='tag is-dark is-large is-info' style={{'margin': '5px'}}><a href={`https://github.com/${item}`} style={{color: 'white'}}>{item}</a></span>)}
+          </div>
+        </div>
+
+         <div className = 'projects'>
+          <div className = 'project-header'>
+              <h1>Commits</h1>
+          </div>
+          <div>
+            {stats['commits'] != undefined ? 
+              <table id='commits-table' className="table is-striped" >
+              <thead>
+                <tr>
+                  <th style={{color: 'white'}}><h3>Project</h3></th>
+                  <th style={{color: 'white'}}><h3>Commit</h3></th>
+                  <th style={{color: 'white'}}><h3>Lines</h3></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {
+                  stats['commits'].map(item => {
+                    return(
+                      <tr>
+                          <td><a className='project-in-commit-table' href={`https://github.com/${item['project']}`}>{item['project']}</a></td>
+                          <td>{trim_message(item['message'])}</td>
+                          <td>+{item['lines_added']},-{item['lines_removed']}</td>
+                      </tr>
+                    )
+                  })
+                }
+                
+                </tbody>
+            </table>
+
+            : ''}
+          </div>
+        </div>
+
+
 
         <div className='projects'>
           <div className='project-header'>
