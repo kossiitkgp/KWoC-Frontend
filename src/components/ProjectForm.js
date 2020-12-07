@@ -199,7 +199,89 @@ export default function Form(props) {
     <React.Fragment>
       <Navbar />
       <div className='box'>
-        <h2>Registrations for this year have ended.</h2>
+        <div className='field'>
+          <label className='label'>Project Name</label>
+          <div className='control'>
+            <input
+              className='input is-rounded'
+              type='text'
+              placeholder='Cool name of your project'
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+        </div>
+        <div className='field'>
+          <label className='label'>Project Description</label>
+          <div className='control has-icons-left has-icons-right'>
+            <textarea
+              className='textarea'
+              placeholder='Briefly about your Project'
+              onChange={(e) => setDesc(e.target.value)}
+            />
+          </div>
+        </div>
+        {/* <div className='field'>
+          <label className='label'>Github link to the Repo</label>
+          <div className='control has-icons-left has-icons-right'>
+            <input
+              className='input is-rounded is-info'
+              type='text'
+              placeholder={`https://github.com/mentor/project`}
+              onChange={e => setRepolink(e.target.value)}
+            />
+            <span className='icon is-large is-left' id='fontello-icon'>
+              <i className='icon-github-circled' />
+            </span>
+          </div>
+          {errInRepo}
+        </div> */}
+        <div className='field'>
+          <label className='label'>Github Link to the Project</label>
+          <div className='control'>
+            <CreatableSelect
+              isClearable
+              onChange={handleProjectLink}
+              options={mentorRepos}
+              placeholder='Search your Repos or Paste the link'
+            />
+            {/* <span className='icon is-large is-left' id='fontello-icon'>
+              <i className='icon-github-circled' />
+            </span> */}
+          </div>
+        </div>{' '}
+        <div className='field'>
+          <label className='label'>Communication channel</label>
+          <div className='control'>
+            <input
+              className='input is-rounded'
+              type='text'
+              placeholder='Slack invite link for example'
+              onChange={(e) => setChannelLink(e.target.value)}
+            />
+          </div>
+          {errInLink}
+        </div>
+        <div className='field'>
+          <label className='label'>Tags for the project</label>
+          <div className='control'>
+            <CreatableSelect
+              isMulti
+              isClearable
+              onChange={handleChange}
+              options={options}
+              placeholder='Select or Create Tags'
+            />
+          </div>
+        </div>
+        <div>
+          <a
+            className='button is-rounded is-fullWidth column is-full'
+            onClick={handleSubmit}
+            disabled={isSubmitDisabled}
+          >
+            Submit
+          </a>
+        </div>
       </div>
       <Footer />
     </React.Fragment>
