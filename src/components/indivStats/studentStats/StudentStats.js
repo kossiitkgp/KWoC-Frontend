@@ -12,6 +12,13 @@ function trim_message(message) {
   else return message;
 }
 
+function trim_lines(lines) {
+  let num_lines = parseInt(lines)
+  if(num_lines > 1000)
+    return  parseInt(num_lines/1000).toString() + 'K'
+  else
+    return lines
+}
 export default function NewStudentDashboard() {
   const [fullName, setFullName] = useState('');
   const [collegeName, setCollegeName] = useState('');
@@ -272,7 +279,7 @@ export default function NewStudentDashboard() {
                 <p className='font-mentor-header'>Lines of Code</p>
                 <h1>(+/-)</h1>
                 <p className='font-mentor-stats'>
-                  {stats['lines_added']}/{stats['lines_removed']}
+                  {trim_lines(stats['lines_added'])}/{trim_lines(stats['lines_removed'])}
                 </p>
               </div>
             </div>
@@ -353,7 +360,7 @@ export default function NewStudentDashboard() {
                         </td>
                         <td><a href={item['html_url']} style={{color: 'white'}}>{trim_message(item['message'])}</a></td>
                         <td>
-                          +{item['lines_added']},-{item['lines_removed']}
+                          +{trim_lines(item['lines_added'])},-{trim_lines(item['lines_removed'])}
                         </td>
                       </tr>
                     );
