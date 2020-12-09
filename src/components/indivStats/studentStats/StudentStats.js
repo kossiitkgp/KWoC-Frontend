@@ -59,7 +59,7 @@ export default function NewStudentDashboard() {
   ]);
 
   const [stats, setStats] = useState({});
-
+  const [pulls, setPulls] = useState([])
   const announcements = [
     {
       date: 'November 28, 2020',
@@ -179,6 +179,7 @@ export default function NewStudentDashboard() {
   
          console.log('repos involved are ', repos_set)
          console.log('pulls are', pulls_for_kwoc_event)
+         setPulls(pulls_for_kwoc_event)
          /* Pull requests and their URLS have been soughted at this point, now need to work on commits*/
          console.log('pushes are ', pushes_for_kwoc_event)
          
@@ -426,6 +427,50 @@ export default function NewStudentDashboard() {
                   </a>
                 </span>
               ))}
+          </div>
+        </div>
+
+        <div className='projects'>
+          <div className='project-header'>
+            <h1>Pull Reqests</h1>
+            <div>
+            {pulls != undefined ? (
+              <table id='commits-table' className='table is-striped'>
+                <thead>
+                  <tr>
+                    <th style={{ color: 'white' }}>
+                      <h3>Project</h3>
+                    </th>
+                    <th style={{ color: 'white' }}>
+                      <h3>Pull Request</h3>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {pulls.map((item) => {
+                    return (
+                      <tr>
+                        <td>
+                          <a
+                            className='project-in-commit-table'
+                            href={`https://github.com/${item['repo']['name']}`}
+                          >
+                            {item['repo']['name']}
+                          </a>
+                        </td>
+                        
+                        <td><a href={item['payload']['pull_request']['html_url']} style={{color: 'white'}}>{trim_message(item['payload']['pull_request']['title'])}</a></td>
+                        
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            ) : (
+              ''
+            )}
+            </div>
           </div>
         </div>
 
