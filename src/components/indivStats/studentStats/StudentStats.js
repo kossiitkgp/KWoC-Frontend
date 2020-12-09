@@ -23,7 +23,11 @@ function trim_lines(lines) {
 }
 
 function fetch_calls(link) {
-  return fetch(link)
+  return fetch(link, {
+    headers: {
+      'Authorization': 'token 710126db276b7f6b47013fa8426211bfe33c40dc'
+    }
+  })
             .then(res => res.json())
             .then(res => {
               return res
@@ -106,6 +110,7 @@ export default function NewStudentDashboard() {
     const data = {
       username: student_username,
     };
+    let last_commit = ``
     fetch(URL, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -123,6 +128,7 @@ export default function NewStudentDashboard() {
       .get(`https://stats.metamehta.me/stats/student/${student_username}`)
       .then((res) => {
         setStats(res.data[student_username]);
+        last_commit = res.data[student_username]['commits'][0]['html_url']
         console.log(res.data[student_username]);
       })
       .catch((err) => {
@@ -131,9 +137,6 @@ export default function NewStudentDashboard() {
 
       /* testing for real time code*/
       async function calls_fetch() {
-        // let prs = await fetch_calls(`https://api.github.com/users/${student_username}/events?per_page=100&page=1`)
-        // get last time as per IST
-        // check_last_pr_date = prs[]
         const base_date = new Date('2020-12-05T17:30:00Z')
         let prs_for_events = []
         let base_url = `https://api.github.com/users/${student_username}/events?per_page=100`
@@ -162,6 +165,8 @@ export default function NewStudentDashboard() {
         let pulls_for_kwoc_event = []
         let pushes_for_kwoc_event = []
         let repos_set = new Set()
+
+        
         prs_for_events.forEach(item => {
           if(Projects.hasOwnProperty(item['repo']['name'].toLowerCase())) {
             repos_set.add(item['repo']['name'])
@@ -176,16 +181,22 @@ export default function NewStudentDashboard() {
          console.log('pulls are', pulls_for_kwoc_event)
          /* Pull requests and their URLS have been soughted at this point, now need to work on commits*/
          console.log('pushes are ', pushes_for_kwoc_event)
-         let all_kwoc_commits = []
+         
+         // know the last date for commit
+        let api_url_last_commmit = last_commit.replace('github.com/', 'api.github.com/repos/').replace('/commit/', '/commits/')
+        let last_commit_data = await fetch_calls(api_url_last_commmit)
+        let last_timestamp_of_stats = last_commit_data['commit']['committer']['date']
+        
+         let extra_kwoc_commits = []
          for(let repo of repos_set) {
-            let base_url = `https://api.github.com/repos/${repo}/commits?author=${student_username}&since=2020-12-05T17:30:00Z`
+            let base_url = `https://api.github.com/repos/${repo}/commits?author=${student_username}&since=${last_timestamp_of_stats}`
             let page_num = 1
             while(1) {
               let commits_data = await fetch_calls(base_url)
               for(let commit of commits_data) {
                 let commit_url = commit['url']
                 let indiv_commit_data = await fetch_calls(commit_url)
-                all_kwoc_commits.push({
+                extra_kwoc_commits.push({
                   'html_url': commit['html_url'],
                   'project': repo,
                   'message': commit['commit']['message'],
@@ -203,7 +214,7 @@ export default function NewStudentDashboard() {
               }
             }
          }
-         console.log('all_kwoc_commits ',all_kwoc_commits)
+         console.log('all_kwoc_commits ',extra_kwoc_commits)
       }
 
       fetch_final_data()
