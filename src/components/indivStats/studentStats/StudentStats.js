@@ -6,6 +6,8 @@ import Footer from '../../Footer';
 import { BACKEND_URL,STATS_API } from '../../../constants/constants';
 import './StudentStats.scss';
 import '../../../components/dashboard/dashboard.scss'
+import Projects from '../../../data/projects'
+import { Component } from 'ag-grid-community';
 
 function trim_message(message) {
   if (message.length > 40) return message.trim(0, 40) + '...';
@@ -18,6 +20,17 @@ function trim_lines(lines) {
     return  parseInt(num_lines/1000).toString() + 'K'
   else
     return lines
+}
+
+function fetch_calls(link) {
+  return fetch(link)
+            .then(res => res.json())
+            .then(res => {
+              return res
+            })
+            .catch(err => {
+              return err
+            })
 }
 export default function NewStudentDashboard() {
   const [fullName, setFullName] = useState('');
@@ -115,7 +128,87 @@ export default function NewStudentDashboard() {
       .catch((err) => {
         alert('Server error, Try again');
       });
-  }, []);
+
+      /* testing for real time code*/
+      async function calls_fetch() {
+        // let prs = await fetch_calls(`https://api.github.com/users/${student_username}/events?per_page=100&page=1`)
+        // get last time as per IST
+        // check_last_pr_date = prs[]
+        const base_date = new Date('2020-12-05T17:30:00Z')
+        let prs_for_events = []
+        let base_url = `https://api.github.com/users/${student_username}/events?per_page=100`
+        let page_num = 1
+        while(1) {
+          let events = await fetch_calls(base_url + `&page=${page_num}`)
+          let events_length = events.length
+          let last_event_date = new Date(events[events_length-1]['created_at'])
+          if(last_event_date > base_date) {
+            prs_for_events.push(...events)
+            page_num = page_num + 1
+          } else {
+            let filtered_events = events.filter(item => {
+            let item_date = new Date(item['created_at'])
+              return item_date > base_date
+            })
+            prs_for_events.push(...filtered_events)
+            break
+          }
+        }
+        return prs_for_events
+      }
+    
+      async function fetch_final_data() {
+        let prs_for_events = await  calls_fetch();
+        let pulls_for_kwoc_event = []
+        let pushes_for_kwoc_event = []
+        let repos_set = new Set()
+        prs_for_events.forEach(item => {
+          if(Projects.hasOwnProperty(item['repo']['name'].toLowerCase())) {
+            repos_set.add(item['repo']['name'])
+            if(item['type'] === 'PullRequestEvent' && item['payload']['action'] !== 'closed')
+              pulls_for_kwoc_event.push(item)
+            else if(item['type'] === 'PushEvent')
+              pushes_for_kwoc_event.push(item)
+          } 
+         })
+  
+         console.log('repos involved are ', repos_set)
+         console.log('pulls are', pulls_for_kwoc_event)
+         /* Pull requests and their URLS have been soughted at this point, now need to work on commits*/
+         console.log('pushes are ', pushes_for_kwoc_event)
+         let all_kwoc_commits = []
+         for(let repo of repos_set) {
+            let base_url = `https://api.github.com/repos/${repo}/commits?author=${student_username}&since=2020-12-05T17:30:00Z`
+            let page_num = 1
+            while(1) {
+              let commits_data = await fetch_calls(base_url)
+              for(let commit of commits_data) {
+                let commit_url = commit['url']
+                let indiv_commit_data = await fetch_calls(commit_url)
+                all_kwoc_commits.push({
+                  'html_url': commit['html_url'],
+                  'project': repo,
+                  'message': commit['commit']['message'],
+                  'additions': indiv_commit_data['stats']['additions'],
+                  'deletions': indiv_commit_data['stats']['deletions']
+                })
+              }
+              let commits_data_length = commits_data.length
+              if(commits_data_length == 30) {
+                page_num += 1
+                base_url = base_url + `&page=${page_num}`
+              } 
+              else {
+                break
+              }
+            }
+         }
+         console.log('all_kwoc_commits ',all_kwoc_commits)
+      }
+
+      fetch_final_data()
+
+    }, []);
 
   // sample data kept for future reference
   // let data = {
