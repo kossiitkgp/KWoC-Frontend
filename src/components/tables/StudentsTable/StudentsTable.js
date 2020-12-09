@@ -25,7 +25,7 @@ export default function StudentsTable() {
         Cell: (e) => <a href={`/stats/student/${e.value}`}> {e.value} </a>,
       },
       {
-        Header: 'PRs(Merged/Open)',
+        Header: 'PRs(Open/Merged)',
         accessor: 'prs',
       },
       {
