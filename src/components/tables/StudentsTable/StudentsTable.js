@@ -176,6 +176,9 @@ export default function StudentsTable() {
             </tbody>
           </table>
         </div>
+        {page  > 0 ? <button onClick={goToPrevPage} style={{color: 'white', fontSize: '120%'}}>Prev</button> : ''}
+      <span style={{color: 'white', marginLeft: '1%', marginRight: '1%', fontSize: '120%'}}>Page: {page+1}</span> 
+      { page + 2 <= lastPageNum ? <button onClick={goToNextPage} style={{color: 'white', fontSize: '120%'}}>Next</button>: ''}
       </div>
       <Footer />
     </div>
