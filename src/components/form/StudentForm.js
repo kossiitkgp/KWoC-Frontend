@@ -53,59 +53,7 @@ export default function Form(props) {
     <React.Fragment>
       <Navbar />
       <div className='box'>
-        <h2>Student Form</h2>
-        <h3>Welcome {username}</h3>
-
-        <div className='field'>
-          <label className='label'>Name</label>
-          <div className='control'>
-            <input
-              className='input is-rounded '
-              type='text'
-              placeholder='Name'
-              defaultValue={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-        </div>
-
-        <div className='field'>
-          <label className='label'>Email</label>
-          <div className='control has-icons-left has-icons-right'>
-            <input
-              className='input is-rounded '
-              type='email'
-              placeholder='Email'
-              defaultValue={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <span className='icon is-large is-left' id='fontello-icon'>
-              <i className='icon-mail-alt' />
-            </span>
-          </div>
-        </div>
-
-        <div className='field'>
-          <label className='label'>Name of Institution</label>
-          <div className='control'>
-            <input
-              className='input is-rounded '
-              type='text'
-              placeholder='College name'
-              onChange={(e) => setCollege(e.target.value)}
-            />
-          </div>
-        </div>
-
-        <div>
-          <a
-            class='button  is-rounded is-fullWidth column is-full'
-            onClick={handleSubmit}
-            disabled={isSubmitDisabled}
-          >
-            Submit
-          </a>
-        </div>
+          <h2>Registrations for this year have ended.</h2>
       </div>
       <Footer />
     </React.Fragment>
