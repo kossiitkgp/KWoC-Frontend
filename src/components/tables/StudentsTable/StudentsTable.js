@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import Navbar from '../../Navbar.js';
 import Footer from '../../Footer.js';
+import Fuse from 'fuse.js';
 
 import { STATS_API } from '../../../constants/constants';
 
@@ -9,10 +10,19 @@ import { useTable, useSortBy } from 'react-table';
 
 import '../tables.scss';
 
+const searchOptions = {
+  keys: ['name', 'username'],
+  // the threshold value should be decreased to be more strict in getting search results
+  threshold: 0.5,
+};
+
 export default function StudentsTable() {
   const [lastUpdatedTime, setLastUpdatedTime] = useState('');
   const [rowData, setRowData] = useState([]);
-
+  const [allStats, setAllStats] = useState([])
+  const [page, setPage] = useState(0)
+  const [lastPageNum, setLastPageNum] = useState(0)
+ 
   const columnDefs = useMemo(
     () => [
       {
@@ -40,12 +50,41 @@ export default function StudentsTable() {
     []
   );
 
+  function goToPrevPage() {
+    const startIndex = (page-1)*100
+    const endIndex = startIndex + 100
+    setRowData(allStats.slice(startIndex, endIndex))
+    setPage(page-1)
+
+    // set next pageData
+  }
+  function goToNextPage() {
+    // set prev pageData
+    const startIndex = (page+1)*100
+    const endIndex = startIndex + 100
+    setRowData(allStats.slice(startIndex, endIndex))
+    setPage(page+1)
+   }
+ 
+   function handleSearch(e) {
+     if(e.target.value == '') {
+      setRowData(allStats.slice(page*100, page*100 + 100))
+     } else {
+      const fuse = new Fuse(allStats, searchOptions)    
+      const results = fuse.search(e.target.value).map((i) => i.item);
+      setRowData(results);
+     }
+   }
+
   useEffect(() => {
     axios
       .get(`${STATS_API}/stats/students`)
       .then((res) => {
-        setRowData(res.data['stats'].sort((a,b) => (parseInt(a.commits) < parseInt(b.commits)) ? 1 : -1));
-      })
+        setRowData(res.data['stats'].sort((a,b) => (parseInt(a.commits) < parseInt(b.commits)) ? 1 : -1).slice(0,100));
+        setAllStats(res.data['stats'].sort((a,b) => (parseInt(a.commits) < parseInt(b.commits)) ? 1 : -1))
+        const  MAX_NUMBER_OF_PAGES  = Math.ceil(res.data['stats'].length/100)
+        setLastPageNum(MAX_NUMBER_OF_PAGES)
+        })
       .catch((err) => {
         alert('Server Error, Try again');
       });
@@ -80,6 +119,24 @@ export default function StudentsTable() {
           clicking on the button by hovering
         </h5>
         <h5>Click on username to get detailed Stats</h5>
+      
+        <div class='field'>
+          <div class='control'>
+            <input
+              class='input is-primary is-medium'
+              type='text'
+              placeholder='Search the whole table by Username or Name'
+              onChange={handleSearch}
+              style={{ width: '30%', position: 'relative',left: '50%', right: '50%',transform: 'translateX(-50%)'}}
+            ></input>
+          </div>
+        </div>
+
+    
+    
+      {page  > 0 ? <button onClick={goToPrevPage} style={{color: 'white', fontSize: '120%'}}>Prev</button> : ''}
+      <span style={{color: 'white', marginLeft: '1%', marginRight: '1%', fontSize: '120%'}}>Page: {page+1}</span> 
+      { page + 2 <= lastPageNum ? <button onClick={goToNextPage} style={{color: 'white', fontSize: '120%'}}>Next</button>: ''}
 
         <div className='table-container'>
           <table {...getTableProps()}>
