@@ -16,7 +16,6 @@ function trim_message(message) {
 }
 
 function trim_lines(lines) {
-  console.log('what is coming here',lines)
   let num_lines = parseInt(lines)
   if(num_lines > 1000)
     return  parseInt(num_lines/1000).toString() + 'K'
@@ -146,7 +145,13 @@ export default function NewStudentDashboard() {
       /* testing for real time code*/
       try {
         async function calls_fetch() {
-          const base_date = new Date('2020-12-05T17:30:00Z')
+          let base_date, cached_time_stamp;  
+          cached_time_stamp = localStorage.getItem(`stats_events_timestamp_${student_username}`)
+          if(cached_time_stamp == null ||  cached_time_stamp == undefined) 
+            base_date = new Date('2020-12-05T17:30:00Z')
+          else
+            base_date = cached_time_stamp
+
           let prs_for_events = []
           let base_url = `https://api.github.com/users/${student_username}/events?per_page=100`
           let page_num = 1
@@ -167,11 +172,17 @@ export default function NewStudentDashboard() {
               prs_for_events.push(...filtered_events)
               break
             }
+
           }
+         
+        if(prs_for_events.length != 0)
+          localStorage.setItem(`stats_events_timestamp_${student_username}`, prs_for_events[0]['created_at'])
           return prs_for_events
         }
       
         async function fetch_final_data() {
+          let cached_repos, cached_pulls, parsed_arr_of_repos;
+          
           let prs_for_events = await  calls_fetch();
           let pulls_for_kwoc_event = []
           let pushes_for_kwoc_event = []
@@ -187,10 +198,33 @@ export default function NewStudentDashboard() {
                 pushes_for_kwoc_event.push(item)
             } 
            })
-    
+           
+           /* making the repo set from cache and currently obtained data*/
            console.log('repos involved are ', repos_set)
+           cached_repos = localStorage.getItem(`stats_repos_${student_username}`)
+           if(cached_repos == null || cached_repos == undefined)
+              repos_set = repos_set
+            else {
+              parsed_arr_of_repos = JSON.parse(cached_repos)
+              repos_set = new Set(parsed_arr_of_repos)
+              for(let arr of repos_set) {
+                repos_set.add(arr)
+              }
+            }
+
+           /* making the pulls array from cache and currently obtained data*/
            console.log('pulls are', pulls_for_kwoc_event)
+           cached_pulls = localStorage.getItem(`stats_pulls_${student_username}`)
+           if(cached_pulls == null || cached_pulls == undefined)
+            pulls_for_kwoc_event = pulls_for_kwoc_event
+          else{
+            pulls_for_kwoc_event = [...pulls_for_kwoc_event, ...JSON.parse(cached_pulls)]
+           }
+            
            setPulls(pulls_for_kwoc_event)
+           /* storing the cached*/
+           localStorage.setItem(`stats_pulls_${student_username}`, JSON.stringify(pulls_for_kwoc_event))
+           localStorage.setItem(`stats_repos_${student_username}`, JSON.stringify(Array.from(repos_set)))
            /* Pull requests and their URLS have been soughted at this point, now need to work on commits*/
            console.log('pushes are ', pushes_for_kwoc_event)
            
@@ -203,6 +237,7 @@ export default function NewStudentDashboard() {
             last_timestamp_of_stats = last_commit_data['commit']['committer']['date']
             }
             catch (err) {
+              last_timestamp_of_stats = new Date('2020-12-05T17:30:00Z')
               console.log('if error in last_time stamp')
               return
             }
