@@ -10,7 +10,7 @@ import Projects from '../../../data/projects'
 import { Component } from 'ag-grid-community';
 
 function trim_message(message) {
-  if(message != undefined)
+  if(message)
     if (message.length > 40) return message.trim(0, 40) + '...';
     else return message;
 }
@@ -41,23 +41,7 @@ export default function NewStudentDashboard() {
   const [fullName, setFullName] = useState('');
   const [collegeName, setCollegeName] = useState('');
   const [username, setUsername] = useState('')
-  const [projects, setProjectName] = useState([
-    // {
-    //   Name: 'darkHorse',
-    //   RepoLink: 'https://github.com/kossiitkgp/darkHorse',
-    //   owner: 'kossiitkgp',
-    // },
-    // {
-    //   Name: 'todxpy',
-    //   RepoLink: 'https://github.com/xypnox/todxpy',
-    //   owner: 'xypnox',
-    // },
-    // {
-    //   Name: 'KWoC',
-    //   RepoLink: 'https://github.com/kossiitkgp/KWoC',
-    //   owner: 'kossiitkgp',
-    // },
-  ]);
+  const [projects, setProjects] = useState([]);
 
   const [stats, setStats] = useState({});
   const [pulls, setPulls] = useState([])
@@ -117,6 +101,7 @@ export default function NewStudentDashboard() {
       username: student_username,
     };
     let last_commit = ``
+    let projects_from_backend = []
     fetch(URL, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -135,9 +120,8 @@ export default function NewStudentDashboard() {
       .then((res) => {
         setStats(res.data[student_username]);
         last_commit = res.data[student_username]['commits'][0]['html_url']
-        console.log('last commit below assignment ', res.data[student_username]['commits'][0]['html_url'])
-        console.log(res.data[student_username]);
-      })
+        projects_from_backend.push(...res.data[student_username]['projects'])
+        })
       .catch((err) => {
         alert('Server error, Try again');
       });
@@ -187,20 +171,21 @@ export default function NewStudentDashboard() {
           let pulls_for_kwoc_event = []
           let pushes_for_kwoc_event = []
           let repos_set = new Set()
-  
           
           prs_for_events.forEach(item => {
             if(Projects.hasOwnProperty(item['repo']['name'].toLowerCase())) {
-              repos_set.add(item['repo']['name'])
-              if(item['type'] === 'PullRequestEvent' && item['payload']['action'] !== 'closed')
+              if(item['type'] === 'PullRequestEvent' && item['payload']['action'] !== 'closed') {
                 pulls_for_kwoc_event.push(item)
-              else if(item['type'] === 'PushEvent')
+                repos_set.add(item['repo']['name'])
+              }
+              else if(item['type'] === 'PushEvent') {
                 pushes_for_kwoc_event.push(item)
+                repos_set.add(item['repo']['name'])
+              }
             } 
            })
            
            /* making the repo set from cache and currently obtained data*/
-           console.log('repos involved are ', repos_set)
            cached_repos = localStorage.getItem(`stats_repos_${student_username}`)
            if(cached_repos == null || cached_repos == undefined)
               repos_set = repos_set
@@ -211,9 +196,13 @@ export default function NewStudentDashboard() {
                 repos_set.add(arr)
               }
             }
+           
+            let union_set = new Set([...projects_from_backend,...Array.from(repos_set)])
+            let array_of_all_projects = Array.from(union_set)
+            setProjects(array_of_all_projects)
+
 
            /* making the pulls array from cache and currently obtained data*/
-           console.log('pulls are', pulls_for_kwoc_event)
            cached_pulls = localStorage.getItem(`stats_pulls_${student_username}`)
            if(cached_pulls == null || cached_pulls == undefined)
             pulls_for_kwoc_event = pulls_for_kwoc_event
@@ -226,9 +215,7 @@ export default function NewStudentDashboard() {
            localStorage.setItem(`stats_pulls_${student_username}`, JSON.stringify(pulls_for_kwoc_event))
            localStorage.setItem(`stats_repos_${student_username}`, JSON.stringify(Array.from(repos_set)))
            /* Pull requests and their URLS have been soughted at this point, now need to work on commits*/
-           console.log('pushes are ', pushes_for_kwoc_event)
            
-           console.log('last commit is ',last_commit)
            // know the last date for commit
           let api_url_last_commmit, last_commit_data, last_timestamp_of_stats;
             api_url_last_commmit = last_commit.replace('github.com/', 'api.github.com/repos/').replace('/commit/', '/commits/')
@@ -238,7 +225,6 @@ export default function NewStudentDashboard() {
             }
             catch (err) {
               last_timestamp_of_stats = new Date('2020-12-05T17:30:00Z')
-              console.log('if error in last_time stamp')
               return
             }
             
@@ -281,7 +267,6 @@ export default function NewStudentDashboard() {
   
         fetch_final_data()
       } catch(err) {
-        console.log('error came somewhere')
         return
       }
 
@@ -478,8 +463,8 @@ export default function NewStudentDashboard() {
             <h1>Projects</h1>
           </div>
           <div style={{ textAlign: 'center' }}>
-            {stats['projects'] != undefined &&
-              stats['projects'].map((item) => (
+            {projects != undefined &&
+              projects.map((item) => (
                 <span
                   className='tag is-dark is-large is-info'
                   style={{ margin: '5px' }}
