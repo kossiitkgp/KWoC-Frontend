@@ -145,7 +145,10 @@ export default function NewStudentDashboard() {
           let page_num = 1
           while(1) {
             let events, events_length, last_event_date
-             events = await fetch_calls(base_url + `&page=${page_num}`)
+            if(page_num <= 3)
+               events = await fetch_calls(base_url + `&page=${page_num}`)
+            else
+              break
              events_length = events.length
             if(events[events_length-1] != undefined)
               last_event_date = new Date(events[events_length-1]['created_at'])
