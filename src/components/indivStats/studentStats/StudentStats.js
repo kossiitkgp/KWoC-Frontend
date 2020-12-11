@@ -119,8 +119,12 @@ export default function NewStudentDashboard() {
       .get(`https://stats.metamehta.me/stats/student/${student_username}`)
       .then((res) => {
         setStats(res.data[student_username]);
-        last_commit = res.data[student_username]['commits'][0]['html_url']
-        projects_from_backend.push(...res.data[student_username]['projects'])
+        try {
+          last_commit = res.data[student_username]['commits'][0]['html_url']
+          projects_from_backend.push(...res.data[student_username]['projects'])
+        } catch (err) {
+          console.log('no last commit to fetched and projects from backend')
+        }
         })
       .catch((err) => {
         alert('Server error, Try again');
