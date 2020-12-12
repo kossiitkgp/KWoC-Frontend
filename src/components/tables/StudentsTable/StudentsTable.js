@@ -10,6 +10,16 @@ import { useTable, useSortBy } from 'react-table';
 
 import '../tables.scss';
 
+const debouncer = function (fn, delay) {
+  let timer;
+  return function (e) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+          fn.apply(this, arguments);
+      }, delay);
+  }
+}
+
 const searchOptions = {
   keys: ['name', 'username'],
   // the threshold value should be decreased to be more strict in getting search results
@@ -67,11 +77,11 @@ export default function StudentsTable() {
    }
  
    function handleSearch(e) {
-     if(e.target.value == '') {
+     if(e == '') {
       setRowData(allStats.slice(page*100, page*100 + 100))
      } else {
       const fuse = new Fuse(allStats, searchOptions)    
-      const results = fuse.search(e.target.value).map((i) => i.item);
+      const results = fuse.search(e).map((i) => i.item);
       setRowData(results);
      }
    }
@@ -126,7 +136,9 @@ export default function StudentsTable() {
               class='input is-primary is-medium'
               type='text'
               placeholder='Search the whole table by Username or Name'
-              onChange={handleSearch}
+              onChange={(e) => {
+                debouncer(handleSearch, 300)(e.target.value)
+              }}
               style={{ width: '30%', position: 'relative',left: '50%', right: '50%',transform: 'translateX(-50%)'}}
             ></input>
           </div>
