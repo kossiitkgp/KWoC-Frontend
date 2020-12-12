@@ -97,6 +97,14 @@ export default function NewStudentDashboard() {
 
   useEffect(() => {
     const student_username = localStorage.getItem('student_username');
+    fetch(`${STATS_API}/student/exists/${student_username}`)
+    .then(res => res.text())
+    .then(res => {
+      if(res == "false") {
+        alert('Sorry, itseems you have not registered for KWoC')
+        window.location.pathname = ''
+      }
+    })
     // check that its not null
     const student_loggedout =
       localStorage.getItem('student_jwt') === null ||
