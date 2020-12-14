@@ -251,7 +251,7 @@ export default function MentorDashboard() {
     resourceList.push(<li key={index}>{elements}</li>);
   }
 
-  if(projects)
+  if(projects != undefined)
     projects.forEach((projectItem) => {
       projectItem['owner'] = projectItem['RepoLink'].split('/').slice(-2)[0];
     });
