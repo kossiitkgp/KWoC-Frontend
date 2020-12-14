@@ -26,7 +26,7 @@ function trim_lines(lines) {
 function fetch_calls(link) {
   return fetch(link, {
     headers: {
-      'Authorization': 'token 710126db276b7f6b47013fa8426211bfe33c40dc'
+      'Authorization': 'token c7674ee677fb39761be11ce056107525b8e8d24c'
     }
   })
             .then(res => res.json())
@@ -111,6 +111,7 @@ export default function NewStudentDashboard() {
     };
     let last_commit = ``
     let projects_from_backend = []
+    let commits_from_backend = []
     fetch(URL, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -131,6 +132,7 @@ export default function NewStudentDashboard() {
         try {
           last_commit = res.data[student_username]['commits'][0]['html_url']
           projects_from_backend.push(...res.data[student_username]['projects'])
+          commits_from_backend = res.data[student_username]['commits']
         } catch (err) {
           console.log('no last commit to fetched and projects from backend')
         }
@@ -264,8 +266,8 @@ export default function NewStudentDashboard() {
                
               }
         
-  
-          setExtraCommits(extra_kwoc_commits)
+          let uniquely_new_commits = extra_kwoc_commits.filter(item => !commits_from_backend.some(e => e['html_url'] == item['html_url']))
+          setExtraCommits(uniquely_new_commits)
           if(extra_kwoc_commits.length !== 0) {
            let lines_added = 0
            let lines_removed = 0
