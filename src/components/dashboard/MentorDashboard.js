@@ -251,9 +251,10 @@ export default function MentorDashboard() {
     resourceList.push(<li key={index}>{elements}</li>);
   }
 
-  projects.forEach((projectItem) => {
-    projectItem['owner'] = projectItem['RepoLink'].split('/').slice(-2)[0];
-  });
+  if(projects)
+    projects.forEach((projectItem) => {
+      projectItem['owner'] = projectItem['RepoLink'].split('/').slice(-2)[0];
+    });
 
   return (
     <div className='mentor-dashboard-body dashboard-container'>
