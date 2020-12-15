@@ -92,7 +92,6 @@ export default function NewStudentDashboard() {
   ];
 
   useEffect(() => {
-    const pathname = window.location.pathname;
     const splitArr = window.location.pathname.split('/')
     const student_username = splitArr[splitArr.length - 1]
     fetch(`${STATS_API}/student/exists/${student_username}`)
@@ -289,6 +288,13 @@ export default function NewStudentDashboard() {
       }
 
     }, []);
+
+    function removeCachedTimeStamp() {
+      const splitArr = window.location.pathname.split('/')
+      const student_username = splitArr[splitArr.length - 1]
+      localStorage.removeItem(localStorage.getItem(`stats_events_timestamp_${student_username}`))
+      window.location.reload()
+    }
 
   // sample data kept for future reference
   // let data = {
@@ -590,6 +596,7 @@ export default function NewStudentDashboard() {
           </div>
         </div>
       </div>
+      <button  className="button is-light is-large" style={{position: 'relative',left: '50%', right: '50%', transform: 'translateX(-50%)', marginBottom: '5%'}} onClick={removeCachedTimeStamp}>Hard Reload(uses no cache)</button>
       <Footer />
     </div>
   );
