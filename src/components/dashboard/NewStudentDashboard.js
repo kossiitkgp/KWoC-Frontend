@@ -389,6 +389,12 @@ export default function NewStudentDashboard() {
     resourceList.push(<li key={index}>{elements}</li>);
   }
 
+  function removeCachedTimeStamp() {
+    const student_username = localStorage.getItem('student_username')
+    localStorage.removeItem(localStorage.getItem(`stats_events_timestamp_${student_username}`))
+    window.location.reload()
+  }
+
   return (
     <div className='student-dashboard-body dashboard-container'>
       <div className='dashboard'>
@@ -646,6 +652,7 @@ export default function NewStudentDashboard() {
           })}
         </div>
       </div>
+      <button  className="button is-light is-large" style={{position: 'relative',left: '50%', right: '50%', transform: 'translateX(-50%)', marginBottom: '5%'}} onClick={removeCachedTimeStamp}>Hard Reload(uses no cache)</button>
       <Footer />
     </div>
   );
