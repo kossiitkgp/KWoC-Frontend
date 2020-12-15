@@ -139,7 +139,9 @@ const Projects = {
    "the-browser-toolbox/to-do":"To-do extension",
    "the-browser-toolbox/save-notes":" Save-notes extension",
    "the-browser-toolbox/usage-monitor":"Usage-monitor extension",
-   "tharun143/kwoc-ems":"Enterprise Management System"
+   "tharun143/kwoc-ems":"Enterprise Management System",
+   "inaxia/hashcode_web": "Hashcode Web",
+   "inaxia/hashcode_app": "Hashcode App"
 }
 
 export default Projects
