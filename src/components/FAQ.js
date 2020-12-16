@@ -86,8 +86,8 @@ export default function FAQ() {
 
         <p>
           Please make sure to read the website. If after reading through it you
-          still don't have an answer please consider reaching out to us on our
-          <a href="mailto:admin@kossiitkgp.org">mail address</a>.
+          still don't have an answer please consider reaching out to us on our 
+          <a href="mailto:admin@kossiitkgp.org"> mail address</a>.
         </p>
 
         <h1>Students</h1>
