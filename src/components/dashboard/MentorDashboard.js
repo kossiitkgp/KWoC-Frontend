@@ -89,7 +89,19 @@ export default function MentorDashboard() {
     },
   ];
 
+  const message_storage = () => {
+    if(localStorage.getItem('announcement_messageM') !== 'true'){
+      localStorage.setItem('page_reloadM', 'false');
+    }
+    else{
+      localStorage.setItem('page_reloadM', 'true');
+    }
+
+    localStorage.setItem('announcement_messageM', 'true');
+  }
+
   useEffect(() => {
+    message_storage();
     // check that its not null
     const mentor_loggedout =
       localStorage.getItem('mentor_jwt') === null ||
@@ -107,7 +119,7 @@ export default function MentorDashboard() {
       .then((res) => {
         setFullName(res.name);
         setProjects(res.projects);
-        
+
         const repoNames = res.projects.map(item => {
           let link = item['RepoLink']
           // cleaning the trailing slash
@@ -117,23 +129,23 @@ export default function MentorDashboard() {
           let split_array_length = split_array.length
           return split_array[split_array_length-2] + '/' + split_array[split_array_length-1]
         })
-        
+
         const repoNamesJson = {
           "projects": repoNames
         }
-        
+
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-  
+
         var raw = JSON.stringify(repoNamesJson);
-  
+
         var requestOptions = {
           method: 'POST',
           headers: myHeaders,
           body: raw,
           redirect: 'follow'
         };
-  
+
         fetch("https://stats.metamehta.me/stats/mentors", requestOptions)
           .then(response => response.text())
           .then(result => {
@@ -144,10 +156,10 @@ export default function MentorDashboard() {
       .catch((err) => {
         alert('Server Error, Please try again');
       });
-      
-      
-      
-     
+
+
+
+
       // fetch(`${STATS_API}/stats/mentor`, {
       //   method: 'POST',
       //   body: JSON.stringify({ 'projects': repoNames}),
@@ -316,6 +328,18 @@ export default function MentorDashboard() {
           */}
           </div>
         </div>
+
+        <div className='projects'>
+          {localStorage.getItem('announcement_messageM') == 'true' && localStorage.getItem('page_reloadM') == 'false'?
+            (
+              <div className='message' style={{textAlign:'center'}}>
+                <h1>Announcements have been updated!</h1>
+              </div>
+            ) :('')
+          }
+
+        </div>
+
         <div className='projects'>
           <div className='project-header'>
             <h1>Projects</h1>
