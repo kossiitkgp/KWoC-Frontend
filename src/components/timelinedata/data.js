@@ -13,7 +13,7 @@ const data = [
   },
   {
     text: 'Mid Evaluations',
-    date: '18 December 2020',
+    date: '20 December 2020',
     // link: {
     // 	url: "",
     // 	text: "Read More",
