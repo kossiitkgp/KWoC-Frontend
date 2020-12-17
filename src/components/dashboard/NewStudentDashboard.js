@@ -95,7 +95,19 @@ export default function NewStudentDashboard() {
     },
   ];
 
+  const message_storage = () => {
+    if(localStorage.getItem('announcement_message') !== 'true'){
+      localStorage.setItem('page_reload', 'false');
+    }
+    else{
+      localStorage.setItem('page_reload', 'true');
+    }
+
+    localStorage.setItem('announcement_message', 'true');
+  }
+
   useEffect(() => {
+    message_storage();
     const student_username = localStorage.getItem('student_username');
     fetch(`${STATS_API}/student/exists/${student_username}`)
     .then(res => res.text())
@@ -114,7 +126,7 @@ export default function NewStudentDashboard() {
     const data = {
       username: localStorage.getItem('student_username'),
     };
-    
+
     let last_commit = ``
     let projects_from_backend = []
     let commits_from_backend = []
@@ -151,9 +163,9 @@ export default function NewStudentDashboard() {
       /* testing for real time code*/
       try {
         async function calls_fetch() {
-          let base_date, cached_time_stamp;  
+          let base_date, cached_time_stamp;
           cached_time_stamp = localStorage.getItem(`stats_events_timestamp_${student_username}`)
-          if(cached_time_stamp == null ||  cached_time_stamp == undefined) 
+          if(cached_time_stamp == null ||  cached_time_stamp == undefined)
             base_date = new Date('2020-12-05T17:30:00Z')
           else
             base_date = cached_time_stamp
@@ -183,21 +195,21 @@ export default function NewStudentDashboard() {
             }
 
           }
-         
+
         if(prs_for_events.length != 0)
           localStorage.setItem(`stats_events_timestamp_${student_username}`, prs_for_events[0]['created_at'])
           return prs_for_events
         }
-      
+
         async function fetch_final_data() {
           let cached_repos, cached_pulls, parsed_arr_of_repos;
-          
+
           let prs_for_events = await  calls_fetch();
           let pulls_for_kwoc_event = []
           let pushes_for_kwoc_event = []
           let repos_set = new Set()
-  
-          
+
+
           prs_for_events.forEach(item => {
             if(Projects.hasOwnProperty(item['repo']['name'].toLowerCase())) {
               if(item['type'] === 'PullRequestEvent' && item['payload']['action'] !== 'closed') {
@@ -208,9 +220,9 @@ export default function NewStudentDashboard() {
                 pushes_for_kwoc_event.push(item)
                 repos_set.add(item['repo']['name'])
               }
-            } 
+            }
            })
-           
+
            /* making the repo set from cache and currently obtained data*/
            cached_repos = localStorage.getItem(`stats_repos_${student_username}`)
            if(cached_repos == null || cached_repos == undefined)
@@ -234,13 +246,13 @@ export default function NewStudentDashboard() {
           else{
             pulls_for_kwoc_event = [...pulls_for_kwoc_event, ...JSON.parse(cached_pulls)]
            }
-            
+
            setPulls(pulls_for_kwoc_event)
            /* storing the cached*/
            localStorage.setItem(`stats_pulls_${student_username}`, JSON.stringify(pulls_for_kwoc_event))
            localStorage.setItem(`stats_repos_${student_username}`, JSON.stringify(Array.from(repos_set)))
            /* Pull requests and their URLS have been soughted at this point, now need to work on commits*/
-           
+
            // know the last date for commit
           let api_url_last_commmit, last_commit_data, last_timestamp_of_stats;
             api_url_last_commmit = last_commit.replace('github.com/', 'api.github.com/repos/').replace('/commit/', '/commits/')
@@ -252,7 +264,7 @@ export default function NewStudentDashboard() {
               last_timestamp_of_stats = new Date('2020-12-05T17:30:00Z')
               return
             }
-            
+
            let extra_kwoc_commits = []
            for(let repo of repos_set) {
               let base_url = `https://api.github.com/repos/${repo}/commits?author=${student_username}&since=${last_timestamp_of_stats}`
@@ -270,9 +282,9 @@ export default function NewStudentDashboard() {
                     'lines_removed': indiv_commit_data['stats']['deletions']
                   })
                 }
-               
+
               }
-        
+
           let uniquely_new_commits = extra_kwoc_commits.filter(item => !commits_from_backend.some(e => e['html_url'] == item['html_url']))
           setExtraCommits(uniquely_new_commits)
           if(extra_kwoc_commits.length !== 0) {
@@ -286,15 +298,15 @@ export default function NewStudentDashboard() {
           }
          setExtraLinesAdded(lines_added)
          setExtraLinesRemoved(lines_removed)
-          
+
           }
         }
-  
+
         fetch_final_data()
       } catch(err) {
         return
       }
-      
+
   }, []);
 
   // sample data kept for future reference
@@ -475,6 +487,17 @@ export default function NewStudentDashboard() {
         </div>
 
         <div className='projects'>
+          {localStorage.getItem('announcement_message') == 'true' && localStorage.getItem('page_reload') == 'false'?
+            (
+              <div className='message' style={{textAlign:'center'}}>
+                <h1>Announcements have been updated!</h1>
+              </div>
+            ) :('')
+          }
+
+        </div>
+
+        <div className='projects'>
           <div className='project-header'>
             <h1>Languages involved</h1>
           </div>
@@ -543,9 +566,9 @@ export default function NewStudentDashboard() {
                             {item['repo']['name']}
                           </a>
                         </td>
-                        
+
                         <td><a href={item['payload']['pull_request']['html_url']} style={{color: 'white'}}>{trim_message(item['payload']['pull_request']['title'])}</a></td>
-                        
+
                       </tr>
                     );
                   })}
