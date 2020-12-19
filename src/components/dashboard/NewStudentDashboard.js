@@ -251,7 +251,17 @@ export default function NewStudentDashboard() {
             pulls_for_kwoc_event = [...pulls_for_kwoc_event, ...JSON.parse(cached_pulls)]
            }
 
-           setPulls(pulls_for_kwoc_event)
+           let unique_pull_ids = new Object()
+           let unique_pulls_for_kwoc_event = []
+           for(let pull of pulls_for_kwoc_event){
+             if(unique_pull_ids.hasOwnProperty(pull['id']))
+              continue
+            else {
+              unique_pull_ids[pull.id] = 'true'
+              unique_pulls_for_kwoc_event.push(pull)
+            }
+           }
+           setPulls(unique_pulls_for_kwoc_event)
            /* storing the cached*/
            localStorage.setItem(`stats_pulls_${student_username}`, JSON.stringify(pulls_for_kwoc_event))
            localStorage.setItem(`stats_repos_${student_username}`, JSON.stringify(Array.from(repos_set)))
