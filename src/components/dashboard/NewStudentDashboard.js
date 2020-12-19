@@ -407,7 +407,7 @@ export default function NewStudentDashboard() {
 
   function removeCachedTimeStamp() {
     const student_username = localStorage.getItem('student_username')
-    localStorage.removeItem(localStorage.getItem(`stats_events_timestamp_${student_username}`))
+    localStorage.removeItem(`stats_events_timestamp_${student_username}`)
     window.location.reload()
   }
 
