@@ -172,7 +172,7 @@ export default function NewStudentDashboard() {
           if(cached_time_stamp == null ||  cached_time_stamp == undefined)
             base_date = new Date('2020-12-05T17:30:00Z')
           else
-            base_date = cached_time_stamp
+            base_date = new Date(cached_time_stamp)
 
           let prs_for_events = []
           let base_url = `https://api.github.com/users/${student_username}/events?per_page=100`

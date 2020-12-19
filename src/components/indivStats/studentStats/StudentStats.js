@@ -148,7 +148,7 @@ export default function NewStudentDashboard() {
           if(cached_time_stamp == null ||  cached_time_stamp == undefined) 
             base_date = new Date('2020-12-05T17:30:00Z')
           else
-            base_date = cached_time_stamp
+            base_date = new Date(cached_time_stamp)
 
           let prs_for_events = []
           let base_url = `https://api.github.com/users/${student_username}/events?per_page=100`
@@ -162,7 +162,8 @@ export default function NewStudentDashboard() {
              events_length = events.length
             if(events[events_length-1] != undefined)
               last_event_date = new Date(events[events_length-1]['created_at'])
-            if(last_event_date > base_date) {
+            console.log(` ${last_event_date} > ${base_date} `, last_event_date > base_date)
+              if(last_event_date > base_date) {
               prs_for_events.push(...events)
               page_num = page_num + 1
             } else {
@@ -176,6 +177,7 @@ export default function NewStudentDashboard() {
 
           }
          
+          console.log('latest pulls fetched are ',prs_for_events)
         if(prs_for_events.length != 0)
           localStorage.setItem(`stats_events_timestamp_${student_username}`, prs_for_events[0]['created_at'])
           return prs_for_events
