@@ -6,6 +6,7 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import axios from 'axios';
 import reloadIcon from '../../images/refresh-cw.svg';
+import cheers from '../../images/meme.gif'
 
 function trim_message(message) {
   if(message)
@@ -40,6 +41,7 @@ function fetch_calls(link) {
 export default function NewStudentDashboard() {
   const [fullName, setFullName] = useState('');
   const [collegeName, setCollegeName] = useState('');
+  const [evalStatus, setEvalStatus] = useState('');
   const [projects, setProjects] = useState([]);
 
   const [stats, setStats] = useState({});
@@ -111,6 +113,17 @@ export default function NewStudentDashboard() {
     localStorage.setItem('announcement_message', 'true');
   }
 
+  const result_message_storage = () => {
+    if(localStorage.getItem('result_message') !== 'true'){
+      localStorage.setItem('page_reload2', 'false');
+    }
+    else{
+      localStorage.setItem('page_reload2', 'true');
+    }
+
+    localStorage.setItem('result_message', 'true');
+  }
+
   useEffect(() => {
     message_storage();
     const student_username = localStorage.getItem('student_username');
@@ -143,6 +156,11 @@ export default function NewStudentDashboard() {
       .then((res) => {
         setFullName(res.name);
         setCollegeName(res.college);
+        setEvalStatus(res.evals);
+
+        if(res.evals !== 0){
+          result_message_storage();
+        }
       })
       .catch((err) => {
         alert('Server Error, Please try again');
@@ -501,198 +519,249 @@ export default function NewStudentDashboard() {
           </div>
         </div>
 
-        <div className='projects'>
-          {localStorage.getItem('announcement_message') == 'true' && localStorage.getItem('page_reload') == 'false'?
-            (
-              <div className='message' style={{textAlign:'center'}}>
-                <h1>Announcements have been updated!</h1>
-              </div>
-            ) :('')
-          }
-
-        </div>
-
-        <div className='projects'>
-          <div className='project-header'>
-            <h1>Languages involved</h1>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            {stats['languages'] != undefined &&
-              stats['languages'].map((item) => (
-                <span
-                  className='tag is-dark is-large'
-                  style={{ margin: '5px' }}
-                >
-                  {item}
-                </span>
-              ))}
-          </div>
-        </div>
-
-        <div className='projects'>
-          <div className='project-header'>
-            <h1>Projects</h1>
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            {projects != undefined &&
-              projects.map((item) => (
-                <span
-                  className='tag is-dark is-large is-info'
-                  style={{ margin: '5px' }}
-                >
-                  <a
-                    href={`https://github.com/${item}`}
-                    style={{ color: 'white' }}
-                  >
-                    {item}
-                  </a>
-                </span>
-              ))}
-          </div>
-        </div>
-
-        <div className='projects'>
-          <div className='project-header'>
-            <h1>Pull Reqests
-              <img
-                src={reloadIcon}
-                className="refresh-icon" 
-                onClick={removeCachedTimeStamp} />
-            </h1>
-          </div>
-          <div className='table-container' id='indiv-stats-table'>
-            {pulls != undefined ? (
-              <table>
-                <thead>
-                  <tr>
-                    <th style={{ color: 'white' }}>
-                      <h3>Project</h3>
-                    </th>
-                    <th style={{ color: 'white' }}>
-                      <h3>Pull Request</h3>
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {pulls.map((item) => {
-                    return (
-                      <tr>
-                        <td>
-                          <a
-                            className='project-in-commit-table'
-                            href={`https://github.com/${item['repo']['name']}`}
-                          >
-                            {item['repo']['name']}
-                          </a>
-                        </td>
-
-                        <td><a href={item['payload']['pull_request']['html_url']} style={{color: 'white'}}>{trim_message(item['payload']['pull_request']['title'])}</a></td>
-
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            ) : (
-              ''
-            )}
+        <div>
+          {evalStatus == 0 ? (
+            <div className='projects'>
+              <h1 className='message' style={{ textAlign: 'center' }}>
+                You could not clear KWoC 2020 Mid Evaluation.
+                <br />
+                But, don't let this stop you from contributing to Open Source.
+                For any issues contact us.
+              </h1>
             </div>
-        </div>
-
-        <div className='projects'>
-          <div className='project-header'>
-            <h1>Commits</h1>
-          </div>
-          <div className='table-container' id='indiv-stats-table'>
-            {stats['commits'] != undefined && extraCommits != undefined ? (
-              <table>
-                <thead>
-                  <tr>
-                    <th style={{ color: 'white' }}>
-                      <h3>Project</h3>
-                    </th>
-                    <th style={{ color: 'white' }}>
-                      <h3>Commit</h3>
-                    </th>
-                    <th style={{ color: 'white' }}>
-                      <h3>Lines</h3>
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {[...extraCommits,...stats['commits']].map((item) => {
-                    return (
-                      <tr>
-                        <td>
-                          <a
-                            className='project-in-commit-table'
-                            href={`https://github.com/${item['project']}`}
-                          >
-                            {item['project']}
-                          </a>
-                        </td>
-                        <td><a style={{color: 'white'}} href={item['html_url']}>{trim_message(item['message'])}</a></td>
-                        <td>
-                        +{trim_lines(item['lines_added'])},-{trim_lines(item['lines_removed'])}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            ) : (
-              ''
-            )}
-          </div>
-        </div>
-
-        <section className='resource-card'>
-          <div className='resource-header'>
-            <h1>Resources</h1>
-          </div>
-
-          <table className='table is-bordered is-striped'>
-            <tbody>
-              {resources.map((resourceCard) => {
-                const message = resourceCard.message;
-                const url = resourceCard.url;
-                const avatar = resourceCard.avatar;
-
-                return (
-                  <tr>
-                    <td>
-                      <a href={url}>
-                        <img
-                          src={avatar}
-                          className='avatar-resource'
-                          alt='link'
-                        ></img>
-                      </a>
-                    </td>
-                    <td>
-                      <a href={url}>
-                        <p>{message}</p>
-                      </a>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </section>
-        <div className='announcements'>
-          <h1>Announcements</h1>
-
-          {announcements.map((item, index) => {
-            return (
-              <div className='anc-card card-component grow-card'>
-                <h1>{item.date}</h1>
-                <p>{item.content}</p>
+          ) : (
+            <div>
+              <div className='projects'>
+                {localStorage.getItem('announcement_message') == 'true' &&
+                localStorage.getItem('page_reload') == 'false' ? (
+                  <div className='message' style={{ textAlign: 'center' }}>
+                    <h1>Announcements have been updated!</h1>
+                  </div>
+                ) : (
+                  ''
+                )}
               </div>
-            );
-          })}
+
+              <div className='projects'>
+                {localStorage.getItem('result_message') == 'true' &&
+                localStorage.getItem('page_reload2') == 'false' ? (
+                  <div className='message' style={{ textAlign: 'center' }}>
+                    <h1>
+                      You have successfully passed KWoC 2020 Mid Evaluation.
+                      Keep going!
+                    </h1>
+                    <img src={cheers} />
+                  </div>
+                ) : (
+                  ''
+                )}
+              </div>
+
+              <div className='projects'>
+                <div className='project-header'>
+                  <h1>Languages involved</h1>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  {stats['languages'] != undefined &&
+                    stats['languages'].map((item) => (
+                      <span
+                        className='tag is-dark is-large'
+                        style={{ margin: '5px' }}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                </div>
+              </div>
+
+              <div className='projects'>
+                <div className='project-header'>
+                  <h1>Projects</h1>
+                </div>
+                <div style={{ textAlign: 'center' }}>
+                  {projects != undefined &&
+                    projects.map((item) => (
+                      <span
+                        className='tag is-dark is-large is-info'
+                        style={{ margin: '5px' }}
+                      >
+                        <a
+                          href={`https://github.com/${item}`}
+                          style={{ color: 'white' }}
+                        >
+                          {item}
+                        </a>
+                      </span>
+                    ))}
+                </div>
+              </div>
+
+              <div className='projects'>
+                <div className='project-header'>
+                  <h1>
+                    Pull Reqests
+                    <img
+                      src={reloadIcon}
+                      className='refresh-icon'
+                      onClick={removeCachedTimeStamp}
+                    />
+                  </h1>
+                </div>
+                <div className='table-container' id='indiv-stats-table'>
+                  {pulls != undefined ? (
+                    <table>
+                      <thead>
+                        <tr>
+                          <th style={{ color: 'white' }}>
+                            <h3>Project</h3>
+                          </th>
+                          <th style={{ color: 'white' }}>
+                            <h3>Pull Request</h3>
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {pulls.map((item) => {
+                          return (
+                            <tr>
+                              <td>
+                                <a
+                                  className='project-in-commit-table'
+                                  href={`https://github.com/${item['repo']['name']}`}
+                                >
+                                  {item['repo']['name']}
+                                </a>
+                              </td>
+
+                              <td>
+                                <a
+                                  href={
+                                    item['payload']['pull_request']['html_url']
+                                  }
+                                  style={{ color: 'white' }}
+                                >
+                                  {trim_message(
+                                    item['payload']['pull_request']['title']
+                                  )}
+                                </a>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              </div>
+
+              <div className='projects'>
+                <div className='project-header'>
+                  <h1>Commits</h1>
+                </div>
+                <div className='table-container' id='indiv-stats-table'>
+                  {stats['commits'] != undefined &&
+                  extraCommits != undefined ? (
+                    <table>
+                      <thead>
+                        <tr>
+                          <th style={{ color: 'white' }}>
+                            <h3>Project</h3>
+                          </th>
+                          <th style={{ color: 'white' }}>
+                            <h3>Commit</h3>
+                          </th>
+                          <th style={{ color: 'white' }}>
+                            <h3>Lines</h3>
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {[...extraCommits, ...stats['commits']].map((item) => {
+                          return (
+                            <tr>
+                              <td>
+                                <a
+                                  className='project-in-commit-table'
+                                  href={`https://github.com/${item['project']}`}
+                                >
+                                  {item['project']}
+                                </a>
+                              </td>
+                              <td>
+                                <a
+                                  style={{ color: 'white' }}
+                                  href={item['html_url']}
+                                >
+                                  {trim_message(item['message'])}
+                                </a>
+                              </td>
+                              <td>
+                                +{trim_lines(item['lines_added'])},-
+                                {trim_lines(item['lines_removed'])}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              </div>
+
+              <section className='resource-card'>
+                <div className='resource-header'>
+                  <h1>Resources</h1>
+                </div>
+
+                <table className='table is-bordered is-striped'>
+                  <tbody>
+                    {resources.map((resourceCard) => {
+                      const message = resourceCard.message;
+                      const url = resourceCard.url;
+                      const avatar = resourceCard.avatar;
+
+                      return (
+                        <tr>
+                          <td>
+                            <a href={url}>
+                              <img
+                                src={avatar}
+                                className='avatar-resource'
+                                alt='link'
+                              ></img>
+                            </a>
+                          </td>
+                          <td>
+                            <a href={url}>
+                              <p>{message}</p>
+                            </a>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </section>
+              <div className='announcements'>
+                <h1>Announcements</h1>
+
+                {announcements.map((item, index) => {
+                  return (
+                    <div className='anc-card card-component grow-card'>
+                      <h1>{item.date}</h1>
+                      <p>{item.content}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <Footer />
