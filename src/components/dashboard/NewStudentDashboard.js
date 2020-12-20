@@ -118,7 +118,7 @@ export default function NewStudentDashboard() {
     .then(res => res.text())
     .then(res => {
       if(res == "false") {
-        alert('Sorry, itseems you have not registered for KWoC')
+        alert('Sorry, it seems that you have not registered for KWoC')
         window.location.pathname = ''
       }
     })
