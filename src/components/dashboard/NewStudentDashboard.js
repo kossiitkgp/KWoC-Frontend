@@ -5,6 +5,7 @@ import './dashboard.scss';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import axios from 'axios';
+import reloadIcon from '../../images/refresh-cw.svg';
 
 function trim_message(message) {
   if(message)
@@ -552,7 +553,12 @@ export default function NewStudentDashboard() {
 
         <div className='projects'>
           <div className='project-header'>
-            <h1>Pull Reqests</h1>
+            <h1>Pull Reqests
+              <img
+                src={reloadIcon}
+                className="refresh-icon" 
+                onClick={removeCachedTimeStamp} />
+            </h1>
           </div>
           <div>
             {pulls != undefined ? (
@@ -689,7 +695,6 @@ export default function NewStudentDashboard() {
           })}
         </div>
       </div>
-      <button  className="button is-light is-large" style={{position: 'relative',left: '50%', right: '50%', transform: 'translateX(-50%)', marginBottom: '5%'}} onClick={removeCachedTimeStamp}>Hard Reload(uses no cache)</button>
       <Footer />
     </div>
   );
