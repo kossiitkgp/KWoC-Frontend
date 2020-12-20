@@ -527,9 +527,9 @@ export default function NewStudentDashboard() {
                 onClick={removeCachedTimeStamp} />
             </h1>
           </div>
-          <div>
+          <div className='table-container' id='indiv-stats-table'>
             {pulls != undefined ? (
-              <table id='commits-table' className='table is-striped'>
+              <table>
                 <thead>
                   <tr>
                     <th style={{ color: 'white' }}>
@@ -571,9 +571,9 @@ export default function NewStudentDashboard() {
           <div className='project-header'>
             <h1>Commits</h1>
           </div>
-          <div>
+          <div className='table-container' id='indiv-stats-table'>
             {stats['commits'] != undefined && extraCommits != undefined ? (
-              <table id='commits-table' className='table is-striped'>
+              <table>
                 <thead>
                   <tr>
                     <th style={{ color: 'white' }}>
