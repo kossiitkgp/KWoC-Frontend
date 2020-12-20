@@ -6,7 +6,7 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import axios from 'axios';
 import reloadIcon from '../../images/refresh-cw.svg';
-import cheers from '../../images/meme.gif'
+import cheers from '../../images/meme.jpg'
 
 function trim_message(message) {
   if(message)
