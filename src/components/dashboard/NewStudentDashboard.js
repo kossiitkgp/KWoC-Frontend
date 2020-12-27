@@ -294,8 +294,7 @@ export default function NewStudentDashboard() {
             last_timestamp_of_stats = last_commit_data['commit']['committer']['date']
             }
             catch (err) {
-              last_timestamp_of_stats = new Date('2020-12-05T17:30:00Z')
-              return
+              last_timestamp_of_stats = '2020-12-05T17:30:00Z'
             }
 
            let extra_kwoc_commits = []
@@ -495,7 +494,7 @@ export default function NewStudentDashboard() {
             <div className='mentor-stats-content'>
               <div className='card-component non-purple-card mstats grow-card'>
                 <p className='font-mentor-header'>Commits</p>
-                <p className='font-mentor-stats'>{stats['no_of_commits']}</p>
+                <p className='font-mentor-stats'>{stats['no_of_commits'] + extraCommits.length}</p>
               </div>
 
               <div className='card-component purple-card mstats  grow-card'>

@@ -247,15 +247,15 @@ export default function NewStudentDashboard() {
            /* Pull requests and their URLS have been soughted at this point, now need to work on commits*/
            
            // know the last date for commit
+           
           let api_url_last_commmit, last_commit_data, last_timestamp_of_stats;
             api_url_last_commmit = last_commit.replace('github.com/', 'api.github.com/repos/').replace('/commit/', '/commits/')
-           try {
+            try {
             last_commit_data = await fetch_calls(api_url_last_commmit)
             last_timestamp_of_stats = last_commit_data['commit']['committer']['date']
             }
             catch (err) {
-              last_timestamp_of_stats = new Date('2020-12-05T17:30:00Z')
-              return
+              last_timestamp_of_stats = '2020-12-05T17:30:00Z'
             }
             
            let extra_kwoc_commits = []
@@ -454,7 +454,7 @@ export default function NewStudentDashboard() {
             <div className='mentor-stats-content'>
               <div className='card-component non-purple-card mstats grow-card'>
                 <p className='font-mentor-header'>Commits</p>
-                <p className='font-mentor-stats'>{stats['no_of_commits']}</p>
+                <p className='font-mentor-stats'>{stats['no_of_commits'] + extraCommits.length}</p>
               </div>
 
               <div className='card-component purple-card mstats  grow-card'>
