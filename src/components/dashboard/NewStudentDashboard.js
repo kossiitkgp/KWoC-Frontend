@@ -25,7 +25,7 @@ function trim_lines(lines) {
 function fetch_calls(link) {
   return fetch(link, {
     headers: {
-      'Authorization': 'token 710126db276b7f6b47013fa8426211bfe33c40dc'
+      'Authorization': 'token a631850ce6095d94a0d5919f0644ab543b9d5a8f'
       }
     })
       .then(res => res.json())
