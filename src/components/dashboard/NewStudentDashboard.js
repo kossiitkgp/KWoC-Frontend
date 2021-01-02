@@ -575,7 +575,7 @@ export default function NewStudentDashboard() {
                 <ul>
                   <li><b>If you do not submit this evaluation, your participation will not successful.</b></li>
                   <li>To clear the end evaluations, you need to submit a blog post describing your development experience in KWoC</li>
-                  <li> You can choose any blogging platform you want. Few examples are Medium.com, WordPress, GitHub static pages and Blogspot. Please make sure that the link you share is publicly accessible. The report can be as descriptive as you want, but must contain at least the following points : <ul>
+                  <li> You can choose any blogging platform you want. Few examples are Medium, WordPress, GitHub static pages and Blogspot. Please make sure that the link you share is publicly accessible. The report can be as descriptive as you want, but must contain at least the following points : <ul>
                     <li>List of projects you worked on</li>
                     <li>Summary of your work</li></ul></li>
                   <li>Check out some good examples of previous end-term reports :
