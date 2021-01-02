@@ -48,7 +48,7 @@ export default function NewStudentDashboard() {
   const [stats, setStats] = useState({});
 
   const [pulls, setPulls] = useState([])
-
+  
   const [extraCommits, setExtraCommits] = useState([])
   const [extraLinesAdded, setExtraLinesAdded] = useState(0)
   const [extraLinesRemoved, setExtraLinesRemoved] = useState(0)
@@ -143,6 +143,7 @@ export default function NewStudentDashboard() {
 
     if(!urlMatch.test(blogLink)){
       alert('Not a valid blog link. Please correct and submit again');
+      return
     } else {
       axios
       .post(`${BACKEND_URL}/student/bloglink`, details, {
@@ -159,6 +160,8 @@ export default function NewStudentDashboard() {
         console.log(err);
       });
     }    
+
+    window.location.reload()
   }
 
   useEffect(() => {
@@ -476,6 +479,11 @@ export default function NewStudentDashboard() {
     window.location.reload()
   }
 
+  function resendForm() {
+    setEvalStatus(1)
+  }
+
+
   return (
     <div className='student-dashboard-body dashboard-container'>
       <div className='dashboard'>
@@ -556,30 +564,28 @@ export default function NewStudentDashboard() {
         </div>
 
         <div>
-          {evalStatus == 0 ? ('') : (
+          {evalStatus == 1 ?  (
             <div className='projects'>
               <div className='project-header'>
                 <h1>End-Term Evaluation</h1>
               </div>
 
               <div className='endEvals-guide'>
-                <p><b>Please read the instructions before you proceed :</b></p>
-                <br />
+                <h2>Please read the instructions before you proceed :</h2>
                 <ul>
                   <li><b>If you do not submit this evaluation, your participation will not successful.</b></li>
-                  <li>This form is supposed to be filled by KWoC students only, who passed the mid-term evaluation.</li>
-                  <li>Regarding "URL for your KWoC report": It has to be a link to either a blog post or a document which will be your final KWoC 2020 report. You can choose any blogging platform you want. Few examples are Medium.com, WordPress, GitHub static pages and Blogspot. The report can be as descriptive as you want, but must contain at least the following points : <ul>
+                  <li>To clear the end evaluations, you need to submit a blog post describing your development experience in KWoC</li>
+                  <li> You can choose any blogging platform you want. Few examples are Medium.com, WordPress, GitHub static pages and Blogspot. The report can be as descriptive as you want, but must contain at least the following points : <ul>
                     <li>List of projects you worked on</li>
-                    <li>List of Pull Requests you created or got involved in</li>
                     <li>Summary of your work</li></ul></li>
-                  <li>Check out some good examples of end-term reports :
-                    <a href='https://medium.com/@yashrsharma44/kwoc-project-report-c337e7222246' target='_blank' rel='noreferrer'>Example 1</a>
-                    <a href='https://drive.google.com/file/d/1tAW5MvWWxAdeDREvnPhlorodQRfruzBt/view' target='_blank' rel='noreferrer'>Example 2</a>
-                    <a href='https://medium.com/@nilaypathak/kwoc-kharagpur-winter-of-code-project-report-921c5db3ee71' target='_blank' rel='noreferrer'>Example 3</a>
+                  <li>Check out some good examples of previous end-term reports :
+                    <a href='https://medium.com/@yashrsharma44/kwoc-project-report-c337e7222246' target='_blank' rel='noreferrer'>Example 1 </a>
+                    <a href='https://drive.google.com/file/d/1tAW5MvWWxAdeDREvnPhlorodQRfruzBt/view' target='_blank' rel='noreferrer'>Example 2 </a>
+                    <a href='https://medium.com/@nilaypathak/kwoc-kharagpur-winter-of-code-project-report-921c5db3ee71' target='_blank' rel='noreferrer'>Example 3 </a>
                     <a href='https://github.com/kwoc/2016/blob/master/static/files/arindam.pdf' target='_blank' rel='noreferrer'>Example 4</a>
                   </li>
-                  <li><b>Last date to submit the evaluation is January 9th, 2021 23:59 IST (GMT +5:30). Submit the link to your report. Make sure that the link for your report is publicly accessible. </b></li>
-                  <li>Link to Feedback Form: <a href='https://forms.gle/sBDKXnx8iMFzgZi36' target='_blank' rel='noreferrer'>Here</a></li>
+                  <li><b>Last date to submit the evaluation is January 9th, 2021 23:00 IST. Make sure that the link for your report is publicly accessible. </b></li>
+                  <li>Also, please fill the anonymous<a href='https://forms.gle/sBDKXnx8iMFzgZi36' target='_blank' rel='noreferrer'> Feedback Form</a></li>
                 </ul>
 
                 <div className="field">
@@ -587,13 +593,19 @@ export default function NewStudentDashboard() {
                     <input className="input" type="text" value={blogLink} placeholder="Blog Link" onChange={ (e) => setBlogLink(e.target.value)} />
                   </p>
                   <p className='control'>
-                    <button className='button is-primary' onClick= {handleBlogLink}>Submit</button>
+                    <button className='button is-large is-info' onClick= {handleBlogLink}>Submit</button>
                   </p>
                 </div>
               </div>
             </div>
-          )}
+          ): ''}
         </div>
+
+        <React.Fragment>
+            {evalStatus == 2 ? (<div>
+              <h2>You have submitted the form successfully. Click <a onClick={resendForm}>here</a> if you wish to fill the form again. Please fill the anonymous <a href="https://forms.gle/sBDKXnx8iMFzgZi36">feedback form.</a>If you have succesfully cleared, you can expect the certificate by 18th Jan, 2021</h2>
+            </div>): ''}
+        </React.Fragment>
 
         <div>
           {evalStatus == 0 ? (
