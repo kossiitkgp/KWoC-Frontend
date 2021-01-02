@@ -20,8 +20,16 @@ const data = [
     // },
   },
   {
-    text: 'End Evaluations',
+    text: 'Coding Period Ends. However, we encourage you to keep contributing to the projects',
     date: '4 January 2021',
+    // link: {
+    // 	url: "",
+    // 	text: "Read More",
+    // },
+  },
+  {
+    text: 'Deadline to submit End evals report(for students who have cleared Mid Evals)',
+    date: '11 PM IST, 9 January 2021',
     // link: {
     // 	url: "",
     // 	text: "Read More",
