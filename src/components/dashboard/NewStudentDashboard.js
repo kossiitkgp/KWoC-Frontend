@@ -603,7 +603,7 @@ export default function NewStudentDashboard() {
 
         <React.Fragment>
             {evalStatus == 2 ? (<div>
-              <h2>You have submitted the form successfully. Click <a onClick={resendForm}>here</a> if you wish to fill the form again. Please fill the anonymous <a href="https://forms.gle/sBDKXnx8iMFzgZi36">feedback form.</a>If you have succesfully cleared, you can expect the certificate by 18th Jan, 2021</h2>
+              <h2>You have submitted the form successfully. Click <a onClick={resendForm}>here</a> if you wish to fill the form again. Please fill the anonymous <a href="https://forms.gle/sBDKXnx8iMFzgZi36">feedback form</a>. Your suggestions matter!If you have succesfully cleared, you can expect the certificate by 18th Jan, 2021.</h2>
             </div>): ''}
         </React.Fragment>
 
