@@ -392,6 +392,27 @@ $text-color: white;
       flex-direction: column;
       margin: 3rem 0;
 
+      .endEvals-guide {
+        z-index: 10;
+        p,
+        h1 {
+          padding: 0 1% 0 1%;
+          margin: 0 1% 0 1%;
+          text-align: center;
+        }
+
+        flex-grow: 1;
+
+        padding: 1%;
+        font-family: $dashboard-font;
+        font-size: 20px;
+        margin: 0 0 2rem 0;
+
+        // background: -webkit-linear-gradient(#eb8952 50%, #eb8952 100%);
+        // -webkit-background-clip: text;
+        // -webkit-text-fill-color: transparent;
+      }
+
       .message {
         z-index: 10;
         p,

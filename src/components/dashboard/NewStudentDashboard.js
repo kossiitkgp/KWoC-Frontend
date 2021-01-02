@@ -42,6 +42,7 @@ export default function NewStudentDashboard() {
   const [fullName, setFullName] = useState('');
   const [collegeName, setCollegeName] = useState('');
   const [evalStatus, setEvalStatus] = useState('');
+  const [blogLink, setBlogLink] = useState('');
   const [projects, setProjects] = useState([]);
 
   const [stats, setStats] = useState({});
@@ -102,6 +103,11 @@ export default function NewStudentDashboard() {
     },
   ];
 
+  const details = {
+    bloglink: blogLink,
+    username: localStorage.getItem('student_username')
+  }
+
   const message_storage = () => {
     if(localStorage.getItem('announcement_message') !== 'true'){
       localStorage.setItem('page_reload', 'false');
@@ -122,6 +128,37 @@ export default function NewStudentDashboard() {
     }
 
     localStorage.setItem('result_message', 'true');
+  }
+
+  const handleBlogLink = () => {
+    const urlMatch = new RegExp(
+      '^(https?:\\/\\/)?' + // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$',
+      'i'
+    ); 
+
+    if(!urlMatch.test(blogLink)){
+      alert('Not a valid blog link. Please correct and submit again');
+    } else {
+      axios
+      .post(`${BACKEND_URL}/student/bloglink`, details, {
+        headers: {
+          'Bearer': localStorage.getItem('student_jwt')
+        },
+      })
+      .then((res) => {
+        console.log(details);
+        console.log(res);
+      })
+      .catch((err) => {
+        alert('Server error, Try again');
+        console.log(err);
+      });
+    }    
   }
 
   useEffect(() => {
@@ -516,6 +553,46 @@ export default function NewStudentDashboard() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div>
+          {evalStatus == 0 ? ('') : (
+            <div className='projects'>
+              <div className='project-header'>
+                <h1>End-Term Evaluation</h1>
+              </div>
+
+              <div className='endEvals-guide'>
+                <p><b>Please read the instructions before you proceed :</b></p>
+                <br />
+                <ul>
+                  <li><b>If you do not submit this evaluation, your participation will not successful.</b></li>
+                  <li>This form is supposed to be filled by KWoC students only, who passed the mid-term evaluation.</li>
+                  <li>Regarding "URL for your KWoC report": It has to be a link to either a blog post or a document which will be your final KWoC 2020 report. You can choose any blogging platform you want. Few examples are Medium.com, WordPress, GitHub static pages and Blogspot. The report can be as descriptive as you want, but must contain at least the following points : <ul>
+                    <li>List of projects you worked on</li>
+                    <li>List of Pull Requests you created or got involved in</li>
+                    <li>Summary of your work</li></ul></li>
+                  <li>Check out some good examples of end-term reports :
+                    <a href='https://medium.com/@yashrsharma44/kwoc-project-report-c337e7222246' target='_blank' rel='noreferrer'>Example 1</a>
+                    <a href='https://drive.google.com/file/d/1tAW5MvWWxAdeDREvnPhlorodQRfruzBt/view' target='_blank' rel='noreferrer'>Example 2</a>
+                    <a href='https://medium.com/@nilaypathak/kwoc-kharagpur-winter-of-code-project-report-921c5db3ee71' target='_blank' rel='noreferrer'>Example 3</a>
+                    <a href='https://github.com/kwoc/2016/blob/master/static/files/arindam.pdf' target='_blank' rel='noreferrer'>Example 4</a>
+                  </li>
+                  <li><b>Last date to submit the evaluation is January 9th, 2021 23:59 IST (GMT +5:30). Submit the link to your report. Make sure that the link for your report is publicly accessible. </b></li>
+                  <li>Link to Feedback Form: <a href='https://forms.gle/sBDKXnx8iMFzgZi36' target='_blank' rel='noreferrer'>Here</a></li>
+                </ul>
+
+                <div className="field">
+                  <p className="control is-expanded">
+                    <input className="input" type="text" value={blogLink} placeholder="Blog Link" onChange={ (e) => setBlogLink(e.target.value)} />
+                  </p>
+                  <p className='control'>
+                    <button className='button is-primary' onClick= {handleBlogLink}>Submit</button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         <div>
