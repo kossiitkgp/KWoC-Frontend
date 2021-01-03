@@ -602,24 +602,24 @@ export default function NewStudentDashboard() {
         </div>
 
         <React.Fragment>
-            {evalStatus == 2 ? (<div>
-              <h2>You have submitted the form successfully. Click <a onClick={resendForm}>here</a> if you wish to fill the form again. Please fill the anonymous <a href="https://forms.gle/sBDKXnx8iMFzgZi36">feedback form</a>. Your suggestions matter!If you have succesfully cleared, you can expect the certificate by 18th Jan, 2021.</h2>
+            {evalStatus == 2 ? (<div className='endEvals-guide'>
+              <h2>You have submitted the form successfully. Click <a onClick={resendForm}>here</a> if you wish to fill the form again. Please fill the anonymous <a href="https://forms.gle/sBDKXnx8iMFzgZi36">feedback form</a>. Your suggestions matter!<br />  If you have succesfully cleared, you can expect the certificate by 18th Jan, 2021.</h2>
             </div>): ''}
         </React.Fragment>
 
         <div>
           {evalStatus == 0 ? (
-            <div className='projects'>
+            <React.Fragment className='projects'>
               <h1 className='message' style={{ textAlign: 'center' }}>
                 You could not clear KWoC 2020 Mid Evaluation.
                 <br />
                 But, don't let this stop you from contributing to Open Source.
                 For any issues contact us.
               </h1>
-            </div>
+            </React.Fragment>
           ) : (
             <div>
-              <div className='projects'>
+              <React.Fragment className='projects'>
                 {localStorage.getItem('announcement_message') == 'true' &&
                 localStorage.getItem('page_reload') == 'false' ? (
                   <div className='message' style={{ textAlign: 'center' }}>
@@ -628,9 +628,9 @@ export default function NewStudentDashboard() {
                 ) : (
                   ''
                 )}
-              </div>
+              </React.Fragment>
 
-              <div className='projects'>
+              <React.Fragment className='projects'>
                 {localStorage.getItem('result_message') == 'true' &&
                 localStorage.getItem('page_reload2') == 'false' ? (
                   <div className='message' style={{ textAlign: 'center' }}>
@@ -643,7 +643,7 @@ export default function NewStudentDashboard() {
                 ) : (
                   ''
                 )}
-              </div>
+              </React.Fragment>
 
               <div className='projects'>
                 <div className='project-header'>
