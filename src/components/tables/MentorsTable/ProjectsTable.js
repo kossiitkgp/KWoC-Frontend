@@ -76,8 +76,9 @@ export default function ProjectsTable() {
       <div className='stats'>
         <div style={{ textAlign: 'center' }}>
           <h3>
-            Last Update at {lastUpdatedTime}. Stats are updated for every 1
-            hour{' '}
+          Coding period has ended<br/>
+          <u>Note for Students</u>: Please submit your report link for end evals in the Student Dashboard before 9th Jan 11 PM IST.
+          <br/> Last Updated at 4th Jan 11:59 PM IST {' '}
           </h3>
           <h5>
             You can sort the rows by clicking on headers, and also filter by
