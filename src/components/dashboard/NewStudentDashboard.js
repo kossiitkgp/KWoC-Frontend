@@ -6,7 +6,8 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import axios from 'axios';
 import reloadIcon from '../../images/refresh-cw.svg';
-import cheers from '../../images/meme.jpg'
+import cheers from '../../images/meme.jpg';
+import Confetti from 'react-confetti';
 
 function trim_message(message) {
   if(message)
@@ -44,6 +45,8 @@ export default function NewStudentDashboard() {
   const [evalStatus, setEvalStatus] = useState('');
   const [blogLink, setBlogLink] = useState('');
   const [projects, setProjects] = useState([]);
+
+  // const { width, height } = useWindowSize();
 
   const [stats, setStats] = useState({});
 
@@ -185,9 +188,6 @@ export default function NewStudentDashboard() {
       username: localStorage.getItem('student_username'),
     };
 
-    let last_commit = ``
-    let projects_from_backend = []
-    let commits_from_backend = []
     fetch(URL, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -211,173 +211,11 @@ export default function NewStudentDashboard() {
       .then((res) => {
         setStats(res.data[student_username]);
         console.log(res.data[student_username]);
-        try {
-          last_commit = res.data[student_username]['commits'][0]['html_url']
-          projects_from_backend.push(...res.data[student_username]['projects'])
-          commits_from_backend = res.data[student_username]['commits']
-        } catch (err) {
-          console.log('no last commit to fetched and projects from backend')
-        }
+      
        })
       .catch((err) => {
         alert('Server error, Try again');
       });
-
-      /* testing for real time code*/
-      try {
-        async function calls_fetch() {
-          let base_date, cached_time_stamp;
-          cached_time_stamp = localStorage.getItem(`stats_events_timestamp_${student_username}`)
-          if(cached_time_stamp == null ||  cached_time_stamp == undefined)
-            base_date = new Date('2020-12-05T17:30:00Z')
-          else
-            base_date = new Date(cached_time_stamp)
-
-          let prs_for_events = []
-          let base_url = `https://api.github.com/users/${student_username}/events?per_page=100`
-          let page_num = 1
-          while(1) {
-            let events, events_length, last_event_date
-            if(page_num <= 3)
-               events = await fetch_calls(base_url + `&page=${page_num}`)
-            else
-              break
-             events_length = events.length
-            if(events[events_length-1] != undefined)
-              last_event_date = new Date(events[events_length-1]['created_at'])
-            if(last_event_date > base_date) {
-              prs_for_events.push(...events)
-              page_num = page_num + 1
-            } else {
-              let filtered_events = events.filter(item => {
-              let item_date = new Date(item['created_at'])
-                return item_date > base_date
-              })
-              prs_for_events.push(...filtered_events)
-              break
-            }
-
-          }
-
-        if(prs_for_events.length != 0)
-          localStorage.setItem(`stats_events_timestamp_${student_username}`, prs_for_events[0]['created_at'])
-          return prs_for_events
-        }
-
-        async function fetch_final_data() {
-          let cached_repos, cached_pulls, parsed_arr_of_repos;
-
-          let prs_for_events = await  calls_fetch();
-          let pulls_for_kwoc_event = []
-          let pushes_for_kwoc_event = []
-          let repos_set = new Set()
-
-
-          prs_for_events.forEach(item => {
-            if(Projects.hasOwnProperty(item['repo']['name'].toLowerCase())) {
-              if(item['type'] === 'PullRequestEvent' && item['payload']['action'] !== 'closed') {
-                pulls_for_kwoc_event.push(item)
-                repos_set.add(item['repo']['name'])
-              }
-              else if(item['type'] === 'PushEvent') {
-                pushes_for_kwoc_event.push(item)
-                repos_set.add(item['repo']['name'])
-              }
-            }
-           })
-
-           /* making the repo set from cache and currently obtained data*/
-           cached_repos = localStorage.getItem(`stats_repos_${student_username}`)
-           if(cached_repos == null || cached_repos == undefined)
-              repos_set = repos_set
-            else {
-              parsed_arr_of_repos = JSON.parse(cached_repos)
-              repos_set = new Set(parsed_arr_of_repos)
-              for(let arr of repos_set) {
-                repos_set.add(arr)
-              }
-            }
-
-            let union_set = new Set([...projects_from_backend,...Array.from(repos_set)])
-            let array_of_all_projects = Array.from(union_set)
-            setProjects(array_of_all_projects)
-
-           /* making the pulls array from cache and currently obtained data*/
-           cached_pulls = localStorage.getItem(`stats_pulls_${student_username}`)
-           if(cached_pulls == null || cached_pulls == undefined)
-            pulls_for_kwoc_event = pulls_for_kwoc_event
-          else{
-            pulls_for_kwoc_event = [...pulls_for_kwoc_event, ...JSON.parse(cached_pulls)]
-           }
-
-           let unique_pull_ids = new Object()
-           let unique_pulls_for_kwoc_event = []
-           for(let pull of pulls_for_kwoc_event){
-             if(unique_pull_ids.hasOwnProperty(pull['id']))
-              continue
-            else {
-              unique_pull_ids[pull.id] = 'true'
-              unique_pulls_for_kwoc_event.push(pull)
-            }
-           }
-           setPulls(unique_pulls_for_kwoc_event)
-           /* storing the cached*/
-           localStorage.setItem(`stats_pulls_${student_username}`, JSON.stringify(pulls_for_kwoc_event))
-           localStorage.setItem(`stats_repos_${student_username}`, JSON.stringify(Array.from(repos_set)))
-           /* Pull requests and their URLS have been soughted at this point, now need to work on commits*/
-
-           // know the last date for commit
-          let api_url_last_commmit, last_commit_data, last_timestamp_of_stats;
-            api_url_last_commmit = last_commit.replace('github.com/', 'api.github.com/repos/').replace('/commit/', '/commits/')
-           try {
-            last_commit_data = await fetch_calls(api_url_last_commmit)
-            last_timestamp_of_stats = last_commit_data['commit']['committer']['date']
-            }
-            catch (err) {
-              last_timestamp_of_stats = '2020-12-05T17:30:00Z'
-            }
-
-           let extra_kwoc_commits = []
-           for(let repo of repos_set) {
-              let base_url = `https://api.github.com/repos/${repo}/commits?author=${student_username}&since=${last_timestamp_of_stats}`
-              let commits_data = await fetch_calls(base_url)
-              for(let commit of commits_data) {
-                if(commit['commit']['committer']['date'] == last_timestamp_of_stats)
-                  break
-                  let commit_url = commit['url']
-                  let indiv_commit_data = await fetch_calls(commit_url)
-                  extra_kwoc_commits.push({
-                    'html_url': commit['html_url'],
-                    'project': repo,
-                    'message': commit['commit']['message'],
-                    'lines_added': indiv_commit_data['stats']['additions'],
-                    'lines_removed': indiv_commit_data['stats']['deletions']
-                  })
-                }
-
-              }
-
-          let uniquely_new_commits = extra_kwoc_commits.filter(item => !commits_from_backend.some(e => e['html_url'] == item['html_url']))
-          setExtraCommits(uniquely_new_commits)
-          if(extra_kwoc_commits.length !== 0) {
-           let lines_added = 0
-           let lines_removed = 0
-           for(let com of extra_kwoc_commits) {
-             lines_added += com['lines_added']
-           }
-           for(let com of extra_kwoc_commits) {
-            lines_removed += com['lines_added']
-          }
-         setExtraLinesAdded(lines_added)
-         setExtraLinesRemoved(lines_removed)
-
-          }
-        }
-
-        fetch_final_data()
-      } catch(err) {
-        return
-      }
 
   }, []);
 
@@ -539,7 +377,7 @@ export default function NewStudentDashboard() {
             <div className='mentor-stats-content'>
               <div className='card-component non-purple-card mstats grow-card'>
                 <p className='font-mentor-header'>Commits</p>
-                <p className='font-mentor-stats'>{stats['no_of_commits'] + extraCommits.length}</p>
+                <p className='font-mentor-stats'>{stats['commits'] && stats['commits'].length}</p>
               </div>
 
               <div className='card-component purple-card mstats  grow-card'>
@@ -548,7 +386,7 @@ export default function NewStudentDashboard() {
                   (open+closed)
                 </p>
                 <p className='font-mentor-stats'>
-                {pulls != undefined && pulls.length}
+                {stats['pulls'] != undefined && stats['pulls'].length}
                 </p>
               </div>
 
@@ -556,7 +394,7 @@ export default function NewStudentDashboard() {
                 <p className='font-mentor-header'>Lines of Code</p>
                    <h1>(+/-)</h1>
                 <p className='font-mentor-stats'>
-                {trim_lines(parseInt(stats['lines_added']) + extraLinesAdded)}/{trim_lines(parseInt(stats['lines_removed']) + extraLinesRemoved)}
+                {trim_lines(parseInt(stats['lines_added']))}/{trim_lines(parseInt(stats['lines_removed']))}
                 </p>
               </div>
             </div>
@@ -566,44 +404,26 @@ export default function NewStudentDashboard() {
         <div>
           {evalStatus == 1 ?  (
             <div className='projects'>
-              <div className='project-header'>
-                <h1>End-Term Evaluation</h1>
-              </div>
-
               <div className='endEvals-guide'>
-                <h2>Please read the instructions before you proceed :</h2>
-                <ul>
-                  <li><b>If you do not submit this evaluation, your participation will not successful.</b></li>
-                  <li>To clear the end evaluations, you need to submit a blog post describing your development experience in KWoC</li>
-                  <li> You can choose any blogging platform you want. Few examples are Medium, WordPress, GitHub static pages and Blogspot. Please make sure that the link you share is publicly accessible. The report can be as descriptive as you want, but must contain at least the following points : <ul>
-                    <li>List of projects you worked on</li>
-                    <li>Summary of your work</li></ul></li>
-                  <li>Check out some good examples of previous end-term reports :
-                    <a href='https://medium.com/@yashrsharma44/kwoc-project-report-c337e7222246' target='_blank' rel='noreferrer'>Example 1 </a>
-                    <a href='https://drive.google.com/file/d/1tAW5MvWWxAdeDREvnPhlorodQRfruzBt/view' target='_blank' rel='noreferrer'>Example 2 </a>
-                    <a href='https://medium.com/@nilaypathak/kwoc-kharagpur-winter-of-code-project-report-921c5db3ee71' target='_blank' rel='noreferrer'>Example 3 </a>
-                    <a href='https://github.com/kwoc/2016/blob/master/static/files/arindam.pdf' target='_blank' rel='noreferrer'>Example 4</a>
-                  </li>
-                  <li><b>Last date to submit the evaluation is January 9th, 2021 23:00 IST. Make sure that the link for your report is publicly accessible. </b></li>
-                  <li>Also, please fill the anonymous<a href='https://forms.gle/sBDKXnx8iMFzgZi36' target='_blank' rel='noreferrer'> Feedback Form</a></li>
-                </ul>
-
-                <div className="field">
-                  <p className="control is-expanded">
-                    <input className="input" type="text" value={blogLink} placeholder="Blog Link" onChange={ (e) => setBlogLink(e.target.value)} />
-                  </p>
-                  <p className='control'>
-                    <button className='button is-large is-info' onClick= {handleBlogLink}>Submit</button>
-                  </p>
-                </div>
+                <h1>
+                  Thank you for your efforts till now. The deadlines for End-term Evaluation submission has passed. See you next year and keep contributing to open source.
+                  <br />
+                  For any issues, contact us.
+                </h1>
               </div>
             </div>
           ): ''}
         </div>
 
         <React.Fragment>
-            {evalStatus == 2 ? (<div className='endEvals-guide'>
-              <h2>You have submitted the form successfully. Click <a onClick={resendForm}>here</a> if you wish to fill the form again. Please fill the anonymous <a href="https://forms.gle/sBDKXnx8iMFzgZi36">feedback form</a>. Your suggestions matter!<br />  If you have succesfully cleared, you can expect the certificate by 18th Jan, 2021.</h2>
+            {evalStatus == 2 ? (
+            <div className='endEvals-guide'>
+              <Confetti />
+              <h1>
+                Thank you for participating in KWoC. Your report is being evaluated and on clearing, your certificate would be emailed to you till 18th January. See you next year and keep contributing to open source.
+                <br />
+                For any issues, contact us.
+              </h1>
             </div>): ''}
         </React.Fragment>
 
@@ -667,8 +487,8 @@ export default function NewStudentDashboard() {
                   <h1>Projects</h1>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                  {projects != undefined &&
-                    projects.map((item) => (
+                  {stats['projects'] != undefined &&
+                    stats['projects'].map((item) => (
                       <span
                         className='tag is-dark is-large is-info'
                         style={{ margin: '5px' }}
@@ -710,27 +530,27 @@ export default function NewStudentDashboard() {
                       </thead>
 
                       <tbody>
-                        {pulls.map((item) => {
+                        {stats['pulls'] && stats['pulls'].map((item) => {
                           return (
                             <tr>
                               <td>
                                 <a
                                   className='project-in-commit-table'
-                                  href={`https://github.com/${item['repo']['name']}`}
+                                  href={`https://github.com/${item['base']['repo']['full_name']}`}
                                 >
-                                  {item['repo']['name']}
+                                  {item['base']['repo']['full_name']}
                                 </a>
                               </td>
 
                               <td>
                                 <a
                                   href={
-                                    item['payload']['pull_request']['html_url']
+                                    item['html_url']
                                   }
                                   style={{ color: 'white' }}
                                 >
                                   {trim_message(
-                                    item['payload']['pull_request']['title']
+                                    item['title']
                                   )}
                                 </a>
                               </td>
@@ -768,7 +588,7 @@ export default function NewStudentDashboard() {
                       </thead>
 
                       <tbody>
-                        {[...extraCommits, ...stats['commits']].map((item) => {
+                        {stats['commits'].map((item) => {
                           return (
                             <tr>
                               <td>
