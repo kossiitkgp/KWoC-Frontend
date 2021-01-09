@@ -6,7 +6,8 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import axios from 'axios';
 import reloadIcon from '../../images/refresh-cw.svg';
-import cheers from '../../images/meme.jpg'
+import cheers from '../../images/meme.jpg';
+import Confetti from 'react-confetti';
 
 function trim_message(message) {
   if(message)
@@ -44,6 +45,8 @@ export default function NewStudentDashboard() {
   const [evalStatus, setEvalStatus] = useState('');
   const [blogLink, setBlogLink] = useState('');
   const [projects, setProjects] = useState([]);
+
+  // const { width, height } = useWindowSize();
 
   const [stats, setStats] = useState({});
 
@@ -401,44 +404,26 @@ export default function NewStudentDashboard() {
         <div>
           {evalStatus == 1 ?  (
             <div className='projects'>
-              <div className='project-header'>
-                <h1>End-Term Evaluation</h1>
-              </div>
-
               <div className='endEvals-guide'>
-                <h2>Please read the instructions before you proceed :</h2>
-                <ul>
-                  <li><b>If you do not submit this evaluation, your participation will not successful.</b></li>
-                  <li>To clear the end evaluations, you need to submit a blog post describing your development experience in KWoC</li>
-                  <li> You can choose any blogging platform you want. Few examples are Medium, WordPress, GitHub static pages and Blogspot. Please make sure that the link you share is publicly accessible. The report can be as descriptive as you want, but must contain at least the following points : <ul>
-                    <li>List of projects you worked on</li>
-                    <li>Summary of your work</li></ul></li>
-                  <li>Check out some good examples of previous end-term reports :
-                    <a href='https://medium.com/@yashrsharma44/kwoc-project-report-c337e7222246' target='_blank' rel='noreferrer'>Example 1 </a>
-                    <a href='https://drive.google.com/file/d/1tAW5MvWWxAdeDREvnPhlorodQRfruzBt/view' target='_blank' rel='noreferrer'>Example 2 </a>
-                    <a href='https://medium.com/@nilaypathak/kwoc-kharagpur-winter-of-code-project-report-921c5db3ee71' target='_blank' rel='noreferrer'>Example 3 </a>
-                    <a href='https://github.com/kwoc/2016/blob/master/static/files/arindam.pdf' target='_blank' rel='noreferrer'>Example 4</a>
-                  </li>
-                  <li><b>Last date to submit the evaluation is January 9th, 2021 23:00 IST. Make sure that the link for your report is publicly accessible. </b></li>
-                  <li>Also, please fill the anonymous<a href='https://forms.gle/sBDKXnx8iMFzgZi36' target='_blank' rel='noreferrer'> Feedback Form</a></li>
-                </ul>
-
-                <div className="field">
-                  <p className="control is-expanded">
-                    <input className="input" type="text" value={blogLink} placeholder="Blog Link" onChange={ (e) => setBlogLink(e.target.value)} />
-                  </p>
-                  <p className='control'>
-                    <button className='button is-large is-info' onClick= {handleBlogLink}>Submit</button>
-                  </p>
-                </div>
+                <h1>
+                  Thank you for your efforts till now. The deadlines for End-term Evaluation submission has passed. See you next year and keep contributing to open source.
+                  <br />
+                  For any issues, contact us.
+                </h1>
               </div>
             </div>
           ): ''}
         </div>
 
         <React.Fragment>
-            {evalStatus == 2 ? (<div className='endEvals-guide'>
-              <h2>You have submitted the form successfully. Click <a onClick={resendForm}>here</a> if you wish to fill the form again. Please fill the anonymous <a href="https://forms.gle/sBDKXnx8iMFzgZi36">feedback form</a>. Your suggestions matter!<br />  If you have succesfully cleared, you can expect the certificate by 18th Jan, 2021.</h2>
+            {evalStatus == 2 ? (
+            <div className='endEvals-guide'>
+              <Confetti />
+              <h1>
+                Thank you for participating in KWoC. Your report is being evaluated and on clearing, your certificate would be emailed to you till 18th January. See you next year and keep contributing to open source.
+                <br />
+                For any issues, contact us.
+              </h1>
             </div>): ''}
         </React.Fragment>
 
