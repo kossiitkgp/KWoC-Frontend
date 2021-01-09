@@ -27,7 +27,7 @@ function trim_lines(lines) {
 function fetch_calls(link) {
   return fetch(link, {
     headers: {
-      'Authorization': 'token a631850ce6095d94a0d5919f0644ab543b9d5a8f'
+      'Authorization': 'token 6609027762b45be8094e7a5ce02350d85997e029'
     }
   })
             .then(res => res.json())
@@ -95,6 +95,17 @@ export default function NewStudentDashboard() {
   useEffect(() => {
     const splitArr = window.location.pathname.split('/')
     const student_username = splitArr[splitArr.length - 1]
+
+    const S3_URL = "https://metamehta-public.s3.ap-south-1.amazonaws.com/stats.json"
+    fetch(S3_URL)
+    .then(res => res.json())
+    .then(res => {
+      console.log("what ")
+      console.log(res['thevoxium'])
+    })
+    .catch(err => {
+      console.log('err in s3 ', err)
+    })
     fetch(`${STATS_API}/student/exists/${student_username}`)
     .then(res => res.text())
     .then(res => {
