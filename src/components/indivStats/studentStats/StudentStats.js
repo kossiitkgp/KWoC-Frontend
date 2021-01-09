@@ -96,16 +96,6 @@ export default function NewStudentDashboard() {
     const splitArr = window.location.pathname.split('/')
     const student_username = splitArr[splitArr.length - 1]
 
-    const S3_URL = "https://metamehta-public.s3.ap-south-1.amazonaws.com/stats.json"
-    fetch(S3_URL)
-    .then(res => res.json())
-    .then(res => {
-      console.log("what ")
-      console.log(res['thevoxium'])
-    })
-    .catch(err => {
-      console.log('err in s3 ', err)
-    })
     fetch(`${STATS_API}/student/exists/${student_username}`)
     .then(res => res.text())
     .then(res => {
@@ -120,9 +110,18 @@ export default function NewStudentDashboard() {
     const data = {
       username: student_username,
     };
-    let last_commit = ``
-    let projects_from_backend = []
-    let commits_from_backend = []
+
+    axios
+    .get(`https://stats.metamehta.me/stats/student/${student_username}`)
+    .then((res) => {
+      setStats(res.data[student_username]);
+      console.log('the stats are - ',res.data[student_username])
+    })
+    .catch((err) => {
+      alert('Server error, Try again');
+    });
+
+
     fetch(URL, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -140,176 +139,12 @@ export default function NewStudentDashboard() {
       .get(`https://stats.metamehta.me/stats/student/${student_username}`)
       .then((res) => {
         setStats(res.data[student_username]);
-        try {
-          last_commit = res.data[student_username]['commits'][0]['html_url']
-          projects_from_backend.push(...res.data[student_username]['projects'])
-          commits_from_backend = res.data[student_username]['commits']
-        } catch (err) {
-          console.log('no last commit to fetched and projects from backend')
-        }
-        })
+        console.log('the stats are - ',res.data[student_username])
+      })
       .catch((err) => {
         alert('Server error, Try again');
       });
 
-      /* testing for real time code*/
-      try {
-        async function calls_fetch() {
-          let base_date, cached_time_stamp;  
-          cached_time_stamp = localStorage.getItem(`stats_events_timestamp_${student_username}`)
-          if(cached_time_stamp == null ||  cached_time_stamp == undefined) 
-            base_date = new Date('2020-12-05T17:30:00Z')
-          else
-            base_date = new Date(cached_time_stamp)
-
-          let prs_for_events = []
-          let base_url = `https://api.github.com/users/${student_username}/events?per_page=100`
-          let page_num = 1
-          while(1) {
-            let events, events_length, last_event_date
-            if(page_num <= 3)
-               events = await fetch_calls(base_url + `&page=${page_num}`)
-            else
-              break
-             events_length = events.length
-            if(events[events_length-1] != undefined)
-              last_event_date = new Date(events[events_length-1]['created_at'])
-            console.log(` ${last_event_date} > ${base_date} `, last_event_date > base_date)
-              if(last_event_date > base_date) {
-              prs_for_events.push(...events)
-              page_num = page_num + 1
-            } else {
-              let filtered_events = events.filter(item => {
-              let item_date = new Date(item['created_at'])
-                return item_date > base_date
-              })
-              prs_for_events.push(...filtered_events)
-              break
-            }
-
-          }
-         
-          console.log('latest pulls fetched are ',prs_for_events)
-        if(prs_for_events.length != 0)
-          localStorage.setItem(`stats_events_timestamp_${student_username}`, prs_for_events[0]['created_at'])
-          return prs_for_events
-        }
-      
-        async function fetch_final_data() {
-          let cached_repos, cached_pulls, parsed_arr_of_repos;
-          
-          let prs_for_events = await  calls_fetch();
-          let pulls_for_kwoc_event = []
-          let pushes_for_kwoc_event = []
-          let repos_set = new Set()
-          
-          prs_for_events.forEach(item => {
-            if(Projects.hasOwnProperty(item['repo']['name'].toLowerCase())) {
-              if(item['type'] === 'PullRequestEvent' && item['payload']['action'] !== 'closed') {
-                pulls_for_kwoc_event.push(item)
-                repos_set.add(item['repo']['name'])
-              }
-              else if(item['type'] === 'PushEvent') {
-                pushes_for_kwoc_event.push(item)
-                repos_set.add(item['repo']['name'])
-              }
-            } 
-           })
-           
-           /* making the repo set from cache and currently obtained data*/
-           cached_repos = localStorage.getItem(`stats_repos_${student_username}`)
-           if(cached_repos == null || cached_repos == undefined)
-              repos_set = repos_set
-            else {
-              parsed_arr_of_repos = JSON.parse(cached_repos)
-              repos_set = new Set(parsed_arr_of_repos)
-              for(let arr of repos_set) {
-                repos_set.add(arr)
-              }
-            }
-           
-            let union_set = new Set([...projects_from_backend,...Array.from(repos_set)])
-            let array_of_all_projects = Array.from(union_set)
-            setProjects(array_of_all_projects)
-
-
-           /* making the pulls array from cache and currently obtained data*/
-           cached_pulls = localStorage.getItem(`stats_pulls_${student_username}`)
-           if(cached_pulls == null || cached_pulls == undefined)
-            pulls_for_kwoc_event = pulls_for_kwoc_event
-          else{
-            pulls_for_kwoc_event = [...pulls_for_kwoc_event, ...JSON.parse(cached_pulls)]
-           }
-           
-           let unique_pull_ids = new Object()
-           let unique_pulls_for_kwoc_event = []
-           for(let pull of pulls_for_kwoc_event){
-             if(unique_pull_ids.hasOwnProperty(pull['id']))
-              continue
-            else {
-              unique_pull_ids[pull.id] = 'true'
-              unique_pulls_for_kwoc_event.push(pull)
-            }
-           }
-           setPulls(unique_pulls_for_kwoc_event)
-           /* storing the cached*/
-           localStorage.setItem(`stats_pulls_${student_username}`, JSON.stringify(pulls_for_kwoc_event))
-           localStorage.setItem(`stats_repos_${student_username}`, JSON.stringify(Array.from(repos_set)))
-           /* Pull requests and their URLS have been soughted at this point, now need to work on commits*/
-           
-           // know the last date for commit
-           
-          let api_url_last_commmit, last_commit_data, last_timestamp_of_stats;
-            api_url_last_commmit = last_commit.replace('github.com/', 'api.github.com/repos/').replace('/commit/', '/commits/')
-            try {
-            last_commit_data = await fetch_calls(api_url_last_commmit)
-            last_timestamp_of_stats = last_commit_data['commit']['committer']['date']
-            }
-            catch (err) {
-              last_timestamp_of_stats = '2020-12-05T17:30:00Z'
-            }
-            
-           let extra_kwoc_commits = []
-           for(let repo of repos_set) {
-              let base_url = `https://api.github.com/repos/${repo}/commits?author=${student_username}&since=${last_timestamp_of_stats}`
-              let commits_data = await fetch_calls(base_url)
-              for(let commit of commits_data) {
-                if(commit['commit']['committer']['date'] == last_timestamp_of_stats)
-                  break
-                  let commit_url = commit['url']
-                  let indiv_commit_data = await fetch_calls(commit_url)
-                  extra_kwoc_commits.push({
-                    'html_url': commit['html_url'],
-                    'project': repo,
-                    'message': commit['commit']['message'],
-                    'lines_added': indiv_commit_data['stats']['additions'],
-                    'lines_removed': indiv_commit_data['stats']['deletions']
-                  })
-                }
-               
-              }
-        
-          let uniquely_new_commits = extra_kwoc_commits.filter(item => !commits_from_backend.some(e => e['html_url'] == item['html_url']))
-          setExtraCommits(uniquely_new_commits)
-          if(extra_kwoc_commits.length !== 0) {
-           let lines_added = 0
-           let lines_removed = 0
-           for(let com of extra_kwoc_commits) {
-             lines_added += com['lines_added']
-           }
-           for(let com of extra_kwoc_commits) {
-            lines_removed += com['lines_added']
-          }
-         setExtraLinesAdded(lines_added)
-         setExtraLinesRemoved(lines_removed)
-          
-          }
-        }
-  
-        fetch_final_data()
-      } catch(err) {
-        return
-      }
 
     }, []);
 
@@ -465,7 +300,7 @@ export default function NewStudentDashboard() {
             <div className='mentor-stats-content'>
               <div className='card-component non-purple-card mstats grow-card'>
                 <p className='font-mentor-header'>Commits</p>
-                <p className='font-mentor-stats'>{stats['no_of_commits'] + extraCommits.length}</p>
+                <p className='font-mentor-stats'>{ stats['commits'] != undefined && stats['commits'].length}</p>
               </div>
 
               <div className='card-component purple-card mstats  grow-card'>
@@ -474,7 +309,7 @@ export default function NewStudentDashboard() {
                   (open+closed)
                 </p>
                 <p className='font-mentor-stats'>
-                  {pulls != undefined && pulls.length}
+                  {stats['pulls'] != undefined && stats['pulls'].length}
                 </p>
               </div>
 
@@ -482,7 +317,7 @@ export default function NewStudentDashboard() {
                 <p className='font-mentor-header'>Lines of Code</p>
                 <h1>(+/-)</h1>
                 <p className='font-mentor-stats'>
-                  {trim_lines(parseInt(stats['lines_added']) + extraLinesAdded)}/{trim_lines(parseInt(stats['lines_removed']) + extraLinesRemoved)}
+                  {trim_lines(parseInt(stats['lines_added']))}/{trim_lines(parseInt(stats['lines_removed']))}
                 </p>
               </div>
             </div>
@@ -511,8 +346,8 @@ export default function NewStudentDashboard() {
             <h1>Projects</h1>
           </div>
           <div style={{ textAlign: 'center' }}>
-            {projects != undefined &&
-              projects.map((item) => (
+            {stats['projects'] != undefined &&
+              stats['projects'].map((item) => (
                 <span
                   className='tag is-dark is-large is-info'
                   style={{ margin: '5px' }}
@@ -539,7 +374,7 @@ export default function NewStudentDashboard() {
             </h1>
           </div>
           <div className='table-container' id='indiv-stats-table'>
-            {pulls != undefined ? (
+            {stats['pulls'] != undefined ? (
               <table>
                 <thead>
                   <tr>
@@ -553,19 +388,19 @@ export default function NewStudentDashboard() {
                 </thead>
 
                 <tbody>
-                  {pulls.map((item) => {
+                  {stats['pulls'].map((item) => {
                     return (
                       <tr>
                         <td>
                           <a
                             className='project-in-commit-table'
-                            href={`https://github.com/${item['repo']['name']}`}
+                            href={`https://github.com/${item['base']['repo']['full_name']}`}
                           >
-                            {item['repo']['name']}
+                            {item['base']['repo']['full_name']}
                           </a>
                         </td>
                         
-                        <td><a href={item['payload']['pull_request']['html_url']} style={{color: 'white'}}>{trim_message(item['payload']['pull_request']['title'])}</a></td>
+                        <td><a href={item['html_url']} style={{color: 'white'}}>{trim_message(item['title'])}</a></td>
                         
                       </tr>
                     );
@@ -583,7 +418,7 @@ export default function NewStudentDashboard() {
             <h1>Commits</h1>
           </div>
           <div className='table-container' id='indiv-stats-table'>
-            {stats['commits'] != undefined && extraCommits != undefined ? (
+            {stats['commits'] != undefined ? (
               <table>
                 <thead>
                   <tr>
@@ -600,7 +435,7 @@ export default function NewStudentDashboard() {
                 </thead>
 
                 <tbody>
-                  {[...extraCommits,...stats['commits']].map((item) => {
+                  {stats['commits'].map((item) => {
                     return (
                       <tr>
                         <td>
