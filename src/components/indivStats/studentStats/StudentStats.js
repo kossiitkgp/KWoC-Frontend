@@ -268,9 +268,6 @@ export default function NewStudentDashboard() {
              -> Stats of indiv Mentor ???
       */}
         <Navbar className='is-black' />
-        <div className='title-dashboard'>
-          <h1>Student Dashboard</h1>
-        </div>
         <div className='intro-card'>
           <div className='avatar grow-card'>
             <img

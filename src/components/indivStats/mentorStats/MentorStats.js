@@ -1,77 +1,351 @@
-import React, { useState, useEffect } from 'react'
-import './MentorStats.scss'
+import React, { useState, useEffect } from 'react';
+import Tag from '../studentStats/Tag';
+import axios from 'axios';
+import Navbar from '../../Navbar';
+import Footer from '../../Footer';
+import { BACKEND_URL,STATS_API } from '../../../constants/constants';
+import '../studentStats/StudentStats.scss';
+import '../../../components/dashboard/dashboard.scss'
+import Projects from '../../../data/projects'
+import { Component } from 'ag-grid-community';
+import reloadIcon from '../../../images/refresh-cw.svg';
 
-import axios from 'axios'
-import { STATS_API } from '../../../constants/constants'
-
-function Commits(props) {
-    return(
-        <ul>
-            {props.commits.map(item => {
-                return(
-                <li><a href={item['html_url']}>{item['message']}</a>{`(+${item['lines_added']},-${item['lines_removed']})`}</li>
-                )
-            })}
-        </ul>
-    )
+function trim_message(message) {
+  if(message)
+    if (message.length > 40) return message.trim(0, 40) + '...';
+    else return message;
 }
 
-function Contris(props) {
-    return(
-        <React.Fragment >
-            {Object.entries(props.contris).map(item => {
-                return(
-                    <React.Fragment>
-                        <u><a href={`https://github.com/${item[0]}`}><h4>{item[0]}</h4></a></u>
-                         <Commits commits={item[1]} />
-                    </React.Fragment>
-                )
-            })}
-        </React.Fragment>
-
-    )
+function trim_lines(lines) {
+  let num_lines = parseInt(lines)
+  if(num_lines > 1000)
+    return  parseInt(num_lines/1000).toString() + 'K'
+  else
+    return lines
 }
 
-export default function MentorStats() {
-    const [username, setUsername] = useState('')
-    const [mentorName, setMentorName] = useState('')
-    const [stats, setStats] = useState({})
+function fetch_calls(link) {
+  return fetch(link, {
+    headers: {
+      'Authorization': 'token 6609027762b45be8094e7a5ce02350d85997e029'
+    }
+  })
+            .then(res => res.json())
+            .then(res => {
+              return res
+            })
+            .catch(err => {
+              return err
+            })
+}
+export default function NewStudentDashboard() {
+  const [fullName, setFullName] = useState('');
+  const [projects, setProjects] = useState([]);
+  const [students, setStudents] = useState({});
+  const [collegeName, setCollegeName] = useState('');
+  const [username, setUsername] = useState('')
 
-    useEffect(() => {
-        const username_from_window = window.location.pathname.split('/')[3]
-        setUsername(username_from_window)
+  const [stats, setStats] = useState({});
+  const [pulls, setPulls] = useState([])
 
-        axios
-        .get(`${STATS_API}/stats/mentor/${username_from_window}`)
-        .then(res => {
-         setMentorName(res.data[username_from_window]['mentor_name'])
+  const [extraCommits, setExtraCommits] = useState([])
+  const [extraLinesAdded, setExtraLinesAdded] = useState(0)
+  const [extraLinesRemoved, setExtraLinesRemoved] = useState(0)
 
-        const projectWiseStats = res.data[username_from_window]
-        delete projectWiseStats['mentor_name']
+  useEffect(() => {
+    // check that its not null
+    const mentor_loggedout =
+      localStorage.getItem('mentor_jwt') === null ||
+      localStorage.getItem('mentor_jwt') === undefined;
+    if (mentor_loggedout) window.location.pathname = '';
+    const URL = `${BACKEND_URL}/mentor/dashboard`;
 
-        setStats(projectWiseStats)
+    const data = {
+      username: localStorage.getItem('mentor_username'),
+    };
+    fetch(URL, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setFullName(res.name);
+        setProjects(res.projects);
+
+        const repoNames = res.projects.map(item => {
+          let link = item['RepoLink']
+          // cleaning the trailing slash
+          if(link[link.length-1] == '/')
+              link.slice(0,-1)
+          let split_array = link.split('/')
+          let split_array_length = split_array.length
+          return split_array[split_array_length-2] + '/' + split_array[split_array_length-1]
         })
-        .catch(err => {
-          alert("Server Error,try again")
-        })
-    },[])
 
-    return(
-        <div className="mentor-stats">
-            <img  className="mentor-avatar" src={`https://github.com/${username}.png`} alt="GitHub Avatar"/>
-            <h1>{mentorName}</h1>
+        const repoNamesJson = {
+          "projects": repoNames
+        }
 
-            {Object.entries(stats).map(item => {
-                var contris1 = {...item[1]}
-                delete contris1['title']
-                return(
-                    <React.Fragment>
-                        <h3><a href={`https://github.com/${username}/${item[0]}`}>{item[1]['title']}</a></h3>
-                        <Contris contris={contris1} />
-                    </React.Fragment>
-                    )
-            })}
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
 
+        var raw = JSON.stringify(repoNamesJson);
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+
+        fetch(`https://stats.metamehta.me/stats/mentor/${localStorage.getItem('mentor_username')}`, requestOptions)
+          .then(response => response.text())
+          .then(result => {
+            setStudents(JSON.parse(result));
+          })
+          .catch(error => console.log('error', error));
+      })
+      .catch((err) => {
+        alert('Server Error, Please try again');
+      });
+  }, []);
+
+  if(projects != undefined)
+    projects.forEach((projectItem) => {
+    projectItem['owner'] = projectItem['RepoLink'].split('/').slice(-2)[0];
+  });
+
+  return (
+    <div className='student-dashboard-body dashboard-container'>
+      <div className='dashboard'>
+        <link
+          href='https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap'
+          rel='stylesheet'
+        ></link>
+        <link rel='stylesheet' href='font-awesome/css/font-awesome.css'></link>
+        <link
+          href='https://fonts.googleapis.com/css2?family=Staatliches&display=swap'
+          rel='stylesheet'
+        ></link>
+        {/*
+
+         Mentor Dashboard here
+            Plans to include the following
+             -> Useful links - how to write README, others if any?
+             -> Important Announcements
+             -> Stats of indiv Mentor ???
+      */}
+        <Navbar className='is-black' />
+        <div className='intro-card'>
+          <div className='avatar grow-card'>
+            <img
+              src={`https://github.com/${localStorage.getItem('mentor_username')}.png`}
+              className='avatar-img'
+              alt="Mentor's GitHub Avatar"
+            ></img>
+            <br />
+            <div className='avatar-content'>
+              <p id='mentor-name'>{fullName}</p>
+              <p id='mentor-username'>
+                {localStorage.getItem('mentor_username')}
+              </p>
+              <p id='mentor-username'>{collegeName}</p>
+            </div>
+          </div>
+
+          <div className='mentor-stats '>
+            <div className='mentor-stats-header'>
+              <h1>Stats</h1>
+              {/* <p className='stats-message'>
+                Stats will be updated once coding period begins
+              </p> */}
+              <br />
+            </div>
+            {/**Keep the font-mentor-header to a single word, multiple words create a bad UI experience */}
+            {/* <div className='mentor-stats-content'>
+              <div className='card-component non-purple-card mstats grow-card'>
+                <p className='font-mentor-header'>Commits</p>
+                <p className='font-mentor-stats'>{ stats['commits'] != undefined && stats['commits'].length}</p>
+              </div>
+
+              <div className='card-component purple-card mstats  grow-card'>
+                <p className='font-mentor-header'>
+                  Pull Requests <br />
+                  (open+closed)
+                </p>
+                <p className='font-mentor-stats'>
+                  {stats['pulls'] != undefined && stats['pulls'].length}
+                </p>
+              </div>
+
+              <div className='card-component non-purple-card mstats  grow-card'>
+                <p className='font-mentor-header'>Lines of Code</p>
+                <h1>(+/-)</h1>
+                <p className='font-mentor-stats'>
+                  {trim_lines(parseInt(stats['lines_added']))}/{trim_lines(parseInt(stats['lines_removed']))}
+                </p>
+              </div>
+            </div> */}
+          </div>
         </div>
-    )
+
+        {/* <div className='projects'>
+          <div className='project-header'>
+            <h1>Languages involved</h1>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            {stats['languages'] != undefined &&
+              stats['languages'].map((item) => (
+                <span
+                  className='tag is-dark is-large'
+                  style={{ margin: '5px' }}
+                >
+                  {item}
+                </span>
+              ))}
+          </div>
+        </div>  */}
+
+        {/* <div className='projects'>
+          <div className='project-header'>
+            <h1>Projects</h1>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            {stats['projects'] != undefined &&
+              stats['projects'].map((item) => (
+                <span
+                  className='tag is-dark is-large is-info'
+                  style={{ margin: '5px' }}
+                >
+                  <a
+                    href={`https://github.com/${item}`}
+                    style={{ color: 'white' }}
+                  >
+                    {item}
+                  </a>
+                </span>
+              ))}
+          </div>
+        </div> */}
+
+        <div className='projects'>
+          <div className='project-header'>
+            <h1>
+              Projects & Students
+              {/* <img
+                src={reloadIcon}
+                className="refresh-icon" 
+                onClick={removeCachedTimeStamp} /> */}
+            </h1>
+          </div>
+          <div className='table-container' id='indiv-stats-table'>
+            {students['projects'] != undefined ? (
+              <div>
+                { students['projects'].map((item) => {
+                  return(
+                    <div>
+                      <h1> {item['project_name']} </h1>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th style={{ color: 'white' }}>
+                              <h3>Student</h3>
+                            </th>
+                            <th style={{ color: 'white' }}>
+                              <h3>Commits</h3>
+                            </th>
+                            <th style={{ color: 'white' }}>
+                              <h3>Lines</h3>
+                            </th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          {item['students'].map((thing) => {
+                            return (
+                              <tr>
+                                <td>
+                                  <a>
+                                    {thing['username']}
+                                  </a>
+                                </td>
+                                <td>
+                                  <a
+                                    className='project-in-commit-table'
+                                    href={thing['commits'][0]['html_url']}
+                                  >
+                                    {thing['commits'][0]['message']}
+                                  </a>
+                                </td>
+                                
+                                <td>
+                                  +{trim_lines(thing['commits'][0]['lines_added'])},-{trim_lines(thing['commits'][0]['lines_removed'])}
+                                </td>
+                              </tr>
+                            );
+                            
+                          })}
+                        </tbody>
+                      </table>
+                  </div>
+                  );
+                })}
+              </div>
+              ) : (
+              ''
+            )}
+            </div>
+        </div>
+
+        {/* <div className='projects'>
+          <div className='project-header'>
+            <h1>Commits</h1>
+          </div>
+          <div className='table-container' id='indiv-stats-table'>
+            {stats['commits'] != undefined ? (
+              <table>
+                <thead>
+                  <tr>
+                    <th style={{ color: 'white' }}>
+                      <h3>Project</h3>
+                    </th>
+                    <th style={{ color: 'white' }}>
+                      <h3>Commit</h3>
+                    </th>
+                    <th style={{ color: 'white' }}>
+                      <h3>Lines</h3>
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {stats['commits'].map((item) => {
+                    return (
+                      <tr>
+                        <td>
+                          <a
+                            className='project-in-commit-table'
+                            href={`https://github.com/${item['project']}`}
+                          >
+                            {item['project']}
+                          </a>
+                        </td>
+                        <td><a href={item['html_url']} style={{color: 'white'}}>{trim_message(item['message'])}</a></td>
+                        <td>
+                          +{trim_lines(item['lines_added'])},-{trim_lines(item['lines_removed'])}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            ) : (
+              ''
+            )}
+          </div>
+        </div> */}
+      </div>
+      <Footer />
+    </div>
+  );
 }
