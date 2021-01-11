@@ -45,21 +45,9 @@ export default function NewStudentDashboard() {
   const [collegeName, setCollegeName] = useState('');
   const [username, setUsername] = useState('')
 
-  const [stats, setStats] = useState({});
-  const [pulls, setPulls] = useState([])
-
-  const [extraCommits, setExtraCommits] = useState([])
-  const [extraLinesAdded, setExtraLinesAdded] = useState(0)
-  const [extraLinesRemoved, setExtraLinesRemoved] = useState(0)
-
   useEffect(() => {
-      const splitArr = window.location.pathname.split('/')
+    const splitArr = window.location.pathname.split('/')
     const mentor_username = splitArr[splitArr.length - 1]
-    // check that its not null
-    const mentor_loggedout =
-      localStorage.getItem('mentor_jwt') === null ||
-      localStorage.getItem('mentor_jwt') === undefined;
-    if (mentor_loggedout) window.location.pathname = '';
     const URL = `${BACKEND_URL}/mentor/dashboard`;
     
     setUsername(mentor_username);
@@ -307,7 +295,7 @@ export default function NewStudentDashboard() {
                                   {thing['commits'].map((something) => {
                                     return(
                                       <React.Fragment>
-                                        +{something['lines_added']},-{something['lines_removed']}
+                                        +{trim_lines(something['lines_added'])},-{trim_lines(something['lines_removed'])}
                                         <br />
                                       </React.Fragment>
                                     );
