@@ -53,15 +53,18 @@ export default function NewStudentDashboard() {
   const [extraLinesRemoved, setExtraLinesRemoved] = useState(0)
 
   useEffect(() => {
+      const splitArr = window.location.pathname.split('/')
+    const mentor_username = splitArr[splitArr.length - 1]
     // check that its not null
     const mentor_loggedout =
       localStorage.getItem('mentor_jwt') === null ||
       localStorage.getItem('mentor_jwt') === undefined;
     if (mentor_loggedout) window.location.pathname = '';
     const URL = `${BACKEND_URL}/mentor/dashboard`;
-
+    
+    setUsername(mentor_username);
     const data = {
-      username: localStorage.getItem('mentor_username'),
+      username: mentor_username,
     };
     fetch(URL, {
       method: 'POST',
@@ -98,7 +101,7 @@ export default function NewStudentDashboard() {
           redirect: 'follow'
         };
 
-        fetch(`https://stats.metamehta.me/stats/mentor/${localStorage.getItem('mentor_username')}`, requestOptions)
+        fetch(`https://stats.metamehta.me/stats/mentor/${mentor_username}`, requestOptions)
           .then(response => response.text())
           .then(result => {
             setStudents(JSON.parse(result));
@@ -139,7 +142,7 @@ export default function NewStudentDashboard() {
         <div className='intro-card'>
           <div className='avatar grow-card'>
             <img
-              src={`https://github.com/${localStorage.getItem('mentor_username')}.png`}
+              src={`https://github.com/${username}.png`}
               className='avatar-img'
               alt="Mentor's GitHub Avatar"
             ></img>
@@ -147,7 +150,7 @@ export default function NewStudentDashboard() {
             <div className='avatar-content'>
               <p id='mentor-name'>{fullName}</p>
               <p id='mentor-username'>
-                {localStorage.getItem('mentor_username')}
+                {username}
               </p>
               <p id='mentor-username'>{collegeName}</p>
             </div>
