@@ -265,7 +265,11 @@ export default function NewStudentDashboard() {
                             return (
                               <tr>
                                 <td>
-                                  <a>
+                                  <a
+                                    href={`https://github.com/${thing['username']}`}
+                                    target='_blank'
+                                    rel='noreferrer noopener'
+                                  >
                                     {thing['username']}
                                   </a>
                                 </td>
@@ -273,13 +277,29 @@ export default function NewStudentDashboard() {
                                   <a
                                     className='project-in-commit-table'
                                     href={thing['commits'][0]['html_url']}
+                                    target='_blank'
+                                    rel='noreferrer noopener'
                                   >
-                                    {thing['commits'][0]['message']}
+                                    {thing['commits'].map((something) => {
+                                      return(
+                                        <React.Fragment>
+                                          {something['message']}
+                                          <br />
+                                        </React.Fragment>
+                                      );
+                                    })}
                                   </a>
                                 </td>
                                 
                                 <td>
-                                  +{trim_lines(thing['commits'][0]['lines_added'])},-{trim_lines(thing['commits'][0]['lines_removed'])}
+                                  {thing['commits'].map((something) => {
+                                    return(
+                                      <React.Fragment>
+                                        +{something['lines_added']},-{something['lines_removed']}
+                                        <br />
+                                      </React.Fragment>
+                                    );
+                                  })}
                                 </td>
                               </tr>
                             );
