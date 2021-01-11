@@ -244,7 +244,15 @@ export default function NewStudentDashboard() {
                 { students['projects'].map((item) => {
                   return(
                     <div>
-                      <h1> {item['project_name']} </h1>
+                      <h1>
+                        <a 
+                          href={`https://github.com/${item['project_name']}`}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                        >
+                          {item['project_name']} 
+                        </a>
+                      </h1>
                       <table>
                         <thead>
                           <tr>
@@ -274,21 +282,22 @@ export default function NewStudentDashboard() {
                                   </a>
                                 </td>
                                 <td>
-                                  <a
-                                    className='project-in-commit-table'
-                                    href={thing['commits'][0]['html_url']}
-                                    target='_blank'
-                                    rel='noreferrer noopener'
-                                  >
+                                  
                                     {thing['commits'].map((something) => {
                                       return(
                                         <React.Fragment>
+                                          <a
+                                            className='project-in-commit-table'
+                                            href={something['html_url']}
+                                            target='_blank'
+                                            rel='noreferrer noopener'
+                                          >
                                           {something['message']}
+                                          </a>
                                           <br />
                                         </React.Fragment>
                                       );
                                     })}
-                                  </a>
                                 </td>
                                 
                                 <td>
