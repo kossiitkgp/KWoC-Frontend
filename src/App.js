@@ -101,7 +101,10 @@ function App() {
           component={MentorStats}
         />
 
-        <Route onChange={ScrollToTop} path='/oauth' component={OAuth} />
+        <Route path='/oauth' component={() => { 
+            window.location.href = '/'; 
+            return null;
+        }}/>
 
         <Route onChange={ScrollToTop} path='/projects' component={Projects} />
       </div>

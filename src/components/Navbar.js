@@ -188,7 +188,7 @@ class Navbar extends Component {
                 </div>
               </div>
               */}
-              <div className='navbar-end' onClick={this.closeNavbar}>
+              {/* <div className='navbar-end' onClick={this.closeNavbar}>
                 <div
                   className='navbar-item has-dropdown is-hoverable'
                   id='login-buttons'
@@ -258,11 +258,11 @@ class Navbar extends Component {
                       href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student'
                     >
                       Student Login
-                    </a> */}
+                    </a> 
                   </div>
                 </div>
 
-                {/* <div
+                <div
                   className='navbar-item has-dropdown is-hoverable'
                   id='stat-buttons'
                 >
@@ -284,8 +284,8 @@ class Navbar extends Component {
                       Project Stats
                     </Link>
                   </div>
-                </div> */}
-              </div>
+                </div>
+              </div> */}
             </div>
           </div>
         </nav>
