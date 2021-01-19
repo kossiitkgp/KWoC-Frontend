@@ -89,7 +89,7 @@ export default function NewStudentDashboard() {
           redirect: 'follow'
         };
 
-        fetch(`https://stats.metamehta.me/stats/mentor/${mentor_username}`, requestOptions)
+        fetch(`https://kwoc-stats-test-api.herokuapp.com/stats/mentor/${mentor_username}`, requestOptions)
           .then(response => response.text())
           .then(result => {
             setStudents(JSON.parse(result));

@@ -112,7 +112,7 @@ export default function NewStudentDashboard() {
     };
 
     axios
-    .get(`https://stats.metamehta.me/stats/student/${student_username}`)
+    .get(`https://kwoc-stats-test-api.herokuapp.com/stats/student/${student_username}`)
     .then((res) => {
       setStats(res.data[student_username]);
       console.log('the stats are - ',res.data[student_username])
@@ -136,7 +136,7 @@ export default function NewStudentDashboard() {
       });
 
     axios
-      .get(`https://stats.metamehta.me/stats/student/${student_username}`)
+      .get(`https://kwoc-stats-test-api.herokuapp.com/stats/student/${student_username}`)
       .then((res) => {
         setStats(res.data[student_username]);
         console.log('the stats are - ',res.data[student_username])

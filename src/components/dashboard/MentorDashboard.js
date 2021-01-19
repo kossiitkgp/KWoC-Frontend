@@ -150,7 +150,7 @@ export default function MentorDashboard() {
           redirect: 'follow'
         };
 
-        fetch("https://stats.metamehta.me/stats/mentors", requestOptions)
+        fetch("https://kwoc-stats-test-api.herokuapp.com/stats/mentors", requestOptions)
           .then(response => response.text())
           .then(result => {
             setStudents(JSON.parse(result)['students'])
