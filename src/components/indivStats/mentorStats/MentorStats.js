@@ -9,7 +9,22 @@ import '../../../components/dashboard/dashboard.scss'
 import Projects from '../../../data/projects'
 import { Component } from 'ag-grid-community';
 import reloadIcon from '../../../images/refresh-cw.svg';
+import MentorsData from '../../../data/mentors'
 
+function getRepoNames(projects) {
+  let repoNames = []
+  for(let project of projects) {
+    if ([project].slice(-1) === '/') {
+      [project] = [project].slice(0, -1);
+    }
+    const split_array = project.split('/')
+    const split_array_length = split_array.length
+    const owner = split_array[split_array_length-2]
+    const projectName = split_array[split_array_length-1]
+    repoNames.push(`${owner/projectName}`)
+  }
+  return repoNames
+}
 function trim_message(message) {
   if(message)
     if (message.length > 40) return message.trim(0, 40) + '...';
@@ -49,22 +64,20 @@ export default function NewStudentDashboard() {
     const splitArr = window.location.pathname.split('/')
     const mentor_username = splitArr[splitArr.length - 1]
     const URL = `${BACKEND_URL}/mentor/dashboard`;
-    
+    let projectNames;
     setUsername(mentor_username);
-    const data = {
-      username: mentor_username,
-    };
-    fetch(URL, {
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setFullName(res.name);
-        setProjects(res.projects);
-
-        const repoNames = res.projects.map(item => {
-          let link = item['RepoLink']
+    for(let mentorData of MentorsData) {
+      if(mentorData['username'].toLowerCase() === mentor_username.toLowerCase())
+      {
+        setFullName(mentorData['name']);
+        projectNames = mentorData['project_link']
+        setProjects(projectNames);
+        break;
+      } 
+    
+    }
+        const repoNames = projectNames.map(item => {
+          let link = item
           // cleaning the trailing slash
           if(link[link.length-1] == '/')
               link.slice(0,-1)
@@ -96,15 +109,11 @@ export default function NewStudentDashboard() {
           })
           .catch(error => console.log('error', error));
       })
-      .catch((err) => {
-        alert('Server Error, Please try again');
-      });
-  }, []);
-
-  if(projects != undefined)
-    projects.forEach((projectItem) => {
-    projectItem['owner'] = projectItem['RepoLink'].split('/').slice(-2)[0];
-  });
+     
+  // if(projects != undefined)
+  //   projects.forEach((projectItem) => {
+  //   projectItem['owner'] = projectItem['RepoLink'].split('/').slice(-2)[0];
+  // });
 
   return (
     <div className='student-dashboard-body dashboard-container'>
