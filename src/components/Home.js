@@ -46,6 +46,29 @@ export default function Home() {
               Welcome to KWoC
             </h1>
 
+            <div className="reg-btns " style={{ padding: '0 20%', marginBottom: '20px' }}>
+							<p className="control">
+								<a
+									className="button is-fullwidth "
+									href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${process.env.GITHUB_AUTH_CLIENT_ID}&state=student`}
+									style={{ marginBottom: '20px' }}
+                  
+                >
+									Student Registration
+								</a>
+							</p>
+							<p className="control">
+								<a
+									className="button is-fullwidth "
+									href= {`https://github.com/login/oauth/authorize?scope=user:email&client_id=${process.env.GITHUB_AUTH_CLIENT_ID}&state=mentor`}
+									style={{ marginBottom: '20px' }}
+                 
+                >
+									Mentor Registration
+								</a>
+							</p>
+						</div>
+
             <div className='manual-btns field is-grouped is-grouped-centered'>
               <p className='control'>
                 <a
