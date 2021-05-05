@@ -41,6 +41,8 @@ export default function Form(props) {
   const [mentorRepos, setMentorRepos] = useState([])
   const [showTags, setShowTags] = useState(false)
   const [readme, setReadme] = useState(``)
+  const [secondaryMentor, setSecondaryMentor] = useState('')
+  const [mentorUsernames, setMentorUsernames] = useState([])
 
   const [showBranches, setShowBranches] = useState(false)
   const [branchOpts, setBranchOpts] = useState([])
@@ -72,6 +74,10 @@ export default function Form(props) {
     .catch(err => {
 
     })
+
+    // TODO:
+    // Add an endpoint which fetches all mentor usernames from BACKEND 
+    // Corresponding useState has been defined - [mentorUsernames, setMentorUsernames]
   }, [])
 
   /**
@@ -203,6 +209,13 @@ export default function Form(props) {
     if(tag != null) {
       const selectedBranch = tag.value
       setBranch(selectedBranch)
+    }
+  }
+
+  function handleChangeSMentorField(tag, action) {
+    if(tag != null) {
+      const selectedSMentor = tag.value
+      setSecondaryMentor(selectedSMentor)
     }
   }
 
@@ -391,6 +404,17 @@ export default function Form(props) {
         </div>
         {errInLink}
       </div>
+
+      <div className='field'>
+         <label className='label'>Select Secondary Mentor(You should already know him/her)</label>
+         <Select
+         isClearable
+         isSearchable
+         onChange={handleChangeSMentorField}
+         options={mentorUsernames}
+         placeholder='Select Secondary Mentor'
+          />
+       </div>
 
       <div>
         <a
