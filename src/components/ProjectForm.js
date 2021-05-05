@@ -68,23 +68,23 @@ export default function Form(props) {
     })
   }, [])
 
-  async function checkRepo(repolink) {
-    const returnMsg = {
-      'status': true,
-      'message': ''
-    }
-  
+  async function checkIssuesAndReadme(repolink) {
+    let status = true
+    let message = ''
+
+    
     // remove the last trailing slash, if it exists
     if (repolink.slice(-1) === "/") {
       repolink = repolink.slice(0,-1)
     }
-  
+    
     const splitArr = repolink.split("/")
     const len = splitArr.length
-  
+    
     const repoName = splitArr[len-1]
     const ownerName = splitArr[len-2]
-  
+
+
     // check for minimum number of issues, along with valid URL or not
     const issuesURL = `https://api.github.com/repos/${ownerName}/${repoName}/issues?q=state:open`
     try {
@@ -92,35 +92,36 @@ export default function Form(props) {
       const issues = res.data.filter(item => !item.hasOwnProperty('pull_request'))
       const numOfIssues = issues.length
       if(numOfIssues < 2)
-        returnMsg['message'] = `Repo has only ${numOfIssues} issues, Please maintain atleast 2 issues. `
+        message = `Repo has only ${numOfIssues} issues, Please maintain atleast 2 issues. `
     }
     catch(err) {
-      returnMsg['message'] = `The link should be in format of https://github.com/USERNAME/REPO. Please add a valid Github link repo with atleast 2 open issues. `
+      message = `The link should be in format of https://github.com/USERNAME/REPO. Please add a valid Github link repo with atleast 2 open issues. `
     }
-  
-    // check for a minimum README
+
+    // check for a minimum size of README
     const readmeURL = `https://api.github.com/repos/${ownerName}/${repoName}/readme`
     try {
       const res = await axios.get(readmeURL)
       if(res.data.size < 100)
-      returnMsg['message'] += `Please add a more descriptive modified README. It is too short`
+      message += `Please add a more descriptive modified README. It is too short`
     }
     catch(err) {
-      returnMsg['message'] += `Please add a descriptive README.md`
+      message += `Please add a descriptive README.md`
     }
-  
-   
-    if (returnMsg['message'] === '') {
+
+    // show error, if any
+    setErrInRepo(message)
+
+    // if no error, the fill the tags and show the branch fields along with other fields
+    if (message === '') {
       autofillTags(`${ownerName}/${repoName}`)
       showBranchField(`${ownerName}/${repoName}`)
       setShowButtonAndOthers(true)
-      return returnMsg
+      return
     }
-      
-      // in case there is an error, the status is false, along with apprporiate error message
-      returnMsg['status'] = false
-      return returnMsg
   }
+
+  
 
   async function showBranchField(repo) {
     const endpoint = `https://api.github.com/repos/${repo}/branches`
@@ -128,8 +129,8 @@ export default function Form(props) {
     const branches_opts = res.data.map(item => {
       return { 'value': item['name'], 'label': item['name'] }
     })
-    console.log("testing only ",branches_opts)
     setBranchOpts(branches_opts)
+    setBranch(branches_opts[0]['value'])
     setShowBranches(true)
   }
   async function autofillTags(repo) {
@@ -162,10 +163,12 @@ export default function Form(props) {
       const autotags_arr = [...tags]
       const autotags_for_select =  autotags_arr.map(tag => { return {'value': tag, 'label': tag} })
       setAutoTags(autotags_for_select)
+      setTags(autotags_arr)
       setShowTags(true)
     }))
     .catch(err => {
       console.log('error ',err)
+      alert('Unable to Fetch Topics and Languages')
     })
   }
 
@@ -175,43 +178,48 @@ export default function Form(props) {
   }
 
   function handleChangeBranchField(tag, action) {
-    const selectedBranch = tag.value
-    setBranch(selectedBranch)
+    if(tag != null) {
+      const selectedBranch = tag.value
+      setBranch(selectedBranch)
+    }
+  }
+
+  function handleInputLinkField(e) {
+    const link = e.target.value
+    if(checkLink(link)) {
+      setChannelLink(link)
+      setErrInLink('')
+      disableSubmit(false)
+    } else {
+      setErrInLink('Please add a valid URL as an invite link for your communication channel')
+      disableSubmit(true)
+    }
   }
 
   function handleProjectLink(tag, action) {
     if(tag != null) {
       setRepolink(tag.value)
-      console.log("tag.value ", tag.value)
-      repoChecks(tag.value)
+      checkIssuesAndReadme(tag.value)
     }
   }
 
-  async function repoChecks(repolink) {
-    // checking if repo meets requirements or not
-    const repoStatus = await checkRepo(repolink)
-    const isRepoValid = repoStatus['status']
-    if (!isRepoValid) {
-      setErrInRepo(repoStatus['message'])
-      disableSubmit(false)
-    }
-
-    // checking if communication channel is valid or not
-    const isLinkValid =  checkLink(channelLink)
-    if(!isLinkValid) {
-      setErrInLink('Please add a valid URL as an invite link for your communication channel')
-      disableSubmit(false)
-    }
-
-    if(!(isRepoValid && isLinkValid)) {
-      disableSubmit(false)
-      setErrInRepo(repoStatus['message'])
-      return
-    }
-  }
-
-  async function handleSubmit(e) {
+ 
+  function handleSubmit(e) {
     e.preventDefault();
+    
+    // check if all the fields are filled are not
+    if(
+      name == '' ||
+      desc == '' ||
+      repolink == '' ||
+      channelLink == '' ||
+      tags.length == 0 ||
+      branch == ''
+      ) {
+        alert('Please fill all the fields of the form')
+        return
+      }
+
     disableSubmit(true)
 
     const URL = `${BACKEND_URL}/project/add`;
@@ -293,7 +301,6 @@ export default function Form(props) {
           placeholder="Briefly about your Project"
           onChange={e => setDesc(e.target.value)}
           />
-
         </div>
       </div>
 
@@ -333,7 +340,7 @@ export default function Form(props) {
             className='input is-rounded'
             type='text'
             placeholder='Slack invite link for example'
-            onChange={e => setChannelLink(e.target.value)}
+            onInput={handleInputLinkField}
           />
         </div>
         {errInLink}
