@@ -11,6 +11,11 @@ import '../styles/css-fontello-mail-alt/fontello.css';
 
 const options = Tags.map(item => { return {'value': item, 'label': item} })
 
+ /**
+  * Makes a regex check to know if link is a valid URL or not
+  * @param {string} link - link entered by user
+  * @return {bool} - true if a valid URL, false if not
+ */
  function checkLink(link) {
  const  pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
@@ -53,8 +58,8 @@ export default function Form(props) {
 
     
     // fetch all the projects of mentor
-    // const username = localStorage.getItem('mentor_username')
-    const username = 'xypnox' // this line only for testing, uncomment above line & comment this line in production, and com
+    const username = localStorage.getItem('mentor_username')
+    // const username = 'xypnox' // this line only for testing, uncomment above line & comment this line in production, and coment this line
     axios
     .get(`https://api.github.com/users/${username}/repos?per_page=100`)
     .then(res => {
@@ -68,11 +73,16 @@ export default function Form(props) {
     })
   }, [])
 
+  /**
+   * To check if there are minimum of 2 issues in repo and README is of a minimum size(in direct check for a descriptive README)
+   * If the above checks are failed, shows errors accordingly 
+   * If the above checks are passed, it calls functions which autofill Tags and branches
+   * @param {string} repolink - Link of the Github repo in format of https://github.com/OWNERNAME/REPONAME
+  */
   async function checkIssuesAndReadme(repolink) {
-    let status = true
     let message = ''
 
-    
+
     // remove the last trailing slash, if it exists
     if (repolink.slice(-1) === "/") {
       repolink = repolink.slice(0,-1)
@@ -122,7 +132,10 @@ export default function Form(props) {
   }
 
   
-
+  /**
+   * Makes a request to Github API to fetch all the branches of the repo and shows the field to select branch 
+   * @param {string} repo - ownername/reponame format string 
+   */
   async function showBranchField(repo) {
     const endpoint = `https://api.github.com/repos/${repo}/branches`
     const res = await axios.get(endpoint)
@@ -130,9 +143,16 @@ export default function Form(props) {
       return { 'value': item['name'], 'label': item['name'] }
     })
     setBranchOpts(branches_opts)
-    setBranch(branches_opts[0]['value'])
+    setBranch(branches_opts[0]['value']) // setting the first as the default selected branch
     setShowBranches(true)
   }
+
+  /**
+   * Makes request to Github API and fetches languages and topics, 
+   * Shows the tags field
+   * Auto Fills the tags with the languages and topics fetched
+   * @param {string} repo - ownername/reponame format string
+  */
   async function autofillTags(repo) {
     const endpoint_for_languages = `https://api.github.com/repos/${repo}/languages` // working
     const endpoint_for_topics = `https://api.github.com/repos/${repo}/topics` // testing
@@ -145,6 +165,7 @@ export default function Form(props) {
     const req1 =  axios.get(endpoint_for_topics,{ headers: headers })
     const req2 = axios.get(endpoint_for_languages)
   
+  // Makes both the axios request concurrently
   await axios
     .all([req1, req2])
     .then(axios.spread((...res) => {
