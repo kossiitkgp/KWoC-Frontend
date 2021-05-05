@@ -40,6 +40,7 @@ export default function Form(props) {
   const [autoTags, setAutoTags] = useState([])
   const [mentorRepos, setMentorRepos] = useState([])
   const [showTags, setShowTags] = useState(false)
+  const [readme, setReadme] = useState(``)
 
   const [showBranches, setShowBranches] = useState(false)
   const [branchOpts, setBranchOpts] = useState([])
@@ -225,7 +226,7 @@ export default function Form(props) {
   }
 
  
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     
     // check if all the fields are filled are not
@@ -243,6 +244,29 @@ export default function Form(props) {
 
     disableSubmit(true)
 
+    // Fetch README from the repo of the branch selected
+    // remove the last trailing slash, if it exists
+    const full_link = repolink
+    if (full_link.slice(-1) === "/") {
+      full_link = full_link.slice(0,-1)
+    }
+    
+    const splitArr = full_link.split("/")
+    const len = splitArr.length
+    
+    const repoName = splitArr[len-1]
+    const ownerName = splitArr[len-2]
+
+    const endpoint = `https://api.github.com/repos/${ownerName}/${repoName}/readme?ref=${branch}`
+    const headers = {
+      "Accept": "application/vnd.github.v3+json", 
+      // recommended by Github
+    }
+
+    const res = await axios.get(endpoint, { headers: headers })
+    const decodedReadme = atob(res.data['content'])
+    setReadme(decodedReadme)
+    
     const URL = `${BACKEND_URL}/project/add`;
     const data = {
       'username': localStorage.getItem('mentor_username'),
@@ -251,7 +275,8 @@ export default function Form(props) {
       'desc': desc,
       'repoLink': repolink,
       'comChannel': channelLink,
-      'tags': JSON.stringify(tags)
+      'tags': JSON.stringify(tags),
+      'readme': decodedReadme
     }
 
     // make an axios request to BACKEND here
