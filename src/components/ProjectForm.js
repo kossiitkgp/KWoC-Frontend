@@ -2,6 +2,7 @@ import React, { useState, useEffect }from 'react';
 import Tags from '../data/tags.js';
 import CreatableSelect from 'react-select/creatable';
 import Select from 'react-select'
+import ReactTooltip from 'react-tooltip';
 import axios from 'axios'
 import { BACKEND_URL } from '../constants/constants'
 import Navbar from './Navbar'
@@ -325,6 +326,8 @@ export default function Form(props) {
       SOME CSS ISSUES THE OPTIONS ARE NOT VISIBLE, SINCE I DON'T KNOW TO FIX THAT, I AM LEAVING IT
       
       LATER IN PRODUCTION, KEEP THE LINK FIELD AT THE THIRD PLACE AND FIX THE CSS ISSUE.
+
+      HOWEVER WE CAN DECIDE ON THE ORDER OF FIELDS?
       - rakaar
     */}
     <div className='field'>
@@ -380,6 +383,11 @@ export default function Form(props) {
       {showBranches &&
        <div className='field'>
          <label className='label'>Select Branch for stats</label>
+         <span data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
+         <br/>Please select the branch on which students should be contributing. 
+         <br/> We will be fetching the contributions data from the branch you have specified. 
+         <br/> You can also change the branch in middle of KWoC`}>Why this?</span>
+         <ReactTooltip place="bottom" type="info" effect="float" html />
          <Select
          isClearable
          isSearchable
