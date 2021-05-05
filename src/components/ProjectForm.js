@@ -1,6 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import Tags from '../data/tags.js';
 import CreatableSelect from 'react-select/creatable';
+import Select from 'react-select'
 import axios from 'axios'
 import { BACKEND_URL } from '../constants/constants'
 import Navbar from './Navbar'
@@ -35,6 +36,12 @@ export default function Form(props) {
   const [mentorRepos, setMentorRepos] = useState([])
   const [showTags, setShowTags] = useState(false)
 
+  const [showBranches, setShowBranches] = useState(false)
+  const [branchOpts, setBranchOpts] = useState([])
+  const [branch, setBranch] = useState('')
+
+  const [showButtonAndOthers, setShowButtonAndOthers] = useState(false)
+
   const [errInRepo, setErrInRepo] = useState('')
   const [errInLink, setErrInLink] = useState('')
 
@@ -44,8 +51,7 @@ export default function Form(props) {
     if(localStorage.getItem('mentor_jwt') === null || localStorage.getItem('mentor_jwt') === undefined)
       props.history.push('/')
 
-
-
+    
     // fetch all the projects of mentor
     // const username = localStorage.getItem('mentor_username')
     const username = 'xypnox' // this line only for testing, uncomment above line & comment this line in production, and com
@@ -106,14 +112,26 @@ export default function Form(props) {
    
     if (returnMsg['message'] === '') {
       autofillTags(`${ownerName}/${repoName}`)
+      showBranchField(`${ownerName}/${repoName}`)
+      setShowButtonAndOthers(true)
       return returnMsg
     }
       
-  
+      // in case there is an error, the status is false, along with apprporiate error message
       returnMsg['status'] = false
       return returnMsg
   }
 
+  async function showBranchField(repo) {
+    const endpoint = `https://api.github.com/repos/${repo}/branches`
+    const res = await axios.get(endpoint)
+    const branches_opts = res.data.map(item => {
+      return { 'value': item['name'], 'label': item['name'] }
+    })
+    console.log("testing only ",branches_opts)
+    setBranchOpts(branches_opts)
+    setShowBranches(true)
+  }
   async function autofillTags(repo) {
     const endpoint_for_languages = `https://api.github.com/repos/${repo}/languages` // working
     const endpoint_for_topics = `https://api.github.com/repos/${repo}/topics` // testing
@@ -151,21 +169,25 @@ export default function Form(props) {
     })
   }
 
-  function handleChange(tags, action) {
+  function handleChangeTagsField(tags, action) {
     const selectedTags = tags.map(item => item.value)
     setTags(selectedTags)
+  }
+
+  function handleChangeBranchField(tag, action) {
+    const selectedBranch = tag.value
+    setBranch(selectedBranch)
   }
 
   function handleProjectLink(tag, action) {
     if(tag != null) {
       setRepolink(tag.value)
+      console.log("tag.value ", tag.value)
+      repoChecks(tag.value)
     }
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    disableSubmit(true)
-
+  async function repoChecks(repolink) {
     // checking if repo meets requirements or not
     const repoStatus = await checkRepo(repolink)
     const isRepoValid = repoStatus['status']
@@ -183,9 +205,14 @@ export default function Form(props) {
 
     if(!(isRepoValid && isLinkValid)) {
       disableSubmit(false)
+      setErrInRepo(repoStatus['message'])
       return
     }
+  }
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+    disableSubmit(true)
 
     const URL = `${BACKEND_URL}/project/add`;
     const data = {
@@ -226,6 +253,26 @@ export default function Form(props) {
     <React.Fragment>
       <Navbar />
     <div className='box'>
+
+    {/* FOR NOW THIS LINK FIELD IS IN THE TOP BECAUSE, WHEN IT IS KEPT AT THIRD PLACE(WHERE IT SHOULD BE), DUE TO
+      SOME CSS ISSUES THE OPTIONS ARE NOT VISIBLE, SINCE I DON'T KNOW TO FIX THAT, I AM LEAVING IT
+      
+      LATER IN PRODUCTION, KEEP THE LINK FIELD AT THE THIRD PLACE AND FIX THE CSS ISSUE.
+      - rakaar
+    */}
+    <div className='field'>
+        <label className='label'>Github Link to the Project</label>
+        <div className='control'>
+           <CreatableSelect
+              isClearable
+              onChange={handleProjectLink}
+              options={mentorRepos}
+              placeholder='Search your Repos or Paste the link'
+            />
+         </div>
+        {errInRepo}
+      </div>
+      
       <div className='field'>
         <label className='label'>Project Name</label>
         <div className='control'>
@@ -250,53 +297,36 @@ export default function Form(props) {
         </div>
       </div>
 
-      {/* <div className='field'>
-        <label className='label'>Github link to the Repo</label>
-        <div className='control has-icons-left has-icons-right'>
-          <input
-            className='input is-rounded is-info'
-            type='text'
-            placeholder={`https://github.com/mentor/project`}
-            onChange={e => setRepolink(e.target.value)}
-          />
-          <span className='icon is-large is-left' id='fontello-icon'>
-            <i className='icon-github-circled' />
-          </span>
-        </div>
-        {errInRepo}
-      </div> */}
-
-      <div className='field'>
-        <label className='label'>Github Link to the Project</label>
-        <div className='control'>
-           <CreatableSelect
-              isClearable
-              onChange={handleProjectLink}
-              options={mentorRepos}
-              placeholder='Search your Repos or Paste the link'
-            />
-          {/* <span className='icon is-large is-left' id='fontello-icon'>
-            <i className='icon-github-circled' />
-          </span> */}
-        </div>
-        {errInRepo}
-      </div>
-
       {showTags && <div className='field'>
         <label className='label'>Tags for the project</label>
         <div className='control'>
            <CreatableSelect
               isMulti
               isClearable
-              onChange={handleChange}
+              onChange={handleChangeTagsField}
               options={options}
               defaultValue={autoTags}
               placeholder='Select or Create Tags'
             />
         </div>
       </div>}
+
+      {showBranches &&
+       <div className='field'>
+         <label className='label'>Select Branch for stats</label>
+         <Select
+         isClearable
+         isSearchable
+         onChange={handleChangeBranchField}
+         options={branchOpts}
+         defaultValue={branchOpts[0]}
+         placeholder='Select Branch'
+          />
+       </div>}
       
-      <div className='field'>
+      {showButtonAndOthers && 
+      <React.Fragment>
+        <div className='field'>
         <label className='label'>Communication channel</label>
         <div className='control'>
           <input
@@ -318,6 +348,7 @@ export default function Form(props) {
         Submit
         </a>
       </div>
+      </React.Fragment>}
     </div>
     </React.Fragment>
   );
