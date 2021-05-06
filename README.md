@@ -2,7 +2,7 @@
 
 ## The truth redifined.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d0dea6f4-be0b-4083-bcbf-99f6c8fb9a79/deploy-status)](https://app.netlify.com/sites/kwoc2020/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/63d49d55-63d9-4886-a2b2-a4270d797614/deploy-status)](https://app.netlify.com/sites/kwoc21-test/deploys)
 
 KWoC website rewritten in React! Cause why not!
 
