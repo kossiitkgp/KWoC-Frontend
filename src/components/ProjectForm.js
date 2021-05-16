@@ -6,6 +6,7 @@ import ReactTooltip from 'react-tooltip';
 import axios from 'axios'
 import { BACKEND_URL } from '../constants/constants'
 import Navbar from './Navbar'
+import  InfoIcon  from '../images/info.svg'
 import '../styles/Form.scss';
 import '../styles/css-fontello-github-circled/fontello.css';
 import '../styles/css-fontello-mail-alt/fontello.css';
@@ -383,10 +384,12 @@ export default function Form(props) {
       {showBranches &&
        <div className='field'>
          <label className='label'>Select Branch for stats</label>
-         <span data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
+         <img 
+         src={InfoIcon}
+         data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
          <br/>Please select the branch on which students should be contributing. 
          <br/> We will be fetching the contributions data from the branch you have specified. 
-         <br/> You can also change the branch in middle of KWoC`}>Why this?</span>
+         <br/> You can also change the branch in middle of KWoC`}/>
          <ReactTooltip place="bottom" type="info" effect="float" html />
          <Select
          isClearable
