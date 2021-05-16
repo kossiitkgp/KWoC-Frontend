@@ -253,7 +253,7 @@ export default function Form(props) {
       tags.length == 0 ||
       branch == ''
       ) {
-        alert('Please fill all the fields of the form')
+        alert('Please fill all the compulsory fields of the form(all except Secondary Mentor)')
         return
       }
 
@@ -331,6 +331,19 @@ export default function Form(props) {
       HOWEVER WE CAN DECIDE ON THE ORDER OF FIELDS?
       - rakaar
     */}
+
+    <div className='field'>
+        <label className='label'>Project Name</label>
+        <div className='control'>
+          <input
+            className='input is-rounded'
+            type='text'
+            placeholder='Cool name of your project'
+            onChange={e => setName(e.target.value)}
+          />
+        </div>
+      </div>
+
     <div className='field'>
         <label className='label'>Github Link to the Project</label>
         <div className='control'>
@@ -344,17 +357,6 @@ export default function Form(props) {
         {errInRepo}
       </div>
       
-      <div className='field'>
-        <label className='label'>Project Name</label>
-        <div className='control'>
-          <input
-            className='input is-rounded'
-            type='text'
-            placeholder='Cool name of your project'
-            onChange={e => setName(e.target.value)}
-          />
-        </div>
-      </div>
 
       <div className='field'>
         <label className='label'>Project Description</label>
