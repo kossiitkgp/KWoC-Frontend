@@ -14,6 +14,9 @@ We are using several tools that you might be unfamiliar with, or would just like
 
 You can find further instructions in [Learn](learn.md) Page.
 
+
+# Setting up Locally
+
 ## Install Instructions
 
 ```
