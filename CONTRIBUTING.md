@@ -27,27 +27,6 @@ Hi :wave: there, welcome to KWoC React project. We are glad that you considered 
 - Be attentive and respond to comments and suggestions in the opened PR.
 - We will merge your PR after reviewing and testing it.
 
-## Project Structure
-
-The files are setup as follows:
-
-```
-Public/
-|____images/
-| |____(All the image content)
-src/
-|____styles/
-| |____(Styles for components filetype:scss)
-|____App.js
-|____index.js
-|____components/
-| |____(React Components and Pages)
-|____serviceWorker.js
-
-```
-
-We expect you to follow the same structure and organize your files accordingly.
-
 ## Building and running locally
 
 First install all the dependencies using yarn (:warning: not npm​) by running `$ yarn` in the root directory.
