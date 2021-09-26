@@ -16,7 +16,7 @@ Hi :wave: there, welcome to KWoC React project. We are glad that you considered 
 
 ## Contribution Workflow
 
-- Each contribution begins with an issue in this repo or a discussion in the [#kwoc-react](https://kossiitkgp.slack.com/messages/CK8KPE32A/) channel.
+- Each contribution begins with an issue in this repo.
   - Create the issue as necessary.
   - If you lack the technical knowhow, refer to [Learning Guide](learn.md) or ask for help to anyone.
 - Create a Branch and Commit your changes.
