@@ -27,10 +27,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "browserslist": {
     "production": [
@@ -45,6 +46,8 @@
     ]
   },
   "devDependencies": {
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "prettier": "2.4.1",
     "prettier-plugin-organize-imports": "2.3.4"
   }
