@@ -1,16 +1,17 @@
 #faq {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(https://raw.githubusercontent.com/kossiitkgp/kwoc-2017/master/static/images/intro-background.jpg);
-    background-size: cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(https://raw.githubusercontent.com/kossiitkgp/kwoc-2017/master/static/images/intro-background.jpg);
+  background-size: cover;
 }
 
 #content-faq {
-    color: white !important;
+  color: white !important;
 }
 @media (max-width: 768px) {
-    #faq {
-        .title {
-            font-size: 4rem;
-            line-height: 1.3;
-        }
+  #faq {
+    .title {
+      font-size: 4rem;
+      line-height: 1.3;
     }
+  }
 }

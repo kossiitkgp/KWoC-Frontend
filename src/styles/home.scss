@@ -1,4 +1,4 @@
-@import 'index.scss';
+@import "index.scss";
 
 .particles {
   position: absolute !important;
@@ -9,7 +9,7 @@
   background-size: cover;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 0;

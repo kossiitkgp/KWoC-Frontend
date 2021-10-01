@@ -20,16 +20,18 @@
     "react-scripts": "3.0.1",
     "react-select": "^3.1.0",
     "react-table": "^7.6.2",
-    "react-tooltip": "^4.2.18"
+    "react-tooltip": "^4.2.18",
+    "typescript": "^4.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "browserslist": {
     "production": [
@@ -44,11 +46,9 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-plugin-import": "^2.17.3",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-react": "^7.13.0",
-    "prettier": "2.1.2"
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "2.4.1",
+    "prettier-plugin-organize-imports": "2.3.4"
   }
 }

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import '../../styles/Form.scss';
-import '../../styles/css-fontello-github-circled/fontello.css';
-import '../../styles/css-fontello-mail-alt/fontello.css';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+import React, { useEffect, useState } from "react";
+import "../../styles/css-fontello-github-circled/fontello.css";
+import "../../styles/css-fontello-mail-alt/fontello.css";
+import "../../styles/Form.scss";
+import Footer from "../Footer";
+import Navbar from "../Navbar";
 export default function Form(props) {
   const [isSubmitDisabled, disableSubmit] = useState(false);
 
-  const [username, setUsername] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const { username, name, email } = props.location.state;
@@ -22,7 +22,7 @@ export default function Form(props) {
   function handleSubmit(e) {
     e.preventDefault();
     disableSubmit(true);
-    const URL = 'https://kwoc.metamehta.me/mentor/form';
+    const URL = "https://kwoc.metamehta.me/mentor/form";
     const data = {
       username: username,
       name: name,
@@ -30,15 +30,15 @@ export default function Form(props) {
     };
 
     fetch(URL, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Bearer: localStorage.getItem('mentor_jwt'),
+        Bearer: localStorage.getItem("mentor_jwt"),
       },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((res) => {
-        if (res === 'success') props.history.push('/dashboard/mentor');
+        if (res === "success") props.history.push("/dashboard/mentor");
       })
       .catch((err) => {
         disableSubmit(false);
@@ -48,8 +48,8 @@ export default function Form(props) {
   return (
     <React.Fragment>
       <Navbar />
-      <div className='box'>
-          <h2>Registrations for this year have ended.</h2>
+      <div className="box">
+        <h2>Registrations for this year have ended.</h2>
       </div>
       <Footer />
     </React.Fragment>

@@ -16,7 +16,6 @@ We are using several tools that you might be unfamiliar with, or would just like
 
 You can find further instructions in [Learn](learn.md) Page.
 
-
 # Setting up Locally
 
 ## Install Instructions
@@ -42,6 +41,7 @@ yarn build
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Useful files' paths
+
 - Forms
   - Mentor Form - `src/components/form/MentorForm.js`
   - Student Form - `src/components/form/StudentForm.js`
@@ -56,6 +56,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - Individual Project Stats - `src/components/indivStats/mentorStats/MentorStats.js`
   - Individual Student Stats - `src/components/indivStats/studentStats/StudentStats.js`
 - Projects Page
+
   - Project Card - `src/components/projects/ProjectCard.js`
   - Projects Page - `src/components/projects/Projects.js`
 

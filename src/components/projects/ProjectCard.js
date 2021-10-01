@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import ReactReadMoreReadLess from 'react-read-more-read-less';
-
-import '../../styles/projects.scss';
+import React, { useEffect, useState } from "react";
+import ReactReadMoreReadLess from "react-read-more-read-less";
+import "../../styles/projects.scss";
 
 export default function Card(props) {
   const [loggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
     const student_loggedout =
-      localStorage.getItem('student_jwt') === null ||
-      localStorage.getItem('student_jwt') === undefined;
+      localStorage.getItem("student_jwt") === null ||
+      localStorage.getItem("student_jwt") === undefined;
 
     const mentor_loggedout =
-      localStorage.getItem('mentor_jwt') === null ||
-      localStorage.getItem('mentor_jwt') === undefined;
+      localStorage.getItem("mentor_jwt") === null ||
+      localStorage.getItem("mentor_jwt") === undefined;
 
     if (student_loggedout && mentor_loggedout) {
       setLoggedIn(false);
@@ -21,54 +20,54 @@ export default function Card(props) {
   }, []);
 
   const TAG_TYPES = [
-    'is-primary',
-    'is-link',
-    'is-info',
-    'is-success',
-    'is-warning',
-    'is-danger',
-    'is-black',
-    'is-dark',
-    'is-light',
-    'is-primary is-light',
-    'is-link is-light',
-    'is-info is-light',
-    'is-success is-light',
-    'is-warning is-light',
-    'is-danger is-light',
+    "is-primary",
+    "is-link",
+    "is-info",
+    "is-success",
+    "is-warning",
+    "is-danger",
+    "is-black",
+    "is-dark",
+    "is-light",
+    "is-primary is-light",
+    "is-link is-light",
+    "is-info is-light",
+    "is-success is-light",
+    "is-warning is-light",
+    "is-danger is-light",
   ];
   const LEN = TAG_TYPES.length;
   return (
-    <div className='card'>
-      <header className='card-header has-text-white'>
+    <div className="card">
+      <header className="card-header has-text-white">
         <a
-          className='card-header-title has-text-white'
+          className="card-header-title has-text-white"
           href={props.projectLink}
-          target='_blank'
-          rel='noopener noreferrer'
+          target="_blank"
+          rel="noopener noreferrer"
         >
           {props.name}
         </a>
       </header>
-      <div className='card-content'>
-        <div className='content'>
-          {' '}
+      <div className="card-content">
+        <div className="content">
+          {" "}
           <ReactReadMoreReadLess
             charLimit={420}
             readMoreStyle={{
-              fontWeight: 'bold',
-              cursor: 'pointer',
+              fontWeight: "bold",
+              cursor: "pointer",
             }}
-            readLessStyle={{ fontWeight: 'bold', cursor: 'pointer' }}
-            readMoreText={'Read more ▼'}
-            readLessText={'Read less ▲'}
+            readLessStyle={{ fontWeight: "bold", cursor: "pointer" }}
+            readMoreText={"Read more ▼"}
+            readLessText={"Read less ▲"}
           >
             {props.desc}
           </ReactReadMoreReadLess>
         </div>
         <br />
-        <section className='tags' id='projectTags'>
-          <div className='container'>
+        <section className="tags" id="projectTags">
+          <div className="container">
             <p>
               {props.tags.map((tag) => (
                 <span
@@ -83,7 +82,7 @@ export default function Card(props) {
             </p>
           </div>
         </section>
-        <section className='details'>
+        <section className="details">
           <p>
             <b>Mentored by:</b>
             {[...Array(props.length).keys()].map((index) => {
@@ -97,7 +96,7 @@ export default function Card(props) {
                     <p>
                       (
                       <a
-                        style={{ color: '#4A4A4A' }}
+                        style={{ color: "#4A4A4A" }}
                         href={`mailto:${props.mentorId[index]}`}
                       >
                         {props.mentorId[index]}
@@ -111,10 +110,10 @@ export default function Card(props) {
           </p>
           <p>
             <a
-              className='footer-btn button is-link is-outlined channel-link'
+              className="footer-btn button is-link is-outlined channel-link"
               href={props.commLink}
-              target='_blank'
-              rel='noopener noreferrer'
+              target="_blank"
+              rel="noopener noreferrer"
             >
               Join Channel
             </a>
@@ -122,12 +121,12 @@ export default function Card(props) {
         </section>
       </div>
 
-      <footer className='card-footer'>
+      <footer className="card-footer">
         <a
-          className='footer-btn button is-primary is-medium is-fullwidth'
+          className="footer-btn button is-primary is-medium is-fullwidth"
           href={props.projectLink}
-          target='_blank'
-          rel='noopener noreferrer'
+          target="_blank"
+          rel="noopener noreferrer"
         >
           View Project
         </a>

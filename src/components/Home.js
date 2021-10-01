@@ -1,92 +1,93 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import Timeline from './timelinedata/Timeline';
-import '../styles/about.scss';
-import '../styles/home.scss';
-import '../styles/why.scss';
-import Part from './Part';
-import group from '../images/people.svg';
-import github from '../images/github.svg';
-import pullRequest from '../images/git-pull-request.svg';
+import React from "react";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import pullRequest from "../images/git-pull-request.svg";
+import github from "../images/github.svg";
+import group from "../images/people.svg";
+import "../styles/about.scss";
+import "../styles/home.scss";
+import "../styles/why.scss";
+import Part from "./Part";
+import Timeline from "./timelinedata/Timeline";
 
 export default function Home() {
   const tags = [
-    'Machine learning',
-    'Android',
-    'Computer Vision',
-    'Gaming',
-    'Backend',
-    'Natural Language Processing',
-    'Scrapping',
-    'Cognition',
-    'Front End',
-    'Deep Learning',
-    'Operating System',
-    'DBMS',
-    'OOP',
-    'Compilers',
-    'Security',
-    'Data Mining',
-    'Simulations',
-    'Artificial Intelligence',
+    "Machine learning",
+    "Android",
+    "Computer Vision",
+    "Gaming",
+    "Backend",
+    "Natural Language Processing",
+    "Scrapping",
+    "Cognition",
+    "Front End",
+    "Deep Learning",
+    "Operating System",
+    "DBMS",
+    "OOP",
+    "Compilers",
+    "Security",
+    "Data Mining",
+    "Simulations",
+    "Artificial Intelligence",
   ];
 
   return (
-    <div className='home'>
+    <div className="home">
       <Navbar />
       <section
-        className='hero is-fullheight is-dark is-bold'
-        style={{ position: 'relative' }}
+        className="hero is-fullheight is-dark is-bold"
+        style={{ position: "relative" }}
       >
         <Part />
-        <div className='hero-body'>
-          <div className='container'>
-            <h1 className='title' id='hero'>
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title" id="hero">
               Welcome to KWoC
             </h1>
 
-            <div className="reg-btns " style={{ padding: '0 20%', marginBottom: '20px' }}>
-							<p className="control">
-								<a
-									className="button is-fullwidth "
-									href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${process.env.GITHUB_AUTH_CLIENT_ID}&state=student`}
-									style={{ marginBottom: '20px' }}
-                  
-                >
-									Student Registration
-								</a>
-							</p>
-							<p className="control">
-								<a
-									className="button is-fullwidth "
-									href= {`https://github.com/login/oauth/authorize?scope=user:email&client_id=${process.env.GITHUB_AUTH_CLIENT_ID}&state=mentor`}
-									style={{ marginBottom: '20px' }}
-                 
-                >
-									Mentor Registration
-								</a>
-							</p>
-						</div>
-
-            <div className='manual-btns field is-grouped is-grouped-centered'>
-              <p className='control'>
+            <div
+              className="reg-btns "
+              style={{ padding: "0 20%", marginBottom: "20px" }}
+            >
+              <p className="control">
                 <a
-                  className='button is-fullwidth'
-                  href='https://drive.google.com/file/d/1_K30Crr3vVgRS-NGFVC2obQypD22jTuq/view'
-                  rel='noopener noreferrer'
-                  target='_blank'
-                  style={{ marginBottom: '20px' }}
+                  className="button is-fullwidth "
+                  href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${process.env.GITHUB_AUTH_CLIENT_ID}&state=student`}
+                  style={{ marginBottom: "20px" }}
+                >
+                  Student Registration
+                </a>
+              </p>
+              <p className="control">
+                <a
+                  className="button is-fullwidth "
+                  href={`https://github.com/login/oauth/authorize?scope=user:email&client_id=${process.env.GITHUB_AUTH_CLIENT_ID}&state=mentor`}
+                  style={{ marginBottom: "20px" }}
+                >
+                  Mentor Registration
+                </a>
+              </p>
+            </div>
+
+            <div className="manual-btns field is-grouped is-grouped-centered">
+              <p className="control">
+                <a
+                  className="button is-fullwidth"
+                  href="https://drive.google.com/file/d/1_K30Crr3vVgRS-NGFVC2obQypD22jTuq/view"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  style={{ marginBottom: "20px" }}
                 >
                   Student Manual
                 </a>
               </p>
-              <p className='control'>
+              <p className="control">
                 <a
-                  className='button is-fullwidth '
-                  href='https://drive.google.com/file/d/1P7F-Jfi_XdUeptc4t5KM09PtTJRatjj1/view'
-                  rel='noopener noreferrer'
-                  target='_blank'
+                  className="button is-fullwidth "
+                  href="https://drive.google.com/file/d/1P7F-Jfi_XdUeptc4t5KM09PtTJRatjj1/view"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
                   Mentor Manual
                 </a>
@@ -99,8 +100,8 @@ export default function Home() {
       {/* <section className="about">
 				<div className="container" />
 			</section> */}
-      <section className='why-kwoc' id='about'>
-        <div className='container'>
+      <section className="why-kwoc" id="about">
+        <div className="container">
           <h1>About</h1>
           <p>
             Kharagpur Winter of Code is a 5-week long online program for
@@ -136,44 +137,44 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <section className='tags' id='tags'>
-        <div className='container'>
+      <section className="tags" id="tags">
+        <div className="container">
           <h1>Tags</h1>
 
           <p>
             {tags.map((tag) => (
-              <span key={tag} className='tag cust-tag is-medium'>
+              <span key={tag} className="tag cust-tag is-medium">
                 {tag}
               </span>
             ))}
           </p>
         </div>
       </section>
-      <section className='timeline' id='tline'>
-        <div className='container'>
+      <section className="timeline" id="tline">
+        <div className="container">
           <h1 style={{ zIndex: 10 }}>Timeline</h1>
           <Part />
           <Timeline />
         </div>
       </section>
 
-      <section className='stats'>
-        <div className='container'>
+      <section className="stats">
+        <div className="container">
           <h1>Statistics: KWoC 2019</h1>
-          <div className='columns is-centered'>
-            <div className='column has-text-centered'>
-              <img src={group} alt='Group' />
+          <div className="columns is-centered">
+            <div className="column has-text-centered">
+              <img src={group} alt="Group" />
 
               <h3>2000+ Participants</h3>
             </div>
-            <div className='column has-text-centered'>
-              <img src={pullRequest} alt='pullRequest' />
+            <div className="column has-text-centered">
+              <img src={pullRequest} alt="pullRequest" />
 
               <h3>600+ Pull Requests</h3>
             </div>
-            <div className='column has-text-centered'>
+            <div className="column has-text-centered">
               {/* <Card heading="70+ Mentors" body="Some Random Body" /> */}
-              <img src={github} alt='Project' />
+              <img src={github} alt="Project" />
 
               <h3>150+ Projects</h3>
             </div>

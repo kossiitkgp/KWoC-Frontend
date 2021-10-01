@@ -1,36 +1,34 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import axios from 'axios';
-import Navbar from '../../Navbar.js';
-import Footer from '../../Footer.js';
+import axios from "axios";
+import React, { useEffect, useMemo, useState } from "react";
+import { useSortBy, useTable } from "react-table";
+import { STATS_API } from "../../../constants/constants";
+import Footer from "../../Footer.js";
+import Navbar from "../../Navbar.js";
+import "../tables.scss";
 
-import { STATS_API } from '../../../constants/constants';
-
-import { useTable, useSortBy } from 'react-table';
-
-import '../tables.scss';
 export default function ProjectsTable() {
-  const [lastUpdatedTime, setLastUpdatedTime] = useState('');
+  const [lastUpdatedTime, setLastUpdatedTime] = useState("");
   const [rowData, setRowData] = useState([]);
 
   const columnDefs = useMemo(
     () => [
       {
-        Header: 'Project',
-        accessor: 'title',
+        Header: "Project",
+        accessor: "title",
         // Cell: (e) => <a href={e.value}>{e.value}</a>
       },
-      
+
       {
-        Header: 'Number of Contributors',
-        accessor: 'contri',
+        Header: "Number of Contributors",
+        accessor: "contri",
       },
       {
-        Header: 'Number of Commits',
-        accessor: 'commits',
+        Header: "Number of Commits",
+        accessor: "commits",
       },
       {
-        Header: 'Lines(Added/Removed)',
-        accessor: 'lines',
+        Header: "Lines(Added/Removed)",
+        accessor: "lines",
       },
     ],
     []
@@ -40,19 +38,24 @@ export default function ProjectsTable() {
     axios
       .get(`${STATS_API}/stats/projects`)
       .then((res) => {
-        setRowData(res.data['stats'].sort((a,b) => (parseInt(a.commits) < parseInt(b.commits)) ? 1 : -1));
-        console.log(res.data['stats'])
+        setRowData(
+          res.data["stats"].sort((a, b) =>
+            parseInt(a.commits) < parseInt(b.commits) ? 1 : -1
+          )
+        );
+        console.log(res.data["stats"]);
       })
       .catch((err) => {
-        alert('Server Error,try again');
+        alert("Server Error,try again");
       });
-    let currentTime = new Date()
+    let currentTime = new Date();
     let currentOffset = currentTime.getTimezoneOffset();
     let ISTOffset = 330;
-    let ISTTime = new Date(currentTime.getTime() + (ISTOffset + currentOffset)*60000);
-    let hoursIST = ISTTime.getHours()
-    if(hoursIST.toString().length == 1)
-      hoursIST = '0'+ hoursIST.toString()
+    let ISTTime = new Date(
+      currentTime.getTime() + (ISTOffset + currentOffset) * 60000
+    );
+    let hoursIST = ISTTime.getHours();
+    if (hoursIST.toString().length == 1) hoursIST = "0" + hoursIST.toString();
     setLastUpdatedTime(`${hoursIST.toString()}:00 IST`);
   }, []);
 
@@ -62,30 +65,27 @@ export default function ProjectsTable() {
     return withHref;
   }
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns: columnDefs, data: rowData }, useSortBy);
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns: columnDefs, data: rowData }, useSortBy);
 
   return (
     <div>
       <Navbar />
-      <div className='stats'>
-        <div style={{ textAlign: 'center' }}>
+      <div className="stats">
+        <div style={{ textAlign: "center" }}>
           <h3>
-          Coding period has ended<br/>
-          <u>Note for Students</u>: Please submit your report link for end evals in the Student Dashboard before 9th Jan 11 PM IST.
-          <br/> Last Updated at 4th Jan 11:59 PM IST {' '}
+            Coding period has ended
+            <br />
+            <u>Note for Students</u>: Please submit your report link for end
+            evals in the Student Dashboard before 9th Jan 11 PM IST.
+            <br /> Last Updated at 4th Jan 11:59 PM IST{" "}
           </h3>
           <h5>
             You can sort the rows by clicking on headers, and also filter by
             clicking on the button by hovering
           </h5>
-      
-          <div className='table-container'>
+
+          <div className="table-container">
             <table {...getTableProps()}>
               <thead>
                 {headerGroups.map((headerGroup) => (
@@ -96,13 +96,13 @@ export default function ProjectsTable() {
                           column.getSortByToggleProps()
                         )}
                       >
-                        {column.render('Header')}
+                        {column.render("Header")}
                         <span>
                           {column.isSorted
                             ? column.isSortedDesc
-                              ? ' 🔽'
-                              : ' 🔼'
-                            : ''}
+                              ? " 🔽"
+                              : " 🔼"
+                            : ""}
                         </span>
                       </th>
                     ))}
@@ -117,7 +117,7 @@ export default function ProjectsTable() {
                       {row.cells.map((cell) => {
                         return (
                           <td {...cell.getCellProps()}>
-                            {cell.render('Cell')}
+                            {cell.render("Cell")}
                           </td>
                         );
                       })}
