@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../images/circle.svg';
-import '../styles/navbar.scss';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import logo from "../images/circle.svg";
+import "../styles/navbar.scss";
 
 class Navbar extends Component {
   state = {
@@ -14,22 +14,22 @@ class Navbar extends Component {
   componentDidMount() {
     this.setState({
       is_mentor_loggedin:
-        localStorage.getItem('mentor_jwt') === null ||
-        localStorage.getItem('student_jwt') === undefined,
+        localStorage.getItem("mentor_jwt") === null ||
+        localStorage.getItem("student_jwt") === undefined,
     });
 
     this.setState({
       is_student_loggedin:
-        localStorage.getItem('student_jwt') === null ||
-        localStorage.getItem('student_jwt') === undefined,
+        localStorage.getItem("student_jwt") === null ||
+        localStorage.getItem("student_jwt") === undefined,
     });
 
     const mentor_loggedout =
-      localStorage.getItem('mentor_jwt') === null ||
-      localStorage.getItem('student_jwt') === undefined;
+      localStorage.getItem("mentor_jwt") === null ||
+      localStorage.getItem("student_jwt") === undefined;
     const student_loggedout =
-      localStorage.getItem('student_jwt') === null ||
-      localStorage.getItem('student_jwt') === undefined;
+      localStorage.getItem("student_jwt") === null ||
+      localStorage.getItem("student_jwt") === undefined;
 
     this.setState({
       is_atleast_one_logged_in: !mentor_loggedout || !student_loggedout,
@@ -58,86 +58,86 @@ class Navbar extends Component {
 
   getWindowHeight = () => {
     const distanceY = window.pageYOffset || document.documentElement.scrollTop;
-    const shrinkOn = '100';
+    const shrinkOn = "100";
     if (distanceY > shrinkOn) {
       this.setState({
-        scrollClass: 'smaller',
+        scrollClass: "smaller",
       });
-    } else if (this.state.scrollClass === 'smaller' && distanceY < shrinkOn) {
+    } else if (this.state.scrollClass === "smaller" && distanceY < shrinkOn) {
       this.setState({
-        scrollClass: 'large',
+        scrollClass: "large",
       });
     }
   };
 
   logoutMentor = () => {
-    localStorage.removeItem('mentor_jwt');
-    localStorage.removeItem('mentor_username');
-    window.location.pathname = '';
+    localStorage.removeItem("mentor_jwt");
+    localStorage.removeItem("mentor_username");
+    window.location.pathname = "";
   };
 
   logoutStudent = () => {
-    localStorage.removeItem('student_jwt');
-    localStorage.removeItem('student_username');
-    window.location.pathname = '';
+    localStorage.removeItem("student_jwt");
+    localStorage.removeItem("student_username");
+    window.location.pathname = "";
   };
 
   render() {
-    const clickClass = this.state.burgermenuIsVisible ? 'is-active' : '';
+    const clickClass = this.state.burgermenuIsVisible ? "is-active" : "";
 
     return (
-      <div className='navbar'>
+      <div className="navbar">
         <nav
           className={`navbar is-fixed-top is-transparent ${this.state.scrollClass}`}
-          role='navigation'
-          aria-label='main navigation'
-          id='navbar-container'
+          role="navigation"
+          aria-label="main navigation"
+          id="navbar-container"
         >
-          <div className='container'>
-            <div className='navbar-brand'>
-              <Link className='navbar-item' to='/' id='kwoc-logo'>
-                <img src={logo} alt='logo' style={{ width: '50px' }} />
+          <div className="container">
+            <div className="navbar-brand">
+              <Link className="navbar-item" to="/" id="kwoc-logo">
+                <img src={logo} alt="logo" style={{ width: "50px" }} />
               </Link>
 
               <button
                 className={`navbar-burger burger ${clickClass}`}
-                aria-label='menu'
-                aria-expanded='false'
-                data-target='navbarBasicExample'
+                aria-label="menu"
+                aria-expanded="false"
+                data-target="navbarBasicExample"
                 onClick={this.handleClick}
               >
-                <span aria-hidden='true' />
-                <span aria-hidden='true' />
-                <span aria-hidden='true' />
+                <span aria-hidden="true" />
+                <span aria-hidden="true" />
+                <span aria-hidden="true" />
               </button>
             </div>
 
             <div
-              id='navbarBasicExample'
+              id="navbarBasicExample"
               className={`navbar-menu ${clickClass}`}
             >
               <div
-                className='navbar-end'
+                className="navbar-end"
                 onClick={this.closeNavbar}
-                id='functional-buttons'
+                id="functional-buttons"
               >
-                <a className='navbar-item' href='/#about' id='about-button'>
+                <a className="navbar-item" href="/#about" id="about-button">
                   About
                 </a>
 
                 <Link
-                  className='navbar-item'
-                  to='/projects'
-                  id='project-button'
+                  className="navbar-item"
+                  to="/projects"
+                  id="project-button"
                 >
                   Projects
                 </Link>
 
-                <Link className='navbar-item' to='/FAQ' id='faq-button'>
+                <Link className="navbar-item" to="/FAQ" id="faq-button">
                   FAQs
                 </Link>
 
-                <a className='navbar-item' href='/#tline' id='tline-button'>
+                <a className="navbar-item" href="/#tline" id="tline-button">
                   Timeline
                 </a>
 
@@ -145,37 +145,35 @@ class Navbar extends Component {
              <a>Mentee Login</a>
             </Link> */}
                 <Link
-                  className='navbar-item'
-                  to='/testimonial'
-                  id='testimonial-button'
+                  className="navbar-item"
+                  to="/testimonial"
+                  id="testimonial-button"
                 >
                   Testimonials
                 </Link>
 
                 <a
-                  className='navbar-item'
-                  href='https://github.com/kossiitkgp/kwoc-bugs'
-                  target='_blank'
-                  rel='noreferrer'
-                  id='testimonial-button'
+                  className="navbar-item"
+                  href="https://github.com/kossiitkgp/kwoc-bugs"
+                  target="_blank"
+                  rel="noreferrer"
+                  id="testimonial-button"
                 >
                   Bug Report
                 </a>
-                <div
-                  className='navbar-item has-dropdown is-hoverable'
-                >
-                    <a className='navbar-link' id='testimonial-button'>
+                <div className="navbar-item has-dropdown is-hoverable">
+                  <a className="navbar-link" id="testimonial-button">
                     Stats
-                    </a>
+                  </a>
 
-                    <div className='navbar-dropdown'>
-                      <a className='navbar-item' href='/stats/students'>
-                          Students
-                      </a>
-                      <a className='navbar-item' href='/stats/projects'>
-                          Projects
-                      </a>
-                    </div>
+                  <div className="navbar-dropdown">
+                    <a className="navbar-item" href="/stats/students">
+                      Students
+                    </a>
+                    <a className="navbar-item" href="/stats/projects">
+                      Projects
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -188,37 +186,37 @@ class Navbar extends Component {
                 </div>
               </div>
               */}
-              <div className='navbar-end' onClick={this.closeNavbar}>
+              <div className="navbar-end" onClick={this.closeNavbar}>
                 <div
-                  className='navbar-item has-dropdown is-hoverable'
-                  id='login-buttons'
+                  className="navbar-item has-dropdown is-hoverable"
+                  id="login-buttons"
                 >
-                  <a className='navbar-link'>
+                  <a className="navbar-link">
                     {this.state.is_atleast_one_logged_in === true
-                      ? 'Manage Account'
-                      : 'Login'}
+                      ? "Manage Account"
+                      : "Login"}
                   </a>
-                  <div className='navbar-dropdown'>
+                  <div className="navbar-dropdown">
                     {this.state.is_mentor_loggedin === true ? (
                       <a
-                        className='navbar-item'
-                        id='mentor-login'
-                        href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor'
+                        className="navbar-item"
+                        id="mentor-login"
+                        href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
                       >
                         Mentor Login
                       </a>
                     ) : (
                       <React.Fragment>
                         <a
-                          className='navbar-item'
-                          id='mentor-login'
-                          href='/dashboard/mentor'
+                          className="navbar-item"
+                          id="mentor-login"
+                          href="/dashboard/mentor"
                         >
                           Mentor Dashboard
                         </a>
                         <a
-                          className='navbar-item'
-                          id='mentor-login'
+                          className="navbar-item"
+                          id="mentor-login"
                           onClick={this.logoutMentor}
                         >
                           Logout(Mentor)
@@ -227,24 +225,24 @@ class Navbar extends Component {
                     )}
                     {this.state.is_student_loggedin === true ? (
                       <a
-                        className='navbar-item'
-                        id='mentee-login'
-                        href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student'
+                        className="navbar-item"
+                        id="mentee-login"
+                        href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
                       >
                         Student Login
                       </a>
                     ) : (
                       <React.Fragment>
                         <a
-                          className='navbar-item'
-                          id='mentee-login'
-                          href='/dashboard/student'
+                          className="navbar-item"
+                          id="mentee-login"
+                          href="/dashboard/student"
                         >
                           Student Dashboard
                         </a>
                         <a
-                          className='navbar-item'
-                          id='mentor-login'
+                          className="navbar-item"
+                          id="mentor-login"
                           onClick={this.logoutStudent}
                         >
                           Logout(Student)

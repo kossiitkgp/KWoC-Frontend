@@ -1,86 +1,69 @@
 const faqs = [
   // general
   {
-    q:
-      "I do not have any prior knowledge of git and/or any programming language. Can I do this?",
-    a:
-      "Absolutely. This program is specifically catered to the growth and smooth transition of people like you who want to learn. KOSS and the mentors will help you wherever possible.",
+    q: "I do not have any prior knowledge of git and/or any programming language. Can I do this?",
+    a: "Absolutely. This program is specifically catered to the growth and smooth transition of people like you who want to learn. KOSS and the mentors will help you wherever possible.",
     tags: ["get-started", "start", "beginner"],
   },
   {
-    q:
-      "What is the deadline for selecting projects? How many projects can we select?",
-    a:
-      "There is no deadline for selecting projects nor is there any restriction on the number of projects you can contribute to; you can also switch between projects as much as you want. The only necessity is that you should have made at least one commit before mid-term evaluations.",
+    q: "What is the deadline for selecting projects? How many projects can we select?",
+    a: "There is no deadline for selecting projects nor is there any restriction on the number of projects you can contribute to; you can also switch between projects as much as you want. The only necessity is that you should have made at least one commit before mid-term evaluations.",
     tags: ["select", "choose", "proposal"],
   },
   {
     q: "Where does KWoC occur? Do I need to be a student of IIT Kharagpur?",
-    a:
-      "Kharagpur Winter of Code is to be done remotely from home, and it is not required for you to be student of ANY particular institute",
+    a: "Kharagpur Winter of Code is to be done remotely from home, and it is not required for you to be student of ANY particular institute",
     tags: ["offline", "remote", "work from home", "online", "college"],
   },
   {
     q: "What is the purpose of this program? Is this some kind of internship?",
-    a:
-      "No, KWoC is a program which aims at helping participants learn how to contribute in the open-source world. This activity prepares you for various open source opportunities such as Google Summer of Code, Rail Girl's Summer of Code and Outreachy",
+    a: "No, KWoC is a program which aims at helping participants learn how to contribute in the open-source world. This activity prepares you for various open source opportunities such as Google Summer of Code, Rail Girl's Summer of Code and Outreachy",
     tags: ["benefits", "why to", "advantages"],
   },
   {
     q: "Can I participate in KWoC as both a mentor and a student?",
-    a:
-      "Yes, you can participate in KWoC both as a mentor and a student. But you will not be awarded certificate for having contributions only in your project.",
+    a: "Yes, you can participate in KWoC both as a mentor and a student. But you will not be awarded certificate for having contributions only in your project.",
     tags: ["double", "role"],
   },
   {
     q: "What can I do to help spread the word about KWoC?",
-    a:
-      "Nothing makes us happier than people spreading words about open-source; to begin, you can like our facebook page and increase awareness about KWoC in your college; nothing works better than word of mouth.",
+    a: "Nothing makes us happier than people spreading words about open-source; to begin, you can like our facebook page and increase awareness about KWoC in your college; nothing works better than word of mouth.",
     tags: ["support", "help", "thank"],
   },
   {
     q: "What if I have a question not answered in this FAQ?",
-    a:
-      "Please make sure to read the website. If after reading through it you still don't have an answer please consider reaching out to us at admin@kossiitkgp.org",
+    a: "Please make sure to read the website. If after reading through it you still don't have an answer please consider reaching out to us at admin@kossiitkgp.org",
     tags: ["help", "contact", "support"],
   },
   // students
   {
     q: "How should I get selected in KWOC?",
-    a:
-      "There is absolutely no selection criteria for students. You are selected in the program as soon as you register. So you don't have to ask your mentors 'How to get selected for your project?', but instead go ahead with 'How can I contribute to your project?'",
+    a: "There is absolutely no selection criteria for students. You are selected in the program as soon as you register. So you don't have to ask your mentors 'How to get selected for your project?', but instead go ahead with 'How can I contribute to your project?'",
     tags: ["selection"],
   },
   {
     q: "My mentor is not replying, What should I do?",
-    a:
-      "Please be patient with your mentor(s). If you do not get a response on the communication channel, contact the mentor on their email id. If no response for 3 days, inform us.",
+    a: "Please be patient with your mentor(s). If you do not get a response on the communication channel, contact the mentor on their email id. If no response for 3 days, inform us.",
     tags: ["inactive", "seen zone", "ignore"],
   },
   {
     q: "What is the last date of student registration?",
-    a:
-      "Students registration deadline is 4th December. The contribution chart goes live at the same time, so be quick, early bird catches the worm :)",
+    a: "Students registration deadline is 4th December. The contribution chart goes live at the same time, so be quick, early bird catches the worm :)",
     tags: ["deadline"],
   },
   {
-    q:
-      "Can I show the contributions that I have made in KWoC for participating in any competitions?",
-    a:
-      "All the contributions that you will make in KWoC will be displayed on your GitHub timeline. So, that is a big plus if you are participating in any competitions and your GitHub profile is on display. The certificate we provide also contains a link to your contribution's stats from KWoC",
+    q: "Can I show the contributions that I have made in KWoC for participating in any competitions?",
+    a: "All the contributions that you will make in KWoC will be displayed on your GitHub timeline. So, that is a big plus if you are participating in any competitions and your GitHub profile is on display. The certificate we provide also contains a link to your contribution's stats from KWoC",
     tags: ["display", "share", "certificate"],
   },
   {
     q: "Can I apply if I am not a student of IIT Kharagpur ?",
-    a:
-      "Sure ! Our program is open to all students irrespective of college ! Is there any eligibility criteria and pre-requisites? There is no strict eligibility criteria as such. Read this Quora answer by Pranit Bauva - https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016",
+    a: "Sure ! Our program is open to all students irrespective of college ! Is there any eligibility criteria and pre-requisites? There is no strict eligibility criteria as such. Read this Quora answer by Pranit Bauva - https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016",
     tags: ["who can", "for whom", "outside"],
   },
   {
-    q:
-      "Can you provide me any advice so that I can start preparing for it beforehand?",
-    a:
-      "Play around git and GitHub. Create an account on GitHub, set up git on your machine and start experimenting with it. You can also begin by following Codecademy's git interactive tutorial.",
+    q: "Can you provide me any advice so that I can start preparing for it beforehand?",
+    a: "Play around git and GitHub. Create an account on GitHub, set up git on your machine and start experimenting with it. You can also begin by following Codecademy's git interactive tutorial.",
     tags: ["suggestion", "start"],
   },
   // {
@@ -88,47 +71,39 @@ const faqs = [
   //     "a": "Pretty fair ! You need to be working for the whole month regardless of your expertise level."
   // },
   {
-    q:
-      "Are their any other similar kind of programme that I might find of interest?",
-    a:
-      "Other program similar to KWoC are GirlScript Summer of Code organised by GirlScript India. If you meant similar to GSoC, then look around, there are plenty of them e.g. KDE summer of code, Outreachy, Rails summer of code, etc.",
+    q: "Are their any other similar kind of programme that I might find of interest?",
+    a: "Other program similar to KWoC are GirlScript Summer of Code organised by GirlScript India. If you meant similar to GSoC, then look around, there are plenty of them e.g. KDE summer of code, Outreachy, Rails summer of code, etc.",
     tags: ["other programs"],
   },
   {
     q: "Do you provde any stipend or Goodies?",
-    a:
-      "Sorry, we don't provide any stipend or Goodies. But we do provide a certificate on successful completion of KWoC",
+    a: "Sorry, we don't provide any stipend or Goodies. But we do provide a certificate on successful completion of KWoC",
     tags: ["money", "salary", "swag", "gifts", "success"],
   },
   // DISCUSSION NEEDED below
   {
     q: "How much time in a day do I need to give for KWoC?",
-    a:
-      "GSoC requires 40 hours per week in summers. For KWoC, you may give 1-2 hours daily and that includes conversation with your mentor(s). More the projects you choose, more time in conversing about the work.",
+    a: "GSoC requires 40 hours per week in summers. For KWoC, you may give 1-2 hours daily and that includes conversation with your mentor(s). More the projects you choose, more time in conversing about the work.",
     tags: ["busy", "hours", "commitment", "schedule", "exams", "busy"],
   },
   {
     q: "Will I receive a certificate at the end of the KWoC?",
-    a:
-      "Yes, if you clear the mid evals and end evals successfully, you will receive a certificate",
+    a: "Yes, if you clear the mid evals and end evals successfully, you will receive a certificate",
     tags: ["completion", "success", "end"],
   },
   {
     q: "Which programming language(s) do I need to be fluent in?",
-    a:
-      "Programming languages are just like communication languages; it is sufficient to know one or two",
+    a: "Programming languages are just like communication languages; it is sufficient to know one or two",
     tags: ["language", "technologies", "C", "know", "only"],
   },
   {
     q: "Will taking part in KWoC help me in being a part of KOSS?",
-    a:
-      "If your purpose to be with us is pure, and you are deemed worthy; then yes!",
+    a: "If your purpose to be with us is pure, and you are deemed worthy; then yes!",
     tags: ["KOSS", "selected"],
   },
   {
     q: "Can I work on more than one project?",
-    a:
-      "Yes! You can even work in parallel on them. Well, if you are a beginner it is advisable to focus your attention at one thing at a time. But the choice rests with you.",
+    a: "Yes! You can even work in parallel on them. Well, if you are a beginner it is advisable to focus your attention at one thing at a time. But the choice rests with you.",
     tags: [
       "parallel",
       "multiple",
@@ -139,48 +114,38 @@ const faqs = [
     ],
   },
   {
-    q:
-      "What if I am unable to meet the deadlines due to some unavoidable reasons?",
+    q: "What if I am unable to meet the deadlines due to some unavoidable reasons?",
     a: "Contact us at admin@kossiitkgp.org",
     tags: ["help", "miss", "forgot"],
   },
   {
-    q:
-      "Will this programme help me in improving competitive coding skills or get selected for ACM ICPC?",
-    a:
-      "Participating in Open Source contribution improves your skills of software development and of a particular programming language. Depending on your project, you might be able to use some algorithms too. But you should not be direct improvement on your competitive coding skills.",
+    q: "Will this programme help me in improving competitive coding skills or get selected for ACM ICPC?",
+    a: "Participating in Open Source contribution improves your skills of software development and of a particular programming language. Depending on your project, you might be able to use some algorithms too. But you should not be direct improvement on your competitive coding skills.",
     tags: ["CP", "competitive", "FAANG"],
   },
   {
-    q:
-      "What are the minimum contributions I have to do to get successfully recognized as to have completed the programme?",
-    a:
-      "That will based on mentor's feedback. You need to have done at least one commit by the mid-term to be eligible for continuing the program.",
+    q: "What are the minimum contributions I have to do to get successfully recognized as to have completed the programme?",
+    a: "That will based on mentor's feedback. You need to have done at least one commit by the mid-term to be eligible for continuing the program.",
     tags: ["minimum", "clear", "certificate"],
   },
   // Mentor - New FAQs as per this year
   {
     q: "Can a project have multiple mentors?",
-    a:
-      "Yes, we allow upto 2 mentors per project. Both the mentors should register on KWoC website. But it is sufficient if one of the mentors registers the project and adds the Second mentor's name in the form.",
+    a: "Yes, we allow upto 2 mentors per project. Both the mentors should register on KWoC website. But it is sufficient if one of the mentors registers the project and adds the Second mentor's name in the form.",
     tags: ["more than one", "more mentors", "two mentors"],
   },
   {
     q: "Are there any evaluations for mentors?",
-    a:
-      "No, there are no evaluations for mentors. All the mentors, who have hosted their project in KWoC will be given certificate.",
+    a: "No, there are no evaluations for mentors. All the mentors, who have hosted their project in KWoC will be given certificate.",
   },
   {
-    q:
-      "As a mentor what do I do, if some users post spam in my communication channel?",
-    a:
-      "Remove such users from your workspace. Report us their name with email id, if they are participating in KWoC, we will take necessary actions",
+    q: "As a mentor what do I do, if some users post spam in my communication channel?",
+    a: "Remove such users from your workspace. Report us their name with email id, if they are participating in KWoC, we will take necessary actions",
     tags: ["spam", "indiscipline", "complaint", "disrespectful", "chaos"],
   },
   {
     q: "What if I want to host all my organization projects as a mentor?",
-    a:
-      "We request you to register all the projects indiviually. It will help us to keep track of individual Project's stats",
+    a: "We request you to register all the projects indiviually. It will help us to keep track of individual Project's stats",
     tags: ["Github organization", "org", "company", "group", "community"],
   },
   // Stats

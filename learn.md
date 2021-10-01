@@ -30,11 +30,11 @@ Sass is a CSS preprocessor. We shall be using the SCSS variant of the same. If y
 
 We shall use google sheets as our database. We will use scripts to fetch data and push the data submitted in the forms.
 
-Registration forms for students and mentors, Mid-eval, End-eval 
-forms, etc. should be made using Google Forms and store data in Google 
-Sheets. 
+Registration forms for students and mentors, Mid-eval, End-eval
+forms, etc. should be made using Google Forms and store data in Google
+Sheets.
 
-Read [How to Submit an HTML Form to Google Sheets…without Google Forms](https://medium.com/@dmccoy/how-to-submit-an-html-form-to-google-sheets-without-google-forms-b833952cc175) for instructions to setup. 
+Read [How to Submit an HTML Form to Google Sheets…without Google Forms](https://medium.com/@dmccoy/how-to-submit-an-html-form-to-google-sheets-without-google-forms-b833952cc175) for instructions to setup.
 
 See ["Added google sheets support"](https://github.com/kossiitkgp/kwoc/commit/26526d468cb146693884c5b17c898cbd25c8608f) commit to seeing the code in live. Add method to fetch data from Google sheets (eg: when updating stats table with Travis CI)
 
@@ -46,4 +46,4 @@ We shall use GitHub's OAuth and APIs to Authenticate and Login Users and query d
 
 Let's Hope we learn a lot of new things while creating this awesome project!
 
-Feel Free to ping anyone if you need any help! We are here for you! Today and till the end of our days! :sweat_smile: 
+Feel Free to ping anyone if you need any help! We are here for you! Today and till the end of our days! :sweat_smile:

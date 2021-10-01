@@ -4,17 +4,17 @@
 
 // import using ~
 // Import only what you need from Bulma
-@import '~bulma/sass/utilities/_all.sass';
-@import '~bulma/sass/base/generic.sass';
-@import '~bulma/sass/base/helpers.sass';
-@import '~bulma/sass/grid/columns.sass';
-@import '~bulma/sass/elements/button.sass';
-@import '~bulma/sass/elements/container.sass';
-@import '~bulma/sass/elements/image.sass';
-@import '~bulma/sass/form/_all.sass';
-@import '~bulma/sass/components/navbar.sass';
-@import '~bulma/sass/layout/hero.sass';
-@import '~bulma/sass/layout/section.sass';
+@import "~bulma/sass/utilities/_all.sass";
+@import "~bulma/sass/base/generic.sass";
+@import "~bulma/sass/base/helpers.sass";
+@import "~bulma/sass/grid/columns.sass";
+@import "~bulma/sass/elements/button.sass";
+@import "~bulma/sass/elements/container.sass";
+@import "~bulma/sass/elements/image.sass";
+@import "~bulma/sass/form/_all.sass";
+@import "~bulma/sass/components/navbar.sass";
+@import "~bulma/sass/layout/hero.sass";
+@import "~bulma/sass/layout/section.sass";
 
 // FONT SIZES
 
@@ -42,14 +42,14 @@ $text-color: white;
 // FONTS
 
 @font-face {
-  font-family: 'Route159';
-  src: local('Route159'),
-    url(../../../fonts/Route159-Regular.otf) format('opentype');
+  font-family: "Route159";
+  src: local("Route159"),
+    url(../../../fonts/Route159-Regular.otf) format("opentype");
 }
 @font-face {
-  font-family: 'Vegur';
+  font-family: "Vegur";
 
-  src: local('Vegur'), url(../../../fonts/Vegur-Regular.otf) format('opentype');
+  src: local("Vegur"), url(../../../fonts/Vegur-Regular.otf) format("opentype");
 }
 // -----
 
@@ -70,7 +70,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 

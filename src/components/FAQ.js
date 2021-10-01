@@ -1,24 +1,26 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import '../styles/faq.scss';
+import React from "react";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import "../styles/faq.scss";
 
 export default function FAQ() {
   return (
-    <div className='FAQs'>
+    <div className="FAQs">
       <Navbar />
-      <section className='hero is-medium is-warning is-bold' id="faq">
-        <div className='hero-body'>
-          <div className='container' id="content-faq">
-            <h1 className='title' style={{'color': 'white'}}>Frequently Asked Questions</h1>
-            <h2 className='subtitle' style={{'color': 'white'}}>
+      <section className="hero is-medium is-warning is-bold" id="faq">
+        <div className="hero-body">
+          <div className="container" id="content-faq">
+            <h1 className="title" style={{ color: "white" }}>
+              Frequently Asked Questions
+            </h1>
+            <h2 className="subtitle" style={{ color: "white" }}>
               Wanna Ask us a question? Check these first!
             </h2>
           </div>
         </div>
       </section>
 
-      <div className='container' style={{margin: '40px 6%'}}>
+      <div className="container" style={{ margin: "40px 6%" }}>
         <h1>General</h1>
 
         <h4>
@@ -86,7 +88,7 @@ export default function FAQ() {
 
         <p>
           Please make sure to read the website. If after reading through it you
-          still don't have an answer please consider reaching out to us on our 
+          still don't have an answer please consider reaching out to us on our
           <a href="mailto:admin@kossiitkgp.org"> mail address</a>.
         </p>
 
@@ -101,7 +103,6 @@ export default function FAQ() {
           go ahead with "How can I contribute to your project?".
         </p>
 
-
         <h4>My mentor is not replying, What should I do?</h4>
 
         <p>
@@ -113,9 +114,9 @@ export default function FAQ() {
         <h4>What is the last date of student registration?</h4>
 
         <p>
-          Students registration deadline is 4th December. The contribution
-          chart goes live at the same time, so be quick, early bird catches the
-          worm :) .
+          Students registration deadline is 4th December. The contribution chart
+          goes live at the same time, so be quick, early bird catches the worm
+          :) .
         </p>
 
         <h4>
@@ -134,8 +135,11 @@ export default function FAQ() {
         <p>
           Sure ! Our program is open to all students irrespective of college !
           Is there any eligibility criteria and pre-requisites? There is no
-          strict eligibility criteria as such. Read <a href="https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016">this</a> Quora answer by Pranit
-          Bauva.
+          strict eligibility criteria as such. Read{" "}
+          <a href="https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016">
+            this
+          </a>{" "}
+          Quora answer by Pranit Bauva.
         </p>
 
         <h4>
@@ -200,9 +204,9 @@ export default function FAQ() {
         <h4>Can I work on more than one project?</h4>
 
         <p>
-          Yes! You can even work in parallel on them. Well, if you are a beginner
-          it is advisable to focus your attention at one thing at a time. But
-          the choice rests with you.
+          Yes! You can even work in parallel on them. Well, if you are a
+          beginner it is advisable to focus your attention at one thing at a
+          time. But the choice rests with you.
         </p>
 
         <h4>

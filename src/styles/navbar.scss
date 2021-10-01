@@ -1,19 +1,19 @@
-@import 'index.scss';
+@import "index.scss";
 
 button {
-	background: $primary-background-grey;
-	border: none;
+  background: $primary-background-grey;
+  border: none;
 }
 
 #navbar-container {
-	background: $primary-background-black;
-	border-radius: 5px;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
+  background: $primary-background-black;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 
-	.navbar-burger {
-		background: #9a47ff;
-	}
+  .navbar-burger {
+    background: #9a47ff;
+  }
 }
 
 #kwoc-logo,
@@ -22,23 +22,23 @@ button {
 #faq-button,
 #tline-button,
 #testimonial-button {
-	color: $secondary-text-light-grey;
-	background-color: #000;
+  color: $secondary-text-light-grey;
+  background-color: #000;
 }
 
 #functional-buttons {
-	// background: rgba(#b57aff, 0.75);
-	// color: white;
-	margin: 1rem;
-	// margin-left: 2rem;
-	// align-content: center;
-	border-radius: 5px;
+  // background: rgba(#b57aff, 0.75);
+  // color: white;
+  margin: 1rem;
+  // margin-left: 2rem;
+  // align-content: center;
+  border-radius: 5px;
 }
 
 #darkmode {
-	// padding: 1rem;
-	background: $blue-for-darkmode;
-	margin-right: 2px;
+  // padding: 1rem;
+  background: $blue-for-darkmode;
+  margin-right: 2px;
 }
 
 // .flexbox {
@@ -47,231 +47,232 @@ button {
 
 #login-buttons,
 #stat-buttons {
-	padding: 0.2rem;
-	margin-right: 2rem;
-	// align-content: center;
-	right: 0;
+  padding: 0.2rem;
+  margin-right: 2rem;
+  // align-content: center;
+  right: 0;
 
-	background: rgba(#b57aff, 0.75);
-	margin: 1rem;
-	// margin-left: 2rem;
-	// align-content: center;
-	border-radius: 5px;
+  background: rgba(#b57aff, 0.75);
+  margin: 1rem;
+  // margin-left: 2rem;
+  // align-content: center;
+  border-radius: 5px;
 
-	.navbar-link {
-		color: $secondary-text-light-grey;
-	}
+  .navbar-link {
+    color: $secondary-text-light-grey;
+  }
 
-	.navbar-dropdown {
-		background-color: rgba(#b57aff, 0.5);
-		border: $secondary-background-grey;
+  .navbar-dropdown {
+    background-color: rgba(#b57aff, 0.5);
+    border: $secondary-background-grey;
 
-		.navbar-item {
-			color: $secondary-text-light-grey;
-			border: $secondary-background-grey;
+    .navbar-item {
+      color: $secondary-text-light-grey;
+      border: $secondary-background-grey;
 
-			a {
-				text-decoration: none;
-			}
+      a {
+        text-decoration: none;
+      }
 
-			a:hover {
-				color: $secondary-text-light-grey;
-			}
-		}
-	}
+      a:hover {
+        color: $secondary-text-light-grey;
+      }
+    }
+  }
 }
 
 @keyframes dropdown_animate {
-	0% {
-		transform-origin: top;
-		opacity: 0;
-		transform: perspective(1000px) rotateX(-45deg) translateY(-10px) translateZ(0px);
-		// transition: transform 500ms ease, opacity 500ms ease;
-	}
-	100% {
-		opacity: 1;
-		transform: perspective(1000px) rotateX(0deg) translateY(0px) translateZ(0px);
-	}
+  0% {
+    transform-origin: top;
+    opacity: 0;
+    transform: perspective(1000px) rotateX(-45deg) translateY(-10px)
+      translateZ(0px);
+    // transition: transform 500ms ease, opacity 500ms ease;
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0px) translateZ(0px);
+  }
 }
 
 @keyframes menu_animate {
-	0% {
-		transform-origin: top;
-		opacity: 0;
-		transform: translateX(60vw);
-		transition: transform 500ms ease, opacity 500ms ease;
-	}
-	100% {
-		opacity: 1;
-		transform: translateX(0px);
-	}
+  0% {
+    transform-origin: top;
+    opacity: 0;
+    transform: translateX(60vw);
+    transition: transform 500ms ease, opacity 500ms ease;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
 
 .navbar {
-	background: #fff;
-	box-shadow: 0px 10px 40px rgba(#3d4e5c, 0.15);
-	transition: 0.75s all;
-	font-family: sans-serif;
+  background: #fff;
+  box-shadow: 0px 10px 40px rgba(#3d4e5c, 0.15);
+  transition: 0.75s all;
+  font-family: sans-serif;
 
-	&.is-black {
-		background: #000000b3;
-		&.large {
-			background: none;
-		}
-	}
+  &.is-black {
+    background: #000000b3;
+    &.large {
+      background: none;
+    }
+  }
 
-	@media screen and (min-width: $desktop) {
-		&.large {
-			min-height: 6rem;
-			box-shadow: none;
-			@media screen and (min-width: $widescreen) {
-				font-size: 1.1rem;
-			}
+  @media screen and (min-width: $desktop) {
+    &.large {
+      min-height: 6rem;
+      box-shadow: none;
+      @media screen and (min-width: $widescreen) {
+        font-size: 1.1rem;
+      }
 
-			.navbar-item img {
-				max-height: 4rem;
-			}
+      .navbar-item img {
+        max-height: 4rem;
+      }
 
-			.logo-text {
-				font-size: 2.5rem;
-				margin: 0 1.5rem;
-			}
-		}
-	}
+      .logo-text {
+        font-size: 2.5rem;
+        margin: 0 1.5rem;
+      }
+    }
+  }
 
-	@media screen and (max-width: $desktop) {
-		min-height: 4rem !important;
-		.navbar-brand {
-			min-height: 4rem !important;
-		}
-		.navbar-menu {
-		}
-		.navbar-burger {
-			width: 4rem;
-			height: 4rem;
-		}
-		font-size: 20px;
-		.navbar-link {
-			margin: 1rem 0 -0.5rem;
-			font-family: sans-serif;
-			// color: #333333;
-		}
+  @media screen and (max-width: $desktop) {
+    min-height: 4rem !important;
+    .navbar-brand {
+      min-height: 4rem !important;
+    }
+    .navbar-menu {
+    }
+    .navbar-burger {
+      width: 4rem;
+      height: 4rem;
+    }
+    font-size: 20px;
+    .navbar-link {
+      margin: 1rem 0 -0.5rem;
+      font-family: sans-serif;
+      // color: #333333;
+    }
 
-		.button {
-			margin: 2rem 1rem 0rem;
-			font-size: 1.5rem;
-		}
+    .button {
+      margin: 2rem 1rem 0rem;
+      font-size: 1.5rem;
+    }
 
-		.navbar-end {
-			padding-bottom: 2rem;
-		}
-	}
+    .navbar-end {
+      padding-bottom: 2rem;
+    }
+  }
 
-	a {
-		font-weight: normal;
-	}
+  a {
+    font-weight: normal;
+  }
 
-	.button {
-		transition: 0.5s all;
-		&.signup {
-			color: $primary;
-			&:hover {
-				background-color: $primary;
-			}
-		}
-		&.is-outlined {
-			border: none;
-		}
-		&.is-white:active,
-		&.is-white.is-active {
-			color: $white;
-		}
-	}
-	@media screen and (min-width: $desktop) {
-		.has-dropdown {
-			.navbar-dropdown {
-				box-shadow: 0px 10px 40px rgba(#333333, 0.15);
-				display: none;
-			}
-			&.is-active .navbar-dropdown {
-				animation-name: dropdown_animate;
-				animation-duration: 500ms;
-			}
-		}
-	}
+  .button {
+    transition: 0.5s all;
+    &.signup {
+      color: $primary;
+      &:hover {
+        background-color: $primary;
+      }
+    }
+    &.is-outlined {
+      border: none;
+    }
+    &.is-white:active,
+    &.is-white.is-active {
+      color: $white;
+    }
+  }
+  @media screen and (min-width: $desktop) {
+    .has-dropdown {
+      .navbar-dropdown {
+        box-shadow: 0px 10px 40px rgba(#333333, 0.15);
+        display: none;
+      }
+      &.is-active .navbar-dropdown {
+        animation-name: dropdown_animate;
+        animation-duration: 500ms;
+      }
+    }
+  }
 
-	.navbar-link.is-notLink {
-		cursor: default;
-	}
-	.navbar-dropdown {
-		font-size: 18px;
-		border-color: #ececef;
-		min-width: 200px;
-		.navbar-item {
-			border-top: 1px solid $white;
-			border-bottom: 1px solid $white;
-			padding: 0.75rem 1.5rem;
-			padding-right: 3rem;
-			transition: 0.15s all ease-in-out;
-			&:hover,
-			&:focus {
-				color: $primary;
-				background-color: #333333;
-				border-top: 1px solid #555555;
-				border-bottom: 1px solid #555555;
-			}
-			img {
-				display: inline-block;
-				padding-right: 0.5rem;
-				width: 2rem;
-				height: 2rem;
-			}
-		}
-	}
+  .navbar-link.is-notLink {
+    cursor: default;
+  }
+  .navbar-dropdown {
+    font-size: 18px;
+    border-color: #ececef;
+    min-width: 200px;
+    .navbar-item {
+      border-top: 1px solid $white;
+      border-bottom: 1px solid $white;
+      padding: 0.75rem 1.5rem;
+      padding-right: 3rem;
+      transition: 0.15s all ease-in-out;
+      &:hover,
+      &:focus {
+        color: $primary;
+        background-color: #333333;
+        border-top: 1px solid #555555;
+        border-bottom: 1px solid #555555;
+      }
+      img {
+        display: inline-block;
+        padding-right: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
 
-	.navbar-link:hover,
-	.navbar-link.is-active {
-		background-color: #111111 !important;
-	}
+  .navbar-link:hover,
+  .navbar-link.is-active {
+    background-color: #111111 !important;
+  }
 
-	.logo-text {
-		transition: 0.5s all;
-		font-family: sans-serif;
-		font-weight: bold;
-		font-size: 1.4rem;
-		margin: 0 1rem;
-	}
+  .logo-text {
+    transition: 0.5s all;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 0 1rem;
+  }
 
-	.navbar-item img {
-		transition: 0.5s all;
-		max-height: 2rem;
-	}
+  .navbar-item img {
+    transition: 0.5s all;
+    max-height: 2rem;
+  }
 
-	.select:not(.is-multiple):not(.is-loading)::after,
-	.navbar-link:not(.is-arrowless)::after {
-		border: 2px solid;
-		border-right: 0;
-		border-top: 0;
-		border-radius: 0;
-		margin-top: -0.345rem;
-		height: 0.4rem;
-		width: 0.4rem;
-	}
+  .select:not(.is-multiple):not(.is-loading)::after,
+  .navbar-link:not(.is-arrowless)::after {
+    border: 2px solid;
+    border-right: 0;
+    border-top: 0;
+    border-radius: 0;
+    margin-top: -0.345rem;
+    height: 0.4rem;
+    width: 0.4rem;
+  }
 
-	.navbar-burger {
-		border: none;
-		background: $white;
-	}
+  .navbar-burger {
+    border: none;
+    background: $white;
+  }
 
-	strong {
-		font-family: sans-serif;
-		font-weight: normal;
-	}
+  strong {
+    font-family: sans-serif;
+    font-weight: normal;
+  }
 
-	.navbar-menu.is-active {
-		display: block;
-		animation-name: menu_animate;
-		animation-duration: 500ms;
-		animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-	}
+  .navbar-menu.is-active {
+    display: block;
+    animation-name: menu_animate;
+    animation-duration: 500ms;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
 }
