@@ -248,6 +248,13 @@ button {
     max-height: 2rem;
   }
 
+  .navbar-item .join-slack {
+    transition: 0.5s all;
+    max-height: 100%;
+    padding: 0 0.1rem;
+    width: 100%;
+  }
+
   .select:not(.is-multiple):not(.is-loading)::after,
   .navbar-link:not(.is-arrowless)::after {
     border: 2px solid;
