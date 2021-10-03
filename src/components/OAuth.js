@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { BACKEND_URL } from "../constants/constants";
+import * as K from "../constants/constants";
 
 export default function MentorOAuth(props) {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
     const state = params.get("state");
-    const URL = `${BACKEND_URL}/oauth`;
+    const URL = `${K.BACKEND_URL}/oauth`;
     const data = {
       code: code,
       state: state,

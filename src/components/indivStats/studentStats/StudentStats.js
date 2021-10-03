@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../../../components/dashboard/dashboard.scss";
-import { BACKEND_URL, STATS_API } from "../../../constants/constants";
+import * as K from "../../../constants/constants";
 import reloadIcon from "../../../images/refresh-cw.svg";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
@@ -90,7 +90,7 @@ export default function NewStudentDashboard() {
     const splitArr = window.location.pathname.split("/");
     const student_username = splitArr[splitArr.length - 1];
 
-    fetch(`${STATS_API}/student/exists/${student_username}`)
+    fetch(`${K.STATS_API}/student/exists/${student_username}`)
       .then((res) => res.text())
       .then((res) => {
         if (res == "false") {
@@ -100,13 +100,13 @@ export default function NewStudentDashboard() {
       });
 
     setUsername(student_username);
-    const URL = `${BACKEND_URL}/student/dashboard`;
+    const URL = `${K.BACKEND_URL}/student/dashboard`;
     const data = {
       username: student_username,
     };
 
     axios
-      .get(`https://stats.metamehta.me/stats/student/${student_username}`)
+      .get(`${K.STATS_API}/stats/student/${student_username}`)
       .then((res) => {
         setStats(res.data[student_username]);
         console.log("the stats are - ", res.data[student_username]);
@@ -129,7 +129,7 @@ export default function NewStudentDashboard() {
       });
 
     axios
-      .get(`https://stats.metamehta.me/stats/student/${student_username}`)
+      .get(`${K.STATS_API}/stats/student/${student_username}`)
       .then((res) => {
         setStats(res.data[student_username]);
         console.log("the stats are - ", res.data[student_username]);
