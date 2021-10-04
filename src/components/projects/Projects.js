@@ -3,7 +3,7 @@ import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
-import * as K from "../../constants/constants";
+import { BACKEND_URL } from "../../constants/constants";
 import "../../styles/projects.scss";
 import Card from "./ProjectCard.js";
 
@@ -101,7 +101,7 @@ export default function Projects() {
   const [allProjects, setAllProjects] = useState([]);
   const [searchedProjects, setSearchedProjects] = useState([]);
 
-  const URL = `${K.BACKEND_URL}/project/all`;
+  const URL = `${BACKEND_URL}/project/all`;
 
   useEffect(() => {
     axios

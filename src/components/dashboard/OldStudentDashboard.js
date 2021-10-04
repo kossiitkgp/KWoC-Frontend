@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as K from "../constants/constants";
+import { BACKEND_URL } from "../../constants/constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import "./StudentDashboard.scss";
@@ -20,7 +20,7 @@ export default function Dashboard() {
       localStorage.getItem("student_jwt") === undefined;
     if (student_loggedout) window.location.pathname = "";
 
-    const URL = `${K.BACKEND_URL}/student/dashboard`;
+    const URL = `${BACKEND_URL}/student/dashboard`;
     const data = {
       username: localStorage.getItem("student_username"),
     };

@@ -2,7 +2,7 @@ import axios from "axios";
 import Fuse from "fuse.js";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import * as K from "../../../constants/constants";
+import { STATS_API } from "../../../constants/constants";
 import Footer from "../../Footer.js";
 import Navbar from "../../Navbar.js";
 import "../tables.scss";
@@ -85,7 +85,7 @@ export default function StudentsTable() {
 
   useEffect(() => {
     axios
-      .get(`${K.STATS_API}/stats/students`)
+      .get(`${STATS_API}/stats/students`)
       .then((res) => {
         setRowData(
           res.data["stats"]

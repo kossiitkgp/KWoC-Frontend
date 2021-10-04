@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as K from "../../constants/constants";
+import { STATS_API } from "../../constants/constants";
 import "../../styles/Form.scss";
 
 export default function EndEvalsForm() {
@@ -8,7 +8,7 @@ export default function EndEvalsForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const URL = `${K.STATS_API}/endevals/form`;
+    const URL = `${STATS_API}/endevals/form`;
     const data = {
       username: localStorage.getItem("student_username"),
       blogLink: blogLink,

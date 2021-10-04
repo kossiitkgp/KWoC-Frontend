@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
-import * as K from "../../constants/constants";
+import { BACKEND_URL, STATS_API } from "../../constants/constants";
 import cheers from "../../images/meme.jpg";
 import reloadIcon from "../../images/refresh-cw.svg";
 import Footer from "../Footer";
@@ -141,7 +141,7 @@ export default function NewStudentDashboard() {
       return;
     } else {
       axios
-        .post(`${K.BACKEND_URL}/student/bloglink`, details, {
+        .post(`${BACKEND_URL}/student/bloglink`, details, {
           headers: {
             Bearer: localStorage.getItem("student_jwt"),
           },
@@ -162,7 +162,7 @@ export default function NewStudentDashboard() {
   useEffect(() => {
     message_storage();
     const student_username = localStorage.getItem("student_username");
-    fetch(`${K.STATS_API}/student/exists/${student_username}`)
+    fetch(`${STATS_API}/student/exists/${student_username}`)
       .then((res) => res.text())
       .then((res) => {
         if (res == "false") {
@@ -175,7 +175,7 @@ export default function NewStudentDashboard() {
       localStorage.getItem("student_jwt") === null ||
       localStorage.getItem("student_jwt") === undefined;
     if (student_loggedout) window.location.pathname = "";
-    const URL = `${K.BACKEND_URL}/student/dashboard`;
+    const URL = `${BACKEND_URL}/student/dashboard`;
     const data = {
       username: localStorage.getItem("student_username"),
     };
@@ -199,7 +199,7 @@ export default function NewStudentDashboard() {
       });
 
     axios
-      .get(`${K.STATS_API}/stats/student/${student_username}`)
+      .get(`${STATS_API}/stats/student/${student_username}`)
       .then((res) => {
         setStats(res.data[student_username]);
         console.log(res.data[student_username]);

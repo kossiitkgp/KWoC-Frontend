@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as K from "../../constants/constants";
+import { STATS_API } from "../../constants/constants";
 import EndEvalsForm from "../evals/EndEvalsForm";
 import {
   EndEvalsFormSubmitted,
@@ -14,7 +14,7 @@ export default function StudentDashboard() {
 
   useEffect(() => {
     const username = localStorage.getItem("student_username");
-    fetch(`${K.STATS_API}/student/${username}`)
+    fetch(`${STATS_API}/student/${username}`)
       .then((res) => res.json())
       .then((res) => {
         setIsMidsCleared(res.isMidsCleared);
