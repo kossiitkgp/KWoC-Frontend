@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import * as K from "../../constants/constants";
+import {
+  BACKEND_URL,
+  MID_EVAL_DATE,
+  STATS_API,
+} from "../../constants/constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import "./dashboard.scss";
@@ -7,7 +11,7 @@ import "./dashboard.scss";
 function countDaysLeft() {
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
   const today = new Date();
-  const midEvals = new Date(K.MID_EVAL_DATE);
+  const midEvals = new Date(MID_EVAL_DATE);
   const diffDays = Math.ceil(Math.abs((midEvals - today) / _MS_PER_DAY));
   return diffDays;
 }
@@ -106,7 +110,7 @@ export default function MentorDashboard() {
       localStorage.getItem("mentor_jwt") === null ||
       localStorage.getItem("mentor_jwt") === undefined;
     if (mentor_loggedout) window.location.pathname = "";
-    const URL = `${K.BACKEND_URL}/mentor/dashboard`;
+    const URL = `${BACKEND_URL}/mentor/dashboard`;
     const data = {
       username: localStorage.getItem("mentor_username"),
     };
@@ -148,7 +152,7 @@ export default function MentorDashboard() {
           redirect: "follow",
         };
 
-        fetch(`${K.STATS_API}/stats/mentors", requestOptions`)
+        fetch(`${STATS_API}/stats/mentors", requestOptions`)
           .then((response) => response.text())
           .then((result) => {
             setStudents(JSON.parse(result)["students"]);

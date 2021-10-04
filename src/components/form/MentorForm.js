@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import * as K from "../../constants/constants";
+import { BACKEND_URL } from "../../constants/constants";
 import "../../styles/css-fontello-github-circled/fontello.css";
 import "../../styles/css-fontello-mail-alt/fontello.css";
 import "../../styles/Form.scss";
@@ -24,7 +24,7 @@ export default function Form(props) {
   function handleSubmit(e) {
     e.preventDefault();
     disableSubmit(true);
-    const URL = `${K.BACKEND_URL}/mentor/form`;
+    const URL = `${BACKEND_URL}/mentor/form`;
     const data = {
       username: username,
       name: name,

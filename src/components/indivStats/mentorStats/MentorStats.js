@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../../components/dashboard/dashboard.scss";
-import * as K from "../../../constants/constants";
+import { BACKEND_URL, STATS_API } from "../../../constants/constants";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 import "../studentStats/StudentStats.scss";
@@ -53,7 +53,7 @@ export default function NewStudentDashboard() {
       localStorage.getItem("mentor_jwt") === null ||
       localStorage.getItem("mentor_jwt") === undefined;
     if (mentor_loggedout) window.location.pathname = "";
-    const URL = `${K.BACKEND_URL}/mentor/dashboard`;
+    const URL = `${BACKEND_URL}/mentor/dashboard`;
 
     setUsername(mentor_username);
     const data = {
@@ -97,7 +97,7 @@ export default function NewStudentDashboard() {
           redirect: "follow",
         };
 
-        fetch(`${K.STATS_API}/stats/mentor/${mentor_username}`, requestOptions)
+        fetch(`${STATS_API}/stats/mentor/${mentor_username}`, requestOptions)
           .then((response) => response.text())
           .then((result) => {
             setStudents(JSON.parse(result));
