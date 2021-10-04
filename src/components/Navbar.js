@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/circle.svg";
+import slack from "../images/slack.svg";
 import "../styles/navbar.scss";
 
 class Navbar extends Component {
@@ -187,6 +188,18 @@ class Navbar extends Component {
               </div>
               */}
               <div className="navbar-end" onClick={this.closeNavbar}>
+                <a
+                  className="navbar-item"
+                  href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    className="join-slack"
+                    src={slack}
+                    alt="Join us on slack"
+                  />
+                </a>
                 <div
                   className="navbar-item has-dropdown is-hoverable"
                   id="login-buttons"
