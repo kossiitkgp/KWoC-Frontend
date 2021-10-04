@@ -5,6 +5,7 @@ import { useSortBy, useTable } from "react-table";
 import { STATS_API } from "../../../constants/constants";
 import Footer from "../../Footer.js";
 import Navbar from "../../Navbar.js";
+import { shuffleArray } from "../../projects/shuffle";
 import "../tables.scss";
 
 const debouncer = function (fn, delay) {
@@ -210,7 +211,7 @@ export default function StudentsTable() {
               ))}
             </thead>
             <tbody {...getTableBodyProps()}>
-              {rows.map((row) => {
+              {shuffleArray(rows, 1).map((row) => {
                 prepareRow(row);
                 return (
                   <tr {...row.getRowProps()}>
