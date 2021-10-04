@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { BACKEND_URL, MID_EVAL_DATE } from "../../constants/constants";
+import {
+  BACKEND_URL,
+  MID_EVAL_DATE,
+  STATS_API,
+} from "../../constants/constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import "./dashboard.scss";
@@ -148,7 +152,7 @@ export default function MentorDashboard() {
           redirect: "follow",
         };
 
-        fetch("https://stats.metamehta.me/stats/mentors", requestOptions)
+        fetch(`${STATS_API}/stats/mentors", requestOptions`)
           .then((response) => response.text())
           .then((result) => {
             setStudents(JSON.parse(result)["students"]);

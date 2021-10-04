@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../../components/dashboard/dashboard.scss";
-import { BACKEND_URL } from "../../../constants/constants";
+import { BACKEND_URL, STATS_API } from "../../../constants/constants";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 import "../studentStats/StudentStats.scss";
@@ -97,10 +97,7 @@ export default function NewStudentDashboard() {
           redirect: "follow",
         };
 
-        fetch(
-          `https://stats.metamehta.me/stats/mentor/${mentor_username}`,
-          requestOptions
-        )
+        fetch(`${STATS_API}/stats/mentor/${mentor_username}`, requestOptions)
           .then((response) => response.text())
           .then((result) => {
             setStudents(JSON.parse(result));
