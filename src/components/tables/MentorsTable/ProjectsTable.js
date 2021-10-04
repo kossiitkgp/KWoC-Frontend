@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import { STATS_API } from "../../../constants/constants";
+import * as K from "../../../constants/constants";
 import Footer from "../../Footer.js";
 import Navbar from "../../Navbar.js";
 import "../tables.scss";
@@ -36,7 +36,7 @@ export default function ProjectsTable() {
 
   useEffect(() => {
     axios
-      .get(`${STATS_API}/stats/projects`)
+      .get(`${K.STATS_API}/stats/projects`)
       .then((res) => {
         setRowData(
           res.data["stats"].sort((a, b) =>

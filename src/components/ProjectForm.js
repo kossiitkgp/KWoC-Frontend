@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import ReactTooltip from "react-tooltip";
-import { BACKEND_URL } from "../constants/constants";
+import * as K from "../constants/constants";
 import Tags from "../data/tags.js";
 import InfoIcon from "../images/info.svg";
 import "../styles/css-fontello-github-circled/fontello.css";
@@ -290,7 +290,7 @@ export default function Form(props) {
     const decodedReadme = atob(res.data["content"]);
     setReadme(decodedReadme);
 
-    const URL = `${BACKEND_URL}/project/add`;
+    const URL = `${K.BACKEND_URL}/project/add`;
     const data = {
       username: localStorage.getItem("mentor_username"),
       // 'username': 'rakaar',
