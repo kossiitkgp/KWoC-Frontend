@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import MentorDashboard from "./components/dashboard/MentorDashboard";
-import NewStudentDashboard from "./components/dashboard/NewStudentDashboard";
+import StudentDashboard from "./components/dashboard/StudentDashboard";
 import FAQ from "./components/FAQ";
 import MentorForm from "./components/form/MentorForm";
+import ProjectForm from "./components/form/ProjectForm";
 import StudentForm from "./components/form/StudentForm";
 import Home from "./components/Home";
 import MentorStats from "./components/indivStats/mentorStats/MentorStats";
 import StudentStats from "./components/indivStats/studentStats/StudentStats";
 import OAuth from "./components/OAuth";
-import ProjectForm from "./components/ProjectForm";
 import Projects from "./components/projects/Projects";
 import ProjectsTable from "./components/tables/MentorsTable/ProjectsTable";
 import StudentsTable from "./components/tables/StudentsTable/StudentsTable";
@@ -61,7 +61,7 @@ function App() {
           onChange={ScrollToTop}
           exact
           path="/dashboard/student"
-          component={NewStudentDashboard}
+          component={StudentDashboard}
         />
 
         <Route

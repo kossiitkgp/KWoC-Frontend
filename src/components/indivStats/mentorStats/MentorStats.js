@@ -31,7 +31,7 @@ function fetch_calls(link) {
       return err;
     });
 }
-export default function NewStudentDashboard() {
+export default function StudentDashboard() {
   const [fullName, setFullName] = useState("");
   const [projects, setProjects] = useState([]);
   const [students, setStudents] = useState({});

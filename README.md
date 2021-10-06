@@ -47,7 +47,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - Student Form - `src/components/form/StudentForm.js`
   - Project Form - `src/components/ProjectForm.js`
 - Dashboard
-  - Student Dashboard - `src/components/dashboard/NewStudentDashboard.js`
+  - Student Dashboard - `src/components/dashboard/StudentDashboard.js`
   - Mentor Dashboard - `src/components/dashboard/MentorDashboard.js`
 - Tables
   - Project Stats Table - `src/components/tables/MentorsTable/ProjectsTable.js`
