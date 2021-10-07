@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import ReactTooltip from "react-tooltip";
-import { BACKEND_URL } from "../constants/constants";
-import Tags from "../data/tags.js";
-import InfoIcon from "../images/info.svg";
-import "../styles/css-fontello-github-circled/fontello.css";
-import "../styles/css-fontello-mail-alt/fontello.css";
-import "../styles/Form.scss";
-import Navbar from "./Navbar";
+import { BACKEND_URL } from "../../constants/constants";
+import Tags from "../../data/tags.js";
+import InfoIcon from "../../images/info.svg";
+import "../../styles/css-fontello-github-circled/fontello.css";
+import "../../styles/css-fontello-mail-alt/fontello.css";
+import "../../styles/Form.scss";
+import Navbar from "../Navbar";
 
 const options = Tags.map((item) => {
   return { value: item, label: item };
