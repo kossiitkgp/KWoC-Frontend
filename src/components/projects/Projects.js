@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import "../../styles/projects.scss";
+import { shuffleArray } from "../../utils/shuffle";
 import Card from "./ProjectCard.js";
-import { shuffleArray } from "./shuffle";
 
 function projectSortPolicy(arr) {
   /* Sorts an array of Projects using a given policy
