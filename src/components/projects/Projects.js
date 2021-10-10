@@ -5,21 +5,8 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import { BACKEND_URL } from "../../constants/constants";
 import "../../styles/projects.scss";
+import { shuffleArray } from "../../utils/shuffle";
 import Card from "./ProjectCard.js";
-
-function shuffleArray(array) {
-  /* Durstenfeld shuffle
-   * Source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-   * Accessed on: 05-Dec-2020
-   */
-
-  for (var i = array.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-}
 
 function projectSortPolicy(arr) {
   /* Sorts an array of Projects using a given policy

@@ -3,6 +3,7 @@ import Fuse from "fuse.js";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
 import { STATS_API } from "../../../constants/constants";
+import { shuffleArray } from "../../../utils/shuffle";
 import Footer from "../../Footer.js";
 import Navbar from "../../Navbar.js";
 import "../tables.scss";
@@ -210,7 +211,7 @@ export default function StudentsTable() {
               ))}
             </thead>
             <tbody {...getTableBodyProps()}>
-              {rows.map((row) => {
+              {shuffleArray(rows, 1).map((row) => {
                 prepareRow(row);
                 return (
                   <tr {...row.getRowProps()}>
