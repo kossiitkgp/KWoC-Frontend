@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BACKEND_URL } from "../../constants/constants";
-import "../../styles/css-fontello-github-circled/fontello.css";
-import "../../styles/css-fontello-mail-alt/fontello.css";
-import "../../styles/Form.scss";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 

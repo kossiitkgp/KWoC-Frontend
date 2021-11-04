@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/circle.svg";
-import slack from "../images/slack.svg";
-import "../styles/navbar.scss";
+import logo from "../assets/circle.svg";
+import slack from "../assets/slack.svg";
 
 class Navbar extends Component {
   state = {

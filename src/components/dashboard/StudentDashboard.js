@@ -1,12 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
+import cheers from "../../assets/meme.jpg";
+import reloadIcon from "../../assets/refresh-cw.svg";
 import { BACKEND_URL, STATS_API } from "../../constants/constants";
-import cheers from "../../images/meme.jpg";
-import reloadIcon from "../../images/refresh-cw.svg";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
-import "./dashboard.scss";
 
 function trim_message(message) {
   if (message)

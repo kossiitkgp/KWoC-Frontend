@@ -1,8 +1,6 @@
 import React from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import "../styles/footer.scss";
-import "../styles/testimonials.scss";
 
 export default function Testimonial() {
   return (

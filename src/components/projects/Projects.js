@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import { BACKEND_URL } from "../../constants/constants";
-import "../../styles/projects.scss";
 import { shuffleArray } from "../../utils/shuffle";
 import Card from "./ProjectCard.js";
 

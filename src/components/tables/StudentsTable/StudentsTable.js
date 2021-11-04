@@ -6,7 +6,6 @@ import { STATS_API } from "../../../constants/constants";
 import { shuffleArray } from "../../../utils/shuffle";
 import Footer from "../../Footer.js";
 import Navbar from "../../Navbar.js";
-import "../tables.scss";
 
 const debouncer = function (fn, delay) {
   let timer;

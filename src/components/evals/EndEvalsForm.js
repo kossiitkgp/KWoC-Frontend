@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { STATS_API } from "../../constants/constants";
-import "../../styles/Form.scss";
 
 export default function EndEvalsForm() {
   const [blogLink, setBlogLink] = useState("");

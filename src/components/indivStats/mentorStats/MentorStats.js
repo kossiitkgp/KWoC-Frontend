@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../../../components/dashboard/dashboard.scss";
 import { BACKEND_URL, STATS_API } from "../../../constants/constants";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
-import "../studentStats/StudentStats.scss";
 
 function trim_message(message) {
   if (message)

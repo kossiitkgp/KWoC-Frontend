@@ -1,12 +1,9 @@
 import React from "react";
+import pullRequest from "../assets/git-pull-request.svg";
+import github from "../assets/github.svg";
+import group from "../assets/people.svg";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import pullRequest from "../images/git-pull-request.svg";
-import github from "../images/github.svg";
-import group from "../images/people.svg";
-import "../styles/about.scss";
-import "../styles/home.scss";
-import "../styles/why.scss";
 import Part from "./Part";
 import Timeline from "./timelinedata/Timeline";
 

@@ -6,7 +6,6 @@ import {
 } from "../../constants/constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
-import "./dashboard.scss";
 
 function countDaysLeft() {
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;

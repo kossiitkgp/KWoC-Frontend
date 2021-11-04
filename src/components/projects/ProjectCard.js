@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ReactReadMoreReadLess from "react-read-more-read-less";
-import "../../styles/projects.scss";
 
 export default function Card(props) {
   const [loggedIn, setLoggedIn] = useState(true);

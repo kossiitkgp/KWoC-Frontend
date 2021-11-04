@@ -1,5 +1,4 @@
 import React from "react";
-import "../../styles/timeline.scss";
 import timelinedata from "./data";
 import TimelineItem from "./TimelineItem";
 

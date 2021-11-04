@@ -14,7 +14,6 @@ import Projects from "./components/projects/Projects";
 import ProjectsTable from "./components/tables/MentorsTable/ProjectsTable";
 import StudentsTable from "./components/tables/StudentsTable/StudentsTable";
 import Testimonial from "./components/Testimonials";
-import "./styles/index.scss";
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);

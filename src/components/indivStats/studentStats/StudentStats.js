@@ -1,11 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "../../../components/dashboard/dashboard.scss";
+import reloadIcon from "../../../assets/refresh-cw.svg";
 import { BACKEND_URL, STATS_API } from "../../../constants/constants";
-import reloadIcon from "../../../images/refresh-cw.svg";
 import Footer from "../../Footer";
 import Navbar from "../../Navbar";
-import "./StudentStats.scss";
 
 function trim_message(message) {
   if (message)

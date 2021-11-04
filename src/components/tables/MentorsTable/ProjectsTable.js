@@ -4,7 +4,6 @@ import { useSortBy, useTable } from "react-table";
 import { STATS_API } from "../../../constants/constants";
 import Footer from "../../Footer.js";
 import Navbar from "../../Navbar.js";
-import "../tables.scss";
 
 export default function ProjectsTable() {
   const [lastUpdatedTime, setLastUpdatedTime] = useState("");
