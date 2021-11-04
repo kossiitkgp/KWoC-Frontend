@@ -1,0 +1,31 @@
+// ref:https://blog.prototypr.io/designing-a-dark-mode-for-your-ios-app-the-ultimate-guide-6b043303b941
+// colors for dark mode
+// background
+$primary-background-black: #000000; // pure black, used by apple
+$primary-background-grey: #121212; // used by google
+$secondary-background-grey: #3a3a3c;
+
+// text
+$primary-text-white: #ffffff; // titles and text
+$secondary-text-light-grey: #ebebf5; // text below title and too much in length
+$tertiary-text-grey: #767680; // text for placeholder
+
+// other colors for sub sub titles
+$blue-for-darkmode: #64d2ff;
+$violet-for-darkmode: #c66df3;
+$seperator-line: #545458;
+
+// student stats
+$background-color-page: #f0f4f7;
+
+// dashboard
+$dashboard-body-background: #35393b;
+$dashboard-font: Route159, Vegur;
+$background-color-dashboard: #26292b;
+$header-color: #b57aff;
+
+$project-stats-header: #8794a1;
+$project-card-header: #c1d3e5;
+$project-buttons: #3e4345, 100%;
+
+$text-color: white;

@@ -1,5 +1,3 @@
-@import "index.scss";
-
 .card-container {
   color: blue;
   display: flex;
@@ -42,10 +40,5 @@
       background-color: blue;
       color: white;
     }
-    /*TODO: Add tag types*/
   }
-
-  /*TODO: Add img formatting.
-    card-img-fluid is default.
-    */
 }

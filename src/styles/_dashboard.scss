@@ -1,33 +1,16 @@
 // FONTS
-@font-face {
-  font-family: "Route159";
-  src: local("Route159"),
-    url(../../fonts/Route159-Regular.otf) format("opentype");
-}
-@font-face {
-  font-family: "Vegur";
+// @font-face {
+//   font-family: "Route159";
+//   src: local("Route159"),
+//     url(../../fonts/Route159-Regular.otf) format("opentype");
+// }
+// @font-face {
+//   font-family: "Vegur";
 
-  src: local("Vegur"), url(../../fonts/Vegur-Regular.otf) format("opentype");
-}
-
-// VARIABLES
-$dashboard-body-background: #35393b;
-$dashboard-font: Route159, Vegur;
-$background-color-dashboard: #26292b;
-$header-color: #b57aff;
-
-$project-stats-header: #8794a1;
-$project-card-header: #c1d3e5;
-$project-buttons: #3e4345, 100%;
-
-$text-color: white;
-// ---------
+//   src: local("Vegur"), url(../../fonts/Vegur-Regular.otf) format("opentype");
+// }
 
 .dashboard-container {
-  // background: url('../../../images/code.jpeg') $background-color-dashboard;
-  // background-size: fill;
-  // background-repeat: no-repeat;
-
   background: $dashboard-body-background;
 
   .dashboard {
