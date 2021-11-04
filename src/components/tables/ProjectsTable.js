@@ -54,7 +54,7 @@ export default function ProjectsTable() {
       currentTime.getTime() + (ISTOffset + currentOffset) * 60000
     );
     let hoursIST = ISTTime.getHours();
-    if (hoursIST.toString().length == 1) hoursIST = "0" + hoursIST.toString();
+    if (hoursIST.toString().length === 1) hoursIST = "0" + hoursIST.toString();
     setLastUpdatedTime(`${hoursIST.toString()}:00 IST`);
   }, []);
 

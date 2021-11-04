@@ -210,14 +210,14 @@ export default function Form(props) {
   }
 
   function handleChangeBranchField(tag, action) {
-    if (tag != null) {
+    if (tag !== null) {
       const selectedBranch = tag.value;
       setBranch(selectedBranch);
     }
   }
 
   function handleChangeSMentorField(tag, action) {
-    if (tag != null) {
+    if (tag !== null) {
       const selectedSMentor = tag.value;
       setSecondaryMentor(selectedSMentor);
     }
@@ -238,7 +238,7 @@ export default function Form(props) {
   }
 
   function handleProjectLink(tag, action) {
-    if (tag != null) {
+    if (tag !== null) {
       setRepolink(tag.value);
       checkIssuesAndReadme(tag.value);
     }
@@ -249,12 +249,12 @@ export default function Form(props) {
 
     // check if all the fields are filled are not
     if (
-      name == "" ||
-      desc == "" ||
-      repolink == "" ||
-      channelLink == "" ||
-      tags.length == 0 ||
-      branch == ""
+      name === "" ||
+      desc === "" ||
+      repolink === "" ||
+      channelLink === "" ||
+      tags.length === 0 ||
+      branch === ""
     ) {
       alert(
         "Please fill all the compulsory fields of the form(all except Secondary Mentor)"
@@ -266,7 +266,7 @@ export default function Form(props) {
 
     // Fetch README from the repo of the branch selected
     // remove the last trailing slash, if it exists
-    const full_link = repolink;
+    let full_link = repolink;
     if (full_link.slice(-1) === "/") {
       full_link = full_link.slice(0, -1);
     }
@@ -388,6 +388,7 @@ export default function Form(props) {
           <div className="field">
             <label className="label">Select Branch for stats</label>
             <img
+              alt=""
               src={InfoIcon}
               data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
          <br/>Please select the branch on which students should be contributing. 

@@ -121,7 +121,7 @@ export default function MentorDashboard() {
         const repoNames = res.projects.map((item) => {
           let link = item["RepoLink"];
           // cleaning the trailing slash
-          if (link[link.length - 1] == "/") link.slice(0, -1);
+          if (link[link.length - 1] === "/") link.slice(0, -1);
           let split_array = link.split("/");
           let split_array_length = split_array.length;
           return (
@@ -260,7 +260,7 @@ export default function MentorDashboard() {
     resourceList.push(<li key={index}>{elements}</li>);
   }
 
-  if (projects != undefined)
+  if (projects !== undefined)
     projects.forEach((projectItem) => {
       projectItem["owner"] = projectItem["RepoLink"].split("/").slice(-2)[0];
     });
@@ -327,8 +327,8 @@ export default function MentorDashboard() {
         </div>
 
         <div className="projects">
-          {localStorage.getItem("announcement_messageM") == "true" &&
-          localStorage.getItem("page_reloadM") == "false" ? (
+          {localStorage.getItem("announcement_messageM") === "true" &&
+          localStorage.getItem("page_reloadM") === "false" ? (
             <div className="message" style={{ textAlign: "center" }}>
               <h1>Announcements have been updated!</h1>
             </div>

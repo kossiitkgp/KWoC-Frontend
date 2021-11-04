@@ -24,7 +24,7 @@ function projectSortPolicy(arr) {
   let clubbing = [];
   for (let i = 0; i < sortedProjs.length; i++) {
     clubbing.push(sortedProjs[i]);
-    if (i % 3 == 2) {
+    if (i % 3 === 2) {
       let copyClub = [];
       clubbing.forEach((elt) => {
         copyClub.push(elt);
@@ -34,7 +34,7 @@ function projectSortPolicy(arr) {
     }
   }
 
-  if (clubbing.length != 0) {
+  if (clubbing.length !== 0) {
     clubbedProjs.push(clubbing);
   }
 
@@ -45,7 +45,7 @@ function projectSortPolicy(arr) {
 
   for (let i = 0; i < clubbedProjs.length; i++) {
     strata.push(clubbedProjs[i]);
-    if (i % STRATA_SIZE == STRATA_SIZE - 1) {
+    if (i % STRATA_SIZE === STRATA_SIZE - 1) {
       let copyStrata = [];
       strata.forEach((elt) => {
         copyStrata.push(elt);
@@ -55,7 +55,7 @@ function projectSortPolicy(arr) {
     }
   }
 
-  if (strata.length != 0) {
+  if (strata.length !== 0) {
     stratifiedProjs.push(strata);
   }
 

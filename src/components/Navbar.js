@@ -156,7 +156,7 @@ class Navbar extends Component {
                   className="navbar-item"
                   href="https://github.com/kossiitkgp/kwoc-bugs"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noreferrer noopener"
                   id="testimonial-button"
                 >
                   Bug Report
@@ -191,7 +191,7 @@ class Navbar extends Component {
                   className="navbar-item"
                   href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noreferrer noopener"
                 >
                   <img
                     className="join-slack"
