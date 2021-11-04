@@ -4,35 +4,9 @@ import Confetti from "react-confetti";
 import cheers from "../../assets/meme.jpg";
 import reloadIcon from "../../assets/refresh-cw.svg";
 import { BACKEND_URL, STATS_API } from "../../constants";
+import { trim_lines, trim_message } from "../../utils/helpers";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
-
-function trim_message(message) {
-  if (message)
-    if (message.length > 40) return message.trim(0, 40) + "...";
-    else return message;
-}
-
-function trim_lines(lines) {
-  let num_lines = parseInt(lines);
-  if (num_lines > 1000) return parseInt(num_lines / 1000).toString() + "K";
-  else return lines;
-}
-
-function fetch_calls(link) {
-  return fetch(link, {
-    headers: {
-      Authorization: "token a631850ce6095d94a0d5919f0644ab543b9d5a8f",
-    },
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      return err;
-    });
-}
 
 export default function StudentDashboard() {
   const [fullName, setFullName] = useState("");
@@ -165,7 +139,7 @@ export default function StudentDashboard() {
     fetch(`${STATS_API}/student/exists/${student_username}`)
       .then((res) => res.text())
       .then((res) => {
-        if (res == "false") {
+        if (res === "false") {
           alert("Sorry, it seems that you have not registered for KWoC");
           window.location.pathname = "";
         }
@@ -377,7 +351,7 @@ export default function StudentDashboard() {
                   (open+closed)
                 </p>
                 <p className="font-mentor-stats">
-                  {stats["pulls"] != undefined && stats["pulls"].length}
+                  {stats["pulls"] !== undefined && stats["pulls"].length}
                 </p>
               </div>
 
@@ -394,7 +368,7 @@ export default function StudentDashboard() {
         </div>
 
         <div>
-          {evalStatus == 1 ? (
+          {evalStatus === 1 ? (
             <div className="projects">
               <div className="endEvals-guide">
                 <h1>
@@ -412,7 +386,7 @@ export default function StudentDashboard() {
         </div>
 
         <React.Fragment>
-          {evalStatus == 2 ? (
+          {evalStatus === 2 ? (
             <div className="endEvals-guide">
               <Confetti />
               <h1>
@@ -430,7 +404,7 @@ export default function StudentDashboard() {
         </React.Fragment>
 
         <div>
-          {evalStatus == 0 ? (
+          {evalStatus === 0 ? (
             <React.Fragment className="projects">
               <h1 className="message" style={{ textAlign: "center" }}>
                 You could not clear KWoC 2020 Mid Evaluation.
@@ -442,8 +416,8 @@ export default function StudentDashboard() {
           ) : (
             <div>
               <React.Fragment className="projects">
-                {localStorage.getItem("announcement_message") == "true" &&
-                localStorage.getItem("page_reload") == "false" ? (
+                {localStorage.getItem("announcement_message") === "true" &&
+                localStorage.getItem("page_reload") === "false" ? (
                   <div className="message" style={{ textAlign: "center" }}>
                     <h1>Announcements have been updated!</h1>
                   </div>
@@ -453,14 +427,14 @@ export default function StudentDashboard() {
               </React.Fragment>
 
               <React.Fragment className="projects">
-                {localStorage.getItem("result_message") == "true" &&
-                localStorage.getItem("page_reload2") == "false" ? (
+                {localStorage.getItem("result_message") === "true" &&
+                localStorage.getItem("page_reload2") === "false" ? (
                   <div className="message" style={{ textAlign: "center" }}>
                     <h1>
                       You have successfully passed KWoC 2020 Mid Evaluation.
                       Keep going!
                     </h1>
-                    <img src={cheers} />
+                    <img alt="" src={cheers} />
                   </div>
                 ) : (
                   ""
@@ -472,7 +446,7 @@ export default function StudentDashboard() {
                   <h1>Languages involved</h1>
                 </div>
                 <div style={{ textAlign: "center" }}>
-                  {stats["languages"] != undefined &&
+                  {stats["languages"] !== undefined &&
                     stats["languages"].map((item) => (
                       <span
                         className="tag is-dark is-large"
@@ -489,7 +463,7 @@ export default function StudentDashboard() {
                   <h1>Projects</h1>
                 </div>
                 <div style={{ textAlign: "center" }}>
-                  {stats["projects"] != undefined &&
+                  {stats["projects"] !== undefined &&
                     stats["projects"].map((item) => (
                       <span
                         className="tag is-dark is-large is-info"
@@ -511,6 +485,7 @@ export default function StudentDashboard() {
                   <h1>
                     Pull Reqests
                     <img
+                      alt=""
                       src={reloadIcon}
                       className="refresh-icon"
                       onClick={removeCachedTimeStamp}
@@ -518,7 +493,7 @@ export default function StudentDashboard() {
                   </h1>
                 </div>
                 <div className="table-container" id="indiv-stats-table">
-                  {pulls != undefined ? (
+                  {pulls !== undefined ? (
                     <table>
                       <thead>
                         <tr>
@@ -569,8 +544,8 @@ export default function StudentDashboard() {
                   <h1>Commits</h1>
                 </div>
                 <div className="table-container" id="indiv-stats-table">
-                  {stats["commits"] != undefined &&
-                  extraCommits != undefined ? (
+                  {stats["commits"] !== undefined &&
+                  extraCommits !== undefined ? (
                     <table>
                       <thead>
                         <tr>

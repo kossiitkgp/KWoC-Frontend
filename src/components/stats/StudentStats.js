@@ -2,35 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import reloadIcon from "../../assets/refresh-cw.svg";
 import { BACKEND_URL, STATS_API } from "../../constants";
+import { trim_lines, trim_message } from "../../utils/helpers";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 
-function trim_message(message) {
-  if (message)
-    if (message.length > 40) return message.trim(0, 40) + "...";
-    else return message;
-}
-
-function trim_lines(lines) {
-  let num_lines = parseInt(lines);
-  if (num_lines > 1000) return parseInt(num_lines / 1000).toString() + "K";
-  else return lines;
-}
-
-function fetch_calls(link) {
-  return fetch(link, {
-    headers: {
-      Authorization: "token 6609027762b45be8094e7a5ce02350d85997e029",
-    },
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      return err;
-    });
-}
 export default function StudentDashboard() {
   const [fullName, setFullName] = useState("");
   const [collegeName, setCollegeName] = useState("");
@@ -91,7 +66,7 @@ export default function StudentDashboard() {
     fetch(`${STATS_API}/student/exists/${student_username}`)
       .then((res) => res.text())
       .then((res) => {
-        if (res == "false") {
+        if (res === "false") {
           alert("Sorry, itseems you have not registered for KWoC");
           window.location.pathname = "";
         }
@@ -285,7 +260,7 @@ export default function StudentDashboard() {
               <div className="card-component non-purple-card mstats grow-card">
                 <p className="font-mentor-header">Commits</p>
                 <p className="font-mentor-stats">
-                  {stats["commits"] != undefined && stats["commits"].length}
+                  {stats["commits"] !== undefined && stats["commits"].length}
                 </p>
               </div>
 
@@ -295,7 +270,7 @@ export default function StudentDashboard() {
                   (open+closed)
                 </p>
                 <p className="font-mentor-stats">
-                  {stats["pulls"] != undefined && stats["pulls"].length}
+                  {stats["pulls"] !== undefined && stats["pulls"].length}
                 </p>
               </div>
 
@@ -316,7 +291,7 @@ export default function StudentDashboard() {
             <h1>Languages involved</h1>
           </div>
           <div style={{ textAlign: "center" }}>
-            {stats["languages"] != undefined &&
+            {stats["languages"] !== undefined &&
               stats["languages"].map((item) => (
                 <span
                   className="tag is-dark is-large"
@@ -333,7 +308,7 @@ export default function StudentDashboard() {
             <h1>Projects</h1>
           </div>
           <div style={{ textAlign: "center" }}>
-            {stats["projects"] != undefined &&
+            {stats["projects"] !== undefined &&
               stats["projects"].map((item) => (
                 <span
                   className="tag is-dark is-large is-info"
@@ -355,6 +330,7 @@ export default function StudentDashboard() {
             <h1>
               Pull Reqests
               <img
+                alt=""
                 src={reloadIcon}
                 className="refresh-icon"
                 onClick={removeCachedTimeStamp}
@@ -362,7 +338,7 @@ export default function StudentDashboard() {
             </h1>
           </div>
           <div className="table-container" id="indiv-stats-table">
-            {stats["pulls"] != undefined ? (
+            {stats["pulls"] !== undefined ? (
               <table>
                 <thead>
                   <tr>
@@ -409,7 +385,7 @@ export default function StudentDashboard() {
             <h1>Commits</h1>
           </div>
           <div className="table-container" id="indiv-stats-table">
-            {stats["commits"] != undefined ? (
+            {stats["commits"] !== undefined ? (
               <table>
                 <thead>
                   <tr>

@@ -3,32 +3,6 @@ import { BACKEND_URL, STATS_API } from "../../constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 
-function trim_message(message) {
-  if (message)
-    if (message.length > 40) return message.trim(0, 40) + "...";
-    else return message;
-}
-
-function trim_lines(lines) {
-  let num_lines = parseInt(lines);
-  if (num_lines > 1000) return parseInt(num_lines / 1000).toString() + "K";
-  else return lines;
-}
-
-function fetch_calls(link) {
-  return fetch(link, {
-    headers: {
-      Authorization: "token 6609027762b45be8094e7a5ce02350d85997e029",
-    },
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => {
-      return err;
-    });
-}
 export default function StudentDashboard() {
   const [fullName, setFullName] = useState("");
   const [projects, setProjects] = useState([]);
@@ -69,7 +43,7 @@ export default function StudentDashboard() {
         const repoNames = res.projects.map((item) => {
           let link = item["RepoLink"];
           // cleaning the trailing slash
-          if (link[link.length - 1] == "/") link.slice(0, -1);
+          if (link[link.length - 1] === "/") link.slice(0, -1);
           let split_array = link.split("/");
           let split_array_length = split_array.length;
           return (
@@ -107,7 +81,7 @@ export default function StudentDashboard() {
       });
   }, []);
 
-  if (projects != undefined)
+  if (projects !== undefined)
     projects.forEach((projectItem) => {
       projectItem["owner"] = projectItem["RepoLink"].split("/").slice(-2)[0];
     });
@@ -160,7 +134,7 @@ export default function StudentDashboard() {
             {/* <div className='mentor-stats-content'>
               <div className='card-component non-purple-card mstats grow-card'>
                 <p className='font-mentor-header'>Commits</p>
-                <p className='font-mentor-stats'>{ stats['commits'] != undefined && stats['commits'].length}</p>
+                <p className='font-mentor-stats'>{ stats['commits'] !== undefined && stats['commits'].length}</p>
               </div>
 
               <div className='card-component purple-card mstats  grow-card'>
@@ -169,7 +143,7 @@ export default function StudentDashboard() {
                   (open+closed)
                 </p>
                 <p className='font-mentor-stats'>
-                  {stats['pulls'] != undefined && stats['pulls'].length}
+                  {stats['pulls'] !== undefined && stats['pulls'].length}
                 </p>
               </div>
 
@@ -189,7 +163,7 @@ export default function StudentDashboard() {
             <h1>Languages involved</h1>
           </div>
           <div style={{ textAlign: 'center' }}>
-            {stats['languages'] != undefined &&
+            {stats['languages'] !== undefined &&
               stats['languages'].map((item) => (
                 <span
                   className='tag is-dark is-large'
@@ -206,7 +180,7 @@ export default function StudentDashboard() {
             <h1>Projects</h1>
           </div>
           <div style={{ textAlign: 'center' }}>
-            {stats['projects'] != undefined &&
+            {stats['projects'] !== undefined &&
               stats['projects'].map((item) => (
                 <span
                   className='tag is-dark is-large is-info'
@@ -234,7 +208,7 @@ export default function StudentDashboard() {
             </h1>
           </div>
           <div className="table-container" id="indiv-stats-table">
-            {students["projects"] != undefined ? (
+            {students["projects"] !== undefined ? (
               <div>
                 {students["projects"].map((item) => {
                   return (
@@ -325,7 +299,7 @@ export default function StudentDashboard() {
             <h1>Commits</h1>
           </div>
           <div className='table-container' id='indiv-stats-table'>
-            {stats['commits'] != undefined ? (
+            {stats['commits'] !== undefined ? (
               <table>
                 <thead>
                   <tr>
