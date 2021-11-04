@@ -4,7 +4,7 @@ import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import ReactTooltip from "react-tooltip";
 import InfoIcon from "../../assets/info.svg";
-import { BACKEND_URL } from "../../constants/constants";
+import { BACKEND_URL } from "../../constants";
 import Tags from "../../data/tags.js";
 import Navbar from "../Navbar";
 

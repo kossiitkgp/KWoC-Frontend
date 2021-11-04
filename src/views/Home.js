@@ -4,8 +4,8 @@ import github from "../assets/github.svg";
 import group from "../assets/people.svg";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Part from "./Part";
-import Timeline from "./timelinedata/Timeline";
+import Part from "../components/Part";
+import Timeline from "../components/timeline/Timeline";
 
 export default function Home() {
   const tags = [

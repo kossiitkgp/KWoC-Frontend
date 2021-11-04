@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import { STATS_API } from "../../../constants/constants";
-import Footer from "../../Footer.js";
-import Navbar from "../../Navbar.js";
+import { STATS_API } from "../../constants";
+import Footer from "../Footer.js";
+import Navbar from "../Navbar.js";
 
 export default function ProjectsTable() {
   const [lastUpdatedTime, setLastUpdatedTime] = useState("");

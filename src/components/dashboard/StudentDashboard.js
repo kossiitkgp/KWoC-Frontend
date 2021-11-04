@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import cheers from "../../assets/meme.jpg";
 import reloadIcon from "../../assets/refresh-cw.svg";
-import { BACKEND_URL, STATS_API } from "../../constants/constants";
+import { BACKEND_URL, STATS_API } from "../../constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 

@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import reloadIcon from "../../../assets/refresh-cw.svg";
-import { BACKEND_URL, STATS_API } from "../../../constants/constants";
-import Footer from "../../Footer";
-import Navbar from "../../Navbar";
+import reloadIcon from "../../assets/refresh-cw.svg";
+import { BACKEND_URL, STATS_API } from "../../constants";
+import Footer from "../Footer";
+import Navbar from "../Navbar";
 
 function trim_message(message) {
   if (message)

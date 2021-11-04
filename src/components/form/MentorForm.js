@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BACKEND_URL } from "../../constants/constants";
+import { BACKEND_URL } from "../../constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 

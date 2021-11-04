@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BACKEND_URL } from "../constants/constants";
+import { BACKEND_URL } from "../constants";
 
 export default function MentorOAuth(props) {
   useEffect(() => {

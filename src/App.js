@@ -2,18 +2,18 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import MentorDashboard from "./components/dashboard/MentorDashboard";
 import StudentDashboard from "./components/dashboard/StudentDashboard";
-import FAQ from "./components/FAQ";
 import MentorForm from "./components/form/MentorForm";
 import ProjectForm from "./components/form/ProjectForm";
 import StudentForm from "./components/form/StudentForm";
-import Home from "./components/Home";
-import MentorStats from "./components/indivStats/mentorStats/MentorStats";
-import StudentStats from "./components/indivStats/studentStats/StudentStats";
 import OAuth from "./components/OAuth";
-import Projects from "./components/projects/Projects";
-import ProjectsTable from "./components/tables/MentorsTable/ProjectsTable";
-import StudentsTable from "./components/tables/StudentsTable/StudentsTable";
-import Testimonial from "./components/Testimonials";
+import MentorStats from "./components/stats/MentorStats";
+import StudentStats from "./components/stats/StudentStats";
+import ProjectsTable from "./components/tables/ProjectsTable";
+import StudentsTable from "./components/tables/StudentsTable";
+import FAQ from "./views/FAQ";
+import Home from "./views/Home";
+import Projects from "./views/Projects";
+import Testimonial from "./views/Testimonials";
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);

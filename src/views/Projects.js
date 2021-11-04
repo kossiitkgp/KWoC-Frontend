@@ -1,11 +1,11 @@
 import axios from "axios";
 import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
-import { BACKEND_URL } from "../../constants/constants";
-import { shuffleArray } from "../../utils/shuffle";
-import Card from "./ProjectCard.js";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Card from "../components/ProjectCard.js";
+import { BACKEND_URL } from "../constants";
+import { shuffleArray } from "../utils/shuffle";
 
 function projectSortPolicy(arr) {
   /* Sorts an array of Projects using a given policy

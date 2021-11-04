@@ -1,5 +1,5 @@
 import React from "react";
-import timelinedata from "./data";
+import timelinedata from "../../data/timelineData";
 import TimelineItem from "./TimelineItem";
 
 const Timeline = () =>

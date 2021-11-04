@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  BACKEND_URL,
-  MID_EVAL_DATE,
-  STATS_API,
-} from "../../constants/constants";
+import { BACKEND_URL, MID_EVAL_DATE, STATS_API } from "../../constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 
