@@ -2,10 +2,8 @@ import axios from "axios";
 import Fuse from "fuse.js";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import { STATS_API } from "../../constants";
-import { shuffleArray } from "../../utils/shuffle";
-import Footer from "../Footer.js";
-import Navbar from "../Navbar.js";
+import { STATS_API } from "../constants";
+import { shuffleArray } from "../utils/shuffle";
 
 const debouncer = function (fn, delay) {
   let timer;
@@ -121,7 +119,6 @@ export default function StudentsTable() {
 
   return (
     <div>
-      <Navbar />
       <div className="stats">
         <h3>
           Coding period has ended
@@ -256,7 +253,6 @@ export default function StudentsTable() {
           ""
         )}
       </div>
-      <Footer />
     </div>
   );
 }

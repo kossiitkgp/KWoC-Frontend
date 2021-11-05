@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BACKEND_URL, MID_EVAL_DATE, STATS_API } from "../../constants";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
+import { BACKEND_URL, MID_EVAL_DATE, STATS_API } from "../constants";
 
 function countDaysLeft() {
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -276,7 +274,6 @@ export default function MentorDashboard() {
              -> Important Announcements
              -> Stats of indiv Mentor ???
       */}
-        <Navbar className="is-black" />
         {/**<div className='title-dashboard'>
         <h1>Mentor Dashboard</h1>
     </div>*/}
@@ -525,7 +522,6 @@ export default function MentorDashboard() {
           })}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

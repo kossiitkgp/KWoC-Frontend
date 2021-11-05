@@ -1,8 +1,6 @@
 import axios from "axios";
 import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import Card from "../components/ProjectCard.js";
 import { BACKEND_URL } from "../constants";
 import { shuffleArray } from "../utils/shuffle";
@@ -113,7 +111,6 @@ export default function Projects() {
 
   return (
     <div className="projects">
-      <Navbar />
       {/* <section class='hero is-medium is-danger is-bold' id='projects'>
         <div class='hero-body'>
           <div class='container'>
@@ -159,7 +156,6 @@ export default function Projects() {
         </div>
       </div>
       <br />
-      <Footer />
     </div>
   );
 }

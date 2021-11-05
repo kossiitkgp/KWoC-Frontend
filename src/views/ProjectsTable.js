@@ -1,9 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import { STATS_API } from "../../constants";
-import Footer from "../Footer.js";
-import Navbar from "../Navbar.js";
+import { STATS_API } from "../constants";
 
 export default function ProjectsTable() {
   const [lastUpdatedTime, setLastUpdatedTime] = useState("");
@@ -69,7 +67,6 @@ export default function ProjectsTable() {
 
   return (
     <div>
-      <Navbar />
       <div className="stats">
         <div style={{ textAlign: "center" }}>
           <h3>
@@ -128,7 +125,6 @@ export default function ProjectsTable() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

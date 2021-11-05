@@ -1,12 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
-import cheers from "../../assets/meme.jpg";
-import reloadIcon from "../../assets/refresh-cw.svg";
-import { BACKEND_URL, STATS_API } from "../../constants";
-import { trim_lines, trim_message } from "../../utils/helpers";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
+import cheers from "../assets/meme.jpg";
+import reloadIcon from "../assets/refresh-cw.svg";
+import { BACKEND_URL, STATS_API } from "../constants";
+import { trim_lines, trim_message } from "../utils/helpers";
 
 export default function StudentDashboard() {
   const [fullName, setFullName] = useState("");
@@ -305,7 +303,6 @@ export default function StudentDashboard() {
              -> Important Announcements
              -> Stats of indiv Mentor ???
       */}
-        <Navbar className="is-black" />
         <div className="title-dashboard">
           <h1>Student Dashboard</h1>
         </div>
@@ -646,7 +643,6 @@ export default function StudentDashboard() {
           )}
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

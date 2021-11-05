@@ -1,10 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import reloadIcon from "../../assets/refresh-cw.svg";
-import { BACKEND_URL, STATS_API } from "../../constants";
-import { trim_lines, trim_message } from "../../utils/helpers";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
+import reloadIcon from "../assets/refresh-cw.svg";
+import { BACKEND_URL, STATS_API } from "../constants";
+import { trim_lines, trim_message } from "../utils/helpers";
 
 export default function StudentDashboard() {
   const [fullName, setFullName] = useState("");
@@ -231,7 +229,6 @@ export default function StudentDashboard() {
              -> Important Announcements
              -> Stats of indiv Mentor ???
       */}
-        <Navbar className="is-black" />
         <div className="intro-card">
           <div className="avatar grow-card">
             <img
@@ -433,7 +430,6 @@ export default function StudentDashboard() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

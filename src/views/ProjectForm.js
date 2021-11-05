@@ -3,10 +3,9 @@ import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import CreatableSelect from "react-select/creatable";
 import ReactTooltip from "react-tooltip";
-import InfoIcon from "../../assets/info.svg";
-import { BACKEND_URL } from "../../constants";
-import Tags from "../../data/tags.js";
-import Navbar from "../Navbar";
+import InfoIcon from "../assets/info.svg";
+import { BACKEND_URL } from "../constants";
+import Tags from "../data/tags.js";
 
 const options = Tags.map((item) => {
   return { value: item, label: item };
@@ -321,7 +320,6 @@ export default function Form(props) {
 
   return (
     <React.Fragment>
-      <Navbar />
       <div className="box">
         {/* FOR NOW THIS LINK FIELD IS IN THE TOP BECAUSE, WHEN IT IS KEPT AT THIRD PLACE(WHERE IT SHOULD BE), DUE TO
       SOME CSS ISSUES THE OPTIONS ARE NOT VISIBLE, SINCE I DON'T KNOW TO FIX THAT, I AM LEAVING IT

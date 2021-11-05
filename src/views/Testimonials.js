@@ -1,11 +1,8 @@
 import React from "react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 
 export default function Testimonial() {
   return (
     <div className="FAQs">
-      <Navbar />
       <section className="hero is-medium is-warning is-bold">
         <div className="hero-body" id="testimonial">
           <div className="container">
@@ -454,7 +451,6 @@ export default function Testimonial() {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 }

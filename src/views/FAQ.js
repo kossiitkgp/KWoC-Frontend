@@ -1,11 +1,8 @@
 import React from "react";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 
 export default function FAQ() {
   return (
     <div className="FAQs">
-      <Navbar />
       <section className="hero is-medium is-warning is-bold" id="faq">
         <div className="hero-body">
           <div className="container" id="content-faq">
@@ -238,7 +235,6 @@ export default function FAQ() {
           one commit by the mid-term to be eligible for continuing the program.
         </p>
       </div>
-      <Footer />
     </div>
   );
 }

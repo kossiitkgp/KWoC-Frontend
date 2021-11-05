@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BACKEND_URL } from "../../constants";
-import Footer from "../Footer";
-import Navbar from "../Navbar";
+import { BACKEND_URL } from "../constants";
 
 export default function Form(props) {
   const [isSubmitDisabled, disableSubmit] = useState(false);
@@ -45,12 +43,8 @@ export default function Form(props) {
   }
 
   return (
-    <React.Fragment>
-      <Navbar />
-      <div className="box">
-        <h2>Registrations for this year have ended.</h2>
-      </div>
-      <Footer />
-    </React.Fragment>
+    <div className="box">
+      <h2>Registrations for this year have ended.</h2>
+    </div>
   );
 }

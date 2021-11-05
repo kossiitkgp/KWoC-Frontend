@@ -2,10 +2,8 @@ import React from "react";
 import pullRequest from "../assets/git-pull-request.svg";
 import github from "../assets/github.svg";
 import group from "../assets/people.svg";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import Part from "../components/Part";
-import Timeline from "../components/timeline/Timeline";
+import Timeline from "../components/Timeline";
 
 export default function Home() {
   const tags = [
@@ -31,7 +29,6 @@ export default function Home() {
 
   return (
     <div className="home">
-      <Navbar />
       <section
         className="hero is-fullheight is-dark is-bold"
         style={{ position: "relative" }}
@@ -178,8 +175,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }
