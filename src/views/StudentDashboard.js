@@ -403,7 +403,7 @@ export default function StudentDashboard() {
         <div>
           {evalStatus === 0 ? (
             <React.Fragment className="projects">
-              <h1 className="message" style={{ textAlign: "center" }}>
+              <h1 className="message">
                 You could not clear KWoC 2020 Mid Evaluation.
                 <br />
                 But, don't let this stop you from contributing to Open Source.
@@ -415,7 +415,7 @@ export default function StudentDashboard() {
               <React.Fragment className="projects">
                 {localStorage.getItem("announcement_message") === "true" &&
                 localStorage.getItem("page_reload") === "false" ? (
-                  <div className="message" style={{ textAlign: "center" }}>
+                  <div className="message">
                     <h1>Announcements have been updated!</h1>
                   </div>
                 ) : (
@@ -426,7 +426,7 @@ export default function StudentDashboard() {
               <React.Fragment className="projects">
                 {localStorage.getItem("result_message") === "true" &&
                 localStorage.getItem("page_reload2") === "false" ? (
-                  <div className="message" style={{ textAlign: "center" }}>
+                  <div className="message">
                     <h1>
                       You have successfully passed KWoC 2020 Mid Evaluation.
                       Keep going!
@@ -442,15 +442,10 @@ export default function StudentDashboard() {
                 <div className="project-header">
                   <h1>Languages involved</h1>
                 </div>
-                <div style={{ textAlign: "center" }}>
+                <div>
                   {stats["languages"] !== undefined &&
                     stats["languages"].map((item) => (
-                      <span
-                        className="tag is-dark is-large"
-                        style={{ margin: "5px" }}
-                      >
-                        {item}
-                      </span>
+                      <span className="tag is-dark is-large">{item}</span>
                     ))}
                 </div>
               </div>
@@ -459,19 +454,11 @@ export default function StudentDashboard() {
                 <div className="project-header">
                   <h1>Projects</h1>
                 </div>
-                <div style={{ textAlign: "center" }}>
+                <div>
                   {stats["projects"] !== undefined &&
                     stats["projects"].map((item) => (
-                      <span
-                        className="tag is-dark is-large is-info"
-                        style={{ margin: "5px" }}
-                      >
-                        <a
-                          href={`https://github.com/${item}`}
-                          style={{ color: "white" }}
-                        >
-                          {item}
-                        </a>
+                      <span className="tag is-dark is-large is-info">
+                        <a href={`https://github.com/${item}`}>{item}</a>
                       </span>
                     ))}
                 </div>
@@ -494,10 +481,10 @@ export default function StudentDashboard() {
                     <table>
                       <thead>
                         <tr>
-                          <th style={{ color: "white" }}>
+                          <th>
                             <h3>Project</h3>
                           </th>
-                          <th style={{ color: "white" }}>
+                          <th>
                             <h3>Pull Request</h3>
                           </th>
                         </tr>
@@ -518,10 +505,7 @@ export default function StudentDashboard() {
                                 </td>
 
                                 <td>
-                                  <a
-                                    href={item["html_url"]}
-                                    style={{ color: "white" }}
-                                  >
+                                  <a href={item["html_url"]}>
                                     {trim_message(item["title"])}
                                   </a>
                                 </td>
@@ -546,13 +530,13 @@ export default function StudentDashboard() {
                     <table>
                       <thead>
                         <tr>
-                          <th style={{ color: "white" }}>
+                          <th>
                             <h3>Project</h3>
                           </th>
-                          <th style={{ color: "white" }}>
+                          <th>
                             <h3>Commit</h3>
                           </th>
-                          <th style={{ color: "white" }}>
+                          <th>
                             <h3>Lines</h3>
                           </th>
                         </tr>
@@ -571,10 +555,7 @@ export default function StudentDashboard() {
                                 </a>
                               </td>
                               <td>
-                                <a
-                                  style={{ color: "white" }}
-                                  href={item["html_url"]}
-                                >
+                                <a href={item["html_url"]}>
                                   {trim_message(item["message"])}
                                 </a>
                               </td>

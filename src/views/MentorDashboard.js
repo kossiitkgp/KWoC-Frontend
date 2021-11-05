@@ -326,7 +326,7 @@ export default function MentorDashboard() {
         <div className="projects">
           {localStorage.getItem("announcement_messageM") === "true" &&
           localStorage.getItem("page_reloadM") === "false" ? (
-            <div className="message" style={{ textAlign: "center" }}>
+            <div className="message">
               <h1>Announcements have been updated!</h1>
             </div>
           ) : (

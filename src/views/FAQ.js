@@ -3,20 +3,18 @@ import React from "react";
 export default function FAQ() {
   return (
     <div className="FAQs">
-      <section className="hero is-medium is-warning is-bold" id="faq">
+      <section className="hero" id="faq">
         <div className="hero-body">
           <div className="container" id="content-faq">
-            <h1 className="title" style={{ color: "white" }}>
-              Frequently Asked Questions
-            </h1>
-            <h2 className="subtitle" style={{ color: "white" }}>
+            <h1 className="title">Frequently Asked Questions</h1>
+            <h2 className="subtitle">
               Wanna Ask us a question? Check these first!
             </h2>
           </div>
         </div>
       </section>
 
-      <div className="container" style={{ margin: "40px 6%" }}>
+      <div className="container">
         <h1>General</h1>
 
         <h4>

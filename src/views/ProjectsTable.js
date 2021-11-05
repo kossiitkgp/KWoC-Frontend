@@ -68,7 +68,7 @@ export default function ProjectsTable() {
   return (
     <div>
       <div className="stats">
-        <div style={{ textAlign: "center" }}>
+        <div>
           <h3>
             Coding period has ended
             <br />

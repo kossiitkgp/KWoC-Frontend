@@ -142,44 +142,14 @@ export default function StudentsTable() {
               onChange={(e) => {
                 debouncer(handleSearch, 300)(e.target.value);
               }}
-              style={{
-                width: "30%",
-                position: "relative",
-                left: "50%",
-                right: "50%",
-                transform: "translateX(-50%)",
-              }}
             ></input>
           </div>
         </div>
 
-        {page > 0 ? (
-          <button
-            onClick={goToPrevPage}
-            style={{ color: "white", fontSize: "120%" }}
-          >
-            Prev
-          </button>
-        ) : (
-          ""
-        )}
-        <span
-          style={{
-            color: "white",
-            marginLeft: "1%",
-            marginRight: "1%",
-            fontSize: "120%",
-          }}
-        >
-          Page: {page + 1}
-        </span>
+        {page > 0 ? <button onClick={goToPrevPage}>Prev</button> : ""}
+        <span>Page: {page + 1}</span>
         {page + 2 <= lastPageNum ? (
-          <button
-            onClick={goToNextPage}
-            style={{ color: "white", fontSize: "120%" }}
-          >
-            Next
-          </button>
+          <button onClick={goToNextPage}>Next</button>
         ) : (
           ""
         )}
@@ -222,33 +192,10 @@ export default function StudentsTable() {
             </tbody>
           </table>
         </div>
-        {page > 0 ? (
-          <button
-            onClick={goToPrevPage}
-            style={{ color: "white", fontSize: "120%" }}
-          >
-            Prev
-          </button>
-        ) : (
-          ""
-        )}
-        <span
-          style={{
-            color: "white",
-            marginLeft: "1%",
-            marginRight: "1%",
-            fontSize: "120%",
-          }}
-        >
-          Page: {page + 1}
-        </span>
+        {page > 0 ? <button onClick={goToPrevPage}>Prev</button> : ""}
+        <span>Page: {page + 1}</span>
         {page + 2 <= lastPageNum ? (
-          <button
-            onClick={goToNextPage}
-            style={{ color: "white", fontSize: "120%" }}
-          >
-            Next
-          </button>
+          <button onClick={goToNextPage}>Next</button>
         ) : (
           ""
         )}

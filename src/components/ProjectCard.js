@@ -94,10 +94,7 @@ export default function Card(props) {
                   {loggedIn && (
                     <p>
                       (
-                      <a
-                        style={{ color: "#4A4A4A" }}
-                        href={`mailto:${props.mentorId[index]}`}
-                      >
+                      <a href={`mailto:${props.mentorId[index]}`}>
                         {props.mentorId[index]}
                       </a>
                       )

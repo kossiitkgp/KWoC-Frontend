@@ -159,12 +159,11 @@ export default function StudentDashboard() {
           <div className='project-header'>
             <h1>Languages involved</h1>
           </div>
-          <div style={{ textAlign: 'center' }}>
+          <div >
             {stats['languages'] !== undefined &&
               stats['languages'].map((item) => (
                 <span
                   className='tag is-dark is-large'
-                  style={{ margin: '5px' }}
                 >
                   {item}
                 </span>
@@ -176,16 +175,14 @@ export default function StudentDashboard() {
           <div className='project-header'>
             <h1>Projects</h1>
           </div>
-          <div style={{ textAlign: 'center' }}>
+          <div >
             {stats['projects'] !== undefined &&
               stats['projects'].map((item) => (
                 <span
                   className='tag is-dark is-large is-info'
-                  style={{ margin: '5px' }}
                 >
                   <a
                     href={`https://github.com/${item}`}
-                    style={{ color: 'white' }}
                   >
                     {item}
                   </a>
@@ -222,13 +219,13 @@ export default function StudentDashboard() {
                       <table>
                         <thead>
                           <tr>
-                            <th style={{ color: "white" }}>
+                            <th>
                               <h3>Student</h3>
                             </th>
-                            <th style={{ color: "white" }}>
+                            <th>
                               <h3>Commits</h3>
                             </th>
-                            <th style={{ color: "white" }}>
+                            <th>
                               <h3>Lines</h3>
                             </th>
                           </tr>
@@ -300,13 +297,13 @@ export default function StudentDashboard() {
               <table>
                 <thead>
                   <tr>
-                    <th style={{ color: 'white' }}>
+                    <th >
                       <h3>Project</h3>
                     </th>
-                    <th style={{ color: 'white' }}>
+                    <th >
                       <h3>Commit</h3>
                     </th>
-                    <th style={{ color: 'white' }}>
+                    <th >
                       <h3>Lines</h3>
                     </th>
                   </tr>
@@ -324,7 +321,7 @@ export default function StudentDashboard() {
                             {item['project']}
                           </a>
                         </td>
-                        <td><a href={item['html_url']} style={{color: 'white'}}>{trim_message(item['message'])}</a></td>
+                        <td><a href={item['html_url']} >{trim_message(item['message'])}</a></td>
                         <td>
                           +{trim_lines(item['lines_added'])},-{trim_lines(item['lines_removed'])}
                         </td>

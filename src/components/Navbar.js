@@ -96,7 +96,7 @@ class Navbar extends Component {
           <div className="container">
             <div className="navbar-brand">
               <Link className="navbar-item" to="/" id="kwoc-logo">
-                <img src={logo} alt="logo" style={{ width: "50px" }} />
+                <img src={logo} alt="logo" />
               </Link>
 
               <button

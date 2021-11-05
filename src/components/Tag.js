@@ -22,7 +22,6 @@ export default function Tag(props) {
 
   return (
     <span
-      style={{ margin: "5px" }}
       className={`tag ${TAG_TYPES[Math.floor(Math.random() * LEN)]} is-medium`}
     >
       {props.content}
