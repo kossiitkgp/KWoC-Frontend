@@ -1,308 +1,292 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import logo from "../images/circle.svg";
-import slack from "../images/slack.svg";
-import "../styles/navbar.scss";
+import React, { useEffect, useState } from "react";
+import logo from "../assets/circle.svg";
+import slack from "../assets/slack.svg";
 
-class Navbar extends Component {
-  state = {
-    burgermenuIsVisible: false,
-    is_mentor_loggedin: false,
-    is_student_loggedin: false,
-    is_atleast_one_logged_in: false,
+function Navbar() {
+  const [isActive, setIsActive] = useState(false);
+  const [mentorLoggedIn, setMentorLoggedIn] = useState(false);
+  const [studentLoggedIn, setStudentLoggedIn] = useState(false);
+  const [isDown_1, setIsDown_1] = useState(false);
+  const [isDown_2, setIsDown_2] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("mentor_jwt")) {
+      setMentorLoggedIn(true);
+    }
+
+    if (localStorage.getItem("student_jwt")) {
+      setStudentLoggedIn(true);
+    }
+  }, []);
+
+  const navbarNikal = () => {
+    isActive ? setIsActive(false) : setIsActive(true);
   };
 
-  componentDidMount() {
-    this.setState({
-      is_mentor_loggedin:
-        localStorage.getItem("mentor_jwt") === null ||
-        localStorage.getItem("student_jwt") === undefined,
-    });
-
-    this.setState({
-      is_student_loggedin:
-        localStorage.getItem("student_jwt") === null ||
-        localStorage.getItem("student_jwt") === undefined,
-    });
-
-    const mentor_loggedout =
-      localStorage.getItem("mentor_jwt") === null ||
-      localStorage.getItem("student_jwt") === undefined;
-    const student_loggedout =
-      localStorage.getItem("student_jwt") === null ||
-      localStorage.getItem("student_jwt") === undefined;
-
-    this.setState({
-      is_atleast_one_logged_in: !mentor_loggedout || !student_loggedout,
-    });
-  }
-
-  handleClick = (e) => {
-    if (this.state.burgermenuIsVisible) {
-      this.setState({
-        burgermenuIsVisible: false,
-      });
-    } else {
-      this.setState({
-        burgermenuIsVisible: true,
-      });
+  const dropdownNikal = (n) => {
+    switch (n) {
+      case 1:
+        setIsDown_1(!isDown_1);
+        break;
+      case 2:
+        setIsDown_2(!isDown_2);
+        break;
     }
   };
 
-  closeNavbar = (e) => {
-    if (this.state.burgermenuIsVisible) {
-      this.setState({
-        burgermenuIsVisible: false,
-      });
-    }
-  };
-
-  getWindowHeight = () => {
-    const distanceY = window.pageYOffset || document.documentElement.scrollTop;
-    const shrinkOn = "100";
-    if (distanceY > shrinkOn) {
-      this.setState({
-        scrollClass: "smaller",
-      });
-    } else if (this.state.scrollClass === "smaller" && distanceY < shrinkOn) {
-      this.setState({
-        scrollClass: "large",
-      });
-    }
-  };
-
-  logoutMentor = () => {
+  // TODO(@sahil-shubham): make custom auth hooks for user operations
+  const logoutMentor = () => {
     localStorage.removeItem("mentor_jwt");
     localStorage.removeItem("mentor_username");
     window.location.pathname = "";
   };
 
-  logoutStudent = () => {
+  const logoutStudent = () => {
     localStorage.removeItem("student_jwt");
     localStorage.removeItem("student_username");
     window.location.pathname = "";
   };
 
-  render() {
-    const clickClass = this.state.burgermenuIsVisible ? "is-active" : "";
+  return (
+    <>
+      <nav className="menu">
+        <div className="wrapper">
+          <div className="logo">
+            <a href="/">
+              <img src={logo} alt="logo" />
+            </a>
+          </div>
 
-    return (
-      <div className="navbar">
-        <nav
-          className={`navbar is-fixed-top is-transparent ${this.state.scrollClass}`}
-          role="navigation"
-          aria-label="main navigation"
-          id="navbar-container"
-        >
-          <div className="container">
-            <div className="navbar-brand">
-              <Link className="navbar-item" to="/" id="kwoc-logo">
-                <img src={logo} alt="logo" style={{ width: "50px" }} />
-              </Link>
+          <ul>
+            <li>
+              <a href="/#about">About</a>
+            </li>
 
-              <button
-                className={`navbar-burger burger ${clickClass}`}
-                aria-label="menu"
-                aria-expanded="false"
-                data-target="navbarBasicExample"
-                onClick={this.handleClick}
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+
+            <li>
+              <a href="/FAQ">FAQs</a>
+            </li>
+
+            <li>
+              <a href="/#tline">Timeline</a>
+            </li>
+
+            <li>
+              <a href="/testimonial">Testimonials</a>
+            </li>
+
+            <li>
+              <a
+                href="https://github.com/kossiitkgp/kwoc-bugs"
+                target="_blank"
+                rel="noreferrer noopener"
               >
-                <span aria-hidden="true" />
-                <span aria-hidden="true" />
-                <span aria-hidden="true" />
-              </button>
-            </div>
+                Bug Report
+              </a>
+            </li>
 
-            <div
-              id="navbarBasicExample"
-              className={`navbar-menu ${clickClass}`}
-            >
-              <div
-                className="navbar-end"
-                onClick={this.closeNavbar}
-                id="functional-buttons"
+            <li className="dropdown-title">
+              Stats
+              <ul className="dropdown-content">
+                <li>
+                  <a href="/stats/students">Students</a>
+                </li>
+                <li>
+                  <a href="/stats/projects">Projects</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a
+                href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
+                target="_blank"
+                rel="noreferrer noopener"
               >
-                <a className="navbar-item" href="/#about" id="about-button">
-                  About
-                </a>
+                <img src={slack} alt="Join us on slack" />
+              </a>
+            </li>
 
-                <Link
-                  className="navbar-item"
-                  to="/projects"
-                  id="project-button"
-                >
-                  Projects
-                </Link>
+            <li className="dropdown-title">
+              {mentorLoggedIn === true || studentLoggedIn === true
+                ? "Manage Account"
+                : "Login"}
 
-                <Link className="navbar-item" to="/FAQ" id="faq-button">
-                  FAQs
-                </Link>
-
-                <a className="navbar-item" href="/#tline" id="tline-button">
-                  Timeline
-                </a>
-
-                {/* <Link className='navbar-item' >
-             <a>Mentee Login</a>
-            </Link> */}
-                <Link
-                  className="navbar-item"
-                  to="/testimonial"
-                  id="testimonial-button"
-                >
-                  Testimonials
-                </Link>
-
-                <a
-                  className="navbar-item"
-                  href="https://github.com/kossiitkgp/kwoc-bugs"
-                  target="_blank"
-                  rel="noreferrer"
-                  id="testimonial-button"
-                >
-                  Bug Report
-                </a>
-                <div className="navbar-item has-dropdown is-hoverable">
-                  <a className="navbar-link" id="testimonial-button">
-                    Stats
-                  </a>
-
-                  <div className="navbar-dropdown">
-                    <a className="navbar-item" href="/stats/students">
-                      Students
+              <ul className="dropdown-content">
+                {mentorLoggedIn !== true ? (
+                  <li>
+                    <a
+                      className="navbar-item"
+                      href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
+                    >
+                      Mentor Login
                     </a>
-                    <a className="navbar-item" href="/stats/projects">
-                      Projects
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/*  </div>
-
-              <div className='field' id='darkmode'>
-                <div className='buttons has-addons'>
-                  <span className='button is-selected'>Light</span>
-                  <span className='button'>Dark</span>
-                </div>
-              </div>
-              */}
-              <div className="navbar-end" onClick={this.closeNavbar}>
-                <a
-                  className="navbar-item"
-                  href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img
-                    className="join-slack"
-                    src={slack}
-                    alt="Join us on slack"
-                  />
-                </a>
-                <div
-                  className="navbar-item has-dropdown is-hoverable"
-                  id="login-buttons"
-                >
-                  <a className="navbar-link">
-                    {this.state.is_atleast_one_logged_in === true
-                      ? "Manage Account"
-                      : "Login"}
-                  </a>
-                  <div className="navbar-dropdown">
-                    {this.state.is_mentor_loggedin === true ? (
-                      <a
-                        className="navbar-item"
-                        id="mentor-login"
-                        href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
-                      >
-                        Mentor Login
+                  </li>
+                ) : (
+                  <>
+                    <li>
+                      <a className="navbar-item" href="/dashboard/mentor">
+                        Mentor Dashboard
                       </a>
-                    ) : (
-                      <React.Fragment>
-                        <a
-                          className="navbar-item"
-                          id="mentor-login"
-                          href="/dashboard/mentor"
-                        >
-                          Mentor Dashboard
-                        </a>
-                        <a
-                          className="navbar-item"
-                          id="mentor-login"
-                          onClick={this.logoutMentor}
-                        >
-                          Logout(Mentor)
-                        </a>
-                      </React.Fragment>
-                    )}
-                    {this.state.is_student_loggedin === true ? (
-                      <a
-                        className="navbar-item"
-                        id="mentee-login"
-                        href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
-                      >
-                        Student Login
-                      </a>
-                    ) : (
-                      <React.Fragment>
-                        <a
-                          className="navbar-item"
-                          id="mentee-login"
-                          href="/dashboard/student"
-                        >
-                          Student Dashboard
-                        </a>
-                        <a
-                          className="navbar-item"
-                          id="mentor-login"
-                          onClick={this.logoutStudent}
-                        >
-                          Logout(Student)
-                        </a>
-                      </React.Fragment>
-                    )}
+                    </li>
 
-                    {/* <a
-                      className='navbar-item'
-                      id='mentee-login'
-                      href='https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student'
+                    <li onClick={logoutMentor}>Logout(Mentor)</li>
+                  </>
+                )}
+
+                {studentLoggedIn !== true ? (
+                  <li>
+                    <a
+                      className="navbar-item"
+                      id="mentee-login"
+                      href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
                     >
                       Student Login
-                    </a> */}
-                  </div>
-                </div>
+                    </a>
+                  </li>
+                ) : (
+                  <>
+                    <li>
+                      <a className="navbar-item" href="/dashboard/student">
+                        Student Dashboard
+                      </a>
+                    </li>
+                    <li onClick={logoutStudent}>Logout(Student)</li>
+                  </>
+                )}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-                {/* <div
-                  className='navbar-item has-dropdown is-hoverable'
-                  id='stat-buttons'
-                >
-                  <a className='navbar-link'>Stats</a>
-                  <div className='navbar-dropdown'>
-                    <Link
-                      className='navbar-item'
-                      id='mentor-login'
-                      to='/stats/students'
-                    >
-                      Student Stats
-                    </Link>
+      <div className="mobile-navbar">
+        <div
+          className={`mobile-navbar-icon ${isActive ? "out" : "nope"}`}
+          onClick={navbarNikal}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
 
-                    <Link
-                      className='navbar-item'
-                      id='mentor-login'
-                      to='/stats/projects'
+        <div className={`wrapper ${isActive ? "active" : ""}`}>
+          <ul>
+            <li>
+              <a href="/#about">About</a>
+            </li>
+
+            <li>
+              <a href="/projects">Projects</a>
+            </li>
+
+            <li>
+              <a href="/FAQ">FAQs</a>
+            </li>
+
+            <li>
+              <a href="/#tline">Timeline</a>
+            </li>
+
+            <li>
+              <a href="/testimonial">Testimonials</a>
+            </li>
+
+            <li>
+              <a
+                href="https://github.com/kossiitkgp/kwoc-bugs"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Bug Report
+              </a>
+            </li>
+
+            <li
+              className={`dropdown-title ${isDown_1 ? "down" : ""}`}
+              onClick={() => dropdownNikal(1)}
+            >
+              Stats
+              <ul className="dropdown-content">
+                <li>
+                  <a href="/stats/students">Students</a>
+                </li>
+                <li>
+                  <a href="/stats/projects">Projects</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a
+                href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <img src={slack} alt="Join us on slack" />
+              </a>
+            </li>
+
+            <li
+              className={`dropdown-title ${isDown_2 ? "down" : ""}`}
+              onClick={() => dropdownNikal(2)}
+            >
+              {mentorLoggedIn === true || studentLoggedIn === true
+                ? "Manage Account"
+                : "Login"}
+
+              <ul className="dropdown-content">
+                {mentorLoggedIn !== true ? (
+                  <li>
+                    <a
+                      className="navbar-item"
+                      href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
                     >
-                      Project Stats
-                    </Link>
-                  </div>
-                </div> */}
-              </div>
-            </div>
-          </div>
-        </nav>
+                      Mentor Login
+                    </a>
+                  </li>
+                ) : (
+                  <>
+                    <li>
+                      <a className="navbar-item" href="/dashboard/mentor">
+                        Mentor Dashboard
+                      </a>
+                    </li>
+
+                    <li onClick={logoutMentor}>Logout(Mentor)</li>
+                  </>
+                )}
+
+                {studentLoggedIn !== true ? (
+                  <li>
+                    <a
+                      className="navbar-item"
+                      id="mentee-login"
+                      href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
+                    >
+                      Student Login
+                    </a>
+                  </li>
+                ) : (
+                  <>
+                    <li>
+                      <a className="navbar-item" href="/dashboard/student">
+                        Student Dashboard
+                      </a>
+                    </li>
+                    <li onClick={logoutStudent}>Logout(Student)</li>
+                  </>
+                )}
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    );
-  }
+    </>
+  );
 }
 
 export default Navbar;

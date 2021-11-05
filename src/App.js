@@ -1,20 +1,21 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
-import MentorDashboard from "./components/dashboard/MentorDashboard";
-import StudentDashboard from "./components/dashboard/StudentDashboard";
-import FAQ from "./components/FAQ";
-import MentorForm from "./components/form/MentorForm";
-import ProjectForm from "./components/form/ProjectForm";
-import StudentForm from "./components/form/StudentForm";
-import Home from "./components/Home";
-import MentorStats from "./components/indivStats/mentorStats/MentorStats";
-import StudentStats from "./components/indivStats/studentStats/StudentStats";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 import OAuth from "./components/OAuth";
-import Projects from "./components/projects/Projects";
-import ProjectsTable from "./components/tables/MentorsTable/ProjectsTable";
-import StudentsTable from "./components/tables/StudentsTable/StudentsTable";
-import Testimonial from "./components/Testimonials";
-import "./styles/index.scss";
+import FAQ from "./views/FAQ";
+import Home from "./views/Home";
+import MentorDashboard from "./views/MentorDashboard";
+import MentorForm from "./views/MentorForm";
+import MentorStats from "./views/MentorStats";
+import ProjectForm from "./views/ProjectForm";
+import Projects from "./views/Projects";
+import ProjectsTable from "./views/ProjectsTable";
+import StudentDashboard from "./views/StudentDashboard";
+import StudentForm from "./views/StudentForm";
+import StudentsTable from "./views/StudentsTable";
+import StudentStats from "./views/StudentStats";
+import Testimonial from "./views/Testimonials";
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
@@ -24,6 +25,7 @@ const ScrollToTop = () => {
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <div className="App">
         <Route onChange={ScrollToTop} exact path="/" component={Home} />
 
@@ -102,6 +104,7 @@ function App() {
 
         <Route onChange={ScrollToTop} path="/projects" component={Projects} />
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }

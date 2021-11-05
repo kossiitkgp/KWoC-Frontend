@@ -1,0 +1,225 @@
+.particles {
+  width: 100%;
+  height: 100%;
+  background: url("../assets/intro-background.jpg");
+  background-size: cover;
+
+  &:before {
+    content: "";
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    margin: 0;
+
+    .hero-body {
+      position: absolute;
+      .title {
+        color: $primary-text-white;
+        margin: 2rem 0 1rem;
+      }
+
+      .btns-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+        .button {
+          background-color: rgba($color: #000000, $alpha: 0.5);
+          border: 0px solid #fff;
+          border-radius: 5px;
+          color: $primary-text-white;
+          transition: all 0.5s ease-in-out;
+
+          margin: 1rem 0.5rem;
+          padding: 1rem;
+
+          &:hover {
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.05);
+          }
+
+          &:visited {
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            border: 0px solid #fff;
+            color: $primary-text-white;
+            transition: all 0.5s ease-in-out;
+          }
+        }
+      }
+    }
+
+    .about {
+      background-image: linear-gradient(135deg, #9545f7 0%, #000000 50%);
+      color: white;
+      padding-bottom: 5rem;
+      // TODO: use rem for font size
+      .container {
+        h1 {
+          font-size: 40px;
+          align-items: center;
+        }
+        display: grid;
+
+        place-items: center;
+        p {
+          font-size: 17px;
+        }
+      }
+    }
+    .stats {
+      background-color: #170f1a;
+      margin: 0;
+      padding: 3rem 0;
+      color: rgb(168, 166, 166);
+
+      .container {
+        h1 {
+          color: #c395ff;
+          text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
+          font-size: 40px;
+          text-align: center;
+          margin: 0;
+          padding: 1rem 0;
+        }
+        .columns {
+          padding: 2rem 0;
+          .column {
+            margin: 0 2rem 2rem;
+            padding: 3rem 0 0;
+            border-radius: 2rem;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            img {
+              margin-bottom: 10px;
+              width: 35%;
+              height: 35%;
+              filter: invert(1);
+            }
+            h3 {
+              font-size: 2rem;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+    @media (max-width: 768px) {
+      .stats .container .columns .column {
+        padding: 2rem 0;
+      }
+    }
+
+    .why-kwoc {
+      color: rgb(223, 222, 222);
+      margin-bottom: 0;
+      // background-image: linear-gradient(-135deg, #58182d 0%, #130816 50%);
+      background-color: #170f1a;
+      .container {
+        padding: 30px 20% 5rem;
+
+        h1 {
+          color: #c395ff;
+          text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
+          font-size: 64px;
+          text-align: center;
+        }
+        h2 {
+          color: #c395ff;
+          text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
+          font-size: 48px;
+          text-align: center;
+        }
+        p {
+          font-size: 18px;
+          color: linear-gradient(135deg, #fff 50%, #000 50%);
+        }
+        h3 {
+          color: #c395ff;
+          font-size: 25px;
+          letter-spacing: 2px;
+          font-family: Vegur;
+        }
+      }
+    }
+
+    @media (max-width: 600px) {
+      .why-kwoc .container {
+        padding: 30px 10% 5rem;
+      }
+    }
+  }
+
+  .container {
+    h1 {
+      font-family: Vegur;
+    }
+
+    p {
+      font-family: Route159;
+    }
+  }
+
+  .tags {
+    text-align: center;
+    min-height: 50vh;
+    background-image: linear-gradient(135deg, #58182d 0%, #130816 50%);
+
+    margin-bottom: 0 !important;
+
+    .container {
+      h1 {
+        font-size: 40px;
+        align-items: center;
+        color: #fff;
+      }
+      max-height: 100vh;
+      padding-bottom: 20px;
+
+      #dark {
+        color: #000;
+        background-color: #b57aff;
+      }
+
+      #light {
+        color: #923bff;
+        background-color: #fff;
+      }
+    }
+
+    .tag {
+      background: rgba(#fff, 0.1);
+      border-radius: 15px;
+      color: #eee;
+      cursor: pointer;
+    }
+  }
+}
+
+// TODO: replace these with the mixins
+@media (max-width: 400px) {
+  .hero {
+    .manual-btns {
+      flex-direction: column;
+      padding: 0 20%;
+      .control:not(:last-child) {
+        margin-right: 0 !important;
+      }
+    }
+  }
+}

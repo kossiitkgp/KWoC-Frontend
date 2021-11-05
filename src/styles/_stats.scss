@@ -1,0 +1,232 @@
+// the following style code taken from https://codepen.io/colewaldrip/pen/bdZVGd
+.refresh-icon {
+  font-size: 1.5rem;
+  color: white;
+  position: relative;
+  float: right;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.3s ease;
+}
+
+// TODO: nest the following declarations
+.refresh-icon:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border: solid 2px;
+  transform: scale(0.8);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.refresh-icon:hover:after {
+  transform: scale(1);
+  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.19), 6px 0 6px rgba(0, 0, 0, 0.23);
+}
+
+.refresh-icon:nth-of-type(1) {
+  background-color: #af88b9;
+}
+
+.refresh-icon:nth-of-type(1):hover {
+  color: #af88b9;
+}
+
+.refresh-icon:nth-of-type(1):after {
+  border-color: #af88b9;
+}
+
+.refresh-icon:hover {
+  background-color: white;
+  transform: rotate(90deg);
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.student-stats {
+  background-color: $background-color-page;
+  margin-top: 4.5%;
+  .profile-container {
+    display: flex;
+    justify-content: space-evenly;
+
+    .profile-card {
+      align-self: center;
+      font-size: 1.4rem;
+      margin-top: 1rem;
+      text-align: center;
+      padding: 1rem;
+
+      flex-grow: 3;
+      //   background-color: yellow;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      box-shadow: inset 10px 23px 63px -4px rgba(219, 226, 235, 1);
+      // border-radius: 20px;
+      border-bottom-right-radius: 20px;
+      border-top-right-radius: 20px;
+
+      align-items: center;
+
+      .avatar-img {
+        flex-grow: 1;
+        width: 200px;
+        height: 200px;
+      }
+
+      .avatar-content-card {
+        flex-grow: 1;
+        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+        border-radius: 4px;
+
+        font-size: 20px;
+      }
+      p {
+        padding: 0px;
+        margin: 0px;
+      }
+    }
+    .stats-card-list {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 7;
+      justify-content: space-evenly;
+      .stats-row-1,
+      .stats-row-2 {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 1% 0 1% 0;
+        padding: 1%;
+        .stats-card {
+          height: 200px;
+          width: 200px;
+          box-shadow: -25px -25px 50px #fdfeff, 25px 25px 50px #dee2eb;
+          border-radius: 30px;
+
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          p {
+            font-size: 60px;
+            text-align: center;
+            padding: 0px;
+            margin: 0px;
+          }
+
+          .stats-header {
+            font-size: 32px;
+          }
+        }
+      }
+    }
+  }
+
+  .language-card {
+    padding: 2% 0 2% 2%;
+    text-align: center;
+
+    p {
+      text-align: initial;
+      font-size: 32px;
+    }
+  }
+
+  .project-card {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    padding: 2%;
+    p {
+      font-size: 32px;
+    }
+    .table {
+      border-collapse: collapse;
+      font-size: 20px;
+      width: 100%;
+
+      th {
+        color: #5f6e7d;
+        border: none;
+      }
+      td {
+        border: none;
+        color: #5f6e7d;
+        display: flex;
+        flex-grow: 1;
+      }
+
+      tr:hover {
+        background: rgba(#a0a3f4, 0.1);
+        td {
+          border: none;
+          color: black;
+        }
+      }
+    }
+    a:active {
+      background-color: #8d90f2;
+    }
+  }
+
+  .contri-card {
+    padding: 0.5%;
+
+    .contri-header {
+      font-size: 32px;
+      padding-left: 1.5%;
+    }
+    .table {
+      border-collapse: collapse;
+      font-size: 20px;
+      width: 100%;
+      th {
+        color: #5f6e7d;
+        border: none;
+        padding-right: 1.5%;
+        padding-left: 1.5%;
+        padding-bottom: 2%;
+      }
+      td {
+        border: none;
+        color: #5f6e7d;
+        padding-right: 1.5%;
+        padding-left: 1.5%;
+      }
+      td:nth-child(3) {
+        color: #5f6e7d;
+      }
+      tr:hover {
+        background: rgba(#a0a3f4, 0.2);
+        td {
+          border: none;
+          color: black;
+        }
+      }
+    }
+
+    .mentor-avatar {
+      width: 40px;
+      height: 40px;
+
+      border-radius: 50%;
+    }
+
+    .mentor-avatar:hover {
+      opacity: 0.5;
+    }
+  }
+}
+
+.mentor-stats {
+  text-align: "center" !important;
+}

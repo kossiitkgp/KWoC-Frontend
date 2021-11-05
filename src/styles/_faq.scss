@@ -1,0 +1,18 @@
+// TODO: styling with classes, id for linking or specific stuff
+#faq {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../assets/intro-background.jpg");
+  background-size: cover;
+}
+
+#content-faq {
+  color: white !important;
+}
+@media (max-width: 768px) {
+  #faq {
+    .title {
+      font-size: 4rem;
+      line-height: 1.3;
+    }
+  }
+}
