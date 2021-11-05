@@ -1,5 +1,6 @@
 import React from "react";
 
+// TODO: we should show these messages in a better way
 export function MidsFail() {
   return (
     <h3>

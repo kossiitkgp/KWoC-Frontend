@@ -181,6 +181,7 @@ export default function StudentDashboard() {
     //     });
   }, []);
 
+  // TODO: remove or delocalize
   // sample data kept for future reference
   // let data = {
   //   name: 'Aditya Vikram Singh',
@@ -412,6 +413,7 @@ export default function StudentDashboard() {
             </React.Fragment>
           ) : (
             <div>
+              {/* TODO: better way to show and confirm if announcements had been seen */}
               <React.Fragment className="projects">
                 {localStorage.getItem("announcement_message") === "true" &&
                 localStorage.getItem("page_reload") === "false" ? (

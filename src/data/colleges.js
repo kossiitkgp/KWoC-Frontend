@@ -1,3 +1,4 @@
+// TODO: is it okay to keep these here? check kwoc19 mistakes
 const colleges = {
   0: "Abhilashi University",
   1: "Acharya N.G. Ranga Agricultural University",

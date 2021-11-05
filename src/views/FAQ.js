@@ -14,6 +14,7 @@ export default function FAQ() {
         </div>
       </section>
 
+      {/* TODO: maybe a markdown renderer here if time permits, reading and editing these shouldn't require writing code */}
       <div className="container">
         <h1>General</h1>
 

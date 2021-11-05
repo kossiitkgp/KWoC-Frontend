@@ -51,6 +51,7 @@ export default function MentorDashboard() {
     },
   ];
 
+  // TODO: remove or delocalize testing data
   const resources = [
     {
       message: "Writing Kickass READMEs",

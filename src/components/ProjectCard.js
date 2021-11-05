@@ -18,6 +18,7 @@ export default function Card(props) {
     }
   }, []);
 
+  // TODO: these tags already exits Tag.js
   const TAG_TYPES = [
     "is-primary",
     "is-link",

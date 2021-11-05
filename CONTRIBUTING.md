@@ -51,6 +51,8 @@ We use [yarn](https://yarnpkg.com/en/) as the package manager. Please do not use
 
 To add new dependency use `yarn add`, so if you need to run `npm install <package>` run `yarn add <package>`.
 
+<!-- TODO: remove bulma from documentation once the work is done -->
+
 ### Bulma
 
 We import only the styles we need and we import the style to [index.scss](src/styles/index.scss) file. For example,

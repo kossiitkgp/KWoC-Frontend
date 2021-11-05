@@ -117,6 +117,7 @@ export default function StudentDashboard() {
     window.location.reload();
   }
 
+  // TODO: remove or move the following comments to somewhere like /data
   // sample data kept for future reference
   // let data = {
   //   name: 'Aditya Vikram Singh',

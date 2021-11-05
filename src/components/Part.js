@@ -1,6 +1,7 @@
 import React from "react";
 import Particles from "react-particles-js";
 
+// TODO: Decide whether we would be using this or not, and please better function name _/\_
 export default function Part() {
   return (
     <Particles

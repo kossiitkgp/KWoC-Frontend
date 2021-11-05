@@ -65,6 +65,7 @@ export default function ProjectsTable() {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns: columnDefs, data: rowData }, useSortBy);
 
+  // TODO: better design for tables, refer https://github.com/sahil-shubham/puny-sql-editor/blob/main/src/shared/DataTable.tsx
   return (
     <div>
       <div className="stats">
