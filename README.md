@@ -4,7 +4,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/63d49d55-63d9-4886-a2b2-a4270d797614/deploy-status)](https://app.netlify.com/sites/kwoc21-test/deploys)
 
-[Deploy Preview](https://kwoc21-test.netlify.app/)
+[Deploy Preview](https://kwoc21.netlify.app/)
 
 KWoC website rewritten in React! Cause why not!
 
