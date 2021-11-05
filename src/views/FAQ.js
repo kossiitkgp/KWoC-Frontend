@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 
 export default function FAQ() {
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    async function getText() {
+      const markdown = await fetch("/FAQ.md");
+      const text = await markdown.text();
+      console.log(text);
+
+      setText(text);
+    }
+    getText();
+  }, []);
+
   return (
     <div className="FAQs">
       <section className="hero" id="faq">
@@ -16,6 +31,7 @@ export default function FAQ() {
 
       {/* TODO: maybe a markdown renderer here if time permits, reading and editing these shouldn't require writing code */}
       <div className="container">
+        <ReactMarkdown plugins={[gfm]}>{text}</ReactMarkdown>
         <h1>General</h1>
 
         <h4>
