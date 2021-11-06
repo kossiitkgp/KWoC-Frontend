@@ -7,7 +7,7 @@ export default function FAQ() {
 
   useEffect(() => {
     async function getText() {
-      const markdown = await fetch("/FAQ.md");
+      const markdown = await fetch("/faq.md");
       const text = await markdown.text();
       console.log(text);
 
@@ -29,7 +29,6 @@ export default function FAQ() {
         </div>
       </section>
 
-      {/* TODO: maybe a markdown renderer here if time permits, reading and editing these shouldn't require writing code */}
       <div className="container">
         <ReactMarkdown plugins={[gfm]}>{text}</ReactMarkdown>
         <h1>General</h1>
