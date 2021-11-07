@@ -5,6 +5,7 @@ export default function Card(props) {
   const [loggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
+    // TODO: use auth hook here
     const student_loggedout =
       localStorage.getItem("student_jwt") === null ||
       localStorage.getItem("student_jwt") === undefined;
