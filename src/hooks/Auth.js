@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { BACKEND_URL } from "../constants";
 
@@ -84,8 +84,6 @@ function useProvideAuth() {
           // is_student: response.type === "student" ? "true" : "false",
           // is_mentor: response.type === "mentor" ? "true" : "false",
           // jwt: response.jwt,
-          student_jwt,
-          mentor_jwt,
         };
 
         // this is only till multiple users types gets sorted, after that user.jwt everywhere
