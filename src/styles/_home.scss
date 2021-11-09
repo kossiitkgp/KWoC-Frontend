@@ -79,114 +79,78 @@
         }
       }
     }
-
-    .about {
-      background-image: linear-gradient(135deg, #9545f7 0%, #000000 50%);
-      color: white;
-      padding-bottom: 5rem;
-      // TODO: use rem for font size
-      .container {
-        h1 {
-          font-size: 40px;
-          align-items: center;
-        }
-        display: grid;
-
-        place-items: center;
-        p {
-          font-size: 17px;
-        }
-      }
-    }
-    .stats {
-      background-color: #170f1a;
-      margin: 0;
-      padding: 3rem 0;
-      color: rgb(168, 166, 166);
-
-      .container {
-        h1 {
-          color: #c395ff;
-          text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
-          font-size: 40px;
-          text-align: center;
-          margin: 0;
-          padding: 1rem 0;
-        }
-        .columns {
-          padding: 2rem 0;
-          .column {
-            margin: 0 2rem 2rem;
-            padding: 3rem 0 0;
-            border-radius: 2rem;
-            background-color: rgba($color: #000000, $alpha: 0.5);
-            img {
-              margin-bottom: 10px;
-              width: 35%;
-              height: 35%;
-              filter: invert(1);
-            }
-            h3 {
-              font-size: 2rem;
-              margin: 0;
-            }
-          }
-        }
-      }
-    }
-    @media (max-width: 768px) {
-      .stats .container .columns .column {
-        padding: 2rem 0;
-      }
-    }
-
-    .why-kwoc {
-      color: rgb(223, 222, 222);
-      margin-bottom: 0;
-      // background-image: linear-gradient(-135deg, #58182d 0%, #130816 50%);
-      background-color: #170f1a;
-      .container {
-        padding: 30px 20% 5rem;
-
-        h1 {
-          color: #c395ff;
-          text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
-          font-size: 64px;
-          text-align: center;
-        }
-        h2 {
-          color: #c395ff;
-          text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
-          font-size: 48px;
-          text-align: center;
-        }
-        p {
-          font-size: 18px;
-          color: linear-gradient(135deg, #fff 50%, #000 50%);
-        }
-        h3 {
-          color: #c395ff;
-          font-size: 25px;
-          letter-spacing: 2px;
-          font-family: Vegur;
-        }
-      }
-    }
-
-    @media (max-width: 600px) {
-      .why-kwoc .container {
-        padding: 30px 10% 5rem;
-      }
-    }
   }
 
   .container {
     h1 {
-      font-family: Vegur;
+      font-size: 2.5rem;
+      font-family: "Fredoka One", cursive;
+      letter-spacing: 2px;
+      align-items: center;
+    }
+  }
+
+  .about {
+    color: $text-color-black;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 20% 0 20%;
+    p {
+      font-size: 1.3rem;
+    }
+    // TODO: use rem for font size
+  }
+
+  .why-kwoc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-cardlist {
+      display: flex;
+      justify-content: space-evenly;
+      width: 50vw;
+      margin: 2rem 0;
+
+      @include sm {
+        flex-direction: column;
+        width: 80vw;
+      }
     }
 
-    p {
-      font-family: Route159;
+    &-card {
+      background-color: rgba($color: #362321, $alpha: 1);
+      color: #ccc;
+      margin: 1rem;
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .stats {
+    background-color: #170f1a;
+    margin: 0;
+    padding: 3rem 0;
+    color: rgb(168, 166, 166);
+  }
+  @media (max-width: 768px) {
+    .stats .container .columns .column {
+      padding: 2rem 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .why-kwoc .container {
+      padding: 30px 10% 5rem;
     }
   }
 

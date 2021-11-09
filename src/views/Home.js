@@ -70,37 +70,43 @@ function Home() {
         </div>
       </section>
 
-      <section className="why-kwoc container" id="about">
-        <h1>About</h1>
-        <p>
-          Kharagpur Winter of Code is a 5-week long online program for students
-          who are new to open source software development. The program not only
-          helps students to get involved in open source, but also prepares them
-          for many open source summer programs; Google Summer of Code being one
-          of them.
-        </p>
-
-        <h2>Why KWoC?</h2>
-
-        <h3>Intro to Open Source</h3>
-
-        <p>
-          KWoC provides a great opportunity to get acquainted with Github along
-          with Git commands and contribute to open source efficiently. Brush up
-          your coding skills
-        </p>
-
-        <p>
-          If you love coding and want to learn about software development then
-          KWoC helps you to get a glimpse of it and gives you a head start.
-        </p>
-        <h3>Prepare for GSoC</h3>
-
-        <p>
-          With KWoC, you get to know about how to select a project, interact
-          with mentors and learn all other things that prepare you in the best
-          way for the next GSoC.
-        </p>
+      <section className="container" id="about">
+        <div className="about">
+          <h1>ABOUT</h1>
+          <p>
+            Kharagpur Winter of Code is a 5-week long online program for
+            students who are new to open source software development. The
+            program not only helps students to get involved in open source, but
+            also prepares them for many open source summer programs; Google
+            Summer of Code being one of them.
+          </p>
+        </div>
+        <div className="why-kwoc">
+          <h1>Why KWoC?</h1>
+          <div className="why-kwoc-cardlist">
+            <div className="why-kwoc-card">
+              <h2>Intro to Open Source</h2>
+              <p>
+                KWoC provides a great opportunity to get acquainted with Github
+                along with Git commands and contribute to open source
+                efficiently. Brush up your coding skills
+              </p>
+              <p>
+                If you love coding and want to learn about software development
+                then KWoC helps you to get a glimpse of it and gives you a head
+                start.
+              </p>
+            </div>
+            <div className="why-kwoc-card">
+              <h2>Prepare for GSoC</h2>
+              <p>
+                With KWoC, you get to know about how to select a project,
+                interact with mentors and learn all other things that prepare
+                you in the best way for the next GSoC.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="tags container" id="tags">
