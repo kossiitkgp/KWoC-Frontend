@@ -110,15 +110,14 @@ function Home() {
       </section>
 
       <section className="tags container" id="tags">
-        <h1>Tags</h1>
-
-        <p>
+        <h1 className="tags-title">Tags</h1>
+        <div className="tags-list">
           {tags.map((tag) => (
-            <span key={tag} className="tag">
+            <div key={tag} className="tag">
               {tag}
-            </span>
+            </div>
           ))}
-        </p>
+        </div>
       </section>
 
       <section className="timeline container" id="tline">

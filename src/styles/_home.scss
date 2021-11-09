@@ -157,35 +157,34 @@
   .tags {
     text-align: center;
     min-height: 50vh;
-    background-image: linear-gradient(135deg, #58182d 0%, #130816 50%);
+    background-color: #362321;
+    margin-top: 5rem;
 
-    margin-bottom: 0 !important;
+    &-title {
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
 
-    .container {
-      h1 {
-        font-size: 40px;
-        align-items: center;
-        color: #fff;
-      }
-      max-height: 100vh;
-      padding-bottom: 20px;
+    &-list {
+      margin: 2rem 0;
+      column-count: 4;
 
-      #dark {
-        color: #000;
-        background-color: #b57aff;
+      @include md {
+        column-count: 2;
       }
 
-      #light {
-        color: #923bff;
-        background-color: #fff;
+      @include sm {
+        column-count: 1;
       }
     }
 
     .tag {
-      background: rgba(#fff, 0.1);
-      border-radius: 15px;
-      color: #eee;
+      border-radius: 10px;
+      color: $text-color-black;
       cursor: pointer;
+      padding: 0.5rem 0.8rem;
+      margin: 1rem;
+      background-color: #ccc;
     }
   }
 }
