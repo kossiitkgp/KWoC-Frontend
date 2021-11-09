@@ -2,7 +2,6 @@ import React from "react";
 import pullRequest from "../assets/git-pull-request.svg";
 import github from "../assets/github.svg";
 import group from "../assets/people.svg";
-import Part from "../components/Part";
 import Timeline from "../components/Timeline";
 import {
   MENTOR_MANUAL,
@@ -36,7 +35,6 @@ function Home() {
   return (
     <div className="home">
       <section className="hero">
-        <Part />
         <div className="hero-body">
           <h1 className="title">Welcome to KWoC</h1>
 
@@ -119,7 +117,6 @@ function Home() {
 
       <section className="timeline container" id="tline">
         <h1>Timeline</h1>
-        <Part />
         <Timeline />
       </section>
 

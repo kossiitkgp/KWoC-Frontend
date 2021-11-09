@@ -23,31 +23,46 @@
   .hero {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    background: url("../assets/bonfire.png");
+    background-size: cover;
     height: 80vh;
     margin: 0;
 
     .hero-body {
-      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 50%;
+      padding: 1rem;
+      text-align: center;
+
+      @include sm {
+        width: 100%;
+      }
+
       .title {
-        color: $primary-text-white;
+        color: $primary-text-light-grey;
         margin: 2rem 0 1rem;
+        font-family: "Fredoka One", cursive;
+        letter-spacing: 2px;
       }
 
       .btns-container {
         display: flex;
         flex-direction: row;
-        justify-content: center;
 
         .button {
           background-color: rgba($color: #000000, $alpha: 0.5);
           border: 0px solid #fff;
-          border-radius: 5px;
-          color: $primary-text-white;
-          transition: all 0.5s ease-in-out;
-
+          border-radius: 10px;
+          text-decoration: none;
+          font-size: 1.2rem;
+          color: $secondary-text-light-grey;
+          transition: all 0.3s ease-in-out;
           margin: 1rem 0.5rem;
-          padding: 1rem;
+          padding: 1rem 1.5rem;
 
           &:hover {
             background-color: #fff;
@@ -59,7 +74,7 @@
             background-color: rgba($color: #000000, $alpha: 0.5);
             border: 0px solid #fff;
             color: $primary-text-white;
-            transition: all 0.5s ease-in-out;
+            transition: all 0.3s ease-in-out;
           }
         }
       }
