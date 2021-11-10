@@ -127,22 +127,19 @@ function Home() {
 
       <section className="stats container">
         <h1>Statistics: KWoC 2019</h1>
-        <div className="columns">
-          <div className="column">
+        <div className="stats-column-wrapper">
+          <div className="stats-column">
             <img src={group} alt="Group" />
-
             <h3>2000+ Participants</h3>
           </div>
 
-          <div className="column">
+          <div className="stats-column">
             <img src={pullRequest} alt="pullRequest" />
-
             <h3>600+ Pull Requests</h3>
           </div>
 
-          <div className="column">
+          <div className="stats-column">
             <img src={github} alt="Project" />
-
             <h3>150+ Projects</h3>
           </div>
         </div>
