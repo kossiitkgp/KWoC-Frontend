@@ -83,7 +83,7 @@
 
   .container {
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       font-family: "Fredoka One", cursive;
       letter-spacing: 2px;
       align-items: center;
@@ -155,7 +155,8 @@
 
     &-list {
       margin: 2rem 0;
-      column-count: 4;
+      column-count: 6;
+      grid-column-end: auto;
 
       @include md {
         column-count: 2;
@@ -171,8 +172,39 @@
       color: $text-color-black;
       cursor: pointer;
       padding: 0.5rem 0.8rem;
-      margin: 1rem;
-      background-color: #ccc;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin: 0.5rem;
+
+      &:nth-child(5n) {
+        width: 7rem;
+        height: 7rem;
+        transform: translateX(4rem);
+      }
+
+      &:nth-child(5n + 2) {
+        width: 9rem;
+        height: 9rem;
+        transform: translateX(-2rem);
+      }
+
+      &:nth-child(5n + 3) {
+        width: 14rem;
+        height: 14rem;
+        transform: translateX(2rem);
+      }
+
+      &:nth-child(5n + 4) {
+        width: 12rem;
+        height: 12rem;
+        transform: translateX(-3rem);
+      }
     }
   }
 
