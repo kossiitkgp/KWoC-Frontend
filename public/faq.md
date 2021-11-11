@@ -95,5 +95,6 @@
 
 - __What are the minimum contributions I have to do to get successfully recognized as to have completed the programme?__
 
-  As a student,you must have atleast one succesful __merged__ PR per week.
+  - That will based on mentor's feedback. You need to have at least one merged PR by the mid-evals to be eligible for continuing the program.
+  - Atleast one more merged PR between mid and end evals and a blog post describing how you contributed!
 
