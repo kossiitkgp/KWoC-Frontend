@@ -42,4 +42,8 @@ h1 {
   column-gap: 1.5rem;
   row-gap: 1.5rem;
   overflow-x: hidden;
+
+  @include sm {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
 }
