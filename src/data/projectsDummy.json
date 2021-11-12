@@ -1,0 +1,1590 @@
+{
+  "projects": [
+    {
+      "title": "TodXpy",
+      "intro": "A simple and easy to use yet configurable todo app. ",
+      "tags": ["Python"],
+      "link": "https://github.com/xypnox/todxpy",
+      "comm": "https://join.slack.com/t/kwoc-koss/shared_invite/zt-jch6e9gn-puizWuKSw5~K9Eq4YfFrFg",
+      "id": "8",
+      "mentor": "xypnox",
+      "mentor_email": "xypnox@gmail.com"
+    },
+    {
+      "title": "SlackGroovy",
+      "intro": "An app to create separate playlists for each Slack workspace registered and uses the groovy bot to add a link to the playlist. Backend developed using Django and FrontEnd using ReactJS. ",
+      "tags": ["JavaScript", "Python", "HTML+Django"],
+      "link": "https://github.com/Shashvat6264/Groovy-Slack",
+      "comm": "https://join.slack.com/t/groovy-slack/shared_invite/zt-jfxca33a-N~LEfMnYEr0F3F5t~ILC2g",
+      "id": "11",
+      "mentor": "Shashvat Gupta",
+      "mentor_email": "shashvat6264@gmail.com"
+    },
+    {
+      "title": "sim-C",
+      "intro": "Often people have trouble programming in C (especially beginners) due to its low level syntax and unavailability of stable third party libraries. We present sim-C a high-level front end for C which creates a dynamically typed syntax for C. User can write code in this high level syntax and then compile it to optimized C code. sim-C does not process the code and simply translates it to C thus, there is no possibility of the code running slowly. So, with sim-C users can write code faster using the high level syntax and at the same time be able to harness the power and speed of a C program. Let us make C cool again.",
+      "tags": ["C", "Python", "Compiler Design"],
+      "link": "https://github.com/cimplec/sim-c",
+      "comm": "https://join.slack.com/t/sim-cnewdevs/shared_invite/zt-jgfthwau-V0INVtZQAaZ4RERZbE2lGg",
+      "id": "6",
+      "mentor": "Siddhartha Dhar Choudhury",
+      "mentor_email": "sdharchou@gmail.com"
+    },
+    {
+      "title": "TemplateBuddy",
+      "intro": "TemplateBuddy is a free platform where the users can create their resumes and research papers from a variety of templates that we have to offer.\nThe data once fed by the user is saved in his account and the user can just change the template and adjust the information he/she has to show.",
+      "tags": [
+        "Python",
+        "Flask",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Bootstrap",
+        "jQuery"
+      ],
+      "link": "https://github.com/Documentive/TemplateBuddy",
+      "comm": "https://join.slack.com/t/templatebuddynewdevs/shared_invite/zt-jjmvp1xv-FYPTmwDT5C0gvI0hJPqshw",
+      "id": "18",
+      "mentor": "Dhairya Jain",
+      "mentor_email": "dhairya.jain.work@gmail.com"
+    },
+    {
+      "title": "youtube-deno",
+      "intro": "Deno is a new JS and TS runtime, made by the creator of node.js, which many people are calling the \"better\" version of node.js. This project lets you incorporate core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and almost any interaction with YouTube in your Deno application. ",
+      "tags": ["TypeScript", "deno", "JSON", "youtube-api", "OAuth", "API"],
+      "link": "https://github.com/akshgpt7/youtube-deno",
+      "comm": "https://t.me/joinchat/N4E6lx25rNG0IJk-hxqnCg",
+      "id": "20",
+      "mentor": "Aksh Gupta",
+      "mentor_email": "akshgpt7@gmail.com"
+    },
+    {
+      "title": "MarvellOS",
+      "intro": "This is a basic operating system GUI mock-up made from python GUI module tkinter. It has a number of interactive apps to navigate through.\nThere are 2 main screens, apart from the various app screens. At first, you're confronted with the welcome screen, where you're supposed to enter your password within 5 tries. On login, you enter the app drawer, where you can choose from a grid of apps.",
+      "tags": ["Python", "tkinter", "gui"],
+      "link": "https://github.com/akshgpt7/MarvellOS",
+      "comm": "https://t.me/akshgpt7",
+      "id": "20",
+      "mentor": "Aksh Gupta",
+      "mentor_email": "akshgpt7@gmail.com"
+    },
+    {
+      "title": "eduAlgo",
+      "intro": "A simple python package having modules of different algorithms to use in educational purposes.",
+      "tags": ["Python"],
+      "link": "https://github.com/Abhijit2505/eduAlgo",
+      "comm": "https://discord.com/invite/48nxC3GKS5",
+      "id": "24",
+      "mentor": "Abhijit Tripathy",
+      "mentor_email": "abhijittripathy99@gmail.com"
+    },
+    {
+      "title": "eduAlgo-app",
+      "intro": "The objective of this project is to develop an application for android OS, using which one can access to the documentation, codes and methods of the eduAlgo package.",
+      "tags": ["dart", "android"],
+      "link": "https://github.com/Abhijit2505/edualgo-app-demo",
+      "comm": "https://discord.com/invite/48nxC3GKS5",
+      "id": "24",
+      "mentor": "Abhijit Tripathy",
+      "mentor_email": "abhijittripathy99@gmail.com"
+    },
+    {
+      "title": "Ookla-Speedtest.net-Crawler",
+      "intro": "A python web crawler that fetches more than 25 billion pages of https://www.speedtest.net to fetch download speed, upload speed, latency, date, distance, country code, server ID, server name, sponsor name, sponsor URL, connection_mode, isp name, isp rating, test rank, test grade, test rating, path.",
+      "tags": ["Python", "bs4", "webcrawler"],
+      "link": "https://github.com/sinha-debojyoti/Ookla-Speedtest.net-Crawler",
+      "comm": "https://join.slack.com/t/ooklawebcrawler/shared_invite/enQtOTAyNDMyMTQ4NDY4LWExM2IyZmViODhmMjgwY2U3OGRiYzYyNWM0NjJkM2QyMDRiMzM0NDI5NmM1Y2NkZTBkN2QxNmM2ZjYyMGQ4ZjQ",
+      "id": "25",
+      "mentor": "Debojyoti Sinha",
+      "mentor_email": "sinha.debojyoti75@gmail.com"
+    },
+    {
+      "title": "DarkSite",
+      "intro": "A chrome extension that customizes your new tab to a minimal dark theme.",
+      "tags": ["HTML", "CSS", "JavaScript"],
+      "link": "https://github.com/sudo-rgorai/DarkSite",
+      "comm": "https://groups.google.com/g/darksitekwoc",
+      "id": "16",
+      "mentor": "Rahul Gorai",
+      "mentor_email": "rahul.gorai.3141@gmail.com"
+    },
+    {
+      "title": "Canvasboard",
+      "intro": "Canvasboard is an interactive board with plugins focusing on replacing the need of multiple platforms for teaching, presenting, managing or explaining your ideas. The interactive plugins are built using web technologies to ease your work right within a single platform.\n\nMore on https://github.com/Canvasbird/canvasboard",
+      "tags": [
+        "Angular",
+        "NodeJS",
+        "MongoDB",
+        "Express",
+        "Docker",
+        "TypeScript",
+        "AWS"
+      ],
+      "link": "https://github.com/Canvasbird/canvasboard",
+      "comm": "https://join.slack.com/t/canvasbird-workspace/shared_invite/zt-jjdml591-~SsL4vdSX9Mc_GUVIvYV7g",
+      "id": "28",
+      "mentor": "Goli Akshay Sujith",
+      "mentor_email": "goliakshay357@gmail.com"
+    },
+    {
+      "title": "Singular News",
+      "intro": "A news app powered with machine learning to provide personalized feed to the users based on their interactions on the app.",
+      "tags": ["HTML+Django", "CSS", "JavaScript"],
+      "link": "https://github.com/ExpressHermes/Singular-News",
+      "comm": "https://gitter.im/ExpressHermesOSC/Singular-News?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "30",
+      "mentor": "Shivam Yadav",
+      "mentor_email": "9876shivamyadav@gmail.com"
+    },
+    {
+      "title": "Blog App",
+      "intro": "A blog app using django rest framework for backend API and  ReactJS for frontend",
+      "tags": ["ReactJS", "HTML+Django"],
+      "link": "https://github.com/ExpressHermes/Blog-API",
+      "comm": "https://gitter.im/ExpressHermesOSC/Blog-App?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "30",
+      "mentor": "Shivam Yadav",
+      "mentor_email": "9876shivamyadav@gmail.com"
+    },
+    {
+      "title": "Helping Hand",
+      "intro": "A web app for charity event organizers to connect and collaborate in real-time.",
+      "tags": ["HTML+Django", "CSS", "JavaScript", "mapbox"],
+      "link": "https://github.com/ExpressHermes/Helping-Hand",
+      "comm": "https://gitter.im/ExpressHermesOSC/Helping-Hand?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "30",
+      "mentor": "Shivam Yadav",
+      "mentor_email": "9876shivamyadav@gmail.com"
+    },
+    {
+      "title": "gRPC-Chat-App",
+      "intro": "gRPC-Chat-App is a custom made chat app written in Golang. It uses terminal - 2 -terminal based model for connecting peers in a chat group. It uses gRPC protocol along with publisher-subscriber model for channelling the chat message among different peers.",
+      "tags": ["gRPC", "Golang", "chat-app"],
+      "link": "https://github.com/yashrsharma44/grpc-chat-app",
+      "comm": "https://discord.gg/JKYFxu4S4P",
+      "id": "2",
+      "mentor": "Yash Sharma",
+      "mentor_email": "yashrsharma44@gmail.com"
+    },
+    {
+      "title": "QP-Generator",
+      "intro": "A web app that helps everyone to generate question paper with ease. We will use the T5 paraphraser model to rephrase the questions.",
+      "tags": ["React ", "Flask"],
+      "link": "https://github.com/Team-Tomato/QP-Generator",
+      "comm": "https://chat.whatsapp.com/FPC7s89jrtr44ZvCHY9CJM",
+      "id": "32",
+      "mentor": "Akbar",
+      "mentor_email": "akbarhabeeb5@gmail.com"
+    },
+    {
+      "title": "PyDataStructs",
+      "intro": "Currently, the project aims to be a Python package for various data structures in computer science. Besides, we are also working on including parallel algorithms. To the best of our knowledge, a well-designed library/package which has covered most of the data structures and algorithms including their parallel implementation doesn't exist.\n\nIn future, i.e, after a few releases of the package when the software design will become stable, we also aim to provide APIs for the code in C++ and Java as well.",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "algorithms-and-data-structures",
+        "sports-programming",
+        "computer-science",
+        "python3"
+      ],
+      "link": "https://github.com/codezonediitj/pydatastructs",
+      "comm": "https://gitter.im/codezoned2017/Lobby",
+      "id": "22",
+      "mentor": "Gagandeep Singh",
+      "mentor_email": "singh.23@iitj.ac.in"
+    },
+    {
+      "title": "CleanPy",
+      "intro": "Organizes files in folders and helps you to clean your PC.\nOrganizing files means that the script moves the files to different folders. Currently it organizes audio files, video files, documents (word docs, PDFs etc), executable, images",
+      "tags": ["Python"],
+      "link": "https://github.com/prashantsengar/CleanPy",
+      "comm": "https://t.me/joinchat/INDdLlDf-SFDPURESGgdrQ",
+      "id": "35",
+      "mentor": "Prashant Sengar",
+      "mentor_email": "prashantsengar5@gmail.com"
+    },
+    {
+      "title": "Email Tracker",
+      "intro": "It is an open-source mail tracking script. Live version can be checked at https://emailtrack.herokuapp.com/",
+      "tags": ["Python"],
+      "link": "https://github.com/prashantsengar/mTracker",
+      "comm": "https://t.me/joinchat/INDdLhHnniCnOsIe3ivWDg",
+      "id": "35",
+      "mentor": "Prashant Sengar",
+      "mentor_email": "prashantsengar5@gmail.com"
+    },
+    {
+      "title": "RedIns",
+      "intro": "Script to download media from Reddit and post them on Instagram, Twitter and Facebook",
+      "tags": ["Python", "Reddit", "Twitter", "Instagram API", "Facebook API"],
+      "link": "https://github.com/prashantsengar/RedIns",
+      "comm": "https://t.me/joinchat/INDdLhNoG-yYqLb-sf8Rlg",
+      "id": "35",
+      "mentor": "Prashant Sengar",
+      "mentor_email": "prashantsengar5@gmail.com"
+    },
+    {
+      "title": "TimeTracker",
+      "intro": "Program to track the time you spend on your PC. It records the window names, browser tab names. There is an option to exclude some windows too.",
+      "tags": ["Python", "TimeTracker"],
+      "link": "https://github.com/prashantsengar/timetracker",
+      "comm": "https://t.me/joinchat/INDdLhbuC7hWgHqTyBplIw",
+      "id": "35",
+      "mentor": "Prashant Sengar",
+      "mentor_email": "prashantsengar5@gmail.com"
+    },
+    {
+      "title": "Buzz and go",
+      "intro": "",
+      "tags": [
+        "JavaScript",
+        "React",
+        "NodeJs",
+        "MERN-stack",
+        "CSS",
+        "websockets",
+        "RESTapi",
+        "chat-application",
+        "web-development"
+      ],
+      "link": "https://github.com/iamshubhankarkhare/Chat-application",
+      "comm": "https://join.slack.com/t/buzz-and-godevelopers/shared_invite/zt-jkjlcyxe-LH0EyNhz6~s~O8fweNiT1Q",
+      "id": "40",
+      "mentor": "Shubhankar Khare",
+      "mentor_email": "iamshubhankarkhare@gmail.com"
+    },
+    {
+      "title": "COVID19 TRACKER AND VOICE ASSISTANT",
+      "intro": "A COVID19 Tracker and Voice Assistant built with Django.",
+      "tags": [
+        "Python",
+        "HTML+Django",
+        "CSS",
+        "JavaScript",
+        "jquery",
+        "ajax",
+        "heroku",
+        "pandas",
+        "JSON",
+        "threading"
+      ],
+      "link": "https://github.com/Rohan-cod/COVID19_TRACKER_AND_VOICE_ASSISTANT",
+      "comm": "https://join.slack.com/t/codingninjas-talk/shared_invite/zt-jee45ppz-OfNHQKa10WYC5g0omhujAA",
+      "id": "52",
+      "mentor": "Rohan Gupta",
+      "mentor_email": "rohaninjmu@gmail.com"
+    },
+    {
+      "title": "Newspaper App",
+      "intro": "A web app made using django framework. The frontend is made using html and bootstrap and sqlite3 is used as the database. You can add articles which can be viewed by anyone. Just make an account and you are good to go.",
+      "tags": [
+        "Python",
+        "HTML+Django",
+        "CSS",
+        "JavaScript",
+        "bootstrap",
+        "XML",
+        "gunicorn"
+      ],
+      "link": "https://github.com/Rohan-cod/newspaper-app",
+      "comm": "https://join.slack.com/t/codingninjas-talk/shared_invite/zt-jee45ppz-OfNHQKa10WYC5g0omhujAA",
+      "id": "52",
+      "mentor": "Rohan Gupta",
+      "mentor_email": "rohaninjmu@gmail.com"
+    },
+    {
+      "title": "Music Playlist App",
+      "intro": "A Django app to automatically add songs liked by you on YouTube to a Spotify | Apple Music playlist. ",
+      "tags": [
+        "Python",
+        "HTML+Django",
+        "CSS",
+        "JavaScript",
+        "ajax",
+        "jquery",
+        "youtube-dl",
+        "applemusicapi",
+        "requests"
+      ],
+      "link": "https://github.com/Rohan-cod/Music_Playlist",
+      "comm": "https://join.slack.com/t/codingninjas-talk/shared_invite/zt-jee45ppz-OfNHQKa10WYC5g0omhujAA",
+      "id": "52",
+      "mentor": "Rohan Gupta",
+      "mentor_email": "rohaninjmu@gmail.com"
+    },
+    {
+      "title": "Hotel-Site-with-Django",
+      "intro": "A Hotel viewing site made in django back-end with HTML/CSS as front-end. ",
+      "tags": ["Python", "HTML+Django", "CSS"],
+      "link": "https://github.com/97shivank/Hotel-Site-with-Django",
+      "comm": "https://join.slack.com/t/hotelbookingdjango/shared_invite/zt-jnzsxfas-Z4itKv6C~sRyR8d70qvH0Q",
+      "id": "49",
+      "mentor": "shivank singh",
+      "mentor_email": "97shivank@gmail.com"
+    },
+    {
+      "title": "Tinder bot",
+      "intro": "A tinder swipe bot made using the selenium library in python.",
+      "tags": [
+        "Python",
+        "selenium",
+        "JavaScript",
+        "HTML+Django",
+        "ajax",
+        "jquery",
+        "urllib"
+      ],
+      "link": "https://github.com/Rohan-cod/Tinder_bot",
+      "comm": "https://join.slack.com/t/codingninjas-talk/shared_invite/zt-jee45ppz-OfNHQKa10WYC5g0omhujAA",
+      "id": "52",
+      "mentor": "Rohan Gupta",
+      "mentor_email": "rohaninjmu@gmail.com"
+    },
+    {
+      "title": "iDine",
+      "intro": "Food Ordering IOS App",
+      "tags": ["swift", "swiftui", "firebase", "xcode", "ios"],
+      "link": "https://github.com/Rohan-cod/iDine",
+      "comm": "https://join.slack.com/t/codingninjas-talk/shared_invite/zt-jee45ppz-OfNHQKa10WYC5g0omhujAA",
+      "id": "52",
+      "mentor": "Rohan Gupta",
+      "mentor_email": "rohaninjmu@gmail.com"
+    },
+    {
+      "title": "Nature_Beauty (web App)",
+      "intro": "Nature_Beauty is web app shows the nature support.\n people can write blogs ,join as volunteer and donate funds.\nmain theme of this web app is to create awareness by connecting people.\nraise funds for nature safety.\nexpress their ideas through blogs.\n\nthe web app is static with some issues if all are resolved then we will do database connectivity using php.\n\n",
+      "tags": ["HTML", "HTML+PHP", "CSS", "JavaScript"],
+      "link": "https://github.com/Surajbokde/Nature_Beauty",
+      "comm": "https://join.slack.com/t/kwocproject/shared_invite/zt-jky5lovn-qJa1czV569F6fnAsltds7g",
+      "id": "33",
+      "mentor": "Suraj Bokde",
+      "mentor_email": "a8870969@gmail.com"
+    },
+    {
+      "title": "Web-development-Resource (hacks, tips, tricks ,documentation)",
+      "intro": "Web-development-Resource  is related to all  hacks tricks and tips related to web development.\n\nUnder KWOC I will like to complete this project and get maximum hacks tips tricks , so that people can get connected to web development as soon as possible.",
+      "tags": [
+        "front-end ",
+        "back-end",
+        "full-stack",
+        "mean",
+        "mern",
+        "documentation"
+      ],
+      "link": "https://github.com/Surajbokde/web-development-Resource",
+      "comm": "https://join.slack.com/t/kwocproject/shared_invite/zt-jky5lovn-qJa1czV569F6fnAsltds7g",
+      "id": "33",
+      "mentor": "Suraj Bokde",
+      "mentor_email": "a8870969@gmail.com"
+    },
+    {
+      "title": "Rotten Scripts",
+      "intro": "Rotten Scripts contains amazing and awesome scripts written in Python, JavaScript, Bash, Powershell, and more. Consider this repository as your personal space to find or add any new script that can make life easier for us and the Open Source community too, as a Developer, and find a utility of coding to burst out of boredom. Get started with coding exhilarating scripts that you can use to download PDFs from an Online Source or just to randomly like everyone's Instagram Post.",
+      "tags": [
+        "Python",
+        "JavaScript",
+        "Scripting",
+        "BASH",
+        "Golang",
+        "Web",
+        "Documentation"
+      ],
+      "link": "https://github.com/HarshCasper/Rotten-Scripts",
+      "comm": "https://gitter.im/vidhibhasa/Rotten-Scripts",
+      "id": "59",
+      "mentor": "Harsh Bardhan Mishra",
+      "mentor_email": "erbeusgriffincasper@gmail.com"
+    },
+    {
+      "title": "SpeakEd",
+      "intro": "SpeakEd is a Community Platform developed for Community Leads and Volunteers as well as Speakers to come on a single Unified Platforms leading to greater visibility, helping you to find the right Speaker for your Event. With an integrated Portfolio Feature for Speakers, you would be able to find the Events, Workshops or Podcasts they have spoken at, and will allow you to contact them at ease in a secure manner. Speakers would be able to build their Portfolio around this, showcasing the speaking skills they have got along with the expertise and clarity that possess while teaching or instructing someone. This Community Application would allow Speakers to connect with Community Leads/Volunteers over their love for Community Building and helping out each other in an effective way, benefitting the Community in the longer run.",
+      "tags": [
+        "React",
+        "Flask",
+        "MongoDB",
+        "Web",
+        "Frontend-Development",
+        "Backend-Development",
+        "Cloud",
+        "DevOps"
+      ],
+      "link": "https://github.com/HarshCasper/SpeakEd",
+      "comm": "https://gitter.im/vidhibhasa/SpeakEd",
+      "id": "59",
+      "mentor": "Harsh Bardhan Mishra",
+      "mentor_email": "erbeusgriffincasper@gmail.com"
+    },
+    {
+      "title": "KnowledgeShare",
+      "intro": "A website where users can add resources and share with others that are related to education, Placements and others",
+      "tags": ["JavaScript", "HTML", "CSS"],
+      "link": "https://github.com/tejaswini22199/KnowledgeShare",
+      "comm": "https://discord.gg/kJ7BXtmb",
+      "id": "44",
+      "mentor": "Tejaswini Vakkalagaddi",
+      "mentor_email": "tejaswini22199@gmail.com"
+    },
+    {
+      "title": "barview-android",
+      "intro": "Android UI library for cool bar graphs",
+      "tags": ["android"],
+      "link": "https://github.com/krharsh17/barview-android",
+      "comm": "https://gitter.im/barview-android/community",
+      "id": "70",
+      "mentor": "Kumar Harsh",
+      "mentor_email": "kharsh39@gmail.com"
+    },
+    {
+      "title": "GitSetGo",
+      "intro": "",
+      "tags": [],
+      "link": "https://github.com/garimasingh128/gitsetgo",
+      "comm": "https://gitter.im/KWoC2020/GitSetGo",
+      "id": "67",
+      "mentor": "Garima Singh",
+      "mentor_email": "garingh128@gmail.com"
+    },
+    {
+      "title": "awesome-python-projects",
+      "intro": "A collection of super-cool Python projects for starters!! It basically has some ideas of awesome python projects which you can implement on a day-to-day basis.",
+      "tags": [],
+      "link": "https://github.com/garimasingh128/awesome-python-projects",
+      "comm": "https://gitter.im/KWoC2020/Awesome-Python-Projects",
+      "id": "67",
+      "mentor": "Garima Singh",
+      "mentor_email": "garingh128@gmail.com"
+    },
+    {
+      "title": "Draw",
+      "intro": "A drawing app made using p5.js library!",
+      "tags": [],
+      "link": "https://github.com/garimasingh128/Draw",
+      "comm": "https://gitter.im/KWoC2020/Draw",
+      "id": "67",
+      "mentor": "Garima Singh",
+      "mentor_email": "garingh128@gmail.com"
+    },
+    {
+      "title": "Health-Log",
+      "intro": "The smart and efficient android app provided to hospitals to maintain the logs of covid19 patients. Hospital authority can store new patients and it will automatically assign the doctor to each patient. Doctors can also check the allotted patient and fill the recent logs of each patient in each visit which will update the family members by the patient\u2019s report. Hospitals can also receive the appointment request and also either accept it or maybe refer to another hospital through the app. ",
+      "tags": ["android development", "Java", "UI", "Firebase"],
+      "link": "https://github.com/Technical-Hackers/Health-Log",
+      "comm": "https://join.slack.com/t/health-log/shared_invite/zt-jr5hdmsx-jpuY_B6EzyMaensRRiILBA",
+      "id": "71",
+      "mentor": "Shashank Priyadarshi",
+      "mentor_email": "s.priyadarshi629@gmail.com"
+    },
+    {
+      "title": "Syl3D",
+      "intro": "Syl3D is a basic 3D engine made using C++ and OpenGL 3. Syl3D so far supports meshes, textures, terrain (procedural and using heightmaps), lighting, mouse picking using ray intersections, basic camera movement.",
+      "tags": ["C++", "OpenGL", "Graphics", "3D Engine"],
+      "link": "https://github.com/Jedi18/Syl3D",
+      "comm": "https://join.slack.com/t/syl3d-dev/shared_invite/zt-jrbms0ld-6GoUbWn~QiZJaJoYQrq4wQ",
+      "id": "79",
+      "mentor": "Akhil Nair",
+      "mentor_email": "targetakhil@gmail.com"
+    },
+    {
+      "title": "Joble",
+      "intro": " Search Thousands Of Job Boards In Different Technologies From Over The World and show them at one dashboard",
+      "tags": ["Python", "joble"],
+      "link": "https://github.com/Python-World/Joble",
+      "comm": "https://chat.whatsapp.com/EcAr3hddfwRF5RsnPsQKXZ",
+      "id": "82",
+      "mentor": "Ravishankar Chavare",
+      "mentor_email": "chavare.ravi001@gmail.com"
+    },
+    {
+      "title": "IQPS",
+      "intro": "Intelligent Question Paper Search (IQPS) is a search engine for semester question papers. It is an upgrade to the existing MFQP platform used by KGP students (qp.metakgp.org). It is a fully functional web-app written in Django, featuring paper search, filter, request and upload.\nWe need people with willingness to learn Python, Django, MySQL and Docker. The knowledge about none of them is required but a general experience in programming will help.\nPotential projects are (not limited to):\n- Improving the search algorithm (May require C++ and interfacing with MySQL)\n- Enabling user log in system for paper uploads and requests. (Django models)\n- Improving the UI. (HTML + CSS + JS)\n- Easing out the Installation process and updating docs (Docker + Sphinx Docs)",
+      "tags": ["Python", "HTML+Django", "MySQL", "Docker", "CSS", "JavaScript"],
+      "link": "https://github.com/grapheo12/iqps",
+      "comm": "https://gitter.im/iqps_mfqp/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "13",
+      "mentor": "Shubham Mishra",
+      "mentor_email": "smishra99.iitkgp@gmail.com"
+    },
+    {
+      "title": "Node-OCR",
+      "intro": "A Rest API solution for Optical Character Recognition (OCR). The main objective of this project is to familiarise with REST APIs using ExpressJS and NodeJS and to provide a free and easy way to perform OCR on images and retrieve text from them. The OCR is made possible by Tesseract.js, a powerful JS framework.",
+      "tags": [
+        "JavaScript",
+        "OCR",
+        "JSON",
+        "ExpressJS",
+        "NodeJS",
+        "TesseractJS",
+        "RestAPI"
+      ],
+      "link": "https://github.com/adiXcodr/node-ocr",
+      "comm": "https://join.slack.com/t/newworkspace-yuv8502/shared_invite/zt-jrecfmpd-0vICt10cN_4vDMiGavNB8w",
+      "id": "84",
+      "mentor": "Adittya Dey",
+      "mentor_email": "ichbinadittyadey@gmail.com"
+    },
+    {
+      "title": "Snippet Share",
+      "intro": "This is a code snippet sharing app that lets you share syntax-highlighted code snippets with easy copy-paste options and a secure secret code and a unique URL.",
+      "tags": ["Python", "HTML+Django", "Django", "HTML"],
+      "link": "https://github.com/PragatiVerma18/Snippet-Share",
+      "comm": "https://gitter.im/Snippet-Share/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "89",
+      "mentor": "Pragati Verma",
+      "mentor_email": "itispragativerma@gmail.com"
+    },
+    {
+      "title": "Amrita Resource",
+      "intro": "A platform for University Students to share Documents such as Exam Papers and Study Material. Users can Upload/Download Documents shared by Users.",
+      "tags": ["Java", "android", "firebase", "education"],
+      "link": "https://github.com/Chromicle/amrita-resource",
+      "comm": "https://t.me/amrita_resource",
+      "id": "90",
+      "mentor": "Ajay Prabhakar",
+      "mentor_email": "ajayprabhakar369@gmail.com"
+    },
+    {
+      "title": "Community-website",
+      "intro": "A simple Website for displaying the work done by HIT TECH Community.",
+      "tags": [
+        "JavaScript",
+        "HTML",
+        "NodeJs",
+        "GitHub",
+        "MongoDB",
+        "React/Angular"
+      ],
+      "link": "https://github.com/HITK-TECH-Community/Community-Website",
+      "comm": "https://chat.whatsapp.com/IQm09pAvQ0fE7wJYpj4wwP",
+      "id": "12",
+      "mentor": "kajol Kumari",
+      "mentor_email": "kajolkumarisingh222@gmail.com"
+    },
+    {
+      "title": "productivity_meter",
+      "intro": " Productivity meter helps in measuring productivity of solving problems, while studying.\nThis is used for tracking how much time you are thinking you spend in problem solving and how much time you actually spend solving problems.\nThis does so by measuring the delta between the time spent minus the time wasted due to small small distractions. It uses two simple javascript based timers to do so.",
+      "tags": ["JavaScript", "HTML", "CSS", "frontend"],
+      "link": "https://github.com/Raghwendra-Dey/productivity_meter",
+      "comm": "https://gitter.im/productivity_meter/community",
+      "id": "31",
+      "mentor": "Raghwendra Dey",
+      "mentor_email": "kumarraghav075@gmail.com"
+    },
+    {
+      "title": "paste.land",
+      "intro": "paste.land is a paste tool made in deno. It aims to ease out sharing short code samples, logs, links, markdown notes or any other form of text. It also aims to be browser as well as terminal friendly so no matter wherever you are you should have the ease to share things in a simple way. Deno is a runtime for Javascript and Typescript made by the creator of Node.Js. It aims to solve the things he regrets about Node.Js and will replace it eventually.\n",
+      "tags": ["JavaScript", "TypeScript", "Deno"],
+      "link": "https://github.com/daemon1024/paste.land",
+      "comm": "https://t.me/paste_land",
+      "id": "93",
+      "mentor": "Barun Acharya",
+      "mentor_email": "barun1024@gmail.com"
+    },
+    {
+      "title": "CollegeBuddy",
+      "intro": "The project aims to develop a platform for college students on which they can connect, learn, share, grow together so whether one needs help in academics or looking for resources college buddy is there.",
+      "tags": ["HTML+Django", "NextJS", "JavaScript", "Python"],
+      "link": "https://github.com/govindgoel/CollegeBuddy",
+      "comm": "https://join.slack.com/t/collegebuddyworkspace/shared_invite/zt-jfl0u5o7-rOzTtXRzNEY6Z9SP1Vn9Hg",
+      "id": "81",
+      "mentor": "Govind Goel",
+      "mentor_email": "govindgoel82@gmail.com"
+    },
+    {
+      "title": "TypeCode",
+      "intro": "The ultimate typing platform for programmers.\nMost typing platforms simply present stories or random words to practice which works well for average people but not for the lethal, fast, perfectionist programmers who cannot afford to be slow and have typos when they code.",
+      "tags": ["JavaScript", "ReactJS", "NodeJS", "ExpressJS", "MongoDB"],
+      "link": "https://github.com/ankingcodes/typecode",
+      "comm": "https://gitter.im/typecode-js/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "98",
+      "mentor": "Ankush Bhardwaj",
+      "mentor_email": "ankush.bhardwaj0@gmail.com"
+    },
+    {
+      "title": "codemon",
+      "intro": "A CLI tool to ace Competitive Programming Contests.\nMostly, the time of a competitive programmer is wasted in compiling, adding inputs, and debugging. Typing commands again and again wastes time, which we cannot afford during a contest.\nCodemon takes care of everything else so that you only focus on writing correct code and implementing complex algorithms.",
+      "tags": ["Python", "CompetitiveProgramming", "CP"],
+      "link": "https://github.com/ankingcodes/codemon",
+      "comm": "https://gitter.im/codemon-py/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "98",
+      "mentor": "Ankush Bhardwaj",
+      "mentor_email": "ankush.bhardwaj0@gmail.com"
+    },
+    {
+      "title": "Precision-Farming",
+      "intro": "Project is based on the motto of helping the farmers by giving them access to the technology .This projects will provide facilities like detection of weed and diseases in the crops ,a chatbot that will help them to collab with agriculture experts etc. We will analyse the leaves by scanning them and our ml model will process them and tell us about the disease with which the plant is suffering .The frontend part of the project is almost completed .",
+      "tags": [
+        "web development",
+        "JavaScript",
+        "Python",
+        "flask",
+        "Machine Learning",
+        "backend"
+      ],
+      "link": "https://github.com/Dharmesh-Poddar/Precision-Farming",
+      "comm": "https://precision-farminghq.slack.com/archives/C01FZV7RYKE",
+      "id": "97",
+      "mentor": "Dharmesh Poddar",
+      "mentor_email": "dharmeshpoddar3@gmail.com"
+    },
+    {
+      "title": "Salesforce Enhancements",
+      "intro": "This is an open source project to help salesforce developers and end users to get an enhanced experience for data manipulation. ",
+      "tags": ["Salesforce", "Lightning", "Apex", "JavaScript"],
+      "link": "https://github.com/vipul-goyal/Salesforce-Batch-To-Delete-Records",
+      "comm": "https://join.slack.com/t/salesforceenh-nm69822/shared_invite/zt-jpa6lj6s-X41PJMX6RBGMoa~QJiIQWA",
+      "id": "99",
+      "mentor": "Vipul Goyal",
+      "mentor_email": "vipul.gyl12@gmail.com"
+    },
+    {
+      "title": "WildfirePy",
+      "intro": "An open-source organization for tackling the problem of wildfires with Data Analytics, GIS, and Python",
+      "tags": [
+        "Python",
+        "Wildfires",
+        "GIS",
+        "Emergency Management",
+        "Simulations"
+      ],
+      "link": "https://github.com/wildfirepy/wildfirepy",
+      "comm": "https://app.element.io/#/room/#wildfirepy:matrix.org",
+      "id": "100",
+      "mentor": "Kris Akira Stern",
+      "mentor_email": "krisastern@gmail.com"
+    },
+    {
+      "title": "Thanos-IO",
+      "intro": "Thanos is an Open source, highly available Prometheus setup with long term storage capabilities.",
+      "tags": ["Golang", "DevOps"],
+      "link": "https://github.com/thanos-io/thanos",
+      "comm": "https://discord.gg/3FQFZVanYU",
+      "id": "2",
+      "mentor": "Yash Sharma",
+      "mentor_email": "yashrsharma44@gmail.com"
+    },
+    {
+      "title": "World Lines",
+      "intro": "A mini-project revolving around the concepts of 'World Lines' from Steins;Gate, a fictional anime. As a side-effect of understanding and contributing to this project, you will find yourself learning the Go language (eg: Goroutines, Channels) and open-source software development! (Git, PRs etc)\n\nThe tasks are laid out as GitHub issues, which involve debugging code and/or adding new features to the project, which are marked as 'bugs' and 'enhancements' respectively. ",
+      "tags": ["Golang", "Concurrency", "Anime", "Time Travel", "GUI"],
+      "link": "https://github.com/Anirban166/World-Lines",
+      "comm": "https://discord.gg/dD7XceRRRv",
+      "id": "101",
+      "mentor": "Anirban",
+      "mentor_email": "bloodraven166@gmail.com"
+    },
+    {
+      "title": "Android App- OTES",
+      "intro": "Development and addition of exciting features in the Android Application OTES which will provide One Tap Emergency Service. This includes sending the user's location to friends and family by their social media accounts, making emergency calls and Guide to Precautionary steps and First Aid Measures all with just few taps on screen. ",
+      "tags": ["Java", "Android Development ", "Android Studio"],
+      "link": "https://github.com/supu2701/OTES-App",
+      "comm": "https://join.slack.com/t/otesapp/shared_invite/zt-jydcr19s-_ZvAC_JewaO6K~CPfZY~sw",
+      "id": "106",
+      "mentor": "Shreyashi",
+      "mentor_email": "shreyashik.ug19.ec@nitp.ac.in"
+    },
+    {
+      "title": "CamSanx",
+      "intro": "This a lightweight tool for making documents on the fly from camera images. So this uses OpenCV and Django in tandem also pillow is used to make the pdf",
+      "tags": ["HTML+Django", "Python", "NumPy"],
+      "link": "https://github.com/Blackcipher101/CamScanner_webapp",
+      "comm": "https://gitter.im/Blackcipher101/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "108",
+      "mentor": "Nehal Nevle",
+      "mentor_email": "nehalnevle@gmail.com"
+    },
+    {
+      "title": "Spaceye",
+      "intro": "It takes a spectrum image finds the color-graph find the adsorption lines the does some data crunching to find the corresponding elements, then also uses doppler shift to find the speed(radial velocity) , and matches with the star type to find an Idea about temperarture  and wieght",
+      "tags": ["NumPy", "Python", "GUI"],
+      "link": "https://github.com/Blackcipher101/Spaceye",
+      "comm": "https://gitter.im/Blackcipher101/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "108",
+      "mentor": "Nehal Nevle",
+      "mentor_email": "nehalnevle@gmail.com"
+    },
+    {
+      "title": "Ancient Beast",
+      "intro": "Match based 1vs1 or 2vs2 turn based strategy game, where you start with a unit called Dark Priest, with which you can materialize and control from a wide variety of creatures (each having unique stats and abilities) by using a limited resource called Plasma in order to defeat your opponents. The game has no chance based elements, it's easy to get into, very fun and replayable, while very hard to master. Materialize and destroy! https://AncientBeast.com",
+      "tags": [
+        "JavaScript",
+        "multiplayer",
+        "strategy",
+        "game",
+        "HoMM3",
+        "moba",
+        "tbs",
+        "chess",
+        "creatures",
+        "sprites",
+        "Phaser",
+        "pokemon"
+      ],
+      "link": "https://github.com/FreezingMoon/AncientBeast",
+      "comm": "https://discord.gg/gQvZuuC",
+      "id": "109",
+      "mentor": "Dread Knight",
+      "mentor_email": "dk.vali@gmail.com"
+    },
+    {
+      "title": "Pothole Detection and Visualization",
+      "intro": "To detect potholes using detection algorithm in deep learning and then present the count of them on map using different colors through Google Map API.",
+      "tags": ["Machine Learning", "Deep Learning", "Flutter", "Android"],
+      "link": "https://github.com/utkarsh0702/Pothole-Detection-Visualization",
+      "comm": "https://join.slack.com/t/newworkspace-mwj9905/shared_invite/zt-jyqoyn7k-LfF6qH5WCxq1HvLLfH0Z8A",
+      "id": "110",
+      "mentor": "Utkarsh Mishra",
+      "mentor_email": "utkarsh.um07@gmail.com"
+    },
+    {
+      "title": "ReinforceBots",
+      "intro": "This project is aimed to build a chatbot based on RL and NLP for behavioral traits(Big-5 personality traits) detection by making constructive conversation with the user .",
+      "tags": [
+        "Python",
+        "Reinforcement Learning",
+        "Natural Language Processing",
+        "NLTK",
+        "Pytorch"
+      ],
+      "link": "https://github.com/apprenticearnab/ReinforceBots",
+      "comm": "https://join.slack.com/t/reinforcebots/shared_invite/zt-jjm3eb7m-wtGM5u_2GQG0bWIv6NEcRQ",
+      "id": "21",
+      "mentor": "Arnab Mallick",
+      "mentor_email": "alipurarnabgems@gmail.com"
+    },
+    {
+      "title": "False9",
+      "intro": "A web application that covers live scores, matches and much more from top 12 leagues across the Globe. With increasing reliability on data and analytics in football, False9 aims to bring accurate football data to users.",
+      "tags": ["nodejs", "reactjs", "JavaScript", "HTML", "ejs", "CSS", "API"],
+      "link": "https://github.com/Namanbhatia7/False9",
+      "comm": "https://join.slack.com/t/newworkspace-gwq9831/shared_invite/zt-jm0d4rfq-i9kK49pwh4e296t6WmLfiQ",
+      "id": "117",
+      "mentor": "Naman Bhatia",
+      "mentor_email": "bhatia.naman@hotmail.com"
+    },
+    {
+      "title": "Statistics and Econometrics for Data Science",
+      "intro": "When everyone preparing for a data science profile is doing ML, statistics and econometrics can be the differentiating factor as they help you to have a deeper understanding of why the data is behaving in a particular way. This project seeks to simplify the understanding of some topics and provide code samples that can be used elsewhere for more robust answers in competitions/hackathons.",
+      "tags": [
+        "Python",
+        "NumPy",
+        "pandas",
+        "statistics",
+        "econometrics",
+        "data science",
+        "Jupyter Notebook",
+        "visualization"
+      ],
+      "link": "https://github.com/PetalsOnWind/Statistics-and-Econometrics-for-Data-Science",
+      "comm": "https://gitter.im/Statistics-and-Econometrics-for-Data-Science/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "61",
+      "mentor": "Pankhuri Saxena",
+      "mentor_email": "pankhurisaxena2.9@gmail.com"
+    },
+    {
+      "title": "Lorax",
+      "intro": "Lorax is a Flutter application that helps people to be motivated to grow\nplants and trees. The user could track the progress of the growth of the\ntree, set reminders. gamify the process of planting trees and using social\nmedia platforms to challenge peers on joining the movement to decrease\ncarbon footprint of the world",
+      "tags": ["Android", "Flutter", "Firebase", "IOS"],
+      "link": "https://github.com/ashwinkey04/lorax",
+      "comm": "t.me/loraxapp",
+      "id": "119",
+      "mentor": "K N Anantha nandanan",
+      "mentor_email": "ananthanandanan@gmail.com"
+    },
+    {
+      "title": "Raag",
+      "intro": "A mobile music player app built using Google's UI toolkit - Flutter SDK. ",
+      "tags": ["Flutter", "Android", "Mobile", "UI/UX"],
+      "link": "https://github.com/raag-music/raag",
+      "comm": "https://t.me/raag_app",
+      "id": "118",
+      "mentor": "Ashwin Ramakrishnan",
+      "mentor_email": "ashwinkey04@gmail.com"
+    },
+    {
+      "title": "EchoForMe",
+      "intro": "EchoForMe is a Web Application that reads out the latest news to the user.It seeks to address challenges faced by visually impaired people while learning and also for those who focus more on verbal concepts of teaching.",
+      "tags": ["Python", "HTML+Django", "cockroachDB", "CSS", "Web scraping"],
+      "link": "https://github.com/rsrkpatwari1234/EchoForMe",
+      "comm": "https://join.slack.com/t/echoforme/shared_invite/zt-jipj3odj-Dm9sfc2~kKeZ3duwVIR8Rw",
+      "id": "111",
+      "mentor": "Radhika Patwari",
+      "mentor_email": "rsrkpatwari1234@gmail.com"
+    },
+    {
+      "title": "DYSTuss",
+      "intro": "A movie/shows/series discussion forum built on the Fluent Design language",
+      "tags": ["JavaScript", "React"],
+      "link": "https://github.com/NiHighlism/dystuss",
+      "comm": "https://join.slack.com/t/nihighlism/shared_invite/zt-jy9w18lc-yWEtG3IY4TuGktTYvWceSQ",
+      "id": "122",
+      "mentor": "Rashil Gandhi",
+      "mentor_email": "rashilgandhi@yahoo.co.in"
+    },
+    {
+      "title": "THE METRO APP",
+      "intro": "A simple Java program using Graph and Heap data structures and Dijkstra, DFS, BFS, etc algorithms to display the shortest distance/path in Delhi Metro.",
+      "tags": [
+        "Java",
+        "Data Structures",
+        "Dijkstra",
+        "Depth-First Search",
+        "Breadth-First Search",
+        "Collection Framework",
+        "Heap"
+      ],
+      "link": "https://github.com/KISLAYA-SRI/THE-METRO-APP",
+      "comm": "https://join.slack.com/t/kwocthemetroa-qws3842/shared_invite/zt-johb335h-THSWRi2lTnacJv3QxD0dyQ",
+      "id": "104",
+      "mentor": "KISLAYA KUMAR SRIVASTAVA",
+      "mentor_email": "akshat.sri2605@gmail.com"
+    },
+    {
+      "title": "Coding List",
+      "intro": "An android application which shows all the schedules of coding competitions.",
+      "tags": ["Android", "Competitions", "Flutter"],
+      "link": "https://github.com/vikasgola/Coding-List",
+      "comm": "https://discord.gg/dC7EFFzUVf",
+      "id": "125",
+      "mentor": "Vikas Gola",
+      "mentor_email": "vikasgola2015@gmail.com"
+    },
+    {
+      "title": "Image-Filtering",
+      "intro": "A collection of image filtering techniques in python.",
+      "tags": ["Python", "Image", "Image Filtering"],
+      "link": "https://github.com/vikasgola/image-filtering",
+      "comm": "https://discord.gg/dC7EFFzUVf",
+      "id": "125",
+      "mentor": "Vikas Gola",
+      "mentor_email": "vikasgola2015@gmail.com"
+    },
+    {
+      "title": "Work at a startup",
+      "intro": "Contribute to the codebase of an exciting early-stage startup. Work on varied applications spanning across web development, game development, bug-fixing, natural language processing, search engine optimization, google maps and content management system. ",
+      "tags": [
+        "HTML",
+        "SCSS",
+        "JavaScript",
+        "Ruby",
+        "Natural Language Processing",
+        "SEO"
+      ],
+      "link": "https://github.com/prami1806/work-at-a-startup",
+      "comm": "https://join.slack.com/t/workatastartu-5ah7629/shared_invite/zt-jnx932p1-OxVqrz~SAH5FBFp2FaFw7A",
+      "id": "126",
+      "mentor": "Pramita Kastha",
+      "mentor_email": "coolpro18062001@gmail.com"
+    },
+    {
+      "title": "Lethical.ai",
+      "intro": "Lethical.ai is a project that aims to promote fair and ethical AI. We are currently building a library that would allow evaluation and mitigation of discrimination in AI models.",
+      "tags": ["Python", "Machine Learning", "Artificial Intelligence"],
+      "link": "https://github.com/lethicalai/lethical_lib",
+      "comm": "https://join.slack.com/t/lethicalai/shared_invite/zt-jqddpvg3-xREt7NP~1vxvatkFuN~kJw",
+      "id": "103",
+      "mentor": "Akshaj Jain",
+      "mentor_email": "akshaj.jain@gmail.com"
+    },
+    {
+      "title": "HiYo-Chat anonymously ",
+      "intro": "Chat anonymously with other people who are on the same website.",
+      "tags": ["HTML", "JavaScript", "Markdown"],
+      "link": "https://github.com/Saikat2019/HiYo-chat_anonymously",
+      "comm": "https://join.slack.com/t/hiyo-kwoc-workspace/shared_invite/zt-jqo85gv6-wYlGzOkao8YP8_90s91cNA",
+      "id": "131",
+      "mentor": "Saikat Mondal",
+      "mentor_email": "saikatmondal410@gmail.com"
+    },
+    {
+      "title": "SpaceDash",
+      "intro": "SpaceDash is an open-source app that provides information on all the present, past, and future launches and vehicles of SpaceX. The SpaceDash app also includes news and updates regarding all vehicles and missions.",
+      "tags": ["iOS", "Swift", "UIKit"],
+      "link": "https://github.com/pushpinderpalsingh/SpaceDash",
+      "comm": "https://communityinviter.com/apps/spacedashworkspace/spacedash",
+      "id": "113",
+      "mentor": "Pushpinder Pal Singh",
+      "mentor_email": "pushpinderpal19@gmail.com"
+    },
+    {
+      "title": "GigMe",
+      "intro": "GigMe currently queries tweets and find tweets providing some \"Gig\". We all have seen tweets like this asking for someone for some gigs, right? This app will curate all the gigs for a particular role and present it to you in a dense, and easy to read form. I believe we can expand it to query for internships and job offer. Wait. Why should we stop at twitter? I think we can query LinkedIn, Facebook, probably any social platform.",
+      "tags": ["iOS", "Swift", "SwiftUI"],
+      "link": "https://github.com/pushpinderpalsingh/GigMe",
+      "comm": "https://communityinviter.com/apps/findnetwork/find",
+      "id": "113",
+      "mentor": "Pushpinder Pal Singh",
+      "mentor_email": "pushpinderpal19@gmail.com"
+    },
+    {
+      "title": "Contest Reminder",
+      "intro": "Web app for the user for login, sign up and saving user preference. According to the preference of users, they will get reminders of contests hosted on CodeChef, Code-forces, Hacker-earth, Hacker-rank, and SPOJ.",
+      "tags": [
+        "HTML+Django",
+        "Django-crons",
+        "PostgreSQL",
+        "Bootstrap",
+        "API",
+        "CSS"
+      ],
+      "link": "https://github.com/codestromer/ContestReminder",
+      "comm": "https://chat.whatsapp.com/K8cEeEJZRFBDZeRijx2Mds",
+      "id": "133",
+      "mentor": "Akshit Desai",
+      "mentor_email": "akshitdesai2000@gmail.com"
+    },
+    {
+      "title": "Solve the Maze",
+      "intro": "This project aims at finding the solution of perfect mazes, which is defined as a maze that has only one path from any point in the maze to any other point using the concepts of Image Processing using Open CV. Also, maze has no in-accessible sections, no circular paths and no open areas, but is of three dimentions 50*50, 20*20 and 5*5.",
+      "tags": ["Python", "image processing", "open Cv", "maze solver"],
+      "link": "https://github.com/supu2701/Open-CV-Projects",
+      "comm": "https://join.slack.com/t/opencvprojects/shared_invite/zt-jqxc05ua-ML8ksAczrPG0cGcPa6wDkg",
+      "id": "106",
+      "mentor": "Shreyashi",
+      "mentor_email": "shreyashik.ug19.ec@nitp.ac.in"
+    },
+    {
+      "title": "Nebula-Frontend",
+      "intro": "Nebula(project) is divided into two repositories. This repository contains the frontend codebase of the project. This project aims to provide universities and communities with a platform that can be utilized to make the working of various clubs systematic. This project uses Nuxt.js (vue.js framework) ",
+      "tags": ["vue", "nuxt", "frontend", "JavaScript", "HTML", "CSS"],
+      "link": "https://github.com/Bot-Academia/Nebula-Frontend",
+      "comm": "https://join.slack.com/t/nebulaplatform/shared_invite/zt-jixsfnrq-SdncWSwsWKq9puEXcJgHyQ",
+      "id": "38",
+      "mentor": "Vinayak Sharma",
+      "mentor_email": "vinayaksh42@gmail.com"
+    },
+    {
+      "title": "React-anim-text",
+      "intro": "A react component library which helps you to easily add  cool text animations to your react projects. ",
+      "tags": ["JavaScript", "HTML", "CSS"],
+      "link": "https://github.com/aswinigh/react-anim-text",
+      "comm": "https://join.slack.com/t/react-anim-text/shared_invite/zt-jztlgvow-jRmHaMc4P031VS7h6LTN0g",
+      "id": "127",
+      "mentor": "Aswini Ghosh",
+      "mentor_email": "aswighosh@gmail.com"
+    },
+    {
+      "title": "Grimore of Code's Website",
+      "intro": "We are building a one-stop solution to all the queries related to programming and interviews. \n\nWe'll be using React.js for the front-end and flask for the backend. Even if you're a beginner and do not know enough about the development, feel free to join our slack channel. We're there to guide you. ",
+      "tags": ["Python", "flask", "React", "FullStack", "JavaScript"],
+      "link": "https://github.com/pshishod2645/GOC-Website",
+      "comm": "https://join.slack.com/t/goc-website/shared_invite/zt-jqm8gtzm-vL2zlOSq6XDTkP27CFVpCQ",
+      "id": "62",
+      "mentor": "Prashant Shishodia",
+      "mentor_email": "prashant.cse.iitkgp@gmail.com"
+    },
+    {
+      "title": "Nebula Backend",
+      "intro": "This project aims to provide universities and communities with a platform that can be utilized to make the working of various clubs systematic.",
+      "tags": [
+        "JSON",
+        "JavaScript",
+        "Node.js",
+        "MongoDB",
+        "API",
+        "Backend",
+        "ExpressJS"
+      ],
+      "link": "https://github.com/Bot-Academia/Nebula-Backend",
+      "comm": "https://join.slack.com/t/nebulaplatform/shared_invite/zt-jixsfnrq-SdncWSwsWKq9puEXcJgHyQ",
+      "id": "39",
+      "mentor": "Hrishikesh Agarwal",
+      "mentor_email": "codetheorem.dev@gmail.com"
+    },
+    {
+      "title": "AI Bias",
+      "intro": "Analyse bias posed by a machine learning model by drawing heatmaps.",
+      "tags": [
+        "Artificial Intelligence",
+        "Machine Learning",
+        "TensorFlow",
+        "bias"
+      ],
+      "link": "https://github.com/americast/algo_bias",
+      "comm": "https://gitter.im/KWoC-americast/algo-bias",
+      "id": "36",
+      "mentor": "Sayan Sinha",
+      "mentor_email": "sayan.sinha@iitkgp.ac.in"
+    },
+    {
+      "title": "Brief-Me",
+      "intro": "Brief-Me is a modern, minimalist, and lightweight URL shortening service. It helps users to build and share powerful short links, also manages to keep a track of click data which helps in analyzing and study user engagement. We will be working on scaling the service for a larger audience. This project seeks to simplify the learning process of building scalable server side applications using the best system design practises.",
+      "tags": [
+        "nodejs",
+        "Backend-Development",
+        "mongoDB",
+        "HTML",
+        "express",
+        "JavaScript"
+      ],
+      "link": "https://github.com/arjungarg07/Brief-Me",
+      "comm": "https://join.slack.com/t/newworkspace-ggl7356/shared_invite/zt-jpkdeslv-UTrYym62Dhm77dImZ_nsqw",
+      "id": "4",
+      "mentor": "Arjun Garg",
+      "mentor_email": "arjun.garg.cse01@gmail.com"
+    },
+    {
+      "title": "fetch",
+      "intro": "A community-owned REST API service for testers and developers. Fetch provides REST API endpoints for different types of placeholders, which can be easily used during testing and development without the need for creating sample data manually.\nThis removes the involvement of manual placeholder data input. This also helps developers with projects involving the use of REST APIs to test the functions and get accurate responses.",
+      "tags": [
+        "REST APIs",
+        "NodeJS",
+        "TypeScript",
+        "CI/CD",
+        "Heroku",
+        "Testing"
+      ],
+      "link": "https://github.com/adityabisoi/fetch",
+      "comm": "https://gitter.im/fetch-lobby/community",
+      "id": "134",
+      "mentor": "Aditya Bisoi",
+      "mentor_email": "adityabisoi1999@gmail.com"
+    },
+    {
+      "title": "ds-algo-solutions",
+      "intro": "A collection of solutions for Hackerrank data structures and algorithm problems in Python, JAVA, and CPP. This community-owned project aims to bring together the solutions for the ds & Algo problems across various platforms, along with the resources for learning them. Problems from Leetcode will be included soon in the project.",
+      "tags": ["Data Structures", "Algorithms", "Python", "C++", "Java"],
+      "link": "https://github.com/adityabisoi/ds-algo-solutions",
+      "comm": "https://gitter.im/ds-algo-solutions/community",
+      "id": "134",
+      "mentor": "Aditya Bisoi",
+      "mentor_email": "adityabisoi1999@gmail.com"
+    },
+    {
+      "title": "startup-incubator",
+      "intro": "A website to help startups and starup enthusiasts showcase their project and ideas pre-release. This will help them get customer as well as professional reviews before deployment of the actual product/ when the are in a early growing stage. This results in faster growth and cutting down unnecessary rollback expenses post-deployment.\n\n",
+      "tags": ["ReactJS", "NodeJS", "JavaScript", "JEST", "Heroku"],
+      "link": "https://github.com/adityabisoi/startup-incubator",
+      "comm": "https://gitter.im/startup-incubator/community",
+      "id": "134",
+      "mentor": "Aditya Bisoi",
+      "mentor_email": "adityabisoi1999@gmail.com"
+    },
+    {
+      "title": "notation-converter",
+      "intro": "Notification-converter is an application that converts infix, prefix and postfix notations from one notation to another, and also visualizes the process of conversion. This helps students easily grasp the fundamentals, such as the way of calculation, as well as the data structures used behind the scenes",
+      "tags": ["ReactJS", "NodeJS", "REST API", "Notations"],
+      "link": "https://github.com/adityabisoi/notation-converter",
+      "comm": "https://gitter.im/notation-converter/community",
+      "id": "134",
+      "mentor": "Aditya Bisoi",
+      "mentor_email": "adityabisoi1999@gmail.com"
+    },
+    {
+      "title": "ImageX",
+      "intro": "ImageX is an open-source image processing desktop app. It\nprovides some features like super-resolution, object detection, image\ncompression, and image fusion (multifocus)",
+      "tags": ["PyQt", "Machine Learning", "Python", "Image processing"],
+      "link": "https://github.com/robustTechie/ImageX",
+      "comm": "https://join.slack.com/t/imagex-workspace/shared_invite/zt-jqdo72l1-F7Xrg0woHvK1PDnezCD3uw",
+      "id": "71",
+      "mentor": "Shashank Priyadarshi",
+      "mentor_email": "s.priyadarshi629@gmail.com"
+    },
+    {
+      "title": "Graph-Visualization",
+      "intro": "An interactive webapp for graph algorithms and their visualizations.\nThere are two basic objectives of the project :\n1. Perform queries and modifications on a graph/tree (Shortest paths, connected components, bipartite check, max flow, etc)\nand \n2. Visualize the results from Step 1.\n\nWhile we initially planned the project to be written in JavaScript, we'd be excited to see if one can leverage on goroutines and optimize computations on disconnected components seperately. ",
+      "tags": ["JavaScript", "Golang"],
+      "link": "https://github.com/Graph-Visualization/graph-api",
+      "comm": "https://discord.gg/e7DXU83fZU",
+      "id": "137",
+      "mentor": "Biswajit Ghosh",
+      "mentor_email": "biswajitghosh98.iitkgp@gmail.com"
+    },
+    {
+      "title": "CryptoPy",
+      "intro": "CryptoPy is a cryptocurrency-trading assistant that provides real-time price prediction using machine learning for a currency of user's choice and displays various technical indicators and a suitable trade signal (buy or sell) for the same.",
+      "tags": ["Python", "Cryptocurrency", "Machine Learning"],
+      "link": "https://github.com/priyanshux/cryptopy",
+      "comm": "https://join.slack.com/t/cryptopyworkspace/shared_invite/zt-jkgnyduf-cFCMvshdZAl_XqcKpm9jag",
+      "id": "139",
+      "mentor": "Nesara S R",
+      "mentor_email": "srnesara@gmail.com"
+    },
+    {
+      "title": "Smart Teaching",
+      "intro": "This project aims to promote the online teaching culture started after the covid-19 scene and gives a suitable platform for local teachers to go their classes from offline to online. This will be an android app having all the necessary features required for classes like notes download, meeting links, even fee payment if possible test-taking also in a simpler manner than other apps.",
+      "tags": ["Java", "android studio", "XML", "firebase"],
+      "link": "https://github.com/soumyajit1729/Smart-Teaching",
+      "comm": "https://join.slack.com/t/newworkspace-mkh4030/shared_invite/zt-jxpotgap-EIq0Y7jjFMXmZzcXuH30nQ",
+      "id": "115",
+      "mentor": "Soumyajit Chakraborty",
+      "mentor_email": "soumyajit1729@gmail.com"
+    },
+    {
+      "title": "CGPA_ESTIMATOR",
+      "intro": "This project aims to help you calculate your expected CGPA based on the grades you think you might end up getting in a semester. The input fields are Current CGPA, Total Credits Cleared so far and the subject credits and expected grades in the table given on the website. There is a provision for 12 subjects. Change the input field from 0 to the desired value. When done, press the Submit Query Button and your expected CGPA will be displayed. Try out different combinations and get an idea of how much effort to put in, in each subject in the upcoming semester to achieve your desired CGPA.",
+      "tags": ["HTML", "CSS", "FRONT END", "WEB DEVELOPMENT"],
+      "link": "https://github.com/Codextream/CGPA_ESTIMATOR",
+      "comm": "https://join.slack.com/t/cgpaestimatorgroup/shared_invite/zt-jxt14ipt-7Cy0dFQPYikzS_yVwWubHQ",
+      "id": "128",
+      "mentor": "Shruti Shreyasi",
+      "mentor_email": "shreyasishruti@gmail.com"
+    },
+    {
+      "title": "Jagrati WebApp",
+      "intro": "A web application for managing day-to-day operations at Jagrati (an initiative by the students of IIITDM Jabalpur to teach poor and under-privileged children of nearby villages at IIITDM Jabalpur). Please read README.md for more information. ",
+      "tags": [
+        "Django",
+        "Python",
+        "HTML/CSS",
+        "JavaScript",
+        "Bootstrap 4",
+        "Web",
+        "Frontend",
+        "Backend"
+      ],
+      "link": "https://github.com/garg3133/JagratiWebApp",
+      "comm": "https://discord.gg/Ek9q45ZjAv",
+      "id": "140",
+      "mentor": "Priyansh Garg",
+      "mentor_email": "2018196@iiitdmj.ac.in"
+    },
+    {
+      "title": "The Browser Toolbox",
+      "intro": "Browser extensions are very powerful tools to enhance the browsing experience. Most of the modern-day browsers such as Google Chrome, Mozilla Firefox, and Opera use add-ons and extensions to add functionality to existing ones. The documentation for these extensions is very well-maintained and is huge.\n\nMany of the projects in GSoC involve converting existing standalone applications into browser extensions. So, the projects will give a heads-up and an initial boost to the journey of students towards GSoC.\n\nThe aim of the organization is to introduce the power of browser APIs to beginners to code, as well as to enhance the browsing experience of the end-user. Firstly, small scale and beginner-friendly extensions will be developed, and then they will be merged into one cross-platform extension.\n\nLink to the organization: https://github.com/the-browser-toolbox  \n\nPlease use the above link as the link to the project, since there are other related projects in the organization as well.",
+      "tags": [
+        "JavaScript",
+        "Chrome APIs",
+        "Browser Extensions",
+        "CI/CD",
+        "JEST",
+        "Puppeteer"
+      ],
+      "link": "https://github.com/the-browser-toolbox",
+      "comm": "https://gitter.im/the-browser-toolbox/community",
+      "id": "134",
+      "mentor": "Aditya Bisoi",
+      "mentor_email": "adityabisoi1999@gmail.com"
+    },
+    {
+      "title": "Liber",
+      "intro": "Liber is one of the online book app. By using this app you  have lots of opportunities for reading on different categories of books. And it is more convenient way of reading n fun also.",
+      "tags": ["flutter", "dart", "opensourceprojects"],
+      "link": "https://github.com/sushamaborhade/Liber/",
+      "comm": "https://flutterrockteam.slack.com",
+      "id": "107",
+      "mentor": "Sushama Borhade",
+      "mentor_email": "borhade.sushama12@gmail.com"
+    },
+    {
+      "title": "Mumble",
+      "intro": "Mumble is a chatting web app built using Node JS, socket.io, and Mustache Template Libraries. We can chat with our friends, share our current location and many more things. You can create your own rooms and also invite people to the rooms.",
+      "tags": [
+        "Node JS",
+        "Socket.io",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "MongoDB",
+        "Express"
+      ],
+      "link": "https://github.com/shrinish123/Mumble",
+      "comm": "https://app.slack.com/client/T01G694PYUT/C01G69LJJH1",
+      "id": "142",
+      "mentor": "Shrinish Vhanbatte",
+      "mentor_email": "shrinishiitkgp2001@gmail.com"
+    },
+    {
+      "title": "FPL Defence Rotations",
+      "intro": "Built on the philosophy of selecting attackers based on their form, and defenders based on their fixtures, FPL Defence Rotations is a tool which gives you the best options to rotate your defenders from in Fantasy Premier League according to favourable oppositions who play comparatively less attacking football than the rest of the clubs.",
+      "tags": ["Python", "Frontend", "Fantasy Premier League", "HTML", "CSS"],
+      "link": "https://github.com/priyanshux/FPL-Defence-Rotations",
+      "comm": "https://fpldefencerotations.slack.com/join/shared_invite/zt-k328w2ts-Vgw1c08pELUV6d7LKDZc8A",
+      "id": "141",
+      "mentor": "Priyanshu Singh",
+      "mentor_email": "psingh1002@gmail.com"
+    },
+    {
+      "title": "Apni Dukan",
+      "intro": "It is an e-commerce web app with an utterly responsive UI, proper user authentication using bcrypt, admin and user panel, CRUD operations in backend for managing products, categories, and users, Razorpay payment gateway, and dark mode. It was built using MERN stack and hosted using Heroku for backend, MongoDB Atlas for database, and Netlify for frontend.",
+      "tags": ["JavaScript"],
+      "link": "https://github.com/kunaljain0212/Apni-Dukan-Frontent",
+      "comm": "https://join.slack.com/t/apnidukan/shared_invite/zt-jltpbv0n-nRIxps2rVn1OM35YRjySrw",
+      "id": "105",
+      "mentor": "Kunal Jain",
+      "mentor_email": "jainkunal209@gmail.com"
+    },
+    {
+      "title": "Getfit",
+      "intro": "AI powered personal trainer with real-time feedback using phone/laptop camera",
+      "tags": ["Artificial Intelligence", "data-pipelines", "frontend"],
+      "link": "https://github.com/sam17/getfit",
+      "comm": "https://discord.gg/EUTztDvA",
+      "id": "124",
+      "mentor": "Soumyadeep Mukherjee",
+      "mentor_email": "soumyadeep9@gmail.com"
+    },
+    {
+      "title": "Bloggitt",
+      "intro": "Bloggitt is a blogging website that allows users to post their thoughts and knowledge with others.",
+      "tags": ["HTML", "CSS", "Bootstrap", "Python", "Django"],
+      "link": "https://github.com/diyajaiswal11/Bloggitt",
+      "comm": "https://discord.gg/PZHBUJsV",
+      "id": "45",
+      "mentor": "Diya Jaiswal",
+      "mentor_email": "shubhijaiswal2000@gmail.com"
+    },
+    {
+      "title": "Full Stack Lab Websiye",
+      "intro": "This project contains the MEN stack Website, Which is used for any research labs and tech labs in colleges and universities to make their work online.",
+      "tags": [],
+      "link": "https://github.com/igkishore/lab_portal",
+      "comm": "https://join.slack.com/t/newworkspace-cou1015/shared_invite/zt-jyuju029-cMHImgcQcYO79eefX5YiRA",
+      "id": "77",
+      "mentor": "gowtham-kishore-indukuri",
+      "mentor_email": "gowthamkishoreindukuri@gmail.com"
+    },
+    {
+      "title": "Pest Detection",
+      "intro": "Pest Detection using Deep Learning and Tensorflow from scratch.",
+      "tags": ["Machine Learning", "Deep Learning", "Python", "NumPy"],
+      "link": "https://github.com/shivam1423/Pest-detection",
+      "comm": "pestdetection.slack.com",
+      "id": "48",
+      "mentor": "Shivam Pandey",
+      "mentor_email": "pandeyshivam1423@gmail.com"
+    },
+    {
+      "title": "Frisson",
+      "intro": "Frisson is an android application to read reports of UFO sightings. It is a simple project for beginner developers. All we are doing is consuming a REST API.",
+      "tags": ["Android", "Kotlin"],
+      "link": "https://github.com/vedangj044/ufo-sighting",
+      "comm": "https://gitter.im/frisson-communication/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "150",
+      "mentor": "Vedang Joshi",
+      "mentor_email": "vedangj044@gmail.com"
+    },
+    {
+      "title": "okru",
+      "intro": "This is a Measure What Matters meets Elephant In The Brain meets Atomic Habits effort to use personal OKRs that track System Metrics and positively decieve our silly brains. You can set your quarterly OKRs, pre-commit metrics, estimate possible failure modes and follow your friends.",
+      "tags": ["firebase", "react", "server-less", "productivity"],
+      "link": "https://github.com/nuwandavek/okru",
+      "comm": "https://discord.gg/7JbH2Uuz",
+      "id": "135",
+      "mentor": "Vivek Aithal",
+      "mentor_email": "vivekaithal44@gmail.com"
+    },
+    {
+      "title": "Backup-Restore-Utility-for-Linux",
+      "intro": "This a backup/restore utility for linux. A single command backup the listed directory and a daemon in background check for change in files and send them accordingly to the server.",
+      "tags": [
+        "C++",
+        "Python",
+        "linux",
+        "data structure",
+        "socket programming"
+      ],
+      "link": "https://github.com/ryash/Backup-Restore-Utility-for-Linux",
+      "comm": "https://join.slack.com/t/newworkspace-tgo1763/shared_invite/zt-jq0vd3k6-Q9Q8HH_yzz9tELkckRUKxw",
+      "id": "151",
+      "mentor": "ryash",
+      "mentor_email": "yashkhanna1974@gmail.com"
+    },
+    {
+      "title": "Migrating to static site generator",
+      "intro": "Migrating the project to the Hugo Templates , adding various other css 2d animations and effects.",
+      "tags": ["HTML", "CSS", "JavaScript", "Hugo"],
+      "link": "https://github.com/aashimgarg/Migrating-Floeproject",
+      "comm": "https://gitter.im/migrating-floeproject/community",
+      "id": "10",
+      "mentor": "Aashim Garg",
+      "mentor_email": "aashim1garg@gmail.com"
+    },
+    {
+      "title": "Memelord",
+      "intro": "One meme bot to rule them all! This bot periodically sources memes from Reddit subreddits and Twitter handles and posts them in a Slack or Discord channel. This is a small but great project to help beginners learn Python and working with APIs",
+      "tags": ["Python", "Bot", "Reddit", "Twitter", "Slack", "Discord"],
+      "link": "https://github.com/thescriptninja/memelord",
+      "comm": "https://discord.gg/d2rtKr2q",
+      "id": "17",
+      "mentor": "Parth Paradkar",
+      "mentor_email": "parthparadkar3@gmail.com"
+    },
+    {
+      "title": "C-3PO",
+      "intro": "C-3PO is the metadata overlord and API server for Listen To This KGP, a public Facebook group where people post songs they discover. C-3PO relies on R2-D2 to give him data and then serves an API that powers lttkgp.com and other cool functionality. We're plan on improving existing codebase and adding new features to C-3PO during KWoC and are looking forward to contributions. For checking out the codebase, check out the GitHub organization: https://github.com/lttkgp",
+      "tags": ["Flask", "Backend", "AWS", "Music", "PostgresQL", "Docker"],
+      "link": "https://github.com/lttkgp/C-3PO",
+      "comm": "https://join.slack.com/t/listentothiskgp/shared_invite/zt-k43spd8w-fsTYnyoyW3C1kl731bDhOw",
+      "id": "3",
+      "mentor": "Mukul Mehta",
+      "mentor_email": "mukul.csiitkgp@gmail.com"
+    },
+    {
+      "title": "R2-D2",
+      "intro": "Facebook connector for C-3PO. R2-D2 is C-3PO's beloved sidekick, helping with fetching and managing all the Facebook group data for Listen To This KGP. He saves a copy of the Facebook public data (no user information - mostly because he can't get it even if he wanted to) and keeps it in sync with C-3PO. R2-D2 is built with Golang and uses Docker and AWS services heavily. To check out the codebase and other projects, check out: https://github.com/lttkgp",
+      "tags": ["Golang", "Docker", "AWS", "MongoDB", "DyanmoDB", "API"],
+      "link": "https://github.com/lttkgp/R2-D2",
+      "comm": "https://join.slack.com/t/listentothiskgp/shared_invite/zt-k43spd8w-fsTYnyoyW3C1kl731bDhOw",
+      "id": "3",
+      "mentor": "Mukul Mehta",
+      "mentor_email": "mukul.csiitkgp@gmail.com"
+    },
+    {
+      "title": "Leet-code",
+      "intro": "This is a repository for the solutions of various Leetcode problems. It was started with the aim of making a nice database of various leetcode problems in C++.",
+      "tags": ["C++", "competitive programming ", "leetcode"],
+      "link": "https://github.com/shruti170901/Leetcode",
+      "comm": "https://join.slack.com/t/leetcode-20u5479/shared_invite/zt-jq2fr8dy-zEQ6m8M4MtK00qnp7ihlTA",
+      "id": "128",
+      "mentor": "Shruti Shreyasi",
+      "mentor_email": "shreyasishruti@gmail.com"
+    },
+    {
+      "title": "DIVIDE-GAME",
+      "intro": "This is a simple but interesting math game.",
+      "tags": ["HTML", "CSS", "JavaScript"],
+      "link": "https://github.com/baidi-mannan/Divide-Game",
+      "comm": "https://join.slack.com/t/dividehq/shared_invite/zt-jq2entbq-efsFhsZMJhOtYwsz~P0pig",
+      "id": "157",
+      "mentor": "Mannan Baidi",
+      "mentor_email": "mannanbaidi@gmail.com"
+    },
+    {
+      "title": "Book-Rentals",
+      "intro": "Book-Rentals aims to provide a platform where the user can buy the books on rent, the user can put the books on rent.\n\nMost of the books are useless after reading just one time or n time so what if we use Book-Rentals and make some profit from that useless book ;)\n\nThe project seems easy but there are lots of work to do so not by wasting time let's do it.",
+      "tags": ["Reactjs", "MongoDB", "Golang", "RestAPI"],
+      "link": "https://github.com/ultra-utsav/Book-Rentals",
+      "comm": "https://chat.whatsapp.com/DzgB1KsgFbU2OK2c6VJkAY",
+      "id": "149",
+      "mentor": "Utsav Vaghani",
+      "mentor_email": "ultrautsav@gmail.com"
+    },
+    {
+      "title": "Painter",
+      "intro": "Painter is a canvas painting web app, where you can draw and express your creativity, and download your painting.",
+      "tags": ["HTML", "SCSS", "JavaScript", "Parcel-bundler"],
+      "link": "https://github.com/iamskab/Painter",
+      "comm": "https://gitter.im/Painter_KWOC/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "158",
+      "mentor": "Sourav Karmakar",
+      "mentor_email": "iamsourav470@gmail.com"
+    },
+    {
+      "title": "Secret Peek",
+      "intro": "Anonymity is taken Seriously!\nIt's a webpage to confess your feelings/secrets.\nSpeak out the things you never could.",
+      "tags": ["Flask", "HTML", "CSS", "JavaScript", "Sockets", "MySQL"],
+      "link": "https://github.com/iharshit009/SecretPeek",
+      "comm": "https://join.slack.com/t/secretpeek/shared_invite/zt-k44x2vnk-xTaE0q5LtG6tJXKL0z6kTg",
+      "id": "153",
+      "mentor": "Harshit Jain",
+      "mentor_email": "harshitjain1309@gmail.com"
+    },
+    {
+      "title": "Postman",
+      "intro": "It is a project tool that provides Lead Generation and bulk email sending to companies and organization. It provides news letter service and other lead generation services to companies and startups in their marketing strategy.",
+      "tags": ["HTML+Django", "Python", "CSS", "JavaScript"],
+      "link": "https://github.com/SantamRC/Postman",
+      "comm": "https://gitter.im/Postman-official/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "146",
+      "mentor": "Santam Roy Choudhury",
+      "mentor_email": "santamdev404@gmail.com"
+    },
+    {
+      "title": "Memegram",
+      "intro": "Memegram is a place solely made for having sarcastic fun with memes where you can see, create and share memes.  Its a great fun project to develop your understanding and skills on react native, flask and APIs!",
+      "tags": ["react-native", "Python", "REST API"],
+      "link": "https://github.com/Rits1272/Memegram",
+      "comm": "https://join.slack.com/t/memegram/shared_invite/zt-jyy1ykch-W6wevzQyR3eUSSP9aXyynA",
+      "id": "152",
+      "mentor": "Ritik Jain",
+      "mentor_email": "ritikjain1272@gmail.com"
+    },
+    {
+      "title": "Elixir",
+      "intro": "This is a basic react native chat application in react native for android mobiles.",
+      "tags": ["react native", "android", "JavaScript", "expo"],
+      "link": "https://github.com/SantamRC/Elixir",
+      "comm": "https://gitter.im/Elixir-official/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "146",
+      "mentor": "Santam Roy Choudhury",
+      "mentor_email": "santamdev404@gmail.com"
+    },
+    {
+      "title": "C Programming made easy",
+      "intro": "A Flutter-based Android App\n\nThis app is a complete free handbook for learning Basics of C Programming language which covers important topics, notes & programs on the course. Download the App as a reference material for Computer Science, Software Engineering programs & Degree courses.",
+      "tags": ["flutter", "android", "c programming"],
+      "link": "https://github.com/enzaimz/c_made_easy",
+      "comm": "https://gitter.im/C_Made_Easy/community?utm_source=share-link&utm_medium=link&utm_campaign=share-link",
+      "id": "163",
+      "mentor": "Abhiti Darbar",
+      "mentor_email": "darbarabhiti@gmail.com"
+    },
+    {
+      "title": "Optimizing shortest path after Road Blockage",
+      "intro": "We would be provided with just a google maps image of a small road network and some blockage would be indicated on some of the roads. We need to find out the shortest path on the network from Point A to Point B.",
+      "tags": ["Python", "Computer Vision", "Basic Algorithms"],
+      "link": "https://github.com/rohitsingh30/Shortest_Path_Blockage",
+      "comm": "shortestpathblockage.slack.com",
+      "id": "164",
+      "mentor": "Rohit Singh Tomar",
+      "mentor_email": "rsinghtomar54@gmail.com"
+    },
+    {
+      "title": "AlgoBook",
+      "intro": "A beginner-friendly project to help you in open-source contributions. Data Structures & Algorithms in various programming languages. Focused especially on the scratch implementation of Machine Learning Algorithms.",
+      "tags": [
+        "NumPy",
+        "Python",
+        "C++",
+        "golang",
+        "Machine Learning",
+        "Deep Learning",
+        "Natural Language Processing",
+        "Java"
+      ],
+      "link": "https://github.com/geekquad/AlgoBook",
+      "comm": "https://join.slack.com/t/geekquad/shared_invite/zt-jtdqxt2r-i9R7vvNPzveImCBBM~eahw",
+      "id": "148",
+      "mentor": "Aditya Kumar Gupta",
+      "mentor_email": "adityaastranaut@gmail.com"
+    },
+    {
+      "title": "BookStore",
+      "intro": "Web App for sharing and viewing free e-books.",
+      "tags": ["HTML", "CSS", "Bootstrap", "Python", "Django"],
+      "link": "https://github.com/diyajaiswal11/BookStore",
+      "comm": "https://discord.gg/vYZccwaV",
+      "id": "45",
+      "mentor": "Diya Jaiswal",
+      "mentor_email": "shubhijaiswal2000@gmail.com"
+    },
+    {
+      "title": "Vendor Relief",
+      "intro": "*  During COVID-19, people living in societies and apartments may not be aware of the nearby shops and vendors whether they are providing essential services or not (such as Groceries, Pharmacy, Dairy, etc) and if they may be providing the people may not know the details of the vendors(like timings, contact number and address of the shop).\n* People may be facing some doubts about covid-19.\n*  After knowing about these problems faced by some of the people ,we have done our best to help them out.\n",
+      "tags": ["Java", "android", "firebase", "covid-19"],
+      "link": "https://github.com/plazzy99/VendorRelief",
+      "comm": "https://discord.com/invite/DswQDgyF8a",
+      "id": "165",
+      "mentor": "Vatsal kesarwani",
+      "mentor_email": "vatsalkesarwani12@gmail.com"
+    },
+    {
+      "title": "",
+      "intro": "",
+      "tags": [
+        "react-native",
+        "Python",
+        "node.js",
+        "android",
+        "Machine Learning",
+        "face-recognition",
+        "postgresql"
+      ],
+      "link": "https://github.com/ryash/Attendance-via-Face-Recognition",
+      "comm": "https://join.slack.com/t/attendancevia-snh2112/shared_invite/zt-js049dlh-cip2IIE2H7K7q3ApROJ0Gg",
+      "id": "151",
+      "mentor": "ryash",
+      "mentor_email": "yashkhanna1974@gmail.com"
+    },
+    {
+      "title": "DOG_TINDER_WEBSITE",
+      "intro": "It is a dog tinder website just like we human's have, where you can find perfect match for your dogs, there are both free and paid offers for your dogs, I had used  front-end development skills for making that and i want other developers to examine the code base and make helpful changes in it and if i found them worthy i will carry them forward..",
+      "tags": ["HTML", "CSS", "BOOTSTRAP"],
+      "link": "https://github.com/Ayush7-BIT/Tinder_Website_for_dogs",
+      "comm": "https://discord.gg/ETywrnsK",
+      "id": "159",
+      "mentor": "Ayush Pandey",
+      "mentor_email": "cris4u777@gmail.com"
+    },
+    {
+      "title": "CodeManiacs",
+      "intro": "CodeManiacs is an open source online judge created by the student developers of IIT Mandi to create practice problems and host competitive programming contests for them.\nThe task for the KWOC students in this project would be the following : \n\n1) Improve the UI - There are existing issues related to the UI which have to be fixed, and more will be created as the project commences. We also expect the mentees to come up with design ideas to improve the UI and UX.\n\n2) Work on the contests functionality - The functionality of hosting contests is relatively new in the project and has a lot of bugs, some of which have been identified, whereas some have not been. The task at hand is to fix the identified bugs, and test the contest feature to identify other \n\n3) Add other enhancements and fix existing server side issues as mentioned in the repository.",
+      "tags": ["JavaScript", "NodeJs", "HTML", "CSS", "MongoDB"],
+      "link": "https://github.com/KamandPrompt/CodeManiacs",
+      "comm": "https://join.slack.com/t/students-5m16644/shared_invite/zt-jw9rmp78-hzr5fvlpTKpvnkUEfGZrmQ",
+      "id": "154",
+      "mentor": "Pranshu Kharkwal",
+      "mentor_email": "b19136@students.iitmandi.ac.in"
+    },
+    {
+      "title": "Attendance-Management-using-Face-Recognition",
+      "intro": "This desktop application aims to simplify the process of Attendance Management of different classes and batches using Face Recognition and user-friendly GUI. The management of data and marking of attendance is carried out in Excel files.",
+      "tags": ["Python", "tkinter", "openpyxl", "SQL", "openCV"],
+      "link": "https://github.com/Marauders-9998/Attendance-Management-using-Face-Recognition",
+      "comm": "https://join.slack.com/t/marauders9998/shared_invite/zt-jwafycfo-2yu9tnWlkHcwRX0fdIclpQ",
+      "id": "170",
+      "mentor": "Vibhu Agarwal",
+      "mentor_email": "vibhu4agarwal@gmail.com"
+    },
+    {
+      "title": "Falcon",
+      "intro": "Listen to what KGP is listening! Listen to this KGP is a Facebook group that lets you recommed your favorite songs to KGPians.\n\nFalcon is the frontend of LTTKGP web app\n\nlttkgp.com/ ",
+      "tags": ["JavaScript", "React", "Frontend", "Music", "lttkgp"],
+      "link": "https://github.com/lttkgp/falcon",
+      "comm": "https://join.slack.com/t/listentothiskgp/shared_invite/zt-k43spd8w-fsTYnyoyW3C1kl731bDhOw",
+      "id": "8",
+      "mentor": "xypnox",
+      "mentor_email": "xypnox@gmail.com"
+    },
+    {
+      "title": "potter-spells",
+      "intro": "The package lists all the Harry Potter spells.\nSpecifically, the scripts scrape the data from the website harrypotter.wikia.com and provide all the spells.\nThe various python scripts provide various filters to list out the spells and enchantments (magic enchantments which are not specifically spells).",
+      "tags": ["Python", "web-scraping", "python-packaging", "data-classes"],
+      "link": "https://github.com/Vibhu-Agarwal/potter_spells",
+      "comm": "https://join.slack.com/t/vibhu4agarwal-foss/shared_invite/zt-jtir19ma-7Rg5OVMJhOwOIVgSbCi6Dw",
+      "id": "170",
+      "mentor": "Vibhu Agarwal",
+      "mentor_email": "vibhu4agarwal@gmail.com"
+    },
+    {
+      "title": "Nyx",
+      "intro": "Yet Another Cloud Storage Service!\n\nNyx is a cloud storage service that aims to offer multiple advantages over other services:\n\nFlexibility in terms of storage plans and the ability to resize at any time\nOffer File Sharing with access control settings and edit/view options\nFile previews for all file types, with support for editing on the fly for files which support it\nThe plan is to write Nyx from scratch. We plan on using AWS services for storage and their API for operations",
+      "tags": ["Golang", "backend ", "cloud storage ", "AWS", "Python"],
+      "link": "https://github.com/abhipachorkar296/Nyx",
+      "comm": "https://join.slack.com/t/newworkspace-aqz7535/shared_invite/zt-js4x8l11-KjRJhW1nBACuzvxAGYt5Mw",
+      "id": "175",
+      "mentor": "Abhishek",
+      "mentor_email": "abhipachorkar296@gmail.com"
+    },
+    {
+      "title": "GuessMovie",
+      "intro": "GuessMovie is a movie Guessing game where you need to guess the movie name from the plot of the movie, along with a search engine to search for your favorite movies, TV shows, web series built using Node JS and Express Server.",
+      "tags": ["HTML", "CSS", "JavaScript", "Express", "NodeJS"],
+      "link": "https://github.com/shrinish123/GuessMovie",
+      "comm": "https://join.slack.com/t/guessmovie/shared_invite/zt-jmsjsi53-j6kvE_dTHA3Ud0SzjZyQuw",
+      "id": "142",
+      "mentor": "Shrinish Vhanbatte",
+      "mentor_email": "shrinishiitkgp2001@gmail.com"
+    },
+    {
+      "title": "Work Today App",
+      "intro": "Work Today is a simple app that aims to connect workers with hirers primarily labour and daily wage workers.\nHirers can directly request any worker to work for them. They can search according to the required job.",
+      "tags": ["Flutter", "Firebase", "Dart", "UI/UX", "Design", "Android-iOS"],
+      "link": "https://github.com/anand-aman/work_today",
+      "comm": "https://discord.gg/BrPk9Wq57q",
+      "id": "65",
+      "mentor": "Aman Anand",
+      "mentor_email": "itsamananand@gmail.com"
+    },
+    {
+      "title": "Minerva",
+      "intro": "Backend for DYSTuss - A movie/show discussion platform. Powered by Flask-REST, MySQL and Elasticsearch!",
+      "tags": ["Backend", "Python", "Flask", "REST", "Docker", "Elasticsearch"],
+      "link": "https://github.com/NiHighlism/Minerva",
+      "comm": "https://join.slack.com/t/nihighlism/shared_invite/zt-jy9w18lc-yWEtG3IY4TuGktTYvWceSQ",
+      "id": "3",
+      "mentor": "Mukul Mehta",
+      "mentor_email": "mukul.csiitkgp@gmail.com"
+    },
+    {
+      "title": "gICCa",
+      "intro": "A CLI version of the IRCCLoud. The CLI app is developed in Go.\nThe app uses IRCCLoud APIs for its functionality..",
+      "tags": ["golang", "CLI", "API"],
+      "link": "https://github.com/akshayaky/gICCa",
+      "comm": "https://t.me/akymaster",
+      "id": "176",
+      "mentor": "Akshay V",
+      "mentor_email": "vvaakshay@gmail.com"
+    },
+    {
+      "title": "Quizzer",
+      "intro": "A web application that makes online events as fun and interactive as offline events.",
+      "tags": ["TypeScript", "JavaScript", "react", "MERN"],
+      "link": "https://github.com/Tech-Phantoms/Quizzer",
+      "comm": "https://join.slack.com/t/tech-phantoms/shared_invite/zt-ic77wu9j-50JjytyBS3_IsRqon8Bc8g",
+      "id": "43",
+      "mentor": "souvik",
+      "mentor_email": "souvikde.ns@gmail.com"
+    }
+  ]
+}
