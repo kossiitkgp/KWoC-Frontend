@@ -121,7 +121,7 @@
     }
 
     &-card {
-      background-color: rgba($color: #362321, $alpha: 1);
+      background-color: rgba($color: $primary-theme, $alpha: 1);
       color: #ccc;
       margin: 1rem;
       padding: 1rem 1.5rem;
@@ -145,7 +145,7 @@
   .tags {
     text-align: center;
     min-height: 50vh;
-    background-color: #362321;
+    background-color: $primary-theme;
     margin-top: 5rem;
 
     &-title {
@@ -209,7 +209,10 @@
   }
 
   .stats {
-    background: linear-gradient(rgba(#362321, 0.5), rgba(#362321, 0.5)),
+    background: linear-gradient(
+        rgba($primary-theme, 0.5),
+        rgba($primary-theme, 0.5)
+      ),
       url("../assets/bonfire.png");
     min-height: 80vh;
     background-size: cover;
