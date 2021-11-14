@@ -28,7 +28,7 @@
 
 - __What if I have a question not answered in this FAQ?__
   
-  Please make sure to read the website,manual. If after reading through it you still don't have an answer please consider reaching out to us on admin@kossiitkgp.org.
+  Please make sure to go through the respective manual. If after reading through it you still don't have an answer please consider reaching out to us on admin@kossiitkgp.org.
 
 
 
