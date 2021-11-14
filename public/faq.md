@@ -24,7 +24,7 @@
 
 - __What can I do to help spread the word about KWoC?__
 
-  Nothing makes us happier than people spreading words about open-source; to begin, you can like our [facebook page](https://www.facebook.com/kossiitkgp) and increase awareness about KWoC in your college; nothing works better than word of mouth.
+  Nothing makes us happier than people spreading words about open-source; to begin, you can connect with our [Facebook](https://www.facebook.com/kossiitkgp),[Linkedin](https://www.linkedin.com/company/kharagpur-open-source-society),[Twitter](https://twitter.com/kossiitkgp) handles and increase awareness about KWoC in your college; nothing works better than word of mouth.
 
 - __What if I have a question not answered in this FAQ?__
   
@@ -57,9 +57,6 @@
 - __Can you provide me any advice so that I can start preparing for it beforehand?__
   
   Play around git and GitHub. Create an account on GitHub, set up git on your machine and start experimenting with it. You can also begin by following Codecademy's git interactive tutorial.
-
-- __What are my chances of receiving a position in KWoC?__
-  Pretty fair ! You need to be working for the whole month regardless of your expertise level.
 
 - __Is there any other similar kind of program that I might find interesting?__
 
@@ -97,4 +94,22 @@
 
   - That will based on mentor's feedback. You need to have at least one merged PR by the mid-evals to be eligible for continuing the program.
   - Atleast one more merged PR between mid and end evals and a blog post describing how you contributed!
+
+
+
+# STATS
+
+- _How are commits counted?_
+
+  - Commits are counted only after your PR is merged.
+  - Commits are counted if they are merged in the default branch.
+  - Commits are not linked to your github account if your email configuration is not set properly. See [this](https://github.com/kossiitkgp/kwoc-bugs/issues/22#issuecomment-747068412) for details.
+
+- _What to do,if my stats are not being updated?_
+
+  Wait for 24 hours,then contact us via admin@kossiitkgp.org.
+  
+ ###  PS - The main aim of stats was to provide encouragement but not create a competitive atmosphere.
+ 
+>  You won't get sued for anticompetitive behavior. - Linus Torvalds.
 
