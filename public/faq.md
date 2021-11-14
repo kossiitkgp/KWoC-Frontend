@@ -52,7 +52,7 @@
 
 - __Can I apply if I am not a student of IIT Kharagpur?__
 
-  Sure ! Our program is open to __all__ students irrespective of college ! Is there any eligibility criteria and pre-requisites? There is no strict eligibility criteria as such. Read [this](https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016) Quora answer by Pranit Bauva.
+  Sure! Our program is open to __all__ students irrespective of college! Is there. Read [this](https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016) Quora answer by Pranit Bauva.
 
 - __Can you provide me any advice so that I can start preparing for it beforehand?__
   
