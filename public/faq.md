@@ -56,7 +56,7 @@
 
 - __Can you provide me any advice so that I can start preparing for it beforehand?__
   
- Get familiar with git and Github. Check  [this](https://opensource.guide)Open Source guide.  Also, practice git [here](https://gitimmersion.com/index.html). You can also begin by following [Codecademy's git interactive tutorial](https://www.codecademy.com/learn/learn-git).
+  Get familiar with git and Github. Check [this](https://opensource.guide) Open Source guide.  Also, practice git [here](https://gitimmersion.com/index.html). You can also begin by following [Codecademy's git interactive tutorial](https://www.codecademy.com/learn/learn-git).
 
 - __Is there any other similar kind of program that I might find interesting?__
 
