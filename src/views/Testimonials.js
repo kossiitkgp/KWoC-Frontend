@@ -17,8 +17,8 @@ export default function Testimonial() {
   }, []);
 
   return (
-    <div>
-      <section className="hero-body-testimonial">
+    <div className="testimonial">
+      <section className="hero-body">
         <h1 className="title">Testimonials</h1>
         <h2 className="subtitle">
           Check out how enjoyable KWoC was for the previous participants

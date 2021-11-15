@@ -45,7 +45,7 @@
       .title {
         color: $primary-text-light-grey;
         margin: 2rem 0 1rem;
-        font-family: "Fredoka One", cursive;
+        font-family: $header-font;
         letter-spacing: 2px;
       }
 
@@ -84,7 +84,7 @@
   .container {
     h1 {
       font-size: 2.8rem;
-      font-family: "Fredoka One", cursive;
+      font-family: $header-font;
       letter-spacing: 2px;
       align-items: center;
     }

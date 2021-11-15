@@ -5,7 +5,7 @@
   padding: 2%;
 
   h2 {
-    font-family: Vegur;
+    font-family: $header-font;
     text-align: center;
     font-size: 40px;
   }
@@ -14,7 +14,7 @@
   }
   h3,
   label {
-    font-family: Route159;
+    font-family: $header-font;
   }
   input {
     margin-top: 0;
