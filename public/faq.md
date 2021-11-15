@@ -68,7 +68,7 @@
 
 - __Will I receive a certificate at the end of the KWoC?__
   
-  If you remain with us till the end of the program, then you'll receive a certificate for completion of the program.
+  If you remain with us till the end of the program, then you'll receive a certificate for completion of the program. You would have to clear both the mid and end evaluation to get the certificate. More details can be found in our [manual](link here)
 
 - __Which programming language(s) do I need to be fluent in?__
   
