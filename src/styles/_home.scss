@@ -23,31 +23,46 @@
   .hero {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    background: url("../assets/bonfire.png");
+    background-size: cover;
     height: 80vh;
     margin: 0;
 
     .hero-body {
-      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 50%;
+      padding: 1rem;
+      text-align: center;
+
+      @include sm {
+        width: 100%;
+      }
+
       .title {
-        color: $primary-text-white;
+        color: $primary-text-light-grey;
         margin: 2rem 0 1rem;
+        font-family: $header-font;
+        letter-spacing: 2px;
       }
 
       .btns-container {
         display: flex;
         flex-direction: row;
-        justify-content: center;
 
         .button {
           background-color: rgba($color: #000000, $alpha: 0.5);
           border: 0px solid #fff;
-          border-radius: 5px;
-          color: $primary-text-white;
-          transition: all 0.5s ease-in-out;
-
+          border-radius: 10px;
+          text-decoration: none;
+          font-size: 1.2rem;
+          color: $secondary-text-light-grey;
+          transition: all 0.3s ease-in-out;
           margin: 1rem 0.5rem;
-          padding: 1rem;
+          padding: 1rem 1.5rem;
 
           &:hover {
             background-color: #fff;
@@ -59,154 +74,192 @@
             background-color: rgba($color: #000000, $alpha: 0.5);
             border: 0px solid #fff;
             color: $primary-text-white;
-            transition: all 0.5s ease-in-out;
+            transition: all 0.3s ease-in-out;
           }
         }
-      }
-    }
-
-    .about {
-      background-image: linear-gradient(135deg, #9545f7 0%, #000000 50%);
-      color: white;
-      padding-bottom: 5rem;
-      // TODO: use rem for font size
-      .container {
-        h1 {
-          font-size: 40px;
-          align-items: center;
-        }
-        display: grid;
-
-        place-items: center;
-        p {
-          font-size: 17px;
-        }
-      }
-    }
-    .stats {
-      background-color: #170f1a;
-      margin: 0;
-      padding: 3rem 0;
-      color: rgb(168, 166, 166);
-
-      .container {
-        h1 {
-          color: #c395ff;
-          text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
-          font-size: 40px;
-          text-align: center;
-          margin: 0;
-          padding: 1rem 0;
-        }
-        .columns {
-          padding: 2rem 0;
-          .column {
-            margin: 0 2rem 2rem;
-            padding: 3rem 0 0;
-            border-radius: 2rem;
-            background-color: rgba($color: #000000, $alpha: 0.5);
-            img {
-              margin-bottom: 10px;
-              width: 35%;
-              height: 35%;
-              filter: invert(1);
-            }
-            h3 {
-              font-size: 2rem;
-              margin: 0;
-            }
-          }
-        }
-      }
-    }
-    @media (max-width: 768px) {
-      .stats .container .columns .column {
-        padding: 2rem 0;
-      }
-    }
-
-    .why-kwoc {
-      color: rgb(223, 222, 222);
-      margin-bottom: 0;
-      // background-image: linear-gradient(-135deg, #58182d 0%, #130816 50%);
-      background-color: #170f1a;
-      .container {
-        padding: 30px 20% 5rem;
-
-        h1 {
-          color: #c395ff;
-          text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
-          font-size: 64px;
-          text-align: center;
-        }
-        h2 {
-          color: #c395ff;
-          text-shadow: 0px 10px 25px rgba($color: #c395ff, $alpha: 0.5);
-          font-size: 48px;
-          text-align: center;
-        }
-        p {
-          font-size: 18px;
-          color: linear-gradient(135deg, #fff 50%, #000 50%);
-        }
-        h3 {
-          color: #c395ff;
-          font-size: 25px;
-          letter-spacing: 2px;
-          font-family: Vegur;
-        }
-      }
-    }
-
-    @media (max-width: 600px) {
-      .why-kwoc .container {
-        padding: 30px 10% 5rem;
       }
     }
   }
 
   .container {
     h1 {
-      font-family: Vegur;
+      font-size: 2.8rem;
+      font-family: $header-font;
+      letter-spacing: 2px;
+      align-items: center;
+    }
+  }
+
+  .about {
+    color: $text-color-black;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 20% 0 20%;
+    p {
+      font-size: 1.3rem;
+    }
+    // TODO: use rem for font size
+  }
+
+  .why-kwoc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-cardlist {
+      display: flex;
+      justify-content: space-evenly;
+      width: 50vw;
+      margin: 2rem 0;
+
+      @include sm {
+        flex-direction: column;
+        width: 80vw;
+      }
     }
 
-    p {
-      font-family: Route159;
+    &-card {
+      background-color: rgba($color: $primary-theme, $alpha: 1);
+      color: #ccc;
+      margin: 1rem;
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .why-kwoc .container {
+      padding: 30px 10% 5rem;
     }
   }
 
   .tags {
     text-align: center;
     min-height: 50vh;
-    background-image: linear-gradient(135deg, #58182d 0%, #130816 50%);
+    background-color: $primary-theme;
+    margin-top: 5rem;
 
-    margin-bottom: 0 !important;
+    &-title {
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
 
-    .container {
-      h1 {
-        font-size: 40px;
-        align-items: center;
-        color: #fff;
+    &-list {
+      margin: 2rem 0;
+      column-count: 6;
+      grid-column-end: auto;
+
+      @include md {
+        column-count: 2;
       }
-      max-height: 100vh;
-      padding-bottom: 20px;
 
-      #dark {
-        color: #000;
-        background-color: #b57aff;
-      }
-
-      #light {
-        color: #923bff;
-        background-color: #fff;
+      @include sm {
+        column-count: 1;
       }
     }
 
     .tag {
-      background: rgba(#fff, 0.1);
-      border-radius: 15px;
-      color: #eee;
+      border-radius: 10px;
+      color: $text-color-black;
       cursor: pointer;
+      padding: 0.5rem 0.8rem;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin: 0.5rem;
+
+      &:nth-child(5n) {
+        width: 7rem;
+        height: 7rem;
+        transform: translateX(4rem);
+      }
+
+      &:nth-child(5n + 2) {
+        width: 9rem;
+        height: 9rem;
+        transform: translateX(-2rem);
+      }
+
+      &:nth-child(5n + 3) {
+        width: 14rem;
+        height: 14rem;
+        transform: translateX(2rem);
+      }
+
+      &:nth-child(5n + 4) {
+        width: 12rem;
+        height: 12rem;
+        transform: translateX(-3rem);
+      }
+    }
+  }
+
+  .stats {
+    background: linear-gradient(
+        rgba($primary-theme, 0.5),
+        rgba($primary-theme, 0.5)
+      ),
+      url("../assets/bonfire.png");
+    min-height: 80vh;
+    background-size: cover;
+    margin: 0 0 5rem 0;
+    padding: 3rem 0;
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: 4rem;
+      text-align: center;
+    }
+
+    &-column-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-top: 4rem;
+
+      @include sm {
+        flex-direction: column;
+      }
+    }
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 4rem;
+      background-color: rgba($color: #eee, $alpha: 0.8);
+      padding: 1.5rem;
+      color: $text-color-black;
+      border-radius: 20px;
+      width: 20rem;
+
+      img {
+        width: 8rem;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    .stats .container .columns .column {
+      padding: 2rem 0;
     }
   }
 }

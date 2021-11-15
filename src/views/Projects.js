@@ -3,6 +3,7 @@ import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
 import Card from "../components/ProjectCard.js";
 import { BACKEND_URL } from "../constants";
+import dummyProjects from "../data/projectsDummy.json";
 import { shuffleArray } from "../utils/shuffle";
 
 function projectSortPolicy(arr) {
@@ -109,6 +110,22 @@ export default function Projects() {
   if (searchText === "") displayedProjects = allProjects;
   else displayedProjects = searchedProjects;
 
+  //DEMO. REMOVE THIS WHEN BACKEND IS UP
+  dummyProjects.projects.map((project) => {
+    const Obj = {
+      ProjectName: project.title,
+      ProjectDesc: project.intro,
+      MentorName: [project.mentor],
+      ProjectTags: JSON.stringify(project.tags),
+      MentorEmail: project.mentor_email,
+      MentorUsername: project.mentor,
+      ProjectRepoLink: project.link,
+      ProjectComChannel: project.comm,
+    };
+
+    displayedProjects.push(Obj);
+  });
+
   return (
     <div className="projects">
       {/* <section class='hero is-medium is-danger is-bold' id='projects'>
@@ -121,37 +138,32 @@ export default function Projects() {
         </div>
       </section> */}
 
-      <h1 className="title">Projects</h1>
-
-      <div className="container">
+      <div className="projects-search-box">
+        <h1 className="title">Projects</h1>
         <div class="field">
-          <div class="control">
-            <input
-              class="input is-primary is-medium"
-              type="text"
-              placeholder="Search projects using project name, topics and mentor"
-              onChange={handleSearch}
-            ></input>
-          </div>
+          <input
+            class="input"
+            type="text"
+            placeholder="Search projects using project name, topics and mentor"
+            onChange={handleSearch}
+          ></input>
         </div>
+      </div>
 
-        <div class="columns is-multiline is-centered">
-          {displayedProjects.map((project, id) => (
-            <div key={id} class="column has-text-centered is-4">
-              <Card
-                name={project.ProjectName}
-                desc={project.ProjectDesc}
-                mentor={project.MentorName}
-                tags={JSON.parse(project.ProjectTags)}
-                mentorId={project.MentorEmail}
-                mentorUsername={project.MentorUsername}
-                projectLink={project.ProjectRepoLink}
-                commLink={project.ProjectComChannel}
-                length={project.MentorName.length}
-              ></Card>
-            </div>
-          ))}
-        </div>
+      <div class="project-card-grid">
+        {displayedProjects.map((project, id) => (
+          <Card
+            name={project.ProjectName}
+            desc={project.ProjectDesc}
+            mentor={project.MentorName}
+            tags={JSON.parse(project.ProjectTags)}
+            mentorId={project.MentorEmail}
+            mentorUsername={project.MentorUsername}
+            projectLink={project.ProjectRepoLink}
+            commLink={project.ProjectComChannel}
+            length={project.MentorName.length}
+          ></Card>
+        ))}
       </div>
       <br />
     </div>

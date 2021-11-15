@@ -7,8 +7,13 @@ $primary-background-black: #000000; // pure black, used by apple
 $primary-background-grey: #121212; // used by google
 $secondary-background-grey: #3a3a3c;
 
+$primary-theme: #362321;
+$header-font: "Inter", sans-serif;
+$text-font: "Inter", sans-serif;
+
 // text
 $primary-text-white: #ffffff; // titles and text
+$primary-text-light-grey: #eeeeee;
 $secondary-text-light-grey: #ebebf5; // text below title and too much in length
 $tertiary-text-grey: #767680; // text for placeholder
 
@@ -22,7 +27,7 @@ $background-color-page: #f0f4f7;
 
 // dashboard
 $dashboard-body-background: #35393b;
-$dashboard-font: Route159, Vegur;
+$dashboard-font: "Inter", sans-serif;
 $background-color-dashboard: #26292b;
 $header-color: #b57aff;
 
@@ -30,4 +35,12 @@ $project-stats-header: #8794a1;
 $project-card-header: #c1d3e5;
 $project-buttons: #3e4345, 100%;
 
-$text-color: white;
+$text-color: #eee;
+$text-color-black: #111;
+
+// TODO: better named variables
+// title and text font
+// primary and secondary background colour
+// dashboard background and text variables
+// primary and secondary buttons
+// links

@@ -1,15 +1,3 @@
-// TODO: decide fonts, and import them in _typography.scss
-// @font-face {
-//   font-family: "Route159";
-//   src: local("Route159"),
-//     url(../../fonts/Route159-Regular.otf) format("opentype");
-// }
-// @font-face {
-//   font-family: "Vegur";
-
-//   src: local("Vegur"), url(../../fonts/Vegur-Regular.otf) format("opentype");
-// }
-
 .dashboard-container {
   background: $dashboard-body-background;
 
@@ -119,7 +107,7 @@
 
           .plus-sign {
             padding-left: 2%;
-            font-family: Inter;
+            font-family: $header-font;
             font-style: normal;
             font-weight: 800;
             font-size: 58px;
@@ -161,8 +149,7 @@
       margin-top: 2%;
       // align-items: center;
       text-align: center;
-      // font-family: 'Roboto Slab', serif;
-      // font-family: Vegur;
+      font-family: $header-font;
       font-size: 32px;
       @media (max-width: 767px) {
         font-size: 20px;
@@ -320,7 +307,7 @@
 
             padding: 1.5%;
 
-            font-family: Inter;
+            font-family: $text-font;
             font-style: normal;
 
             color: $project-stats-header;
@@ -580,7 +567,7 @@
 
             text {
               padding-left: 1%;
-              font-family: Inter;
+              font-family: $text-font;
               font-style: normal;
               font-weight: 600;
               font-size: 120px;

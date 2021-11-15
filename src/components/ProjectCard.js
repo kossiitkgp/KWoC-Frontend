@@ -40,16 +40,7 @@ export default function Card(props) {
   const LEN = TAG_TYPES.length;
   return (
     <div className="card">
-      <header className="card-header has-text-white">
-        <a
-          className="card-header-title has-text-white"
-          href={props.projectLink}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {props.name}
-        </a>
-      </header>
+      <header className="card-header">{props.name}</header>
       <div className="card-content">
         <div className="content">
           {" "}
@@ -67,66 +58,43 @@ export default function Card(props) {
           </ReactReadMoreReadLess>
         </div>
         <br />
-        <section className="tags" id="projectTags">
-          <div className="container">
-            <p>
-              {props.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className={`tag cust-tag ${
-                    TAG_TYPES[Math.floor(Math.random() * LEN)]
-                  } is-medium`}
-                >
-                  {tag}
-                </span>
-              ))}
-            </p>
-          </div>
+        <section className="tags-grid" id="projectTags">
+          {props.tags.map((tag) => (
+            <div key={tag} className="tag">
+              {tag}
+            </div>
+          ))}
         </section>
         <section className="details">
-          <p>
-            <b>Mentored by:</b>
-            {[...Array(props.length).keys()].map((index) => {
-              return (
-                <div>
-                  <a href={`https://github.com/${props.mentorUsername[index]}`}>
-                    {props.mentor[index]}
-                  </a>
-                  <br />
-                  {loggedIn && (
-                    <p>
-                      (
-                      <a href={`mailto:${props.mentorId[index]}`}>
-                        {props.mentorId[index]}
-                      </a>
-                      )
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </p>
-          <p>
-            <a
-              className="footer-btn button is-link is-outlined channel-link"
-              href={props.commLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Join Channel
-            </a>
-          </p>
+          <b>Mentored by:</b>
+          {[...Array(props.length).keys()].map((index) => {
+            return (
+              <div>
+                <a href={`https://github.com/${props.mentorUsername[index]}`}>
+                  {props.mentor[index]}
+                </a>
+                <br />
+                {loggedIn && (
+                  <p>
+                    (
+                    <a href={`mailto:${props.mentorId[index]}`}>
+                      {props.mentorId[index]}
+                    </a>
+                    )
+                  </p>
+                )}
+              </div>
+            );
+          })}
         </section>
       </div>
 
       <footer className="card-footer">
-        <a
-          className="footer-btn button is-primary is-medium is-fullwidth"
-          href={props.projectLink}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={props.projectLink} target="_blank" rel="noopener noreferrer">
           View Project
+        </a>
+        <a href={props.commLink} target="_blank" rel="noopener noreferrer">
+          Join Channel
         </a>
       </footer>
     </div>

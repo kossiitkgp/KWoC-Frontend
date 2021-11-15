@@ -17,7 +17,7 @@ export default function Testimonial() {
   }, []);
 
   return (
-    <div>
+    <div className="testimonial">
       <section className="hero-body">
         <h1 className="title">Testimonials</h1>
         <h2 className="subtitle">
