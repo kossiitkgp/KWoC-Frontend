@@ -56,7 +56,7 @@
 
 - __Can you provide me any advice so that I can start preparing for it beforehand?__
   
-  Play around git and GitHub. Create an account on GitHub, set up git on your machine and start experimenting with it. You can also begin by following Codecademy's git interactive tutorial.
+ Get familiar with git and Github. Check  [this](https://opensource.guide)Open Source guide.  Also, practice git [here](https://gitimmersion.com/index.html). You can also begin by following [Codecademy's git interactive tutorial](https://www.codecademy.com/learn/learn-git).
 
 - __Is there any other similar kind of program that I might find interesting?__
 
