@@ -20,7 +20,7 @@
 
 - Can I participate in KWoC as both a mentor and a student?
 
-Yes, you can. Although we won't count your contribution to your own project. We do encourage participation into project development from everyone.
+  Yes, you can. Although we won't count your contribution to your own project. We do encourage participation into project development from everyone.
 
 - What can I do to help spread the word about KWoC?
 
