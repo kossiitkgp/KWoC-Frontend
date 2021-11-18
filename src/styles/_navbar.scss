@@ -1,14 +1,17 @@
 .menu {
-  font-size: 1.5rem;
+  color: #666;
+  font-size: 0.875rem;
   padding-top: 0.5rem;
   background-color: transparent;
+
   .wrapper {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
     .logo {
       white-space: nowrap;
+      cursor: pointer;
       a {
         margin-left: 1rem;
         display: flex;
@@ -16,29 +19,10 @@
         align-items: center;
         position: relative;
         color: #000;
-
-        &::before {
-          content: "";
-          width: 0;
-          height: 2px;
-
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          background-color: #f44336;
-          visibility: hidden;
-          transition: all 0.3s ease-in-out;
-        }
-
-        &:hover::before {
-          visibility: visible;
-          width: 100%;
-        }
       }
 
       img {
         height: 24px;
-        cursor: pointer;
       }
     }
 
@@ -46,20 +30,13 @@
       display: flex;
       justify-content: center;
       list-style: none;
-      font-size: rem;
-      padding: 0;
-      margin-right: 2rem;
 
       li {
         display: flex;
         align-content: center;
-        margin: 0 2rem;
-        padding: 0 0.5rem;
-
-        svg {
-          width: 20px;
-          margin-top: 3px;
-        }
+        margin: 0 0.5rem;
+        padding: 0.2rem 0.75rem;
+        cursor: pointer;
 
         a {
           display: flex;
@@ -67,67 +44,19 @@
           text-decoration: none;
           color: #000;
           position: relative;
-
-          &::before {
-            content: "";
-            width: 0;
-            height: 2px;
-
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            background-color: #f44336;
-            visibility: hidden;
-            transition: all 0.3s ease-in-out;
-          }
-
-          &:hover::before {
-            visibility: visible;
-            width: 100%;
-          }
-        }
-      }
-
-      .dropdown-title {
-        color: #000;
-        display: flex;
-        align-items: center;
-        position: relative;
-        cursor: pointer;
-
-        .dropdown-content {
-          display: none;
-          color: #fff;
-          white-space: nowrap;
-          border-radius: 10px;
-          white-space: nowrap;
-          background: linear-gradient(96.58deg, #ef2a5d 0%, #ee5434 100%);
-          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-
-          a {
-            color: #fff;
-
-            &::before {
-              background-color: #67ecfd;
-            }
-          }
         }
 
         &:hover {
-          .dropdown-content {
-            display: block;
-            position: absolute;
-            top: -3px;
-            left: 0;
-            z-index: 99;
-
-            margin-top: 2rem;
-            li {
-              padding: 0 0.75rem;
-              margin: 0.75rem 0;
-            }
-          }
+          background-color: #eee;
+          border-radius: 5px;
         }
+      }
+
+      .dropdown-content {
+        display: none;
+        white-space: nowrap;
+        background-color: #fff;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
       }
     }
   }
@@ -161,6 +90,7 @@
       li {
         margin: 0.5rem 1rem;
         opacity: 0;
+        cursor: pointer;
 
         a {
           display: flex;
@@ -172,7 +102,6 @@
 
         img {
           width: 40px;
-          cursor: pointer;
         }
       }
     }

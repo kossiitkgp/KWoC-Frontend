@@ -54,6 +54,7 @@ function Navbar() {
           <div className="logo">
             <a href="/">
               <img src={logo} alt="logo" />
+              KWoC
             </a>
           </div>
 
@@ -90,14 +91,14 @@ function Navbar() {
 
             <li className="dropdown-title">
               Stats
-              <ul className="dropdown-content">
+              {/* <ul className="dropdown-content">
                 <li>
                   <a href="/stats/students">Students</a>
                 </li>
                 <li>
                   <a href="/stats/projects">Projects</a>
                 </li>
-              </ul>
+              </ul> */}
             </li>
 
             <li>
