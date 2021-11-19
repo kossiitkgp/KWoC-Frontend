@@ -8,8 +8,9 @@
   border-top: 1px solid #eaeaea;
 
   nav {
+    width: 50rem;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     font-size: 0.875rem;
 
@@ -17,6 +18,7 @@
       margin: 0 1rem;
       h3 {
         font-weight: 400;
+        font-size: 0.875rem;
       }
 
       ul {
@@ -24,15 +26,37 @@
         padding: 0;
         color: #666;
 
-        a {
-          display: block;
-          color: inherit;
-          text-decoration: none;
+        li {
+          padding-bottom: 0.8rem;
 
-          &:hover {
-            color: #b67dfc;
+          a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+              color: #b67dfc;
+            }
           }
         }
+      }
+    }
+  }
+
+  &-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      font-size: 1.7rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+
+      a {
+        text-decoration: none;
       }
     }
   }
@@ -41,6 +65,14 @@
     nav {
       flex-direction: column;
       text-align: center;
+      width: 80vw;
+    }
+  }
+
+  @include md {
+    nav {
+      width: 80vw;
+      justify-content: space-evenly;
     }
   }
 }

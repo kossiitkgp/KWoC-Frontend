@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
       </nav>
 
-      <div>
+      <div className="footer-title">
         <h1>Kharagpur Winter of Code</h1>
         <h2>
           <a href="https://kossiitkgp.org">With &#10084; by KOSS</a>
