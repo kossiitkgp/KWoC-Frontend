@@ -5,15 +5,20 @@
   align-items: center;
 
   &-hero {
-    padding: 4rem 0;
+    padding: 4rem 1rem;
     margin: 4rem 0;
 
     .title {
       font-weight: 700;
-      font-size: 80px;
+      font-size: 4.5rem;
       line-height: 1.2;
+      text-align: center;
 
       color: #000;
+
+      @include sm {
+        font-size: 3rem;
+      }
     }
 
     p {
@@ -30,11 +35,13 @@
     flex-direction: column;
     align-items: center;
     max-width: 800px;
+    padding: 0 1rem;
 
     h1 {
       font-weight: 700;
       font-size: 2.5rem;
       line-height: 3rem;
+      padding-top: 1.8rem;
     }
 
     ul {
@@ -43,7 +50,7 @@
 
       li {
         p:first-of-type {
-          font-size: 1.5rem;
+          font-size: 1.1rem;
           font-weight: 600;
         }
 
@@ -60,6 +67,11 @@
           color: grey;
           text-align: center;
           border-left: 10px solid #50e3c2;
+          padding: 1rem 0;
+          p,
+          p:first-of-type {
+            margin: 0;
+          }
         }
       }
     }

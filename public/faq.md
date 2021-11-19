@@ -109,6 +109,6 @@
 
   PS - The main aim of stats was to provide encouragement but not create a competitive atmosphere.
 
-  > You won't get sued for anticompetitive behavior.
+  > "You won't get sued for anticompetitive behavior."
   >
   > Linus Torvalds.
