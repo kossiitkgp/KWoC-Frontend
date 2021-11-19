@@ -9,13 +9,31 @@ export default function Footer() {
           <h3>Social Groups </h3>
           <ul>
             <li>
-              <a>Facebook</a>
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://www.facebook.com/groups/kwoc2016"
+              >
+                Facebook
+              </a>
             </li>
             <li>
-              <a>LinkedIn</a>
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://www.linkedin.com/showcase/kharagpur-winter-of-code/posts/"
+              >
+                LinkedIn
+              </a>
             </li>
             <li>
-              <a>Twitter</a>
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://twitter.com/kossiitkgp"
+              >
+                Twitter
+              </a>
             </li>
           </ul>
         </div>
@@ -29,6 +47,9 @@ export default function Footer() {
             <li>
               <a href="/FAQ">FAQ</a>
             </li>
+            <li>
+              <a href="/#about">About KWoC</a>
+            </li>
           </ul>
         </div>
 
@@ -36,7 +57,13 @@ export default function Footer() {
           <h3>Other</h3>
           <ul>
             <li>
-              <a href="/#about">About KOSS</a>
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://kossiitkgp.org"
+              >
+                About KOSS
+              </a>
             </li>
             <li>
               <a
@@ -54,7 +81,13 @@ export default function Footer() {
       <div className="footer-title">
         <h1>Kharagpur Winter of Code</h1>
         <h2>
-          <a href="https://kossiitkgp.org">With &#10084; by KOSS</a>
+          <a
+            target="_blank"
+            rel="noreferrer noopener"
+            href="https://kossiitkgp.org"
+          >
+            With &#10084; by KOSS
+          </a>
         </h2>
       </div>
     </div>
