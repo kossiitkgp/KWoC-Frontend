@@ -11,7 +11,7 @@
     width: 50rem;
     display: flex;
     justify-content: space-between;
-
+    margin: 2rem 0;
     font-size: 0.875rem;
 
     .footer-column {
@@ -25,6 +25,7 @@
         list-style-type: none;
         padding: 0;
         color: #666;
+        margin-top: 1.2rem;
 
         li {
           padding-bottom: 0.8rem;
@@ -47,6 +48,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 2rem 0;
 
     h1 {
       font-size: 1.7rem;
