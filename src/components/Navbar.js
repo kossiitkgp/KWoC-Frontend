@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/circle.svg";
+import * as Icon from "react-feather";
 import slack from "../assets/slack.svg";
 
 function Navbar() {
@@ -51,12 +51,12 @@ function Navbar() {
     <>
       <nav className="menu">
         <div className="wrapper">
-          <div className="logo">
+          {/* <div className="logo">
             <a href="/">
               <img src={logo} alt="logo" />
               KWoC
             </a>
-          </div>
+          </div> */}
 
           <ul>
             <li>
@@ -79,6 +79,49 @@ function Navbar() {
               <a href="/testimonial">Testimonials</a>
             </li>
 
+            <li
+              className={isDown_1 ? "isDown" : ""}
+              onClick={() => dropdownNikal(1)}
+            >
+              Stats
+              {isDown_1 ? <Icon.ChevronUp /> : <Icon.ChevronDown />}
+              <ul>
+                <li>
+                  <a href="/stats/students">
+                    <div className="icon">
+                      <Icon.User />
+                    </div>
+                    <div>
+                      Students <p>See student contributions </p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="/stats/projects">
+                    <div className="icon">
+                      <Icon.Tool />
+                    </div>
+                    <div>
+                      Projects
+                      <p>See what projects are getting contributed to</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul>
+            <li>
+              <a
+                href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <Icon.Slack />
+              </a>
+            </li>
+
             <li>
               <a
                 href="https://github.com/kossiitkgp/kwoc-bugs"
@@ -89,32 +132,10 @@ function Navbar() {
               </a>
             </li>
 
-            <li className="dropdown-title">
-              Stats
-              {/* <ul className="dropdown-content">
-                <li>
-                  <a href="/stats/students">Students</a>
-                </li>
-                <li>
-                  <a href="/stats/projects">Projects</a>
-                </li>
-              </ul> */}
-            </li>
-
-            <li>
-              <a
-                href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <img src={slack} alt="Join us on slack" />
-              </a>
-            </li>
-
-            <li className="dropdown-title">
+            <li className="dropdown-title button">
               {mentorLoggedIn === true || studentLoggedIn === true
                 ? "Manage Account"
-                : "Login"}
+                : "Sign Up"}
 
               <ul className="dropdown-content">
                 {mentorLoggedIn !== true ? (
