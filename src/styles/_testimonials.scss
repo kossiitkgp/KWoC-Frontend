@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     padding: 1rem 0;
-    margin: 1rem;
+    margin: 2rem;
     text-align: center;
 
     .title {
@@ -45,14 +45,8 @@
     }
 
     a {
-      width: fit-content;
-      display: block;
-      text-decoration: none;
-      color: #eee;
-      background-color: #396eb0;
       padding: 0.5rem 1.2rem;
       margin-top: 1rem;
-      border-radius: 5px;
     }
   }
 
@@ -72,7 +66,7 @@
     .testimonial-name {
       font-size: 1.3rem;
       font-weight: 700;
-      color: #396eb0;
+      color: #000;
     }
 
     .testimonial-biotext {
