@@ -12,20 +12,19 @@ h1 {
     align-items: center;
 
     h1 {
-      font-size: 3rem;
+      font-size: 4rem;
       margin-bottom: 1.5rem;
       font-family: $header-font;
-      letter-spacing: 2px;
-      font-weight: 500;
+      font-weight: 700;
     }
 
     .input {
       width: 80vw;
       padding: 1rem 1.4rem;
       border-radius: 10px;
-      border: none;
       outline: none;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      box-shadow: 0.2rem 0.2rem 0.4rem rgba($color: #1a1a1a, $alpha: 0.1);
+      border: 1px solid #eaeaea;
       color: $text-color-black;
 
       @include lg {
@@ -36,11 +35,11 @@ h1 {
 }
 
 .project-card-grid {
-  padding: 5rem 1.5rem;
+  padding: 5rem 3rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  column-gap: 1.5rem;
-  row-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  column-gap: 3rem;
+  row-gap: 3rem;
   overflow-x: hidden;
 
   @include sm {

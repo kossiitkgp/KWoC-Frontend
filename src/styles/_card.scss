@@ -1,5 +1,6 @@
 .card {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.2rem 0.2rem 0.4rem rgba($color: #1a1a1a, $alpha: 0.1);
+  border: 1px solid #eaeaea;
   border-radius: 10px;
   padding: 1rem 1.5rem;
   color: $text-color-black;
@@ -11,27 +12,27 @@
     font-size: 2rem;
     font-family: $header-font;
     padding: 1rem 0;
+    font-weight: 700;
+    color: #333;
   }
 
   &-content {
     .content {
-      font-size: 1.1rem;
+      font-size: 1rem;
+      color: #666;
       margin: 1rem 0;
     }
 
-    .tags-grid {
-      display: inline-grid;
-      grid-template-columns: auto auto auto;
-      margin: 1rem 0;
-
-      .tag {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        color: $text-color-black;
-        margin: 0.5rem;
-        padding: 0.5rem 0.8rem;
-        border-radius: 10px;
-        text-align: center;
-      }
+    .tag {
+      display: inline-block;
+      background-color: #fafafa;
+      border: 1px solid #eaeaea;
+      font-size: 1rem;
+      color: #333;
+      margin: 0 0.5rem;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      text-align: center;
     }
 
     .details {
@@ -42,14 +43,12 @@
   &-footer {
     width: 100%;
     margin-top: auto;
-    padding: 2rem 0 1rem 0;
+    padding-top: 2rem;
     display: flex;
     justify-content: space-evenly;
 
     a {
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
       padding: 0.6rem 1rem;
-      color: $text-color-black;
       border-radius: 5px;
     }
   }
