@@ -34,16 +34,6 @@
     }
   }
 
-  @keyframes clickmid {
-    0% {
-      opacity: 1;
-    }
-
-    100% {
-      opacity: 0;
-    }
-  }
-
   @keyframes clicklast {
     0% {
       transform: rotate(0deg);
@@ -60,17 +50,7 @@
     }
 
     100% {
-      transform: translateY(-10px) rotate(0deg);
-    }
-  }
-
-  @keyframes outmid {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
+      transform: translateY(4px) rotate(0deg);
     }
   }
 
@@ -80,7 +60,7 @@
     }
 
     100% {
-      transform: translateY(10px) rotate(0deg);
+      transform: translateY(-4px) rotate(0deg);
     }
   }
 
@@ -92,11 +72,6 @@
       }
 
       &:nth-child(2) {
-        animation: outmid 0.2s;
-        animation-fill-mode: both;
-      }
-
-      &:nth-child(3) {
         animation: outlast 0.2s;
         animation-fill-mode: both;
       }
@@ -111,11 +86,6 @@
       }
 
       &:nth-child(2) {
-        animation: clickmid 0.2s;
-        animation-fill-mode: both;
-      }
-
-      &:nth-child(3) {
         animation: clicklast 0.2s;
         animation-fill-mode: both;
       }

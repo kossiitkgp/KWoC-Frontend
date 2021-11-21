@@ -49,11 +49,20 @@
         letter-spacing: 2px;
         font-size: 10rem;
         font-weight: 800;
+
+        @include sm {
+          font-size: 5.5rem;
+        }
       }
 
       .btns-container {
         display: flex;
         flex-direction: row;
+        align-items: center;
+
+        @include sm {
+          flex-direction: column;
+        }
       }
     }
   }

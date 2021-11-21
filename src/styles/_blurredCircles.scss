@@ -21,6 +21,9 @@
 .blurred-circles {
   z-index: -1;
   overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 
   .wrapper {
     filter: blur(50px);

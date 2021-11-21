@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import * as Icon from "react-feather";
-import slack from "../assets/slack.svg";
 
 function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -51,13 +50,6 @@ function Navbar() {
     <>
       <nav className="menu">
         <div className="wrapper">
-          {/* <div className="logo">
-            <a href="/">
-              <img src={logo} alt="logo" />
-              KWoC
-            </a>
-          </div> */}
-
           <ul>
             <li>
               <a href="/#about">About</a>
@@ -192,7 +184,6 @@ function Navbar() {
         >
           <span></span>
           <span></span>
-          <span></span>
         </div>
 
         <div className={`wrapper ${isActive ? "active" : ""}`}>
@@ -248,7 +239,7 @@ function Navbar() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <img src={slack} alt="Join us on slack" />
+                Join our Slack <Icon.Slack />
               </a>
             </li>
 
