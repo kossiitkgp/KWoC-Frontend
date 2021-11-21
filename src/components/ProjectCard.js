@@ -41,6 +41,25 @@ export default function Card(props) {
   return (
     <div className="card">
       <header className="card-header">{props.name}</header>
+      <section className="details">
+        <b>Mentored by:</b>
+        {[...Array(props.length).keys()].map((index) => {
+          return (
+            <div>
+              {props.mentor[index]}
+              {loggedIn && (
+                <p>
+                  (
+                  <a href={`mailto:${props.mentorId[index]}`}>
+                    {props.mentorId[index]}
+                  </a>
+                  )
+                </p>
+              )}
+            </div>
+          );
+        })}
+      </section>
       <div className="card-content">
         <div className="content">
           {" "}
@@ -58,42 +77,30 @@ export default function Card(props) {
           </ReactReadMoreReadLess>
         </div>
         <br />
-        <section className="tags-grid" id="projectTags">
+        <section id="projectTags">
           {props.tags.map((tag) => (
             <div key={tag} className="tag">
               {tag}
             </div>
           ))}
         </section>
-        <section className="details">
-          <b>Mentored by:</b>
-          {[...Array(props.length).keys()].map((index) => {
-            return (
-              <div>
-                <a href={`https://github.com/${props.mentorUsername[index]}`}>
-                  {props.mentor[index]}
-                </a>
-                <br />
-                {loggedIn && (
-                  <p>
-                    (
-                    <a href={`mailto:${props.mentorId[index]}`}>
-                      {props.mentorId[index]}
-                    </a>
-                    )
-                  </p>
-                )}
-              </div>
-            );
-          })}
-        </section>
       </div>
 
       <footer className="card-footer">
-        <a href={props.projectLink} target="_blank" rel="noopener noreferrer">
+        <a
+          className="button"
+          href={props.projectLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           View Project
         </a>
-        <a href={props.commLink} target="_blank" rel="noopener noreferrer">
+        <a
+          className="button"
+          href={props.commLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Join Channel
         </a>
       </footer>

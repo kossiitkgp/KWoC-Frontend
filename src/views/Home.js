@@ -2,6 +2,7 @@ import React from "react";
 import pullRequest from "../assets/git-pull-request.svg";
 import github from "../assets/github.svg";
 import group from "../assets/people.svg";
+import BlurredCircles from "../components/BlurredCircles";
 import Timeline from "../components/Timeline";
 import {
   MENTOR_MANUAL,
@@ -35,8 +36,9 @@ function Home() {
   return (
     <div className="home">
       <section className="hero">
+        <BlurredCircles />
         <div className="hero-body">
-          <h1 className="title">Welcome to KWoC</h1>
+          <h1 className="title">KWoC.</h1>
 
           <div className="btns-container">
             <a className="button" href={STUDENT_REGISTRATION_LINK}>
@@ -50,7 +52,7 @@ function Home() {
 
           <div className="btns-container">
             <a
-              className="button"
+              className="button secondary"
               href={STUDENT_MANUAL}
               rel="noopener noreferrer"
               target="_blank"
@@ -59,7 +61,7 @@ function Home() {
             </a>
 
             <a
-              className="button"
+              className="button secondary"
               href={MENTOR_MANUAL}
               rel="noopener noreferrer"
               target="_blank"
@@ -72,7 +74,7 @@ function Home() {
 
       <section className="container" id="about">
         <div className="about">
-          <h1>ABOUT</h1>
+          <h1>About</h1>
           <p>
             Kharagpur Winter of Code is a 5-week long online program for
             students who are new to open source software development. The

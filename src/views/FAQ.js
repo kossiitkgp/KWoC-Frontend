@@ -17,16 +17,10 @@ export default function FAQ() {
   }, []);
 
   return (
-    <div className="FAQs">
-      <section className="hero" id="faq">
-        <div className="hero-body">
-          <div className="container" id="content-faq">
-            <h1 className="title">Frequently Asked Questions</h1>
-            <h2 className="subtitle">
-              Wanna Ask us a question? Check these first!
-            </h2>
-          </div>
-        </div>
+    <div className="faq">
+      <section className="faq-hero">
+        <h1 className="title">Frequently Asked Questions</h1>
+        <p>Wanna ask us a question? Check these first.</p>
       </section>
 
       <div className="container">

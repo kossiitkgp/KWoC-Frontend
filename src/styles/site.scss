@@ -2,6 +2,7 @@
 @import "vars";
 @import "mixins";
 @import "animations";
+@import "generic";
 
 // components
 @import "footer";
@@ -10,6 +11,7 @@
 @import "timeline";
 @import "tables";
 @import "form";
+@import "blurredCircles";
 
 // views
 @import "faq";

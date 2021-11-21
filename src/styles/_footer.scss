@@ -1,43 +1,80 @@
 .footer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
 
-  color: #fff;
-  background-color: $primary-theme;
-  padding: 2rem 0;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-top: 1px solid #eaeaea;
 
-  &-column {
+  nav {
+    width: 50rem;
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    font-size: 0.875rem;
+
+    .footer-column {
+      margin: 0 1rem;
+      h3 {
+        font-weight: 400;
+        font-size: 0.875rem;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+        color: #666;
+        margin-top: 1.2rem;
+
+        li {
+          padding-bottom: 0.8rem;
+
+          a {
+            display: block;
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+              color: #b67dfc;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-title {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    margin: 2rem 0;
 
-  h1 {
-    font-size: 1.6rem;
-    font-family: $header-font;
-    letter-spacing: 2px;
-  }
+    h1 {
+      font-size: 1.7rem;
+    }
 
-  h2 {
-    font-size: 1.2rem;
-  }
+    h2 {
+      font-size: 1.2rem;
 
-  a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    margin: 1rem 0 0 0;
-    font-size: 1.2rem;
-
-    &:hover {
-      color: #b67dfc;
+      a {
+        text-decoration: none;
+      }
     }
   }
 
   @include sm {
-    flex-direction: column;
-    text-align: center;
+    nav {
+      flex-direction: column;
+      text-align: center;
+      width: 80vw;
+    }
+  }
+
+  @include md {
+    nav {
+      width: 80vw;
+      justify-content: space-evenly;
+    }
   }
 }

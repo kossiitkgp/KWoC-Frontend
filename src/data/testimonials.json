@@ -1,0 +1,46 @@
+{
+  "testimonials": [
+    {
+      "Name": "Aniq Ur Rahman",
+      "role": "KWoC '17 Mentor",
+      "desc": "KWoC '17 was my first mentoring experience and I enjoyed working with talented people who had the zeal and vigour to learn new things. Some of my mentees were also accepted as GSoC '18 students,which makes me proud and happy in the true sense of the word. It's a great initiative by KOSS to promote the open source culture among students and I hope the next version achieves greater heights and influences more lives.",
+      "imageLink": "https://avatars.githubusercontent.com/Aniq55",
+      "blogLink": "https://aniq55.github.io/"
+    },
+    {
+      "Name": " Dhruv Apte",
+      "role": "KWoC '17 Mentor",
+      "desc": " I had a really good time at KWoC '17. My projects prospered well            because of inputs from participants. Regular chaperoning from KOSS maintained that the quality of the coding program never touched alow point and maintained the coding frequency consistent throughout           the program.",
+      "imageLink": "https://avatars.githubusercontent.com/the-ethan-hunt",
+      "blogLink": "https://the-ethan-hunt.github.io/about/"
+    },
+    {
+      "Name": "Aniq Ur Rahman",
+      "role": "KWoC '17 Mentor",
+      "desc": "KWoC '17 was my first mentoring experience and I enjoyed working with talented people who had the zeal and vigour to learn new things. Some of my mentees were also accepted as GSoC '18 students,which makes me proud and happy in the true sense of the word. It's a great initiative by KOSS to promote the open source culture among students and I hope the next version achieves greater heights and influences more lives.",
+      "imageLink": "https://avatars.githubusercontent.com/Aniq55",
+      "blogLink": "https://aniq55.github.io/"
+    },
+    {
+      "Name": " Gautham Santhosh",
+      "role": "KWoC '17 Mentor",
+      "desc": " My project was a normal one before KWOC, something I had worked on            in a hackathon. But I loved the idea but found it hard to do alone.            But due to KWoC I got very good quality amazing contributors who            helped to changed that small project into a top 3 product in ProductHunt and featured in many tech publications.",
+      "imageLink": "https://avatars.githubusercontent.com/gauthamzz",
+      "blogLink": "https://gauthamzz.github.io/"
+    },
+    {
+      "Name": " Athitya Kumar",
+      "role": " KWoC '16 and '17' Mentor ",
+      "desc": "The experience has been great both the years, with a lot of new            students learning open-source development from KWoC by contributing            to the projects. Some of my mentees have even gone ahead to do a            GSoC project as well in the following summers, and are definitely            are still actively contributing to open-source.",
+      "imageLink": "https://avatars.githubusercontent.com/athityakumar",
+      "blogLink": "https://athityakumar.github.io/blog/posts/Kharagpur_Winter_of_Code_2016/"
+    },
+    {
+      "Name": "Aniq Ur Rahman",
+      "role": "KWoC '17 Mentor",
+      "desc": "KWoC has provided me opportunities to learn more about open source,            accelerate the growth of my projects, along with helping new            developers explore the power and opportunities of FOSS. I highly            recommend open source enthusiasts and GSoC aspirants to participate            in KWoC.",
+      "imageLink": "https://avatars.githubusercontent.com/jajodiaraghav",
+      "blogLink": "http://jajodiaraghav.github.io/"
+    }
+  ]
+}

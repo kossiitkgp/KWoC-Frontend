@@ -1,43 +1,82 @@
 .testimonial {
   .hero-body {
-    background-image: linear-gradient(135deg, #9545f7 0%, #000000 50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem 0;
-    margin-bottom: 1rem;
+    margin: 2rem;
+    text-align: center;
 
     .title {
-      color: rgb(218, 217, 217);
+      color: #000;
       margin: 0;
       font-size: 4rem;
     }
     .subtitle {
-      color: rgb(228, 224, 224);
+      color: #666;
     }
   }
 
   &-list {
-    column-count: 3;
-    column-gap: 1rem;
-  }
+    padding: 5rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    column-gap: 2rem;
+    row-gap: 2rem;
+    overflow-x: hidden;
 
-  &-box {
-    text-align: center;
-    background-color: #ddd;
-    padding: 1.5rem;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-
-    p {
-      display: inline-block;
+    @include sm {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
   }
 
-  &-img {
-    width: 128px;
-    border-radius: 50%;
+  &-box {
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0.2rem 0.2rem 0.4rem rgba($color: #1a1a1a, $alpha: 0.1);
+    border: 1px solid #eaeaea;
+
+    img {
+      width: 128px;
+      border-radius: 50%;
+      margin: 0 1.5rem;
+    }
+
+    a {
+      padding: 0.5rem 1.2rem;
+      margin-top: 1rem;
+    }
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .testimonial-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .testimonial-biotext {
+      font-size: 1rem;
+      color: #666;
+    }
+  }
+
+  &-desc {
+    padding: 1.5rem 1rem;
+    color: #333;
   }
 }

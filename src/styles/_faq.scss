@@ -1,18 +1,79 @@
-// TODO: styling with classes, id for linking or specific stuff
-#faq {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../assets/intro-background.jpg");
-  background-size: cover;
-}
+// TODO: fix font sizes for smaller devices
+.faq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-#content-faq {
-  color: white !important;
-}
-@media (max-width: 768px) {
-  #faq {
+  &-hero {
+    padding: 4rem 1rem;
+    margin: 4rem 0;
+
     .title {
-      font-size: 4rem;
-      line-height: 1.3;
+      font-weight: 700;
+      font-size: 4.5rem;
+      line-height: 1.2;
+      text-align: center;
+
+      color: #000;
+
+      @include sm {
+        font-size: 3rem;
+      }
+    }
+
+    p {
+      color: #666;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 2rem;
+      text-align: center;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    padding: 0 1rem;
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      line-height: 3rem;
+      padding-top: 1.8rem;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0.5rem 0;
+
+      li {
+        p:first-of-type {
+          font-size: 1.1rem;
+          font-weight: 600;
+        }
+
+        ul {
+          list-style-type: square;
+          margin: 0 1rem;
+        }
+
+        font-size: 1rem;
+        line-height: 1.5rem;
+        font-weight: 400;
+
+        blockquote {
+          color: grey;
+          text-align: center;
+          border-left: 10px solid #50e3c2;
+          padding: 1rem 0;
+          p,
+          p:first-of-type {
+            margin: 0;
+          }
+        }
+      }
     }
   }
 }

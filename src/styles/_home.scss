@@ -23,9 +23,9 @@
   .hero {
     display: flex;
     flex-direction: column;
-    background: url("../assets/bonfire.png");
+    align-items: center;
     background-size: cover;
-    height: 80vh;
+    height: 90vh;
     margin: 0;
 
     .hero-body {
@@ -43,39 +43,25 @@
       }
 
       .title {
-        color: $primary-text-light-grey;
+        color: $primary-text-black;
         margin: 2rem 0 1rem;
         font-family: $header-font;
         letter-spacing: 2px;
+        font-size: 10rem;
+        font-weight: 800;
+
+        @include sm {
+          font-size: 5.5rem;
+        }
       }
 
       .btns-container {
         display: flex;
         flex-direction: row;
+        align-items: center;
 
-        .button {
-          background-color: rgba($color: #000000, $alpha: 0.5);
-          border: 0px solid #fff;
-          border-radius: 10px;
-          text-decoration: none;
-          font-size: 1.2rem;
-          color: $secondary-text-light-grey;
-          transition: all 0.3s ease-in-out;
-          margin: 1rem 0.5rem;
-          padding: 1rem 1.5rem;
-
-          &:hover {
-            background-color: #fff;
-            color: #000;
-            transform: scale(1.05);
-          }
-
-          &:visited {
-            background-color: rgba($color: #000000, $alpha: 0.5);
-            border: 0px solid #fff;
-            color: $primary-text-white;
-            transition: all 0.3s ease-in-out;
-          }
+        @include sm {
+          flex-direction: column;
         }
       }
     }
@@ -121,8 +107,7 @@
     }
 
     &-card {
-      background-color: rgba($color: $primary-theme, $alpha: 1);
-      color: #ccc;
+      color: #111;
       margin: 1rem;
       padding: 1rem 1.5rem;
       display: flex;
@@ -145,7 +130,7 @@
   .tags {
     text-align: center;
     min-height: 50vh;
-    background-color: $primary-theme;
+    // background-color: $primary-theme;
     margin-top: 5rem;
 
     &-title {
@@ -209,11 +194,11 @@
   }
 
   .stats {
-    background: linear-gradient(
-        rgba($primary-theme, 0.5),
-        rgba($primary-theme, 0.5)
-      ),
-      url("../assets/bonfire.png");
+    // background: linear-gradient(
+    //     rgba($primary-theme, 0.5),
+    //     rgba($primary-theme, 0.5)
+    //   ),
+    //   url("../assets/bonfire.png");
     min-height: 80vh;
     background-size: cover;
     margin: 0 0 5rem 0;
