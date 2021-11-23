@@ -1,6 +1,7 @@
 import axios from "axios";
 import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Card from "../components/ProjectCard.js";
 import { BACKEND_URL } from "../constants";
 import dummyProjects from "../data/projectsDummy.json";
@@ -87,6 +88,7 @@ export default function Projects() {
   const [searchedProjects, setSearchedProjects] = useState([]);
 
   const URL = `${BACKEND_URL}/project/all`;
+  const location = useLocation();
 
   useEffect(() => {
     axios
@@ -97,10 +99,26 @@ export default function Projects() {
       .catch((error) => {
         console.log(error);
       });
+
+    const urlParams = new URLSearchParams(location.search);
+    const query = urlParams.get("query");
+    if (query !== null) {
+      setSearchText(query);
+      const fuse = new Fuse(allProjects, searchOptions);
+      const results = fuse.search(query).map((i) => i.item);
+      setSearchedProjects(results);
+    }
   }, []);
+
+  const setURLParams = (query) => {
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set("query", query || "");
+    window.history.replaceState({}, "", `${location.pathname}?${urlParams}`);
+  };
 
   function handleSearch(e) {
     const fuse = new Fuse(allProjects, searchOptions);
+    setURLParams(e.target.value);
     setSearchText(e.target.value);
     const results = fuse.search(e.target.value).map((i) => i.item);
     setSearchedProjects(results);
@@ -146,6 +164,7 @@ export default function Projects() {
             type="text"
             placeholder="Search projects using project name, topics and mentor"
             onChange={handleSearch}
+            value={searchText}
           ></input>
         </div>
       </div>
