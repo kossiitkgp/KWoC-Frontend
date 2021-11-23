@@ -17,7 +17,7 @@ async function getNewReadme(repo, branch) {
   }
   const repoName = repo.replace("https://github.com/", "");
 
-  const endpoint = `https://api.github.com/repos/${repoName}/readme?ref=${branch.value}`;
+  const endpoint = `https://api.github.com/repos/${repoName}/readme?ref=${branch}`;
   const headers = {
     Accept: "application/vnd.github.v3+json",
     // recommended by Github
@@ -41,13 +41,15 @@ async function getRepoBranches(repo) {
   return branches_opts;
 }
 
-export default function ProjectEditForm() {
+export default function ProjectEditForm(props) {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
+  const [projectid, setProjectId] = useState(0);
 
   const [tags, setTags] = useState([]);
   const [showTags, setShowTags] = useState(false);
 
+  const [selectedBranch, setSelectedBranch] = useState({});
   const [branch, setBranch] = useState("");
   const [showBranch, setShowBranch] = useState(false);
 
@@ -63,12 +65,13 @@ export default function ProjectEditForm() {
       localStorage.getItem("mentor_jwt") === null ||
       localStorage.getItem("mentor_jwt") === undefined
     )
-      window.history.push("/");
+      props.history.push("/");
 
     const window_url_split = window.location.href.split("/");
-    const project_id = window_url_split[window_url_split.length - 1];
+    const project_id = parseInt(window_url_split[window_url_split.length - 1]);
+    setProjectId(project_id);
     const data = {
-      id: parseInt(project_id),
+      id: project_id,
     };
     // TODO Fetch existing details from the project
     const PROJECT_DETAILS_ENDPOINT = `${BACKEND_URL}/project/details`;
@@ -84,12 +87,13 @@ export default function ProjectEditForm() {
           setName(data["name"]);
           setDesc(data["desc"]);
 
-          setBranch({ value: data["branch"], label: data["branch"] });
+          setSelectedBranch({ value: data["branch"], label: data["branch"] });
           getRepoBranches(data["repo_link"])
             .then((res) => setBranchOpts(res))
             .catch((err) =>
               console.log("err in getting branches from Github", err)
             );
+          setBranch(data["branch"]);
           setShowBranch(true);
 
           const tags_arr = JSON.parse(data["tags"]);
@@ -128,6 +132,41 @@ export default function ProjectEditForm() {
   async function refetchREADME() {
     const newReadme = await getNewReadme(repoLink, branch);
     setReadme(newReadme);
+  }
+
+  function handleSubmit() {
+    const data = {
+      id: projectid,
+      name: name,
+      desc: desc,
+      branch: branch,
+      tags: JSON.stringify(tags),
+      readme: readme,
+    };
+
+    const headers = {
+      Bearer: localStorage.getItem("mentor_jwt"),
+    };
+
+    const PROJECT_EDIT_ENDPOINT = `${BACKEND_URL}/project/update`;
+    axios
+      .put(PROJECT_EDIT_ENDPOINT, data, { headers })
+      .then((res) => {
+        if (res.status == 200) {
+          alert("You have successfully updated the details");
+          props.history.push("/dashboard/mentor");
+        } else if (res.status == 403) {
+          alert("You cannot edit this project");
+        } else if (res.status == 400) {
+          alert("Details are Incorrect. Failed to update the Project");
+        } else {
+          alert("Server Error, Try again");
+          console.log(res);
+        }
+      })
+      .catch((err) => {
+        console.log("err in editing project is ", err);
+      });
   }
 
   return (
@@ -191,7 +230,7 @@ export default function ProjectEditForm() {
             isSearchable
             onChange={handleChangeBranchField}
             options={branchOpts}
-            defaultValue={branch}
+            defaultValue={selectedBranch}
             placeholder="Select Branch"
           />
         </div>
@@ -203,6 +242,15 @@ export default function ProjectEditForm() {
           onClick={refetchREADME}
         >
           Re-Fetch README
+        </a>
+      </div>
+
+      <div>
+        <a
+          className="button is-rounded is-fullWidth column is-full"
+          onClick={handleSubmit}
+        >
+          Submit
         </a>
       </div>
     </div>
