@@ -10,14 +10,13 @@ export default function Testimonial() {
           Check out how enjoyable KWoC was for the previous participants
         </h2>
       </section>
-      {/* TODO: maybe a markdown renderer here if time permits, reading and editing these shouldn't require writing code */}
       <section className="testimonial-list">
         {testimonialData.testimonials.map((testimonial) => (
           <div className="testimonial-box">
             <div className="testimonial-header">
               <img src={testimonial.imageLink} alt="" />
               <div className="testimonial-header-column">
-                <div className="testimonial-name">{testimonial.Name}</div>
+                <div className="testimonial-name">{testimonial.name}</div>
                 <div className="testimonial-biotext">
                   <div>{testimonial.role}</div>
                 </div>
@@ -26,7 +25,7 @@ export default function Testimonial() {
                 </a>
               </div>
             </div>
-            <div className="testimonial-desc">{testimonial.desc}</div>
+            <div className="testimonial-desc">{testimonial.quote}</div>
           </div>
         ))}
       </section>
