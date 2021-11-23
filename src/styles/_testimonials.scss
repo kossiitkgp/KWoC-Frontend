@@ -35,11 +35,12 @@
     background-color: #fff;
     padding: 1rem 1.5rem;
     border-radius: 10px;
-    box-shadow: 0.2rem 0.2rem 0.4rem rgba($color: #1a1a1a, $alpha: 0.1);
     border: 1px solid #eaeaea;
 
     img {
       width: 128px;
+      height: 128px;
+      object-fit: cover;
       border-radius: 50%;
       margin: 0 1.5rem;
     }
@@ -52,9 +53,7 @@
 
   &-header {
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
     padding: 1rem;
 
     &-column {
