@@ -11,14 +11,50 @@ const options = Tags.map((item) => {
   return { value: item, label: item };
 });
 
+async function getNewReadme(repo, branch) {
+  if (repo.slice(-1) === "/") {
+    repo = repo.slice(0, -1);
+  }
+  const repoName = repo.replace("https://github.com/", "");
+
+  const endpoint = `https://api.github.com/repos/${repoName}/readme?ref=${branch.value}`;
+  const headers = {
+    Accept: "application/vnd.github.v3+json",
+    // recommended by Github
+  };
+
+  const res = await axios.get(endpoint, { headers: headers });
+  const decodedReadme = atob(res.data["content"]);
+  return decodedReadme;
+}
+async function getRepoBranches(repo) {
+  if (repo.slice(-1) === "/") {
+    repo = repo.slice(0, -1);
+  }
+  const repoName = repo.replace("https://github.com/", "");
+  const endpoint = `https://api.github.com/repos/${repoName}/branches`;
+  const res = await axios.get(endpoint);
+  const branches_opts = res.data.map((item) => {
+    return { value: item["name"], label: item["name"] };
+  });
+
+  return branches_opts;
+}
+
 export default function ProjectEditForm() {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  const [tags, setTags] = useState([]);
-  const [branch, setBranch] = useState("");
-  const [readme, setReadme] = useState("");
 
+  const [tags, setTags] = useState([]);
+  const [showTags, setShowTags] = useState(false);
+
+  const [branch, setBranch] = useState("");
+  const [showBranch, setShowBranch] = useState(false);
+
+  const [readme, setReadme] = useState("");
   const [branchOpts, setBranchOpts] = useState([]);
+
+  const [repoLink, setRepoLink] = useState("");
 
   useEffect(() => {
     // TODO - this should be done better
@@ -31,31 +67,49 @@ export default function ProjectEditForm() {
 
     const window_url_split = window.location.href.split("/");
     const project_id = window_url_split[window_url_split.length - 1];
-    console.log("project id is ", project_id);
     const data = {
-      id: project_id,
+      id: parseInt(project_id),
     };
     // TODO Fetch existing details from the project
     const PROJECT_DETAILS_ENDPOINT = `${BACKEND_URL}/project/details`;
-    console.log("sending request to ", PROJECT_DETAILS_ENDPOINT);
-    fetch(PROJECT_DETAILS_ENDPOINT, {
-      method: "POST",
-      headers: {
-        Bearer: localStorage.getItem("mentor_jwt"),
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
+
+    const headers = {
+      Bearer: localStorage.getItem("mentor_jwt"),
+    };
+    axios
+      .post(PROJECT_DETAILS_ENDPOINT, data, { headers })
       .then((res) => {
-        if (res.status === 200) {
-          console.log("project detials i got from bckend ,", res);
+        const data = res.data;
+        if (res.status == 200) {
+          setName(data["name"]);
+          setDesc(data["desc"]);
+
+          setBranch({ value: data["branch"], label: data["branch"] });
+          getRepoBranches(data["repo_link"])
+            .then((res) => setBranchOpts(res))
+            .catch((err) =>
+              console.log("err in getting branches from Github", err)
+            );
+          setShowBranch(true);
+
+          const tags_arr = JSON.parse(data["tags"]);
+          const tags_map_arr = tags_arr.map((item) => {
+            return { label: item, value: item };
+          });
+          setTags(tags_map_arr);
+          setShowTags(true);
+
+          setRepoLink(data["repo_link"]);
+        } else if (res.status == 403) {
+          alert("You cannot edit this project");
         } else {
-          alert("Cannot Edit form. Please login from your mentor ID");
+          alert("Server error");
+          console.log("res ", res);
         }
       })
       .catch((err) => {
-        alert("Server Error Try again");
-        console.log(err);
+        console.log("error in Project details fetch");
+        alert("Server Error, Try again");
       });
   }, []);
 
@@ -71,9 +125,9 @@ export default function ProjectEditForm() {
     }
   }
 
-  async function refetchREADME(repo) {
-    // TODO write it
-    return "todo";
+  async function refetchREADME() {
+    const newReadme = await getNewReadme(repoLink, branch);
+    setReadme(newReadme);
   }
 
   async function showBranchField(repo) {
@@ -115,40 +169,44 @@ export default function ProjectEditForm() {
         </div>
       </div>
 
-      <div className="field">
-        <label className="label">Tags for the project</label>
-        <div className="control">
-          <CreatableSelect
-            isMulti
-            isClearable
-            onChange={handleChangeTagsField}
-            options={options}
-            defaultValue={tags}
-            placeholder="Select or Create Tags"
-          />
+      {showTags && (
+        <div className="field">
+          <label className="label">Tags for the project</label>
+          <div className="control">
+            <CreatableSelect
+              isMulti
+              isClearable
+              onChange={handleChangeTagsField}
+              options={options}
+              defaultValue={tags}
+              placeholder="Select or Create Tags"
+            />
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="field">
-        <label className="label">Select Branch for stats</label>
-        <img
-          alt=""
-          src={InfoIcon}
-          data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
+      {showBranch && (
+        <div className="field">
+          <label className="label">Select Branch for stats</label>
+          <img
+            alt=""
+            src={InfoIcon}
+            data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
          <br/>Please select the branch on which students should be contributing. 
          <br/> We will be fetching the contributions data from the branch you have specified. 
          <br/> You can also change the branch in middle of KWoC`}
-        />
-        <ReactTooltip place="bottom" type="info" effect="float" html />
-        <Select
-          isClearable
-          isSearchable
-          onChange={handleChangeBranchField}
-          options={branchOpts}
-          //   defaultValue={branchOpts[0]}
-          placeholder="Select Branch"
-        />
-      </div>
+          />
+          <ReactTooltip place="bottom" type="info" effect="float" html />
+          <Select
+            isClearable
+            isSearchable
+            onChange={handleChangeBranchField}
+            options={branchOpts}
+            defaultValue={branch}
+            placeholder="Select Branch"
+          />
+        </div>
+      )}
 
       <div>
         <a
