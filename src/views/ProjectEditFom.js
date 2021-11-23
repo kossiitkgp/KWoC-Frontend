@@ -130,17 +130,6 @@ export default function ProjectEditForm() {
     setReadme(newReadme);
   }
 
-  async function showBranchField(repo) {
-    const endpoint = `https://api.github.com/repos/${repo}/branches`;
-    const res = await axios.get(endpoint);
-    const branches_opts = res.data.map((item) => {
-      return { value: item["name"], label: item["name"] };
-    });
-    setBranchOpts(branches_opts);
-    // TODO based on response this should be set.
-    // setBranch(branches_opts[0]["value"]); // setting the first as the default selected branch
-  }
-
   return (
     <div className="box">
       <div className="field">
