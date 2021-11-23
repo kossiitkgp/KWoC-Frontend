@@ -1,4 +1,5 @@
-export const BACKEND_URL = `https://kwoc.metamehta.me`;
+// export const BACKEND_URL = `https://kwoc.metamehta.me`;
+export const BACKEND_URL = `http://9683-2405-201-a404-d0e3-68cd-99b5-f230-39fc.ngrok.io`;
 export const STATS_API = `https://stats.metamehta.me`;
 export const MID_EVAL_DATE = "2020-12-18";
 

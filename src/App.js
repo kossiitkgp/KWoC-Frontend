@@ -8,6 +8,7 @@ import Home from "./views/Home";
 import MentorDashboard from "./views/MentorDashboard";
 import MentorForm from "./views/MentorForm";
 import MentorStats from "./views/MentorStats";
+import ProjectEditForm from "./views/ProjectEditFom";
 import ProjectForm from "./views/ProjectForm";
 import Projects from "./views/Projects";
 import ProjectsTable from "./views/ProjectsTable";
@@ -57,6 +58,13 @@ function App() {
           exact
           path="/form/project"
           component={ProjectForm}
+        />
+
+        <Route
+          onChange={ScrollToTop}
+          exact
+          path="/form/projectedit/:id"
+          component={ProjectEditForm}
         />
         {/* Dashboard of Student and Mentor */}
         <Route
