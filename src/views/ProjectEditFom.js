@@ -53,6 +53,12 @@ export default function ProjectEditForm(props) {
   const [branch, setBranch] = useState("");
   const [showBranch, setShowBranch] = useState(false);
 
+  const [secondaryMentor, setSecondaryMentor] = useState("");
+  const [showSecMentor, setShowSecMentor] = useState(false);
+
+  const [selectedSecondaryMentor, setSelectedSecondaryMentor] = useState({});
+  const [secondaryMentorOpts, setSecondaryMentorOpts] = useState([]);
+
   const [readme, setReadme] = useState("");
   const [branchOpts, setBranchOpts] = useState([]);
 
@@ -104,6 +110,10 @@ export default function ProjectEditForm(props) {
           setShowTags(true);
 
           setRepoLink(data["repo_link"]);
+          setSelectedSecondaryMentor({
+            label: data["secondaryMentor"],
+            value: data["secondaryMentor"],
+          });
         } else if (res.status == 403) {
           alert("You cannot edit this project");
         } else {
@@ -114,6 +124,30 @@ export default function ProjectEditForm(props) {
       .catch((err) => {
         console.log("error in Project details fetch");
         alert("Server Error, Try again");
+      });
+
+    // secondary mentor
+
+    const mentor_username = {
+      mentor: localStorage.getItem("mentor_username"),
+    };
+
+    const SEC_MENTORS_ENDPOINT = `${BACKEND_URL}/mentor/all`;
+
+    axios
+      .post(SEC_MENTORS_ENDPOINT, mentor_username, { headers })
+      .then((res) => {
+        const mentor_map_arr = res.data.map((item) => {
+          return {
+            value: item.Username,
+            label: `${item.Name}(@${item.Username})`,
+          };
+        });
+        setSecondaryMentorOpts(mentor_map_arr);
+        setShowSecMentor(true);
+      })
+      .catch((err) => {
+        console.log("Error in fetching Secondary mentors is", err);
       });
   }, []);
 
@@ -126,6 +160,13 @@ export default function ProjectEditForm(props) {
     if (tag !== null) {
       const selectedBranch = tag.value;
       setBranch(selectedBranch);
+    }
+  }
+
+  function handleChangeSMentorField(tag, action) {
+    if (tag !== null) {
+      const selectedSMentor = tag.value;
+      setSecondaryMentor(selectedSMentor);
     }
   }
 
@@ -142,6 +183,7 @@ export default function ProjectEditForm(props) {
       branch: branch,
       tags: JSON.stringify(tags),
       readme: readme,
+      secondaryMentor: secondaryMentor,
     };
 
     const headers = {
@@ -232,6 +274,22 @@ export default function ProjectEditForm(props) {
             options={branchOpts}
             defaultValue={selectedBranch}
             placeholder="Select Branch"
+          />
+        </div>
+      )}
+
+      {showSecMentor && (
+        <div className="field">
+          <label className="label">
+            Select Secondary Mentor(You should already know him/her)
+          </label>
+          <Select
+            isClearable
+            isSearchable
+            onChange={handleChangeSMentorField}
+            options={secondaryMentorOpts}
+            defaultValue={selectedSecondaryMentor}
+            placeholder="Select Secondary Mentor"
           />
         </div>
       )}
