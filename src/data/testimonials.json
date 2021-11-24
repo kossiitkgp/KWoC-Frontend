@@ -90,34 +90,6 @@
       "quote": "I got to learn a lot about web scraping and webdriver automation.Lots of thanks to my mentor Nitin Choudhary and KOSS for such a wonderful initiative.",
       "imageLink": "https://avatars1.githubusercontent.com/u/23414388?s=460&v=4",
       "blogLink": "http://vernwalrahul.blogspot.in/"
-    },
-    {
-      "name": "Arindam Biswas",
-      "role": "KWoC '16 Student",
-      "quote": "The project consisted of functions to decode and encode functions and some other features. I thought of developing a GUI to decode and encode in morsecode.",
-      "imageLink": "https://raw.githubusercontent.com/kossiitkgp/KWoC-21-Frontend/master/public/arindam.jpg",
-      "blogLink": "http://localhost:8000/static/files/arindam.pdf"
-    },
-    {
-      "name": "Aditya Singh",
-      "role": "KWoC '16 Student",
-      "quote": "Thanks to the people at Kharagpur open source society for organising Kharagpur Winter of code for the students who are eager to contribute to open source community.",
-      "imageLink": "https://raw.githubusercontent.com/kossiitkgp/KWoC-21-Frontend/master/public/aditya.jpg",
-      "blogLink": "http://localhost:8000/static/files/adityasingh.pdf"
-    },
-    {
-      "name": "Zishan Sami",
-      "role": "KWoC '16 Student",
-      "quote": "That amazing feeling when you make your first commit or successfully merge your first pull request is something which cannot be described in words.Thank you KWOC for providing such a great opportunity.",
-      "imageLink": "https://avatars1.githubusercontent.com/u/19925138?s=460&v=4",
-      "blogLink": "http://localhost:8000/static/files/zishan_sami.pdf"
-    },
-    {
-      "name": "Amrish Kumar",
-      "role": "KWoC '16 Student",
-      "quote": "I came to know about KWOC and was happy to contribute yet another project to the open source community. Among KWOC projects Sheldonisms impressed me.",
-      "imageLink": "https://avatars2.githubusercontent.com/u/19743282?s=460&v=4",
-      "blogLink": "http://localhost:8000/static/files/zishan_sami.pdf"
     }
   ]
 }
