@@ -4,11 +4,9 @@ import testimonialData from "../data/testimonials.json";
 export default function Testimonial() {
   return (
     <div className="testimonial">
-      <section className="hero-body">
+      <section className="testimonial-hero">
         <h1 className="title">Testimonials</h1>
-        <h2 className="subtitle">
-          Check out how enjoyable KWoC was for the previous participants
-        </h2>
+        <p>Check out how enjoyable KWoC was for the previous participants</p>
       </section>
       <section className="testimonial-list">
         {testimonialData.testimonials.map((testimonial) => (

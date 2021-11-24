@@ -1,20 +1,27 @@
 .testimonial {
-  .hero-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-    margin: 2rem;
-    text-align: center;
+  &-hero {
+    padding: 4rem 1rem;
+    margin: 4rem 0;
 
     .title {
+      font-weight: 700;
+      font-size: 4.5rem;
+      line-height: 1.2;
+      text-align: center;
+
       color: #000;
-      margin: 0;
-      font-size: 4rem;
+
+      @include sm {
+        font-size: 3rem;
+      }
     }
-    .subtitle {
+
+    p {
       color: #666;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 2rem;
+      text-align: center;
     }
   }
 

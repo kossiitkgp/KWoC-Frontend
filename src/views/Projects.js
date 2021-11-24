@@ -146,18 +146,11 @@ export default function Projects() {
 
   return (
     <div className="projects">
-      {/* <section class='hero is-medium is-danger is-bold' id='projects'>
-        <div class='hero-body'>
-          <div class='container'>
-            <h1 class='title'>
-              Projects
-            </h1>
-          </div>
-        </div>
-      </section> */}
+      <div class="projects-hero">
+        <h1 class="title">Projects</h1>
+      </div>
 
       <div className="projects-search-box">
-        <h1 className="title">Projects</h1>
         <div class="field">
           <input
             class="input"
