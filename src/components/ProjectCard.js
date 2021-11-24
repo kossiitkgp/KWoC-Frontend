@@ -48,13 +48,9 @@ export default function Card(props) {
             <div>
               {props.mentor[index]}
               {loggedIn && (
-                <p>
-                  (
-                  <a href={`mailto:${props.mentorId[index]}`}>
-                    {props.mentorId[index]}
-                  </a>
-                  )
-                </p>
+                <a href={`mailto:${props.mentorId[index]}`}>
+                  {props.mentorId[index]}
+                </a>
               )}
             </div>
           );

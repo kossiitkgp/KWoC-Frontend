@@ -12,7 +12,17 @@
     font-family: $header-font;
     padding: 1rem 0;
     font-weight: 700;
+  }
+
+  .details {
+    font-size: 1rem;
     color: #333;
+
+    b,
+    div {
+      display: inline-block;
+      padding-right: 0.5rem;
+    }
   }
 
   &-content {
@@ -28,21 +38,17 @@
       border: 1px solid #eaeaea;
       font-size: 1rem;
       color: #333;
-      margin: 0 0.5rem;
+      margin: 0.5rem;
       padding: 0.5rem 0.8rem;
       border-radius: 5px;
       text-align: center;
-    }
-
-    .details {
-      font-size: 1.2rem;
     }
   }
 
   &-footer {
     width: 100%;
     margin-top: auto;
-    padding-top: 2rem;
+    padding-top: 1rem;
     display: flex;
     justify-content: space-evenly;
 
