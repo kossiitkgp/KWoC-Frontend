@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ReactReadMoreReadLess from "react-read-more-read-less";
+import { useLocation } from "react-router-dom";
 
 export default function Card(props) {
   const [loggedIn, setLoggedIn] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     // TODO: use auth hook here
@@ -75,9 +77,13 @@ export default function Card(props) {
         <br />
         <section id="projectTags">
           {props.tags.map((tag) => (
-            <div key={tag} className="tag">
+            <a
+              href={`${location.pathname}?query=${tag}`}
+              key={tag}
+              className="tag"
+            >
               {tag}
-            </div>
+            </a>
           ))}
         </section>
       </div>
