@@ -80,6 +80,30 @@ export default function Form(props) {
     // TODO:
     // Add an endpoint which fetches all mentor usernames from BACKEND
     // Corresponding useState has been defined - [mentorUsernames, setMentorUsernames]
+    const headers = {
+      Bearer: localStorage.getItem("mentor_jwt"),
+    };
+
+    const data = {
+      mentor: localStorage.getItem("mentor_username"),
+    };
+
+    const SEC_MENTORS_ENDPOINT = `${BACKEND_URL}/mentor/all`;
+
+    axios
+      .post(SEC_MENTORS_ENDPOINT, data, { headers })
+      .then((res) => {
+        const mentor_map_arr = res.data.map((item) => {
+          return {
+            value: item.Username,
+            label: `${item.Name}(@${item.Username})`,
+          };
+        });
+        setMentorUsernames(mentor_map_arr);
+      })
+      .catch((err) => {
+        console.log("Error in fetching Secondary mentors is", err);
+      });
   }, []);
 
   /**
@@ -296,6 +320,8 @@ export default function Form(props) {
       comChannel: channelLink,
       tags: JSON.stringify(tags),
       readme: decodedReadme,
+      branch: branch,
+      secondaryMentor: secondaryMentor,
     };
 
     // make an axios request to BACKEND here
