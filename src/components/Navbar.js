@@ -124,30 +124,47 @@ function Navbar() {
               </a>
             </li>
 
-            <li className="dropdown-title button">
+            <li
+              className={isDown_2 ? "isDown" : ""}
+              onClick={() => dropdownNikal(2)}
+            >
               {mentorLoggedIn === true || studentLoggedIn === true
                 ? "Manage Account"
                 : "Sign Up"}
+              {isDown_2 ? <Icon.ChevronUp /> : <Icon.ChevronDown />}
 
-              <ul className="dropdown-content">
+              <ul>
                 {mentorLoggedIn !== true ? (
                   <li>
                     <a
                       className="navbar-item"
                       href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
                     >
-                      Mentor Login
+                      <div className="icon">
+                        <Icon.User />
+                      </div>
+                      <div>
+                        Mentor Login <p>Login to see your mentor dashboard</p>
+                      </div>
                     </a>
                   </li>
                 ) : (
                   <>
                     <li>
                       <a className="navbar-item" href="/dashboard/mentor">
-                        Mentor Dashboard
+                        <div className="icon">
+                          <Icon.Columns />
+                        </div>
+                        <div>
+                          Mentor Dashboard{" "}
+                          <p>See your projects, contibutors and annoucements</p>
+                        </div>
                       </a>
                     </li>
 
-                    <li onClick={logoutMentor}>Logout(Mentor)</li>
+                    <li className="button" onClick={logoutMentor}>
+                      Logout(Mentor)
+                    </li>
                   </>
                 )}
 
@@ -158,17 +175,30 @@ function Navbar() {
                       id="mentee-login"
                       href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
                     >
-                      Student Login
+                      <div className="icon">
+                        <Icon.User />
+                      </div>
+                      <div>
+                        Student Login <p>Login to see your mentor dashboard</p>
+                      </div>
                     </a>
                   </li>
                 ) : (
                   <>
                     <li>
                       <a className="navbar-item" href="/dashboard/student">
-                        Student Dashboard
+                        <div className="icon">
+                          <Icon.Columns />
+                        </div>
+                        <div>
+                          Student Dashboard{" "}
+                          <p>See your projects, mentors and annoucements</p>
+                        </div>
                       </a>
                     </li>
-                    <li onClick={logoutStudent}>Logout(Student)</li>
+                    <li className="button" onClick={logoutStudent}>
+                      Logout(Student)
+                    </li>
                   </>
                 )}
               </ul>
