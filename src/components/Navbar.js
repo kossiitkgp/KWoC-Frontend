@@ -51,6 +51,13 @@ function Navbar() {
       <nav className="menu">
         <div className="wrapper">
           <ul>
+            {window.location.pathname !== "/" ? (
+              <li>
+                <a href="/">Home</a>
+              </li>
+            ) : (
+              ""
+            )}
             <li>
               <a href="/#about">About</a>
             </li>
