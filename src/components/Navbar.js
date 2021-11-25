@@ -133,6 +133,7 @@ function Navbar() {
                 : "Sign Up"}
               {isDown_2 ? <Icon.ChevronUp /> : <Icon.ChevronDown />}
 
+              {/* TODO: This can be done better */}
               <ul>
                 {mentorLoggedIn !== true ? (
                   <li>
