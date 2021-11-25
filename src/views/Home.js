@@ -33,6 +33,8 @@ function Home() {
     "Artificial Intelligence",
   ];
 
+  const colors = ["red", "green", "blue", "grey"];
+
   return (
     <div className="home">
       <section className="hero">
@@ -115,9 +117,14 @@ function Home() {
         <h1 className="tags-title">Tags</h1>
         <div className="tags-list">
           {tags.map((tag) => (
-            <div key={tag} className="tag">
+            <a
+              href={`${window.location.origin}/projects?query=${tag}`}
+              key={tag}
+              className="tag"
+              color={colors[Math.floor(Math.random() * 4)]}
+            >
               {tag}
-            </div>
+            </a>
           ))}
         </div>
       </section>

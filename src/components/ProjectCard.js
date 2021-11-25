@@ -48,13 +48,9 @@ export default function Card(props) {
             <div>
               {props.mentor[index]}
               {loggedIn && (
-                <p>
-                  (
-                  <a href={`mailto:${props.mentorId[index]}`}>
-                    {props.mentorId[index]}
-                  </a>
-                  )
-                </p>
+                <a href={`mailto:${props.mentorId[index]}`}>
+                  {props.mentorId[index]}
+                </a>
               )}
             </div>
           );
@@ -79,9 +75,13 @@ export default function Card(props) {
         <br />
         <section id="projectTags">
           {props.tags.map((tag) => (
-            <div key={tag} className="tag">
+            <a
+              href={`${window.location.pathname}?query=${tag}`}
+              key={tag}
+              className="tag"
+            >
               {tag}
-            </div>
+            </a>
           ))}
         </section>
       </div>
