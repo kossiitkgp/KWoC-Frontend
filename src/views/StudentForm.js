@@ -46,15 +46,14 @@ export default function Form(props) {
   }
 
   return (
-    <div className="box">
-      <h2>Student Form</h2>
-      <h3>Welcome {username}</h3>
+    <div className="form">
+      <h1>Student Form</h1>
+      <p>Welcome {username}</p>
 
-      <div className="field">
-        <label className="label">Name</label>
-        <div className="control">
+      <div>
+        <label>Name</label>
+        <div>
           <input
-            className="input is-rounded "
             type="text"
             placeholder="Name"
             defaultValue={name}
@@ -63,27 +62,25 @@ export default function Form(props) {
         </div>
       </div>
 
-      <div className="field">
-        <label className="label">Email</label>
-        <div className="control has-icons-left has-icons-right">
+      <div>
+        <label>Email</label>
+        <div>
           <input
-            className="input is-rounded "
             type="email"
             placeholder="Email"
             defaultValue={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <span className="icon is-large is-left" id="fontello-icon">
+          <span>
             <i className="icon-mail-alt" />
           </span>
         </div>
       </div>
 
-      <div className="field">
-        <label className="label">Name of Institution</label>
-        <div className="control">
+      <div>
+        <label>Name of Institution</label>
+        <div>
           <input
-            className="input is-rounded "
             type="text"
             placeholder="College name"
             onChange={(e) => setCollege(e.target.value)}
@@ -91,15 +88,9 @@ export default function Form(props) {
         </div>
       </div>
 
-      <div>
-        <a
-          class="button  is-rounded is-fullWidth column is-full"
-          onClick={handleSubmit}
-          disabled={isSubmitDisabled}
-        >
-          Submit
-        </a>
-      </div>
+      <a className="button" onClick={handleSubmit} disabled={isSubmitDisabled}>
+        Submit
+      </a>
     </div>
   );
 }
