@@ -32,6 +32,7 @@ function checkLink(link) {
 export default function Form(props) {
   const [isSubmitDisabled, disableSubmit] = useState(false);
 
+  const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [repolink, setRepolink] = useState("");
@@ -62,6 +63,7 @@ export default function Form(props) {
 
     // fetch all the projects of mentor
     const username = localStorage.getItem("mentor_username");
+    setUsername(username);
     // const username = 'xypnox' // this line only for testing, uncomment above line & comment this line in production, and coment this line
     axios
       .get(`https://api.github.com/users/${username}/repos?per_page=100`)
@@ -344,9 +346,17 @@ export default function Form(props) {
       });
   }
 
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      height: 60,
+      border: "2px solid #111",
+    }),
+  };
+
   return (
     <React.Fragment>
-      <div className="box">
+      <div className="form">
         {/* FOR NOW THIS LINK FIELD IS IN THE TOP BECAUSE, WHEN IT IS KEPT AT THIRD PLACE(WHERE IT SHOULD BE), DUE TO
       SOME CSS ISSUES THE OPTIONS ARE NOT VISIBLE, SINCE I DON'T KNOW TO FIX THAT, I AM LEAVING IT
       
@@ -355,6 +365,10 @@ export default function Form(props) {
       HOWEVER WE CAN DECIDE ON THE ORDER OF FIELDS?
       - rakaar
     */}
+        <div className="heading">
+          <h1>Project Form</h1>
+          <div>Welcome {username}</div>
+        </div>
 
         <div className="field">
           <label className="label">Project Name</label>
@@ -376,9 +390,10 @@ export default function Form(props) {
               onChange={handleProjectLink}
               options={mentorRepos}
               placeholder="Search your Repos or Paste the link"
+              styles={customStyles}
             />
           </div>
-          {errInRepo}
+          <div className="error">{errInRepo}</div>
         </div>
 
         <div className="field">
@@ -403,6 +418,7 @@ export default function Form(props) {
                 options={options}
                 defaultValue={autoTags}
                 placeholder="Select or Create Tags"
+                styles={customStyles}
               />
             </div>
           </div>
@@ -410,24 +426,29 @@ export default function Form(props) {
 
         {showBranches && (
           <div className="field">
-            <label className="label">Select Branch for stats</label>
-            <img
-              alt=""
-              src={InfoIcon}
-              data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
-         <br/>Please select the branch on which students should be contributing. 
-         <br/> We will be fetching the contributions data from the branch you have specified. 
-         <br/> You can also change the branch in middle of KWoC`}
-            />
-            <ReactTooltip place="bottom" type="info" effect="float" html />
-            <Select
-              isClearable
-              isSearchable
-              onChange={handleChangeBranchField}
-              options={branchOpts}
-              defaultValue={branchOpts[0]}
-              placeholder="Select Branch"
-            />
+            <div className="custom-label-wrapper">
+              <label className="label">Select Branch for stats</label>
+              <img
+                alt=""
+                src={InfoIcon}
+                data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
+          <br/>Please select the branch on which students should be contributing. 
+          <br/> We will be fetching the contributions data from the branch you have specified. 
+          <br/> You can also change the branch in middle of KWoC`}
+              />
+              <ReactTooltip place="bottom" type="info" effect="float" html />
+            </div>
+            <div className="control">
+              <Select
+                isClearable
+                isSearchable
+                onChange={handleChangeBranchField}
+                options={branchOpts}
+                defaultValue={branchOpts[0]}
+                placeholder="Select Branch"
+                styles={customStyles}
+              />
+            </div>
           </div>
         )}
 
@@ -443,25 +464,28 @@ export default function Form(props) {
                   onInput={handleInputLinkField}
                 />
               </div>
-              {errInLink}
+              <div className="error">{errInLink}</div>
             </div>
 
             <div className="field">
               <label className="label">
                 Select Secondary Mentor(You should already know him/her)
               </label>
-              <Select
-                isClearable
-                isSearchable
-                onChange={handleChangeSMentorField}
-                options={mentorUsernames}
-                placeholder="Select Secondary Mentor"
-              />
+              <div className="control">
+                <Select
+                  isClearable
+                  isSearchable
+                  onChange={handleChangeSMentorField}
+                  options={mentorUsernames}
+                  placeholder="Select Secondary Mentor"
+                  styles={customStyles}
+                />
+              </div>
             </div>
 
-            <div>
+            <div className="submit">
               <a
-                className="button is-rounded is-fullWidth column is-full"
+                className="button"
                 onClick={handleSubmit}
                 disabled={isSubmitDisabled}
               >

@@ -26,4 +26,66 @@
     line-height: 2rem;
     text-align: center;
   }
+
+  .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      font-size: 1.5rem;
+      color: #666;
+      padding: 1rem 0;
+    }
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .custom-label-wrapper {
+      display: flex;
+      padding: 2rem 1rem 1rem 0;
+      .label {
+        padding: 0 0.5rem 0 0;
+      }
+    }
+
+    .label {
+      padding: 2rem 1rem 1rem 0;
+    }
+
+    .error {
+      padding: 1rem 0 1rem 0;
+      color: #ff073a;
+    }
+
+    .control {
+      width: 40rem;
+
+      @include md {
+        width: 30rem;
+      }
+
+      @include sm {
+        width: 80vw;
+      }
+
+      input {
+        width: 100%;
+        margin: 0;
+      }
+
+      textarea {
+        width: 100%;
+        height: 8rem;
+        margin: 0;
+      }
+    }
+  }
+
+  .submit {
+    margin-top: 4rem;
+  }
 }
