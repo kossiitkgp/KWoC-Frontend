@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import * as Icon from "react-feather";
+import {
+  MENTOR_REGISTRATION_LINK,
+  STUDENT_REGISTRATION_LINK,
+} from "../constants";
 
 function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -292,10 +296,7 @@ function Navbar() {
               <ul className="dropdown-content">
                 {mentorLoggedIn !== true ? (
                   <li>
-                    <a
-                      className="navbar-item"
-                      href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
-                    >
+                    <a className="navbar-item" href={MENTOR_REGISTRATION_LINK}>
                       Mentor Login
                     </a>
                   </li>
@@ -316,7 +317,7 @@ function Navbar() {
                     <a
                       className="navbar-item"
                       id="mentee-login"
-                      href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
+                      href={STUDENT_REGISTRATION_LINK}
                     >
                       Student Login
                     </a>
