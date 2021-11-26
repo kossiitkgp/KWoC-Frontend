@@ -149,23 +149,6 @@
       border-radius: 5px;
       cursor: pointer;
       font-weight: 600;
-
-      &[color="red"] {
-        color: #ff073a;
-        background-color: rgba($color: #ff073a, $alpha: 0.1);
-      }
-      &[color="green"] {
-        color: #28a745;
-        background-color: rgba($color: #28a745, $alpha: 0.2);
-      }
-      &[color="blue"] {
-        color: #007bff;
-        background-color: rgba($color: #007bff, $alpha: 0.15);
-      }
-      &[color="grey"] {
-        color: #6c757d;
-        background-color: rgba($color: #6c757d, $alpha: 0.15);
-      }
     }
   }
 

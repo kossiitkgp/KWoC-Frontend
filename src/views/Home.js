@@ -120,7 +120,7 @@ function Home() {
             <a
               href={`${window.location.origin}/projects?query=${tag}`}
               key={tag}
-              className="tag"
+              className="tag multicolor"
               color={colors[index % 4]}
             >
               {tag}

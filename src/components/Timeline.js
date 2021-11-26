@@ -4,8 +4,8 @@ import timelinedata from "../data/timelineData";
 const colors = ["red", "green", "blue", "grey"];
 
 const TimelineItem = ({ data, color }) => (
-  <div className="timeline-item" color={color}>
-    <div className="timeline-item-content">
+  <div className="timeline-item">
+    <div className="timeline-item-content multicolor" color={color}>
       <strong>
         <span className="time">{data.date}</span>
       </strong>
