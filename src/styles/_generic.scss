@@ -23,8 +23,25 @@ button,
   }
 
   &:hover {
+    cursor: pointer;
     border: 1px solid #111;
     background-color: transparent;
     color: #111;
+  }
+}
+
+.input,
+input {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+
+  border: 2px solid #111;
+  border-radius: 5px;
+  margin: 1rem 0;
+  padding: 1rem;
+
+  &:focus {
+    border: 2px solid #0070f3;
   }
 }
