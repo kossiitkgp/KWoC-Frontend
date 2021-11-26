@@ -1,7 +1,5 @@
 import React from "react";
-import pullRequest from "../assets/git-pull-request.svg";
-import github from "../assets/github.svg";
-import group from "../assets/people.svg";
+import * as Icon from "react-feather";
 import BlurredCircles from "../components/BlurredCircles";
 import Timeline from "../components/Timeline";
 import {
@@ -137,18 +135,24 @@ function Home() {
       <section className="stats container">
         <h1>Statistics: KWoC 2020</h1>
         <div className="stats-column-wrapper">
-          <div className="stats-column">
-            <img src={group} alt="Group" />
+          <div className="stats-column multicolor" color="red">
+            <div className="stats-icon">
+              <Icon.Users size={100} />
+            </div>
             <h3>2500+ Participants</h3>
           </div>
 
-          <div className="stats-column">
-            <img src={github} alt="Project" />
+          <div className="stats-column multicolor" color="blue">
+            <div className="stats-icon">
+              <Icon.GitHub size={100} />
+            </div>
             <h3>2.1 Million+ Lines of Code</h3>
           </div>
 
-          <div className="stats-column">
-            <img src={pullRequest} alt="pullRequest" />
+          <div className="stats-column multicolor" color="green">
+            <div className="stats-icon">
+              <Icon.GitPullRequest size={100} />
+            </div>
             <h3>1400+ Pull Requests</h3>
           </div>
         </div>

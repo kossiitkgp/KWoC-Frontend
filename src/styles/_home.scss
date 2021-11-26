@@ -184,15 +184,9 @@
       flex-direction: column;
       align-items: center;
       margin-top: 4rem;
-      background-color: rgba($color: #eee, $alpha: 0.8);
       padding: 1.5rem;
-      color: $text-color-black;
       border-radius: 20px;
       width: 20rem;
-
-      img {
-        width: 8rem;
-      }
     }
   }
   @media (max-width: 768px) {
