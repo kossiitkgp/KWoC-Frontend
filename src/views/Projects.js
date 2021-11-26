@@ -90,13 +90,9 @@ export default function Projects() {
   const URL = `${BACKEND_URL}/project/all`;
   const location = useLocation();
 
-  const headers = {
-    Bearer: localStorage.getItem("student_jwt"),
-  };
-
   useEffect(() => {
     axios
-      .get(URL, { headers })
+      .get(URL)
       .then((response) => {
         setAllProjects(projectSortPolicy(response.data));
       })
