@@ -170,16 +170,10 @@
   }
 
   .stats {
-    // background: linear-gradient(
-    //     rgba($primary-theme, 0.5),
-    //     rgba($primary-theme, 0.5)
-    //   ),
-    //   url("../assets/bonfire.png");
     min-height: 80vh;
     background-size: cover;
     margin: 0 0 5rem 0;
     padding: 3rem 0;
-    color: $text-color;
     display: flex;
     flex-direction: column;
     align-items: center;
