@@ -148,10 +148,7 @@ function Navbar() {
               <ul>
                 {mentorLoggedIn !== true ? (
                   <li>
-                    <a
-                      className="navbar-item"
-                      href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=mentor"
-                    >
+                    <a className="navbar-item" href={MENTOR_REGISTRATION_LINK}>
                       <div className="icon">
                         <Icon.User />
                       </div>
@@ -182,11 +179,7 @@ function Navbar() {
 
                 {studentLoggedIn !== true ? (
                   <li>
-                    <a
-                      className="navbar-item"
-                      id="mentee-login"
-                      href="https://github.com/login/oauth/authorize?scope=user:email&client_id=74557dcb91016b10b54b&state=student"
-                    >
+                    <a className="navbar-item" href={STUDENT_REGISTRATION_LINK}>
                       <div className="icon">
                         <Icon.User />
                       </div>
