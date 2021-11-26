@@ -1,8 +1,10 @@
 import React from "react";
 import timelinedata from "../data/timelineData";
 
-const TimelineItem = ({ data }) => (
-  <div className="timeline-item">
+const colors = ["red", "green", "blue", "grey"];
+
+const TimelineItem = ({ data, color }) => (
+  <div className="timeline-item" color={color}>
     <div className="timeline-item-content">
       <strong>
         <span className="time">{data.date}</span>
@@ -21,7 +23,7 @@ const Timeline = () =>
   timelinedata.length > 0 && (
     <div className="timeline-container">
       {timelinedata.map((data, idx) => (
-        <TimelineItem data={data} key={idx} />
+        <TimelineItem data={data} key={idx} color={colors[idx % 4]} />
       ))}
     </div>
   );
