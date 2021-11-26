@@ -374,7 +374,7 @@ export default function Form(props) {
           <label className="label">Project Name</label>
           <div className="control">
             <input
-              className="input is-rounded"
+              className="input"
               type="text"
               placeholder="Cool name of your project"
               onChange={(e) => setName(e.target.value)}
@@ -398,7 +398,7 @@ export default function Form(props) {
 
         <div className="field">
           <label className="label">Project Description</label>
-          <div className="control has-icons-left has-icons-right">
+          <div className="control">
             <textarea
               className="textarea"
               placeholder="Briefly about your Project"
@@ -458,7 +458,7 @@ export default function Form(props) {
               <label className="label">Communication channel</label>
               <div className="control">
                 <input
-                  className="input is-rounded"
+                  className="input"
                   type="text"
                   placeholder="Slack invite link for example"
                   onInput={handleInputLinkField}
