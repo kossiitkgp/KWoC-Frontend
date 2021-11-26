@@ -116,12 +116,12 @@ function Home() {
       <section className="tags container" id="tags">
         <h1 className="tags-title">Tags</h1>
         <div className="tags-list">
-          {tags.map((tag) => (
+          {tags.map((tag, index) => (
             <a
               href={`${window.location.origin}/projects?query=${tag}`}
               key={tag}
               className="tag"
-              color={colors[Math.floor(Math.random() * 4)]}
+              color={colors[index % 4]}
             >
               {tag}
             </a>

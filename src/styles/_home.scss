@@ -144,26 +144,27 @@
     .tag {
       display: inline-block;
       text-decoration: none;
-      padding: 0.5rem 0.8rem;
+      padding: 0.8rem 1.2rem;
       margin: 1rem;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: 600;
 
       &[color="red"] {
-        color: red;
-        background-color: rgba($color: red, $alpha: 0.3);
+        color: #ff073a;
+        background-color: rgba($color: #ff073a, $alpha: 0.1);
       }
       &[color="green"] {
-        color: green;
-        background-color: rgba($color: green, $alpha: 0.3);
+        color: #28a745;
+        background-color: rgba($color: #28a745, $alpha: 0.2);
       }
       &[color="blue"] {
-        color: blue;
-        background-color: rgba($color: blue, $alpha: 0.3);
+        color: #007bff;
+        background-color: rgba($color: #007bff, $alpha: 0.15);
       }
       &[color="grey"] {
-        color: #333;
-        background-color: rgba($color: #333, $alpha: 0.3);
+        color: #6c757d;
+        background-color: rgba($color: #6c757d, $alpha: 0.15);
       }
     }
   }
