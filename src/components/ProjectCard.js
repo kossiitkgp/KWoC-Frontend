@@ -43,7 +43,20 @@ export default function Card(props) {
       <header className="card-header">{props.name}</header>
       <section className="details">
         <b>Mentored by:</b>
-        {[...Array(props.length).keys()].map((index) => {
+        {loggedIn ? (
+          <a href={`mailto:${props.mentorEmail}`}>{props.mentor}</a>
+        ) : (
+          props.mentor
+        )}
+        {loggedIn && props.secondaryMentor ? (
+          <a href={`mailto:${props.secondaryMentorEmail}`}>
+            {", "}
+            {props.secondaryMentor}
+          </a>
+        ) : (
+          ` ${props.secondaryMentor}`
+        )}
+        {/* {[...Array(props.length).keys()].map((index) => {
           return (
             <div>
               {props.mentor[index]}
@@ -54,7 +67,7 @@ export default function Card(props) {
               )}
             </div>
           );
-        })}
+        })} */}
       </section>
       <div className="card-content">
         <div className="content">

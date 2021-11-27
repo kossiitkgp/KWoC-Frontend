@@ -48,6 +48,10 @@ textarea {
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 .multicolor {
   &[color="red"] {
     background: linear-gradient(90deg, rgba(#ff4d4d, 0.8), rgba(#f9cb28, 0.8));

@@ -86,14 +86,15 @@ export default function Projects() {
   const [allProjects, setAllProjects] = useState([]);
   const [searchedProjects, setSearchedProjects] = useState([]);
 
-  const URL = `${BACKEND_URL}/project/all`;
+  const URL = `${BACKEND_URL}/project`;
   const location = useLocation();
 
   useEffect(() => {
     axios
       .get(URL)
       .then((response) => {
-        setAllProjects(projectSortPolicy(response.data));
+        // setAllProjects(projectSortPolicy(response.data));
+        setAllProjects(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -127,22 +128,6 @@ export default function Projects() {
   if (searchText === "") displayedProjects = allProjects;
   else displayedProjects = searchedProjects;
 
-  //DEMO. REMOVE THIS WHEN BACKEND IS UP
-  allProjects.map((project) => {
-    const Obj = {
-      ProjectName: project.title,
-      ProjectDesc: project.intro,
-      MentorName: [project.mentor],
-      ProjectTags: JSON.stringify(project.tags),
-      MentorEmail: project.mentor_email,
-      MentorUsername: project.mentor,
-      ProjectRepoLink: project.link,
-      ProjectComChannel: project.comm,
-    };
-
-    displayedProjects.push(Obj);
-  });
-
   return (
     <div className="projects">
       <div class="projects-hero">
@@ -164,15 +149,18 @@ export default function Projects() {
       <div class="project-card-grid">
         {displayedProjects.map((project, id) => (
           <Card
-            name={project.ProjectName}
-            desc={project.ProjectDesc}
-            mentor={project.MentorName}
-            tags={JSON.parse(project.ProjectTags)}
-            mentorId={project.MentorEmail}
-            mentorUsername={project.MentorUsername}
-            projectLink={project.ProjectRepoLink}
-            commLink={project.ProjectComChannel}
-            length={project.MentorName.length}
+            name={project.Name}
+            desc={project.Desc}
+            mentor={project.Mentor.Name}
+            mentorEmail={project.Mentor.Email}
+            mentorUsername={project.Mentor.Username}
+            secondaryMentor={project.SecondaryMentor.Name}
+            secondaryMentorEmail={project.SecondaryMentor.Email}
+            secondaryMentorUsername={project.SecondaryMentor.Username}
+            tags={JSON.parse(project.Tags)}
+            projectLink={project.RepoLink}
+            commLink={project.ComChannel}
+            length={project.Desc.length}
           ></Card>
         ))}
       </div>
