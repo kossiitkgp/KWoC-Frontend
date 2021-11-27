@@ -82,7 +82,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem 20% 0 20%;
+    margin: 5rem 20% 0 20%;
     p {
       font-size: 1.3rem;
     }
@@ -93,6 +93,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    h1 {
+      text-align: center;
+    }
 
     &-cardlist {
       display: flex;
