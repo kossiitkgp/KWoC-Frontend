@@ -270,6 +270,8 @@ export default function MentorDashboard() {
                         PRs
                       </a>
                     </div>
+                    <br />
+                    <p>{item.ProjectStatus ? "" : "To be Checked"}</p>
                   </div>
                 );
               })
