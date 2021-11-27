@@ -242,8 +242,8 @@
 
   .mobile-navbar-icon {
     display: none;
-    left: 20px;
-    top: 25px;
+    position: relative;
+    z-index: 99;
     width: 30px;
     height: 50px;
 
@@ -266,8 +266,6 @@
 
   .out {
     span {
-      position: absolute;
-      z-index: 99;
       background-color: #000;
     }
   }
