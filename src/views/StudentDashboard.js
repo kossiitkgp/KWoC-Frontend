@@ -1,11 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Confetti from "react-confetti";
-import cheers from "../assets/meme.jpg";
-import reloadIcon from "../assets/refresh-cw.svg";
 import { BACKEND_URL, STATS_API } from "../constants";
 import { studentResources as resources } from "../data/dummy_data";
-import { trim_lines, trim_message } from "../utils/helpers";
 
 export default function StudentDashboard() {
   const [fullName, setFullName] = useState("");
@@ -29,6 +25,7 @@ export default function StudentDashboard() {
     username: localStorage.getItem("student_username"),
   };
 
+  // TODO: update this before release
   const announcements = [
     {
       date: "December 16, 2020",
@@ -207,7 +204,7 @@ export default function StudentDashboard() {
             </div>
           </div>
 
-          <div className="mentor-stats ">
+          <div className="mentor-stats">
             <div className="mentor-stats-header">
               <h1>Stats</h1>
               <p className="stats-message">
@@ -216,7 +213,7 @@ export default function StudentDashboard() {
               <br />
             </div>
             {/**Keep the font-mentor-header to a single word, multiple words create a bad UI experience */}
-            <div className="mentor-stats-content">
+            {/* <div className="mentor-stats-content">
               <div className="card-component non-purple-card mstats grow-card">
                 <p className="font-mentor-header">Commits</p>
                 <p className="font-mentor-stats">
@@ -242,11 +239,10 @@ export default function StudentDashboard() {
                   {trim_lines(parseInt(stats["lines_removed"]))}
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
-
-        <div>
+        {/* <div>
           {evalStatus === 1 ? (
             <div className="projects">
               <div className="endEvals-guide">
@@ -261,10 +257,8 @@ export default function StudentDashboard() {
             </div>
           ) : (
             ""
-          )}
-        </div>
-
-        <React.Fragment>
+          )} </div> */}
+        {/* <React.Fragment>
           {evalStatus === 2 ? (
             <div className="endEvals-guide">
               <Confetti />
@@ -280,10 +274,9 @@ export default function StudentDashboard() {
           ) : (
             ""
           )}
-        </React.Fragment>
-
+        </React.Fragment> */}
         <div>
-          {evalStatus === 0 ? (
+          {/* {evalStatus === 0 ? (
             <React.Fragment className="projects">
               <h1 className="message">
                 You could not clear KWoC 2020 Mid Evaluation.
@@ -292,219 +285,221 @@ export default function StudentDashboard() {
                 For any issues contact us.
               </h1>
             </React.Fragment>
-          ) : (
-            <div>
-              {/* TODO: better way to show and confirm if announcements had been seen */}
-              <React.Fragment className="projects">
-                {localStorage.getItem("announcement_message") === "true" &&
-                localStorage.getItem("page_reload") === "false" ? (
-                  <div className="message">
-                    <h1>Announcements have been updated!</h1>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </React.Fragment>
-
-              <React.Fragment className="projects">
-                {localStorage.getItem("result_message") === "true" &&
-                localStorage.getItem("page_reload2") === "false" ? (
-                  <div className="message">
-                    <h1>
-                      You have successfully passed KWoC 2020 Mid Evaluation.
-                      Keep going!
-                    </h1>
-                    <img alt="" src={cheers} />
-                  </div>
-                ) : (
-                  ""
-                )}
-              </React.Fragment>
-
-              <div className="projects">
-                <div className="project-header">
-                  <h1>Languages involved</h1>
+          ) : ( */}
+          <div>
+            {/* TODO: better way to show and confirm if announcements had been seen */}
+            {/* <React.Fragment className="projects">
+              {localStorage.getItem("announcement_message") === "true" &&
+              localStorage.getItem("page_reload") === "false" ? (
+                <div className="message">
+                  <h1>Announcements have been updated!</h1>
                 </div>
-                <div>
-                  {stats["languages"] !== undefined &&
-                    stats["languages"].map((item) => (
-                      <span className="tag is-dark is-large">{item}</span>
-                    ))}
-                </div>
-              </div>
+              ) : (
+                ""
+              )}
+            </React.Fragment> */}
 
-              <div className="projects">
-                <div className="project-header">
-                  <h1>Projects</h1>
-                </div>
-                <div>
-                  {stats["projects"] !== undefined &&
-                    stats["projects"].map((item) => (
-                      <span className="tag is-dark is-large is-info">
-                        <a href={`https://github.com/${item}`}>{item}</a>
-                      </span>
-                    ))}
-                </div>
-              </div>
-
-              <div className="projects">
-                <div className="project-header">
+            {/* <React.Fragment className="projects">
+              {localStorage.getItem("result_message") === "true" &&
+              localStorage.getItem("page_reload2") === "false" ? (
+                <div className="message">
+                  {" "}
                   <h1>
-                    Pull Reqests
-                    <img
-                      alt=""
-                      src={reloadIcon}
-                      className="refresh-icon"
-                      onClick={removeCachedTimeStamp}
-                    />
+                    You have successfully passed KWoC 2020 Mid Evaluation. Keep
+                    going!
                   </h1>
+                  <img alt="" src={cheers} />
                 </div>
-                <div className="table-container" id="indiv-stats-table">
-                  {pulls !== undefined ? (
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>
-                            <h3>Project</h3>
-                          </th>
-                          <th>
-                            <h3>Pull Request</h3>
-                          </th>
-                        </tr>
-                      </thead>
+              ) : (
+                ""
+              )}
+            </React.Fragment> */}
 
-                      <tbody>
-                        {stats["pulls"] &&
-                          stats["pulls"].map((item) => {
-                            return (
-                              <tr>
-                                <td>
-                                  <a
-                                    className="project-in-commit-table"
-                                    href={`https://github.com/${item["base"]["repo"]["full_name"]}`}
-                                  >
-                                    {item["base"]["repo"]["full_name"]}
-                                  </a>
-                                </td>
-
-                                <td>
-                                  <a href={item["html_url"]}>
-                                    {trim_message(item["title"])}
-                                  </a>
-                                </td>
-                              </tr>
-                            );
-                          })}
-                      </tbody>
-                    </table>
-                  ) : (
-                    ""
-                  )}
-                </div>
+            {/* <div className="projects">
+              <div className="project-header">
+                <h1>Languages involved</h1>
               </div>
+              <div>
+                {stats["languages"] !== undefined &&
+                  stats["languages"].map((item) => (
+                    <span className="tag is-dark is-large">{item}</span>
+                  ))}
+              </div>
+            </div>
 
-              <div className="projects">
-                <div className="project-header">
-                  <h1>Commits</h1>
-                </div>
-                <div className="table-container" id="indiv-stats-table">
-                  {stats["commits"] !== undefined &&
-                  extraCommits !== undefined ? (
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>
-                            <h3>Project</h3>
-                          </th>
-                          <th>
-                            <h3>Commit</h3>
-                          </th>
-                          <th>
-                            <h3>Lines</h3>
-                          </th>
-                        </tr>
-                      </thead>
+            <div className="projects">
+              <div className="project-header">
+                <h1>Projects</h1>
+              </div>
+              <div>
+                {stats["projects"] !== undefined &&
+                  stats["projects"].map((item) => (
+                    <span className="tag is-dark is-large is-info">
+                      <a href={`https://github.com/${item}`}>{item}</a>
+                    </span>
+                  ))}
+              </div>
+            </div>
 
-                      <tbody>
-                        {stats["commits"].map((item) => {
+            <div className="projects">
+              <div className="project-header">
+                <h1>
+                  Pull Reqests
+                  <img
+                    alt=""
+                    src={reloadIcon}
+                    className="refresh-icon"
+                    onClick={removeCachedTimeStamp}
+                  />
+                </h1>
+              </div>
+              <div className="table-container" id="indiv-stats-table">
+                {pulls !== undefined ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>
+                          <h3>Project</h3>
+                        </th>
+                        <th>
+                          <h3>Pull Request</h3>
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      {stats["pulls"] &&
+                        stats["pulls"].map((item) => {
                           return (
                             <tr>
                               <td>
                                 <a
                                   className="project-in-commit-table"
-                                  href={`https://github.com/${item["project"]}`}
+                                  href={`https://github.com/${item["base"]["repo"]["full_name"]}`}
                                 >
-                                  {item["project"]}
+                                  {item["base"]["repo"]["full_name"]}
                                 </a>
                               </td>
+
                               <td>
                                 <a href={item["html_url"]}>
-                                  {trim_message(item["message"])}
+                                  {trim_message(item["title"])}
                                 </a>
-                              </td>
-                              <td>
-                                +{trim_lines(item["lines_added"])},-
-                                {trim_lines(item["lines_removed"])}
                               </td>
                             </tr>
                           );
                         })}
-                      </tbody>
-                    </table>
-                  ) : (
-                    ""
-                  )}
-                </div>
-              </div>
-
-              <section className="resource-card">
-                <div className="resource-header">
-                  <h1>Resources</h1>
-                </div>
-
-                <table className="table is-bordered is-striped">
-                  <tbody>
-                    {resources.map((resourceCard) => {
-                      const message = resourceCard.message;
-                      const url = resourceCard.url;
-                      const avatar = resourceCard.avatar;
-
-                      return (
-                        <tr>
-                          <td>
-                            <a href={url}>
-                              <img
-                                src={avatar}
-                                className="avatar-resource"
-                                alt="link"
-                              ></img>
-                            </a>
-                          </td>
-                          <td>
-                            <a href={url}>
-                              <p>{message}</p>
-                            </a>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </section>
-              <div className="announcements">
-                <h1>Announcements</h1>
-
-                {announcements.map((item, index) => {
-                  return (
-                    <div className="anc-card card-component grow-card">
-                      <h1>{item.date}</h1>
-                      <p>{item.content}</p>
-                    </div>
-                  );
-                })}
+                    </tbody>
+                  </table>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
-          )}
+
+            <div className="projects">
+              <div className="project-header">
+                <h1>Commits</h1>
+              </div>
+              <div className="table-container" id="indiv-stats-table">
+                {stats["commits"] !== undefined &&
+                extraCommits !== undefined ? (
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>
+                          <h3>Project</h3>
+                        </th>
+                        <th>
+                          <h3>Commit</h3>
+                        </th>
+                        <th>
+                          <h3>Lines</h3>
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      {stats["commits"].map((item) => {
+                        return (
+                          <tr>
+                            <td>
+                              <a
+                                className="project-in-commit-table"
+                                href={`https://github.com/${item["project"]}`}
+                              >
+                                {item["project"]}
+                              </a>
+                            </td>
+                            <td>
+                              <a href={item["html_url"]}>
+                                {trim_message(item["message"])}
+                              </a>
+                            </td>
+                            <td>
+                              +{trim_lines(item["lines_added"])},-
+                              {trim_lines(item["lines_removed"])}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div> */}
+
+            <section className="resource-card">
+              <div className="resource-header">
+                <h1>Resources</h1>
+              </div>
+
+              <table className="table is-bordered is-striped">
+                <tbody>
+                  {resources.map((resourceCard) => {
+                    const message = resourceCard.message;
+                    const url = resourceCard.url;
+                    const avatar = resourceCard.avatar;
+
+                    return (
+                      <tr>
+                        <td>
+                          <a href={url}>
+                            {/* TODO: default image/icon for broken links */}
+                            <img
+                              src={avatar}
+                              className="avatar-resource"
+                              alt="link"
+                            ></img>
+                          </a>
+                        </td>
+                        <td>
+                          <a href={url}>
+                            <p>{message}</p>
+                          </a>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </section>
+            <div className="announcements">
+              <h1>Announcements</h1>
+
+              {announcements.map((item, index) => {
+                return (
+                  <div className="anc-card card-component grow-card">
+                    <h1>{item.date}</h1>
+                    <p>{item.content}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          {/* )} */}
         </div>
       </div>
     </div>
