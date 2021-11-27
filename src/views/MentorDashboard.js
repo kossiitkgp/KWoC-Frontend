@@ -38,17 +38,8 @@ export default function MentorDashboard() {
 
   const announcements = [
     {
-      date: "December 16, 2020",
-      content: "The Mid Evals have been postponed to 20th December, 23:59 IST.",
-    },
-    {
-      date: "December 6, 2020",
-      content: "Coding Period has begun!",
-    },
-    {
-      date: "November 28, 2020",
-      content:
-        "Please register your projects, registrations close on December 6, 2020.",
+      date: "November 27, 2021",
+      content: "Coding Period will start from December 3",
     },
   ];
 
