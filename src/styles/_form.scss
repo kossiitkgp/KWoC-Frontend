@@ -44,6 +44,10 @@
     flex-direction: column;
     justify-content: space-evenly;
 
+    @include sm {
+      align-items: center;
+    }
+
     .custom-label-wrapper {
       display: flex;
       padding: 2rem 1rem 1rem 0;
