@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { BACKEND_URL, STATS_API } from "../constants";
+import { BACKEND_URL } from "../constants";
 import { studentResources as resources } from "../data/dummy_data";
 
 export default function StudentDashboard() {
@@ -100,14 +100,14 @@ export default function StudentDashboard() {
     message_storage();
     const student_username = localStorage.getItem("student_username");
 
-    fetch(`${STATS_API}/student/exists/${student_username}`)
-      .then((res) => res.text())
-      .then((res) => {
-        if (res === "false") {
-          alert("Sorry, it seems that you have not registered for KWoC");
-          window.location.pathname = "";
-        }
-      });
+    // fetch(`${STATS_API}/student/exists/${student_username}`)
+    //   .then((res) => res.text())
+    //   .then((res) => {
+    //     if (res === "false") {
+    //       alert("Sorry, it seems that you have not registered for KWoC");
+    //       window.location.pathname = "";
+    //     }
+    //   });
     // check that its not null
     const student_loggedout =
       localStorage.getItem("student_jwt") === null ||
@@ -133,7 +133,8 @@ export default function StudentDashboard() {
         }
       })
       .catch((err) => {
-        alert("Server Error, Please try again");
+        // alert("Server Error, Please try again");
+        console.log("err is ", err);
       });
 
     //   axios
