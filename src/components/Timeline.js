@@ -6,9 +6,7 @@ const colors = ["red", "green", "blue", "grey"];
 const TimelineItem = ({ data, color }) => (
   <div className="timeline-item">
     <div className="timeline-item-content multicolor" color={color}>
-      <strong>
-        <span className="time">{data.date}</span>
-      </strong>
+      <h2 className="time">{data.date}</h2>
       <p>{data.text}</p>
       {data.link && (
         <a href={data.link.url} target="_blank" rel="noopener noreferrer">
