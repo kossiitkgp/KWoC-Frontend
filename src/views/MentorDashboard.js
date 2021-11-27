@@ -39,7 +39,7 @@ export default function MentorDashboard() {
   const announcements = [
     {
       date: "November 27, 2021",
-      content: "Coding Period will start from December 3",
+      content: "Coding Period will start from 6th December",
     },
   ];
 
@@ -193,7 +193,7 @@ export default function MentorDashboard() {
           </div>
         </div>
 
-        <div className="projects">
+        {/* <div className="projects">
           {localStorage.getItem("announcement_messageM") === "true" &&
           localStorage.getItem("page_reloadM") === "false" ? (
             <div className="message">
@@ -202,15 +202,15 @@ export default function MentorDashboard() {
           ) : (
             ""
           )}
-        </div>
+        </div> */}
 
-        <React.Fragment>
+        {/* <React.Fragment>
           <h1>
             Please fill the anonymous{" "}
             <a href="https://forms.gle/onLDFQ2puP6YiTiE8"> feedback form</a>.
             Your suggestions matter!
           </h1>
-        </React.Fragment>
+        </React.Fragment> */}
 
         <div className="projects">
           <div className="project-header">

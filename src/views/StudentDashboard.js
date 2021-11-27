@@ -29,7 +29,7 @@ export default function StudentDashboard() {
   const announcements = [
     {
       date: "November 27, 2021",
-      content: "Coding Period will start from December 3",
+      content: "Coding Period will start from 6th December",
     },
   ];
 
