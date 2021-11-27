@@ -23,7 +23,7 @@ function Navbar() {
   }, []);
 
   const navbarNikal = () => {
-    isActive ? setIsActive(false) : setIsActive(true);
+    setIsActive(!isActive);
   };
 
   const dropdownNikal = (n) => {
@@ -223,6 +223,14 @@ function Navbar() {
 
         <div className={`wrapper ${isActive ? "active" : ""}`}>
           <ul>
+            {window.location.pathname !== "/" ? (
+              <li>
+                <a href="/">Home</a>
+              </li>
+            ) : (
+              ""
+            )}
+
             <li>
               <a href="/#about">About</a>
             </li>
