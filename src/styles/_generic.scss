@@ -50,6 +50,13 @@ textarea {
 
 a {
   text-decoration: none;
+  color: #0a72ef;
+
+  transition: color 0.2s ease-in;
+
+  &:hover {
+    color: #000;
+  }
 }
 
 .multicolor {
