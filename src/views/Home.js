@@ -1,7 +1,5 @@
 import React from "react";
-import pullRequest from "../assets/git-pull-request.svg";
-import github from "../assets/github.svg";
-import group from "../assets/people.svg";
+import * as Icon from "react-feather";
 import BlurredCircles from "../components/BlurredCircles";
 import Timeline from "../components/Timeline";
 import {
@@ -116,12 +114,12 @@ function Home() {
       <section className="tags container" id="tags">
         <h1 className="tags-title">Tags</h1>
         <div className="tags-list">
-          {tags.map((tag) => (
+          {tags.map((tag, index) => (
             <a
               href={`${window.location.origin}/projects?query=${tag}`}
               key={tag}
-              className="tag"
-              color={colors[Math.floor(Math.random() * 4)]}
+              className="tag multicolor"
+              color={colors[index % 4]}
             >
               {tag}
             </a>
@@ -135,21 +133,27 @@ function Home() {
       </section>
 
       <section className="stats container">
-        <h1>Statistics: KWoC 2019</h1>
+        <h1>Statistics: KWoC 2020</h1>
         <div className="stats-column-wrapper">
-          <div className="stats-column">
-            <img src={group} alt="Group" />
-            <h3>2000+ Participants</h3>
+          <div className="stats-column multicolor" color="red">
+            <div className="stats-icon">
+              <Icon.Users size={100} />
+            </div>
+            <h3>2500+ Participants</h3>
           </div>
 
-          <div className="stats-column">
-            <img src={pullRequest} alt="pullRequest" />
-            <h3>600+ Pull Requests</h3>
+          <div className="stats-column multicolor" color="blue">
+            <div className="stats-icon">
+              <Icon.GitHub size={100} />
+            </div>
+            <h3>2.1 Million+ Lines of Code</h3>
           </div>
 
-          <div className="stats-column">
-            <img src={github} alt="Project" />
-            <h3>150+ Projects</h3>
+          <div className="stats-column multicolor" color="green">
+            <div className="stats-icon">
+              <Icon.GitPullRequest size={100} />
+            </div>
+            <h3>1400+ Pull Requests</h3>
           </div>
         </div>
       </section>

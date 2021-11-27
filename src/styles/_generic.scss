@@ -47,3 +47,22 @@ textarea {
     border: 2px solid #0070f3;
   }
 }
+
+.multicolor {
+  &[color="red"] {
+    background: linear-gradient(90deg, rgba(#ff4d4d, 0.8), rgba(#f9cb28, 0.8));
+    color: #fff;
+  }
+  &[color="green"] {
+    background: linear-gradient(90deg, rgba(#7928ca, 0.6), rgba(#ff0080, 0.8));
+    color: #fff;
+  }
+  &[color="blue"] {
+    background: linear-gradient(90deg, rgba(#007cf0, 0.8), rgba(#00dfd8, 0.8));
+    color: #fff;
+  }
+  &[color="grey"] {
+    background: linear-gradient(90deg, rgba(#50e3c2, 0.8), rgba(#7928ca, 0.8));
+    color: #fff;
+  }
+}
