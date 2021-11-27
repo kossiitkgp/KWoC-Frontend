@@ -249,6 +249,14 @@ export default function MentorDashboard() {
                           alt="GitHub Logo"
                         ></img>
                       </a>
+
+                      <a
+                        href={`/form/projectedit/${item.ID}`}
+                        className="project-button-small"
+                      >
+                        Edit
+                      </a>
+
                       <a
                         href={`${item.RepoLink}/issues`}
                         className="project-button-small"
