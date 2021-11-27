@@ -105,7 +105,7 @@
 
 - What to do,if my stats are not being updated?
 
-  Wait for 24 hours,then contact us via admin@kossiitkgp.org.
+  Stats are only counted once coding period starts. Check if the any of the above condition are satisfied, if the problem still persists contact us via admin@kossiitkgp.org.
 
   PS - The main aim of stats was to provide encouragement but not create a competitive atmosphere.
 
