@@ -294,14 +294,14 @@ export default function ProjectEditForm(props) {
         </div>
       )}
 
-      <div>
+      {/* <div>
         <a
           className="button is-rounded is-fullWidth column is-full"
           onClick={refetchREADME}
         >
           Re-Fetch README
         </a>
-      </div>
+      </div> */}
 
       <div>
         <a
