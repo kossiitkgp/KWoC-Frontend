@@ -212,12 +212,16 @@ export default function ProjectEditForm(props) {
   }
 
   return (
-    <div className="box">
+    <div className="form">
+      <div className="heading">
+        <h1>Project Form</h1>
+      </div>
+
       <div className="field">
         <label className="label">Project Name</label>
         <div className="control">
           <input
-            className="input is-rounded"
+            className="input"
             type="text"
             placeholder="Edit name of your project"
             value={name}
@@ -257,24 +261,28 @@ export default function ProjectEditForm(props) {
 
       {showBranch && (
         <div className="field">
-          <label className="label">Select Branch for stats</label>
-          <img
-            alt=""
-            src={InfoIcon}
-            data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
+          <div className="custom-label-wrapper">
+            <label className="label">Select Branch for stats</label>
+            <img
+              alt=""
+              src={InfoIcon}
+              data-tip={`We put up a stats board for encouragement, by fetching the contribution data of all students using Github API. 
          <br/>Please select the branch on which students should be contributing. 
          <br/> We will be fetching the contributions data from the branch you have specified. 
          <br/> You can also change the branch in middle of KWoC`}
-          />
-          <ReactTooltip place="bottom" type="info" effect="float" html />
-          <Select
-            isClearable
-            isSearchable
-            onChange={handleChangeBranchField}
-            options={branchOpts}
-            defaultValue={selectedBranch}
-            placeholder="Select Branch"
-          />
+            />
+            <ReactTooltip place="bottom" type="info" effect="float" html />
+          </div>
+          <div className="control">
+            <Select
+              isClearable
+              isSearchable
+              onChange={handleChangeBranchField}
+              options={branchOpts}
+              defaultValue={selectedBranch}
+              placeholder="Select Branch"
+            />
+          </div>
         </div>
       )}
 
@@ -283,14 +291,16 @@ export default function ProjectEditForm(props) {
           <label className="label">
             Select Secondary Mentor(You should already know him/her)
           </label>
-          <Select
-            isClearable
-            isSearchable
-            onChange={handleChangeSMentorField}
-            options={secondaryMentorOpts}
-            defaultValue={selectedSecondaryMentor}
-            placeholder="Select Secondary Mentor"
-          />
+          <div className="control">
+            <Select
+              isClearable
+              isSearchable
+              onChange={handleChangeSMentorField}
+              options={secondaryMentorOpts}
+              defaultValue={selectedSecondaryMentor}
+              placeholder="Select Secondary Mentor"
+            />
+          </div>
         </div>
       )}
 
@@ -303,7 +313,7 @@ export default function ProjectEditForm(props) {
         </a>
       </div> */}
 
-      <div>
+      <div className="submit">
         <a
           className="button is-rounded is-fullWidth column is-full"
           onClick={handleSubmit}
