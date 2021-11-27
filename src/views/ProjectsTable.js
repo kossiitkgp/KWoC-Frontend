@@ -129,8 +129,12 @@ import React from "react";
 
 export default function ProjectsTable() {
   return (
-    <h1 style={{ textAlign: "center" }}>
-      Stats will be displayed once coding period starts
-    </h1>
+    <div className="tables">
+      <div className="tables-hero">
+        <h1 className="heading">
+          Stats will be displayed once coding period starts
+        </h1>
+      </div>
+    </div>
   );
 }
