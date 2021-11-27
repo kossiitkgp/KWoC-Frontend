@@ -28,7 +28,7 @@ export default function StudentDashboard() {
     {
       message: "Writing Kickass READMEs",
       url: "http://www.bauva.com/blog/Writing-Kickass-READMEs/",
-      avatar: "http://www.bauva.com/images/bio-photo.jpg",
+      avatar: "https://bauva.com/images/pranit.jpg",
     },
     {
       message: "Everything you need to ace KWoC",
