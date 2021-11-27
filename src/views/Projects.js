@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Card from "../components/ProjectCard.js";
 import { BACKEND_URL } from "../constants";
-import dummyProjects from "../data/projectsDummy.json";
 import { shuffleArray } from "../utils/shuffle";
 
 function projectSortPolicy(arr) {
@@ -129,7 +128,7 @@ export default function Projects() {
   else displayedProjects = searchedProjects;
 
   //DEMO. REMOVE THIS WHEN BACKEND IS UP
-  dummyProjects.projects.map((project) => {
+  allProjects.map((project) => {
     const Obj = {
       ProjectName: project.title,
       ProjectDesc: project.intro,
