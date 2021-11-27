@@ -27,7 +27,7 @@ export default function StudentDashboard() {
   const resources = [
     {
       message: "Writing Kickass READMEs",
-      url: "http://www.bauva.com/blog/Writing-Kickass-READMEs/",
+      url: "https://bauva.com/blog/writing-kickass-readmes/",
       avatar: "https://bauva.com/images/pranit.jpg",
     },
     {

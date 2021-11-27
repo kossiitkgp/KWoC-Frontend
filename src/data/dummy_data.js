@@ -1,7 +1,7 @@
 const studentResources = [
   {
     message: "Writing Kickass READMEs",
-    url: "http://www.bauva.com/blog/Writing-Kickass-READMEs/",
+    url: "https://bauva.com/blog/writing-kickass-readmes/",
     avatar: "https://bauva.com/images/pranit.jpg",
   },
   {
@@ -34,7 +34,7 @@ const studentResources = [
 const mentorResources = [
   {
     message: "Writing Kickass READMEs",
-    url: "http://www.bauva.com/blog/Writing-Kickass-READMEs/",
+    url: "https://bauva.com/blog/writing-kickass-readmes/",
     avatar: "http://www.bauva.com/images/bio-photo.jpg",
   },
   {
