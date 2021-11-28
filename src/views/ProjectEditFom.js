@@ -47,6 +47,7 @@ export default function ProjectEditForm(props) {
   const [projectid, setProjectId] = useState(0);
 
   const [tags, setTags] = useState([]);
+  const [tagsObj, setTagsObj] = useState([]);
   const [showTags, setShowTags] = useState(false);
 
   const [selectedBranch, setSelectedBranch] = useState({});
@@ -106,7 +107,8 @@ export default function ProjectEditForm(props) {
           const tags_map_arr = tags_arr.map((item) => {
             return { label: item, value: item };
           });
-          setTags(tags_map_arr);
+          setTags(tags_arr);
+          setTagsObj(tags_map_arr);
           setShowTags(true);
 
           setRepoLink(data["repo_link"]);
@@ -154,6 +156,7 @@ export default function ProjectEditForm(props) {
   function handleChangeTagsField(tags, action) {
     const selectedTags = tags.map((item) => item.value);
     setTags(selectedTags);
+    console.log("selected tags are lololololololo", selectedTags);
   }
 
   function handleChangeBranchField(tag, action) {
@@ -252,7 +255,7 @@ export default function ProjectEditForm(props) {
               isClearable
               onChange={handleChangeTagsField}
               options={options}
-              defaultValue={tags}
+              defaultValue={tagsObj}
               placeholder="Select or Create Tags"
             />
           </div>
