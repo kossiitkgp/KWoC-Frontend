@@ -157,7 +157,11 @@ export default function Projects() {
             secondaryMentor={project.SecondaryMentor.Name}
             secondaryMentorEmail={project.SecondaryMentor.Email}
             secondaryMentorUsername={project.SecondaryMentor.Username}
-            tags={JSON.parse(project.Tags)}
+            tags={
+              typeof JSON.parse(project.Tags)[0] === "object"
+                ? []
+                : JSON.parse(project.Tags)
+            }
             projectLink={project.RepoLink}
             commLink={project.ComChannel}
             length={project.Desc.length}
