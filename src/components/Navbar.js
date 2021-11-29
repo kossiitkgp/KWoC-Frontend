@@ -184,7 +184,7 @@ function Navbar() {
                         <Icon.User />
                       </div>
                       <div>
-                        Student Login <p>Login to see your mentor dashboard</p>
+                        Student Login <p>Login to see your student dashboard</p>
                       </div>
                     </a>
                   </li>
