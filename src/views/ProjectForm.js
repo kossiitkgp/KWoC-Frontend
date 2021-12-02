@@ -21,7 +21,7 @@ function checkLink(link) {
     "^(https?:\\/\\/)?" + // protocol
       "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
       "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
+      "(\\:\\d+)?(\\/[-a-z\\d%*#_.~+]*)*" + // port and path
       "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
       "(\\#[-a-z\\d_]*)?$",
     "i"
@@ -251,7 +251,11 @@ export default function Form(props) {
   function handleInputLinkField(e) {
     const link = e.target.value;
     if (checkLink(link)) {
-      setChannelLink(link);
+      if (link.indexOf("http") === -1) {
+        setChannelLink(`https://${link}`);
+      } else {
+        setChannelLink(link);
+      }
       setErrInLink("");
       disableSubmit(false);
     } else {
