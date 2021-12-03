@@ -13,10 +13,7 @@ function projectSortPolicy(arr) {
    */
 
   let sortedProjs = arr.sort((a, b) =>
-    a.ProjectDesc.length + a.ProjectTags.length <
-    b.ProjectDesc.length + b.ProjectTags.length
-      ? 1
-      : -1
+    a.Desc.length + a.Tags.length < b.Desc.length + b.Tags.length ? 1 : -1
   );
 
   let clubbedProjs = [];
@@ -93,8 +90,7 @@ export default function Projects() {
     axios
       .get(URL)
       .then((response) => {
-        // setAllProjects(projectSortPolicy(response.data));
-        setAllProjects(response.data);
+        setAllProjects(projectSortPolicy(response.data));
       })
       .catch((error) => {
         console.log(error);
