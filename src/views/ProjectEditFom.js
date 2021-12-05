@@ -44,6 +44,7 @@ async function getRepoBranches(repo) {
 export default function ProjectEditForm(props) {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
+  const [comChannel, setComChannel] = useState();
   const [projectid, setProjectId] = useState(0);
 
   const [tags, setTags] = useState([]);
@@ -101,6 +102,7 @@ export default function ProjectEditForm(props) {
               console.log("err in getting branches from Github", err)
             );
           setBranch(data["branch"]);
+          setComChannel(data["comChannel"]);
           setShowBranch(true);
 
           const tags_arr = JSON.parse(data["tags"]);
@@ -156,7 +158,6 @@ export default function ProjectEditForm(props) {
   function handleChangeTagsField(tags, action) {
     const selectedTags = tags.map((item) => item.value);
     setTags(selectedTags);
-    console.log("selected tags are lololololololo", selectedTags);
   }
 
   function handleChangeBranchField(tag, action) {
@@ -187,6 +188,7 @@ export default function ProjectEditForm(props) {
       tags: JSON.stringify(tags),
       readme: readme,
       secondaryMentor: secondaryMentor,
+      comChannel: comChannel,
     };
 
     const headers = {
@@ -288,6 +290,19 @@ export default function ProjectEditForm(props) {
           </div>
         </div>
       )}
+
+      <div className="field">
+        <label className="label">Communication channel</label>
+        <div className="control">
+          <input
+            className="input"
+            type="text"
+            placeholder="Slack invite link for example"
+            value={comChannel}
+            onChange={(event) => setComChannel(event.target.value)}
+          />
+        </div>
+      </div>
 
       {showSecMentor && (
         <div className="field">
