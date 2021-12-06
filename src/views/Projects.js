@@ -72,7 +72,15 @@ function projectSortPolicy(arr) {
 }
 
 const searchOptions = {
-  keys: ["ProjectName", "ProjectDesc", "MentorName", "ProjectTags"],
+  keys: [
+    "Name",
+    "Desc",
+    "Tags",
+    "Mentor.Username",
+    "Mentor.Name",
+    "SecondaryMentor.Username",
+    "SecondaryMentor.Name",
+  ],
   // the threshold value should be decreased to be more strict in getting search results
   threshold: 0.5,
 };
@@ -100,11 +108,14 @@ export default function Projects() {
     const query = urlParams.get("query");
     if (query !== null) {
       setSearchText(query);
-      const fuse = new Fuse(allProjects, searchOptions);
-      const results = fuse.search(query).map((i) => i.item);
-      setSearchedProjects(results);
     }
   }, []);
+
+  useEffect(() => {
+    const fuse = new Fuse(allProjects, searchOptions);
+    const results = fuse.search(searchText).map((i) => i.item);
+    setSearchedProjects(results);
+  }, [allProjects]);
 
   const setURLParams = (query) => {
     const urlParams = new URLSearchParams(location.search);
