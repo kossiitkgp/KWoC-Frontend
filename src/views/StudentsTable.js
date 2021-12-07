@@ -201,9 +201,7 @@ export default function StudentsTable() {
   return (
     <div className="tables">
       <div className="tables-hero">
-        <h1 className="heading">
-          Stats will be displayed once coding period starts
-        </h1>
+        <h1 className="heading">Stats will be displayed from 10th December.</h1>
       </div>
     </div>
   );
