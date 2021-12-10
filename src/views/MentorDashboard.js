@@ -113,14 +113,14 @@ export default function MentorDashboard() {
         alert("Server Error, Please try again");
       });
 
-    // fetch(`${STATS_API}/stats/mentor`, {
-    //   method: 'POST',
-    //   body: JSON.stringify({ 'projects': repoNames}),
+    // TODO: update stats api to not ask for mentor projects with request
+    // fetch(`${BACKEND_URL}/stats/mentor`, {
+    //   body: JSON.stringify({ projects: repoNames }),
     // })
-    // .then((res) => res.json())
-    // .then((res) => {
-    //   console.log("res. is ",res)
-    // })
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     console.log("res. is ", res);
+    //   });
   }, []);
 
   let resourceList = [];

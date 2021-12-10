@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BACKEND_URL } from "../constants";
 import { studentResources as resources } from "../data/dummy_data";
+import { trim_lines, trim_message } from "../utils/helpers.js";
 
 export default function StudentDashboard() {
   const [fullName, setFullName] = useState("");
@@ -129,15 +130,15 @@ export default function StudentDashboard() {
         console.log("err is ", err);
       });
 
-    //   axios
-    //     .get(`${STATS_API}/stats/student/${student_username}`)
-    //     .then((res) => {
-    //       setStats(res.data[student_username]);
-    //       console.log(res.data[student_username]);
-    //     })
-    //     .catch((err) => {
-    //       alert("Server error, Try again");
-    //     });
+    axios
+      .get(`${BACKEND_URL}/stats/student/${student_username}`)
+      .then((res) => {
+        setStats(res.data[student_username]);
+        console.log(res.data[student_username]);
+      })
+      .catch((err) => {
+        alert("Server error, Try again");
+      });
   }, []);
 
   let resourceList = [];
@@ -198,15 +199,15 @@ export default function StudentDashboard() {
           </div>
 
           <div className="mentor-stats">
-            <div className="mentor-stats-header">
+            {/* <div className="mentor-stats-header">
               <h1>Stats</h1>
               <p className="stats-message">
                 Stats will be updated once coding period begins
               </p>
               <br />
-            </div>
+            </div> */}
             {/**Keep the font-mentor-header to a single word, multiple words create a bad UI experience */}
-            {/* <div className="mentor-stats-content">
+            <div className="mentor-stats-content">
               <div className="card-component non-purple-card mstats grow-card">
                 <p className="font-mentor-header">Commits</p>
                 <p className="font-mentor-stats">
@@ -232,7 +233,20 @@ export default function StudentDashboard() {
                   {trim_lines(parseInt(stats["lines_removed"]))}
                 </p>
               </div>
-            </div> */}
+              <br />
+              <div>
+                <p>
+                  <a
+                    href={
+                      "kwoc.kossiitkgp/stats/student/" +
+                      localStorage.getItem("student_username")
+                    }
+                  >
+                    Link to Detailed Stats
+                  </a>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         {/* <div>
@@ -308,7 +322,7 @@ export default function StudentDashboard() {
               )}
             </React.Fragment> */}
 
-            {/* <div className="projects">
+            <div className="projects">
               <div className="project-header">
                 <h1>Languages involved</h1>
               </div>
@@ -335,17 +349,6 @@ export default function StudentDashboard() {
             </div>
 
             <div className="projects">
-              <div className="project-header">
-                <h1>
-                  Pull Reqests
-                  <img
-                    alt=""
-                    src={reloadIcon}
-                    className="refresh-icon"
-                    onClick={removeCachedTimeStamp}
-                  />
-                </h1>
-              </div>
               <div className="table-container" id="indiv-stats-table">
                 {pulls !== undefined ? (
                   <table>
@@ -442,7 +445,7 @@ export default function StudentDashboard() {
                   ""
                 )}
               </div>
-            </div> */}
+            </div>
 
             <section className="resource-card">
               <div className="resource-header">

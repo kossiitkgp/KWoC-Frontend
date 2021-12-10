@@ -201,8 +201,8 @@ export default function StudentDashboard() {
             <h1>Languages involved</h1>
           </div>
           <div>
-            {stats["languages"] !== undefined &&
-              stats["languages"].map((item) => (
+            {JSON.parse(stats["languages"]) !== undefined &&
+              JSON.parse(stats["languages"]).map((item) => (
                 <span className="tag is-dark is-large">{item}</span>
               ))}
           </div>
