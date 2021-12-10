@@ -268,7 +268,7 @@ export default function MentorDashboard() {
               })
             ) : (
               <div className="add-project-card">
-                <div className="header-add-project-card">
+                {/* <div className="header-add-project-card">
                   <p>You haven't added any projects yet</p>
                 </div>
                 <div className="add-project-button-div">
@@ -280,10 +280,11 @@ export default function MentorDashboard() {
                       </p>
                     </button>
                   </a>
-                </div>
+                </div> */}
+                Registrations closed
               </div>
             )}
-            {projects.length !== 0 ? (
+            {/* {projects.length !== 0 ? (
               <div className="add-project-card project-c card-component grow-card add-project-card-small">
                 <a href="/form/project">
                   <h4>Add Projects</h4>
@@ -292,7 +293,7 @@ export default function MentorDashboard() {
               </div>
             ) : (
               ""
-            )}
+            )} */}
           </div>
         </div>
         <div className="students">
