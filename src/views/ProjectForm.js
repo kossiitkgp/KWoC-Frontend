@@ -1,9 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Select from "react-select";
-import CreatableSelect from "react-select/creatable";
-import ReactTooltip from "react-tooltip";
-import InfoIcon from "../assets/info.svg";
 import { BACKEND_URL } from "../constants";
 import Tags from "../data/tags.js";
 
@@ -361,15 +357,7 @@ export default function Form(props) {
   return (
     <React.Fragment>
       <div className="form">
-        {/* FOR NOW THIS LINK FIELD IS IN THE TOP BECAUSE, WHEN IT IS KEPT AT THIRD PLACE(WHERE IT SHOULD BE), DUE TO
-      SOME CSS ISSUES THE OPTIONS ARE NOT VISIBLE, SINCE I DON'T KNOW TO FIX THAT, I AM LEAVING IT
-      
-      LATER IN PRODUCTION, KEEP THE LINK FIELD AT THE THIRD PLACE AND FIX THE CSS ISSUE.
-
-      HOWEVER WE CAN DECIDE ON THE ORDER OF FIELDS?
-      - rakaar
-    */}
-        <div className="heading">
+        {/* <div className="heading">
           <h1>Project Form</h1>
           <div>Welcome {username}</div>
         </div>
@@ -497,7 +485,8 @@ export default function Form(props) {
               </a>
             </div>
           </React.Fragment>
-        )}
+        )} */}
+        Registrations closed.
       </div>
     </React.Fragment>
   );
