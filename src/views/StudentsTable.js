@@ -3,7 +3,6 @@ import Fuse from "fuse.js";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
 import { STATS_API } from "../constants";
-import { shuffleArray } from "../utils/shuffle";
 
 const debouncer = function (fn, delay) {
   let timer;
@@ -167,7 +166,7 @@ export default function StudentsTable() {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
-            {shuffleArray(rows, 1).map((row) => {
+            {rows.map((row) => {
               prepareRow(row);
               return (
                 <tr {...row.getRowProps()}>
