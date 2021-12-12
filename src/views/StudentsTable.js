@@ -121,8 +121,8 @@ export default function StudentsTable() {
     <div className="stats">
       <h1 className="title">Student Stats</h1>
       <p>
-        You can sort the rows by clicking on headers. Click on username to get
-        detailed Stats
+        Stats are shuffled to avoid competition as open source is about
+        contributing.
       </p>
 
       <div class="field">
@@ -152,15 +152,8 @@ export default function StudentsTable() {
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  <th {...column.getHeaderProps()}>
                     {column.render("Header")}
-                    <span>
-                      {column.isSorted
-                        ? column.isSortedDesc
-                          ? " 🔽"
-                          : " 🔼"
-                        : ""}
-                    </span>
                   </th>
                 ))}
               </tr>
