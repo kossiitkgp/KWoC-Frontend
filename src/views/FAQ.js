@@ -3,19 +3,6 @@ import React, { useState } from "react";
 import FAQs from "./FAQ.json";
 
 export default function FAQ() {
-  // const [text, setText] = useState("");
-
-  // useEffect(() => {
-  //   async function getText() {
-  //     const markdown = await fetch("/faq.md");
-  //     const text = await markdown.text();
-  //     console.log(text);
-
-  //     setText(text);
-  //   }
-  //   getText();
-  // }, []);
-
   const [query, setQuery] = useState("");
 
   const onChangeHandler = (event) => {
@@ -58,7 +45,7 @@ export default function FAQ() {
         {searchResults.map((FAQ) => {
           const { q, a } = FAQ;
           return (
-            <div>
+            <ul>
               <div>
                 <strong>{q}</strong>
               </div>
@@ -69,7 +56,7 @@ export default function FAQ() {
                   })}
                 </ul>
               </div>
-            </div>
+            </ul>
           );
         })}
       </div>
