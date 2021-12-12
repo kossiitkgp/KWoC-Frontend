@@ -1,19 +1,35 @@
-import React, { useEffect, useState } from "react";
+import Fuse from "fuse.js";
+import React, { useState } from "react";
 import FAQs from "./FAQ.json";
 
 export default function FAQ() {
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
 
-  useEffect(() => {
-    async function getText() {
-      const markdown = await fetch("/faq.md");
-      const text = await markdown.text();
-      console.log(text);
+  // useEffect(() => {
+  //   async function getText() {
+  //     const markdown = await fetch("/faq.md");
+  //     const text = await markdown.text();
+  //     console.log(text);
 
-      setText(text);
-    }
-    getText();
-  }, []);
+  //     setText(text);
+  //   }
+  //   getText();
+  // }, []);
+
+  const [query, setQuery] = useState("");
+
+  const onChangeHandler = (event) => {
+    setQuery(event.target.value);
+  };
+
+  const fuse = new Fuse(FAQs, {
+    keys: ["q"],
+  });
+
+  const results = fuse.search(query);
+
+  console.log(results);
+  const searchResults = query ? results.map((result) => result.item) : FAQs;
 
   return (
     <div className="faq">
@@ -32,18 +48,20 @@ export default function FAQ() {
             class="input"
             type="text"
             placeholder="Search your query"
-            // onChange={}
-            // value={}
+            onChange={onChangeHandler}
+            value={query}
           ></input>
         </div>
       </div>
 
       <div className="container">
-        {FAQs.map((FAQ) => {
+        {searchResults.map((FAQ) => {
           const { q, a } = FAQ;
           return (
             <div>
-              <div>{q}</div>
+              <div>
+                <strong>{q}</strong>
+              </div>
               <div>
                 <ul>
                   {a.map((ele) => {
