@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
+import FAQs from "./FAQ.json";
 
 export default function FAQ() {
   const [text, setText] = useState("");
@@ -24,7 +23,21 @@ export default function FAQ() {
       </section>
 
       <div className="container">
-        <ReactMarkdown plugins={[gfm]}>{text}</ReactMarkdown>
+        {FAQs.map((FAQ) => {
+          const { q, a } = FAQ;
+          return (
+            <div>
+              <div>{q}</div>
+              <div>
+                <ul>
+                  {a.map((ele) => {
+                    return <li>{ele}</li>;
+                  })}
+                </ul>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
