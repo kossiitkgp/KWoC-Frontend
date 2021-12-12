@@ -22,6 +22,22 @@ export default function FAQ() {
         <p>Wanna ask us a question? Check these first.</p>
       </section>
 
+      <div class="faq-hero-search">
+        <h1 class="title">Search</h1>
+      </div>
+
+      <div className="faq-search-box">
+        <div class="field">
+          <input
+            class="input"
+            type="text"
+            placeholder="Search your query"
+            // onChange={}
+            // value={}
+          ></input>
+        </div>
+      </div>
+
       <div className="container">
         {FAQs.map((FAQ) => {
           const { q, a } = FAQ;
