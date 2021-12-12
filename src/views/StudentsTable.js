@@ -121,8 +121,8 @@ export default function StudentsTable() {
     <div className="stats">
       <h1 className="title">Student Stats</h1>
       <p>
-        You can sort the rows by clicking on headers. Click on username to get
-        detailed Stats
+        Stats are shuffled to avoid competition as open source is about
+        contributing.
       </p>
 
       <div class="field">
