@@ -42,23 +42,25 @@ export default function FAQ() {
       </div>
 
       <div className="container">
-        {searchResults.map((FAQ) => {
-          const { q, a } = FAQ;
-          return (
-            <ul>
-              <div>
-                <strong>{q}</strong>
-              </div>
-              <div>
-                <ul>
-                  {a.map((ele) => {
-                    return <li>{ele}</li>;
-                  })}
-                </ul>
-              </div>
-            </ul>
-          );
-        })}
+        <ul>
+          {searchResults.map((FAQ) => {
+            const { q, a } = FAQ;
+            return (
+              <li>
+                <div>
+                  <strong>{q}</strong>
+                </div>
+                <div>
+                  <ul>
+                    {a.map((ele) => {
+                      return <li>{ele}</li>;
+                    })}
+                  </ul>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );
