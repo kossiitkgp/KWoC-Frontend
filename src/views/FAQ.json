@@ -3,7 +3,7 @@
     "q": "I do not have any prior knowledge of git and/or any programming language. Can I do this?",
     "a": [
       "Absolutely. This program is specifically catered to the growth and smooth transition of people like you who want to learn. KOSS and the mentors will help you wherever possible.",
-      "To learn more about git and github,check [these](https://github.com/kossiitkgp/Git-and-Github-2021)."
+      "To learn more about git and github, check <a href='https://github.com/kossiitkgp/Git-and-Github-2021'>these</a>"
     ]
   },
   {
@@ -16,13 +16,13 @@
   {
     "q": "Where does KWoC occur? Do I need to be a student of IIT Kharagpur?",
     "a": [
-      "Kharagpur Winter of Code is to be done remotely from home, and it is not required for you to be student of **ANY** particular institute."
+      "Kharagpur Winter of Code is to be done remotely from home, and it is not required for you to be student of <b>ANY</b> particular institute."
     ]
   },
   {
     "q": "What is the purpose of this program? Is this some kind of internship?",
     "a": [
-      "**No**, KWoC is a program which aims at helping participants learn how to contribute in the open-source world. This activity prepares you for various open source opportunities such as [Google Summer of Code](https://summerofcode.withgoogle.com/archive/), [Rail Girl's Summer of Code and Outreachy](https://railsgirlssummerofcode.org)."
+      "<b>No</b>, KWoC is a program which aims at helping participants learn how to contribute in the open-source world. This activity prepares you for various open source opportunities such as <a href='https://summerofcode.withgoogle.com/archive/'>Google Summer of Code</a>, <a href='https://railsgirlssummerofcode.org'>Rail Girl's Summer of Code and Outreachy</a>."
     ]
   },
   {
@@ -34,7 +34,7 @@
   {
     "q": "What can I do to help spread the word about KWoC?",
     "a": [
-      "Nothing makes us happier than people spreading words about open-source; to begin, you can connect with our [Facebook](https://www.facebook.com/kossiitkgp),[Linkedin](https://www.linkedin.com/company/kharagpur-open-source-society),[Twitter](https://twitter.com/kossiitkgp) handles and increase awareness about KWoC in your college; nothing works better than word of mouth."
+      "Nothing makes us happier than people spreading words about open-source; to begin, you can connect with our <a href='https://www.facebook.com/kossiitkgp'>Facebook</a>, <a href='https://www.linkedin.com/company/kharagpur-open-source-society'>Linkedin</a>, <a href='https://twitter.com/kossiitkgp'>Twitter</a> handles and increase awareness about KWoC in your college; nothing works better than word of mouth."
     ]
   },
   {
@@ -46,7 +46,7 @@
   {
     "q": "How should I get selected in KWOC?",
     "a": [
-      "There is absolutely no selection criteria for students. You are selected in the program as soon as you register. So you don't have to ask your mentors 'How to get selected for your project?', but instead go ahead with **'How can I contribute to your project?'**."
+      "There is absolutely no selection criteria for students. You are selected in the program as soon as you register. So you don't have to ask your mentors 'How to get selected for your project?', but instead go ahead with <b>'How can I contribute to your project?'</b>."
     ]
   },
   {
@@ -77,19 +77,19 @@
   {
     "q": "Can I apply if I am not a student of IIT Kharagpur?",
     "a": [
-      "Sure! Our program is open to **all** students irrespective of college! Is there. Read [this](https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016) Quora answer by Pranit Bauva."
+      "Sure! Our program is open to <b>all</b> students irrespective of college! Is there. Read <a href='https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016'>this</a> Quora answer by Pranit Bauva."
     ]
   },
   {
     "q": "Can you provide me any advice so that I can start preparing for it beforehand?",
     "a": [
-      "Get familiar with git and Github. Check [this](https://opensource.guide) Open Source guide. Also, practice git [here](https://gitimmersion.com/index.html). You can also begin by following [Codecademy's git interactive tutorial](https://www.codecademy.com/learn/learn-git)."
+      "Get familiar with git and Github. Check <a href='https://opensource.guide'>this</a> Open Source guide. Also, practice git <a href='https://gitimmersion.com/index.html'>here</a>. You can also begin by following <a href='https://www.codecademy.com/learn/learn-git'>Codecademy's git interactive tutorial</a>."
     ]
   },
   {
     "q": "Is there any other similar kind of program that I might find interesting?",
     "a": [
-      "Other programs similar to KWoC are [GirlScript Summer of Code](https://gssoc.girlscript.tech) organised by GirlScript India. If you meant similar to GSoC, then check out [this](https://github.com/deepanshu1422/List-Of-Open-Source-Internships-Programs) awesome list of programs."
+      "Other programs similar to KWoC are <a href='https://gssoc.girlscript.tech'>GirlScript Summer of Code</a> organised by GirlScript India. If you meant similar to GSoC, then check out <a href='https://github.com/deepanshu1422/List-Of-Open-Source-Internships-Programs'>this</a> awesome list of programs."
     ]
   },
   {
@@ -144,7 +144,7 @@
     "a": [
       "Commits are counted only after your PR is merged.",
       "Commits are counted if they are merged in the default branch.",
-      "Commits are not linked to your github account if your email configuration is not set properly. See [this](https://github.com/kossiitkgp/kwoc-bugs/issues/22#issuecomment-747068412) for details."
+      "Commits are not linked to your github account if your email configuration is not set properly. See <a href='https://github.com/kossiitkgp/kwoc-bugs/issues/22#issuecomment-747068412'>this</a> for details."
     ]
   },
   {
