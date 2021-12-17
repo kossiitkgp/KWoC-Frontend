@@ -1,4 +1,5 @@
 import Fuse from "fuse.js";
+import parse from "html-react-parser";
 import React, { useState } from "react";
 import FAQs from "./FAQ.json";
 
@@ -53,7 +54,7 @@ export default function FAQ() {
                 <div>
                   <ul>
                     {a.map((ele) => {
-                      return <li>{ele}</li>;
+                      return <li>{parse(ele)}</li>;
                     })}
                   </ul>
                 </div>
