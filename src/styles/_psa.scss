@@ -1,0 +1,55 @@
+.psa {
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  height: 12rem;
+  width: 20rem;
+  border-radius: 5px;
+
+  position: absolute;
+  top: 10%;
+  right: 10%;
+
+  background-color: #50e3c2cc;
+
+  &-confirm {
+    display: none;
+
+    position: absolute;
+    z-index: 10;
+    margin: 0 40% 0 40%;
+
+    span {
+      display: block;
+
+      width: 70px;
+      height: 10px;
+      background-color: #000;
+
+      &:first-of-type {
+        transform: translateY(5px) rotate(45deg);
+      }
+
+      &:last-of-type {
+        transform: translateY(-5px) rotate(-45deg);
+      }
+    }
+  }
+
+  &-content {
+    font-size: 1.5rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .psa-confirm {
+      display: block;
+    }
+
+    .psa-content {
+      z-index: -1;
+    }
+  }
+}
