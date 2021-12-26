@@ -6,7 +6,7 @@
 
   &-hero {
     padding: 4rem 1rem;
-    margin: 4rem 0;
+    margin: 2rem 0;
 
     .title {
       font-weight: 700;
@@ -30,6 +30,63 @@
     }
   }
 
+  &-hero-search {
+    padding: 1rem 1rem 1rem 1rem;
+    margin: 1rem 0 1rem 0;
+
+    .title {
+      font-weight: 700;
+      font-size: 4.5rem;
+      line-height: 1.2;
+      text-align: center;
+
+      color: #000;
+
+      @include sm {
+        font-size: 3rem;
+      }
+    }
+
+    p {
+      color: #666;
+      font-size: 1.2rem;
+      font-weight: 400;
+      lin &-search-box {
+        text-align: center;
+      }
+    }
+  }
+
+  &-search-box {
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      font-family: $header-font;
+      font-weight: 700;
+    }
+
+    .input {
+      width: 80vw;
+      padding: 1rem 1.4rem;
+      border-radius: 5px;
+      outline: none;
+      // box-shadow: 0.2rem 0.2rem 0.4rem rgba($color: #1a1a1a, $alpha: 0.1);
+      border: 1px solid #eaeaea;
+      color: $text-color-black;
+      font: inherit;
+
+      @include lg {
+        width: 50rem;
+      }
+    }
+  }
+
   .container {
     display: flex;
     flex-direction: column;
@@ -49,6 +106,8 @@
       padding: 0.5rem 0;
 
       li {
+        margin: 1rem 0rem 1rem 0rem;
+
         p:first-of-type {
           font-size: 1.1rem;
           font-weight: 600;
@@ -56,7 +115,7 @@
 
         ul {
           list-style-type: square;
-          margin: 0 1rem;
+          margin: 0 3rem;
         }
 
         font-size: 1rem;

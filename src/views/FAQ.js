@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
+import Fuse from "fuse.js";
+import parse from "html-react-parser";
+import React, { useState } from "react";
+import FAQs from "../data/faq.json";
 
 export default function FAQ() {
-  const [text, setText] = useState("");
+  const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    async function getText() {
-      const markdown = await fetch("/faq.md");
-      const text = await markdown.text();
-      console.log(text);
+  const onChangeHandler = (event) => {
+    setQuery(event.target.value);
+  };
 
-      setText(text);
-    }
-    getText();
-  }, []);
+  const fuse = new Fuse(FAQs, {
+    keys: ["q"],
+  });
+
+  const results = fuse.search(query);
+
+  console.log(results);
+  const searchResults = query ? results.map((result) => result.item) : FAQs;
 
   return (
     <div className="faq">
@@ -23,8 +26,38 @@ export default function FAQ() {
         <p>Wanna ask us a question? Check these first.</p>
       </section>
 
+      <div className="faq-search-box">
+        <div class="field">
+          <input
+            class="input"
+            type="text"
+            placeholder="Search your query"
+            onChange={onChangeHandler}
+            value={query}
+          ></input>
+        </div>
+      </div>
+
       <div className="container">
-        <ReactMarkdown plugins={[gfm]}>{text}</ReactMarkdown>
+        <ul>
+          {searchResults.map((FAQ) => {
+            const { q, a } = FAQ;
+            return (
+              <li>
+                <div>
+                  <strong>{q}</strong>
+                </div>
+                <div>
+                  <ul>
+                    {a.map((ele) => {
+                      return <li>{parse(ele)}</li>;
+                    })}
+                  </ul>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </div>
   );
