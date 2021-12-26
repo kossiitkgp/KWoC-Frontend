@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Psa from "../components/Psa";
 import { BACKEND_URL } from "../constants";
 import { studentResources as resources } from "../data/dummy_data";
 import { trim_lines, trim_message } from "../utils/helpers.js";
@@ -33,26 +34,6 @@ export default function StudentDashboard() {
       content: "Coding Period will start from 6th December",
     },
   ];
-
-  const message_storage = () => {
-    if (localStorage.getItem("announcement_message") !== "true") {
-      localStorage.setItem("page_reload", "false");
-    } else {
-      localStorage.setItem("page_reload", "true");
-    }
-
-    localStorage.setItem("announcement_message", "true");
-  };
-
-  const result_message_storage = () => {
-    if (localStorage.getItem("result_message") !== "true") {
-      localStorage.setItem("page_reload2", "false");
-    } else {
-      localStorage.setItem("page_reload2", "true");
-    }
-
-    localStorage.setItem("result_message", "true");
-  };
 
   const handleBlogLink = () => {
     // TODO: check this regex because there were some problems previous year
@@ -90,7 +71,6 @@ export default function StudentDashboard() {
   };
 
   useEffect(() => {
-    message_storage();
     const student_username = localStorage.getItem("student_username");
 
     // fetch(`${STATS_API}/student/exists/${student_username}`)
@@ -120,10 +100,6 @@ export default function StudentDashboard() {
         setFullName(res.name);
         setCollegeName(res.college);
         setEvalStatus(res.evals);
-
-        if (res.evals !== 0) {
-          result_message_storage();
-        }
       })
       .catch((err) => {
         // alert("Server Error, Please try again");
@@ -198,14 +174,15 @@ export default function StudentDashboard() {
             </div>
           </div>
 
+          <Psa
+            announcement={
+              evalStatus === 1
+                ? "You have successfully passed KWoC 2020 Mid Evaluation. Keep going!"
+                : "You could not clear KWoC 2020 Mid Evaluation. But, don't let this stop you from contributing to Open Source. For any issues contact us. "
+            }
+          />
+
           <div className="mentor-stats">
-            {/* <div className="mentor-stats-header">
-              <h1>Stats</h1>
-              <p className="stats-message">
-                Stats will be updated once coding period begins
-              </p>
-              <br />
-            </div> */}
             {/**Keep the font-mentor-header to a single word, multiple words create a bad UI experience */}
             <div className="mentor-stats-content">
               <div className="card-component non-purple-card mstats grow-card">
@@ -249,79 +226,8 @@ export default function StudentDashboard() {
             </div>
           </div>
         </div>
-        {/* <div>
-          {evalStatus === 1 ? (
-            <div className="projects">
-              <div className="endEvals-guide">
-                <h1>
-                  Thank you for your efforts till now. The deadlines for
-                  End-term Evaluation submission has passed. See you next year
-                  and keep contributing to open source.
-                  <br />
-                  For any issues, contact us.
-                </h1>
-              </div>
-            </div>
-          ) : (
-            ""
-          )} </div> */}
-        {/* <React.Fragment>
-          {evalStatus === 2 ? (
-            <div className="endEvals-guide">
-              <Confetti />
-              <h1>
-                Thank you for participating in KWoC. Your report is being
-                evaluated and on clearing, your certificate would be emailed to
-                you till 18th January. See you next year and keep contributing
-                to open source.
-                <br />
-                For any issues, contact us.
-              </h1>
-            </div>
-          ) : (
-            ""
-          )}
-        </React.Fragment> */}
         <div>
-          {/* {evalStatus === 0 ? (
-            <React.Fragment className="projects">
-              <h1 className="message">
-                You could not clear KWoC 2020 Mid Evaluation.
-                <br />
-                But, don't let this stop you from contributing to Open Source.
-                For any issues contact us.
-              </h1>
-            </React.Fragment>
-          ) : ( */}
           <div>
-            {/* TODO: better way to show and confirm if announcements had been seen */}
-            {/* <React.Fragment className="projects">
-              {localStorage.getItem("announcement_message") === "true" &&
-              localStorage.getItem("page_reload") === "false" ? (
-                <div className="message">
-                  <h1>Announcements have been updated!</h1>
-                </div>
-              ) : (
-                ""
-              )}
-            </React.Fragment> */}
-
-            {/* <React.Fragment className="projects">
-              {localStorage.getItem("result_message") === "true" &&
-              localStorage.getItem("page_reload2") === "false" ? (
-                <div className="message">
-                  {" "}
-                  <h1>
-                    You have successfully passed KWoC 2020 Mid Evaluation. Keep
-                    going!
-                  </h1>
-                  <img alt="" src={cheers} />
-                </div>
-              ) : (
-                ""
-              )}
-            </React.Fragment> */}
-
             <div className="projects">
               <div className="project-header">
                 <h1>Languages involved</h1>
