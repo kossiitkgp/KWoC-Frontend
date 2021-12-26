@@ -1,7 +1,7 @@
 import Fuse from "fuse.js";
 import parse from "html-react-parser";
 import React, { useState } from "react";
-import FAQs from "./FAQ.json";
+import FAQs from "../data/faq.json";
 
 export default function FAQ() {
   const [query, setQuery] = useState("");
@@ -25,10 +25,6 @@ export default function FAQ() {
         <h1 className="title">Frequently Asked Questions</h1>
         <p>Wanna ask us a question? Check these first.</p>
       </section>
-
-      <div class="faq-hero-search">
-        <h1 class="title">Search</h1>
-      </div>
 
       <div className="faq-search-box">
         <div class="field">
