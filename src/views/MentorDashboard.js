@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { BACKEND_URL, MID_EVAL_DATE, STATS_API } from "../constants";
+import { BACKEND_URL, END_EVAL_DATE, STATS_API } from "../constants";
 import { mentorResources as resources } from "../data/dummy_data";
-
-function countDaysLeft() {
-  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-  const today = new Date();
-  const midEvals = new Date(MID_EVAL_DATE);
-  const diffDays = Math.ceil(Math.abs((midEvals - today) / _MS_PER_DAY));
-  return diffDays;
-}
+import { countDaysLeft } from "../utils/helpers";
 
 export default function MentorDashboard() {
   const [fullName, setFullName] = useState("");
@@ -102,7 +95,7 @@ export default function MentorDashboard() {
           redirect: "follow",
         };
 
-        fetch(`${STATS_API}/stats/mentors", requestOptions`)
+        fetch(`${STATS_API}/stats/mentors`, requestOptions)
           .then((response) => response.text())
           .then((result) => {
             setStudents(JSON.parse(result)["students"]);
@@ -134,87 +127,85 @@ export default function MentorDashboard() {
     });
 
   return (
-    <div className="dashboard">
-      <div className="dashboard-header">
-        <div>
-          <h1>Dashboard</h1>
-          <h2>{fullName}</h2>
+    <div className="dashboard-container">
+      <div className="dashboard">
+        <div className="dashboard-header">
+          <div>
+            <h1>Dashboard</h1>
+            <h2>{fullName}</h2>
 
-          <div className="stats ">
-            <div className="box">
-              <h2>{projects.length}</h2>
-              <p>Projects</p>
+            <div className="stats ">
+              <div className="box">
+                <h2>{projects.length}</h2>
+                <p>Projects</p>
+              </div>
 
-              {/**
-            <div className='card-component mstats purple-card grow-card'>
-              <p className='font-mentor-header'>Students</p>
-              <p className='font-mentor-stats'>0</p>
-            </div>*/}
-              {/* <div className="card-component mstats purple-card grow-card">
-                <p className="font-mentor-header">Days to Midevals</p>
-                <p className="font-mentor-stats small-stats-font">
-                  {countDaysLeft()}
-                </p>
-              </div> */}
+              <div className="box">
+                <h2>{students.length}</h2>
+                <p>Students</p>
+              </div>
+
+              <div className="box">
+                <h2>{countDaysLeft(END_EVAL_DATE)}</h2>
+                <p>Days to EndEvals</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="avatar">
+            <img
+              src={`https://github.com/${localStorage.getItem(
+                "mentor_username"
+              )}.png`}
+              alt="User's GitHub Avatar"
+            ></img>
+
+            <div className="avatar-content">
+              <h2>{fullName}</h2>
+              <p>{localStorage.getItem("mentor_username")}</p>
             </div>
           </div>
         </div>
 
-        <div className="avatar">
-          <img
-            src={`https://github.com/${localStorage.getItem(
-              "mentor_username"
-            )}.png`}
-            alt="User's GitHub Avatar"
-          ></img>
+        <div className="subtitle">
+          <h1>Projects</h1>
 
-          <div className="avatar-content">
-            <h2>{fullName}</h2>
-            <p>{localStorage.getItem("mentor_username")}</p>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h1 className="subtitle">Projects</h1>
-
-        {/* Fix the code for project cards below */}
-        <div className="project-cards">
-          {projects.length !== 0 ? (
-            projects.map((item, index) => {
-              return (
-                <div className="card-container">
-                  <div className="info">
-                    <img
-                      src={`https://github.com/${item.owner}.png`}
-                      alt=""
-                    ></img>
-
-                    <p>{item.Name}</p>
-                  </div>
-
-                  <div className="buttons">
-                    <a href={`${item.RepoLink}`}>
+          <div className="project-cards">
+            {projects.length !== 0 ? (
+              projects.map((item, index) => {
+                return (
+                  <div className="card-container">
+                    <div className="info">
                       <img
-                        src="/github.svg"
-                        className="github-svg"
-                        alt="GitHub Logo"
+                        src={`https://github.com/${item.owner}.png`}
+                        alt=""
                       ></img>
-                    </a>
 
-                    <a href={`/form/projectedit/${item.ID}`}>Edit</a>
+                      <p>{item.Name}</p>
+                    </div>
 
-                    <a href={`${item.RepoLink}/issues`}>Issues</a>
-                    <a href={`${item.RepoLink}/pulls`}>PRs</a>
+                    <div className="buttons">
+                      <a href={`${item.RepoLink}`}>
+                        <img
+                          src="/github.svg"
+                          className="github-svg"
+                          alt="GitHub Logo"
+                        ></img>
+                      </a>
+
+                      <a href={`/form/projectedit/${item.ID}`}>Edit</a>
+
+                      <a href={`${item.RepoLink}/issues`}>Issues</a>
+                      <a href={`${item.RepoLink}/pulls`}>PRs</a>
+                    </div>
+
+                    <p>{item.ProjectStatus ? "" : "To be Checked"}</p>
                   </div>
-
-                  <p>{item.ProjectStatus ? "" : "To be Checked"}</p>
-                </div>
-              );
-            })
-          ) : (
-            <div className="add-project-card">
-              {/* <div className="header-add-project-card">
+                );
+              })
+            ) : (
+              <div className="add-project-card">
+                {/* <div className="header-add-project-card">
                   <p>You haven't added any projects yet</p>
                 </div>
                 <div className="add-project-button-div">
@@ -227,10 +218,10 @@ export default function MentorDashboard() {
                     </button>
                   </a>
                 </div> */}
-              Registrations closed
-            </div>
-          )}
-          {/* {projects.length !== 0 ? (
+                Registrations closed
+              </div>
+            )}
+            {/* {projects.length !== 0 ? (
               <div className="add-project-card project-c card-component grow-card add-project-card-small">
                 <a href="/form/project">
                   <h4>Add Projects</h4>
@@ -240,102 +231,95 @@ export default function MentorDashboard() {
             ) : (
               ""
             )} */}
+          </div>
         </div>
-      </div>
-      <div className="students">
-        <div className="student-header">
-          <h1>Students</h1>
-        </div>
-        <div className="student-card">
-          {students.length !== 0 ? (
-            students.map((studentName, index) => {
-              return (
-                <div className="student-c card-component grow-card">
-                  <div className="student-card-header">
-                    <img
-                      src={`https://github.com/${studentName}.png`}
-                      className="avatar-students-card"
-                      alt=""
-                    ></img>
-                    <p className="student-name">{studentName}</p>
-                  </div>
 
-                  <div className="student-button">
+        <div className="subtitle">
+          <h1>Students</h1>
+
+          <div className="students">
+            {students.length !== 0 ? (
+              students.map((studentName, index) => {
+                return (
+                  <div className="student">
                     <a
-                      className="student-profile student-button-small"
                       href={`https://github.com/${studentName}`}
+                      className="header"
                     >
                       <img
-                        src="/github.svg"
-                        className="github-svg-student"
+                        src={`https://github.com/${studentName}.png`}
+                        className="avatar-students-card"
                         alt=""
                       ></img>
+                      <p>{studentName}</p>
                     </a>
-                    <a
-                      className="student-button-small"
-                      href={`/stats/student/${studentName}`}
-                    >
-                      Stats
-                    </a>
+
+                    {/* <div className="student-button">
+                      <a
+                        className="student-button-small"
+                        href={`/stats/student/${studentName}`}
+                      >
+                        Stats
+                      </a>
+                    </div> */}
                   </div>
+                );
+              })
+            ) : (
+              <div className="add-project-card">
+                <div className="header-add-project-card">
+                  <p>
+                    Coding period starts from 6th December. You can invite
+                    students meanwhile.
+                  </p>
                 </div>
-              );
-            })
-          ) : (
-            <div className="add-project-card">
-              <div className="header-add-project-card">
-                <p>
-                  Coding period starts from 6th December. You can invite
-                  students meanwhile.
-                </p>
+                <div className="add-project-button-div">
+                  <a href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-jch6e9gn-puizWuKSw5~K9Eq4YfFrFg">
+                    <button className="add-project-button ">
+                      <p className="plus-sign">+</p>
+                      <p className="text-add-project">Invite Students</p>
+                    </button>
+                  </a>
+                </div>
               </div>
-              <div className="add-project-button-div">
-                <a href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-jch6e9gn-puizWuKSw5~K9Eq4YfFrFg">
-                  <button className="add-project-button ">
-                    <p className="plus-sign">+</p>
-                    <p className="text-add-project">Invite Students</p>
-                  </button>
-                </a>
-              </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
 
-      <section className="resource-table">
-        <h1 className="subtitle">Resources</h1>
+        <section className="resource-table subtitle">
+          <h1>Resources</h1>
 
-        <table>
-          <tbody>
-            {resources.map((resourceCard) => {
-              const message = resourceCard.message;
-              const url = resourceCard.url;
-              const avatar = resourceCard.avatar;
+          <table>
+            <tbody>
+              {resources.map((resourceCard) => {
+                const message = resourceCard.message;
+                const url = resourceCard.url;
+                const avatar = resourceCard.avatar;
 
-              return (
-                <tr>
-                  <td>
-                    <a href={url}>
-                      <img
-                        src={avatar}
-                        className="avatar-resource"
-                        alt="link"
-                      ></img>
-                    </a>
-                  </td>
-                  <td>
-                    <a href={url}>
-                      <p>{message}</p>
-                    </a>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </section>
+                return (
+                  <tr>
+                    <td>
+                      <a href={url}>
+                        <img
+                          src={avatar}
+                          className="avatar-resource"
+                          alt="link"
+                        ></img>
+                      </a>
+                    </td>
+                    <td>
+                      <a href={url}>
+                        <p>{message}</p>
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </section>
 
-      {/* <div className="announcements">
+        {/* <div className="announcements">
         <h1 className="announcement-header">Announcements</h1>
 
         {announcements.map((item, index) => {
@@ -346,7 +330,8 @@ export default function MentorDashboard() {
             </div>
           );
         })}
-      </div> */}
+				</div> */}
+      </div>
     </div>
   );
 }

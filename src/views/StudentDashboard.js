@@ -133,32 +133,33 @@ export default function StudentDashboard() {
   }
 
   return (
-    <div className="dashboard">
-      <div className="dashboard-header">
-        <div>
-          <h1>Dashboard</h1>
-          <h2>{fullName}</h2>
+    <div className="dashboard-container">
+      <div className="dashboard">
+        <div className="dashboard-header">
+          <div>
+            <h1>Dashboard</h1>
+            <h2>{fullName}</h2>
 
-          <div className="stats">
-            <div className="box">
-              <h2>{stats["commits"] && stats["commits"].length}</h2>
-              <p>Commits</p>
-            </div>
+            <div className="stats">
+              <div className="box">
+                <h2>{stats["commits"] && stats["commits"].length}</h2>
+                <p>Commits</p>
+              </div>
 
-            <div className="box">
-              <h2>{stats["pulls"] !== undefined && stats["pulls"].length}</h2>
-              <p>Pull Requests</p>
-            </div>
+              <div className="box">
+                <h2>{stats["pulls"] !== undefined && stats["pulls"].length}</h2>
+                <p>Pull Requests</p>
+              </div>
 
-            <div className="box">
-              <h2>
-                {trim_lines(parseInt(stats["lines_added"]))}/
-                {trim_lines(parseInt(stats["lines_removed"]))}
-              </h2>
-              <p>Lines of Code (+/-)</p>
-            </div>
+              <div className="box">
+                <h2>
+                  {trim_lines(parseInt(stats["lines_added"]))}/
+                  {trim_lines(parseInt(stats["lines_removed"]))}
+                </h2>
+                <p>Lines of Code (+/-)</p>
+              </div>
 
-            {/* <div>
+              {/* <div>
               <a
                 href={
                   "kwoc.kossiitkgp/stats/student/" +
@@ -168,60 +169,57 @@ export default function StudentDashboard() {
                 Link to Detailed Stats
               </a>
             </div> */}
+            </div>
           </div>
+
+          <div className="avatar">
+            <img
+              src={`https://github.com/${localStorage.getItem(
+                "student_username"
+              )}.png`}
+              alt="User's GitHub Avatar"
+            ></img>
+
+            <div className="avatar-content">
+              <h2>{fullName}</h2>
+              <p>{localStorage.getItem("student_username")}</p>
+              <p>{collegeName}</p>
+            </div>
+          </div>
+
+          {/* TODO: see and improve Psa component to handle multiple announcements better */}
+          <Psa
+            announcement={
+              evalStatus === 1
+                ? "You have successfully passed KWoC 2021 Mid Evaluation. Keep going!"
+                : "You could not clear KWoC 2021 Mid Evaluation. But, don't let this stop you from contributing to Open Source. For any issues contact us. "
+            }
+          />
         </div>
 
-        <div className="avatar">
-          <img
-            src={`https://github.com/${localStorage.getItem(
-              "student_username"
-            )}.png`}
-            alt="User's GitHub Avatar"
-          ></img>
+        <div className="subtitle">
+          <h1>Languages</h1>
 
-          <div className="avatar-content">
-            <h2>{fullName}</h2>
-            <p>{localStorage.getItem("student_username")}</p>
-            <p>{collegeName}</p>
-          </div>
-        </div>
-
-        {/* TODO: see and improve Psa component to handle multiple announcements better */}
-        <Psa
-          announcement={
-            evalStatus === 1
-              ? "You have successfully passed KWoC 2021 Mid Evaluation. Keep going!"
-              : "You could not clear KWoC 2021 Mid Evaluation. But, don't let this stop you from contributing to Open Source. For any issues contact us. "
-          }
-        />
-      </div>
-
-      <div>
-        <div>
-          <div>
-            <h1 className="subtitle">Languages</h1>
-
+          <div className="languages">
             {stats["languages"] !== undefined &&
-              stats["languages"].map((item) => (
-                <span className="language">{item}</span>
+              stats["languages"].map((item) => <span>{item}</span>)}
+          </div>
+        </div>
+
+        <div className="subtitle">
+          <h1>Projects</h1>
+
+          <div className="languages">
+            {stats["projects"] !== undefined &&
+              stats["projects"].map((item) => (
+                <span>
+                  <a href={`https://github.com/${item}`}>{item}</a>
+                </span>
               ))}
           </div>
+        </div>
 
-          {/* <div className="projects">
-            <div className="project-header">
-              <h1>Projects</h1>
-            </div>
-            <div>
-              {stats["projects"] !== undefined &&
-                stats["projects"].map((item) => (
-                  <span className="tag is-dark is-large is-info">
-                    <a href={`https://github.com/${item}`}>{item}</a>
-                  </span>
-                ))}
-            </div>
-          </div> */}
-
-          {/* <div className="table-container" id="indiv-stats-table">
+        {/* <div className="table-container" id="indiv-stats-table">
             {pulls !== undefined ? (
               <table>
                 <thead>
@@ -264,85 +262,88 @@ export default function StudentDashboard() {
             )}
           </div> */}
 
-          <div>
-            <h1 className="subtitle">Commits</h1>
+        <div className="subtitle">
+          <h1>Commits</h1>
 
-            <div className="dashboard-table">
-              {stats["commits"] !== undefined && extraCommits !== undefined ? (
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Project</th>
-                      <th>Commit</th>
-                      <th>Lines</th>
-                    </tr>
-                  </thead>
+          <div className="dashboard-table">
+            {stats["commits"] !== undefined && extraCommits !== undefined ? (
+              <table>
+                <thead>
+                  <tr>
+                    <th>Project</th>
+                    <th>Commit</th>
+                    <th>Lines</th>
+                  </tr>
+                </thead>
 
-                  <tbody>
-                    {stats["commits"].map((item) => {
-                      return (
-                        <tr>
-                          <td>
-                            <a
-                              className="project-in-commit-table"
-                              href={`https://github.com/${item["project"]}`}
-                            >
-                              {item["project"]}
-                            </a>
-                          </td>
-                          <td>
-                            <a href={item["html_url"]}>
-                              {trim_message(item["message"])}
-                            </a>
-                          </td>
-                          <td>
-                            +{trim_lines(item["lines_added"])},-
-                            {trim_lines(item["lines_removed"])}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              ) : (
-                ""
-              )}
-            </div>
+                <tbody>
+                  {stats["commits"].map((item) => {
+                    return (
+                      <tr>
+                        <td>
+                          <a
+                            className="project-in-commit-table"
+                            href={`https://github.com/${item["project"]}`}
+                          >
+                            {item["project"]}
+                          </a>
+                        </td>
+                        <td>
+                          <a href={item["html_url"]}>
+                            {trim_message(item["message"])}
+                          </a>
+                        </td>
+                        <td>
+                          +{trim_lines(item["lines_added"])},-
+                          {trim_lines(item["lines_removed"])}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            ) : (
+              ""
+            )}
           </div>
+          <p className="dashboard-table-message">
+            View on Desktop to see commits
+          </p>
+        </div>
 
-          <section className="resource-table">
-            <h1 className="subtitle">Resources</h1>
+        <section className="resource-table subtitle">
+          <h1>Resources</h1>
 
-            <table>
-              <tbody>
-                {resources.map((resourceCard) => {
-                  const message = resourceCard.message;
-                  const url = resourceCard.url;
-                  const avatar = resourceCard.avatar;
+          <table>
+            <tbody>
+              {resources.map((resourceCard) => {
+                const message = resourceCard.message;
+                const url = resourceCard.url;
+                const avatar = resourceCard.avatar;
 
-                  return (
-                    <tr>
-                      <td>
-                        <a href={url}>
-                          {/* TODO: default image/icon for broken links */}
-                          <img
-                            src={avatar}
-                            className="avatar-resource"
-                            alt="link"
-                          ></img>
-                        </a>
-                      </td>
-                      <td>
-                        <a href={url}>{message}</a>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </section>
+                return (
+                  <tr>
+                    <td>
+                      <a href={url}>
+                        {/* TODO: default image/icon for broken links */}
+                        <img
+                          src={avatar}
+                          className="avatar-resource"
+                          alt="link"
+                        ></img>
+                      </a>
+                    </td>
+                    <td>
+                      <a href={url}>{message}</a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </section>
 
-          {/* <div className="announcements">
+        {/* <div className="announcements">
             <h1>Announcements</h1>
 
             {announcements.map((item, index) => {
@@ -354,8 +355,6 @@ export default function StudentDashboard() {
               );
             })}
           </div> */}
-        </div>
-        {/* )} */}
       </div>
     </div>
   );
