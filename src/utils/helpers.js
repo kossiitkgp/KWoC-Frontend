@@ -1,5 +1,13 @@
 // Module for helper methods
 
+function countDaysLeft(date) {
+  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+  const today = new Date();
+  const finalDate = new Date(date);
+  const diffDays = Math.ceil(Math.abs((finalDate - today) / _MS_PER_DAY));
+  return diffDays;
+}
+
 function numFormatter(num) {
   if (num > 999 && num < 1000000) {
     return (num / 1000).toFixed(0) + "K"; // convert to K for number from > 1000 < 1 million
@@ -37,4 +45,4 @@ function fetch_calls(link) {
       return err;
     });
 }
-export { numFormatter, trim_message, trim_lines, fetch_calls };
+export { countDaysLeft, numFormatter, trim_message, trim_lines, fetch_calls };
