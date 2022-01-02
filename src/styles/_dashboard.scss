@@ -125,4 +125,60 @@
       }
     }
   }
+
+  .project-cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    margin: 0 1% 0 1%;
+
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+
+      margin: 1rem;
+      padding: 1rem;
+
+      max-width: 350px;
+      max-height: 200px;
+
+      p,
+      h1 {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        img {
+          height: 40px;
+          width: 40px;
+          margin: 0.5rem;
+
+          border-radius: 2px;
+        }
+
+        p {
+          font-size: 1.5rem;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        a {
+          margin: 0.5rem;
+        }
+      }
+    }
+  }
 }
