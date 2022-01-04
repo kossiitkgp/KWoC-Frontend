@@ -170,7 +170,7 @@ export default function StudentDashboard() {
 
             <div className="avatar-content">
               <h2>{fullName}</h2>
-              <p>{localStorage.getItem("student_username")}</p>
+              <p>{username}</p>
               <p>{collegeName}</p>
             </div>
           </div>
