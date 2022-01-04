@@ -35,31 +35,3 @@ yarn start
 ```
 yarn build
 ```
-
----
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Useful files' paths
-
-- Forms
-  - Mentor Form - `src/components/form/MentorForm.js`
-  - Student Form - `src/components/form/StudentForm.js`
-  - Project Form - `src/components/ProjectForm.js`
-- Dashboard
-  - Student Dashboard - `src/components/dashboard/StudentDashboard.js`
-  - Mentor Dashboard - `src/components/dashboard/MentorDashboard.js`
-- Tables
-  - Project Stats Table - `src/components/tables/MentorsTable/ProjectsTable.js`
-  - Student Stats Table - `src/components/tables/StudentsTable/StudentsTable.js`
-- Individual Stats
-  - Individual Project Stats - `src/components/indivStats/mentorStats/MentorStats.js`
-  - Individual Student Stats - `src/components/indivStats/studentStats/StudentStats.js`
-- Projects Page
-
-  - Project Card - `src/components/projects/ProjectCard.js`
-  - Projects Page - `src/components/projects/Projects.js`
-
-- Misc
-  - FAQ - `src/components/FAQ.js`
-  - OAuth Logic - `src/components/OAuth.js`
