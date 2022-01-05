@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import Psa from "../components/Psa";
 import { BACKEND_URL } from "../constants";
 import { studentResources as resources } from "../data/dummy_data";
@@ -48,8 +49,9 @@ export default function StudentDashboard() {
     );
 
     if (!urlMatch.test(blogLink)) {
-      alert("Not a valid blog link. Please correct and submit again");
-      return;
+      toast.error("Not a valid blog link. Please correct and submit again.", {
+        duration: 4000,
+      });
     } else {
       axios
         .post(`${BACKEND_URL}/student/bloglink`, details, {
@@ -58,30 +60,23 @@ export default function StudentDashboard() {
           },
         })
         .then((res) => {
-          console.log(details);
-          console.log(res);
+          toast.success(
+            "Blog submitted, thank you for participating in KWoC this year.",
+            {
+              duration: 4000,
+            }
+          );
         })
         .catch((err) => {
           alert("Server error, Try again");
           console.log(err);
         });
     }
-
-    window.location.reload();
   };
 
   useEffect(() => {
     const student_username = localStorage.getItem("student_username");
 
-    // fetch(`${STATS_API}/student/exists/${student_username}`)
-    //   .then((res) => res.text())
-    //   .then((res) => {
-    //     if (res === "false") {
-    //       alert("Sorry, it seems that you have not registered for KWoC");
-    //       window.location.pathname = "";
-    //     }
-    //   });
-    // check that its not null
     const student_loggedout =
       localStorage.getItem("student_jwt") === null ||
       localStorage.getItem("student_jwt") === undefined;
@@ -196,6 +191,23 @@ export default function StudentDashboard() {
             }
           />
         </div>
+
+        <div className="subtitle">
+          <h1>End Evaluation</h1>
+          <div className="field">
+            <label className="label">Blog Link</label>
+            <div className="control">
+              <input
+                type="text"
+                placeholder="Link of blog"
+                defaultValue=""
+                onChange={(e) => setBlogLink(e.target.value)}
+              />
+              <button onClick={handleBlogLink}>Submit</button>
+            </div>
+          </div>
+        </div>
+        <Toaster position="bottom-center" />
 
         <div className="subtitle">
           <h1>Languages</h1>
