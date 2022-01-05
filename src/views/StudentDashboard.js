@@ -193,21 +193,23 @@ export default function StudentDashboard() {
           />
         </div>
 
-        <div className="subtitle">
-          <h1>End Evaluation</h1>
-          <div className="field">
-            <label className="label">Blog Link</label>
-            <div className="control">
-              <input
-                type="text"
-                placeholder="Link of blog"
-                defaultValue=""
-                onChange={(e) => setBlogLink(e.target.value)}
-              />
-              <button onClick={handleBlogLink}>Submit</button>
+        {evalStatus >= 1 && (
+          <div className="subtitle">
+            <h1>End Evaluation</h1>
+            <div className="field">
+              <label className="label">Blog Link</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Link of blog"
+                  defaultValue=""
+                  onChange={(e) => setBlogLink(e.target.value)}
+                />
+                <button onClick={handleBlogLink}>Submit</button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
         <Toaster position="bottom-center" />
         <div className="feedback">
           <p>
