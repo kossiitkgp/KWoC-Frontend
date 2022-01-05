@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import reloadIcon from "../assets/refresh-cw.svg";
 import Psa from "../components/Psa";
 import { BACKEND_URL } from "../constants";
 import { studentResources as resources } from "../data/dummy_data";
@@ -245,8 +246,18 @@ export default function StudentDashboard() {
           </div>
         </div>
 
-        {/* <div className="table-container" id="indiv-stats-table">
-            {pulls !== undefined ? (
+        <div className="subtitle">
+          <h1>
+            Pull Reqests
+            <img
+              alt=""
+              src={reloadIcon}
+              className="refresh-icon"
+              onClick={removeCachedTimeStamp}
+            />
+          </h1>
+          <div className="dashboard-table">
+            {stats["pulls"] !== undefined ? (
               <table>
                 <thead>
                   <tr>
@@ -260,33 +271,32 @@ export default function StudentDashboard() {
                 </thead>
 
                 <tbody>
-                  {stats["pulls"] &&
-                    stats["pulls"].map((item) => {
-                      return (
-                        <tr>
-                          <td>
-                            <a
-                              className="project-in-commit-table"
-                              href={`https://github.com/${item["base"]["repo"]["full_name"]}`}
-                            >
-                              {item["base"]["repo"]["full_name"]}
-                            </a>
-                          </td>
+                  {stats["pulls"].map((item) => {
+                    return (
+                      <tr>
+                        <td>
+                          <a
+                            href={`https://github.com/${item["base"]["repo"]["full_name"]}`}
+                          >
+                            {item["base"]["repo"]["full_name"]}
+                          </a>
+                        </td>
 
-                          <td>
-                            <a href={item["html_url"]}>
-                              {trim_message(item["title"])}
-                            </a>
-                          </td>
-                        </tr>
-                      );
-                    })}
+                        <td>
+                          <a href={item["html_url"]}>
+                            {trim_message(item["title"])}
+                          </a>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             ) : (
               ""
             )}
-          </div> */}
+          </div>
+        </div>
 
         <div className="subtitle">
           <h1>Commits</h1>
