@@ -120,6 +120,16 @@
         }
       }
     }
+    .feedback {
+      p {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.5rem;
+      }
+
+      a {
+        color: #09cbcb;
+      }
+    }
 
     &-table {
       max-width: 50vw;
@@ -173,7 +183,12 @@
       flex-direction: row;
       flex-wrap: wrap;
 
-      margin: 0 1% 0 1%;
+      margin: 0 1rem 0 0;
+      max-width: 50vw;
+
+      @include sm {
+        max-width: 100%;
+      }
 
       .card-container {
         display: flex;
@@ -233,6 +248,12 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    // TODO: better way to center everything and limit width
+    max-width: 50vw;
+    @include sm {
+      max-width: 100%;
+    }
 
     .student {
       margin: 1rem;

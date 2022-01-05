@@ -208,6 +208,20 @@ export default function StudentDashboard() {
           </div>
         </div>
         <Toaster position="bottom-center" />
+        <div className="feedback">
+          <p>
+            Help us make KWoC a better experience for everyone by filling this
+            anonymous{" "}
+            <a
+              href="https://forms.gle/speJb3ihYqX6711A6"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              feedback form
+            </a>
+            .
+          </p>
+        </div>
 
         <div className="subtitle">
           <h1>Languages</h1>
