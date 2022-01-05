@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { BACKEND_URL, END_EVAL_DATE, STATS_API } from "../constants";
+import { BACKEND_URL, STATS_API } from "../constants";
 import { mentorResources as resources } from "../data/dummy_data";
-import { countDaysLeft } from "../utils/helpers";
 
 export default function MentorDashboard() {
   const [fullName, setFullName] = useState("");
@@ -146,7 +145,7 @@ export default function MentorDashboard() {
               </div>
 
               <div className="box">
-                <h2>{countDaysLeft(END_EVAL_DATE)}</h2>
+                <h2>0</h2>
                 <p>Days to EndEvals</p>
               </div>
             </div>
@@ -165,6 +164,22 @@ export default function MentorDashboard() {
               <p>{localStorage.getItem("mentor_username")}</p>
             </div>
           </div>
+        </div>
+
+        <div className="subtitle feedback">
+          <h1>Feedback</h1>
+          <p>
+            Help us make KWoC a better experience for everyone by filling this
+            anonymous{" "}
+            <a
+              href="https://forms.gle/Qx7KaLuZfdkoBMB7A"
+              rel="noreferrer noopener"
+              target="_blank"
+            >
+              feedback form
+            </a>
+            .
+          </p>
         </div>
 
         <div className="subtitle">
