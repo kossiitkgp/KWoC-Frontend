@@ -186,7 +186,7 @@ export default function StudentDashboard() {
           {/* TODO: see and improve Psa component to handle multiple announcements better */}
           <Psa
             announcement={
-              evalStatus === 1
+              evalStatus !== 0
                 ? "You have successfully passed KWoC 2021 Mid Evaluation. Keep going!"
                 : "You could not clear KWoC 2021 Mid Evaluation. But, don't let this stop you from contributing to Open Source. For any issues contact us. "
             }
