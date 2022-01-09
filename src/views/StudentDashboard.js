@@ -196,7 +196,8 @@ export default function StudentDashboard() {
         {evalStatus >= 1 && (
           <div className="subtitle">
             <h1>End Evaluation</h1>
-            <div className="field">
+
+            {/* <div className="field">
               <label className="label">Blog Link</label>
               <div className="control">
                 <input
@@ -207,6 +208,18 @@ export default function StudentDashboard() {
                 />
                 <button onClick={handleBlogLink}>Submit</button>
               </div>
+            </div> */}
+
+            <div className="feedback">
+              <p>
+                {" "}
+                The end evaluation has ended. You would recieve the evaluation
+                result by 17th Dec.
+              </p>
+              <p>
+                Thank you for participating in KWoC, hope you learned something
+                new regardless of the result.
+              </p>
             </div>
           </div>
         )}
