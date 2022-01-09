@@ -169,6 +169,10 @@ export default function MentorDashboard() {
         <div className="subtitle feedback">
           <h1>Feedback</h1>
           <p>
+            The end evaluation has ended. You would recieve the evaluation
+            result by 17th Dec.
+          </p>
+          <p>
             Help us make KWoC a better experience for everyone by filling this
             anonymous{" "}
             <a
