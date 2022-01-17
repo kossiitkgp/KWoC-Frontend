@@ -121,9 +121,10 @@
       }
     }
     .feedback {
+      font-size: 1.5rem;
+
       p {
         color: rgba(255, 255, 255, 0.7);
-        font-size: 1.5rem;
         max-width: 50vw;
 
         @include sm {

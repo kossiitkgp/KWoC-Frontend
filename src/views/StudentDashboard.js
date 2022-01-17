@@ -214,11 +214,22 @@ export default function StudentDashboard() {
 
           <div className="feedback">
             {evalStatus === 2 ? (
-              <p>
-                {" "}
-                Congratulations. You have successfully passed as a student
-                developer in KWoC 2021.
-              </p>
+              <>
+                <p>
+                  {" "}
+                  Congratulations. You have successfully passed as a student
+                  developer in KWoC 2021.
+                </p>
+                <a
+                  href={`https://kossiitkgp.org/public-files/KWoC/2021-Certificates/Student/${localStorage.getItem(
+                    "student_username"
+                  )}.pdf`}
+                  target="_blank"
+                  rel="noopener norefferer"
+                >
+                  Link to your certificate
+                </a>
+              </>
             ) : (
               <p>
                 {" "}
