@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Confetti from "react-confetti";
 import toast, { Toaster } from "react-hot-toast";
 import reloadIcon from "../assets/refresh-cw.svg";
 import Psa from "../components/Psa";
@@ -130,6 +131,9 @@ export default function StudentDashboard() {
 
   return (
     <div className="dashboard-container">
+      {evalStatus === 2 && (
+        <Confetti width={window.innerWidth} height={window.innerHeight} />
+      )}
       <div className="dashboard">
         <div className="dashboard-header">
           <div>
