@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Confetti from "react-confetti";
 import { BACKEND_URL, STATS_API } from "../constants";
 import { mentorResources as resources } from "../data/dummy_data";
 
@@ -127,6 +128,7 @@ export default function MentorDashboard() {
 
   return (
     <div className="dashboard-container">
+      <Confetti width={window.innerWidth} height={window.innerHeight} />
       <div className="dashboard">
         <div className="dashboard-header">
           <div>
@@ -168,10 +170,16 @@ export default function MentorDashboard() {
 
         <div className="subtitle feedback">
           <h1>Feedback</h1>
-          <p>
-            The end evaluation has ended. You would recieve the evaluation
-            result by 17th Dec.
-          </p>
+          <p>Congratulations. You have successfully mentored in KWoC 2021.</p>
+          <a
+            href={`https://kossiitkgp.org/public-files/KWoC/2021-Certificates/Mentor/${localStorage.getItem(
+              "mentor_username"
+            )}.pdf`}
+            target="_blank"
+            rel="noopener norefferer"
+          >
+            Link to your certificate
+          </a>
           <p>
             Help us make KWoC a better experience for everyone by filling this
             anonymous{" "}

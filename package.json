@@ -11,7 +11,7 @@
     "html-react-parser": "^1.4.3",
     "node-sass": "npm:sass",
     "react": "^16.8.6",
-    "react-confetti": "^6.0.0",
+    "react-confetti": "^6.0.1",
     "react-countup": "^4.3.3",
     "react-dom": "^16.8.6",
     "react-feather": "^2.0.9",

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Confetti from "react-confetti";
 import toast, { Toaster } from "react-hot-toast";
 import reloadIcon from "../assets/refresh-cw.svg";
 import Psa from "../components/Psa";
@@ -130,6 +131,9 @@ export default function StudentDashboard() {
 
   return (
     <div className="dashboard-container">
+      {evalStatus === 2 && (
+        <Confetti width={window.innerWidth} height={window.innerHeight} />
+      )}
       <div className="dashboard">
         <div className="dashboard-header">
           <div>
@@ -192,12 +196,10 @@ export default function StudentDashboard() {
             }
           />
         </div>
+        <div className="subtitle">
+          <h1>End Evaluation</h1>
 
-        {evalStatus >= 1 && (
-          <div className="subtitle">
-            <h1>End Evaluation</h1>
-
-            {/* <div className="field">
+          {/* <div className="field">
               <label className="label">Blog Link</label>
               <div className="control">
                 <input
@@ -210,19 +212,41 @@ export default function StudentDashboard() {
               </div>
             </div> */}
 
-            <div className="feedback">
+          <div className="feedback">
+            {evalStatus === 2 ? (
+              <>
+                <p>
+                  {" "}
+                  Congratulations. You have successfully passed as a student
+                  developer in KWoC 2021.
+                </p>
+                <a
+                  href={`https://kossiitkgp.org/public-files/KWoC/2021-Certificates/Student/${localStorage.getItem(
+                    "student_username"
+                  )}.pdf`}
+                  target="_blank"
+                  rel="noopener norefferer"
+                >
+                  Link to your certificate
+                </a>
+              </>
+            ) : (
               <p>
                 {" "}
-                The end evaluation has ended. You would recieve the evaluation
-                result by 17th Dec.
+                We regret to inform you that your contributions in KWoC were not
+                up to the mark. However, we do not wish to discourage you from
+                participating further in open source development. Contributing
+                to open source is a continuous learning process and we hope you
+                take this in your stride and do well the next time.
               </p>
-              <p>
-                Thank you for participating in KWoC, hope you learned something
-                new regardless of the result.
-              </p>
-            </div>
+            )}
+
+            <p>
+              Thank you for participating in KWoC, hope you learned something
+              new regardless of the result.
+            </p>
           </div>
-        )}
+        </div>
         <Toaster position="bottom-center" />
         <div className="feedback">
           <p>
