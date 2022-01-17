@@ -192,12 +192,10 @@ export default function StudentDashboard() {
             }
           />
         </div>
+        <div className="subtitle">
+          <h1>End Evaluation</h1>
 
-        {evalStatus >= 1 && (
-          <div className="subtitle">
-            <h1>End Evaluation</h1>
-
-            {/* <div className="field">
+          {/* <div className="field">
               <label className="label">Blog Link</label>
               <div className="control">
                 <input
@@ -210,19 +208,30 @@ export default function StudentDashboard() {
               </div>
             </div> */}
 
-            <div className="feedback">
+          <div className="feedback">
+            {evalStatus === 2 ? (
               <p>
                 {" "}
-                The end evaluation has ended. You would recieve the evaluation
-                result by 17th Dec.
+                Congratulations. You have successfully passed as a student
+                developer in KWoC 2021.
               </p>
+            ) : (
               <p>
-                Thank you for participating in KWoC, hope you learned something
-                new regardless of the result.
+                {" "}
+                We regret to inform you that your contributions in KWoC were not
+                up to the mark. However, we do not wish to discourage you from
+                participating further in open source development. Contributing
+                to open source is a continuous learning process and we hope you
+                take this in your stride and do well the next time.
               </p>
-            </div>
+            )}
+
+            <p>
+              Thank you for participating in KWoC, hope you learned something
+              new regardless of the result.
+            </p>
           </div>
-        )}
+        </div>
         <Toaster position="bottom-center" />
         <div className="feedback">
           <p>
