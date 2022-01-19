@@ -1,6 +1,6 @@
 // export const BACKEND_URL = `https://kwoc.metamehta.me`;
 export const BACKEND_URL = `https://api.kwoc.kossiitkgp.org`;
-export const STATS_API = `https://api.kwoc.kossiitkgp.org`;
+export const STATS_API = `https://kwoc-stats-test-api.herokuapp.com`;
 export const MID_EVAL_DATE = "2021-12-24";
 export const END_EVAL_DATE = "2022-01-04";
 const GITHUB_AUTH_CLIENT_ID = `0e3422ebe51f16c846bf`;
