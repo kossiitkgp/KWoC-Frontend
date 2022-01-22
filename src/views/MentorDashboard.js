@@ -259,6 +259,9 @@ export default function MentorDashboard() {
               ""
             )} */}
           </div>
+          <p className="dashboard-table-message">
+            View on Desktop to see projects.
+          </p>
         </div>
 
         <div className="subtitle">
@@ -311,6 +314,9 @@ export default function MentorDashboard() {
               </div>
             )}
           </div>
+          <p className="dashboard-table-message">
+            View on Desktop to see students.
+          </p>
         </div>
 
         <section className="resource-table subtitle">

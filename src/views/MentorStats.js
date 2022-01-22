@@ -22,7 +22,7 @@ export default function StudentDashboard() {
     const mentor_loggedout =
       localStorage.getItem("mentor_jwt") === null ||
       localStorage.getItem("mentor_jwt") === undefined;
-    if (mentor_loggedout) window.location.pathname = "";
+    // if (mentor_loggedout) window.location.pathname = "";
     const URL = `${BACKEND_URL}/mentor/dashboard`;
 
     setUsername(mentor_username);
@@ -60,6 +60,10 @@ export default function StudentDashboard() {
 
         var raw = JSON.stringify(repoNamesJson);
 
+        // axios.post(`${STATS_API}/stats/mentor/${mentor_username}`, repoNamesJson)
+        //   .then((response) => setStudents(response.data.students))
+        //   .catch((err) => console.log(err));
+
         var requestOptions = {
           method: "POST",
           headers: myHeaders,
@@ -85,17 +89,44 @@ export default function StudentDashboard() {
     });
 
   return (
-    <div className="student-dashboard-body dashboard-container">
+    <div className="dashboard-container">
       <div className="dashboard">
-        <link
-          href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
-          rel="stylesheet"
-        ></link>
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.css"></link>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap"
-          rel="stylesheet"
-        ></link>
+        <div className="dashboard-header">
+          <div>
+            <h1>Dashboard</h1>
+
+            <div className="stats">
+              <div className="box">
+                <h2>{projects && projects.length}</h2>
+                <p>Projects</p>
+              </div>
+
+              {/* <div>
+              <a
+                href={
+                  "kwoc.kossiitkgp/stats/student/" +
+                  localStorage.getItem("student_username")
+                }
+              >
+                Link to Detailed Stats
+              </a>
+            </div> */}
+            </div>
+          </div>
+
+          <div className="avatar">
+            <img
+              src={`https://github.com/${username}.png`}
+              alt="User's GitHub Avatar"
+            ></img>
+
+            <div className="avatar-content">
+              <h2>{fullName}</h2>
+              <p>{username}</p>
+              <p>{collegeName}</p>
+            </div>
+          </div>
+        </div>
         {/*
 
          Mentor Dashboard here
@@ -104,56 +135,6 @@ export default function StudentDashboard() {
              -> Important Announcements
              -> Stats of indiv Mentor ???
       */}
-        <div className="intro-card">
-          <div className="avatar grow-card">
-            <img
-              src={`https://github.com/${username}.png`}
-              className="avatar-img"
-              alt="Mentor's GitHub Avatar"
-            ></img>
-            <br />
-            <div className="avatar-content">
-              <p id="mentor-name">{fullName}</p>
-              <p id="mentor-username">{username}</p>
-              <p id="mentor-username">{collegeName}</p>
-            </div>
-          </div>
-
-          <div className="mentor-stats ">
-            <div className="mentor-stats-header">
-              <h1>Stats</h1>
-              {/* <p className='stats-message'>
-                Stats will be updated once coding period begins
-              </p> */}
-              <br />
-            </div>
-            {/**Keep the font-mentor-header to a single word, multiple words create a bad UI experience */}
-            {/* <div className='mentor-stats-content'>
-              <div className='card-component non-purple-card mstats grow-card'>
-                <p className='font-mentor-header'>Commits</p>
-                <p className='font-mentor-stats'>{ stats['commits'] !== undefined && stats['commits'].length}</p>
-              </div>
-
-              <div className='card-component purple-card mstats  grow-card'>
-                <p className='font-mentor-header'>
-                  Pull Requests <br />
-                  (open+closed)
-                </p>
-                <p className='font-mentor-stats'>
-                  {stats['pulls'] !== undefined && stats['pulls'].length}
-                </p>
-              </div>
-
-              <div className='card-component non-purple-card mstats  grow-card'>
-                <p className='font-mentor-header'>Lines of Code</p>
-                <h1>(+/-)</h1>
-                <p className='font-mentor-stats'>
-                  {trim_lines(parseInt(stats['lines_added']))}/{trim_lines(parseInt(stats['lines_removed']))}
-                </p>
-              </div>
-            </div> */}
-          </div>
-        </div>
 
         {/* <div className='projects'>
           <div className='project-header'>
@@ -201,7 +182,7 @@ export default function StudentDashboard() {
                 onClick={removeCachedTimeStamp} /> */}
             </h1>
           </div>
-          <div className="table-container" id="indiv-stats-table">
+          <div className="dashboard-table" id="indiv-stats-table">
             {students["projects"] !== undefined ? (
               <div>
                 {students["projects"].map((item) => {

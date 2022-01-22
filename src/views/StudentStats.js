@@ -61,15 +61,6 @@ export default function StudentDashboard() {
     const splitArr = window.location.pathname.split("/");
     const student_username = splitArr[splitArr.length - 1];
 
-    fetch(`${STATS_API}/student/exists/${student_username}`)
-      .then((res) => res.text())
-      .then((res) => {
-        if (res === "false") {
-          alert("Sorry, itseems you have not registered for KWoC");
-          window.location.pathname = "";
-        }
-      });
-
     setUsername(student_username);
     const URL = `${BACKEND_URL}/student/dashboard`;
     const data = {
