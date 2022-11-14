@@ -2,6 +2,9 @@
   "name": "kwoc-react",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=16.0.0 <17.0.0"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
     "ag-grid-community": "^23.2.1",
