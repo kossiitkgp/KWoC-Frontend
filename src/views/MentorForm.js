@@ -44,7 +44,7 @@ export default function Form(props) {
 
   return (
     <div className="form">
-      {/* <h1>Mentor Form</h1>
+      <h1>Mentor Form</h1>
       <p>Welcome {username}</p>
 
       <div>
@@ -73,8 +73,7 @@ export default function Form(props) {
 
       <a className="button" onClick={handleSubmit} disabled={isSubmitDisabled}>
         Submit
-      </a> */}
-      Registrations closed.
+      </a>
     </div>
   );
 }

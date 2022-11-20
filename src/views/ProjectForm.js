@@ -1,5 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
+import ReactTooltip from "react-tooltip";
+import InfoIcon from "../assets/info.svg";
 import { BACKEND_URL } from "../constants";
 import Tags from "../data/tags.js";
 
@@ -357,7 +361,7 @@ export default function Form(props) {
   return (
     <React.Fragment>
       <div className="form">
-        {/* <div className="heading">
+        <div className="heading">
           <h1>Project Form</h1>
           <div>Welcome {username}</div>
         </div>
@@ -485,8 +489,7 @@ export default function Form(props) {
               </a>
             </div>
           </React.Fragment>
-        )} */}
-        Registrations closed.
+        )}
       </div>
     </React.Fragment>
   );

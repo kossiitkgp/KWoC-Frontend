@@ -1,5 +1,6 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
-import Confetti from "react-confetti";
+// import Confetti from "react-confetti";
 import { BACKEND_URL, STATS_API } from "../constants";
 import { mentorResources as resources } from "../data/dummy_data";
 
@@ -128,7 +129,7 @@ export default function MentorDashboard() {
 
   return (
     <div className="dashboard-container">
-      <Confetti width={window.innerWidth} height={window.innerHeight} />
+      {/* <Confetti width={window.innerWidth} height={window.innerHeight} /> */}
       <div className="dashboard">
         <div className="dashboard-header">
           <div>
@@ -141,14 +142,19 @@ export default function MentorDashboard() {
                 <p>Projects</p>
               </div>
 
-              <div className="box">
+              {/* <div className="box">
                 <h2>{students.length}</h2>
                 <p>Students</p>
-              </div>
+              </div> */}
 
               <div className="box">
-                <h2>0</h2>
-                <p>Days to EndEvals</p>
+                <h2>
+                  {moment("07-12-2022", "DD-MM-YYYY").diff(
+                    moment.now(),
+                    "days"
+                  )}
+                </h2>
+                <p>Days to go</p>
               </div>
             </div>
           </div>
@@ -168,7 +174,7 @@ export default function MentorDashboard() {
           </div>
         </div>
 
-        <div className="subtitle feedback">
+        {/* <div className="subtitle feedback">
           <h1>Feedback</h1>
           <p>Congratulations. You have successfully mentored in KWoC 2021.</p>
           <a
@@ -192,7 +198,7 @@ export default function MentorDashboard() {
             </a>
             .
           </p>
-        </div>
+        </div> */}
 
         <div className="subtitle">
           <h1>Projects</h1>
@@ -232,7 +238,7 @@ export default function MentorDashboard() {
               })
             ) : (
               <div className="add-project-card">
-                {/* <div className="header-add-project-card">
+                <div className="header-add-project-card">
                   <p>You haven't added any projects yet</p>
                 </div>
                 <div className="add-project-button-div">
@@ -244,8 +250,7 @@ export default function MentorDashboard() {
                       </p>
                     </button>
                   </a>
-                </div> */}
-                Registrations closed
+                </div>
               </div>
             )}
             {/* {projects.length !== 0 ? (
@@ -299,12 +304,12 @@ export default function MentorDashboard() {
               <div className="add-project-card">
                 <div className="header-add-project-card">
                   <p>
-                    Coding period starts from 6th December. You can invite
+                    Coding period starts from 7th December. You can invite
                     students meanwhile.
                   </p>
                 </div>
                 <div className="add-project-button-div">
-                  <a href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-jch6e9gn-puizWuKSw5~K9Eq4YfFrFg">
+                  <a href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ">
                     <button className="add-project-button ">
                       <p className="plus-sign">+</p>
                       <p className="text-add-project">Invite Students</p>

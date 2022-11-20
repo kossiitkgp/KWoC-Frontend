@@ -27,7 +27,7 @@ const studentResources = [
   {
     message: "GitHub: Hello World Tutorial",
     url: "https://guides.github.com/activities/hello-world/",
-    avatar: "https://guides.github.com/favicon.ico",
+    avatar: "https://github.com/github.png",
   },
 ];
 
@@ -35,7 +35,7 @@ const mentorResources = [
   {
     message: "Writing Kickass READMEs",
     url: "https://bauva.com/blog/writing-kickass-readmes/",
-    avatar: "http://www.bauva.com/images/bio-photo.jpg",
+    avatar: "https://bauva.com/images/pranit.jpg",
   },
   {
     message: "Make a README",
