@@ -1,12 +1,11 @@
 import axios from "axios";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
-import Confetti from "react-confetti";
-import toast, { Toaster } from "react-hot-toast";
-import reloadIcon from "../assets/refresh-cw.svg";
+// import Confetti from "react-confetti";
+import toast from "react-hot-toast";
 import Psa from "../components/Psa";
 import { BACKEND_URL } from "../constants";
 import { studentResources as resources } from "../data/dummy_data";
-import { trim_lines, trim_message } from "../utils/helpers.js";
 
 export default function StudentDashboard() {
   const [fullName, setFullName] = useState("");
@@ -33,8 +32,8 @@ export default function StudentDashboard() {
   // TODO: update this before release
   const announcements = [
     {
-      date: "November 27, 2021",
-      content: "Coding Period will start from 6th December",
+      date: "November 20, 2021",
+      content: "Coding Period will start from 7th December",
     },
   ];
 
@@ -103,15 +102,15 @@ export default function StudentDashboard() {
         console.log("err is ", err);
       });
 
-    axios
-      .get(`${BACKEND_URL}/stats/student/${student_username}`)
-      .then((res) => {
-        setStats(res.data[student_username]);
-        console.log(res.data[student_username]);
-      })
-      .catch((err) => {
-        alert("Server error, Try again");
-      });
+    // axios
+    //   .get(`${BACKEND_URL}/stats/student/${student_username}`)
+    //   .then((res) => {
+    //     setStats(res.data[student_username]);
+    //     console.log(res.data[student_username]);
+    //   })
+    //   .catch((err) => {
+    //     alert("Server error, Try again");
+    //   });
   }, []);
 
   let resourceList = [];
@@ -131,9 +130,9 @@ export default function StudentDashboard() {
 
   return (
     <div className="dashboard-container">
-      {evalStatus === 2 && (
+      {/* {evalStatus === 2 && (
         <Confetti width={window.innerWidth} height={window.innerHeight} />
-      )}
+      )} */}
       <div className="dashboard">
         <div className="dashboard-header">
           <div>
@@ -141,7 +140,7 @@ export default function StudentDashboard() {
             <h2>{fullName}</h2>
 
             <div className="stats">
-              <div className="box">
+              {/* <div className="box">
                 <h2>{stats["commits"] && stats["commits"].length}</h2>
                 <p>Commits</p>
               </div>
@@ -157,6 +156,16 @@ export default function StudentDashboard() {
                   {trim_lines(parseInt(stats["lines_removed"]))}
                 </h2>
                 <p>Lines of Code (+/-)</p>
+              </div> */}
+
+              <div className="box">
+                <h2>
+                  {moment("07-12-2022", "DD-MM-YYYY").diff(
+                    moment.now(),
+                    "days"
+                  )}
+                </h2>
+                <p>Days to go</p>
               </div>
 
               {/* <div>
@@ -188,18 +197,12 @@ export default function StudentDashboard() {
           </div>
 
           {/* TODO: see and improve Psa component to handle multiple announcements better */}
-          <Psa
-            announcement={
-              evalStatus !== 0
-                ? "You have successfully passed KWoC 2021 Mid Evaluation. Keep going!"
-                : "You could not clear KWoC 2021 Mid Evaluation. But, don't let this stop you from contributing to Open Source. For any issues contact us. "
-            }
-          />
+          <Psa announcement={announcements[0].content} />
         </div>
-        <div className="subtitle">
+        {/* <div className="subtitle">
           <h1>End Evaluation</h1>
 
-          {/* <div className="field">
+          <div className="field">
               <label className="label">Blog Link</label>
               <div className="control">
                 <input
@@ -210,7 +213,7 @@ export default function StudentDashboard() {
                 />
                 <button onClick={handleBlogLink}>Submit</button>
               </div>
-            </div> */}
+            </div>
 
           <div className="feedback">
             {evalStatus === 2 ? (
@@ -261,9 +264,9 @@ export default function StudentDashboard() {
             </a>
             .
           </p>
-        </div>
+        </div> */}
 
-        <div className="subtitle">
+        {/* <div className="subtitle">
           <h1>Languages</h1>
 
           <div className="languages">
@@ -384,7 +387,7 @@ export default function StudentDashboard() {
           <p className="dashboard-table-message">
             View on Desktop to see commits
           </p>
-        </div>
+        </div> */}
 
         <section className="resource-table subtitle">
           <h1>Resources</h1>
