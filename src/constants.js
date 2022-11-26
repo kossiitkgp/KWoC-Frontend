@@ -10,6 +10,6 @@ const GITHUB_AUTH_CLIENT_ID =
 export const STUDENT_REGISTRATION_LINK = `https://github.com/login/oauth/authorize?scope=user:email&client_id=${GITHUB_AUTH_CLIENT_ID}&state=student`;
 export const MENTOR_REGISTRATION_LINK = `https://github.com/login/oauth/authorize?scope=user:email&client_id=${GITHUB_AUTH_CLIENT_ID}&state=mentor`;
 export const STUDENT_MANUAL =
-  "https://drive.google.com/file/d/1Bq_1tEgjBZo7g2Pi-BWuHsiCIc3aYRMe/view?usp=sharing";
+  "https://drive.google.com/file/d/1GLvgKsFIPwB1n_0T-arkhZYhy8NvqFa3/view?usp=sharing";
 export const MENTOR_MANUAL =
-  "https://drive.google.com/file/d/1imOG7oR_4XINVqPQ7ZiocYuEHwM84CzG/view?usp=sharing";
+  "https://drive.google.com/file/d/16RMslBL3pSXZcyM6V9OqvxT3UMhORxFS/view?usp=sharing";
