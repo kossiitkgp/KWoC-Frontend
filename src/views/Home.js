@@ -41,7 +41,10 @@ function Home() {
         <div className="hero-body">
           <h1 className="title">KWoC 22</h1>
           <h3 className="subtitle">
-            Powered by <img src={PostmanLogo} />
+            Powered by{" "}
+            <a target="_blank" href="https://www.postman.com/">
+              <img src={PostmanLogo} />
+            </a>
           </h3>
           <div className="btns-container">
             <a className="button" href={STUDENT_REGISTRATION_LINK}>
