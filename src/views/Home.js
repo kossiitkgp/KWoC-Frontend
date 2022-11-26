@@ -1,5 +1,6 @@
 import React from "react";
 import * as Icon from "react-feather";
+import PostmanLogo from "../assets/postman.png";
 import BlurredCircles from "../components/BlurredCircles";
 import Timeline from "../components/Timeline";
 import {
@@ -38,8 +39,13 @@ function Home() {
       <section className="hero">
         <BlurredCircles />
         <div className="hero-body">
-          <h1 className="title">KWoC.</h1>
-
+          <h1 className="title">KWoC 22</h1>
+          <h3 className="subtitle">
+            Powered by{" "}
+            <a target="_blank" href="https://www.postman.com/">
+              <img src={PostmanLogo} />
+            </a>
+          </h3>
           <div className="btns-container">
             <a className="button" href={STUDENT_REGISTRATION_LINK}>
               Student Registration
@@ -105,6 +111,13 @@ function Home() {
                 With KWoC, you get to know about how to select a project,
                 interact with mentors and learn all other things that prepare
                 you in the best way for the next GSoC.
+              </p>
+            </div>
+            <div className="why-kwoc-card">
+              <h2>Exciting goodies</h2>
+              <p>
+                To motivate more Open Source contribution, top 5 selected
+                contributors will receive swag kits from Postman.
               </p>
             </div>
           </div>

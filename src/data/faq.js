@@ -76,8 +76,8 @@ const faqs = [
     tags: ["other programs"],
   },
   {
-    q: "Do you provde any stipend or Goodies?",
-    a: "Sorry, we don't provide any stipend or Goodies. But we do provide a certificate on successful completion of KWoC",
+    q: "Do you provide any stipend or Goodies?",
+    a: "Top 5 selected contributors will receive swag kits provided by Postman. The evaluation will be subjective where we will look for the quantity as well as the quality of contribution.",
     tags: ["money", "salary", "swag", "gifts", "success"],
   },
   // DISCUSSION NEEDED below
