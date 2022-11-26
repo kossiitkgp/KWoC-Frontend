@@ -13,3 +13,4 @@ export const STUDENT_MANUAL =
   "https://drive.google.com/file/d/1Bq_1tEgjBZo7g2Pi-BWuHsiCIc3aYRMe/view?usp=sharing";
 export const MENTOR_MANUAL =
   "https://drive.google.com/file/d/1imOG7oR_4XINVqPQ7ZiocYuEHwM84CzG/view?usp=sharing";
+export const GA_MEASUREMENT_ID = "G-EV5E5WJCFL";

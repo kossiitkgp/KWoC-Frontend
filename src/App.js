@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ReactGA from "react-ga4";
 import { BrowserRouter, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import OAuth from "./components/OAuth";
+import { GA_MEASUREMENT_ID } from "./constants";
 import FAQ from "./views/FAQ";
 import Home from "./views/Home";
 import MentorDashboard from "./views/MentorDashboard";
@@ -23,7 +25,17 @@ const ScrollToTop = () => {
   return null;
 };
 
+ReactGA.initialize(GA_MEASUREMENT_ID, {
+  gaOptions: {
+    siteSpeedSampleRate: 100,
+  },
+});
+
 function App() {
+  useEffect(() => {
+    ReactGA.send("pageview", window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <BrowserRouter>
       <Navbar />
