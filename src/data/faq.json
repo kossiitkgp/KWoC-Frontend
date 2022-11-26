@@ -14,6 +14,13 @@
     ]
   },
   {
+    "q": "Do you provide any stipend or Goodies?",
+    "a": [
+      "Top 5 selected contributors will receive swag kits provided by Postman.",
+      "The evaluation will be subjective where we will look for the quantity as well as the quality of contribution."
+    ]
+  },
+  {
     "q": "Where does KWoC occur? Do I need to be a student of IIT Kharagpur?",
     "a": [
       "Kharagpur Winter of Code is to be done remotely from home, and it is not required for you to be student of <b>ANY</b> particular institute."
