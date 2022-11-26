@@ -1,5 +1,6 @@
 import React from "react";
 import * as Icon from "react-feather";
+import ReactGA from "react-ga4";
 import PostmanLogo from "../assets/postman.png";
 import BlurredCircles from "../components/BlurredCircles";
 import Timeline from "../components/Timeline";
@@ -42,7 +43,16 @@ function Home() {
           <h1 className="title">KWoC 22</h1>
           <h3 className="subtitle">
             Powered by{" "}
-            <a target="_blank" href="https://www.postman.com/">
+            <a
+              target="_blank"
+              onClick={() =>
+                ReactGA.event({
+                  category: "Promotion",
+                  action: "Clicked sponsor logo",
+                })
+              }
+              href="https://www.postman.com/"
+            >
               <img src={PostmanLogo} />
             </a>
           </h3>
