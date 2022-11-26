@@ -129,15 +129,21 @@ export default function Form(props) {
     const ownerName = splitArr[len - 2];
 
     // check for minimum number of issues, along with valid URL or not
-    const issuesURL = `https://api.github.com/repos/${ownerName}/${repoName}/issues?q=state:open`;
+    const issuesURL = `https://api.github.com/repos/${ownerName}/${repoName}/issues?q=state:open&per_page=100`;
+    let numOfIssues = 0;
+    let pageNumber = 1;
     try {
-      const res = await axios.get(issuesURL);
-      const issues = res.data.filter(
-        (item) => !item.hasOwnProperty("pull_request")
-      );
-      const numOfIssues = issues.length;
+      while (numOfIssues < 2) {
+        const res = await axios.get(`${issuesURL}&pageNumber=${pageNumber}`);
+        if (res.data.length === 0) break;
+        const issues = res.data.filter(
+          (item) => !item.hasOwnProperty("pull_request")
+        );
+        numOfIssues += issues.length;
+        pageNumber++;
+      }
       if (numOfIssues < 2)
-        message = `Repo has only ${numOfIssues} issues, Please maintain atleast 2 issues. `;
+        message = `Repo has only ${numOfIssues} issues, Please maintain atleast 2 issues.`;
     } catch (err) {
       message = `The link should be in format of https://github.com/USERNAME/REPO. Please add a valid Github link repo with atleast 2 open issues. `;
     }
