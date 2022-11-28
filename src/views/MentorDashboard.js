@@ -204,55 +204,56 @@ export default function MentorDashboard() {
           <h1>Projects</h1>
 
           <div className="project-cards">
-            {projects.length !== 0 ? (
-              projects.map((item, index) => {
-                return (
-                  <div className="card-container">
-                    <div className="info">
-                      <img
-                        src={`https://github.com/${item.owner}.png`}
-                        alt=""
-                      ></img>
+            {projects.map((item, index) => {
+              return (
+                <div className="card-container">
+                  <div className="info">
+                    <img
+                      src={`https://github.com/${item.owner}.png`}
+                      alt=""
+                    ></img>
 
-                      <p>{item.Name}</p>
-                    </div>
-
-                    <div className="buttons">
-                      <a href={`${item.RepoLink}`}>
-                        <img
-                          src="/github.svg"
-                          className="github-svg"
-                          alt="GitHub Logo"
-                        ></img>
-                      </a>
-
-                      <a href={`/form/projectedit/${item.ID}`}>Edit</a>
-
-                      <a href={`${item.RepoLink}/issues`}>Issues</a>
-                      <a href={`${item.RepoLink}/pulls`}>PRs</a>
-                    </div>
-
-                    <p>{item.ProjectStatus ? "" : "To be Checked"}</p>
+                    <p>{item.Name}</p>
                   </div>
-                );
-              })
-            ) : (
-              <div className="add-project-card">
+
+                  <div className="buttons">
+                    <a href={`${item.RepoLink}`}>
+                      <img
+                        src="/github.svg"
+                        className="github-svg"
+                        alt="GitHub Logo"
+                      ></img>
+                    </a>
+
+                    <a href={`/form/projectedit/${item.ID}`}>Edit</a>
+
+                    <a href={`${item.RepoLink}/issues`}>Issues</a>
+                    <a href={`${item.RepoLink}/pulls`}>PRs</a>
+                  </div>
+
+                  <p>{item.ProjectStatus ? "" : "To be Checked"}</p>
+                </div>
+              );
+            })}
+            <div className="add-project-card">
+              {projects.length === 0 ? (
                 <div className="header-add-project-card">
                   <p>You haven't added any projects yet</p>
                 </div>
-                <div className="add-project-button-div">
-                  <a href="/form/project">
-                    <button className="add-project-button ">
-                      <p className="plus-sign">+</p>
-                      <p className="text-add-project" href="/form/project">
-                        Add Projects
-                      </p>
-                    </button>
-                  </a>
-                </div>
+              ) : null}
+
+              <div className="add-project-button-div">
+                <a href="/form/project">
+                  <button className="add-project-button ">
+                    <p className="plus-sign">+</p>
+                    <p className="text-add-project" href="/form/project">
+                      Add Projects
+                    </p>
+                  </button>
+                </a>
               </div>
-            )}
+            </div>
+
             {/* {projects.length !== 0 ? (
               <div className="add-project-card project-c card-component grow-card add-project-card-small">
                 <a href="/form/project">
