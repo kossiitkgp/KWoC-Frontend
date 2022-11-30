@@ -78,6 +78,20 @@
       "blogLink": "https://dope-dependent.medium.com/project-report-632e089a9444"
     },
     {
+      "name": "Yash Sharma",
+      "role": "KWoC '17 Student",
+      "quote": "My experience with Kharagpur Winter of Code has been quite good, as the level of contribution is quite apt, considering for the beginners.",
+      "imageLink": "https://avatars.githubusercontent.com/yashrsharma44",
+      "blogLink": "https://medium.com/@yashrsharma44/kwoc-project-report-c337e7222246"
+    },
+    {
+      "name": "Shivam Kumar Jha",
+      "role": "KWoC '17 Student",
+      "quote": "KWoC is one of the best coding experiences one could get;the environment of everyone coming together to learn &amp; teach is a unique one.",
+      "imageLink": "https://avatars.githubusercontent.com/thealphadollar",
+      "blogLink": "http://bit.ly/KWoC17"
+    },
+    {
       "name": "Raghav Jajodia",
       "role": "KWoC '17 Mentor",
       "quote": "KWoC has provided me opportunities to learn more about open source, accelerate the growth of my projects, along with helping new developers explore the power and opportunities of FOSS. I highly recommend open source enthusiasts and GSoC aspirants to participate in KWoC.",
@@ -118,6 +132,13 @@
       "quote": "KWoC is a great initiative by KOSS to encourage students in programming environment with experienced mentors and make them ready  for GSoC.",
       "imageLink": "https://avatars.githubusercontent.com/themousepotato",
       "blogLink": "https://medium.com/@themousepotato/kharagpur-winter-of-code-2017-6e350c2252c7"
+    },
+    {
+      "name": "Sayan Sinha",
+      "role": "KWoC '16 Student",
+      "quote": "KWoC was a lot more than experience and learning. Now, I had worked on the repositories and had interacted with their makers.",
+      "imageLink": "https://avatars2.githubusercontent.com/u/23132358?s=460&v=4",
+      "blogLink": "https://medium.com/kharagpur-open-source-society/kharagpur-winter-of-code-c4eeb4af71f1"
     },
     {
       "name": "Rahul Vernwal",
