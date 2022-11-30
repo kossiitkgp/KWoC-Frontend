@@ -242,16 +242,12 @@ export default function MentorDashboard() {
                 </div>
               ) : null}
 
-              <div className="add-project-button-div">
-                <a href="/form/project">
-                  <button className="add-project-button ">
-                    <p className="plus-sign">+</p>
-                    <p className="text-add-project" href="/form/project">
-                      Add Projects
-                    </p>
-                  </button>
-                </a>
-              </div>
+              <a href="/form/project" className="add-project-link">
+                <p className="plus-sign">+</p>
+                <p className="text-add-project" href="/form/project">
+                  Add Projects
+                </p>
+              </a>
             </div>
 
             {/* {projects.length !== 0 ? (
@@ -309,14 +305,13 @@ export default function MentorDashboard() {
                     students meanwhile.
                   </p>
                 </div>
-                <div className="add-project-button-div">
-                  <a href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ">
-                    <button className="add-project-button ">
-                      <p className="plus-sign">+</p>
-                      <p className="text-add-project">Invite Students</p>
-                    </button>
-                  </a>
-                </div>
+                <a
+                  href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
+                  className="add-project-link"
+                >
+                  <p className="plus-sign">+</p>
+                  <p className="text-add-project">Invite Students</p>
+                </a>
               </div>
             )}
           </div>
