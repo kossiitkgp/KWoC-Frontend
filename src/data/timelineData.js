@@ -4,12 +4,16 @@ const data = [
     date: "25 November 2022",
   },
   {
-    text: "End of Registrations",
+    text: "Coding Period starts",
     date: "6 December 2022",
   },
   {
-    text: "Coding Period starts",
-    date: "7 December 2022",
+    text: "End of Project Registration",
+    date: "12 December 2022",
+  },
+  {
+    text: "End of Student Registration",
+    date: "17 December 2022",
   },
   {
     text: "Mid Evaluations",
