@@ -127,6 +127,9 @@
   @include sm {
     display: none;
   }
+  @include md {
+    display: none;
+  }
 }
 
 .mobile-navbar {
@@ -234,7 +237,10 @@
       }
 
       @include sm {
-        display: inline-block;
+        display: none;
+      }
+      @include md {
+        display: none;
       }
     }
   }
@@ -258,6 +264,12 @@
     }
 
     @include sm {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    @include md {
       display: flex;
       flex-direction: column;
       justify-content: center;
