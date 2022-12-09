@@ -163,7 +163,12 @@ export default function StudentDashboard() {
                   {moment("07-12-2022", "DD-MM-YYYY").diff(
                     moment.now(),
                     "days"
-                  )}
+                  ) > 0
+                    ? moment("07-12-2022", "DD-MM-YYYY").diff(
+                        moment.now(),
+                        "days"
+                      )
+                    : 0}
                 </h2>
                 <p>Days to go</p>
               </div>
