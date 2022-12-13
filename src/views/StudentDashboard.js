@@ -1,5 +1,4 @@
 import axios from "axios";
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 // import Confetti from "react-confetti";
 import toast from "react-hot-toast";
@@ -102,23 +101,41 @@ export default function StudentDashboard() {
         console.log("err is ", err);
       });
 
-    // const axios_header = {
+    // fetch(`${BACKEND_URL}/stats/student/${student_username}`, {
+    //   method: "POST",
+    //   body: JSON.stringify({}),
     //   headers: {
-    //     Bearer: localStorage.getItem("student_jwt"),
-    //     // "Content-Type": "application/json;charset=UTF-8",
-    //     // "Access-Control-Allow-Origin": "*",
-    //   },
-    // };
-
-    // axios
-    //   .post(`${BACKEND_URL}/stats/student/${student_username}`, axios_header)
+    //     Bearer: `${localStorage.getItem("student_jwt")}`
+    //   }
+    // })
+    //   .then((res) => res.json())
     //   .then((res) => {
     //     console.log(res);
+    //     // setFullName(res.name);
+    //     // setCollegeName(res.college);
+    //     // setEvalStatus(res.evals);
     //   })
     //   .catch((err) => {
-    //     alert("Server error, Try again");
-    //     console.log(err);
+    //     // alert("Server Error, Please try again");
+    //     console.log("err is ", err);
     //   });
+
+    const config = {
+      headers: {
+        Bearer: `${localStorage.getItem("student_jwt")}`,
+      },
+    };
+
+    axios
+      .post(`${BACKEND_URL}/stats/student/${student_username}`, {}, config)
+      .then((res) => {
+        // console.log(res);
+        setStats(res.data);
+      })
+      .catch((err) => {
+        alert("Server error, Try again");
+        console.log(err);
+      });
 
     // axios
     //   .get(`${BACKEND_URL}/stats/student/exists/${student_username}`)
@@ -165,8 +182,8 @@ export default function StudentDashboard() {
             <h2>{fullName}</h2>
 
             <div className="stats">
-              {/* <div className="box">
-                <h2>{stats["commits"] && stats["commits"].length}</h2>
+              <div className="box">
+                <h2>{stats["commit_count"]}</h2>
                 <p>Commits</p>
               </div>
 
@@ -177,13 +194,13 @@ export default function StudentDashboard() {
 
               <div className="box">
                 <h2>
-                  {trim_lines(parseInt(stats["lines_added"]))}/
-                  {trim_lines(parseInt(stats["lines_removed"]))}
+                  {parseInt(stats["lines_added"])}/
+                  {parseInt(stats["lines_removed"])}
                 </h2>
                 <p>Lines of Code (+/-)</p>
-              </div> */}
+              </div>
 
-              <div className="box">
+              {/* <div className="box">
                 <h2>
                   {moment("07-12-2022", "DD-MM-YYYY").diff(
                     moment.now(),
@@ -196,7 +213,7 @@ export default function StudentDashboard() {
                     : 0}
                 </h2>
                 <p>Days to go</p>
-              </div>
+              </div> */}
 
               {/* <div>
               <a

@@ -1,7 +1,7 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 // import Confetti from "react-confetti";
-import { BACKEND_URL, STATS_API } from "../constants";
+import { BACKEND_URL } from "../constants";
 import { mentorResources as resources } from "../data/dummy_data";
 
 export default function MentorDashboard() {
@@ -96,12 +96,29 @@ export default function MentorDashboard() {
           redirect: "follow",
         };
 
-        fetch(`${STATS_API}/stats/mentors`, requestOptions)
-          .then((response) => response.text())
-          .then((result) => {
-            setStudents(JSON.parse(result)["students"]);
-          })
-          .catch((error) => console.log("error", error));
+        // fetch(`${STATS_API}/stats/mentors`, requestOptions)
+        //   .then((response) => response.text())
+        //   .then((result) => {
+        //     setStudents(JSON.parse(result)["students"]);
+        //   })
+        //   .catch((error) => console.log("error", error));
+
+        // const config = {
+        //   headers: {
+        //     Bearer: `${localStorage.getItem("mentor_jwt")}`
+        //   },
+        // };
+
+        // axios
+        //   .post(`${BACKEND_URL}/stats/mentor/${localStorage.getItem("mentor_username")}`, {},  config)
+        //   .then((res) => {
+        //     console.log(res);
+        //     // setStats(res.data);
+        //   })
+        //   .catch((err) => {
+        //     alert("Server error, Try again");
+        //     console.log(err);
+        //   });
       })
       .catch((err) => {
         alert("Server Error, Please try again");
