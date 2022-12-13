@@ -102,13 +102,38 @@ export default function StudentDashboard() {
         console.log("err is ", err);
       });
 
+    // const axios_header = {
+    //   headers: {
+    //     Bearer: localStorage.getItem("student_jwt"),
+    //     // "Content-Type": "application/json;charset=UTF-8",
+    //     // "Access-Control-Allow-Origin": "*",
+    //   },
+    // };
+
     // axios
-    //   .get(`${BACKEND_URL}/stats/student/${student_username}`)
+    //   .post(`${BACKEND_URL}/stats/student/${student_username}`, axios_header)
     //   .then((res) => {
-    //     setStats(res.data[student_username]);
-    //     console.log(res.data[student_username]);
+    //     console.log(res);
     //   })
     //   .catch((err) => {
+    //     alert("Server error, Try again");
+    //     console.log(err);
+    //   });
+
+    // axios
+    //   .get(`${BACKEND_URL}/stats/student/exists/${student_username}`)
+    //   .then((res) => {
+    //     console.log('data:');
+    //     console.log(res);
+    //     console.log(res.keys())
+
+    //     // Object.keys(res).map((key) => {console.log(key, res[key])});
+    //     console.log(res[config]);
+
+    //     setStats(res.data[student_username]);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
     //     alert("Server error, Try again");
     //   });
   }, []);

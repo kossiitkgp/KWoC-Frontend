@@ -2,7 +2,7 @@ import axios from "axios";
 import Fuse from "fuse.js";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import { STATS_API } from "../constants";
+import { BACKEND_URL } from "../constants";
 import { shuffleArray } from "../utils/shuffle";
 
 const debouncer = function (fn, delay) {
@@ -37,19 +37,23 @@ export default function StudentsTable() {
       {
         Header: "Github Username",
         accessor: "username",
-        Cell: (e) => <a href={`/stats/student/${e.value}`}> {e.value} </a>,
+        // Cell: (e) => <a href={`/stats/student/${e.value}`}> {e.value} </a>,
       },
       {
         Header: "PRs(Open/Merged)",
-        accessor: "prs",
+        accessor: "pr_count",
       },
       {
         Header: "Commits",
-        accessor: "commits",
+        accessor: "commit_count",
       },
       {
-        Header: "Lines(Added/Removed)",
-        accessor: "lines",
+        Header: "Lines Added",
+        accessor: "lines_added",
+      },
+      {
+        Header: "Lines Removed",
+        accessor: "lines_removed",
       },
     ],
     []
@@ -83,24 +87,26 @@ export default function StudentsTable() {
 
   useEffect(() => {
     axios
-      .get(`${STATS_API}/stats/students`)
+      .get(`${BACKEND_URL}/stats/students`)
       .then((res) => {
+        // console.log(res);
         setRowData(
-          res.data["stats"]
+          res.data["Stats"]
             .sort((a, b) =>
-              parseInt(a.commits) < parseInt(b.commits) ? 1 : -1
+              parseInt(a.commit_count) < parseInt(b.commit_count) ? 1 : -1
             )
             .slice(0, 100)
         );
         setAllStats(
-          res.data["stats"].sort((a, b) =>
-            parseInt(a.commits) < parseInt(b.commits) ? 1 : -1
+          res.data["Stats"].sort((a, b) =>
+            parseInt(a.commit_count) < parseInt(b.commit_count) ? 1 : -1
           )
         );
-        const MAX_NUMBER_OF_PAGES = Math.ceil(res.data["stats"].length / 100);
+        const MAX_NUMBER_OF_PAGES = Math.ceil(res.data["Stats"].length / 100);
         setLastPageNum(MAX_NUMBER_OF_PAGES);
       })
       .catch((err) => {
+        console.log(err);
         alert("Server Error, Try again");
       });
     let currentTime = new Date();
@@ -176,7 +182,7 @@ export default function StudentsTable() {
         </table>
       </div>
       {page > 0 ? <button onClick={goToPrevPage}>Prev</button> : ""}
-      <span>Page: {page + 1}</span>
+      <span style={{ marginTop: "0.3rem" }}>Page: {page + 1}</span>
       {page + 2 <= lastPageNum ? (
         <button onClick={goToNextPage}>Next</button>
       ) : (

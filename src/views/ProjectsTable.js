@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import { STATS_API } from "../constants";
+import { BACKEND_URL } from "../constants";
 
 export default function ProjectsTable() {
   const [lastUpdatedTime, setLastUpdatedTime] = useState("");
@@ -11,21 +11,25 @@ export default function ProjectsTable() {
     () => [
       {
         Header: "Project",
-        accessor: "title",
+        accessor: "name",
         // Cell: (e) => <a href={e.value}>{e.value}</a>
       },
 
       {
-        Header: "Number of Contributors",
-        accessor: "contri",
+        Header: "Number of PRs",
+        accessor: "pr_count",
       },
       {
         Header: "Number of Commits",
-        accessor: "commits",
+        accessor: "commit_count",
       },
       {
-        Header: "Lines(Added/Removed)",
-        accessor: "lines",
+        Header: "Lines Added",
+        accessor: "lines_added",
+      },
+      {
+        Header: "Lines Removed",
+        accessor: "lines_removed",
       },
     ],
     []
@@ -33,14 +37,14 @@ export default function ProjectsTable() {
 
   useEffect(() => {
     axios
-      .get(`${STATS_API}/stats/projects`)
+      .get(`${BACKEND_URL}/stats/projects`)
       .then((res) => {
         setRowData(
-          res.data["stats"].sort((a, b) =>
-            parseInt(a.commits) < parseInt(b.commits) ? 1 : -1
+          res.data["Stats"].sort((a, b) =>
+            parseInt(a.commit_count) < parseInt(b.commit_count) ? 1 : -1
           )
         );
-        console.log(res.data["stats"]);
+        // console.log(res.data["Stats"][0]);
       })
       .catch((err) => {
         alert("Server Error,try again");

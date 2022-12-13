@@ -82,7 +82,7 @@ function Navbar() {
               <a href="/testimonial">Testimonials</a>
             </li>
 
-            {/* <li
+            <li
               className={isDown_1 ? "isDown" : ""}
               onClick={() => dropdownNikal(1)}
             >
@@ -111,7 +111,7 @@ function Navbar() {
                   </a>
                 </li>
               </ul>
-            </li> */}
+            </li>
           </ul>
 
           <ul>
@@ -289,7 +289,7 @@ function Navbar() {
               </a>
             </li>
 
-            {/* <li
+            <li
               className={`dropdown-title ${isDown_1 ? "down" : ""}`}
               onClick={() => dropdownNikal(1)}
             >
@@ -302,7 +302,7 @@ function Navbar() {
                   <a href="/stats/projects">Projects</a>
                 </li>
               </ul>
-            </li> */}
+            </li>
 
             {/* TODO: better to not keep these as navbar items on mobile navbar */}
             <li>
