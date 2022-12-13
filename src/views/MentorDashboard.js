@@ -1,4 +1,4 @@
-import moment from "moment";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 // import Confetti from "react-confetti";
 import { BACKEND_URL } from "../constants";
@@ -30,6 +30,8 @@ export default function MentorDashboard() {
     // 'adarshkumar712',
   ]);
 
+  const [statsFetchError, setStatsFetchError] = useState(null);
+
   const announcements = [
     {
       date: "November 27, 2021",
@@ -55,8 +57,10 @@ export default function MentorDashboard() {
       localStorage.getItem("mentor_jwt") === undefined;
     if (mentor_loggedout) window.location.pathname = "";
     const URL = `${BACKEND_URL}/mentor/dashboard`;
+    const mentor_username = localStorage.getItem("mentor_username");
+
     const data = {
-      username: localStorage.getItem("mentor_username"),
+      username: mentor_username,
     };
     fetch(URL, {
       method: "POST",
@@ -67,58 +71,30 @@ export default function MentorDashboard() {
         setFullName(res.name);
         setProjects(res.projects);
 
-        const repoNames = res.projects.map((item) => {
-          let link = item["RepoLink"];
-          // cleaning the trailing slash
-          if (link[link.length - 1] === "/") link.slice(0, -1);
-          let split_array = link.split("/");
-          let split_array_length = split_array.length;
-          return (
-            split_array[split_array_length - 2] +
-            "/" +
-            split_array[split_array_length - 1]
-          );
-        });
-
-        const repoNamesJson = {
-          projects: repoNames,
+        const config = {
+          headers: {
+            Bearer: `${localStorage.getItem("mentor_jwt")}`,
+          },
         };
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+        axios
+          .get(`${BACKEND_URL}/stats/mentor/${mentor_username}`, config)
+          .then((res) => {
+            const stats = res.data["Projects"];
+            // console.log(stats);
 
-        var raw = JSON.stringify(repoNamesJson);
+            const _students = [];
 
-        var requestOptions = {
-          method: "POST",
-          headers: myHeaders,
-          body: raw,
-          redirect: "follow",
-        };
+            for (let i = 0; i < stats.length; ++i)
+              for (let j = 0; j < stats[i]["contributors"].length; ++j)
+                _students.push(stats[i]["contributors"][j]);
 
-        // fetch(`${STATS_API}/stats/mentors`, requestOptions)
-        //   .then((response) => response.text())
-        //   .then((result) => {
-        //     setStudents(JSON.parse(result)["students"]);
-        //   })
-        //   .catch((error) => console.log("error", error));
-
-        // const config = {
-        //   headers: {
-        //     Bearer: `${localStorage.getItem("mentor_jwt")}`
-        //   },
-        // };
-
-        // axios
-        //   .post(`${BACKEND_URL}/stats/mentor/${localStorage.getItem("mentor_username")}`, {},  config)
-        //   .then((res) => {
-        //     console.log(res);
-        //     // setStats(res.data);
-        //   })
-        //   .catch((err) => {
-        //     alert("Server error, Try again");
-        //     console.log(err);
-        //   });
+            setStudents(_students);
+          })
+          .catch((err) => {
+            setStatsFetchError(err);
+            // console.log(err);
+          });
       })
       .catch((err) => {
         alert("Server Error, Please try again");
@@ -159,12 +135,12 @@ export default function MentorDashboard() {
                 <p>Projects</p>
               </div>
 
-              {/* <div className="box">
-                <h2>{students.length}</h2>
-                <p>Students</p>
-              </div> */}
-
               <div className="box">
+                <h2>{statsFetchError ? 0 : students.length}</h2>
+                <p>Students</p>
+              </div>
+
+              {/* <div className="box">
                 <h2>
                   {moment("07-12-2022", "DD-MM-YYYY").diff(
                     moment.now(),
@@ -177,7 +153,7 @@ export default function MentorDashboard() {
                     : 0}
                 </h2>
                 <p>Days to go</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -292,7 +268,7 @@ export default function MentorDashboard() {
           <h1>Students</h1>
 
           <div className="students">
-            {students.length !== 0 ? (
+            {!statsFetchError || students.length !== 0 ? (
               students.map((studentName, index) => {
                 return (
                   <div className="student">
@@ -322,10 +298,11 @@ export default function MentorDashboard() {
             ) : (
               <div className="add-project-card">
                 <div className="header-add-project-card">
-                  <p>
+                  {/* <p>
                     Coding period starts from 7th December. You can invite
                     students meanwhile.
-                  </p>
+                  </p> */}
+                  <p>You can invite students to participate in KWoC.</p>
                 </div>
                 <a
                   href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"

@@ -130,7 +130,7 @@ export default function StudentDashboard() {
     };
 
     axios
-      .post(`${BACKEND_URL}/stats/student/${student_username}`, {}, config)
+      .get(`${BACKEND_URL}/stats/student/${student_username}`, config)
       .then((res) => {
         // console.log(res);
         setStats(res.data);
@@ -139,23 +139,6 @@ export default function StudentDashboard() {
         setStatsFetchError(err);
         console.log(statsFetchError);
       });
-
-    // axios
-    //   .get(`${BACKEND_URL}/stats/student/exists/${student_username}`)
-    //   .then((res) => {
-    //     console.log('data:');
-    //     console.log(res);
-    //     console.log(res.keys())
-
-    //     // Object.keys(res).map((key) => {console.log(key, res[key])});
-    //     console.log(res[config]);
-
-    //     setStats(res.data[student_username]);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     alert("Server error, Try again");
-    //   });
   }, []);
 
   let resourceList = [];
