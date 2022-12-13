@@ -6,29 +6,8 @@ import { mentorResources as resources } from "../data/dummy_data";
 
 export default function MentorDashboard() {
   const [fullName, setFullName] = useState("");
-  const [projects, setProjects] = useState([
-    // {
-    //   Name: 'darkHorse',
-    //   RepoLink: 'https://github.com/kossiitkgp/darkHorse',
-    //   owner: 'kossiitkgp',
-    // },
-    // {
-    //   Name: 'todxpy',
-    //   RepoLink: 'https://github.com/xypnox/todxpy',
-    //   owner: 'xypnox',
-    // },
-    // {
-    //   Name: 'KWoC',
-    //   RepoLink: 'https://github.com/kossiitkgp/KWoC',
-    //   owner: 'kossiitkgp',
-    // },
-  ]);
-  const [students, setStudents] = useState([
-    // 'yashrsharma44',
-    // 'rakaar',
-    // 'orkohunter',
-    // 'adarshkumar712',
-  ]);
+  const [projects, setProjects] = useState([]);
+  const [students, setStudents] = useState([]);
 
   const [statsFetchError, setStatsFetchError] = useState(null);
 
@@ -99,15 +78,6 @@ export default function MentorDashboard() {
       .catch((err) => {
         alert("Server Error, Please try again");
       });
-
-    // TODO: update stats api to not ask for mentor projects with request
-    // fetch(`${BACKEND_URL}/stats/mentor`, {
-    //   body: JSON.stringify({ projects: repoNames }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     console.log("res. is ", res);
-    //   });
   }, []);
 
   let resourceList = [];

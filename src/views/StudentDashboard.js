@@ -70,8 +70,6 @@ export default function StudentDashboard() {
           );
         })
         .catch((err) => {
-          // alert("Server error, Try again");
-          // console.log(err);
           setStatsFetchError(err);
         });
     }
@@ -103,25 +101,6 @@ export default function StudentDashboard() {
         // alert("Server Error, Please try again");
         console.log("err is ", err);
       });
-
-    // fetch(`${BACKEND_URL}/stats/student/${student_username}`, {
-    //   method: "POST",
-    //   body: JSON.stringify({}),
-    //   headers: {
-    //     Bearer: `${localStorage.getItem("student_jwt")}`
-    //   }
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     console.log(res);
-    //     // setFullName(res.name);
-    //     // setCollegeName(res.college);
-    //     // setEvalStatus(res.evals);
-    //   })
-    //   .catch((err) => {
-    //     // alert("Server Error, Please try again");
-    //     console.log("err is ", err);
-    //   });
 
     const config = {
       headers: {
