@@ -1,5 +1,4 @@
 import axios from "axios";
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 // import Confetti from "react-confetti";
 import toast from "react-hot-toast";
@@ -19,6 +18,8 @@ export default function StudentDashboard() {
   const [stats, setStats] = useState({});
 
   const [pulls, setPulls] = useState([]);
+
+  const [statsFetchError, setStatsFetchError] = useState(null);
 
   const [extraCommits, setExtraCommits] = useState([]);
   const [extraLinesAdded, setExtraLinesAdded] = useState(0);
@@ -69,8 +70,7 @@ export default function StudentDashboard() {
           );
         })
         .catch((err) => {
-          alert("Server error, Try again");
-          console.log(err);
+          setStatsFetchError(err);
         });
     }
   };
@@ -102,40 +102,22 @@ export default function StudentDashboard() {
         console.log("err is ", err);
       });
 
-    // const axios_header = {
-    //   headers: {
-    //     Bearer: localStorage.getItem("student_jwt"),
-    //     // "Content-Type": "application/json;charset=UTF-8",
-    //     // "Access-Control-Allow-Origin": "*",
-    //   },
-    // };
+    const config = {
+      headers: {
+        Bearer: `${localStorage.getItem("student_jwt")}`,
+      },
+    };
 
-    // axios
-    //   .post(`${BACKEND_URL}/stats/student/${student_username}`, axios_header)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     alert("Server error, Try again");
-    //     console.log(err);
-    //   });
-
-    // axios
-    //   .get(`${BACKEND_URL}/stats/student/exists/${student_username}`)
-    //   .then((res) => {
-    //     console.log('data:');
-    //     console.log(res);
-    //     console.log(res.keys())
-
-    //     // Object.keys(res).map((key) => {console.log(key, res[key])});
-    //     console.log(res[config]);
-
-    //     setStats(res.data[student_username]);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     alert("Server error, Try again");
-    //   });
+    axios
+      .get(`${BACKEND_URL}/stats/student/${student_username}`, config)
+      .then((res) => {
+        // console.log(res);
+        setStats(res.data);
+      })
+      .catch((err) => {
+        setStatsFetchError(err);
+        console.log(statsFetchError);
+      });
   }, []);
 
   let resourceList = [];
@@ -165,25 +147,29 @@ export default function StudentDashboard() {
             <h2>{fullName}</h2>
 
             <div className="stats">
-              {/* <div className="box">
-                <h2>{stats["commits"] && stats["commits"].length}</h2>
+              <div className="box">
+                <h2>{statsFetchError ? "-" : stats["commit_count"]}</h2>
                 <p>Commits</p>
               </div>
 
               <div className="box">
-                <h2>{stats["pulls"] !== undefined && stats["pulls"].length}</h2>
+                <h2>
+                  {statsFetchError
+                    ? "-"
+                    : stats["pulls"] !== undefined && stats["pulls"].length}
+                </h2>
                 <p>Pull Requests</p>
               </div>
 
               <div className="box">
                 <h2>
-                  {trim_lines(parseInt(stats["lines_added"]))}/
-                  {trim_lines(parseInt(stats["lines_removed"]))}
+                  {statsFetchError ? "-" : parseInt(stats["lines_added"])}/
+                  {statsFetchError ? "-" : parseInt(stats["lines_removed"])}
                 </h2>
                 <p>Lines of Code (+/-)</p>
-              </div> */}
+              </div>
 
-              <div className="box">
+              {/* <div className="box">
                 <h2>
                   {moment("07-12-2022", "DD-MM-YYYY").diff(
                     moment.now(),
@@ -196,7 +182,7 @@ export default function StudentDashboard() {
                     : 0}
                 </h2>
                 <p>Days to go</p>
-              </div>
+              </div> */}
 
               {/* <div>
               <a
