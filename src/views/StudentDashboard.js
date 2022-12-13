@@ -19,6 +19,8 @@ export default function StudentDashboard() {
 
   const [pulls, setPulls] = useState([]);
 
+  const [statsFetchError, setStatsFetchError] = useState(null);
+
   const [extraCommits, setExtraCommits] = useState([]);
   const [extraLinesAdded, setExtraLinesAdded] = useState(0);
   const [extraLinesRemoved, setExtraLinesRemoved] = useState(0);
@@ -68,8 +70,9 @@ export default function StudentDashboard() {
           );
         })
         .catch((err) => {
-          alert("Server error, Try again");
-          console.log(err);
+          // alert("Server error, Try again");
+          // console.log(err);
+          setStatsFetchError(err);
         });
     }
   };
@@ -133,8 +136,8 @@ export default function StudentDashboard() {
         setStats(res.data);
       })
       .catch((err) => {
-        alert("Server error, Try again");
-        console.log(err);
+        setStatsFetchError(err);
+        console.log(statsFetchError);
       });
 
     // axios
@@ -183,19 +186,23 @@ export default function StudentDashboard() {
 
             <div className="stats">
               <div className="box">
-                <h2>{stats["commit_count"]}</h2>
+                <h2>{statsFetchError ? "-" : stats["commit_count"]}</h2>
                 <p>Commits</p>
               </div>
 
               <div className="box">
-                <h2>{stats["pulls"] !== undefined && stats["pulls"].length}</h2>
+                <h2>
+                  {statsFetchError
+                    ? "-"
+                    : stats["pulls"] !== undefined && stats["pulls"].length}
+                </h2>
                 <p>Pull Requests</p>
               </div>
 
               <div className="box">
                 <h2>
-                  {parseInt(stats["lines_added"])}/
-                  {parseInt(stats["lines_removed"])}
+                  {statsFetchError ? "-" : parseInt(stats["lines_added"])}/
+                  {statsFetchError ? "-" : parseInt(stats["lines_removed"])}
                 </h2>
                 <p>Lines of Code (+/-)</p>
               </div>
