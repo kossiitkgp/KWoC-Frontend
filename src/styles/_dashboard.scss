@@ -106,16 +106,17 @@
       }
 
       .languages {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 2rem;
-
         span {
+          background: rgba(255, 255, 255, 0.1);
           margin: 0 1rem 0 0;
+          padding: 0.5rem 0.8rem;
+          border-radius: 10%;
         }
 
         @include sm {
-          font-size: 1.25rem;
           span {
+            border-radius: 2%;
+            margin: 1rem;
             display: block;
           }
         }
@@ -294,6 +295,38 @@
     .plus-sign {
       font-size: 3rem;
       margin: 0;
+    }
+  }
+
+  .pull-reqs {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    max-width: 50vw;
+    @include sm {
+      max-width: 100%;
+    }
+
+    .pull-req {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      margin: 0.2rem;
+      padding: 0.5rem;
+
+      @include sm {
+        font-size: 3vw;
+      }
+
+      .link {
+        display: inline;
+        margin-right: 0.2rem;
+        margin-left: 0.5rem;
+
+        a {
+          color: rgb(86, 131, 255);
+        }
+      }
     }
   }
 }
