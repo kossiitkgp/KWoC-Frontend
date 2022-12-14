@@ -110,7 +110,7 @@ export default function StudentDashboard() {
     axios
       .get(`${BACKEND_URL}/stats/student/${student_username}`, config)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setStats(res.data);
 
         const _pullReqs = [];
@@ -323,19 +323,16 @@ export default function StudentDashboard() {
                   return (
                     <div className="pull-req">
                       {index + 1}.
-                      <p className="info">
-                        {pullReq["username"]} / {pullReq["repo_name"]} - Pull:{" "}
-                        {pullReq["pull_idx"]}
-                      </p>
                       <div className="link">
                         <a href={`${pullReq["url"]}`} target="_blank">
-                          [Link]
+                          {pullReq["username"]} / {pullReq["repo_name"]} - Pull:{" "}
+                          {pullReq["pull_idx"]}
                         </a>
                       </div>
                     </div>
                   );
                 })
-              : "No pull requests merged yet."}
+              : "No merged pull requests yet, but we know you can do this. Keep going!"}
           </div>
           {/* <p className="dashboard-table-message">
             View on Desktop to see Pull Requests.

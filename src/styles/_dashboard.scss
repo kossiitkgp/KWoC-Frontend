@@ -318,15 +318,14 @@
         font-size: 3vw;
       }
 
-      p {
-        margin-left: 0.5rem;
-        display: inline;
-      }
-
       .link {
-        float: right;
         display: inline;
         margin-right: 0.2rem;
+        margin-left: 0.5rem;
+
+        a {
+          color: rgb(86, 131, 255);
+        }
       }
     }
   }
