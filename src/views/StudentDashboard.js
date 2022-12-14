@@ -12,12 +12,11 @@ export default function StudentDashboard() {
   const [evalStatus, setEvalStatus] = useState("");
   const [blogLink, setBlogLink] = useState("");
   const [projects, setProjects] = useState([]);
+  const [pullReqs, setPullReqs] = useState([]);
 
   // const { width, height } = useWindowSize();
 
   const [stats, setStats] = useState({});
-
-  const [pulls, setPulls] = useState([]);
 
   const [statsFetchError, setStatsFetchError] = useState(null);
 
@@ -111,12 +110,28 @@ export default function StudentDashboard() {
     axios
       .get(`${BACKEND_URL}/stats/student/${student_username}`, config)
       .then((res) => {
-        // console.log(res);
+        console.log(res.data);
         setStats(res.data);
+
+        const _pullReqs = [];
+
+        for (let j = 0; j < res["data"]["pulls"].length; ++j) {
+          const pull_url = res["data"]["pulls"][j].url;
+          const split_url = pull_url.split("/");
+
+          _pullReqs.push({
+            url: pull_url,
+            username: split_url[3],
+            repo_name: split_url[4],
+            pull_idx: split_url[6],
+          });
+        }
+
+        setPullReqs(_pullReqs);
       })
       .catch((err) => {
         setStatsFetchError(err);
-        console.log(statsFetchError);
+        // console.log(statsFetchError);
       });
   }, []);
 
@@ -156,7 +171,10 @@ export default function StudentDashboard() {
                 <h2>
                   {statsFetchError
                     ? "-"
-                    : stats["pulls"] !== undefined && stats["pulls"].length}
+                    : stats["pulls"] === undefined ||
+                      stats["commit_count"] === 0
+                    ? 0
+                    : stats["pulls"].length}
                 </h2>
                 <p>Pull Requests</p>
               </div>
@@ -282,81 +300,49 @@ export default function StudentDashboard() {
           </p>
         </div> */}
 
-        {/* <div className="subtitle">
+        <div className="subtitle">
           <h1>Languages</h1>
 
           <div className="languages">
             {stats["languages"] !== undefined &&
-              stats["languages"].map((item) => <span>{item}</span>)}
+            stats["commit_count"] !== 0 &&
+            stats["languages"].length !== 0
+              ? stats["languages"].map((item) => <span>{item}</span>)
+              : "Contribute to a project to display languages."}
           </div>
         </div>
 
         <div className="subtitle">
-          <h1>Projects</h1>
+          <h1>Merged Pull Requests</h1>
 
-          <div className="languages">
-            {stats["projects"] !== undefined &&
-              stats["projects"].map((item) => (
-                <span>
-                  <a href={`https://github.com/${item}`}>{item}</a>
-                </span>
-              ))}
+          <div className="pull-reqs">
+            {!statsFetchError &&
+            stats["commit_count"] !== 0 &&
+            pullReqs.length !== 0
+              ? pullReqs.map((pullReq, index) => {
+                  return (
+                    <div className="pull-req">
+                      {index + 1}.
+                      <p className="info">
+                        {pullReq["username"]} / {pullReq["repo_name"]} - Pull:{" "}
+                        {pullReq["pull_idx"]}
+                      </p>
+                      <div className="link">
+                        <a href={`${pullReq["url"]}`} target="_blank">
+                          [Link]
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })
+              : "No pull requests merged yet."}
           </div>
+          {/* <p className="dashboard-table-message">
+            View on Desktop to see Pull Requests.
+          </p> */}
         </div>
 
-        <div className="subtitle">
-          <h1>
-            Pull Reqests
-            <img
-              alt=""
-              src={reloadIcon}
-              className="refresh-icon"
-              onClick={removeCachedTimeStamp}
-            />
-          </h1>
-          <div className="dashboard-table">
-            {stats["pulls"] !== undefined ? (
-              <table>
-                <thead>
-                  <tr>
-                    <th>
-                      <h3>Project</h3>
-                    </th>
-                    <th>
-                      <h3>Pull Request</h3>
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {stats["pulls"].map((item) => {
-                    return (
-                      <tr>
-                        <td>
-                          <a
-                            href={`https://github.com/${item["base"]["repo"]["full_name"]}`}
-                          >
-                            {item["base"]["repo"]["full_name"]}
-                          </a>
-                        </td>
-
-                        <td>
-                          <a href={item["html_url"]}>
-                            {trim_message(item["title"])}
-                          </a>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            ) : (
-              ""
-            )}
-          </div>
-        </div>
-
-        <div className="subtitle">
+        {/* <div className="subtitle">
           <h1>Commits</h1>
 
           <div className="dashboard-table">
@@ -383,13 +369,11 @@ export default function StudentDashboard() {
                           </a>
                         </td>
                         <td>
-                          <a href={item["html_url"]}>
-                            {trim_message(item["message"])}
-                          </a>
+                          <a href={item["html_url"]}>{item["message"]}</a>
                         </td>
                         <td>
-                          +{trim_lines(item["lines_added"])},-
-                          {trim_lines(item["lines_removed"])}
+                          +{item["lines_added"]},-
+                          {item["lines_removed"]}
                         </td>
                       </tr>
                     );

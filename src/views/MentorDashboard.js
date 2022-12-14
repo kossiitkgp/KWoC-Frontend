@@ -8,6 +8,7 @@ export default function MentorDashboard() {
   const [fullName, setFullName] = useState("");
   const [projects, setProjects] = useState([]);
   const [students, setStudents] = useState([]);
+  const [pullReqs, setPullReqs] = useState([]);
 
   const [statsFetchError, setStatsFetchError] = useState(null);
 
@@ -60,14 +61,28 @@ export default function MentorDashboard() {
           .get(`${BACKEND_URL}/stats/mentor/${mentor_username}`, config)
           .then((res) => {
             const stats = res.data["Projects"];
-            // console.log(stats);
 
             const _students = [];
+            const _pullReqs = [];
 
-            for (let i = 0; i < stats.length; ++i)
+            for (let i = 0; i < stats.length; ++i) {
               for (let j = 0; j < stats[i]["contributors"].length; ++j)
                 _students.push(stats[i]["contributors"][j]);
 
+              for (let j = 0; j < stats[i]["pulls"].length; ++j) {
+                const pull_url = stats[i]["pulls"][j].url;
+                const split_url = pull_url.split("/");
+
+                _pullReqs.push({
+                  url: pull_url,
+                  username: split_url[3],
+                  repo_name: split_url[4],
+                  pull_idx: split_url[6],
+                });
+              }
+            }
+
+            setPullReqs(_pullReqs);
             setStudents(_students);
           })
           .catch((err) => {
@@ -229,16 +244,16 @@ export default function MentorDashboard() {
               ""
             )} */}
           </div>
-          <p className="dashboard-table-message">
+          {/* <p className="dashboard-table-message">
             View on Desktop to see projects.
-          </p>
+          </p> */}
         </div>
 
         <div className="subtitle">
           <h1>Students</h1>
 
           <div className="students">
-            {!statsFetchError || students.length !== 0 ? (
+            {!statsFetchError && students.length !== 0 ? (
               students.map((studentName, index) => {
                 return (
                   <div className="student">
@@ -284,9 +299,37 @@ export default function MentorDashboard() {
               </div>
             )}
           </div>
-          <p className="dashboard-table-message">
+          {/* <p className="dashboard-table-message">
             View on Desktop to see students.
-          </p>
+          </p> */}
+        </div>
+
+        <div className="subtitle">
+          <h1>Merged Pull Requests</h1>
+
+          <div className="pull-reqs">
+            {!statsFetchError && pullReqs.length !== 0
+              ? pullReqs.map((pullReq, index) => {
+                  return (
+                    <div className="pull-req">
+                      {index + 1}.
+                      <p className="info">
+                        {pullReq["username"]} / {pullReq["repo_name"]} - Pull:{" "}
+                        {pullReq["pull_idx"]}
+                      </p>
+                      <div className="link">
+                        <a href={`${pullReq["url"]}`} target="_blank">
+                          [Link]
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })
+              : "No pull requests merged yet."}
+          </div>
+          {/* <p className="dashboard-table-message">
+            View on Desktop to see Pull Requests.
+          </p> */}
         </div>
 
         <section className="resource-table subtitle">
