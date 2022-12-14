@@ -110,12 +110,12 @@
           background: rgba(255, 255, 255, 0.1);
           margin: 0 1rem 0 0;
           padding: 0.5rem 0.8rem;
-          border-radius: 10% 10% 10% 10%;
+          border-radius: 10%;
         }
 
         @include sm {
           span {
-            border-radius: 2% 2% 2% 2%;
+            border-radius: 2%;
             margin: 1rem;
             display: block;
           }
