@@ -71,14 +71,17 @@ export default function MentorDashboard() {
 
               for (let j = 0; j < stats[i]["pulls"].length; ++j) {
                 const pull_url = stats[i]["pulls"][j].url;
-                const split_url = pull_url.split("/");
 
-                _pullReqs.push({
-                  url: pull_url,
-                  username: split_url[3],
-                  repo_name: split_url[4],
-                  pull_idx: split_url[6],
-                });
+                if (pull_url !== "") {
+                  const split_url = pull_url.split("/");
+
+                  _pullReqs.push({
+                    url: pull_url,
+                    username: split_url[3],
+                    repo_name: split_url[4],
+                    pull_idx: split_url[6],
+                  });
+                }
               }
             }
 
