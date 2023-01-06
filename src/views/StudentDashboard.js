@@ -233,23 +233,82 @@ export default function StudentDashboard() {
           {/* TODO: see and improve Psa component to handle multiple announcements better */}
           <Psa announcement={announcements[0].content} />
         </div>
-        {/* <div className="subtitle">
+        <div className="subtitle">
           <h1>End Evaluation</h1>
 
-          <div className="field">
-              <label className="label">Blog Link</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="Link of blog"
-                  defaultValue=""
-                  onChange={(e) => setBlogLink(e.target.value)}
-                />
-                <button onClick={handleBlogLink}>Submit</button>
-              </div>
+          {/* <div className="field">
+            <label className="label">Blog Link</label>
+            <div className="control">
+              <input
+                type="text"
+                placeholder="Link of blog"
+                defaultValue=""
+                onChange={(e) => setBlogLink(e.target.value)}
+              />
+              <button onClick={handleBlogLink}>Submit</button>
             </div>
+          </div> */}
 
           <div className="feedback">
+            <p>
+              As KWoC'22 is coming to an end, we hope you have made some good
+              contributions till now.
+              <br />
+              <br />
+              Kindly ensure that you satisfy the following criteria to be
+              eligible for end evaluations:
+              <ul>
+                <li>
+                  You have atleast one more PR after mid evals and before 6 Jan
+                  EOD
+                </li>
+                <li>You submit the blog link before 9 Jan EOD</li>
+                <li>
+                  The blog can be as descriptive as you want but must contain at
+                  least the following points:
+                  <ul>
+                    <li>List of projects you worked on</li>
+                    <li>
+                      List of Pull Requests you created (mention links of PRs)
+                    </li>
+                    <li>Summary of your work</li>
+                    <li>Learnings</li>
+                  </ul>
+                </li>
+              </ul>
+              Kindly fill the feedback form and submit your blog link{" "}
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLScpy0OdZN3JxN-Y4MNCCWtBEryuxZE80CQj4l_kaXMiwIfB8g/viewform">
+                here
+              </a>
+              <br />
+              <br />
+              Here are some blog references from KWoC'21 students:
+              <ul>
+                <li>
+                  <a href="https://preyam2002.medium.com/kwoc-project-report-e45e98937ad4">
+                    Blog from Preyam Rao
+                  </a>
+                </li>
+                <li>
+                  <a href="https://medium.com/@shreya.agrawal2121">
+                    Blog from Shreya Agarwal
+                  </a>
+                </li>
+                <li>
+                  <a href="https://medium.com/@rahulgupta9202/kwoc-project-report-4f701032bdd0">
+                    Blog from Rahul Gupta
+                  </a>
+                </li>
+                <li>
+                  <a href="https://medium.com/@marvelousprince012233/kwoc-kharagpur-winter-of-code-blog-report-56e82376eff5">
+                    Blog from Prince Singh
+                  </a>
+                </li>
+              </ul>
+            </p>
+          </div>
+
+          {/* <div className="feedback">
             {evalStatus === 2 ? (
               <>
                 <p>
@@ -282,9 +341,9 @@ export default function StudentDashboard() {
               Thank you for participating in KWoC, hope you learned something
               new regardless of the result.
             </p>
-          </div>
+          </div> */}
         </div>
-        <Toaster position="bottom-center" />
+        {/* <Toaster position="bottom-center" />
         <div className="feedback">
           <p>
             Help us make KWoC a better experience for everyone by filling this
