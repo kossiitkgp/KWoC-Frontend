@@ -1,9 +1,8 @@
-import axios from "axios";
 import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Card from "../components/ProjectCard.js";
-import { BACKEND_URL } from "../constants";
+import Projects2022 from "../data/projects-2022.json";
 import { shuffleArray } from "../utils/shuffle";
 
 function projectSortPolicy(arr) {
@@ -88,28 +87,10 @@ const searchOptions = {
 export default function Projects() {
   const [searchText, setSearchText] = useState("");
 
-  const [allProjects, setAllProjects] = useState([]);
+  const [allProjects, setAllProjects] = useState(Projects2022);
   const [searchedProjects, setSearchedProjects] = useState([]);
 
-  const URL = `${BACKEND_URL}/project`;
   const location = useLocation();
-
-  useEffect(() => {
-    axios
-      .get(URL)
-      .then((response) => {
-        setAllProjects(projectSortPolicy(response.data));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    const urlParams = new URLSearchParams(location.search);
-    const query = urlParams.get("query");
-    if (query !== null) {
-      setSearchText(query);
-    }
-  }, []);
 
   useEffect(() => {
     const fuse = new Fuse(allProjects, searchOptions);
