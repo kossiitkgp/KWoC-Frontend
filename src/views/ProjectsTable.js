@@ -1,11 +1,11 @@
-import axios from "axios";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import { BACKEND_URL } from "../constants";
+import ProjectStats2022 from "../data/project-stats-2022.json";
 
 export default function ProjectsTable() {
-  const [lastUpdatedTime, setLastUpdatedTime] = useState("");
-  const [rowData, setRowData] = useState([]);
+  const [rowData, setRowData] = useState(
+    ProjectStats2022.Stats.sort((a, b) => b.pr_count - a.pr_count)
+  );
 
   const columnDefs = useMemo(
     () => [
@@ -34,31 +34,6 @@ export default function ProjectsTable() {
     ],
     []
   );
-
-  useEffect(() => {
-    axios
-      .get(`${BACKEND_URL}/stats/projects`)
-      .then((res) => {
-        setRowData(
-          res.data["Stats"].sort((a, b) =>
-            parseInt(a.commit_count) < parseInt(b.commit_count) ? 1 : -1
-          )
-        );
-        // console.log(res.data["Stats"][0]);
-      })
-      .catch((err) => {
-        alert("Server Error,try again");
-      });
-    let currentTime = new Date();
-    let currentOffset = currentTime.getTimezoneOffset();
-    let ISTOffset = 330;
-    let ISTTime = new Date(
-      currentTime.getTime() + (ISTOffset + currentOffset) * 60000
-    );
-    let hoursIST = ISTTime.getHours();
-    if (hoursIST.toString().length === 1) hoursIST = "0" + hoursIST.toString();
-    setLastUpdatedTime(`${hoursIST.toString()}:00 IST`);
-  }, []);
 
   function cellRenderer(params) {
     const mentor = params.data.mentor;
