@@ -55,15 +55,8 @@ function Navbar() {
       <nav className="menu">
         <div className="wrapper">
           <ul>
-            {window.location.pathname !== "/" ? (
-              <li>
-                <a href="/">Home</a>
-              </li>
-            ) : (
-              ""
-            )}
             <li>
-              <a href="/#about">About</a>
+              <a href="/">Home</a>
             </li>
 
             <li>
@@ -72,10 +65,6 @@ function Navbar() {
 
             <li>
               <a href="/FAQ">FAQs</a>
-            </li>
-
-            <li>
-              <a href="/#tline">Timeline</a>
             </li>
 
             <li>
@@ -167,16 +156,8 @@ function Navbar() {
 
         <div className={`wrapper ${isActive ? "active" : ""}`}>
           <ul>
-            {window.location.pathname !== "/" ? (
-              <li>
-                <a href="/">Home</a>
-              </li>
-            ) : (
-              ""
-            )}
-
             <li>
-              <a href="/#about">About</a>
+              <a href="/">Home</a>
             </li>
 
             <li>
@@ -185,10 +166,6 @@ function Navbar() {
 
             <li>
               <a href="/FAQ">FAQs</a>
-            </li>
-
-            <li>
-              <a href="/#tline">Timeline</a>
             </li>
 
             <li>
