@@ -36,6 +36,7 @@ function Home() {
         <BlurredCircles />
         <div className="hero-body">
           <h1 className="title">KWoC 22</h1>
+          <h3 className="subtitle">Archive</h3>
           <h3 className="subtitle">
             Powered by{" "}
             <a
