@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import * as Icon from "react-feather";
-import {
-  MENTOR_REGISTRATION_LINK,
-  STUDENT_REGISTRATION_LINK,
-} from "../constants";
 
 function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -206,55 +202,6 @@ function Navbar() {
               >
                 Join our Discord server
               </a>
-            </li>
-            <li
-              className={`dropdown-title ${isDown_2 ? "down" : ""}`}
-              onClick={() => dropdownNikal(2)}
-            >
-              {mentorLoggedIn === true || studentLoggedIn === true
-                ? "Manage Account"
-                : "Login"}
-
-              <ul className="dropdown-content">
-                {mentorLoggedIn !== true ? (
-                  <li>
-                    <a className="navbar-item" href={MENTOR_REGISTRATION_LINK}>
-                      Mentor Login
-                    </a>
-                  </li>
-                ) : (
-                  <>
-                    <li>
-                      <a className="navbar-item" href="/dashboard/mentor">
-                        Mentor Dashboard
-                      </a>
-                    </li>
-
-                    <li onClick={logoutMentor}>Logout(Mentor)</li>
-                  </>
-                )}
-
-                {studentLoggedIn !== true ? (
-                  <li>
-                    <a
-                      className="navbar-item"
-                      id="mentee-login"
-                      href={STUDENT_REGISTRATION_LINK}
-                    >
-                      Student Login
-                    </a>
-                  </li>
-                ) : (
-                  <>
-                    <li>
-                      <a className="navbar-item" href="/dashboard/student">
-                        Student Dashboard
-                      </a>
-                    </li>
-                    <li onClick={logoutStudent}>Logout(Student)</li>
-                  </>
-                )}
-              </ul>
             </li>
           </ul>
         </div>
