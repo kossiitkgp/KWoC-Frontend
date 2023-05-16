@@ -172,16 +172,6 @@ function Navbar() {
               <a href="/testimonial">Testimonials</a>
             </li>
 
-            <li>
-              <a
-                href="https://github.com/kossiitkgp/kwoc-bugs"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Bug Report
-              </a>
-            </li>
-
             <li
               className={`dropdown-title ${isDown_1 ? "down" : ""}`}
               onClick={() => dropdownNikal(1)}
