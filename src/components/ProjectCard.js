@@ -88,13 +88,9 @@ export default function Card(props) {
         <br />
         <section id="projectTags">
           {props.tags.map((tag) => (
-            <a
-              href={`${window.location.pathname}?query=${tag}`}
-              key={tag}
-              className="tag"
-            >
+            <span key={tag} className="tag">
               {tag}
-            </a>
+            </span>
           ))}
         </section>
       </div>
