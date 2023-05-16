@@ -12,15 +12,6 @@ export default function Footer() {
               <a
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://www.facebook.com/groups/kwoc2016"
-              >
-                Facebook
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
                 href="https://www.linkedin.com/showcase/kharagpur-winter-of-code/posts/"
               >
                 LinkedIn
@@ -63,15 +54,6 @@ export default function Footer() {
                 href="https://kossiitkgp.org"
               >
                 About KOSS
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
-                href="https://github.com/kossiitkgp/kwoc-bugs"
-              >
-                Report a Bug!
               </a>
             </li>
           </ul>
