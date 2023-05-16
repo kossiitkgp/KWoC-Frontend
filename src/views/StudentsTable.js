@@ -1,7 +1,7 @@
 import Fuse from "fuse.js";
 import React, { useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import StudentStats2022 from "../data/student-stats-2020.json";
+import StudentStats2022 from "../data/student-stats-2022.json";
 import { shuffleArray } from "../utils/shuffle";
 
 const debouncer = function (fn, delay) {
