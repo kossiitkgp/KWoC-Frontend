@@ -1,8 +1,7 @@
-import axios from "axios";
 import Fuse from "fuse.js";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useSortBy, useTable } from "react-table";
-import { BACKEND_URL } from "../constants";
+import StudentStats2022 from "../data/student-stats-2020.json";
 import { shuffleArray } from "../utils/shuffle";
 
 const debouncer = function (fn, delay) {
@@ -22,9 +21,8 @@ const searchOptions = {
 };
 
 export default function StudentsTable() {
-  const [lastUpdatedTime, setLastUpdatedTime] = useState("");
-  const [rowData, setRowData] = useState([]);
-  const [allStats, setAllStats] = useState([]);
+  const [rowData, setRowData] = useState(StudentStats2022.Stats);
+  const [allStats, setAllStats] = useState(StudentStats2022.Stats);
   const [page, setPage] = useState(0);
   const [lastPageNum, setLastPageNum] = useState(0);
 
@@ -84,41 +82,6 @@ export default function StudentsTable() {
       setRowData(results);
     }
   }
-
-  useEffect(() => {
-    axios
-      .get(`${BACKEND_URL}/stats/students`)
-      .then((res) => {
-        // console.log(res);
-        setRowData(
-          res.data["Stats"]
-            .sort((a, b) =>
-              parseInt(a.commit_count) < parseInt(b.commit_count) ? 1 : -1
-            )
-            .slice(0, 100)
-        );
-        setAllStats(
-          res.data["Stats"].sort((a, b) =>
-            parseInt(a.commit_count) < parseInt(b.commit_count) ? 1 : -1
-          )
-        );
-        const MAX_NUMBER_OF_PAGES = Math.ceil(res.data["Stats"].length / 100);
-        setLastPageNum(MAX_NUMBER_OF_PAGES);
-      })
-      .catch((err) => {
-        console.log(err);
-        alert("Server Error, Try again");
-      });
-    let currentTime = new Date();
-    let currentOffset = currentTime.getTimezoneOffset();
-    let ISTOffset = 330;
-    let ISTTime = new Date(
-      currentTime.getTime() + (ISTOffset + currentOffset) * 60000
-    );
-    let hoursIST = ISTTime.getHours();
-    if (hoursIST.toString().length === 1) hoursIST = "0" + hoursIST.toString();
-    setLastUpdatedTime(`${hoursIST.toString()}:00 IST`);
-  }, []);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns: columnDefs, data: rowData }, useSortBy);
