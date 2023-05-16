@@ -190,7 +190,7 @@ function Navbar() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                Join our Slack <Icon.Slack />
+                Join our Slack
               </a>
             </li>
 
