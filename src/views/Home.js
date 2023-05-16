@@ -4,12 +4,7 @@ import ReactGA from "react-ga4";
 import PostmanLogo from "../assets/postman.png";
 import BlurredCircles from "../components/BlurredCircles";
 import Timeline from "../components/Timeline";
-import {
-  MENTOR_MANUAL,
-  MENTOR_REGISTRATION_LINK,
-  STUDENT_MANUAL,
-  STUDENT_REGISTRATION_LINK,
-} from "../constants";
+import { MENTOR_MANUAL, STUDENT_MANUAL } from "../constants";
 
 function Home() {
   const tags = [
@@ -56,15 +51,6 @@ function Home() {
               <img src={PostmanLogo} />
             </a>
           </h3>
-          <div className="btns-container">
-            <a className="button" href={STUDENT_REGISTRATION_LINK}>
-              Student Registration
-            </a>
-
-            <a className="button" href={MENTOR_REGISTRATION_LINK}>
-              Mentor Registration
-            </a>
-          </div>
 
           <div className="btns-container">
             <a
@@ -131,22 +117,6 @@ function Home() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="tags container" id="tags">
-        <h1 className="tags-title">Tags</h1>
-        <div className="tags-list">
-          {tags.map((tag, index) => (
-            <a
-              href={`${window.location.origin}/projects?query=${tag}`}
-              key={tag}
-              className="tag multicolor"
-              color={colors[index % 4]}
-            >
-              {tag}
-            </a>
-          ))}
         </div>
       </section>
 
