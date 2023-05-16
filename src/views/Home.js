@@ -126,7 +126,7 @@ function Home() {
       </section>
 
       <section className="previous-year container">
-        <h1>Statistics: KWoC 2021</h1>
+        <h1>Statistics</h1>
         <div className="previous-year-column-wrapper">
           <div className="previous-year-column multicolor" color="red">
             <div className="previous-year-icon">
@@ -139,14 +139,14 @@ function Home() {
             <div className="previous-year-icon">
               <Icon.GitHub size={100} />
             </div>
-            <h3>5.2 Million+ Lines of Code</h3>
+            <h3>500k+ Lines of Code</h3>
           </div>
 
           <div className="previous-year-column multicolor" color="green">
             <div className="previous-year-icon">
               <Icon.GitPullRequest size={100} />
             </div>
-            <h3>750+ Pull Requests</h3>
+            <h3>397 Pull Requests</h3>
           </div>
         </div>
       </section>
