@@ -1,3 +1,5 @@
+<div id="top></div>
+
 <!-- README TEMPLATE BASED ON https://github.com/proffapt/myREADME -->
 <!-- PROJECT SHIELDS -->
 <div align="center">
@@ -20,18 +22,36 @@
   <!-- UPDATE -->
     <i>The truth redefined.</i>
     <br />
-    <a href="#table-of-contents"><strong>Explore the docs »</strong></a>
+    <a href="#table-of-contents"><strong>Get Started »</strong></a>
     <br />
     <br />
     <a href="https://kwoc.kossiitkgp.org">Kharagpur Winter of Code</a>
     ·
-    <a href="https://github.com/kossiitkgp/KWoC-Frontend/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/kossiitkgp/KWoC-Frontend/issues">Request Feature</a>
+    <a href="https://github.com/kossiitkgp/KWoC-Backend">Backend</a>
   </p>
 </div>
 
 ## Table of Contents
+- [Development](#development)
+  - [Setting Up Locally](#setting-up-locally)
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Development
+See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
+
+### Setting Up Locally
+- Install [NodeJS](https://nodejs.org/en).
+- Install or enable [Yarn](https://yarnpkg.com/getting-started/install).
+- Clone this repository.
+- Run `yarn install` in the cloned repository to download all dependencies.
+- Run `yarn start` to start a local development server.
+- Optionally set up [KWoC Backend](https://github.com/kossiitkgp/kwoc-backend) locally and set the `BACKEND_URL` in the [constants.js](./src/constants.js) file to the local URL for the backend.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Project Structure
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
@@ -40,16 +60,4 @@
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge
-[contributors-url]: https://github.com/kossiitkgp/KWoC-Frontend/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge
-[forks-url]: https://github.com/kossiitkgp/KWoC-Frontend/network/members
-[stars-shield]: https://img.shields.io/github/stars/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge
-[stars-url]: https://github.com/kossiitkgp/KWoC-Frontend/stargazers
-[issues-shield]: https://img.shields.io/github/issues/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge
-[issues-url]: https://github.com/kossiitkgp/KWoC-Frontend/issues
-[license-shield]: https://img.shields.io/github/license/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge
-[license-url]: https://github.com/kossiitkgp/KWoC-Frontend/blob/master/LICENSE
-[koss-shield]: https://img.shields.io/badge/With%20%E2%9D%A4%EF%B8%8F-KOSS-blue?style=for-the-badge
-[koss-url]: https://kossiitkgp.org
+> Please update this documentation if you make changes to the KWoC frontend or any other part of KWoC which affects the frontend. Future humans will praise you.
