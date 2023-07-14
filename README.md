@@ -3,15 +3,17 @@
 <!-- README TEMPLATE BASED ON https://github.com/proffapt/myREADME -->
 <!-- PROJECT SHIELDS -->
 <div align="center">
-  <a href="https://kossiitkgp.org">
-    <img alt="KOSS Shield" src="https://img.shields.io/badge/With%20%E2%9D%A4%EF%B8%8F-KOSS-blue?style=for-the-badge">
-  </a>
-  <a href="https://github.com/kossiitkgp/KWoC-Frontend/blog/master/LICENSE">
-    <img alt="License Shield" src="https://img.shields.io/github/license/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
-  </a>
-  <a href="https://github.com/kossiitkgp/KWoC-Frontend/contributors">
-    <img alt="Contributors Shield" src="https://img.shields.io/github/contributors/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
-  </a>
+  <p align="center">
+    <a href="https://kossiitkgp.org">
+      <img alt="KOSS Shield" src="https://img.shields.io/badge/With%20%E2%9D%A4%EF%B8%8F-KOSS-blue?style=for-the-badge">
+    </a>
+    <a href="https://github.com/kossiitkgp/KWoC-Frontend/blog/master/LICENSE">
+      <img alt="License Shield" src="https://img.shields.io/github/license/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
+    </a>
+    <a href="https://github.com/kossiitkgp/KWoC-Frontend/contributors">
+      <img alt="Contributors Shield" src="https://img.shields.io/github/contributors/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
+    </a>
+  </p>
 </div>
 
 <!-- PROJECT LOGO -->
