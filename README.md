@@ -1,11 +1,10 @@
 <!-- README TEMPLATE BASED ON https://github.com/proffapt/myREADME -->
 <!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![GPL v3 License][license-shield]][license-url]
-[![KOSS][koss-shield]][koss-url]
-
+<div align="center">
+<img alt="KOSS Shield" src="https://img.shields.io/badge/With%20%E2%9D%A4%EF%B8%8F-KOSS-blue?style=for-the-badge">
+<img alt="License Shield" src="https://img.shields.io/github/license/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
+<img alt="Contributors Shield" src="https://img.shields.io/github/contributors/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
+</div>
 
 <!-- PROJECT LOGO -->
 <br />
@@ -24,13 +23,15 @@
     <a href="#table-of-contents"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://kwoc.kossiitkgp.org">Website</a>
+    <a href="https://kwoc.kossiitkgp.org">Kharagpur Winter of Code</a>
     ·
     <a href="https://github.com/kossiitkgp/KWoC-Frontend/issues">Report Bug</a>
     ·
     <a href="https://github.com/kossiitkgp/KWoC-Frontend/issues">Request Feature</a>
   </p>
 </div>
+
+## Table of Contents
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
