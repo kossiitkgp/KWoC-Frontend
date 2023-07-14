@@ -3,9 +3,15 @@
 <!-- README TEMPLATE BASED ON https://github.com/proffapt/myREADME -->
 <!-- PROJECT SHIELDS -->
 <div align="center">
-<img alt="KOSS Shield" src="https://img.shields.io/badge/With%20%E2%9D%A4%EF%B8%8F-KOSS-blue?style=for-the-badge">
-<img alt="License Shield" src="https://img.shields.io/github/license/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
-<img alt="Contributors Shield" src="https://img.shields.io/github/contributors/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
+  <a href="https://kossiitkgp.org">
+    <img alt="KOSS Shield" src="https://img.shields.io/badge/With%20%E2%9D%A4%EF%B8%8F-KOSS-blue?style=for-the-badge">
+  </a>
+  <a href="https://github.com/kossiitkgp/KWoC-Frontend/blog/master/LICENSE">
+    <img alt="License Shield" src="https://img.shields.io/github/license/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
+  </a>
+  <a href="https://github.com/kossiitkgp/KWoC-Frontend/contributors">
+    <img alt="Contributors Shield" src="https://img.shields.io/github/contributors/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
+  </a>
 </div>
 
 <!-- PROJECT LOGO -->
@@ -13,7 +19,7 @@
 <!-- UPDATE -->
 <div align="center">
   <a href="https://github.com/kossiitkgp/KWoC-Frontend">
-    <img width="140" alt="image" src="https://raw.githubusercontent.com/kossiitkgp/design/master/logo/kwoc_logo.png">
+    <img width="140" alt="KWoC Logo" src="https://raw.githubusercontent.com/kossiitkgp/design/master/logo/kwoc_logo.png">
   </a>
 
   <h3 align="center">KWoC Frontend</h3>
@@ -34,6 +40,10 @@
 ## Table of Contents
 - [Development](#development)
   - [Setting Up Locally](#setting-up-locally)
+- [Project Structure](#project-structure)
+  - [File Structure](#file-structure)
+  - [Libraries Used](#libraries-used)
+- [Archival](#archival)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Development
@@ -50,6 +60,16 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Project Structure
+### File Structure
+
+
+### Libraries/Frameworks Used
+- [React](https://reactjs.dev): For redefining the truth.
+- [SASS](https://sass-lang.com/): For redefining CSS styles.
+- [Feather Icons](https://feathericons.com/) and [Fontawesome Icons](https://fontawesome.com/).
+- And [many more](./package.json).
+
+## Archival
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
