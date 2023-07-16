@@ -7,7 +7,7 @@
     <a href="https://kossiitkgp.org">
       <img alt="KOSS Shield" src="https://img.shields.io/badge/With%20%E2%9D%A4%EF%B8%8F-KOSS-blue?style=for-the-badge">
     </a>
-    <a href="https://github.com/kossiitkgp/KWoC-Frontend/blog/master/LICENSE">
+    <a href="https://github.com/kossiitkgp/KWoC-Frontend/blob/master/LICENSE">
       <img alt="License Shield" src="https://img.shields.io/github/license/kossiitkgp/KWoC-Frontend.svg?style=for-the-badge">
     </a>
     <a href="https://github.com/kossiitkgp/KWoC-Frontend/contributors">
@@ -31,7 +31,6 @@
     <i>The truth redefined.</i>
     <br />
     <a href="#table-of-contents"><strong>Get Started »</strong></a>
-    <br />
     <br />
     <a href="https://kwoc.kossiitkgp.org">Kharagpur Winter of Code</a>
     ·
@@ -63,7 +62,30 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 
 ## Project Structure
 ### File Structure
-
+```
+.
+├── public
+└── src
+   ├── assets
+   ├── components
+   ├── data
+   ├── hooks
+   ├── styles
+   ├── utils
+   ├── views
+   ├── constants.js
+   └── App.js
+```
+- `public`: Contains public files such as `index.html`.
+- `src`: Contains source files (JS, SCSS, assets, etc.)
+  - `assets`: Contains assets used in the source such as images and icons.
+  - `components`: Contains reusable react components.
+  - `data`: Contains raw data.
+  - `styles`: Contains all stylesheets (CSS, SCSS).
+  - `utils`: Contains commonly used util functions.
+  - `views`: Contains views for each of the pages.
+  - `constants.js`: Contains globally used constants.
+  - `App.js`: Contains the top-level `App` component.
 
 ### Libraries/Frameworks Used
 - [React](https://reactjs.dev): For redefining the truth.
@@ -72,6 +94,7 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 - And [many more](./package.json).
 
 ## Archival
+See also [KWoC Docs](https://github.com/kossiitkgp/docs/blob/master/events/kwoc.md#certificates).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
