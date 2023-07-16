@@ -43,7 +43,7 @@
   - [Setting Up Locally](#setting-up-locally)
 - [Project Structure](#project-structure)
   - [File Structure](#file-structure)
-  - [Libraries Used](#libraries-used)
+  - [Libraries/Frameworks Used](#librariesframeworks-used)
 - [Archival](#archival)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -92,6 +92,7 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 - [SASS](https://sass-lang.com/): For redefining CSS styles.
 - [Feather Icons](https://feathericons.com/) and [Fontawesome Icons](https://fontawesome.com/).
 - And [many more](./package.json).
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Archival
 See also [KWoC Docs](https://github.com/kossiitkgp/docs/blob/master/events/kwoc.md#certificates).
