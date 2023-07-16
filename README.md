@@ -78,7 +78,7 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 ```
 - `public`: Contains public files such as `index.html`.
 - `src`: Contains source files (JS, SCSS, assets, etc.)
-  - `assets`: Contains assets used in the source such as images and icons.
+  - `assets`: Contains assets used in the source, such as images and icons.
   - `components`: Contains reusable react components.
   - `data`: Contains raw data.
   - `styles`: Contains all stylesheets (CSS, SCSS).
@@ -98,11 +98,11 @@ See also [KWoC Docs](https://github.com/kossiitkgp/docs/blob/master/events/kwoc.
 
 After KWoC ends, the website is archived. The stats data (including the total PRs, total commits, total contributors, and individual stats) is copied and added to the site source.
 
-The archived source code is commited to a branch named `kwoc-xx-archive` and hosted on `kwocxx.kossiitkgp.org` where `xx` represents the last two digits of the year. The archive is also hosted on `kwoc.kossiitkgp.org` until the next year's website is deployed.
+The archived source code is committed to a branch named `kwoc-xx-archive` and hosted on `kwocxx.kossiitkgp.org`, where `xx` represents the last two digits of the year. The archive is also hosted on `kwoc.kossiitkgp.org` until the following year's website is deployed.
 
-The development for the next website continues in the default branch.
+The development for the next KWoC website continues in the default branch.
 
-> **WARNING** DO NOT INCLUDE COMMIT ANY PERSONAL DATA TO THE ARCHIVE.
+> **WARNING** DO NOT COMMIT ANY PERSONAL DATA TO THE ARCHIVE.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
