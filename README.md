@@ -114,4 +114,4 @@ The development for the next KWoC website continues in the default branch.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ***
-> Please update this documentation if you make changes to this project or any other part that may affect this. Future humans will praise you.
+> Please update this documentation whenever changes are made to this project or any other relevant project that may affect this one. Future humans will praise you.
