@@ -131,15 +131,10 @@ export default function ProjectEditForm(props) {
       });
 
     // secondary mentor
-
-    const mentor_username = {
-      mentor: localStorage.getItem("mentor_username"),
-    };
-
     const SEC_MENTORS_ENDPOINT = `${BACKEND_URL}/mentor/all`;
 
     axios
-      .post(SEC_MENTORS_ENDPOINT, mentor_username, { headers })
+      .get(SEC_MENTORS_ENDPOINT, { headers })
       .then((res) => {
         const mentor_map_arr = res.data.map((item) => {
           return {
