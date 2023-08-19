@@ -93,8 +93,8 @@ export default function Form(props) {
       .then((res) => {
         const mentor_map_arr = res.data.map((item) => {
           return {
-            value: item.Username,
-            label: `${item.Name}(@${item.Username})`,
+            value: item.username,
+            label: `${item.name}(@${item.username})`,
           };
         });
         setMentorUsernames(mentor_map_arr);
