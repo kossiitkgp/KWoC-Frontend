@@ -86,19 +86,15 @@ export default function Form(props) {
       Bearer: localStorage.getItem("mentor_jwt"),
     };
 
-    const data = {
-      mentor: localStorage.getItem("mentor_username"),
-    };
-
     const SEC_MENTORS_ENDPOINT = `${BACKEND_URL}/mentor/all`;
 
     axios
-      .post(SEC_MENTORS_ENDPOINT, data, { headers })
+      .get(SEC_MENTORS_ENDPOINT, { headers })
       .then((res) => {
         const mentor_map_arr = res.data.map((item) => {
           return {
-            value: item.Username,
-            label: `${item.Name}(@${item.Username})`,
+            value: item.username,
+            label: `${item.name}(@${item.username})`,
           };
         });
         setMentorUsernames(mentor_map_arr);
