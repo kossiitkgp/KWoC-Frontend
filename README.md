@@ -21,7 +21,7 @@
 <!-- UPDATE -->
 <div align="center">
   <a href="https://github.com/kossiitkgp/KWoC-Frontend">
-    <img width="140" alt="KWoC Logo" src="https://raw.githubusercontent.com/kossiitkgp/design/master/logo/kwoc_logo.png">
+    <img width="140" alt="KWoC Logo" src="https://raw.githubusercontent.com/kossiitkgp/design/master/logo/kwoc/kwoc_logo.png">
   </a>
 
   <h3 align="center">KWoC Frontend</h3>
