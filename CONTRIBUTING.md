@@ -10,9 +10,6 @@ Hi :wave: there, welcome to KWoC React project. We are glad that you considered 
 
 - [PNPM](https://pnpm.io) to manage packages.
 - [React Router](https://www.npmjs.com/package/react-router-dom) to handle routes.
-- [Bulma](https://bulma.io/documentation/) for CSS styling and SCSS files for styles.
-- [Netlify](https://kwoc-react-beta.netlify.com/) to deploy the site.
-- Dependabot to warn us for dependencies with security problems.
 
 ## Contribution Workflow
 
@@ -33,14 +30,6 @@ First install all the dependencies using pnpm (:warning: not npm​) by running 
 
 Everything including building and serving locally is pre-configured in the `package.json` file. You can run the command `$pnpm start` to start a live server.
 
-## Testing for performance
-
-Please note to not judge the performance of the app in the live development mode. To compare the performance generate a "production build" (`pnpm build`)and serve locally using any server or push to a personal Netlify app using `$ npx netlify-cli deploy` and choose `./build` as the deployment directory. Then test the site for performance and network issues.
-
-## Deployment Process
-
-Each commit to master branch is built and deployed by Netlify to https://kwoc-react-beta.netlify.com/. You only need to test locally using `$ pnpm start`. You do not need to build it and push the build files as they are included in the `.gitignore`.
-
 ## Workspace Setup
 
 This setup is recommended but not enforced. Please note that we expect clean well formated code and these tools make it easier for us to have a consistent code style throughout the codebase.
@@ -52,18 +41,6 @@ We use [PNPM](https://pnpm.io) as the package manager. Please do not use `npm` w
 To add new dependency use `pnpm add`, so if you need to run `npm install <package>` run `pnpm add <package>`.
 
 <!-- TODO: remove bulma from documentation once the work is done -->
-
-### Bulma
-
-We import only the styles we need and we import the style to [index.scss](src/styles/index.scss) file. For example,
-
-```js
-// import using ~
-// If I want to import button styles I write
-@import '~bulma/sass/elements/button.sass';
-```
-
-To know which files are where, browse [Bulma](https://github.com/jgthms/bulma/tree/master/sass)'s source.
 
 ### VSCode
 

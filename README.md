@@ -72,25 +72,23 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
    ├── hooks
    ├── styles
    ├── utils
-   ├── views
-   ├── constants.js
-   └── App.js
+   ├── constants.ts
+   └── App.tsx
 ```
 - `public`: Contains public files such as `index.html`.
 - `src`: Contains source files (JS, SCSS, assets, etc.)
   - `assets`: Contains assets used in the source, such as images and icons.
   - `components`: Contains reusable react components.
   - `data`: Contains raw data.
-  - `styles`: Contains all stylesheets (CSS, SCSS).
+  - `styles`: Contains all stylesheets (SCSS).
   - `utils`: Contains commonly used util functions.
-  - `views`: Contains views for each of the pages.
-  - `constants.js`: Contains globally used constants.
-  - `App.js`: Contains the top-level `App` component.
+  - `pages`: Contains views for each of the pages.
+  - `constants.ts`: Contains globally used constants.
+  - `App.tsx`: Contains the top-level `App` component.
 
 ### Libraries/Frameworks Used
 - [React](https://reactjs.dev): For redefining the truth.
 - [SASS](https://sass-lang.com/): For redefining CSS styles.
-- [Feather Icons](https://feathericons.com/) and [Fontawesome Icons](https://fontawesome.com/).
 - And [many more](./package.json).
 <p align="right">(<a href="#top">back to top</a>)</p>
 
