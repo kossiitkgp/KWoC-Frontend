@@ -28,7 +28,7 @@
 
   <p align="center">
   <!-- UPDATE -->
-    <i>The truth redefined.</i>
+    <i>The truth redefined, once again.</i>
     <br />
     <a href="#table-of-contents"><strong>Get Started »</strong></a>
     <br />
@@ -52,11 +52,11 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 
 ### Setting Up Locally
 - Install [NodeJS](https://nodejs.org/en).
-- Install or enable [Yarn](https://yarnpkg.com/getting-started/install).
+- Install or enable [PNPM](https://pnpm.io/installation).
 - Clone this repository.
-- Run `yarn install` in the cloned repository to download all dependencies.
-- Run `yarn start` to start a local development server.
-- Optionally set up [KWoC Backend](https://github.com/kossiitkgp/kwoc-backend) locally and set the `BACKEND_URL` in the [constants.js](./src/constants.js) file to the local URL for the backend.
+- Run `pnpm install` in the cloned repository to download all dependencies.
+- Run `pnpm start` to start a local development server.
+- Optionally set up [KWoC Backend](https://github.com/kossiitkgp/kwoc-backend) locally.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
