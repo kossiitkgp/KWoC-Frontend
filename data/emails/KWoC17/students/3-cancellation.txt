@@ -1,5 +1,0 @@
-This email is to inform you that the GitHub username you provided while registering for KWoC is invalid and because of that your registration is canceled. To further continue with the program, you need to first sign up on GitHub from https://github.com/join/.
-During GitHub sign up, the first text field in step one is the username you have to provide for the KWoC registration. You can keep the second and third step as they are.
-
-You have to re-register for KWoC form https://kwoc.kossiitkgp.org/student_form.
-This link will be valid until 8th December 12:00 PM
