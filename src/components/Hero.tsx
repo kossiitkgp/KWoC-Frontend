@@ -1,4 +1,4 @@
-import "../main.css";
+import { useState, useEffect } from 'react';
 
 function ManualButton(){
   return (
@@ -10,10 +10,36 @@ function ManualButton(){
 }
 
 
-function Hero() {
+function Hero () {  
+  const [text, setText] = useState("1000101");
+
+  useEffect(() => {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ-abcdefghijklmnopqrstuvwxyz";
+    const finalText = "KWoC-23";
+    let hypr = () => {
+      let iteration = 0;
+
+      setInterval(() => {
+        setText(prevText => {
+          return prevText.split("").map((_ , index) => {
+            if (index < iteration ) {
+              return finalText[index];
+            } else {
+              return letters[Math.floor(Math.random() * (letters.length - 1))];
+            }
+            }).join("");
+          })
+          iteration += 1/3;
+        }, 35);
+      }
+      hypr();      
+    },[]);  
+
   return (
-    <div> 
-      <h1 className="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl mt-60 lg:text-9xl dark:text-black">KWoC 23</h1>
+    <div>
+      <h1 data-value="KWoC 23" className="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl mt-60 lg:text-9xl dark:text-black">
+        {text}
+      </h1>
       <ManualButton />
     </div>
   );
