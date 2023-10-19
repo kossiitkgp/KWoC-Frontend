@@ -1,11 +1,17 @@
 import Hero from "../components/Hero";
+import About from "../components/About";
 import Particle from "../components/Particle";
 
 function Home() {
   return (
     <>
-      <Hero />
-      <Particle />
+      <section className="w-full h-screen">
+        <Hero />
+        <Particle />
+      </section>
+      <section className="w-full h-screen">
+        <About />
+      </section>
     </>
   );
 }
