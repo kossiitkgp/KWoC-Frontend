@@ -36,11 +36,14 @@ function Hero () {
     },[]);  
 
   return (
-    <div>
-      <h1 data-value="KWoC 23" className="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl mt-60 lg:text-9xl dark:text-white">
-        {text}
-      </h1>
-      <ManualButton />
+    <div className='flex h-screen'>
+      <div className='m-auto'>
+        <h1 data-value="KWoC 23" className="justify-center text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-9xl dark:text-white">
+          {text}
+        </h1>
+        <ManualButton /> 
+      </div>
+      
     </div>
   );
 }

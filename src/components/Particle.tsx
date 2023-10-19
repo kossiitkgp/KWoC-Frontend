@@ -19,7 +19,7 @@ export default function Particle(){
         await console.log(container);
     }, []);
     return (
-        <Particles
+        <Particles className="absolute top-0 w-full h-screen -z-50"
             id="tsparticles"
             init={particlesInit}
             loaded={particlesLoaded}
@@ -28,7 +28,7 @@ export default function Particle(){
                   color: "rgb(10,10,25)", 
                 }, 
                 fullScreen: {
-                    "enable": true,
+                    "enable": false,
                     "zIndex": -2
                 },
                 interactivity: {
