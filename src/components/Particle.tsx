@@ -28,7 +28,7 @@ export default function Particle(){
                   color: "rgb(10,10,25)", 
                 }, 
                 fullScreen: {
-                    "enable": false,
+                    "enable": true,
                     "zIndex": -2
                 },
                 interactivity: {
@@ -172,7 +172,7 @@ export default function Particle(){
                       area: 1080, 
                     }, 
                     limit: 0, 
-                    value: 800, 
+                    value: 500, 
                   }, 
                   opacity: { 
                     animation: { 
