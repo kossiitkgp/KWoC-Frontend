@@ -23,6 +23,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.16.0
     version: 6.16.0(react-dom@18.2.0)(react@18.2.0)
+  tsparticles-engine:
+    specifier: ^2.12.0
+    version: 2.12.0
   tsparticles-slim:
     specifier: ^2.12.0
     version: 2.12.0
