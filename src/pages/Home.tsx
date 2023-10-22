@@ -1,7 +1,7 @@
 import Hero from "../components/Hero";
 import About from "../components/About";
 import WhyKwoc from "../components/WhyKwoc";
-// import Particle from "../components/Particle";
+import FooterSection from "../components/FooterSection";
 
 
 function Home() {
@@ -10,9 +10,10 @@ function Home() {
       <section>
         <Hero />
       </section>
-      <section className="sticky w-full h-screen">
+      <section>
         <About />
         <WhyKwoc />
+        <FooterSection />
       </section>
     </>
   );

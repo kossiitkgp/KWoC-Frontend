@@ -32,6 +32,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       wind={[-0.5, 1.0]}
       rotationSpeed={[-1.0, 2.0]}
     />,
-    document.querySelector('#app'),
   </React.StrictMode>,
 )

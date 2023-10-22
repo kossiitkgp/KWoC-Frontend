@@ -38,7 +38,7 @@ function Hero () {
   return (
     <div className='flex h-screen'>
       <div className='m-auto'>
-        <h1 data-value="KWoC 23" className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-gray-900 md:text-8xl lg:text-[156px] dark:text-white">
+        <h1 data-value="KWoC 23" className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-[80px] lg:text-[156px] dark:text-white">
           {text}
         </h1>
         <ManualButton /> 
