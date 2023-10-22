@@ -8,7 +8,7 @@ import Navbar from './components/Navbar'
 function App() {
   return (
     <div className="App ">
-      <div className="bg-zinc-950 w-full h-screen"><Navbar /></div>
+      <div className="bg-indigo-950 w-full h-screen"><Navbar /></div>
       
       <BrowserRouter>
         <Routes>
