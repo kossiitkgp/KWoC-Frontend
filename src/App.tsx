@@ -4,12 +4,15 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Testimonials from "./pages/Testimonials";
 import OAuth from "./pages/OAuth";
+import Navbar from "./components/Navbar";
 import { AuthProvider } from "./util/auth";
 import { ROUTER_PATHS } from "./util/constants";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App ">
+      <div className="bg-zinc-950 w-full h-screen"><Navbar /></div>
+
       <BrowserRouter>
         <AuthProvider>
           <Routes>
