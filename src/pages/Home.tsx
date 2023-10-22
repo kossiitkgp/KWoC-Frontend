@@ -7,6 +7,7 @@ import snowflake_particle1 from "../assets/snowflake1.svg";
 import snowflake_particle2 from "../assets/snowflake2.svg";
 import snowflake_particle3 from "../assets/snowflake3.svg";
 import JoinOurCommunity from "../components/JoinOurCommunity";
+import FooterSection from "../components/FooterSection";
 
 const snowflake_images = [
   snowflake_particle1,
@@ -49,6 +50,7 @@ function Home() {
         <About />
         <WhyKWoC />
         <JoinOurCommunity />
+        <FooterSection />
       </section>
     </>
   );
