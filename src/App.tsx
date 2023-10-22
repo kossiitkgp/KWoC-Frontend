@@ -3,10 +3,13 @@ import FAQ from './pages/FAQ';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Testimonials from './pages/Testimonials';
+import Navbar from './components/Navbar'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App ">
+      <div className="bg-zinc-950 w-full h-screen"><Navbar /></div>
+      
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
