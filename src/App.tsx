@@ -4,11 +4,13 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Testimonials from './pages/Testimonials';
 import Navbar from './components/Navbar'
+import Image from './assets/image.png'
 
 function App() {
   return (
-    <div className="App ">
-      <div className="bg-indigo-950 w-full h-screen"><Navbar /></div>
+    <div className="App">
+      <img className='w-full h-screen opacity-80' src={Image}></img>
+      <div className='w-full h-screen'><Navbar /></div>
       
       <BrowserRouter>
         <Routes>

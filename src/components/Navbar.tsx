@@ -3,11 +3,9 @@ import kwoc_logo from '../assets/kwoc_logo.png'
 const Nav = () => {
     let Links =[
         {name:"HOME",link:"/"},
-        {name:"STUDENT",link:"/"},
-        {name:"MENTOR",link:"/"},
-        {name:"ADMIN",link:"/"},
-        {name:"ABOUT",link:"/"},
-        {name:"CONTACT",link:"/"},
+        {name:"PROJECTS",link:"/"},
+        {name:"TESTIMONIALS",link:"/"},
+        {name:"FAQ",link:"/"},
     ];
     return (
         <>
@@ -17,13 +15,13 @@ const Nav = () => {
                 <span className='mr-1'>
                     <img className='h-10 w-10' src={kwoc_logo} alt='kwoc-logo'></img>
                 </span>
-                KHARAGPUR WINTER OF CODE
+                <span className='text-blue-500'>K</span>HARAGPUR <span className='text-blue-500 pl-2'> W</span>INTER <span className='text-blue-500 pl-2'>O</span>F <span className='text-blue-500 pl-2'>C</span>ODE
             </div>
             <ul className='flex flex-row items-center'>
                 {
                     Links.map((Link)=>(
                         <li key={Link.name} className='ml-8'>
-                            <a href={Link.link} className='font-Poppins text-white hover:text-gray-400 duration-500'>{Link.name}</a>
+                            <a href={Link.link} className='font-Poppins text-white opacity-80 hover:drop-shadow-glow duration-500'>{Link.name}</a>
                         </li>
                     ))
                 }
