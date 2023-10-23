@@ -1,10 +1,10 @@
 export default function FooterSection() {
   return (
     <div className="backdrop-blur-sm bg-black/40 py-16 mx-10 rounded-md">
-      <nav className="flex flex-row flex w-full justify-center justify-items-center py-16 ">
-        <div className="w-1/5 text-center text-zinc-300 mb-4 text-1xl font-extrabold">
+      <nav className="flex w-full justify-center justify-items-center py-16">
+        <div className="w-1/5 text-center text-zinc-300 mb-4 text-[12px] sm:text-base font-extrabold">
           {/* TODO: add all the links here, more if needed */}
-          <h3 className="text-2xl mb-3">Social Groups</h3>
+          <h3 className="text-[12px] sm:text-2xl mb-3">Social Groups</h3>
           <ul>
             <li>
               <a
@@ -27,8 +27,8 @@ export default function FooterSection() {
           </ul>
         </div>
 
-        <div className="w-1/5 text-center text-zinc-300 mb-4 text-1xl font-extrabold">
-          <h3 className="text-2xl mb-3">Quick Links</h3>
+        <div className="w-1/5 text-center text-zinc-300 mb-4 text-[12px] sm:text-base font-extrabold">
+          <h3 className="text-[12px] sm:text-2xl mb-3">Quick Links</h3>
           <ul>
             <li>
               <a href="/#tline">Timeline</a>
@@ -42,8 +42,8 @@ export default function FooterSection() {
           </ul>
         </div>
 
-        <div className="w-1/5 text-center text-zinc-300 mb-4 text-1xl font-extrabold">
-          <h3 className="text-2xl mb-3">Other</h3>
+        <div className="w-1/5 text-center text-zinc-300 mb-4 text-[12px] sm:text-base font-extrabold">
+          <h3 className="text-[12px] sm:text-2xl mb-3">Other</h3>
           <ul>
             <li>
               <a
@@ -58,9 +58,9 @@ export default function FooterSection() {
         </div>
       </nav>
 
-      <div className="text-center text-zinc-300 mb-4 text-4xl font-extrabold leading-none tracking-tight mt-12">
-        <h1>Kharagpur Winter of Code</h1>
-        <h2>
+      <div>
+        <h1 className="text-center text-zinc-300 mb-4 text-2xl sm:text-4xl font-extrabold leading-none tracking-tight mt-12">Kharagpur Winter of Code</h1>
+        <h2 className="text-center text-zinc-300 mb-4 text-xl font-extrabold leading-none tracking-tight mt-4">
           <a
             target="_blank"
             rel="noreferrer noopener"
