@@ -77,7 +77,7 @@ function Hero() {
   return (
     <div className='flex h-screen'>
       <div className='fixed top-16 right-32 z-[-1]'>
-          <img src={Santa} alt="Santa" className="animate-bounce blur-none lg:blur-[2px]" />
+          <img src={Santa} alt="Santa" className="animate-bounce" />
       </div>
       <div className='m-auto'>
         <h1 data-value="KWoC 23" className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-[80px] lg:text-[156px] dark:text-white"
@@ -93,11 +93,11 @@ function Hero() {
           Kharagpur Winter of Code - 2023
         </h3>
         <ManualButton />
-        <a href="#" className='m-auto flex justify-center mt-10'>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="LightBlue" className="w-12 h-12 animate-bounce">
+        <div className='m-auto flex justify-center mt-10'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={.5} stroke="LightBlue" className="w-12 h-12 animate-bounce">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
           </svg>
-        </a>
+        </div>
       </div>
     </div>
   );
