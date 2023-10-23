@@ -77,7 +77,7 @@ function Hero() {
   return (
     <div className='flex h-screen'>
       <div className='fixed top-16 right-32 z-[-1]'>
-          <img src={Santa} alt="Santa" className="animate-bounce" />
+          <img src={Santa} alt="Santa" />
       </div>
       <div className='m-auto'>
         <h1 data-value="KWoC 23" className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-[80px] lg:text-[156px] dark:text-white"
