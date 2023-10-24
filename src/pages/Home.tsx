@@ -10,11 +10,11 @@ function Home() {
       <section>
         <Hero />
       </section>
-      <section>
+      <section className="backdrop-blur-sm bg-black/80 py-64 clip-path-polygonDesign">
         <About />
         <WhyKwoc />
-        <FooterSection />
       </section>
+      <FooterSection />
     </>
   );
 }

@@ -19,6 +19,7 @@
     "react-particles": "^2.12.2",
     "react-router-dom": "^6.16.0",
     "react-snowfall": "^1.2.1",
+    "tailwind-clip-path": "^1.0.0",
     "tsparticles-engine": "^2.12.0",
     "tsparticles-slim": "^2.12.0"
   },

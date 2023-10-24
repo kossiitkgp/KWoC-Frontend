@@ -1,6 +1,6 @@
 export default function FooterSection() {
   return (
-    <div className="backdrop-blur-sm bg-black/40 py-16 mx-10 rounded-md">
+    <div className="py-16 mx-3 sm:mx-10 rounded-md">
       <nav className="flex w-full justify-center justify-items-center py-16">
         <div className="w-1/5 text-center text-zinc-300 mb-4 text-[12px] sm:text-base font-extrabold">
           {/* TODO: add all the links here, more if needed */}

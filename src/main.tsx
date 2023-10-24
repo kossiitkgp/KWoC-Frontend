@@ -23,8 +23,6 @@ const images = [snowflake, snowflake2, snowflake3, snowflake4]
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-    <div>
-    </div>
     <Snowfall
       style={{
         position: 'fixed',
