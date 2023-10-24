@@ -29,6 +29,20 @@ function Home() {
 
   return (
     <>
+      <Snowfall
+      style={{
+        position:'absolute',
+        width:'100%',
+        height:'100vh',
+        zIndex:-1,
+      }}
+        snowflakeCount={100}
+        images={images}
+        radius={[15.0, 40.0]}
+        speed={[0.5, 4.0]}
+        wind={[-0.5, 1.0]}
+        rotationSpeed={[-1.0, 1.0]}
+      />
       <section>
         <Snowfall
           style={{
