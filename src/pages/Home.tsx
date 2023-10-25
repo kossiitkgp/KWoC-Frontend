@@ -1,3 +1,4 @@
+import { useRef, useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import About from "../components/About";
 import WhyKwoc from "../components/WhyKwoc";
@@ -20,24 +21,23 @@ snowflake4.src = snowflake_particle4
 
 const images = [snowflake, snowflake2, snowflake3, snowflake4]
 
-
-if (window.onload) {
-  const region = window.document.getElementsByClassName("Snowfall-region")[0];
-  console.log(region)
-}
-
-
 function Home() {
+  const [number_of_particles, set_number_of_particles] = useState(100);
+  const windowWidth = useRef(window.innerWidth);
+
+  useEffect(() => {
+    set_number_of_particles(() => Math.floor(windowWidth.current / 18.8));
+  });
   return (
     <>
       <Snowfall
-      style={{
-        position:'absolute',
-        width:'100%',
-        height:'100vh',
-        zIndex:-1,
-      }}
-        snowflakeCount={100}
+        style={{
+          position: 'absolute',
+          width: '100%',
+          height: '100vh',
+          zIndex: -1,
+        }}
+        snowflakeCount={number_of_particles}
         images={images}
         radius={[15.0, 40.0]}
         speed={[0.5, 4.0]}
