@@ -1,10 +1,10 @@
 export default function FooterSection() {
   return (
     <div className="py-16 mx-3 sm:mx-10 rounded-md">
-      <nav className="flex w-full justify-center justify-items-center py-16">
-        <div className="w-1/5 text-center text-zinc-300 mb-4 text-[12px] sm:text-base font-extrabold">
+      <nav className="flex w-full justify-center justify-items-center py-16 md:flex-row flex flex-col justify-center items-center">
+        <div className="w-1/5 text-center text-zinc-300 mb-4 text-base font-extrabold">
           {/* TODO: add all the links here, more if needed */}
-          <h3 className="text-[12px] sm:text-2xl mb-3">Social Groups</h3>
+          <h3 className="text-2xl mb-3">Social Groups</h3>
           <ul>
             <li>
               <a
@@ -27,8 +27,8 @@ export default function FooterSection() {
           </ul>
         </div>
 
-        <div className="w-1/5 text-center text-zinc-300 mb-4 text-[12px] sm:text-base font-extrabold">
-          <h3 className="text-[12px] sm:text-2xl mb-3">Quick Links</h3>
+        <div className="w-1/5 text-center text-zinc-300 mb-4 text-base font-extrabold">
+          <h3 className="text-2xl mb-3">Quick Links</h3>
           <ul>
             <li>
               <a href="/#tline">Timeline</a>
@@ -42,8 +42,8 @@ export default function FooterSection() {
           </ul>
         </div>
 
-        <div className="w-1/5 text-center text-zinc-300 mb-4 text-[12px] sm:text-base font-extrabold">
-          <h3 className="text-[12px] sm:text-2xl mb-3">Other</h3>
+        <div className="w-1/5 text-center text-zinc-300 mb-4 text-base font-extrabold">
+          <h3 className="text-2xl mb-3">Other</h3>
           <ul>
             <li>
               <a

@@ -78,10 +78,10 @@ function Hero() {
   return (
     <div className='flex h-screen'>
       <div className='z-[-2]'>
-          <img src={Santa} alt="Santa" className='fixed top-8 right-32' />
+          <img src={Santa} alt="Santa" className='invisible fixed lg:visible sm:top-[-50px] sm:right-[50px]' />
       </div>
       <div className='z-[-3]'>
-          <img src={Moon} alt="Moon" className='fixed top-[-550px] right-[-450px] brightness-[50%] overflow-x-hidden' />
+          <img src={Moon} alt="Moon" className='invisible fixed lg:visible top-[-600px] right-[-450px] brightness-[50%] overflow-x-hidden' />
       </div>
       <div className='m-auto'>
         <h1 data-value="KWoC 23" className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-[80px] lg:text-[156px] dark:text-white"
