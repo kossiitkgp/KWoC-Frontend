@@ -49,8 +49,8 @@ export default function Card(props: any) {
             }}
         >
             <h1 className="mb-4 font-extrabold leading-none tracking-tight text-5xl mt-16 sm:px-16 xl:px-10">{props.header}</h1>
-            <p className="text-base font-extrabold sm:px-16 xl:px-10 mt-10">{props.content}</p>
-            <p className="text-base font-extrabold sm:px-16 xl:px-10 mt-10">{props.secondary}</p>
+            <p className="text-base font-extrabold line-clamp-6 sm:px-16 xl:px-10 mt-10">{props.content}</p>
+            <p className="text-base font-extrabold line-clamp-6 sm:px-16 xl:px-10 mt-10">{props.secondary}</p>
         </div>
     );
 }
