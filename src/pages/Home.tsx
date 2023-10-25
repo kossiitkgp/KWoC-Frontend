@@ -31,14 +31,14 @@ function Home() {
   return (
     <>
       <Snowfall
-      style={{
-        position:'absolute',
-        width:'100%',
-        height:'100vh',
-        zIndex:-1,
-      }}
-        snowflakeCount={100}
-        images={images}
+        style={{
+          position: 'fixed',
+          width: '100%',
+          height: '100vh',
+          zIndex: -1,
+        }}
+        snowflakeCount={number_of_particles}
+        images={snowflake_images}
         radius={[15.0, 40.0]}
         speed={[0.5, 4.0]}
         wind={[-0.5, 1.0]}
