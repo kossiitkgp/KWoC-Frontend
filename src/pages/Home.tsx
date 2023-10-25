@@ -22,11 +22,11 @@ snowflake4.src = snowflake_particle4
 const images = [snowflake, snowflake2, snowflake3, snowflake4]
 
 function Home() {
-  const [number_of_particles, set_number_of_particles] = useState(100);
+  const [number_of_particles, set_number_of_particles] = useState(50);
   const windowWidth = useRef(window.innerWidth);
 
   useEffect(() => {
-    set_number_of_particles(() => Math.floor(windowWidth.current / 18.8));
+    set_number_of_particles(() => Math.floor(windowWidth.current / 18.8 * .5));
   });
   return (
     <>
@@ -34,7 +34,7 @@ function Home() {
         style={{
           position: 'absolute',
           width: '100%',
-          height: '100vh',
+          height: '120%',
           zIndex: -1,
         }}
         snowflakeCount={number_of_particles}

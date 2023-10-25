@@ -31,126 +31,6 @@ export default function Particle(){
                     "enable": true,
                     "zIndex": -10
                 },
-                interactivity: {
-                    "detectsOn": "window",
-                    "events": {
-                      "onClick": {
-                        "enable": false,
-                        "mode": []
-                      },
-                      "onDiv": {
-                        "selectors": [],
-                        "enable": false,
-                        "mode": [],
-                        "type": "circle"
-                      },
-                      "onHover": {
-                        "enable": false,
-                        "mode": [],
-                        "parallax": {
-                          "enable": true,
-                          "force": 15,
-                          "smooth": 5
-                        }
-                      },
-                      "resize": {
-                        "delay": 0.5,
-                        "enable": true
-                      }
-                    },
-                    "modes": {
-                      "trail": {
-                        "delay": 1,
-                        "pauseOnStop": false,
-                        "quantity": 1
-                      },
-                      "attract": {
-                        "distance": 200,
-                        "duration": 0.4,
-                        "easing": "ease-out-quad",
-                        "factor": 1,
-                        "maxSpeed": 50,
-                        "speed": 1
-                      },
-                      "bounce": {
-                        "distance": 200
-                      },
-                      "bubble": {
-                        "distance": 200,
-                        "duration": 0.4,
-                        "mix": false,
-                        "divs": {
-                          "distance": 200,
-                          "duration": 0.4,
-                          "mix": false,
-                          "selectors": []
-                        }
-                      },
-                      "connect": {
-                        "distance": 80,
-                        "links": {
-                          "opacity": 0.5
-                        },
-                        "radius": 60
-                      },
-                      "grab": {
-                        "distance": 100,
-                        "links": {
-                          "blink": false,
-                          "consent": false,
-                          "opacity": 1
-                        }
-                      },
-                      "push": {
-                        "default": true,
-                        "groups": [],
-                        "quantity": 3
-                      },
-                      "remove": {
-                        "quantity": 2
-                      },
-                      "repulse": {
-                        "distance": 200,
-                        "duration": 0.4,
-                        "factor": 100,
-                        "speed": 1,
-                        "maxSpeed": 50,
-                        "easing": "ease-out-quad",
-                        "divs": {
-                          "distance": 200,
-                          "duration": 0.4,
-                          "factor": 100,
-                          "speed": 1,
-                          "maxSpeed": 50,
-                          "easing": "ease-out-quad",
-                          "selectors": []
-                        }
-                      },
-                      "slow": {
-                        "factor": 3,
-                        "radius": 200
-                      },
-                      "light": {
-                        "area": {
-                          "gradient": {
-                            "start": {
-                              "value": "#ffffff"
-                            },
-                            "stop": {
-                              "value": "#000000"
-                            }
-                          },
-                          "radius": 1000
-                        },
-                        "shadow": {
-                          "color": {
-                            "value": "#000000"
-                          },
-                          "length": 2000
-                        }
-                      }
-                    }
-                  },
                 fpsLimit: 60, 
                 particles: { 
                   shape: { 
@@ -175,12 +55,6 @@ export default function Particle(){
                     value: 200, 
                   }, 
                   opacity: { 
-                    animation: { 
-                      enable: true, 
-                      minimumValue: 0.5, 
-                      speed: 1.6, 
-                      sync: false, 
-                    }, 
                     random: { 
                       enable: true, 
                       minimumValue: 0.1, 
