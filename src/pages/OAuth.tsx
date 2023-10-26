@@ -8,10 +8,10 @@ function OAuth() {
 	const [error, setError] = useState<string|null>(null);
 	const navigate = useNavigate();
 
-	const loginHandler = async (code: string) => {
+	const loginHandler = async (oauthCode: string) => {
 		// Assuming type is already set when login is started
 		const type = authContext.userData.type;
-		const auth = await makeOAuthRequest(code, type);
+		const auth = await makeOAuthRequest(oauthCode, type);
 
 		if ('code' in auth) {
 			setError(auth.message);
