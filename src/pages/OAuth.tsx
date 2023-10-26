@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { IErrorResponse, makeOAuthRequest } from '../util/backend';
-import { useAuthContext } from '../components/useAuthContext';
+import { useAuthContext } from '../util/auth';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 
@@ -9,9 +9,9 @@ function OAuth() {
 	const [error, setError] = useState<string|null>(null);
 	const navigate = useNavigate();
 
-	const loginHandler = async (code: string) => {
+	const loginHandler = async (code: string, type: 'student' | 'mentor') => {
 		try {
-			const auth = await makeOAuthRequest(code, 'student');
+			const auth = await makeOAuthRequest(code, type);
 
 			authContext.onLogin({
 				jwt: auth.jwt,
@@ -47,7 +47,7 @@ function OAuth() {
 			navigate('/');
 		}
 		else {
-			loginHandler(urlParams.get('code') as string);
+			loginHandler(urlParams.get('code') as string, urlParams.get('state') as 'student' | 'mentor');
 		}
 	})
 

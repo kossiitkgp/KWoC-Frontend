@@ -7,7 +7,6 @@ import React, {
 	useState,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { makeOAuthRequest } from '../util/backend';
 
 interface IUserAuthData {
 	username: string;
