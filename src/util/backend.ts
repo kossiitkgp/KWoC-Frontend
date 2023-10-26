@@ -53,5 +53,5 @@ export async function makeOAuthRequest(
 		{code, type},
 	)
 
-	return await response.json() as IOAuthResponse;
+	return await response.json() as IOAuthResponse | IErrorResponse;
 }

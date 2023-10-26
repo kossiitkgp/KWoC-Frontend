@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IErrorResponse, makeOAuthRequest } from '../util/backend';
+import { makeOAuthRequest } from '../util/backend';
 import { useAuthContext } from '../util/auth';
 import { useNavigate } from 'react-router-dom';
 
