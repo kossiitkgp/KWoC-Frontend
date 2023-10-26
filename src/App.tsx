@@ -3,17 +3,22 @@ import FAQ from './pages/FAQ';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Testimonials from './pages/Testimonials';
+import OAuth from './pages/OAuth';
+import { AuthProvider } from './components/useAuthContext';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="projects" element={<Projects />} />
-          <Route path="faq" element={<FAQ />} />
-          <Route path="testimonials" element={<Testimonials />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="faq" element={<FAQ />} />
+            <Route path="testimonials" element={<Testimonials />} />
+            <Route path="oauth" element={<OAuth />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );
