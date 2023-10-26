@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { IErrorResponse, makeOAuthRequest } from '../util/backend';
 import { useAuthContext } from '../util/auth';
 import { useNavigate } from 'react-router-dom';
-import { AxiosError } from 'axios';
 
 function OAuth() {
 	const authContext = useAuthContext();
@@ -10,11 +9,14 @@ function OAuth() {
 	const navigate = useNavigate();
 
 	const loginHandler = async (code: string) => {
-		try {
-			// Assuming type is already set when login is started
-			const type = authContext.userData.type;
-			const auth = await makeOAuthRequest(code, type);
+		// Assuming type is already set when login is started
+		const type = authContext.userData.type;
+		const auth = await makeOAuthRequest(code, type);
 
+		if ('code' in auth) {
+			setError(auth.message);
+		}
+		else {
 			authContext.onLogin({
 				jwt: auth.jwt,
 				userData: {
@@ -26,18 +28,6 @@ function OAuth() {
 			})
 
 			navigate(`/${auth.type}/${auth.is_new_user ? 'form' : 'dashboard'}`);
-		}
-		catch (e) {
-			const error = e as AxiosError<IErrorResponse>;
-
-			if ('response' in error) {
-				if ('data' in error.response!) {
-					setError(error.response?.data.message);
-				}
-			}
-			else {
-				setError('An error occured.');
-			}
 		}
 	}
 

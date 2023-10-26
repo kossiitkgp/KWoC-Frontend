@@ -45,7 +45,7 @@ export interface IOAuthResponse {
 export async function makeOAuthRequest(
 	code: string,
 	type: 'mentor' | 'student'
-): Promise<IOAuthResponse> {
+): Promise<IErrorResponse | IOAuthResponse> {
 	const response = await makeBackendRequest(
 		'oauth',
 		'post',
@@ -53,5 +53,5 @@ export async function makeOAuthRequest(
 		{code, type},
 	)
 
-	return JSON.parse(await response.json()) as IOAuthResponse;
+	return await response.json() as IOAuthResponse;
 }
