@@ -9,8 +9,10 @@ function OAuth() {
 	const [error, setError] = useState<string|null>(null);
 	const navigate = useNavigate();
 
-	const loginHandler = async (code: string, type: 'student' | 'mentor') => {
+	const loginHandler = async (code: string) => {
 		try {
+			// Assuming type is already set when login is started
+			const type = authContext.userData.type;
 			const auth = await makeOAuthRequest(code, type);
 
 			authContext.onLogin({
@@ -47,7 +49,7 @@ function OAuth() {
 			navigate('/');
 		}
 		else {
-			loginHandler(urlParams.get('code') as string, urlParams.get('state') as 'student' | 'mentor');
+			loginHandler(urlParams.get('code') as string);
 		}
 	})
 

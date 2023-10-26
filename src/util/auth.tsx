@@ -34,6 +34,7 @@ interface IAuthContext {
 	isAuthenticated: boolean;
 	jwt: string;
 	userData: IUserAuthData;
+	setUserType: (type: 'student' | 'mentor') => void;
 	onLogin: (auth: ILocalStorageAuthObj) => void;
 	onLogout: () => void;
 };
@@ -43,6 +44,7 @@ const AuthContext = createContext<IAuthContext>({
 	// Random defaults
 	userData: DEFAULT_AUTH_OBJ.userData,
 	jwt: DEFAULT_AUTH_OBJ.jwt,
+	setUserType: () => {},
 	onLogin: () => {},
 	onLogout: () => {}
 })
@@ -56,6 +58,18 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
 		localStorage.getItem('jwt') !== null
 	)
 	const [userAuth, setUserAuth] = useState<ILocalStorageAuthObj>(DEFAULT_AUTH_OBJ);
+
+	const setUserType = (type: 'student' | 'mentor') => {
+		setUserAuth({
+			...userAuth,
+			userData: {
+				...userAuth.userData,
+				type
+			}
+		})
+
+		localStorage.setItem('auth', JSON.stringify(userAuth));
+	}
 
 	const onLogin = (auth: ILocalStorageAuthObj) => {
 		// Set the JWT in the local storage
@@ -88,7 +102,7 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
 	)
 
 	const value = useMemo(
-		() => ({ isAuthenticated, userData: userAuth.userData, jwt: userAuth.jwt, onLogin, onLogout }),
+		() => ({ isAuthenticated, userData: userAuth.userData, jwt: userAuth.jwt, setUserType, onLogin, onLogout }),
 		[isAuthenticated, userAuth, onLogin, onLogout]
 	);
 
