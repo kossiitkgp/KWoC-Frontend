@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, {
 	createContext,
 	useContext,
@@ -74,8 +73,6 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
 	const onLogin = (auth: ILocalStorageAuthObj) => {
 		// Set the JWT in the local storage
 		localStorage.setItem('auth', JSON.stringify(auth));
-		// Set the authorization headers
-		axios.defaults.headers['Bearer'] = auth.jwt;
 
 		setIsAuthenticated(true);
 		setUserAuth(auth);
@@ -83,7 +80,6 @@ export function AuthProvider({children}: {children: React.ReactNode}) {
 
 	const onLogout = () => {
 		localStorage.removeItem('auth');
-		delete axios.defaults.headers['Bearer'];
 
 		setIsAuthenticated(false);
 		setUserAuth(DEFAULT_AUTH_OBJ);

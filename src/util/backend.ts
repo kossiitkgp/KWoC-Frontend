@@ -1,5 +1,4 @@
 import { BACKEND_URL } from './constants';
-import axios, { AxiosResponse } from 'axios';
 
 export interface IErrorResponse {
 	code: number;
@@ -9,19 +8,28 @@ export interface IErrorResponse {
 async function makeBackendRequest(
 	endpoint: string,
 	method: 'get' | 'post',
-	body?: Object,
-): Promise<AxiosResponse> {
+	jwt: string | null,
+	body: Object | null
+): Promise<Response> {
+	const headers: {
+		'Content-Type'?: string,
+		'Bearer'?: string
+	} = new Object();
+
+	if (jwt !== null) headers['Bearer'] = jwt;
+	if (body !== null) headers['Content-Type'] = 'application/json';
+
 	switch (method) {
 		case 'get':
-			return await axios({
-				url: `${BACKEND_URL}/${endpoint}/`,
-				method: 'get'
+			return await fetch(`${BACKEND_URL}/${endpoint}/`, {
+				method: 'get',
+				headers
 			})
 		case 'post':
-			return await axios({
-				url: `${BACKEND_URL}/${endpoint}/`,
+			return await fetch(`${BACKEND_URL}/${endpoint}/`, {
 				method: 'post',
-				data: body
+				headers,
+				body: JSON.stringify(body ?? {})
 			})
 	}
 }
@@ -41,7 +49,9 @@ export async function makeOAuthRequest(
 	const response = await makeBackendRequest(
 		'oauth',
 		'post',
+		null,
 		{code, type},
 	)
-	return response.data;
+
+	return JSON.parse(await response.json()) as IOAuthResponse;
 }
