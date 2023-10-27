@@ -1,11 +1,13 @@
 import { BACKEND_URL } from './constants';
 import { IEndpointTypes, IHTTPMessage } from './types';
 
+type AllowedBackendMethods = 'get' | 'post' | 'put';
+
 async function makeBackendRequest(
-  endpoint: string,
-  method: "get" | "post",
-  jwt: string | null,
-  body: Object | null,
+	endpoint: string,
+	method: AllowedBackendMethods,
+	jwt: string | null,
+	body: Object | null
 ): Promise<Response> {
   const headers: {
     "Content-Type"?: string;
@@ -15,19 +17,20 @@ async function makeBackendRequest(
   if (jwt !== null) headers["Bearer"] = jwt;
   if (body !== null) headers["Content-Type"] = "application/json";
 
-  switch (method) {
-    case "get":
-      return await fetch(`${BACKEND_URL}/${endpoint}/`, {
-        method: "get",
-        headers,
-      });
-    case "post":
-      return await fetch(`${BACKEND_URL}/${endpoint}/`, {
-        method: "post",
-        headers,
-        body: JSON.stringify(body ?? {}),
-      });
-  }
+	switch (method) {
+		case 'get':
+			return await fetch(`${BACKEND_URL}/${endpoint}/`, {
+				method: 'get',
+				headers
+			})
+		case 'post':
+		case 'put':
+			return await fetch(`${BACKEND_URL}/${endpoint}/`, {
+				method,
+				headers,
+				body: JSON.stringify(body ?? {})
+			})
+	}
 }
 
 interface IOkResponse<T> {
@@ -43,10 +46,13 @@ interface IErrorResponse {
 }
 
 type BackendResponse<T> = IOkResponse<T> | IErrorResponse;
-export async function makeRequest
-<E extends keyof IEndpointTypes>
-(endpoint: E, method: 'get' | 'post', params: IEndpointTypes[E]['request'] | null = null, jwt: string | null = null):
-Promise<BackendResponse<IEndpointTypes[E]['response']>> {
+
+export async function makeRequest<E extends keyof IEndpointTypes>(
+	endpoint: E,
+	method: AllowedBackendMethods,
+	params: IEndpointTypes[E]['request'] | null = null,
+	jwt: string | null = null
+): Promise<BackendResponse<IEndpointTypes[E]['response']>> {
 	const response = await makeBackendRequest(
 		endpoint,
 		method,
