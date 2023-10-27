@@ -7,14 +7,14 @@ import "../styles/TimelineStyle.css";
 import Lenis from '@studio-freight/lenis';
 
 
+
 gsap.registerPlugin(ScrollTrigger, Draggable, MotionPathPlugin);
-gsap.defaults({ease: "none"});
+gsap.defaults({ease: "none", duration: 2});
 
 
 function Timeline() {
   
   useEffect(() => {
-    
     const lenis = new Lenis()
     
     lenis.on('scroll', (e: any) => {
@@ -65,26 +65,38 @@ function Timeline() {
     }
   }, []);
 
+  const timelineData = [
+    {date: "DATE1", content: "INFO1"}, 
+    {date: "DATE2", content: "INFO2"}, 
+    {date: "DATE3", content: "INFO3"}, 
+    {date: "DATE4", content: "INFO4"}, 
+    {date: "DATE5", content: "INFO5"}, 
+    {date: "DATE6", content: "INFO6"}, 
+    {date: "DATE7", content: "INFO7"}
+  ];
 
   return (
     <div className=" mb-60">
       <h1 className="text-zinc-300 text-center text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36  mb-36 lg:text-8xl">TIMELINE</h1>      
       <div className="flex justify-center mb-1/10">
-        <svg id="svg" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 600 1200">
-          <path className="line00 line" d="M -1000 0  2000 0" ></path>
-          <path className="line01 line" d="M -1000 200  2000 200" ></path>
-          <path className="line02 line" d="M -1000 400  2000 400" ></path>
-          <path className="line03 line" d="M -1000 600  2000 600" ></path>
-          <path className="line04 line" d="M -1000 800  2000 800" ></path>
-          <path className="line05 line" d="M -1000 1000 2000 1000" ></path>
-          <path className="line05 line" d="M -1000 1200 2000 1200" ></path>
-          <text className="text00" x="-200" y="-10">date0</text><text className="text00" x="700" y="-10">thing0</text>
-          <text className="text01" x="-200" y="190">date1</text><text className="text01" x="700" y="190">thing1</text>
-          <text className="text02" x="-200" y="390">date2</text><text className="text02" x="700" y="390">thing2</text>
-          <text className="text03" x="-200" y="590">date3</text><text className="text03" x="700" y="590">thing3</text>
-          <text className="text04" x="-200" y="790">date4</text><text className="text04" x="700" y="790">thing4</text>
-          <text className="text05" x="-200" y="990">date5</text><text className="text05" x="700" y="990">thing5</text>
-          <text className="text06" x="-200" y="1190">date6</text><text className="text06" x="700" y="1190">thing6</text>
+        <svg id="svg" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 600 1200" className="max-w-[min(550px,_55%)] w-full h-full overflow-visible">
+
+          {
+            Array.from(Array(7).keys()).map((i) => {
+              return (
+                <path className={`line0${i} line`} d={`M -1000 ${i*200}  2000 ${i*200}`} fill="none" stroke="white" strokeWidth={'2px'}></path>
+              )})
+          }
+
+          {
+            timelineData.map((item, i) => {
+              return (
+                <>
+                  <text className={`text0${i}`} x="-200" y={`${i*200-10}`} fill="white" visibility={'hidden'} fontSize={'1.5rem'}>{item.date}</text>
+                  <text className={`text0${i}`} x="700" y={`${i*200-10}`} fill="white" visibility={'hidden'} fontSize={'1.5rem'}>{item.content}</text>
+                </>
+              )})
+          }
 
           <path d="M -5,0
                   Q 450 230 300 450 
@@ -101,14 +113,14 @@ function Timeline() {
                 fill="none" stroke="white" stroke-width="10px" strokeLinecap="round" />   
 
 
-          <circle className="startball" r="15" cx="0" cy="0"></circle>
-          <circle className="ball ball01" r="15" cx="50" cy="100"></circle>
-          <circle className="ball ball02" r="15" cx="278" cy="201"></circle>
-          <circle className="ball ball03" r="15" cx="327" cy="401"></circle>
-          <circle className="ball ball04" r="15" cx="203" cy="601"></circle>
-          <circle className="ball ball05" r="15" cx="128" cy="801"></circle>
-          <circle className="ball ball06" r="15" cx="300" cy="1001"></circle>
-          <circle className="ball ball07" r="15" cx="147" cy="1201"></circle>
+          <circle className="startball" r="15" cx="-5" cy="0" fill="white"></circle>
+          <circle className="ball ball01" r="15" cx="50" cy="100" fill="white" visibility={'hidden'}></circle>
+          <circle className="ball ball02" r="15" cx="278" cy="201" fill="white" visibility={'hidden'}></circle>
+          <circle className="ball ball03" r="15" cx="327" cy="401" fill="white" visibility={'hidden'}></circle>
+          <circle className="ball ball04" r="15" cx="203" cy="601" fill="white" visibility={'hidden'}></circle>
+          <circle className="ball ball05" r="15" cx="128" cy="801" fill="white" visibility={'hidden'}></circle>
+          <circle className="ball ball06" r="15" cx="300" cy="1001" fill="white" visibility={'hidden'}></circle>
+          <circle className="ball ball07" r="15" cx="147" cy="1201" fill="white" visibility={'hidden'}></circle>
         </svg>
       </div>
     </div>
