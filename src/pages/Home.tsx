@@ -26,25 +26,24 @@ function Home() {
   const windowWidth = useRef(window.innerWidth);
 
   useEffect(() => {
-    set_number_of_particles(() => Math.floor(windowWidth.current / 18.8 * .5));
+    set_number_of_particles(() => Math.floor(windowWidth.current / 18.8 * .7));
   });
   return (
     <>
-      <Snowfall
-        style={{
-          position: 'fixed',
-          width: '100%',
-          height: '120%',
-          zIndex: -1,
-        }}
-        snowflakeCount={number_of_particles}
-        images={images}
-        radius={[15.0, 40.0]}
-        speed={[0.5, 4.0]}
-        wind={[-0.5, 1.0]}
-        rotationSpeed={[-1.0, 1.0]}
-      />
       <section>
+        <Snowfall
+          style={{
+            width: '100%',
+            height: '120%',
+            zIndex: -1,
+          }}
+          snowflakeCount={number_of_particles}
+          images={images}
+          radius={[15.0, 40.0]}
+          speed={[0.5, 4.0]}
+          wind={[-0.5, 1.0]}
+          rotationSpeed={[-1.0, 1.0]}
+        />
         <Hero />
       </section>
       <section className="backdrop-blur-sm bg-black/80 py-64 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
