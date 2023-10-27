@@ -1,6 +1,5 @@
 import { BACKEND_URL } from './constants';
-
-export type UserType = 'mentor' | 'student';
+import { IEndpointTypes, IHTTPMessage } from './types';
 
 async function makeBackendRequest(
   endpoint: string,
@@ -31,11 +30,6 @@ async function makeBackendRequest(
   }
 }
 
-interface IHTTPMessage {
-	code: number;
-	message: string;
-}
-
 interface IOkResponse<T> {
 	is_ok: true;
 	status_code: 200;
@@ -48,31 +42,6 @@ interface IErrorResponse {
 	response: IHTTPMessage;
 }
 
-interface IEndpointTypes {
-	'oauth': {
-		request: {
-			code: string,
-			type: UserType
-		},
-		response: {
-			email: string;
-			is_new_user: boolean;
-			jwt: string;
-			name: string;
-			type: UserType;
-			username: string;
-		}
-	},
-	'student/form': {
-		request: {
-			username: string;
-			name: string;
-			email: string;
-			college: string;
-		},
-		response: IHTTPMessage
-	}
-}
 type BackendResponse<T> = IOkResponse<T> | IErrorResponse;
 export async function makeRequest
 <E extends keyof IEndpointTypes>

@@ -6,7 +6,7 @@ import React, {
 	useState,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserType } from './backend';
+import { UserType } from './types';
 
 interface IUserAuthData {
 	username: string;
