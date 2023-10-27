@@ -76,7 +76,7 @@ interface IEndpointTypes {
 type BackendResponse<T> = IOkResponse<T> | IErrorResponse;
 export async function makeRequest
 <E extends keyof IEndpointTypes>
-(endpoint: E, method: 'get' | 'post', params: IEndpointTypes[E]['request'] | null, jwt: string | null = null):
+(endpoint: E, method: 'get' | 'post', params: IEndpointTypes[E]['request'] | null = null, jwt: string | null = null):
 Promise<BackendResponse<IEndpointTypes[E]['response']>> {
 	const response = await makeBackendRequest(
 		endpoint,
