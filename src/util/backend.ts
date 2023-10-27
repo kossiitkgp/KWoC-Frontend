@@ -86,7 +86,7 @@ Promise<BackendResponse<IEndpointTypes[E]['response']>> {
 		params,
 	)
 
-	if (response.headers.get('Content-Type') == 'application/json') {
+	try {
 		if (response.ok) {
 			return {
 				is_ok: true,
@@ -101,13 +101,13 @@ Promise<BackendResponse<IEndpointTypes[E]['response']>> {
 			response: await response.json()
 		}
 	}
-	else {
+	catch (e) {
 		return {
 			is_ok: false,
 			status_code: response.status,
 			response: {
 				code: response.status,
-				message: response.statusText
+				message: e as string
 			}
 		}
 	}
