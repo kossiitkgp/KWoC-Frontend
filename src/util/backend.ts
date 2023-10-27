@@ -50,7 +50,7 @@ interface IErrorResponse {
 }
 
 interface IEndpointTypes {
-	'/oauth/': {
+	'oauth': {
 		request: {
 			code: string,
 			type: UserType
@@ -68,7 +68,7 @@ interface IEndpointTypes {
 type BackendResponse<T> = IOkResponse<T> | IErrorResponse;
 export async function makeRequest
 <E extends keyof IEndpointTypes>
-(endpoint: E, type: 'get' | 'post', params: IEndpointTypes[E]['request'] | null, auth: boolean = false):
+(endpoint: E, method: 'get' | 'post', params: IEndpointTypes[E]['request'] | null, auth: boolean = false):
 Promise<BackendResponse<IEndpointTypes[E]['response']>> {
 	let jwt: string | null = null;
 
@@ -81,22 +81,34 @@ Promise<BackendResponse<IEndpointTypes[E]['response']>> {
 
 	const response = await makeBackendRequest(
 		endpoint,
-		type,
+		method,
 		jwt,
 		params,
 	)
 
-	if (response.ok) {
+	if (response.headers.get('Content-Type') == 'application/json') {
+		if (response.ok) {
+			return {
+				is_ok: true,
+				status_code: 200,
+				response: await response.json()
+			}
+		}
+
 		return {
-			is_ok: true,
-			status_code: 200,
+			is_ok: false,
+			status_code: response.status,
 			response: await response.json()
 		}
 	}
-
-	return {
-		is_ok: false,
-		status_code: response.status,
-		response: await response.json()
+	else {
+		return {
+			is_ok: false,
+			status_code: response.status,
+			response: {
+				code: response.status,
+				message: response.statusText
+			}
+		}
 	}
 }

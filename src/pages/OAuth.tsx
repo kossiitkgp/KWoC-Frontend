@@ -11,7 +11,7 @@ function OAuth() {
 	const loginHandler = async (oauthCode: string) => {
 		// Assuming type is already set when login is started
 		const userType = authContext.userData.type;
-		const authReq = await makeRequest('/oauth/', 'post', {code: oauthCode, type: userType});
+		const authReq = await makeRequest('oauth', 'post', {code: oauthCode, type: userType});
 
 		if (!authReq.is_ok) {
 			setError(authReq.response.message);
