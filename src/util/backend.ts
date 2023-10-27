@@ -1,4 +1,3 @@
-import { useAuthContext } from './auth';
 import { BACKEND_URL } from './constants';
 
 export type UserType = 'mentor' | 'student';
@@ -63,22 +62,22 @@ interface IEndpointTypes {
 			type: UserType;
 			username: string;
 		}
+	},
+	'student/form': {
+		request: {
+			username: string;
+			name: string;
+			email: string;
+			college: string;
+		},
+		response: IHTTPMessage
 	}
 }
 type BackendResponse<T> = IOkResponse<T> | IErrorResponse;
 export async function makeRequest
 <E extends keyof IEndpointTypes>
-(endpoint: E, method: 'get' | 'post', params: IEndpointTypes[E]['request'] | null, auth: boolean = false):
+(endpoint: E, method: 'get' | 'post', params: IEndpointTypes[E]['request'] | null, jwt: string | null = null):
 Promise<BackendResponse<IEndpointTypes[E]['response']>> {
-	let jwt: string | null = null;
-
-
-	if (auth) {
-		const authContext = useAuthContext();
-		if (authContext.isAuthenticated) jwt = authContext.jwt;
-		else throw 'User unauthenticated.';
-	}
-
 	const response = await makeBackendRequest(
 		endpoint,
 		method,
