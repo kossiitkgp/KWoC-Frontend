@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { makePostRequest } from '../util/backend';
+import { makeRequest } from '../util/backend';
 import { useAuthContext } from '../util/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,20 +11,23 @@ function OAuth() {
 	const loginHandler = async (oauthCode: string) => {
 		// Assuming type is already set when login is started
 		const userType = authContext.userData.type;
-		const auth = await makePostRequest('/oauth/', {code: oauthCode, type: userType});
+		const authReq = await makeRequest('/oauth/', 'post', {code: oauthCode, type: userType});
 
-    if ("code" in auth) {
-      setError(auth.message);
-    } else {
-      authContext.onLogin({
-        jwt: auth.jwt,
-        userData: {
-          username: auth.username,
-          name: auth.name,
-          email: auth.email,
-          type: auth.type,
-        },
-      });
+		if (!authReq.is_ok) {
+			setError(authReq.response.message);
+		}
+		else {
+			const auth = authReq.response;
+
+			authContext.onLogin({
+				jwt: auth.jwt,
+				userData: {
+					username: auth.username,
+					name: auth.name,
+					email: auth.email,
+					type: auth.type
+				}
+			})
 
       navigate(`/${auth.type}/${auth.is_new_user ? "form" : "dashboard"}`);
     }

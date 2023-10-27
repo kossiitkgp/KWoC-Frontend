@@ -1,9 +1,6 @@
 import { BACKEND_URL } from "./constants";
 
-export interface IErrorResponse {
-  code: number;
-  message: string;
-}
+export type UserType = 'mentor' | 'student';
 
 async function makeBackendRequest(
   endpoint: string,
@@ -34,8 +31,6 @@ async function makeBackendRequest(
   }
 }
 
-export type UserType = 'mentor' | 'student';
-
 interface IUnauthEndpointTypes {
 	'/oauth/': {
 		request: {
@@ -50,33 +45,59 @@ interface IUnauthEndpointTypes {
 			type: UserType;
 			username: string;
 		}
-	}
+	},
+	'/student/form/': {
+		request: {
+			username: string;
+			name: string;
+			email: string;
+			college: string;
+		},
+		response: IHTTPMessage
+	},
+
 }
 
-export async function makePostRequest
+interface IHTTPMessage {
+	code: number;
+	message: string;
+}
+
+interface IOkResponse<T> {
+	is_ok: true;
+	status_code: 200;
+	response: T;
+}
+
+interface IErrorResponse {
+	is_ok: false;
+	status_code: number;
+	response: IHTTPMessage;
+}
+
+type BackendResponse<T> = IOkResponse<T> | IErrorResponse;
+export async function makeRequest
 <E extends keyof IUnauthEndpointTypes>
-(endpoint: E, params: IUnauthEndpointTypes[E]['request']):
-Promise<IUnauthEndpointTypes[E]['response'] | IErrorResponse> {
+(endpoint: E, type: 'get' | 'post', params: IUnauthEndpointTypes[E]['request'] | null):
+Promise<BackendResponse<IUnauthEndpointTypes[E]['response']>> {
 	const response = await makeBackendRequest(
 		endpoint,
-		'post',
+		type,
 		null,
 		params,
 	)
 
-	return await response.json() as IUnauthEndpointTypes[E]['response'] | IErrorResponse;
-}
+	if (response.ok) {
+		return {
+			is_ok: true,
+			status_code: 200,
+			response: await response.json()
+		}
+	}
 
-export async function makeGetRequest
-<E extends keyof IUnauthEndpointTypes>
-(endpoint: E):
-Promise<IUnauthEndpointTypes[E]['response'] | IErrorResponse> {
-	const response = await makeBackendRequest(
-		endpoint,
-		'get',
-		null,
-		null
-	)
-
-	return await response.json() as IUnauthEndpointTypes[E]['response'] | IErrorResponse;
+	return {
+		is_ok: false,
+		status_code: response.status,
+		response: await response.json()
+	}
 }
