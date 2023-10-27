@@ -68,7 +68,7 @@ function Timeline() {
 
   return (
     <div className=" mb-60">
-      <h1 className="text-zinc-300 text-center text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36  -mb-36 lg:text-8xl">TIMELINE</h1>      
+      <h1 className="text-zinc-300 text-center text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36  mb-36 lg:text-8xl">TIMELINE</h1>      
       <div className="flex justify-center mb-1/10">
         <svg id="svg" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 600 1200">
           <path className="line00 line" d="M -1000 0  2000 0" ></path>
@@ -86,13 +86,20 @@ function Timeline() {
           <text className="text05" x="-200" y="990">date5</text><text className="text05" x="700" y="990">thing5</text>
           <text className="text06" x="-200" y="1190">date6</text><text className="text06" x="700" y="1190">thing6</text>
 
+          <path d="M -5,0
+                  Q 450 230 300 450 
+                  T 130 750
+                  Q 100 850 300 1000
+                  T 150 1200"
+                fill="none" stroke="white" strokeOpacity={0.2} stroke-width="10px" strokeLinecap="round" />   
           <path className="theLine" 
                 d="M -5,0
                   Q 450 230 300 450 
                   T 130 750
                   Q 100 850 300 1000
                   T 150 1200"
-                fill="none" stroke="white" stroke-width="10px" />   
+                fill="none" stroke="white" stroke-width="10px" strokeLinecap="round" />   
+
 
           <circle className="startball" r="15" cx="0" cy="0"></circle>
           <circle className="ball ball01" r="15" cx="50" cy="100"></circle>
