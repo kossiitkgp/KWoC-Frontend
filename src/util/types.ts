@@ -1,7 +1,7 @@
 export type UserType = 'mentor' | 'student';
 
 export interface IHTTPMessage {
-	code: number;
+	status_code: number;
 	message: string;
 }
 

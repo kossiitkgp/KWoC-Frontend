@@ -80,7 +80,7 @@ export async function makeRequest<E extends keyof IEndpointTypes>(
 			is_ok: false,
 			status_code: response.status,
 			response: {
-				code: response.status,
+				status_code: response.status,
 				message: e as string
 			}
 		}
