@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import { makeOAuthRequest } from "../util/backend";
-import { useAuthContext } from "../util/auth";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { makePostRequest } from '../util/backend';
+import { useAuthContext } from '../util/auth';
+import { useNavigate } from 'react-router-dom';
 
 function OAuth() {
   const authContext = useAuthContext();
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const loginHandler = async (oauthCode: string) => {
-    // Assuming type is already set when login is started
-    const type = authContext.userData.type;
-    const auth = await makeOAuthRequest(oauthCode, type);
+	const loginHandler = async (oauthCode: string) => {
+		// Assuming type is already set when login is started
+		const userType = authContext.userData.type;
+		const auth = await makePostRequest('/oauth/', {code: oauthCode, type: userType});
 
     if ("code" in auth) {
       setError(auth.message);
