@@ -50,7 +50,7 @@ function Timeline() {
         start: "top center",
         end: "bottom center"
       }})
-    .to(".ball01", {duration: 0.01, autoAlpha: 1})
+    .to(".ball01", {duration: 0, autoAlpha: 1})
     .from(".theLine", {drawSVG: 0}, 0)
     .to(".ball01", {motionPath: {
       path: ".theLine", 

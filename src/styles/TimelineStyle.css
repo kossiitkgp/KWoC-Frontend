@@ -3,7 +3,8 @@
 }
 
 svg {
-  max-width: 600px;
+  max-width: min(55%, 550px);
+  height: 100%;
   overflow: visible;
 }
 
@@ -27,3 +28,4 @@ text {
   font-size: 1.5rem;
   visibility: hidden;
 }
+
