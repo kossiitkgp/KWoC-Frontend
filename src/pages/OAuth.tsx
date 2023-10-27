@@ -11,13 +11,13 @@ function OAuth() {
 	const loginHandler = async (oauthCode: string) => {
 		// Assuming type is already set when login is started
 		const userType = authContext.userData.type;
-		const authReq = await makeRequest('oauth', 'post', {code: oauthCode, type: userType});
+		const authRes = await makeRequest('oauth', 'post', {code: oauthCode, type: userType});
 
-		if (!authReq.is_ok) {
-			setError(authReq.response.message);
+		if (!authRes.is_ok) {
+			setError(authRes.response.message);
 		}
 		else {
-			const auth = authReq.response;
+			const auth = authRes.response;
 
 			authContext.onLogin({
 				jwt: auth.jwt,
