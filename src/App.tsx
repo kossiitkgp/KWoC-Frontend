@@ -5,6 +5,7 @@ import Projects from "./pages/Projects";
 import Testimonials from "./pages/Testimonials";
 import OAuth from "./pages/OAuth";
 import { AuthProvider } from "./util/auth";
+import { ROUTER_PATHS } from "./util/constants";
 
 function App() {
   return (
@@ -13,10 +14,13 @@ function App() {
         <AuthProvider>
           <Routes>
             <Route index element={<Home />} />
-            <Route path="projects" element={<Projects />} />
-            <Route path="faq" element={<FAQ />} />
-            <Route path="testimonials" element={<Testimonials />} />
-            <Route path="oauth" element={<OAuth />} />
+            <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
+            <Route path={ROUTER_PATHS.FAQ} element={<FAQ />} />
+            <Route
+              path={ROUTER_PATHS.TESTIMONIALS}
+              element={<Testimonials />}
+            />
+            <Route path={ROUTER_PATHS.OAUTH} element={<OAuth />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

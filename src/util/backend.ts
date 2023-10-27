@@ -45,22 +45,6 @@ interface IErrorResponse {
   response: IHTTPMessage;
 }
 
-interface IEndpointTypes {
-	'/oauth/': {
-		request: {
-			code: string,
-			type: UserType
-		},
-		response: {
-			email: string;
-			is_new_user: boolean;
-			jwt: string;
-			name: string;
-			type: UserType;
-			username: string;
-		}
-	}
-}
 type BackendResponse<T> = IOkResponse<T> | IErrorResponse;
 
 export async function makeRequest<E extends keyof IEndpointTypes>(
