@@ -6,6 +6,7 @@ import Snowfall from 'react-snowfall'
 import snowflake_particle1 from "../assets/snowflake1.svg";
 import snowflake_particle2 from "../assets/snowflake2.svg";
 import snowflake_particle3 from "../assets/snowflake3.svg";
+import JoinOurCommunity from "../components/JoinOurCommunity";
 
 const snowflake_images = [snowflake_particle1, snowflake_particle2, snowflake_particle3].map(
   (img_src) => {
@@ -45,6 +46,7 @@ function Home() {
       <section className="bg-black/60 py-32 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
         <About />
         <WhyKWoC />
+        <JoinOurCommunity />
       </section>
     </>
   );
