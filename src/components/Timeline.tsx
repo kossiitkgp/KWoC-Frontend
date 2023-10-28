@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Draggable } from "gsap/Draggable";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import "../styles/TimelineStyle.css";
 import Lenis from '@studio-freight/lenis';
 
 
@@ -26,33 +25,39 @@ function Timeline() {
       requestAnimationFrame(raf)
     }
     requestAnimationFrame(raf)
+
+    const linePath = document.querySelector(".theLine") as SVGPathElement;
+    const len = linePath.getTotalLength();
+    linePath.style.strokeDasharray = len + " " + len;
+    linePath.style.strokeDashoffset = len.toString();
     
     const pulses = gsap.timeline({
       defaults: {
         duration: 0.5, 
         autoAlpha: 1, 
-        scale: 1.5, 
+        fill: "white",
+        scale: 3,
         transformOrigin: 'center', 
-        ease: "elastic(2.5, 1)"
+        ease: "elastic(1.5, 1)"
       }})
-      .to(".startball, .text00", {}, 0)
-      .to(".ball02, .text01", {}, 0.25) 
-      .to(".ball03, .text02", {}, 0.42)
-      .to(".ball04, .text03", {}, 0.63)
-      .to(".ball05, .text04", {}, 0.85)
-      .to(".ball06, .text05", {}, 1.1)
-      .to(".ball07, .text06", {}, 1.45)
+      .to(".ball01", {}, -0.05)
+      .to(".ball02", {}, 0.08) 
+      .to(".ball03", {}, 0.23)
+      .to(".ball04", {}, 0.40)
+      .to(".ball05", {}, 0.58)
+      .to(".ball06", {}, 0.75)
+      .to(".ball07", {}, 0.9)
         
-    const main = gsap.timeline({defaults: {duration: 1.5},
+    const main = gsap.timeline({defaults: {duration: 1},
       scrollTrigger: {
         trigger: "#svg",
         scrub: true,
-        start: "top center",
-        end: "bottom center"
+        start: "top 200",
+        end: "bottom",
       }})
-    .to(".ball01", {duration: 0, autoAlpha: 1})
-    .from(".theLine", {drawSVG: 0}, 0)
-    .to(".ball01", {motionPath: {
+    .to(".trackball", {duration: 0, autoAlpha: 1})
+    .to(".theLine", {strokeDashoffset: 0}, 0)
+    .to(".trackball", {motionPath: {
       path: ".theLine", 
       align:".theLine",
       alignOrigin: [0.5, 0.5],
@@ -65,62 +70,54 @@ function Timeline() {
     }
   }, []);
 
-  const timelineData = [
-    {date: "DATE1", content: "INFO1"}, 
-    {date: "DATE2", content: "INFO2"}, 
-    {date: "DATE3", content: "INFO3"}, 
-    {date: "DATE4", content: "INFO4"}, 
-    {date: "DATE5", content: "INFO5"}, 
-    {date: "DATE6", content: "INFO6"}, 
-    {date: "DATE7", content: "INFO7"}
-  ];
-
   return (
     <div className=" mb-60">
       <h1 className="text-zinc-300 text-center text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36  mb-36 lg:text-8xl">TIMELINE</h1>      
       <div className="flex justify-center mb-1/10">
-        <svg id="svg" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 600 1200" className="max-w-[min(550px,_55%)] w-full h-full overflow-visible">
+        <svg className=" md:scale-110 lg:scale-125 mt-36" id="svg" width="900" height="1579" viewBox="0 0 403 1579" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="Frame 1">
 
-          {
-            Array.from(Array(7).keys()).map((i) => {
-              return (
-                <path className={`line0${i} line`} d={`M -1000 ${i*200}  2000 ${i*200}`} fill="none" stroke="white" strokeWidth={'2px'}></path>
-              )})
-          }
+            <path d="M9.99976 30C313.333 183.333 416.5 341.5 286.5 391.5C97.4998 464.192 63.4998 480.5 63.4998 513.5C63.4998 634 516.526 745.129 358.5 808C265.5 845 -46.4881 953.224 112.5 1047C260 1134 662 1227.5 73 1486" stroke="gray" stroke-width="10" stroke-linecap="round"/>
+            <path className="theLine" d="M9.99976 30C313.333 183.333 416.5 341.5 286.5 391.5C97.4998 464.192 63.4998 480.5 63.4998 513.5C63.4998 634 516.526 745.129 358.5 808C265.5 845 -46.4881 953.224 112.5 1047C260 1134 662 1227.5 73 1486" stroke="white" stroke-width="10" stroke-linecap="round"/>
 
-          {
-            timelineData.map((item, i) => {
-              return (
-                <>
-                  <text className={`text0${i}`} x="-200" y={`${i*200-10}`} fill="white" visibility={'hidden'} fontSize={'1.5rem'}>{item.date}</text>
-                  <text className={`text0${i}`} x="700" y={`${i*200-10}`} fill="white" visibility={'hidden'} fontSize={'1.5rem'}>{item.content}</text>
-                </>
-              )})
-          }
-
-          <path d="M -5,0
-                  Q 450 230 300 450 
-                  T 130 750
-                  Q 100 850 300 1000
-                  T 150 1200"
-                fill="none" stroke="white" strokeOpacity={0.2} stroke-width="10px" strokeLinecap="round" />   
-          <path className="theLine" 
-                d="M -5,0
-                  Q 450 230 300 450 
-                  T 130 750
-                  Q 100 850 300 1000
-                  T 150 1200"
-                fill="none" stroke="white" stroke-width="10px" strokeLinecap="round" />   
-
-
-          <circle className="startball" r="15" cx="-5" cy="0" fill="white"></circle>
-          <circle className="ball ball01" r="15" cx="50" cy="100" fill="white" visibility={'hidden'}></circle>
-          <circle className="ball ball02" r="15" cx="278" cy="201" fill="white" visibility={'hidden'}></circle>
-          <circle className="ball ball03" r="15" cx="327" cy="401" fill="white" visibility={'hidden'}></circle>
-          <circle className="ball ball04" r="15" cx="203" cy="601" fill="white" visibility={'hidden'}></circle>
-          <circle className="ball ball05" r="15" cx="128" cy="801" fill="white" visibility={'hidden'}></circle>
-          <circle className="ball ball06" r="15" cx="300" cy="1001" fill="white" visibility={'hidden'}></circle>
-          <circle className="ball ball07" r="15" cx="147" cy="1201" fill="white" visibility={'hidden'}></circle>
+            <path className="Line-1" d="M10 29.5H388" stroke="gray" stroke-width="2"/>
+            <path className="Line-2" d="M10 273H324" stroke="gray" stroke-width="2"/>
+            <path className="Line-3" d="M65 516L388 516" stroke="gray" stroke-width="2"/>
+            <path className="Line-4" d="M65 759L388 759" stroke="gray" stroke-width="2"/>
+            <path className="Line-5" d="M65 1002L388 1002" stroke="gray" stroke-width="2"/>
+            <path className="Line-6" d="M65 1245L388 1245" stroke="gray" stroke-width="2"/>
+            <path className="Line-7" d="M71 1488L394 1488" stroke="gray" stroke-width="2"/>
+            <circle visibility={'hidden'} className="ball01" cx="13" cy="30" r="8" fill="gray"/>
+            <circle visibility={'hidden'} className="ball02" cx="326" cy="273.5" r="8" fill="gray"/>
+            <circle visibility={'hidden'} className="ball03" cx="65" cy="517" r="8" fill="gray"/>
+            <circle visibility={'hidden'} className="ball04" cx="384" cy="760" r="8" fill="gray"/>
+            <circle visibility={'hidden'} className="ball05" cx="70" cy="1003" r="8" fill="gray"/>
+            <circle visibility={'hidden'} className="ball06" cx="383" cy="1246" r="8" fill="gray"/>
+            <circle visibility={'hidden'} className="ball07" cx="71" cy="1489" r="8" fill="gray"/>
+            <circle className="trackball" cx="10" cy="30" r="30" fill="white"/>
+            
+            <text className="text1" fill="white" font-family="Space Grotesk" font-size="25" letter-spacing="0em"><tspan x="162.878" y="24.65">25 November 2023</tspan></text>
+            <text className="subtext1" fill="white" font-family="Space Grotesk" font-size="15" letter-spacing="0em"><tspan x="180.85" y="47.69">Registrations for Students </tspan><tspan x="209.399" y="66.69">and Projects Begin</tspan></text>
+            
+            <text className="text5" fill="white" font-family="Space Grotesk" font-size="25" letter-spacing="0em"><tspan x="161.021" y="995.65">20 December 2023</tspan></text>
+            <text className="subtext5" fill="white" font-family="Space Grotesk" font-size="15" letter-spacing="0em"><tspan x="221.972" y="1018.69">Mid Evaluations</tspan></text>
+            
+            <text className="text3" fill="white" font-family="Space Grotesk" font-size="25" letter-spacing="0em"><tspan x="166.588" y="510.65">12 December 2023</tspan></text>
+            <text className="subtext3" fill="white" font-family="Space Grotesk" font-size="15" letter-spacing="0em"><tspan x="180.919" y="533.69">End of Project Registration</tspan></text>
+            
+            <text className="text2" fill="white" font-family="Space Grotesk" font-size="25" letter-spacing="0em"><tspan x="10" y="267.65">6 December 2023</tspan></text>
+            <text className="subtext2" fill="white" font-family="Space Grotesk" font-size="15" letter-spacing="0em"><tspan x="45.6025" y="287.69">Coding Period Starts</tspan></text>
+            
+            <text className="text4" fill="white" font-family="Space Grotesk" font-size="25" letter-spacing="0em"><tspan x="65" y="754.65">17 December 2023</tspan></text>
+            <text className="subtext4" fill="white" font-family="Space Grotesk" font-size="15" letter-spacing="0em"><tspan x="73.979" y="775.69">End of Student Registration</tspan></text>
+            
+            <text className="text7" fill="white" font-family="Space Grotesk" font-size="25" letter-spacing="0em"><tspan x="206.427" y="1482.65">8 January 2024</tspan></text>
+            <text className="subtext7" fill="white" font-family="Space Grotesk" font-size="15" letter-spacing="0em"><tspan x="215.698" y="1505.69">Deadline to Submit End </tspan><tspan x="254.905" y="1524.69">Evals Report </tspan></text>
+            
+            <text className="text6" fill="white" font-family="Space Grotesk" font-size="25" letter-spacing="0em"><tspan x="65" y="1237.65">4 January 2024</tspan></text>
+            <text className="subtext6" fill="white" font-family="Space Grotesk" font-size="15" letter-spacing="0em"><tspan x="87.1348" y="1263.69">Coding Period Ends 
+            </tspan><tspan x="67.3667" y="1282.69">but we encourage you to </tspan><tspan x="93.6826" y="1301.69">keep contributing</tspan></text>
+          </g>
         </svg>
       </div>
     </div>
