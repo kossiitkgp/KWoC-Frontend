@@ -71,8 +71,8 @@ function Timeline() {
   }, []);
 
   return (
-    <div className=" mb-60">
-      <h1 className="text-zinc-300 text-center text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36  mb-36 lg:text-8xl">TIMELINE</h1>      
+    <>
+      <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">TIMELINE</h1>
       <div className="flex justify-center mb-1/10">
         <svg className=" md:scale-110 lg:scale-125 mt-36" id="svg" width="900" height="1579" viewBox="0 0 403 1579" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="Frame 1">
@@ -120,7 +120,7 @@ function Timeline() {
           </g>
         </svg>
       </div>
-    </div>
+    </>
   );
 }
 
