@@ -17,6 +17,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-particles": "^2.12.2",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.16.0",
     "react-snowfall": "^1.2.1",
     "tailwind-clip-path": "^1.0.0",
