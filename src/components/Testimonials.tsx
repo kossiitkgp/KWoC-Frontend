@@ -6,9 +6,9 @@ import TestimonialCard from "./TestimonialCard";
 export default class Testimonials extends Component {
     render() {
         return (
-            <div className="m-auto w-[90%] sm:w-[70%] md:w-[80%] lg:w-[50%]">
-                <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">What Develepors think about us</h1>
-                <div className="w-full m-auto my-32 bg-black/50 sm:p-16">
+            <div className="m-auto w-[90%] bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16]">
+                <div className="w-[90%] sm:w-[80%] md:w-[80%] lg:w-[60%] m-auto pt-16 sm:p-32">
+                    <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-7xl">What Develepors think about us</h1>
                     <Carousel
                         showArrows={true}
                         infiniteLoop={true}
