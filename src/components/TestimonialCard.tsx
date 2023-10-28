@@ -2,7 +2,7 @@ import profile_image from '../assets/member_3.png'
 export default function TestimonialCard() {
     return (
         <>
-            <div className="m-auto bg-black/50 border-y border-[#FFFFFF]/[0.16] p-8">
+            <div className="m-auto p-8">
                 <div className="w-1/5 m-auto">
                     <img src={profile_image} />
                 </div>
