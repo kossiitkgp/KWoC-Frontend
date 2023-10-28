@@ -29,6 +29,11 @@ function Navbar() {
               </Link>
             </li>
           ))}
+          <button className='bg-blue-500 rounded-full px-3 py-1 text-white ml-10 mr-2 hover:bg-blue-600 active:bg-blue-700'>
+            <Link to="">
+              Login/Sign-up
+            </Link>
+          </button>
         </ul>
       </div>
     </div>
