@@ -47,7 +47,7 @@ function Home() {
         />
         <Hero />
       </section>
-      <section className="backdrop-blur-sm bg-black/60 py-64 clip-path-polygonDesign">
+      <section className="backdrop-blur-sm bg-black/60 py-32 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
         <About />
         <WhyKwoc />
         <Testimonials />
