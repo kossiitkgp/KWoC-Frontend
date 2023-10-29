@@ -1,12 +1,30 @@
 export default function FooterSection() {
   return (
-    <div className="py-16 mx-3 sm:mx-10 rounded-md">
+    <div className="py-16 mx-1 sm:mx-10 rounded-md">
       <nav className="flex w-full justify-center justify-items-center py-16 md:flex-row md:items-stretch flex flex-col justify-center items-center">
-        <div className="w-1/5 text-center text-zinc-300 mb-4 text-base font-extrabold">
+        <div className="w-1/2 sm:w-1/5 text-center text-zinc-300 mb-4 text-base font-extrabold">
           {/* TODO: add all the links here, more if needed */}
           <h3 className="text-2xl mb-3">Social Groups</h3>
           <ul>
-            <li>
+            <li className="hover:text-white/50">
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://twitter.com/kossiitkgp"
+              >
+                Discord
+              </a>
+            </li>
+            <li className="hover:text-white/50">
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href="https://twitter.com/kossiitkgp"
+              >
+                Slack
+              </a>
+            </li>
+            <li className="hover:text-white/50">
               <a
                 target="_blank"
                 rel="noreferrer noopener"
@@ -15,7 +33,7 @@ export default function FooterSection() {
                 LinkedIn
               </a>
             </li>
-            <li>
+            <li className="hover:text-white/50">
               <a
                 target="_blank"
                 rel="noreferrer noopener"
@@ -27,25 +45,25 @@ export default function FooterSection() {
           </ul>
         </div>
 
-        <div className="w-1/5 text-center text-zinc-300 mb-4 text-base font-extrabold">
+        <div className="w-1/2 sm:w-1/5 text-center text-zinc-300 mb-4 text-base font-extrabold">
           <h3 className="text-2xl mb-3">Quick Links</h3>
           <ul>
-            <li>
+            <li className="hover:text-white/50">
               <a href="/#tline">Timeline</a>
             </li>
-            <li>
+            <li className="hover:text-white/50">
               <a href="/FAQ">FAQ</a>
             </li>
-            <li>
+            <li className="hover:text-white/50">
               <a href="/#about">About KWoC</a>
             </li>
           </ul>
         </div>
 
-        <div className="w-1/5 text-center text-zinc-300 mb-4 text-base font-extrabold">
+        <div className="w-1/2 sm:w-1/5 text-center text-zinc-300 mb-4 text-base font-extrabold">
           <h3 className="text-2xl mb-3">Other</h3>
           <ul>
-            <li>
+            <li className="hover:text-white/50">
               <a
                 target="_blank"
                 rel="noreferrer noopener"
