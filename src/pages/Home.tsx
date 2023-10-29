@@ -6,7 +6,6 @@ import Snowfall from 'react-snowfall'
 import snowflake_particle1 from "../assets/snowflake1.svg";
 import snowflake_particle2 from "../assets/snowflake2.svg";
 import snowflake_particle3 from "../assets/snowflake3.svg";
-import Particle from "../components/Particle";
 
 const snowflake_images = [snowflake_particle1, snowflake_particle2, snowflake_particle3].map(
   (img_src) => {
