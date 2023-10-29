@@ -11,13 +11,13 @@ function ManualButton() {
   );
 }
 
-
 function Hero() {
-  const [text, setText] = useState("1000101");
+  const [text, setText] = useState("100010101");
 
   useEffect(() => {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ-abcdefghijklmnopqrstuvwxyz";
-    const finalText = "KWoC-23";
+    const finalText = "KWoC 2023";
+
     let hypr = () => {
       let iteration = 0;
 
@@ -31,7 +31,8 @@ function Hero() {
             }
           }).join("");
         })
-        iteration += 1 / 3;
+
+        iteration += 0.5;
       }, 35);
     }
     hypr();
@@ -94,7 +95,7 @@ function Hero() {
           {text}
         </h1>
         <h3 className='justify-center text-center mb-16 font-extrabold leading-none tracking-tight text-gray-900 text-[20px] lg:text-[35px] dark:text-white'>
-          Kharagpur Winter of Code - 2023
+          For the love of open source!
         </h3>
         <ManualButton />
         <div className='m-auto flex justify-center mt-10'>
