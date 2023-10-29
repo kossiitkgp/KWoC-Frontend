@@ -7,7 +7,7 @@ export default class Testimonials extends Component {
     render() {
         return (
             <div className="m-auto w-[90%] bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16]">
-                <div className="w-[90%] sm:w-[80%] md:w-[80%] lg:w-[60%] m-auto pt-16 sm:p-32">
+                <div className="w-[90%] sm:w-[90%] md:w-[80%] lg:w-[60%] m-auto pt-16 sm:p-32">
                     <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-7xl">What Develepors think about us</h1>
                     <Carousel
                         showArrows={true}
@@ -18,19 +18,6 @@ export default class Testimonials extends Component {
                         autoPlay={true}
                         interval={2000}
                     >
-                        {/* <div className="w-1/2 m-auto my-10 bg-white/10 p-8 rounded-lg">
-                            <div className="w-1/2 m-auto">
-                                <img src={profile_image}/>     
-                            </div>
-                            <h3 className="text-zinc-400 text-2xl my-4">Swaraj Biswal</h3>
-                            <div className="px-4 py-2 m-auto bg-black/30 rounded-lg">
-                                <a href="#" className="text-zinc-400 text-center">Blog</a>
-                            </div>
-                            <p className="text-zinc-400 text-1xl my-4">
-                                It's freeing to be able to catch up on customized news and not be
-                                distracted by a social media element on the same site.
-                            </p>
-                        </div> */}
                         <TestimonialCard />
                         <TestimonialCard />
                         <TestimonialCard />
