@@ -3,9 +3,8 @@ import Card from './Card'
 export default function WhyKWoC() {
     return(
       <>
-        <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">WHY KWoC</h1>
-        <p className="text-zinc-300 text-center mb-4 text-lg font-normal lg:text-2xl px-10 sm:px-16 xl:px-96 xl:pb-32 mt-10">Kharagpur Winter of Code is a 5-week long online program for students who are new to open source software development. The program not only helps students to get involved in open source, but also prepares them for many open source summer programs; Google Summer of Code being one of them.</p>
-        <div className='flex flex-col lg:flex-row items-stretch px-8 m-auto my-8 w-[90%]'>
+        <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">WHY KWoC ?</h1>
+        <div className='flex flex-col lg:flex-row items-stretch px-8 m-auto mt-10 w-[90%]'>
             <Card header="Intro to Open Source" content="KWoC provides a great opportunity to get acquainted with Github along with Git commands and contribute to open source efficiently. Brush up your coding skills"/>
 
             <Card header="Prepare for GSoC" content="With KWoC, you get to know about how to select a project, interact with mentors and learn all other things that prepare you in the best way for the next GSoC."/>
