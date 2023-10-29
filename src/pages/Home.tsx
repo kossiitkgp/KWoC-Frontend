@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import About from "../components/About";
-import WhyKWoC from "../components/WhyKwoc";
+import WhyKWoC from "../components/WhyKWoC";
 import Snowfall from 'react-snowfall'
 import snowflake_particle1 from "../assets/snowflake1.svg";
 import snowflake_particle2 from "../assets/snowflake2.svg";
