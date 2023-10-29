@@ -1,0 +1,17 @@
+name: Format code before push to main branch
+
+on:
+  push:
+    branches:
+      - truth-redefined-again
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - run: pnpm install
+      - run: pnpm format
