@@ -1,9 +1,10 @@
-name: Format code before push to main branch
+name: Format code before push to default branches
 
 on:
   push:
     branches:
       - truth-redefined-again
+      - main
 
 jobs:
   format:
