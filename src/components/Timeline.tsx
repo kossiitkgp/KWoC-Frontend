@@ -40,9 +40,8 @@ function Timeline() {
         transformOrigin: 'center', 
         ease: "elastic(1.5, 1)"
       }})
-      .to(".ball01", {}, -0.05)
       .to(".ball02", {}, 0.08) 
-      .to(".ball03", {}, 0.23)
+      .to(".ball03", {}, 0.25)
       .to(".ball04", {}, 0.40)
       .to(".ball05", {}, 0.58)
       .to(".ball06", {}, 0.75)
@@ -55,13 +54,7 @@ function Timeline() {
         start: "top 200",
         end: "bottom",
       }})
-    .to(".trackball", {duration: 0, autoAlpha: 1})
     .to(".theLine", {strokeDashoffset: 0}, 0)
-    .to(".trackball", {motionPath: {
-      path: ".theLine", 
-      align:".theLine",
-      alignOrigin: [0.5, 0.5],
-    }}, 0)
     .add(pulses, 0);
     
     return () => {
@@ -87,14 +80,14 @@ function Timeline() {
             <path className="Line-5" d="M65 1002L388 1002" stroke="gray" stroke-width="2"/>
             <path className="Line-6" d="M65 1245L388 1245" stroke="gray" stroke-width="2"/>
             <path className="Line-7" d="M71 1488L394 1488" stroke="gray" stroke-width="2"/>
-            <circle visibility={'hidden'} className="ball01" cx="13" cy="30" r="8" fill="gray"/>
+            
+            <circle className="ball01" cx="13" cy="30" r="24" fill="white"/>
             <circle visibility={'hidden'} className="ball02" cx="326" cy="273.5" r="8" fill="gray"/>
             <circle visibility={'hidden'} className="ball03" cx="65" cy="517" r="8" fill="gray"/>
             <circle visibility={'hidden'} className="ball04" cx="384" cy="760" r="8" fill="gray"/>
             <circle visibility={'hidden'} className="ball05" cx="70" cy="1003" r="8" fill="gray"/>
             <circle visibility={'hidden'} className="ball06" cx="383" cy="1246" r="8" fill="gray"/>
             <circle visibility={'hidden'} className="ball07" cx="71" cy="1489" r="8" fill="gray"/>
-            <circle className="trackball" cx="10" cy="30" r="30" fill="white"/>
             
             <text className="text1" fill="white" font-family="Space Grotesk" font-size="25" letter-spacing="0em"><tspan x="162.878" y="24.65">25 November 2023</tspan></text>
             <text className="subtext1" fill="white" font-family="Space Grotesk" font-size="15" letter-spacing="0em"><tspan x="180.85" y="47.69">Registrations for Students </tspan><tspan x="209.399" y="66.69">and Projects Begin</tspan></text>
