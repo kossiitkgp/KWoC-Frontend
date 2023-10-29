@@ -41,7 +41,7 @@ export default function Card(props: any) {
     };
 
     return (
-        <div className="text-zinc-100 text-center bg-black/50 backdrop-blur-lg mx-auto mb-10 lg:w-1/4 sm:w-3/4 px-4 py-16 border border-[#FFFFFF]/[0.16] rounded-[10px] hover:cursor-pointer"
+        <div className="text-zinc-100 text-center bg-black/50 mx-auto mb-10 lg:w-1/4 sm:w-3/4 px-4 py-16 border border-[#FFFFFF]/[0.16] rounded-[10px] hover:cursor-pointer"
             onMouseMove={onMouseMove}
             onMouseLeave={onMouseLeave} style={{
                 transform: `perspective(1000px) rotateX(${rotate.x / 3}deg) rotateY(${rotate.y / 3}deg) scale3d(1, 1, 1)`,
