@@ -3,6 +3,7 @@ import FAQ from './pages/FAQ';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Testimonials from './pages/Testimonials';
+import Statistics from './pages/Statistics';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="projects" element={<Projects />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="testimonials" element={<Testimonials />} />
+          <Route path="statistics" element={<Statistics />} />
         </Routes>
       </BrowserRouter>
     </div>
