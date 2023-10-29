@@ -16,3 +16,8 @@ jobs:
           version: 8
       - run: pnpm install
       - run: pnpm format
+      - run: |
+          git config --local user.email "admin@kossiitkgp.org"
+          git config --local user.name "koss-service"
+          git commit -am "Apply prettier formatting"
+          git push
