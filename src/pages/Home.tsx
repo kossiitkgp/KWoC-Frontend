@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import Hero from "../components/Hero";
 import About from "../components/About";
-import WhyKwoc from "../components/WhyKwoc";
+import WhyKWoC from "../components/WhyKwoc";
 import Snowfall from 'react-snowfall'
 import snowflake_particle1 from "../assets/snowflake1.svg";
 import snowflake_particle2 from "../assets/snowflake2.svg";
@@ -45,7 +45,7 @@ function Home() {
       </section>
       <section className="bg-black/60 py-32 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
         <About />
-        <WhyKwoc />
+        <WhyKWoC />
       </section>
       <Particle />
     </>
