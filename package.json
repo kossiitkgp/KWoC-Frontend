@@ -24,7 +24,6 @@
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.16.0",
     "react-snowfall": "^1.2.1",
-    "scroll-svg": "^1.3.0",
     "tailwind-clip-path": "^1.0.0",
     "tsparticles-engine": "^2.12.0",
     "tsparticles-slim": "^2.12.0"

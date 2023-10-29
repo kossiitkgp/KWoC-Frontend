@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Draggable } from "gsap/Draggable";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import Lenis from '@studio-freight/lenis';
 
 
 
@@ -14,18 +13,7 @@ gsap.defaults({ease: "none", duration: 2});
 function Timeline() {
   
   useEffect(() => {
-    const lenis = new Lenis()
     
-    lenis.on('scroll', (e: any) => {
-      console.log(e)
-    })
-    
-    function raf(time: any) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
-
     const linePath = document.querySelector(".theLine") as SVGPathElement;
     const len = linePath.getTotalLength();
     linePath.style.strokeDasharray = len + " " + len;
