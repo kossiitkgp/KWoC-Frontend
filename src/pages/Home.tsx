@@ -3,31 +3,28 @@ import Hero from "../components/Hero";
 import About from "../components/About";
 import WhyKwoc from "../components/WhyKwoc";
 import Snowfall from 'react-snowfall'
-import snowflake_particle from "../assets/snowflake.png"
-import snowflake_particle2 from "../assets/snowflake2.svg"
-import snowflake_particle3 from "../assets/snowflake3.svg"
-import snowflake_particle4 from "../assets/snowflake4.svg"
+import snowflake_particle1 from "../assets/snowflake1.svg";
+import snowflake_particle2 from "../assets/snowflake2.svg";
+import snowflake_particle3 from "../assets/snowflake3.svg";
 import Particle from "../components/Particle";
 
+const snowflake_images = [snowflake_particle1, snowflake_particle2, snowflake_particle3].map(
+  (img_src) => {
+    const img_elem = document.createElement('img');
+    img_elem.src = img_src;
 
-const snowflake = document.createElement('img')
-snowflake.src = snowflake_particle
-const snowflake2 = document.createElement('img')
-snowflake2.src = snowflake_particle2
-const snowflake3 = document.createElement('img')
-snowflake3.src = snowflake_particle3
-const snowflake4 = document.createElement('img')
-snowflake4.src = snowflake_particle4
-
-const images = [snowflake, snowflake2, snowflake3, snowflake4]
+    return img_elem;
+  }
+)
 
 function Home() {
-  const [number_of_particles, set_number_of_particles] = useState(50);
+  const [number_of_particles, set_number_of_particles] = useState(20);
   const windowWidth = useRef(window.innerWidth);
 
   useEffect(() => {
-    set_number_of_particles(() => Math.floor(windowWidth.current / 18.8 * .7));
-  });
+    set_number_of_particles(() => Math.floor(windowWidth.current / 50));
+  })
+
   return (
     <>
       <section>
@@ -38,7 +35,7 @@ function Home() {
             zIndex: -1,
           }}
           snowflakeCount={number_of_particles}
-          images={images}
+          images={snowflake_images}
           radius={[15.0, 40.0]}
           speed={[0.5, 4.0]}
           wind={[-0.5, 1.0]}
@@ -46,7 +43,7 @@ function Home() {
         />
         <Hero />
       </section>
-      <section className="backdrop-blur-sm bg-black/60 py-32 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
+      <section className="bg-black/60 py-32 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
         <About />
         <WhyKwoc />
       </section>
