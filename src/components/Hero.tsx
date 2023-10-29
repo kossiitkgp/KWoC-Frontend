@@ -84,7 +84,7 @@ function Hero() {
           <img src={Moon} alt="Moon" className='invisible fixed lg:visible top-[-600px] right-[-450px] brightness-[50%] overflow-x-hidden' />
       </div>
       <div className='m-auto'>
-        <h1 data-value="KWoC 23" className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-[80px] lg:text-[156px] dark:text-white"
+        <h1 data-value="KWoC 23" className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-[60px] sm:text-[120px] lg:text-[156px] dark:text-white"
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave} style={{
             transform: `perspective(1000px) rotateX(${rotate.x / 3}deg) rotateY(${rotate.y / 3}deg) scale3d(1, 1, 1)`,

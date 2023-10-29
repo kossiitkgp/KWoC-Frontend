@@ -8,7 +8,6 @@ import snowflake_particle2 from "../assets/snowflake2.svg"
 import snowflake_particle3 from "../assets/snowflake3.svg"
 import snowflake_particle4 from "../assets/snowflake4.svg"
 import Particle from "../components/Particle";
-import Testimonials from "../components/Testimonials";
 
 
 const snowflake = document.createElement('img')
@@ -50,7 +49,6 @@ function Home() {
       <section className="backdrop-blur-sm bg-black/60 py-32 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
         <About />
         <WhyKwoc />
-        <Testimonials />
       </section>
       <Particle />
     </>
