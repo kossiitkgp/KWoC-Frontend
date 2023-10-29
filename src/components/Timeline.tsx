@@ -36,7 +36,7 @@ function Timeline() {
         duration: 0.5, 
         autoAlpha: 1, 
         fill: "white",
-        scale: 3,
+        scale: 2,
         transformOrigin: 'center', 
         ease: "elastic(1.5, 1)"
       }})
@@ -81,7 +81,7 @@ function Timeline() {
             <path className="Line-6" d="M65 1245L388 1245" stroke="gray" stroke-width="2"/>
             <path className="Line-7" d="M71 1488L394 1488" stroke="gray" stroke-width="2"/>
             
-            <circle className="ball01" cx="13" cy="30" r="24" fill="white"/>
+            <circle className="ball01" cx="13" cy="30" r="16" fill="white"/>
             <circle visibility={'hidden'} className="ball02" cx="326" cy="273.5" r="8" fill="gray"/>
             <circle visibility={'hidden'} className="ball03" cx="65" cy="517" r="8" fill="gray"/>
             <circle visibility={'hidden'} className="ball04" cx="384" cy="760" r="8" fill="gray"/>
