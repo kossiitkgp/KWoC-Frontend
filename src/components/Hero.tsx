@@ -1,6 +1,7 @@
 import { useState, useEffect, MouseEvent, useCallback } from 'react';
 import Santa from "../assets/Santa.png"
 import Moon from "../assets/Moon.png"
+import StarsBG from '../assets/stars.png';
 
 function ManualButton() {
   return (
@@ -78,6 +79,7 @@ function Hero() {
 
   return (
     <div className='flex h-screen'>
+      <img src={StarsBG} className='z-[-4]' style={{position: 'fixed', width: '100%', height: '100%', backgroundColor: '#0a0a19'}} />
       <div className='z-[-2]'>
           <img src={Santa} alt="Santa" className='invisible fixed lg:visible sm:top-[-50px] sm:right-[50px]' />
       </div>

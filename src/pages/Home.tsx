@@ -47,7 +47,6 @@ function Home() {
         <About />
         <WhyKWoC />
       </section>
-      <Particle />
     </>
   );
 }
