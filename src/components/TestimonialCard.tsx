@@ -3,7 +3,7 @@ export default function TestimonialCard() {
     return (
         <>
             <div className="m-auto p-8">
-                <div className="w-1/5 m-auto">
+                <div className="w-1/3 sm:w-1/5 m-auto">
                     <img src={profile_image} />
                 </div>
                 <h3 className="text-zinc-400 text-2xl my-4">Swaraj Biswal</h3>
@@ -15,8 +15,6 @@ export default function TestimonialCard() {
                     </a>
                 </div>
                 <p className="text-zinc-400 text-1xl my-4 px-4 sm:px-16">
-                    It's freeing to be able to catch up on customized news and not be
-                    distracted by a social media element on the same site.
                     It's freeing to be able to catch up on customized news and not be
                     distracted by a social media element on the same site.
                 </p>
