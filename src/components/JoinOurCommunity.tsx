@@ -1,5 +1,6 @@
 import DiscordLogo from "../assets/discord_logo.png";
 import SlackLogo from "../assets/slack_logo.png";
+import { DISCORD_INVITE, SLACK_INVITE } from "../util/constants";
 
 export default function JoinOurCommunity() {
     return (
@@ -12,7 +13,7 @@ export default function JoinOurCommunity() {
                 <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center m-4 bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-[#36c5f0]/10 hover:border-white/5">
                     <a
                         className="w-full flex justify-center p-6"
-                        href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
+                        href={SLACK_INVITE}
                         target="_blank">
                         <div className="flex items-center text-center gap-2">
                             <img
@@ -30,7 +31,7 @@ export default function JoinOurCommunity() {
                 <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center m-4 bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-[#5865f2]/10 hover:border-white/5">
                     <a
                         className="w-full flex justify-center p-6"
-                        href="https://discord.gg/efFwh6fnjk"
+                        href={DISCORD_INVITE}
                         target="_blank">
                         <div className="flex items-center text-center gap-3">
                             <img

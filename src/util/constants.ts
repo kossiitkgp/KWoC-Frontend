@@ -25,3 +25,5 @@ export enum ROUTER_PATHS {
   ONE_MENTOR_STATS = "/stats/mentor/:id",
   ONE_PROJECT_STATS = "/stats/project/:id",
 }
+export const DISCORD_INVITE = "https://discord.gg/efFwh6fnjk";
+export const SLACK_INVITE = "https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ";
