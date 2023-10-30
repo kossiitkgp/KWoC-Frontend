@@ -14,16 +14,15 @@ export default function JoinOurCommunity() {
                     <a
                         className="w-full flex justify-center p-6"
                         href={SLACK_INVITE}
-                        target="_blank">
+                        target="_blank"
+                    >
                         <div className="flex items-center text-center gap-2">
                             <img
                                 src={SlackLogo}
                                 height={100}
                                 width={80}
                             />
-                            <span className="text-white font-bold text-xl">
-                                Slack Workspace
-                            </span>
+                            <span className="text-white font-bold text-xl">Slack Workspace</span>
                         </div>
                     </a>
                 </div>
@@ -32,16 +31,15 @@ export default function JoinOurCommunity() {
                     <a
                         className="w-full flex justify-center p-6"
                         href={DISCORD_INVITE}
-                        target="_blank">
+                        target="_blank"
+                    >
                         <div className="flex items-center text-center gap-3">
                             <img
                                 src={DiscordLogo}
                                 height={100}
                                 width={80}
                             />
-                            <span className="text-white font-bold text-xl">
-                                Discord Server
-                            </span>
+                            <span className="text-white font-bold text-xl">Discord Server</span>
                         </div>
                     </a>
                 </div>
