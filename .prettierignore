@@ -1,0 +1,5 @@
+build
+**/.git
+**/node_modules
+**/*.md
+pnpm-lock.yaml

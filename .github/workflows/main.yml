@@ -1,0 +1,23 @@
+name: Format code before push to default branches
+
+on:
+  push:
+    branches:
+      - truth-redefined-again
+      - main
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - run: pnpm install
+      - run: pnpm format
+      - run: |
+          git config --local user.email "admin@kossiitkgp.org"
+          git config --local user.name "koss-service"
+          git commit -am "Apply prettier formatting"
+          git push
