@@ -1,10 +1,10 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import FAQ from './pages/FAQ';
-import Home from './pages/Home';
-import Projects from './pages/Projects';
-import Testimonials from './pages/Testimonials';
-import OAuth from './pages/OAuth';
-import { AuthProvider } from './util/auth';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import FAQ from "./pages/FAQ";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Testimonials from "./pages/Testimonials";
+import OAuth from "./pages/OAuth";
+import { AuthProvider } from "./util/auth";
 
 function App() {
   return (
