@@ -9,40 +9,39 @@ export default function JoinOurCommunity() {
             </h1>
 
             <div className="flex flex-col lg:flex-row p-4 justify-center items-center">
-                <div className="flex flex-col w-full md:w-4/6 lg:w-2/5 justify-center items-center m-4 p-4 py-8 gap-6 bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm">
-                    <div className="flex items-center text-center gap-2">
-                        <img
-                            src={SlackLogo}
-                            height={100}
-                            width={100}
-                        />
-                        <span className="text-white font-bold text-2xl">
-                            Slack Workspace
-                        </span>
-                    </div>
+                <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm">
                     <a
-                        className="text-white px-4 py-2 border border-white rounded hover:bg-white/25 hover:transition cursor-pointer"
+                        className="w-full flex justify-center p-6"
                         href="https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ"
                         target="_blank">
-                        Join Now
+                        <div className="flex items-center text-center gap-2">
+                            <img
+                                src={SlackLogo}
+                                height={100}
+                                width={80}
+                            />
+                            <span className="text-white font-bold text-xl">
+                                Slack Workspace
+                            </span>
+                        </div>
                     </a>
                 </div>
-                <div className="flex flex-col w-full md:w-4/6 lg:w-2/5 justify-center items-center m-4 p-4 py-8 gap-6 bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm">
-                    <div className="flex items-center text-center gap-3">
-                        <img
-                            src={DiscordLogo}
-                            height={100}
-                            width={100}
-                        />
-                        <span className="text-white font-bold text-2xl">
-                            Discord Server
-                        </span>
-                    </div>
+
+                <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center m-4 bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm">
                     <a
-                        className="text-white px-4 py-2 border border-white rounded hover:bg-white/25 hover:transition cursor-pointer"
+                        className="w-full flex justify-center p-6"
                         href="https://discord.gg/efFwh6fnjk"
                         target="_blank">
-                        Join Now
+                        <div className="flex items-center text-center gap-3">
+                            <img
+                                src={DiscordLogo}
+                                height={100}
+                                width={75}
+                            />
+                            <span className="text-white font-bold text-xl">
+                                Discord Server
+                            </span>
+                        </div>
                     </a>
                 </div>
             </div>
