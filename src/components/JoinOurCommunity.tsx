@@ -10,7 +10,7 @@ export default function JoinOurCommunity() {
             </h1>
 
             <div className="flex flex-col lg:flex-row p-4 justify-center items-center">
-                <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center m-4 bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-[#36c5f0]/10 hover:border-white/5">
+                <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center m-4 bg-black/50 border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-white/25">
                     <a
                         className="w-full flex justify-center p-6"
                         href={SLACK_INVITE}
@@ -27,7 +27,7 @@ export default function JoinOurCommunity() {
                     </a>
                 </div>
 
-                <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center m-4 bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-[#5865f2]/10 hover:border-white/5">
+                <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center m-4 bg-black/50 border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-white/25">
                     <a
                         className="w-full flex justify-center p-6"
                         href={DISCORD_INVITE}
