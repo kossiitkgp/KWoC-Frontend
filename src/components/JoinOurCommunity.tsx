@@ -1,5 +1,5 @@
-import DiscordLogo from "../assets/discord_logo.png";
-import SlackLogo from "../assets/slack_logo.png";
+import DiscordLogo from "../assets/discord_logo.svg";
+import SlackLogo from "../assets/slack_logo.svg";
 import { DISCORD_INVITE, SLACK_INVITE } from "../util/constants";
 
 export default function JoinOurCommunity() {
@@ -12,34 +12,34 @@ export default function JoinOurCommunity() {
             <div className="flex flex-col lg:flex-row p-4 justify-center items-center">
                 <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center m-4 bg-black/50 border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-white/25">
                     <a
-                        className="w-full flex justify-center p-6"
+                        className="w-full flex justify-center p-5"
                         href={SLACK_INVITE}
-                        target="_blank"
-                    >
+                        target="_blank">
                         <div className="flex items-center text-center gap-2">
                             <img
                                 src={SlackLogo}
-                                height={100}
-                                width={80}
+                                width={60}
                             />
-                            <span className="text-white font-bold text-xl">Slack Workspace</span>
+                            <span className="text-white font-bold text-xl">
+                                Slack Workspace
+                            </span>
                         </div>
                     </a>
                 </div>
 
                 <div className="flex flex-col w-3/4 md:w-1/2 lg:w-[28%] justify-center items-center m-4 bg-black/50 border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-white/25">
                     <a
-                        className="w-full flex justify-center p-6"
+                        className="w-full flex justify-center p-5"
                         href={DISCORD_INVITE}
-                        target="_blank"
-                    >
+                        target="_blank">
                         <div className="flex items-center text-center gap-3">
                             <img
                                 src={DiscordLogo}
-                                height={100}
-                                width={80}
+                                width={60}
                             />
-                            <span className="text-white font-bold text-xl">Discord Server</span>
+                            <span className="text-white font-bold text-xl">
+                                Discord Server
+                            </span>
                         </div>
                     </a>
                 </div>
