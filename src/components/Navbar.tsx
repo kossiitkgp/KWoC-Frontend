@@ -8,6 +8,7 @@ function Navbar() {
 
   const Links = [
     { name: "HOME", link: "/" },
+    { name: "MENTOR", link: "/MentorForm" },
     { name: "PROJECTS", link: "/Projects" },
     { name: "TESTIMONIALS", link: "/Testimonials" },
     { name: "FAQs", link: "/FAQ" },
