@@ -1,10 +1,13 @@
 import kwoc_logo from '../assets/kwoc_logo.png';
-import login from '../assets/login.svg';
 import { Link, useLocation } from 'react-router-dom';
+import {CiLogin} from 'react-icons/ci';
+import { IconContext } from "react-icons";
+import {useState} from 'react';
 
 function Navbar() {
   const location = useLocation();
   const isLinkActive = (path: string) => location.pathname === path;
+  const [isHovered, setIsHovered] = useState(false);
 
   const Links = [
     { name: "HOME", link: "/" },
@@ -33,9 +36,13 @@ function Navbar() {
               </Link>
             </li>
           ))}
-          <Link to='' className='mr-1'>
-            <img className='object-contain h-8 w-8'src={login} alt='kwoc-logo'></img>
-          </Link>
+          <IconContext.Provider value={{size: '3em'}}>
+            <Link to='' className='mr-1'>
+              <CiLogin color='#3b82f6' className={`transition-transform transform ${isHovered ? 'drop-shadow-glow scale-110' : 'scale-100'}`}
+                onMouseEnter={() => setIsHovered(true)} 
+                onMouseLeave={() => setIsHovered(false)} />
+            </Link>
+          </IconContext.Provider>
         </ul>
       </div>
     </div>
