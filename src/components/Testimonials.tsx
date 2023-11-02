@@ -7,9 +7,9 @@ import testimonialsData from '../data/testimonials.json';
 export default class Testimonials extends Component {
   render() {
     const glassStyle = {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color with transparency
-      backdropFilter: 'blur(10px)', // Apply a blur effect to the background
-      border: '1px solid rgba(255, 255, 255, 0.16)', // Border style
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+      backdropFilter: 'blur(10px)', 
+      border: '1px solid rgba(255, 255, 255, 0.16)', 
     };
 
     return (
