@@ -6,8 +6,14 @@ import testimonialsData from '../data/testimonials.json';
 
 export default class Testimonials extends Component {
   render() {
+    const glassStyle = {
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color with transparency
+      backdropFilter: 'blur(10px)', // Apply a blur effect to the background
+      border: '1px solid rgba(255, 255, 255, 0.16)', // Border style
+    };
+
     return (
-      <div className="m-auto w-[90%] bg-black/50 backdrop-blur-lg border border-[#FFFFFF]/[0.16]">
+      <div className="m-auto w-[90%]" style={glassStyle}>
         <div className="w-[90%] sm:w-[90%] md:w-[80%] lg:w-[60%] m-auto pt-16 sm:p-32">
           <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-5xl">
             What Developers think about us
@@ -23,7 +29,6 @@ export default class Testimonials extends Component {
           >
             {testimonialsData.testimonials.map((testimonial, index) => (
               <TestimonialCard key={index} testimonial={testimonial} />
-
             ))}
           </Carousel>
           <div className="sm:w-1/5 m-auto py-8 text-center text-zinc-400 font-bold text-lg">
