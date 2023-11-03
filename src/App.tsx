@@ -11,10 +11,9 @@ import { ROUTER_PATHS } from "./util/constants";
 function App() {
   return (
     <div className="App ">
-      <div className="bg-zinc-950 w-full h-screen"><Navbar /></div>
-
       <BrowserRouter>
         <AuthProvider>
+          <Navbar />
           <Routes>
             <Route index element={<Home />} />
             <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
