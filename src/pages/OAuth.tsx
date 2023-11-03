@@ -1,33 +1,35 @@
-import { useEffect, useState } from 'react';
-import { makeRequest } from '../util/backend';
-import { useAuthContext } from '../util/auth';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { makeRequest } from "../util/backend";
+import { useAuthContext } from "../util/auth";
+import { useNavigate } from "react-router-dom";
 
 function OAuth() {
   const authContext = useAuthContext();
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-	const loginHandler = async (oauthCode: string) => {
-		// Assuming type is already set when login is started
-		const userType = authContext.userData.type;
-		const authRes = await makeRequest('oauth', 'post', {code: oauthCode, type: userType});
+  const loginHandler = async (oauthCode: string) => {
+    // Assuming type is already set when login is started
+    const userType = authContext.userData.type;
+    const authRes = await makeRequest("oauth", "post", {
+      code: oauthCode,
+      type: userType,
+    });
 
-		if (!authRes.is_ok) {
-			setError(authRes.response.message);
-		}
-		else {
-			const auth = authRes.response;
+    if (!authRes.is_ok) {
+      setError(authRes.response.message);
+    } else {
+      const auth = authRes.response;
 
-			authContext.onLogin({
-				jwt: auth.jwt,
-				userData: {
-					username: auth.username,
-					name: auth.name,
-					email: auth.email,
-					type: auth.type
-				}
-			})
+      authContext.onLogin({
+        jwt: auth.jwt,
+        userData: {
+          username: auth.username,
+          name: auth.name,
+          email: auth.email,
+          type: auth.type,
+        },
+      });
 
       navigate(`/${auth.type}/${auth.is_new_user ? "form" : "dashboard"}`);
     }

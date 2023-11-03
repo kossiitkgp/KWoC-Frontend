@@ -39,6 +39,7 @@
 </div>
 
 ## Table of Contents
+
 - [Development](#development)
   - [Setting Up Locally](#setting-up-locally)
 - [Project Structure](#project-structure)
@@ -48,9 +49,11 @@
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Development
+
 See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 
 ### Setting Up Locally
+
 - Install [NodeJS](https://nodejs.org/en).
 - Install or enable [PNPM](https://pnpm.io/installation).
 - Clone this repository.
@@ -61,7 +64,9 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Project Structure
+
 ### File Structure
+
 ```
 .
 ├── public
@@ -75,6 +80,7 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
    ├── constants.ts
    └── App.tsx
 ```
+
 - `public`: Contains public files such as `index.html`.
 - `src`: Contains source files (JS, SCSS, assets, etc.)
   - `assets`: Contains assets used in the source, such as images and icons.
@@ -87,12 +93,14 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
   - `App.tsx`: Contains the top-level `App` component.
 
 ### Libraries/Frameworks Used
+
 - [React](https://reactjs.dev): For redefining the truth.
 - [SASS](https://sass-lang.com/): For redefining CSS styles.
 - And [many more](./package.json).
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Archival
+
 See also [KWoC Docs](https://github.com/kossiitkgp/docs/blob/master/events/kwoc.md#certificates).
 
 After KWoC ends, the website is archived. The stats data (including the total PRs, total commits, total contributors, and individual stats) is copied and added to the site source.
@@ -102,14 +110,18 @@ The archived source code is committed to a branch named `kwoc-xx-archive` and ho
 The development for the next KWoC website continues in the default branch.
 
 > **WARNING** DO NOT COMMIT ANY PERSONAL DATA TO THE ARCHIVE.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
-* [Choose an Open Source License](https://choosealicense.com)
-* [Img Shields](https://shields.io)
+
+- [Choose an Open Source License](https://choosealicense.com)
+- [Img Shields](https://shields.io)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-***
+---
+
 > Please update this documentation whenever changes are made to this project or any other relevant project that may affect this one. Future humans will praise you.

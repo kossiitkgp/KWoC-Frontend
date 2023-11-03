@@ -1,18 +1,18 @@
 import React, {
-	createContext,
-	useContext,
-	useEffect,
-	useMemo,
-	useState,
-} from 'react';
-import { useNavigate } from 'react-router-dom';
-import { UserType } from './types';
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import { useNavigate } from "react-router-dom";
+import { UserType } from "./types";
 
 interface IUserAuthData {
-	username: string;
-	name: string;
-	email: string;
-	type: UserType
+  username: string;
+  name: string;
+  email: string;
+  type: UserType;
 }
 
 interface ILocalStorageAuthObj {
@@ -20,30 +20,21 @@ interface ILocalStorageAuthObj {
   userData: IUserAuthData;
 }
 const DEFAULT_AUTH_OBJ: ILocalStorageAuthObj = {
-	// Random defaults
-	jwt: '',
-	userData: {
-		username: '',
-		name: '',
-		email: '',
-		type: 'student'
-	}
-}
-
-interface IAuthContext {
-	isAuthenticated: boolean;
-	jwt: string;
-	userData: IUserAuthData;
-	setUserType: (type: UserType) => void;
-	onLogin: (auth: ILocalStorageAuthObj) => void;
-	onLogout: () => void;
+  // Random defaults
+  jwt: "",
+  userData: {
+    username: "",
+    name: "",
+    email: "",
+    type: "student",
+  },
 };
 
 interface IAuthContext {
   isAuthenticated: boolean;
   jwt: string;
   userData: IUserAuthData;
-  setUserType: (type: "student" | "mentor") => void;
+  setUserType: (type: UserType) => void;
   onLogin: (auth: ILocalStorageAuthObj) => void;
   onLogout: () => void;
 }
@@ -69,14 +60,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [userAuth, setUserAuth] =
     useState<ILocalStorageAuthObj>(DEFAULT_AUTH_OBJ);
 
-	const setUserType = (type: UserType) => {
-		setUserAuth({
-			...userAuth,
-			userData: {
-				...userAuth.userData,
-				type
-			}
-		})
+  const setUserType = (type: UserType) => {
+    setUserAuth({
+      ...userAuth,
+      userData: {
+        ...userAuth.userData,
+        type,
+      },
+    });
 
     localStorage.setItem("auth", JSON.stringify(userAuth));
   };
