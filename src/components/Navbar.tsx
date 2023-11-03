@@ -16,42 +16,53 @@ const LINKS = [
 ];
 
 function BrandLogo() {
-  return <img
-    className="object-contain h-12 w-12"
-    src={kwoc_logo}
-    alt="KWoC Logo"
-  />
+  return (
+    <img className="object-contain h-12 w-12" src={kwoc_logo} alt="KWoC Logo" />
+  );
 }
 
 function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
   return LINKS.map((link) => (
-    <li key={link.name} className={isMobile ? 'mb-1' : 'md:ml-4 md:mr-4'}>
+    <li key={link.name} className={isMobile ? "mb-1" : "md:ml-4 md:mr-4"}>
       <Link
         to={link.link}
         className={
-          (isMobile ? 'block p-2 text-sm font-semibold ' : 'px-2 py-1 ') +
-          (
-            isLinkActive(link.link)
-              ? "text-blue-500 hover:drop-shadow-glow duration-500"
-              : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-blue-700"
-          )
+          (isMobile ? "block p-2 text-sm font-semibold " : "px-2 py-1 ") +
+          (isLinkActive(link.link)
+            ? "text-blue-500 hover:drop-shadow-glow duration-500"
+            : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-blue-700")
         }
       >
         {link.name}
       </Link>
     </li>
-  ))
+  ));
 }
 
-function LoginButton({isMobile, isHovered, setIsHovered}: {isMobile: boolean, isHovered: boolean, setIsHovered: (isHovered: boolean) => void}) {
-  return <Link to={GH_OAUTH_URL} className={isMobile ? "flex justify-end pr-2 pt-2" : ""}>
-    <CiLogin
-      color="#dc2626"
-      className={`transition-transform transform ${isHovered ? "drop-shadow-glow scale-110" : "scale-100"}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    />
-  </Link>
+function LoginButton({
+  isMobile,
+  isHovered,
+  setIsHovered,
+}: {
+  isMobile: boolean;
+  isHovered: boolean;
+  setIsHovered: (isHovered: boolean) => void;
+}) {
+  return (
+    <Link
+      to={GH_OAUTH_URL}
+      className={isMobile ? "flex justify-end pr-2 pt-2" : ""}
+    >
+      <CiLogin
+        color="#dc2626"
+        className={`transition-transform transform ${
+          isHovered ? "drop-shadow-glow scale-110" : "scale-100"
+        }`}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      />
+    </Link>
+  );
 }
 
 function Navbar() {
@@ -68,7 +79,9 @@ function Navbar() {
   return (
     <div className="fixed inset-x-0 z-50 w-full">
       <nav
-        className={`flex shadow-md mt-4 items-center justify-between max-w-7xl gap-4 mx-auto border border-[#FFFFFF]/[0.16] px-4 py-2 rounded-lg w-[95%] inset-x-0 backdrop-blur-md z-50 ${mobileMenuOpen ? "hidden" : ""}`}
+        className={`flex shadow-md mt-4 items-center justify-between max-w-7xl gap-4 mx-auto border border-[#FFFFFF]/[0.16] px-4 py-2 rounded-lg w-[95%] inset-x-0 backdrop-blur-md z-50 ${
+          mobileMenuOpen ? "hidden" : ""
+        }`}
       >
         <BrandLogo />
 
@@ -83,7 +96,9 @@ function Navbar() {
 
         <div className={`${mobileMenuOpen ? "hidden" : null}`}>
           <ul
-            className={`lg:flex lg:items-center lg:w-auto lg:space-x-6 ${mobileMenuOpen ? "block" : "hidden"}`}
+            className={`lg:flex lg:items-center lg:w-auto lg:space-x-6 ${
+              mobileMenuOpen ? "block" : "hidden"
+            }`}
           >
             {LinksList(isLinkActive, false)}
 
@@ -98,26 +113,29 @@ function Navbar() {
         </div>
       </nav>
 
-      {mobileMenuOpen &&
+      {mobileMenuOpen && (
         <MobileNavbar
           isHovered={isHovered}
           setIsHovered={setIsHovered}
           toggleMobileMenu={toggleMobileMenu}
           isLinkActive={isLinkActive}
         />
-      }
+      )}
     </div>
   );
 }
 
-function MobileNavbar(
-  {isHovered, setIsHovered, toggleMobileMenu, isLinkActive}: {
-    isHovered: boolean,
-    setIsHovered: Dispatch<React.SetStateAction<boolean>>,
-    toggleMobileMenu: () => void,
-    isLinkActive: (link: string) => boolean
-  }
-) {
+function MobileNavbar({
+  isHovered,
+  setIsHovered,
+  toggleMobileMenu,
+  isLinkActive,
+}: {
+  isHovered: boolean;
+  setIsHovered: Dispatch<React.SetStateAction<boolean>>;
+  toggleMobileMenu: () => void;
+  isLinkActive: (link: string) => boolean;
+}) {
   return (
     <div className="w-full z-50 h-screen transition-transform transform ease-in-out duration-500 translate-x-0 p-2 flex justify-end">
       <div className="navbar-backdrop fixed bg-gray-800 opacity-25"></div>
@@ -146,7 +164,7 @@ function MobileNavbar(
         </div>
       </nav>
     </div>
-  )
+  );
 }
 
 export default Navbar;
