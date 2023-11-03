@@ -18,11 +18,7 @@ export default function FooterSection() {
               </a>
             </li>
             <li className="hover:text-white/50">
-              <a
-                target="_blank"
-                rel="noreferrer noopener"
-                href={SLACK_INVITE}
-              >
+              <a target="_blank" rel="noreferrer noopener" href={SLACK_INVITE}>
                 Slack
               </a>
             </li>
