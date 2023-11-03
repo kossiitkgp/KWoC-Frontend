@@ -2,13 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
-    clipPath:{
-      polygonDesign: "polygon(50% 0%, 80% 100px, 100% 0, 100% 100%, 80% 100%, 48% 100%, 24% 100%, 0 100%, 0 0, 21% 80px)",
-      polygonDesignSmall: "polygon(50% 0%, 80% 50px, 100% 0, 100% 100%, 80% 100%, 48% 100%, 24% 100%, 0 100%, 0 0, 21% 40px)",
+    clipPath: {
+      polygonDesign:
+        "polygon(50% 0%, 80% 100px, 100% 0, 100% 100%, 80% 100%, 48% 100%, 24% 100%, 0 100%, 0 0, 21% 80px)",
+      polygonDesignSmall:
+        "polygon(50% 0%, 80% 50px, 100% 0, 100% 100%, 80% 100%, 48% 100%, 24% 100%, 0 100%, 0 0, 21% 40px)",
     },
     extend: {},
   },
-  plugins: [
-    require('tailwind-clip-path'),
-  ],
-}
+  plugins: [require("tailwind-clip-path")],
+};
