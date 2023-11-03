@@ -36,7 +36,7 @@ function Navbar() {
             <img
               className="object-contain h-12 w-12"
               src={kwoc_logo}
-              alt="kwoc-logo"
+              alt="KWoC Logo"
             />
           </span>
         </div>
@@ -91,8 +91,8 @@ function Navbar() {
                 <img
                   className="object-contain h-12 w-12"
                   src={kwoc_logo}
-                  alt="kwoc-logo"
-                ></img>
+                  alt="KWoC Logo"
+                />
               </span>
               <button onClick={toggleMenu}>
                 <RiCloseLine size="2.5em" color="#3b82f6" />
