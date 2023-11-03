@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface Testimonial {
   name: string;
   role: string;
@@ -14,35 +16,28 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
   const { name, role, quote, imageLink, blogLink } = testimonial;
 
   const cardStyle = {
-    width: '900px',
     border: '1px solid #000',
     borderRadius: '10px',
     padding: '16px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     transition: 'transform 0.2s ease-in-out',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    alignItems: 'center', // Vertically center the content
+    justifyContent: 'space-between', // Align items left and right
   };
 
   const leftColumnStyle = {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    marginRight: '20px',
+    alignItems: 'center', // Center image and text vertically
+    marginRight: '20px', // Add space between image and text
   };
 
   const rightColumnStyle = {
-    flex: 1,
+    flex: 1, // Take remaining horizontal space
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center the elements in the right column
-    textAlign: 'center', // Center-align the text
-  };
-  const imageStyle = {
-    maxWidth: '150px', // Set the maximum width for the image
-    maxHeight: '150px', // Set the maximum height for the image
-    borderRadius: '50%', // Maintain rounded shape
+    alignItems: 'flex-end', // Right-align the quote and blog button
   };
 
   return (
@@ -52,16 +47,14 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ testimonial }) => {
           src={imageLink}
           alt={name}
           className="rounded-full"
-          style = {imageStyle}
         />
         <h3 className="text-zinc-400 text-2xl my-2">{name}</h3>
         <p className="text-zinc-300 text-sm mb-4">{role}</p>
       </div>
       <div style={rightColumnStyle}>
-        <p className="text-zinc-300 text-xl my-2">{quote}</p>
+        <p className="text-zinc-300 text-2xl my-2">{quote}</p>
         <a href={blogLink} target="_blank" rel="noopener noreferrer">
           <div className="px-4 py-2 bg-white/20 rounded-lg hover:bg-white/10 hover:text-black hover:shadow-md transition-all duration-300 ease-in-out">
-            
             <p className="text-white text-center font-bold">Blog</p>
           </div>
         </a>
