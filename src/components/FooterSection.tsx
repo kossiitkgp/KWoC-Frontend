@@ -1,4 +1,4 @@
-import { DISCORD_INVITE, SLACK_INVITE } from "../util/constants";
+import { DISCORD_INVITE, ROUTER_PATHS, SLACK_INVITE } from "../util/constants";
 
 export default function FooterSection() {
   return (
@@ -47,13 +47,13 @@ export default function FooterSection() {
           <h3 className="text-2xl mb-3">Quick Links</h3>
           <ul>
             <li className="hover:text-white/50">
-              <a href="/#tline">Timeline</a>
+              <a href="#timeline">Timeline</a>
             </li>
             <li className="hover:text-white/50">
-              <a href="/FAQ">FAQ</a>
+              <a href={ROUTER_PATHS.FAQ}>FAQ</a>
             </li>
             <li className="hover:text-white/50">
-              <a href="/#about">About KWoC</a>
+              <a href="#about">About KWoC</a>
             </li>
           </ul>
         </div>

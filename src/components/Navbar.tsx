@@ -5,6 +5,7 @@ import { RiCloseLine } from 'react-icons/ri';
 import { CiLogin } from 'react-icons/ci';
 import { IconContext } from "react-icons";
 import kwoc_logo from '../assets/kwoc_logo.png';
+import { ROUTER_PATHS } from '../util/constants';
 
 function Navbar() {
   useEffect(() => {
@@ -83,11 +84,11 @@ function Navbar() {
   const [isHovered, setIsHovered] = useState(false);
 
   const Links = [
-    { name: "HOME", link: "/" },
-    { name: "MENTOR", link: "/MentorForm" },
-    { name: "PROJECTS", link: "/Projects" },
-    { name: "TESTIMONIALS", link: "/Testimonials" },
-    { name: "FAQs", link: "/FAQ" },
+    { name: "HOME", link: ROUTER_PATHS.HOME },
+    { name: "MENTOR", link: ROUTER_PATHS.MENTOR_FORM },
+    { name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
+    { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
+    { name: "FAQs", link: ROUTER_PATHS.FAQ },
   ];
 
   const toggleMenu = () => {
