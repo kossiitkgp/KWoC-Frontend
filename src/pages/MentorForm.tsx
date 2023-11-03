@@ -5,7 +5,7 @@ return(
 <div className="w-full md:w-96 md:max-w-full mx-auto rounded-md">
   <div className="p-10 border border-slate-700 sm:rounded-md">
     <form>
-      <h1 className="text-center text-3xl font-poppins italic text-white ">Mentor Form</h1>
+      <h1 className="text-center text-3xl font-poppins italic text-white mb-10 ">Mentor Form</h1>
       <label className="block mb-6">
           <span className="text-white">Full Name</span>
           <input
@@ -16,7 +16,7 @@ return(
             required
           />
         </label>
-        <label className="block mb-6">
+        <label className="block mb-10">
           <span className="text-white">Email address</span>
           <input
             name="email"
@@ -26,7 +26,7 @@ return(
             required
           />
         </label>
-        <div className="mb-6 text-center">
+        <div className="mb-4 text-center">
           <button
             type="submit"
             className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
