@@ -5,7 +5,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { CiLogin } from "react-icons/ci";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
-import { ROUTER_PATHS } from "../util/constants";
+import { GH_OAUTH_URL, ROUTER_PATHS } from "../util/constants";
 
 function Navbar() {
   useEffect(() => {
@@ -141,7 +141,7 @@ function Navbar() {
               </li>
             ))}
             <IconContext.Provider value={{ size: "3em" }}>
-              <Link to="">
+              <Link to={GH_OAUTH_URL}>
                 <CiLogin
                   color="#dc2626"
                   className={`transition-transform transform ${
@@ -188,7 +188,7 @@ function Navbar() {
                   </li>
                 ))}
                 <IconContext.Provider value={{ size: "2.5em" }}>
-                  <Link to="" className="flex justify-end pr-2 pt-2">
+                  <Link to={GH_OAUTH_URL} className="flex justify-end pr-2 pt-2">
                     <CiLogin
                       color="#dc2626"
                       className={`transition-transform transform ${

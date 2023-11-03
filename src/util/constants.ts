@@ -28,3 +28,6 @@ export enum ROUTER_PATHS {
 export const DISCORD_INVITE = "https://discord.gg/efFwh6fnjk";
 export const SLACK_INVITE =
   "https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ";
+
+export const GH_OAUTH_CLIENT_ID = "70bd1016c30ac53696a2";
+export const GH_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GH_OAUTH_CLIENT_ID}&state=replacethiswithrandomtextlater`;
