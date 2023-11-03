@@ -10,7 +10,7 @@ import { ROUTER_PATHS } from "./util/constants";
 
 function App() {
   return (
-    <div className="App ">
+    <div className="App">
       <BrowserRouter>
         <AuthProvider>
           <Navbar />
