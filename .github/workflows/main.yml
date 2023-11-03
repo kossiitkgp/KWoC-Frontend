@@ -1,4 +1,4 @@
-name: Format code before push to default branches
+name: Format Code Using Prettier
 
 on:
   push:
@@ -7,18 +7,27 @@ on:
       - main
 
 jobs:
-  format:
+  main:
+    if: ${{ github.event.pusher.name != 'koss-service' }}
     runs-on: ubuntu-latest
+      
     steps:
       - name: Clone repository
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.KS_PAT }}
-      - uses: pnpm/action-setup@v2
+
+      - name: Install and Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8
-      - run: pnpm install
-      - run: pnpm format
+            
+      - name: Install pnpm dependencies
+        run: pnpm install
+          
+      - name: Format code
+        run: pnpm format
+
       - name: Configure SSH key
         env:
           SSH_PRIVATE_KEY: ${{ secrets.KS_SSH_PRIVATE_KEY }}
@@ -29,11 +38,19 @@ jobs:
           echo "$SSH_PUBLIC_KEY" > ~/.ssh/koss-service.pub
           chmod 600 ~/.ssh/koss-service
           chmod 600 ~/.ssh/koss-service.pub
+          
+      - name: Configure git
+        run: |
+          git config --global user.email "admin@kossiitkgp.org"
+          git config --global user.name "koss-service"
+          git config --global gpg.format ssh
+          git config --global user.signingkey ~/.ssh/koss-service.pub 
+        
       - name: Push
         run: |
-          git config --local user.email "admin@kossiitkgp.org"
-          git config --local user.name "koss-service"
-          git config gpg.format ssh
-          git config user.signingkey ~/.ssh/koss-service.pub
-          git commit -S -am "Apply prettier formatting"
-          git push
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -S -am "Applied prettier formatting"
+            git push
+          else
+            echo "No changes in $file."
+          fi
