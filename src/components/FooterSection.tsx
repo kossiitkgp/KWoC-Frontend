@@ -1,3 +1,5 @@
+import { DISCORD_INVITE, SLACK_INVITE } from "../util/constants";
+
 export default function FooterSection() {
   return (
     <div className="py-16 mx-1 sm:mx-10 rounded-md">
@@ -10,7 +12,7 @@ export default function FooterSection() {
               <a
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://twitter.com/kossiitkgp"
+                href={DISCORD_INVITE}
               >
                 Discord
               </a>
@@ -19,7 +21,7 @@ export default function FooterSection() {
               <a
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://twitter.com/kossiitkgp"
+                href={SLACK_INVITE}
               >
                 Slack
               </a>
