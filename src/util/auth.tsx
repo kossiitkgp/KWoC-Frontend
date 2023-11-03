@@ -6,12 +6,13 @@ import React, {
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserType } from "./types";
 
 interface IUserAuthData {
   username: string;
   name: string;
   email: string;
-  type: "student" | "mentor";
+  type: UserType;
 }
 
 interface ILocalStorageAuthObj {
@@ -33,7 +34,7 @@ interface IAuthContext {
   isAuthenticated: boolean;
   jwt: string;
   userData: IUserAuthData;
-  setUserType: (type: "student" | "mentor") => void;
+  setUserType: (type: UserType) => void;
   onLogin: (auth: ILocalStorageAuthObj) => void;
   onLogout: () => void;
 }
@@ -59,7 +60,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [userAuth, setUserAuth] =
     useState<ILocalStorageAuthObj>(DEFAULT_AUTH_OBJ);
 
-  const setUserType = (type: "student" | "mentor") => {
+  const setUserType = (type: UserType) => {
     setUserAuth({
       ...userAuth,
       userData: {

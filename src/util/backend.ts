@@ -1,13 +1,11 @@
 import { BACKEND_URL } from "./constants";
+import { IEndpointTypes, IHTTPMessage } from "./types";
 
-export interface IErrorResponse {
-  code: number;
-  message: string;
-}
+type AllowedBackendMethods = "get" | "post" | "put";
 
 async function makeBackendRequest(
   endpoint: string,
-  method: "get" | "post",
+  method: AllowedBackendMethods,
   jwt: string | null,
   body: Object | null,
 ): Promise<Response> {
@@ -26,30 +24,59 @@ async function makeBackendRequest(
         headers,
       });
     case "post":
+    case "put":
       return await fetch(`${BACKEND_URL}/${endpoint}/`, {
-        method: "post",
+        method,
         headers,
         body: JSON.stringify(body ?? {}),
       });
   }
 }
 
-export interface IOAuthResponse {
-  email: string;
-  is_new_user: boolean;
-  jwt: string;
-  name: string;
-  type: "student" | "mentor";
-  username: string;
+interface IOkResponse<T> {
+  is_ok: true;
+  status_code: 200;
+  response: T;
 }
-export async function makeOAuthRequest(
-  code: string,
-  type: "mentor" | "student",
-): Promise<IErrorResponse | IOAuthResponse> {
-  const response = await makeBackendRequest("oauth", "post", null, {
-    code,
-    type,
-  });
 
-  return (await response.json()) as IOAuthResponse | IErrorResponse;
+interface IErrorResponse {
+  is_ok: false;
+  status_code: number;
+  response: IHTTPMessage;
+}
+
+type BackendResponse<T> = IOkResponse<T> | IErrorResponse;
+
+export async function makeRequest<E extends keyof IEndpointTypes>(
+  endpoint: E,
+  method: AllowedBackendMethods,
+  params: IEndpointTypes[E]["request"] | null = null,
+  jwt: string | null = null,
+): Promise<BackendResponse<IEndpointTypes[E]["response"]>> {
+  const response = await makeBackendRequest(endpoint, method, jwt, params);
+
+  try {
+    if (response.ok) {
+      return {
+        is_ok: true,
+        status_code: 200,
+        response: await response.json(),
+      };
+    }
+
+    return {
+      is_ok: false,
+      status_code: response.status,
+      response: await response.json(),
+    };
+  } catch (e) {
+    return {
+      is_ok: false,
+      status_code: response.status,
+      response: {
+        status_code: response.status,
+        message: e as string,
+      },
+    };
+  }
 }

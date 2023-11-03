@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { makeOAuthRequest } from "../util/backend";
+import { makeRequest } from "../util/backend";
 import { useAuthContext } from "../util/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -10,12 +10,17 @@ function OAuth() {
 
   const loginHandler = async (oauthCode: string) => {
     // Assuming type is already set when login is started
-    const type = authContext.userData.type;
-    const auth = await makeOAuthRequest(oauthCode, type);
+    const userType = authContext.userData.type;
+    const authRes = await makeRequest("oauth", "post", {
+      code: oauthCode,
+      type: userType,
+    });
 
-    if ("code" in auth) {
-      setError(auth.message);
+    if (!authRes.is_ok) {
+      setError(authRes.response.message);
     } else {
+      const auth = authRes.response;
+
       authContext.onLogin({
         jwt: auth.jwt,
         userData: {
