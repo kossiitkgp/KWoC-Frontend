@@ -10,7 +10,7 @@ jobs:
   main:
     if: ${{ github.event.pusher.name != 'koss-service' }}
     runs-on: ubuntu-latest
-      
+
     steps:
       - name: Clone repository
         uses: actions/checkout@v3
@@ -21,10 +21,10 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: 8
-            
+
       - name: Install pnpm dependencies
         run: pnpm install
-          
+
       - name: Format code
         run: pnpm format
 
@@ -38,14 +38,14 @@ jobs:
           echo "$SSH_PUBLIC_KEY" > ~/.ssh/koss-service.pub
           chmod 600 ~/.ssh/koss-service
           chmod 600 ~/.ssh/koss-service.pub
-          
+
       - name: Configure git
         run: |
           git config --global user.email "admin@kossiitkgp.org"
           git config --global user.name "koss-service"
           git config --global gpg.format ssh
-          git config --global user.signingkey ~/.ssh/koss-service.pub 
-        
+          git config --global user.signingkey ~/.ssh/koss-service.pub
+
       - name: Push
         run: |
           if [ -n "$(git status --porcelain)" ]; then
