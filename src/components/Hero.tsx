@@ -118,20 +118,22 @@ function Hero() {
         </h3>
         <ManualButton />
         <div className="m-auto flex justify-center mt-10">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={0.5}
-            stroke="LightBlue"
-            className="w-12 h-12 animate-bounce"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
-            />
-          </svg>
+          <a href="#about">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={0.5}
+              stroke="LightBlue"
+              className="w-12 h-12 animate-bounce"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </div>
