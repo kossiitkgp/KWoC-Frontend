@@ -2,14 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      dropShadow: {
-        glow: [
-          "0 0px 20px rgba(255,255, 255, 0.7)",
-          "0 0px 65px rgba(255, 255,255, 0.8)",
-        ],
-      },
+    clipPath: {
+      polygonDesign:
+        "polygon(50% 0%, 80% 100px, 100% 0, 100% 100%, 80% 100%, 48% 100%, 24% 100%, 0 100%, 0 0, 21% 80px)",
+      polygonDesignSmall:
+        "polygon(50% 0%, 80% 50px, 100% 0, 100% 100%, 80% 100%, 48% 100%, 24% 100%, 0 100%, 0 0, 21% 40px)",
     },
+    extend: {},
   },
-  plugins: [],
+  plugins: [require("tailwind-clip-path")],
 };
