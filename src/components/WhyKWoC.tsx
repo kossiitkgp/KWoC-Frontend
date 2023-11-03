@@ -8,18 +8,18 @@ export default function WhyKWoC() {
       </h1>
       <div className="flex flex-col lg:flex-row items-stretch px-8 m-auto mt-10 w-[90%]">
         <Card
-          header="Intro to Open Source"
-          content="KWoC provides a great opportunity to get acquainted with Github along with Git commands and contribute to open source efficiently. Brush up your coding skills"
+          header={<span>Intro to<br/>Open Source</span>}
+          content="Get started with open source collaboration. Hone programmer skills with Git and GitHub. Make meaningful contributions guided by mentors. Build a portfolio showcasing your talents."
         />
 
         <Card
-          header="Prepare for GSoC"
-          content="With KWoC, you get to know about how to select a project, interact with mentors and learn all other things that prepare you in the best way for the next GSoC."
+          header={<span>Prepare for<br/>GSoC</span>}
+          content="Research organizations and connect with mentors. Create quality proposals and sharpen skills. Gain insider tips to boost your GSoC chances. Open doors through impressive abilities."
         />
 
         <Card
-          header="Exciting goodies"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+          header={<span>Win Exciting<br/>Goodies</span>}
+          content={<span>Top performers in KWoC also have the opportunity to win fantastic prizes and rewards from <a className="text-blue-500 font-semibold hover:text-blue-600" href="https://fossunited.org" target="_blank">FOSS United</a>, making their participation even more rewarding.</span>}
         />
       </div>
     </>
