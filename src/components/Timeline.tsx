@@ -78,7 +78,7 @@ function Timeline() {
       <div className="flex justify-center mb-1/10 px-5">
         <svg
           id="timeline-svg"
-          className="sm:w-full md:w-7/12 lg:w-4/12"
+          className="w-full md:w-7/12 lg:w-4/12"
           viewBox="0 0 400 1760"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
