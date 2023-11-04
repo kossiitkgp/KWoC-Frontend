@@ -23,13 +23,13 @@ function Timeline() {
         transformOrigin: 'center',
         ease: "elastic(1.5, 1)"
       }})
-      .to(".dot1", {}, 0.10)
-      .to(".dot2", {}, 0.25)
-      .to(".dot3", {}, 0.38)
-      .to(".dot4", {}, 0.53)
-      .to(".dot5", {}, 0.67)
-      .to(".dot6", {}, 0.81)
-      .to(".dot7", {}, 0.93)
+      .to("#tl-dot1", {}, 0.10)
+      .to("#tl-dot2", {}, 0.25)
+      .to("#tl-dot3", {}, 0.38)
+      .to("#tl-dot4", {}, 0.53)
+      .to("#tl-dot5", {}, 0.67)
+      .to("#tl-dot6", {}, 0.81)
+      .to("#tl-dot7", {}, 0.93)
 
     const main = gsap.timeline({defaults: {duration: 1},
       scrollTrigger: {
@@ -96,7 +96,7 @@ function Timeline() {
 }
 
 function TimelineDot({id, cx, cy, r, visible}: {id: number, cx: number, cy: number, r: number, visible?: boolean}) {
-  return <circle className={`dot${id}`} visibility={visible ? undefined : 'hidden'} cx={cx} cy={cy} r={r} fill="white"/>
+  return <circle id={`tl-dot${id}`} visibility={visible ? undefined : 'hidden'} cx={cx} cy={cy} r={r} fill="white"/>
 }
 
 function TheLine({d}: {d: string}) {
