@@ -1,9 +1,9 @@
 export default function About() {
   return (
     <>
+      <div id="about" className="w-0" style={{transform: 'translateY(-50px'}} />
       <h1
-        id="about"
-        className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl"
+        className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-12 lg:text-8xl"
       >
         ABOUT
       </h1>
