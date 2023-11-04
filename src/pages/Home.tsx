@@ -49,8 +49,8 @@ function Home() {
       <section className="bg-black/60 py-32 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
         <About />
         <WhyKWoC />
-        <JoinOurCommunity />
         <Timeline />
+        <JoinOurCommunity />
       </section>
     </>
   );
