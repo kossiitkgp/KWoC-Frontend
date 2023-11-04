@@ -1,34 +1,34 @@
 [
-	{
-		"date": "08 November 2023",
-		"event": "Mentor Registration Begins"
-	},
-	{
-		"date": "15 November 2023",
-		"event": "Student Registration Begins"
-	},
-	{
-		"date": "02 December 2023",
-		"event": "Coding Period Starts"
-	},
-	{
-		"date": "09 December 2023",
-		"event": "All Registrations Close"
-	},
-	{
-		"date": "16 December 2023",
-		"event": "Mid Evaluations"
-	},
-	{
-		"date": "31 December 2023",
-		"event": "Coding Period Ends"
-	},
-	{
-		"date": "07 January 2024",
-		"event": "Final Submission Deadline"
-	},
-	{
-		"date": "21 January 2024",
-		"event": "Results Declared"
-	}
+  {
+    "date": "08 November 2023",
+    "event": "Mentor Registration Begins"
+  },
+  {
+    "date": "15 November 2023",
+    "event": "Student Registration Begins"
+  },
+  {
+    "date": "02 December 2023",
+    "event": "Coding Period Starts"
+  },
+  {
+    "date": "09 December 2023",
+    "event": "All Registrations Close"
+  },
+  {
+    "date": "16 December 2023",
+    "event": "Mid Evaluations"
+  },
+  {
+    "date": "31 December 2023",
+    "event": "Coding Period Ends"
+  },
+  {
+    "date": "07 January 2024",
+    "event": "Final Submission Deadline"
+  },
+  {
+    "date": "21 January 2024",
+    "event": "Results Declared"
+  }
 ]
