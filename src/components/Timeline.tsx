@@ -75,12 +75,12 @@ function Timeline() {
       <h1 className="text-zinc-300 text-center  mb-24 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl lg:mb-36">
         TIMELINE
       </h1>
-      <div className="flex justify-center mb-1/10">
+      <div className="flex justify-center mb-1/10 px-5">
         <svg
           id="timeline-svg"
-          width="410"
+          width="50%"
           height="1760"
-          viewBox="0 0 392 1760"
+          viewBox="0 0 400 1760"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
