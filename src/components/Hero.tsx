@@ -6,10 +6,10 @@ import StarsBG from "../assets/stars.png";
 function ManualButton() {
   return (
     <div className="flex justify-center">
-      <button className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+      <button className="text-white focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 hover:bg-gray-700 focus:ring-gray-700 border-gray-700">
         Student Manual
       </button>
-      <button className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+      <button className="text-white focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 hover:bg-gray-700 focus:ring-gray-700 border-gray-700">
         Mentor Manual
       </button>
     </div>
@@ -101,7 +101,7 @@ function Hero() {
       <div className="m-auto">
         <h1
           data-value="KWoC 23"
-          className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-gray-900 text-[60px] sm:text-[120px] lg:text-[156px] dark:text-white"
+          className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-[60px] sm:text-[120px] lg:text-[156px] text-white"
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
           style={{
@@ -113,7 +113,7 @@ function Hero() {
         >
           {text}
         </h1>
-        <h3 className="justify-center text-center mb-16 font-extrabold leading-none tracking-tight text-gray-900 text-[20px] lg:text-[35px] dark:text-white">
+        <h3 className="justify-center text-center mb-16 font-extrabold leading-none tracking-tight text-[20px] lg:text-[35px] text-white">
           For the love of open source!
         </h3>
         <ManualButton />
