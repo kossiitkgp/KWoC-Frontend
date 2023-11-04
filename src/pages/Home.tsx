@@ -7,6 +7,7 @@ import snowflake_particle1 from "../assets/snowflake1.svg";
 import snowflake_particle2 from "../assets/snowflake2.svg";
 import snowflake_particle3 from "../assets/snowflake3.svg";
 import JoinOurCommunity from "../components/JoinOurCommunity";
+import Timeline from "../components/Timeline";
 
 const snowflake_images = [
   snowflake_particle1,
@@ -48,6 +49,7 @@ function Home() {
       <section className="bg-black/60 py-32 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
         <About />
         <WhyKWoC />
+        <Timeline />
         <JoinOurCommunity />
       </section>
     </>
