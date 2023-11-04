@@ -7,8 +7,6 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 gsap.registerPlugin(ScrollTrigger, Draggable, MotionPathPlugin);
 gsap.defaults({ease: "none", duration: 2});
 
-type Coordinate = [number, number];
-
 function Timeline() {
   useEffect(() => {
     const linePath = document.querySelector(".theLine") as SVGPathElement;
@@ -25,13 +23,13 @@ function Timeline() {
         transformOrigin: 'center',
         ease: "elastic(1.5, 1)"
       }})
-      .to(".ball02", {}, 0.10)
-      .to(".ball03", {}, 0.25)
-      .to(".ball04", {}, 0.38)
-      .to(".ball05", {}, 0.53)
-      .to(".ball06", {}, 0.67)
-      .to(".ball07", {}, 0.81)
-      .to(".ball08", {}, 0.93)
+      .to(".dot1", {}, 0.10)
+      .to(".dot2", {}, 0.25)
+      .to(".dot3", {}, 0.38)
+      .to(".dot4", {}, 0.53)
+      .to(".dot5", {}, 0.67)
+      .to(".dot6", {}, 0.81)
+      .to(".dot7", {}, 0.93)
 
     const main = gsap.timeline({defaults: {duration: 1},
       scrollTrigger: {
@@ -66,14 +64,14 @@ function Timeline() {
 
         <TheLine d="M39.5 34.5 C340.333 188.333 403.5 260.5 286.5 334 C115.03 441.718 56.9995 485.5 56.9995 518.5 C56.9995 639 608 716.5 267 842 C171 877.331 -74.3463 984.362 160 1107.5 C435 1252 493.162 1227.01 137 1412 C-53 1510.69 110 1576 380.5 1734" />
 
-        <circle className="ball01" cx="39.5" cy="34.5" r="22.5" fill="white"/>
-        <circle className="ball02" visibility={'hidden'} cx="339.5" cy="277.5" r="7.5" fill="#808080"/>
-        <circle className="ball03" visibility={'hidden'} cx="57.5001" cy="520.5" r="7.5" fill="#808080"/>
-        <circle className="ball04" visibility={'hidden'} cx="378.5" cy="763.5" r="7.5" fill="#808080"/>
-        <circle className="ball05" visibility={'hidden'} cx="62.5001" cy="1007.5" r="7.5" fill="#808080"/>
-        <circle className="ball06" visibility={'hidden'} cx="384.5" cy="1249.5" r="7.5" fill="#808080"/>
-        <circle className="ball07" visibility={'hidden'} cx="54.5" cy="1492.5" r="7.5" fill="#808080"/>
-        <circle className="ball08" visibility={'hidden'} cx="380.5" cy="1734.5" r="7.5" fill="#808080"/>
+        <TimelineDot id={0} cx={39.5} cy={22.5} r={22.5} visible={true} />
+        <TimelineDot id={1} cx={339.5} cy={277.5} r={7.5} />
+        <TimelineDot id={2} cx={57.5001} cy={520.5} r={7.5} />
+        <TimelineDot id={3} cx={378.5} cy={763.5} r={7.5} />
+        <TimelineDot id={4} cx={62.5001} cy={1007.5} r={7.5} />
+        <TimelineDot id={5} cx={384.5} cy={1249.5} r={7.5} />
+        <TimelineDot id={6} cx={54.5} cy={1492.5} r={7.5} />
+        <TimelineDot id={7} cx={380.5} cy={1734.5} r={7.5} />
 
         <text fill="white" font-family="Cantarell" font-size="25" font-weight="500" letter-spacing="0em"><tspan x="171.476" y="27.1558">8 November 2023</tspan></text>
         <text fill="white" font-family="Roboto" font-size="15" letter-spacing="0em"><tspan x="192.193" y="56.127">Mentor Registrations Begins</tspan></text>
@@ -95,6 +93,10 @@ function Timeline() {
       </div>
     </div>
   );
+}
+
+function TimelineDot({id, cx, cy, r, visible}: {id: number, cx: number, cy: number, r: number, visible?: boolean}) {
+  return <circle className={`dot${id}`} visibility={visible ? undefined : 'hidden'} cx={cx} cy={cy} r={r} fill="white"/>
 }
 
 function TheLine({d}: {d: string}) {
