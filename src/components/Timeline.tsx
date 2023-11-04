@@ -4,48 +4,45 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Draggable } from "gsap/Draggable";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
-
-
 gsap.registerPlugin(ScrollTrigger, Draggable, MotionPathPlugin);
 gsap.defaults({ease: "none", duration: 2});
 
+type Coordinate = [number, number];
 
 function Timeline() {
-  
   useEffect(() => {
-    
     const linePath = document.querySelector(".theLine") as SVGPathElement;
     const len = linePath.getTotalLength();
     linePath.style.strokeDasharray = len + " " + len;
     linePath.style.strokeDashoffset = len.toString();
-    
+
     const pulses = gsap.timeline({
       defaults: {
-        duration: 0.5, 
-        autoAlpha: 1, 
+        duration: 0.5,
+        autoAlpha: 1,
         fill: "white",
         scale: 2,
-        transformOrigin: 'center', 
+        transformOrigin: 'center',
         ease: "elastic(1.5, 1)"
       }})
-      .to(".ball02", {}, 0.10) 
+      .to(".ball02", {}, 0.10)
       .to(".ball03", {}, 0.25)
       .to(".ball04", {}, 0.38)
       .to(".ball05", {}, 0.53)
       .to(".ball06", {}, 0.67)
       .to(".ball07", {}, 0.81)
       .to(".ball08", {}, 0.93)
-        
+
     const main = gsap.timeline({defaults: {duration: 1},
       scrollTrigger: {
-        trigger: "#svg",
+        trigger: "#timeline-svg",
         scrub: true,
         start: "top 200",
         end: "bottom",
       }})
     .to(".theLine", {strokeDashoffset: 0}, 0)
     .add(pulses, 0);
-    
+
     return () => {
       main.kill();
       pulses.kill();
@@ -56,9 +53,7 @@ function Timeline() {
     <div className=" mb-60">
       <h1 className="text-zinc-300 text-center  mb-24 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl lg:mb-36">TIMELINE</h1>
       <div className="flex justify-center mb-1/10">
-        <svg id="svg" width="410" height="1760" viewBox="0 0 392 1760" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M36.9996 35C340.333 188.333 403.5 260.5 286.5 334C115.03 441.718 56.9995 485.5 56.9995 518.5C56.9995 639 608 716.5 267 842C171 877.331 -74.3463 984.362 160 1107.5C435 1252 493.162 1227.01 137 1412C-53 1510.69 110 1576 380.5 1734" stroke="#808080" stroke-width="10" stroke-linecap="round"/>
-        <path className="theLine" d="M36.9996 35C340.333 188.333 403.5 260.5 286.5 334C115.03 441.718 56.9995 485.5 56.9995 518.5C56.9995 639 608 716.5 267 842C171 877.331 -74.3463 984.362 160 1107.5C435 1252 493.162 1227.01 137 1412C-53 1510.69 110 1576 380.5 1734" stroke="white" stroke-width="10" stroke-linecap="round"/>
+        <svg id="timeline-svg" width="410" height="1760" viewBox="0 0 392 1760" fill="none" xmlns="http://www.w3.org/2000/svg">
 
         <path d="M39 35L382 35" stroke="#808080" stroke-width="2"/>
         <path d="M3.50012 278H338.5" stroke="#808080" stroke-width="2"/>
@@ -68,6 +63,18 @@ function Timeline() {
         <path d="M58.5001 1736H381.5" stroke="#808080" stroke-width="2"/>
         <path d="M58.5001 1250H381.5" stroke="#808080" stroke-width="2"/>
         <path d="M58.5001 1007H381.5" stroke="#808080" stroke-width="2"/>
+
+        <TheLine d="M39.5 34.5 C340.333 188.333 403.5 260.5 286.5 334 C115.03 441.718 56.9995 485.5 56.9995 518.5 C56.9995 639 608 716.5 267 842 C171 877.331 -74.3463 984.362 160 1107.5 C435 1252 493.162 1227.01 137 1412 C-53 1510.69 110 1576 380.5 1734" />
+
+        <circle className="ball01" cx="39.5" cy="34.5" r="22.5" fill="white"/>
+        <circle className="ball02" visibility={'hidden'} cx="339.5" cy="277.5" r="7.5" fill="#808080"/>
+        <circle className="ball03" visibility={'hidden'} cx="57.5001" cy="520.5" r="7.5" fill="#808080"/>
+        <circle className="ball04" visibility={'hidden'} cx="378.5" cy="763.5" r="7.5" fill="#808080"/>
+        <circle className="ball05" visibility={'hidden'} cx="62.5001" cy="1007.5" r="7.5" fill="#808080"/>
+        <circle className="ball06" visibility={'hidden'} cx="384.5" cy="1249.5" r="7.5" fill="#808080"/>
+        <circle className="ball07" visibility={'hidden'} cx="54.5" cy="1492.5" r="7.5" fill="#808080"/>
+        <circle className="ball08" visibility={'hidden'} cx="380.5" cy="1734.5" r="7.5" fill="#808080"/>
+
         <text fill="white" font-family="Cantarell" font-size="25" font-weight="500" letter-spacing="0em"><tspan x="171.476" y="27.1558">8 November 2023</tspan></text>
         <text fill="white" font-family="Roboto" font-size="15" letter-spacing="0em"><tspan x="192.193" y="56.127">Mentor Registrations Begins</tspan></text>
         <text fill="white" font-family="Cantarell" font-size="25" font-weight="500" letter-spacing="0em"><tspan x="156" y="999.156">16 December 2023</tspan></text>
@@ -84,18 +91,17 @@ function Timeline() {
         <text fill="white" font-family="Cantarell" font-size="15" font-weight="500" letter-spacing="0em"><tspan x="4" y="298.293">Student Registration Begins </tspan></text>
         <text fill="white" font-family="Cantarell" font-size="25" font-weight="500" letter-spacing="0em"><tspan x="56" y="756.156">9 December 2023</tspan></text>
         <text fill="white" font-family="Cantarell" font-size="15" font-weight="500" letter-spacing="0em"><tspan x="56" y="782.293">Student and Mentor Registrations </tspan><tspan x="56" y="803.293">Close</tspan></text>
-        <circle className="ball01" cx="39.5" cy="34.5" r="22.5" fill="white"/>
-        <circle className="ball02" visibility={'hidden'} cx="339.5" cy="277.5" r="7.5" fill="#808080"/>
-        <circle className="ball03" visibility={'hidden'} cx="57.5001" cy="520.5" r="7.5" fill="#808080"/>
-        <circle className="ball04" visibility={'hidden'} cx="378.5" cy="763.5" r="7.5" fill="#808080"/>
-        <circle className="ball05" visibility={'hidden'} cx="62.5001" cy="1007.5" r="7.5" fill="#808080"/>
-        <circle className="ball06" visibility={'hidden'} cx="384.5" cy="1249.5" r="7.5" fill="#808080"/>
-        <circle className="ball07" visibility={'hidden'} cx="54.5" cy="1492.5" r="7.5" fill="#808080"/>
-        <circle className="ball08" visibility={'hidden'} cx="380.5" cy="1734.5" r="7.5" fill="#808080"/>
         </svg>
       </div>
     </div>
   );
+}
+
+function TheLine({d}: {d: string}) {
+  return <>
+    <path d={d} stroke="#808080" stroke-width="10" stroke-linecap="round" />
+    <path className="theLine" d={d} stroke="white" stroke-width="10" stroke-linecap="round" />
+  </>
 }
 
 export default Timeline;
