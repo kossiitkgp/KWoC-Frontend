@@ -1,15 +1,16 @@
-import { Dispatch, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
+import { CgProfile } from "react-icons/cg";
 import { CiLogin } from "react-icons/ci";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
 import { GH_OAUTH_URL, ROUTER_PATHS } from "../util/constants";
+import { useAuthContext } from "../util/auth";
 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
-  { name: "MENTOR", link: ROUTER_PATHS.MENTOR_FORM },
   { name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
   { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
@@ -39,28 +40,19 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
   ));
 }
 
-function LoginButton({
-  isMobile,
-  isHovered,
-  setIsHovered,
-}: {
-  isMobile: boolean;
-  isHovered: boolean;
-  setIsHovered: (isHovered: boolean) => void;
-}) {
+function LoginButton({isMobile}: {isMobile: boolean}) {
+  const authContext = useAuthContext();
+
   return (
     <Link
-      to={GH_OAUTH_URL}
+      to={authContext.isAuthenticated ? authContext.dashboardLink : GH_OAUTH_URL}
       className={isMobile ? "flex justify-end pr-2 pt-2" : ""}
     >
-      <CiLogin
-        color="#dc2626"
-        className={`transition-transform transform ${
-          isHovered ? "drop-shadow-glow scale-110" : "scale-100"
-        }`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      />
+      {
+        authContext.isAuthenticated ?
+        <CgProfile color="#dc2626" /> :
+        <CiLogin color="#dc2626" />
+      }
     </Link>
   );
 }
@@ -70,7 +62,6 @@ function Navbar() {
   const isLinkActive = (path: string) => location.pathname === path;
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -102,11 +93,9 @@ function Navbar() {
           >
             {LinksList(isLinkActive, false)}
 
-            <IconContext.Provider value={{ size: "3em" }}>
+            <IconContext.Provider value={{ size: "2.3em" }}>
               <LoginButton
                 isMobile={false}
-                isHovered={isHovered}
-                setIsHovered={setIsHovered}
               />
             </IconContext.Provider>
           </ul>
@@ -115,8 +104,6 @@ function Navbar() {
 
       {mobileMenuOpen && (
         <MobileNavbar
-          isHovered={isHovered}
-          setIsHovered={setIsHovered}
           toggleMobileMenu={toggleMobileMenu}
           isLinkActive={isLinkActive}
         />
@@ -126,13 +113,9 @@ function Navbar() {
 }
 
 function MobileNavbar({
-  isHovered,
-  setIsHovered,
   toggleMobileMenu,
   isLinkActive,
 }: {
-  isHovered: boolean;
-  setIsHovered: Dispatch<React.SetStateAction<boolean>>;
   toggleMobileMenu: () => void;
   isLinkActive: (link: string) => boolean;
 }) {
@@ -156,8 +139,6 @@ function MobileNavbar({
             <IconContext.Provider value={{ size: "2.5em" }}>
               <LoginButton
                 isMobile={true}
-                isHovered={isHovered}
-                setIsHovered={setIsHovered}
               />
             </IconContext.Provider>
           </ul>

@@ -106,6 +106,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (lsAuthKey !== null) {
       const auth = JSON.parse(lsAuthKey) as ILocalStorageAuthObj;
       setUserAuth(auth);
+
+      if(auth.jwt !== "") setIsAuthenticated(true);
     }
   }, [navigate]);
 
