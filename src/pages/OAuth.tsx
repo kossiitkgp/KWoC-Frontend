@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { makeRequest } from "../util/backend";
 import { useAuthContext } from "../util/auth";
 import { useNavigate } from "react-router-dom";
+import { ROUTER_PATHS } from "../util/constants";
 
 function OAuth() {
   const authContext = useAuthContext();
@@ -31,7 +32,15 @@ function OAuth() {
         },
       });
 
-      navigate(`/${auth.type}/${auth.is_new_user ? "form" : "dashboard"}`);
+      switch (auth.type) {
+        case 'student':
+          navigate(auth.is_new_user ? ROUTER_PATHS.STUDENT_FORM : ROUTER_PATHS.STUDENT_DASHBOARD);
+          break;
+
+        case 'mentor':
+          navigate(auth.is_new_user ? ROUTER_PATHS.MENTOR_FORM : ROUTER_PATHS.MENTOR_DASHBOARD);
+          break;
+      }
     }
   };
 
