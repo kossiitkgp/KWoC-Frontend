@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { makeRequest } from "../util/backend";
 import { useAuthContext } from "../util/auth";
 import { useNavigate } from "react-router-dom";
-import { ROUTER_PATHS } from "../util/constants";
 
 function OAuth() {
   const authContext = useAuthContext();
