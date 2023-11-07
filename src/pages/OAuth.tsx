@@ -32,7 +32,7 @@ function OAuth() {
           },
         });
 
-        navigate(auth.is_new_user ? authContext.formLink : authContext.dashboardLink);
+        navigate(auth.is_new_user ? `${authContext.formLink}?register=true` : authContext.dashboardLink);
       }
     }
     catch (e) {
