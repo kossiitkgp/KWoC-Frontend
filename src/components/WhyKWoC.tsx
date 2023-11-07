@@ -1,3 +1,4 @@
+import { FOSSU_WEBSITE_URL } from "../util/constants";
 import Card from "./Card";
 
 export default function WhyKWoC() {
@@ -43,7 +44,7 @@ export default function WhyKWoC() {
               prizes and rewards from{" "}
               <a
                 className="text-blue-500 font-semibold hover:text-blue-600"
-                href="https://fossunited.org"
+                href={FOSSU_WEBSITE_URL}
                 target="_blank"
               >
                 FOSS United

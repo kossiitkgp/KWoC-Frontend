@@ -1,4 +1,4 @@
-import { DISCORD_INVITE, ROUTER_PATHS, SLACK_INVITE } from "../util/constants";
+import { DISCORD_INVITE, KOSS_LINKEDIN_URL, KOSS_TWITTER_URL, KOSS_WEBSITE_URL, ROUTER_PATHS, SLACK_INVITE } from "../util/constants";
 
 export default function FooterSection() {
   return (
@@ -26,7 +26,7 @@ export default function FooterSection() {
               <a
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://www.linkedin.com/showcase/kharagpur-winter-of-code/posts/"
+                href={KOSS_LINKEDIN_URL}
               >
                 LinkedIn
               </a>
@@ -35,7 +35,7 @@ export default function FooterSection() {
               <a
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://twitter.com/kossiitkgp"
+                href={KOSS_TWITTER_URL}
               >
                 Twitter
               </a>
@@ -65,7 +65,7 @@ export default function FooterSection() {
               <a
                 target="_blank"
                 rel="noreferrer noopener"
-                href="https://kossiitkgp.org"
+                href={KOSS_WEBSITE_URL}
               >
                 About KOSS
               </a>
@@ -82,7 +82,7 @@ export default function FooterSection() {
           <a
             target="_blank"
             rel="noreferrer noopener"
-            href="https://kossiitkgp.org"
+            href={KOSS_WEBSITE_URL}
           >
             With &#10084; by KOSS
           </a>
