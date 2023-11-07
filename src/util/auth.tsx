@@ -61,9 +61,7 @@ export const useAuthContext = () => useContext(AuthContext);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
 
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    localStorage.getItem("jwt") !== null,
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userAuth, setUserAuth] =
     useState<ILocalStorageAuthObj>(DEFAULT_AUTH_OBJ);
   const [formLink, setFormLink] = useState(DEFAULT_AUTH_CONTEXT.formLink);
