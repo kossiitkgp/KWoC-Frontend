@@ -59,9 +59,9 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 
 	return (
 		<div className="pt-32 w-full md:w-96 md:max-w-full mx-auto rounded-md">
-			{props.error && <p>{props.error}</p>}
-			{props.info && <p>{props.info}</p>}
 			<div className="p-10 border border-slate-700 sm:rounded-md">
+				{props.error && <p>{props.error}</p>}
+				{props.info && <p>{props.info}</p>}
 				<form
 					onSubmit={async (e) => {
 						e.preventDefault();
