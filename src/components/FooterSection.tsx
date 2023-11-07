@@ -47,13 +47,13 @@ export default function FooterSection() {
           <h3 className="text-2xl mb-3">Quick Links</h3>
           <ul>
             <li className="hover:text-white/50">
-              <a href="#timeline">Timeline</a>
+              <a href={`${ROUTER_PATHS.HOME}#timeline`}>Timeline</a>
             </li>
             <li className="hover:text-white/50">
               <a href={ROUTER_PATHS.FAQ}>FAQ</a>
             </li>
             <li className="hover:text-white/50">
-              <a href="#about">About KWoC</a>
+              <a href={`${ROUTER_PATHS.HOME}#about`}>About KWoC</a>
             </li>
           </ul>
         </div>
