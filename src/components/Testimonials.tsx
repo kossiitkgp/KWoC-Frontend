@@ -15,21 +15,22 @@ export default function Testimonials() {
           What Developers think about us
         </h1>
         <Carousel
-          showArrows={true}
+          showArrows={false}
           infiniteLoop={true}
           showThumbs={false}
           showStatus={false}
           showIndicators={false}
           autoPlay={true}
           interval={2000}
+          swipeable={false}
         >
           {testimonialsDatatoRender.map((testimonial, index) => (
             <TestimonialCard key={index} testimonial={testimonial} />
           ))}
         </Carousel>
-        <div className="sm:w-1/5 m-auto text-center text-zinc-400 font-bold text-lg">
+        <div className="sm:w-1/5 m-auto text-center text-zinc-400 font-bold text-xl underline underline-offset-4">
           <a href="#" className="hover:text-zinc-300">
-            Know More
+            See More
           </a>
         </div>
       </div>
