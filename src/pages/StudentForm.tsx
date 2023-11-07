@@ -53,16 +53,29 @@ function StudentForm() {
         }
       }}
       onSubmit={async (responses) => {
+        setError(null);
+        setInfo(null);
+
         try {
-          const res = await makeRequest('student/form', isRegistering ? 'post' : 'put', {
-            username: authContext.userData.username,
-            name: responses.name,
-            email: responses.email,
-            college: responses.college
-          })
+          const res = await makeRequest(
+            'student/form',
+            isRegistering ? 'post' : 'put',
+            {
+              username: authContext.userData.username,
+              name: responses.name,
+              email: responses.email,
+              college: responses.college
+            },
+            authContext.jwt
+          )
 
           if (!res.is_ok) setError(res.response.message);
-          else setInfo('Information successfully changed.');
+          else {
+            if (isRegistering) {
+              navigate(authContext.dashboardLink);
+            }
+            else setInfo('Information successfully changed.');
+          }
 
           return res.is_ok;
         }
