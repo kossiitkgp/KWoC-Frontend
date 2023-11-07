@@ -54,6 +54,23 @@ const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   onLogout: () => {},
 };
 
+const getLsAuthObj = () => {
+  const lsAuthKey = localStorage.getItem("auth");
+
+  if (lsAuthKey !== null) {
+    const auth = JSON.parse(lsAuthKey) as ILocalStorageAuthObj;
+    return auth;
+  }
+
+  return null;
+};
+
+const getLsAuthJwt = () => {
+  const auth = getLsAuthObj();
+  if (auth === null) return null;
+  else return auth.jwt;
+};
+
 const AuthContext = createContext<IAuthContext>(DEFAULT_AUTH_CONTEXT);
 
 export const useAuthContext = () => useContext(AuthContext);
@@ -61,7 +78,9 @@ export const useAuthContext = () => useContext(AuthContext);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    getLsAuthJwt() !== null,
+  );
   const [userAuth, setUserAuth] =
     useState<ILocalStorageAuthObj>(DEFAULT_AUTH_OBJ);
   const [formLink, setFormLink] = useState(DEFAULT_AUTH_CONTEXT.formLink);
@@ -115,12 +134,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    const lsAuthKey = localStorage.getItem("auth");
+    const auth = getLsAuthObj();
 
-    if (lsAuthKey !== null) {
-      const auth = JSON.parse(lsAuthKey) as ILocalStorageAuthObj;
+    if (auth !== null) {
       setUserAuth(auth);
-
       if (auth.jwt !== "") setIsAuthenticated(true);
     }
   }, [navigate]);
