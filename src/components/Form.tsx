@@ -13,7 +13,9 @@ type Responses<S extends InputSettings> = MappedObject<S, string>;
 interface IFormProps<S extends InputSettings> {
 	title: string;
 	fields: S;
-	onSubmit: (responses: Responses<S>) => void;
+	error: string | null;
+	info: string | null;
+	onSubmit: (responses: Responses<S>) => Promise<boolean>;
 }
 
 function Form<S extends InputSettings>(props: IFormProps<S>) {
@@ -57,26 +59,31 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 
 	return (
 		<div className="pt-32 w-full md:w-96 md:max-w-full mx-auto rounded-md">
-		<div className="p-10 border border-slate-700 sm:rounded-md">
-			<form
-				onSubmit={(e) => {
-					e.preventDefault();
-					if (responsesChanged) props.onSubmit(responses);
-				}}
-			>
-			<h1 className="text-center text-3xl mb-10 ">{props.title}</h1>
-			{Object.values(inputs)}
-			<div className="mb-4 text-center">
-				<button
-					type="submit"
-					className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
-					disabled={!responsesChanged}
+			{props.error && <p>{props.error}</p>}
+			{props.info && <p>{props.info}</p>}
+			<div className="p-10 border border-slate-700 sm:rounded-md">
+				<form
+					onSubmit={async (e) => {
+						e.preventDefault();
+						if (responsesChanged) {
+							const isOk = await props.onSubmit(responses);
+							setResponsesChanged(!isOk);
+						}
+					}}
 				>
-				Submit
-				</button>
+				<h1 className="text-center text-3xl mb-10 ">{props.title}</h1>
+				{Object.values(inputs)}
+				<div className="mb-4 text-center">
+					<button
+						type="submit"
+						className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
+						disabled={!responsesChanged}
+					>
+					Submit
+					</button>
+				</div>
+				</form>
 			</div>
-			</form>
-		</div>
 		</div>
 	);
 }
