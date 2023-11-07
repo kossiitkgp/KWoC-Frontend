@@ -29,7 +29,8 @@ export const DISCORD_INVITE = "https://discord.gg/efFwh6fnjk";
 export const SLACK_INVITE =
   "https://join.slack.com/t/kwoc-koss/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ";
 export const KOSS_WEBSITE_URL = "https://kossiitkgp.org";
-export const KOSS_LINKEDIN_URL = "https://www.linkedin.com/company/kharagpur-open-source-society/";
+export const KOSS_LINKEDIN_URL =
+  "https://www.linkedin.com/company/kharagpur-open-source-society/";
 export const KOSS_TWITTER_URL = "https://twitter.com/kossiitkgp";
 export const FOSSU_WEBSITE_URL = "https://fossunited.org";
 
