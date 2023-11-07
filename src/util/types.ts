@@ -36,5 +36,5 @@ export interface IEndpointTypes {
       email: string;
     };
     response: IHTTPMessage;
-  }
+  };
 }

@@ -40,19 +40,21 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
   ));
 }
 
-function LoginButton({isMobile}: {isMobile: boolean}) {
+function LoginButton({ isMobile }: { isMobile: boolean }) {
   const authContext = useAuthContext();
 
   return (
     <Link
-      to={authContext.isAuthenticated ? authContext.dashboardLink : GH_OAUTH_URL}
+      to={
+        authContext.isAuthenticated ? authContext.dashboardLink : GH_OAUTH_URL
+      }
       className={isMobile ? "flex justify-end pr-2 pt-2" : ""}
     >
-      {
-        authContext.isAuthenticated ?
-        <CgProfile color="#dc2626" /> :
+      {authContext.isAuthenticated ? (
+        <CgProfile color="#dc2626" />
+      ) : (
         <CiLogin color="#dc2626" />
-      }
+      )}
     </Link>
   );
 }
@@ -94,9 +96,7 @@ function Navbar() {
             {LinksList(isLinkActive, false)}
 
             <IconContext.Provider value={{ size: "2.3em" }}>
-              <LoginButton
-                isMobile={false}
-              />
+              <LoginButton isMobile={false} />
             </IconContext.Provider>
           </ul>
         </div>
@@ -137,9 +137,7 @@ function MobileNavbar({
           <ul className="mr-4 text-right">
             {LinksList(isLinkActive, true)}
             <IconContext.Provider value={{ size: "2.5em" }}>
-              <LoginButton
-                isMobile={true}
-              />
+              <LoginButton isMobile={true} />
             </IconContext.Provider>
           </ul>
         </div>

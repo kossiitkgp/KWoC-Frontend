@@ -15,72 +15,74 @@ function MentorForm() {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
-    setIsRegistering(urlParams.get('register') !== null);
+    setIsRegistering(urlParams.get("register") !== null);
 
     if (!authContext.isAuthenticated) {
       navigate(ROUTER_PATHS.HOME);
     }
 
-    if (authContext.userData.type !== 'mentor') {
+    if (authContext.userData.type !== "mentor") {
       navigate(ROUTER_PATHS.HOME);
     }
-  }, [authContext])
+  }, [authContext]);
 
-  return <>
-    <Form
-      title={isRegistering ? 'Complete Registration' : 'Edit Your Information'}
-      error={error}
-      info={info}
-      fields={{
-        name: {
-          field: 'Name',
-          placeholder: 'Jane Doe',
-          type: 'text',
-          defaultValue: authContext.userData.name ?? '',
-          required: true
-        },
-        email: {
-          field: 'Email',
-          placeholder: 'jane.doe@example.com',
-          type: 'email',
-          defaultValue: authContext.userData.email ?? '',
-          required: true
+  return (
+    <>
+      <Form
+        title={
+          isRegistering ? "Complete Registration" : "Edit Your Information"
         }
-      }}
-      onSubmit={async (responses) => {
-        setError(null);
-        setInfo(null);
+        error={error}
+        info={info}
+        fields={{
+          name: {
+            field: "Name",
+            placeholder: "Jane Doe",
+            type: "text",
+            defaultValue: authContext.userData.name ?? "",
+            required: true,
+          },
+          email: {
+            field: "Email",
+            placeholder: "jane.doe@example.com",
+            type: "email",
+            defaultValue: authContext.userData.email ?? "",
+            required: true,
+          },
+        }}
+        onSubmit={async (responses) => {
+          setError(null);
+          setInfo(null);
 
-        try {
-          const res = await makeRequest(
-            'mentor/form',
-            isRegistering ? 'post' : 'put',
-            {
-              username: authContext.userData.username,
-              name: responses.name,
-              email: responses.email
-            },
-            authContext.jwt
-          )
+          try {
+            const res = await makeRequest(
+              "mentor/form",
+              isRegistering ? "post" : "put",
+              {
+                username: authContext.userData.username,
+                name: responses.name,
+                email: responses.email,
+              },
+              authContext.jwt,
+            );
 
-          if (!res.is_ok) setError(res.response.message);
-          else {
-            if (isRegistering) {
-              navigate(authContext.dashboardLink);
+            if (!res.is_ok) setError(res.response.message);
+            else {
+              if (isRegistering) {
+                navigate(authContext.dashboardLink);
+              } else setInfo("Information successfully changed.");
             }
-            else setInfo('Information successfully changed.');
-          }
 
-          return res.is_ok;
-        }
-        catch(e) {
-          setError('Error sending the request. Please try again later.');
-          console.log(e);
-          return false;
-        }
-      }}
-    />
-  </>
+            return res.is_ok;
+          } catch (e) {
+            setError("Error sending the request. Please try again later.");
+            console.log(e);
+            return false;
+          }
+        }}
+      />
+    </>
+  );
 }
 
 export default MentorForm;

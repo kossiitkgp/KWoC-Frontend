@@ -28,7 +28,7 @@ const DEFAULT_AUTH_OBJ: ILocalStorageAuthObj = {
     name: "",
     email: "",
     type: "student",
-  }
+  },
 };
 
 interface IAuthContext {
@@ -52,7 +52,7 @@ const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   setUserType: () => {},
   onLogin: () => {},
   onLogout: () => {},
-}
+};
 
 const AuthContext = createContext<IAuthContext>(DEFAULT_AUTH_CONTEXT);
 
@@ -65,7 +65,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [userAuth, setUserAuth] =
     useState<ILocalStorageAuthObj>(DEFAULT_AUTH_OBJ);
   const [formLink, setFormLink] = useState(DEFAULT_AUTH_CONTEXT.formLink);
-  const [dashboardLink, setDashboardLink] = useState(DEFAULT_AUTH_CONTEXT.dashboardLink);
+  const [dashboardLink, setDashboardLink] = useState(
+    DEFAULT_AUTH_CONTEXT.dashboardLink,
+  );
 
   const setUserType = (type: UserType) => {
     setUserAuth({
@@ -75,8 +77,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         type,
       },
     });
-    setFormLink(type === 'student' ? ROUTER_PATHS.STUDENT_FORM : ROUTER_PATHS.MENTOR_FORM);
-    setDashboardLink(type === 'student' ? ROUTER_PATHS.STUDENT_DASHBOARD : ROUTER_PATHS.MENTOR_DASHBOARD);
+    setFormLink(
+      type === "student" ? ROUTER_PATHS.STUDENT_FORM : ROUTER_PATHS.MENTOR_FORM,
+    );
+    setDashboardLink(
+      type === "student"
+        ? ROUTER_PATHS.STUDENT_DASHBOARD
+        : ROUTER_PATHS.MENTOR_DASHBOARD,
+    );
 
     localStorage.setItem("auth", JSON.stringify(userAuth));
   };
@@ -86,8 +94,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("auth", JSON.stringify(auth));
 
     setIsAuthenticated(true);
-    setFormLink(auth.userData.type === 'student' ? ROUTER_PATHS.STUDENT_FORM : ROUTER_PATHS.MENTOR_FORM);
-    setDashboardLink(auth.userData.type === 'student' ? ROUTER_PATHS.STUDENT_DASHBOARD : ROUTER_PATHS.MENTOR_DASHBOARD);
+    setFormLink(
+      auth.userData.type === "student"
+        ? ROUTER_PATHS.STUDENT_FORM
+        : ROUTER_PATHS.MENTOR_FORM,
+    );
+    setDashboardLink(
+      auth.userData.type === "student"
+        ? ROUTER_PATHS.STUDENT_DASHBOARD
+        : ROUTER_PATHS.MENTOR_DASHBOARD,
+    );
     setUserAuth(auth);
   };
 
@@ -105,7 +121,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const auth = JSON.parse(lsAuthKey) as ILocalStorageAuthObj;
       setUserAuth(auth);
 
-      if(auth.jwt !== "") setIsAuthenticated(true);
+      if (auth.jwt !== "") setIsAuthenticated(true);
     }
   }, [navigate]);
 

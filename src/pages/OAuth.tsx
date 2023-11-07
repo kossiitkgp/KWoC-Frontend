@@ -32,11 +32,14 @@ function OAuth() {
           },
         });
 
-        navigate(auth.is_new_user ? `${authContext.formLink}?register=true` : authContext.dashboardLink);
+        navigate(
+          auth.is_new_user
+            ? `${authContext.formLink}?register=true`
+            : authContext.dashboardLink,
+        );
       }
-    }
-    catch (e) {
-      setError('Error connecting to the server. Please try again later.');
+    } catch (e) {
+      setError("Error connecting to the server. Please try again later.");
       console.log(e);
     }
   };

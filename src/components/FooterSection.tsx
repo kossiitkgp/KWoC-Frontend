@@ -1,4 +1,11 @@
-import { DISCORD_INVITE, KOSS_LINKEDIN_URL, KOSS_TWITTER_URL, KOSS_WEBSITE_URL, ROUTER_PATHS, SLACK_INVITE } from "../util/constants";
+import {
+  DISCORD_INVITE,
+  KOSS_LINKEDIN_URL,
+  KOSS_TWITTER_URL,
+  KOSS_WEBSITE_URL,
+  ROUTER_PATHS,
+  SLACK_INVITE,
+} from "../util/constants";
 
 export default function FooterSection() {
   return (
@@ -79,11 +86,7 @@ export default function FooterSection() {
           Kharagpur Winter of Code
         </h1>
         <h2 className="text-center text-zinc-300 mb-4 text-xl font-extrabold leading-none tracking-tight mt-4">
-          <a
-            target="_blank"
-            rel="noreferrer noopener"
-            href={KOSS_WEBSITE_URL}
-          >
+          <a target="_blank" rel="noreferrer noopener" href={KOSS_WEBSITE_URL}>
             With &#10084; by KOSS
           </a>
         </h2>
