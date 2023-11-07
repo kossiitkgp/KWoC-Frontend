@@ -1,4 +1,4 @@
-import React, { ReactNode, createRef } from "react";
+import React, { ReactNode, useState } from "react";
 
 interface IObject<T> {
 	[name: string]: T;
@@ -18,16 +18,22 @@ interface IFormProps<S extends InputSettings> {
 
 function Form<S extends InputSettings>(props: IFormProps<S>) {
 	const inputProps: IObject<IFormInputProps> = {};
-	const responses: Responses<S> = {} as Responses<S>;
+	const default_responses: Responses<S> = {} as Responses<S>;
+	const [responses, setResponses] = useState<Responses<S>>(default_responses);
 	const inputs: ReactNode[] = [];
 
 	for (let name in props.fields) {
 		inputProps[name] = {
 			...props.fields[name],
-			inputRef: createRef<HTMLInputElement>()
+			onChange: (value) => {
+				setResponses({
+					...responses,
+					name: value
+				})
+			}
 		}
 
-		responses[name] = inputProps[name].defaultValue ?? '';
+		default_responses[name] = inputProps[name].defaultValue ?? '';
 
 		inputs.push(
 			<FormInput
@@ -40,7 +46,12 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 	return (
 		<div className="pt-32 w-full md:w-96 md:max-w-full mx-auto rounded-md">
 		<div className="p-10 border border-slate-700 sm:rounded-md">
-			<form>
+			<form
+				onSubmit={(e) => {
+					e.preventDefault();
+					props.onSubmit(responses);
+				}}
+			>
 			<h1 className="text-center text-3xl mb-10 ">{props.title}</h1>
 			{Object.values(inputs)}
 			<div className="mb-4 text-center">
@@ -66,7 +77,7 @@ interface IInputFields {
 }
 
 interface IFormInputProps extends IInputFields {
-	inputRef: React.RefObject<HTMLInputElement>;
+	onChange: (value: string) => void;
 }
 function FormInput(props: IFormInputProps) {
 	return (
@@ -74,11 +85,11 @@ function FormInput(props: IFormInputProps) {
 			<span className="text-white">{props.field}</span>
 			<input
 				type={props.type}
-				ref={props.inputRef}
 				className="block w-full mt-2 px-2 py-1 bg-gray-800 text-white border-slate-700 rounded-md shadow-sm focus:border-indigo-700 focus:ring focus:ring-indigo-700 focus:ring-opacity-50"
 				placeholder={props.placeholder}
 				required={props.required ?? false}
-				value={props.defaultValue ?? ''}
+				defaultValue={props.defaultValue ?? ''}
+				onChange={(e) => props.onChange(e.target.value)}
 			/>
 		</label>
 	);
