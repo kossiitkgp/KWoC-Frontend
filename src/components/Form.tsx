@@ -20,16 +20,28 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 	const inputProps: IObject<IFormInputProps> = {};
 	const default_responses: Responses<S> = {} as Responses<S>;
 	const [responses, setResponses] = useState<Responses<S>>(default_responses);
+	const [responsesChanged, setResponsesChanged] = useState(false);
 	const inputs: ReactNode[] = [];
 
 	for (let name in props.fields) {
 		inputProps[name] = {
 			...props.fields[name],
 			onChange: (value) => {
-				setResponses({
+				const newResponses = {
 					...responses,
 					name: value
-				})
+				}
+
+				setResponses(newResponses)
+
+				for (let name in newResponses) {
+					if (newResponses[name] !== default_responses[name]) {
+						setResponsesChanged(true);
+						return;
+					}
+				}
+
+				setResponsesChanged(false);
 			}
 		}
 
@@ -49,7 +61,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
-					props.onSubmit(responses);
+					if (responsesChanged) props.onSubmit(responses);
 				}}
 			>
 			<h1 className="text-center text-3xl mb-10 ">{props.title}</h1>
@@ -57,7 +69,8 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 			<div className="mb-4 text-center">
 				<button
 					type="submit"
-					className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800"
+					className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
+					disabled={!responsesChanged}
 				>
 				Submit
 				</button>
