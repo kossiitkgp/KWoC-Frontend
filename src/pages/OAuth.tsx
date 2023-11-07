@@ -33,15 +33,7 @@ function OAuth() {
           },
         });
 
-        switch (auth.type) {
-          case 'student':
-            navigate(auth.is_new_user ? ROUTER_PATHS.STUDENT_FORM : ROUTER_PATHS.STUDENT_DASHBOARD);
-            break;
-
-          case 'mentor':
-            navigate(auth.is_new_user ? ROUTER_PATHS.MENTOR_FORM : ROUTER_PATHS.MENTOR_DASHBOARD);
-            break;
-        }
+        navigate(auth.is_new_user ? authContext.formLink : authContext.dashboardLink);
       }
     }
     catch (e) {

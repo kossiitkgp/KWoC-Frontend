@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserType } from "./types";
+import { ROUTER_PATHS } from "./constants";
 
 interface IUserAuthData {
   username: string;
@@ -27,27 +28,33 @@ const DEFAULT_AUTH_OBJ: ILocalStorageAuthObj = {
     name: "",
     email: "",
     type: "student",
-  },
+  }
 };
 
 interface IAuthContext {
   isAuthenticated: boolean;
   jwt: string;
   userData: IUserAuthData;
+  formLink: ROUTER_PATHS.STUDENT_FORM | ROUTER_PATHS.MENTOR_FORM;
+  dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD | ROUTER_PATHS.MENTOR_DASHBOARD;
   setUserType: (type: UserType) => void;
   onLogin: (auth: ILocalStorageAuthObj) => void;
   onLogout: () => void;
 }
 
-const AuthContext = createContext<IAuthContext>({
+const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   isAuthenticated: false,
   // Random defaults
   userData: DEFAULT_AUTH_OBJ.userData,
+  formLink: ROUTER_PATHS.STUDENT_FORM,
+  dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD,
   jwt: DEFAULT_AUTH_OBJ.jwt,
   setUserType: () => {},
   onLogin: () => {},
   onLogout: () => {},
-});
+}
+
+const AuthContext = createContext<IAuthContext>(DEFAULT_AUTH_CONTEXT);
 
 export const useAuthContext = () => useContext(AuthContext);
 
@@ -59,6 +66,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
   const [userAuth, setUserAuth] =
     useState<ILocalStorageAuthObj>(DEFAULT_AUTH_OBJ);
+  const [formLink, setFormLink] = useState(DEFAULT_AUTH_CONTEXT.formLink);
+  const [dashboardLink, setDashboardLink] = useState(DEFAULT_AUTH_CONTEXT.dashboardLink);
 
   const setUserType = (type: UserType) => {
     setUserAuth({
@@ -68,6 +77,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         type,
       },
     });
+    setFormLink(type === 'student' ? ROUTER_PATHS.STUDENT_FORM : ROUTER_PATHS.MENTOR_FORM);
+    setDashboardLink(type === 'student' ? ROUTER_PATHS.STUDENT_DASHBOARD : ROUTER_PATHS.MENTOR_DASHBOARD);
 
     localStorage.setItem("auth", JSON.stringify(userAuth));
   };
@@ -77,6 +88,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("auth", JSON.stringify(auth));
 
     setIsAuthenticated(true);
+    setFormLink(auth.userData.type === 'student' ? ROUTER_PATHS.STUDENT_FORM : ROUTER_PATHS.MENTOR_FORM);
+    setDashboardLink(auth.userData.type === 'student' ? ROUTER_PATHS.STUDENT_DASHBOARD : ROUTER_PATHS.MENTOR_DASHBOARD);
     setUserAuth(auth);
   };
 
@@ -100,6 +113,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     () => ({
       isAuthenticated,
       userData: userAuth.userData,
+      formLink,
+      dashboardLink,
       jwt: userAuth.jwt,
       setUserType,
       onLogin,
