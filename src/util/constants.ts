@@ -34,5 +34,5 @@ export const KOSS_LINKEDIN_URL =
 export const KOSS_TWITTER_URL = "https://twitter.com/kossiitkgp";
 export const FOSSU_WEBSITE_URL = "https://fossunited.org";
 
-export const GH_OAUTH_CLIENT_ID = "70bd1016c30ac53696a2";
+export const GH_OAUTH_CLIENT_ID = import.meta.env.VITE_GH_OAUTH_CLIENT_ID;
 export const GH_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GH_OAUTH_CLIENT_ID}&state=replacethiswithrandomtextlater`;

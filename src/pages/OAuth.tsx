@@ -11,27 +11,36 @@ function OAuth() {
   const loginHandler = async (oauthCode: string) => {
     // Assuming type is already set when login is started
     const userType = authContext.userData.type;
-    const authRes = await makeRequest("oauth", "post", {
-      code: oauthCode,
-      type: userType,
-    });
-
-    if (!authRes.is_ok) {
-      setError(authRes.response.message);
-    } else {
-      const auth = authRes.response;
-
-      authContext.onLogin({
-        jwt: auth.jwt,
-        userData: {
-          username: auth.username,
-          name: auth.name,
-          email: auth.email,
-          type: auth.type,
-        },
+    try {
+      const authRes = await makeRequest("oauth", "post", {
+        code: oauthCode,
+        type: userType,
       });
 
-      navigate(`/${auth.type}/${auth.is_new_user ? "form" : "dashboard"}`);
+      if (!authRes.is_ok) {
+        setError(authRes.response.message);
+      } else {
+        const auth = authRes.response;
+
+        authContext.onLogin({
+          jwt: auth.jwt,
+          userData: {
+            username: auth.username,
+            name: auth.name,
+            email: auth.email,
+            type: auth.type,
+          },
+        });
+
+        navigate(
+          auth.is_new_user
+            ? `${authContext.formLink}?register=true`
+            : authContext.dashboardLink,
+        );
+      }
+    } catch (e) {
+      setError("Error connecting to the server. Please try again later.");
+      console.log(e);
     }
   };
 

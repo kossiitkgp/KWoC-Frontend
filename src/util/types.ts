@@ -29,4 +29,12 @@ export interface IEndpointTypes {
     };
     response: IHTTPMessage;
   };
+  "mentor/form": {
+    request: {
+      username: string;
+      name: string;
+      email: string;
+    };
+    response: IHTTPMessage;
+  };
 }
