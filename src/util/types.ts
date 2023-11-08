@@ -38,3 +38,12 @@ export interface IEndpointTypes {
     response: IHTTPMessage;
   };
 }
+
+export interface ProjectType {
+  username: string;
+  projectName: string;
+  linesAdded: number;
+  linesRemoved: number;
+  nCommit: number;
+  nPull: number;
+}
