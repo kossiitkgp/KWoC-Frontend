@@ -21,7 +21,7 @@ export default function Testimonials() {
           showStatus={false}
           showIndicators={false}
           autoPlay={true}
-          interval={2000}
+          interval={6000}
           swipeable={false}
         >
           {testimonialsDatatoRender.map((testimonial, index) => (
