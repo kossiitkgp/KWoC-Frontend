@@ -96,7 +96,7 @@ function Hero() {
       <img
         src={Moon}
         alt="Moon"
-        className="bottom-[-10%] sm:top-[40%] z-[-3] fixed lg:top-[-70%] lg:right-[-36%] brightness-[20%] lg:brightness-[50%] overflow-x-hidden"
+        className="bottom-[-10%] sm:top-[40%] z-[-3] fixed lg:top-[-70%] lg:right-[-36%] brightness-[35%] lg:brightness-[50%] overflow-x-hidden"
       />
       <div className="m-auto">
         <h1
