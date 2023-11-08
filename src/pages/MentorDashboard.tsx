@@ -108,7 +108,7 @@ function MentorDashboard() {
             <h3 className="font-semibold text-2xl mb-2">Mentor Resources</h3>
             <div className="space-y-4">
               {MentorResources.map((resource) => (
-                <a className="block" href={resource.url}>
+                <a target="_blank" className="block" href={resource.url}>
                   <li className="list-none gap-4 flex items-center">
                     <div className="w-10 h-10 rounded-full overflow-hidden flex-none">
                       <img
