@@ -9,10 +9,10 @@ export default function Testimonials() {
   let testimonialsDatatoRender = testimonialsData.testimonials.slice(0,5)
 
   return (
-    <div className="testimonials-container m-auto w-[95%] md:w-[70%] bg-black/30 py-16 md:px-32 rounded-lg  border border-[#FFFFFF]/[0.16] rounded-lg w-[95%] backdrop-blur-md">
+    <div className="testimonials-container m-auto w-[95%] md:w-[70%] bg-black/50 py-12 md:px-20 rounded-lg  border border-[#FFFFFF]/[0.16]">
       <div className="content-container">
         <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-7xl">
-          What Developers think about us
+          What Past Participants Say
         </h1>
         <Carousel
           showArrows={false}
