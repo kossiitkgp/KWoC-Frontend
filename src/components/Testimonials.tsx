@@ -4,9 +4,8 @@ import TestimonialCard from "./TestimonialCard";
 import testimonialsData from "../data/testimonials.json";
 
 export default function Testimonials() {
-
   // Selecting first 5 testimonial data to render
-  let testimonialsDatatoRender = testimonialsData.testimonials.slice(0,5)
+  let testimonialsDatatoRender = testimonialsData.testimonials.slice(0, 5);
 
   return (
     <div className="testimonials-container m-auto w-[95%] md:w-[70%] bg-black/50 py-12 md:px-20 rounded-lg  border border-[#FFFFFF]/[0.16]">
