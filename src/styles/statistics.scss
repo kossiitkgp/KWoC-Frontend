@@ -1,6 +1,12 @@
 #statistics_div{
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
     margin-left: 10vw;
     margin-right: 10vw;
+}
+@media (max-width: 800px) {
+    #statistics_div {
+      flex-direction: column;
+    }
 }
