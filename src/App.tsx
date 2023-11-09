@@ -9,6 +9,7 @@ import OAuth from "./pages/OAuth";
 import Navbar from "./components/Navbar";
 import { AuthProvider } from "./util/auth";
 import { ROUTER_PATHS } from "./util/constants";
+import MentorDashboard from "./pages/MentorDashboard";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
               element={<Testimonials />}
             />
             <Route path={ROUTER_PATHS.OAUTH} element={<OAuth />} />
+            <Route
+              path={ROUTER_PATHS.MENTOR_DASHBOARD}
+              element={<MentorDashboard />}
+            />
           </Routes>
         </AuthProvider>
       </BrowserRouter>
