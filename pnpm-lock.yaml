@@ -14,6 +14,9 @@ dependencies:
   '@studio-freight/lenis':
     specifier: ^1.0.27
     version: 1.0.27
+  fuse.js:
+    specifier: ^7.0.0
+    version: 7.0.0
   gsap:
     specifier: ^3.12.2
     version: 3.12.2
@@ -1363,6 +1366,11 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /fuse.js@7.0.0:
+    resolution: {integrity: sha512-14F4hBIxqKvD4Zz/XjDc3y94mNZN6pRv3U13Udo0lNLCWRBUsrMv2xwcF/y/Z5sV6+FQW+/ow68cHpm4sunt8Q==}
+    engines: {node: '>=10'}
+    dev: false
 
   /gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
