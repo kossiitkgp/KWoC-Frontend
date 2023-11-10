@@ -47,3 +47,14 @@ export interface ProjectType {
   nCommit: number;
   nPull: number;
 }
+
+export interface IProjectCard {
+  name: string;
+  description: string;
+  tags: string[];
+  mentor: string;
+}
+
+export interface IProjectTags {
+  [key: string]: string;
+}
