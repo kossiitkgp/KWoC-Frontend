@@ -180,7 +180,7 @@ function Projects() {
       <div className="p-4 my-4 mx-0">
         <div className="w-full bg-none border-none">
           <input
-            className="py-4 px-6 rounded-md outline-none w-[80vw] max-w-3xl border-none text-black font-semibold bg-none"
+            className="py-4 px-6 rounded-md outline-none w-[80vw] max-w-3xl border-none text-white bg-slate-900 font-semibold bg-none"
             type="text"
             placeholder="Search your query"
             // onChange={onChangeHandler}
