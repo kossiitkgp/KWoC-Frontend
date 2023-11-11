@@ -46,11 +46,11 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
   return (
     <Link
       to={
-        authContext.isAuthenticated ? authContext.dashboardLink : GH_OAUTH_URL
+        authContext.isAuthenticated ? (authContext.isRegistered ? authContext.dashboardLink : authContext.formLink) : GH_OAUTH_URL
       }
       className={isMobile ? "flex justify-end pr-2 pt-2" : ""}
     >
-      {authContext.isAuthenticated ? (
+      {authContext.isAuthenticated && authContext.isRegistered ? (
         <CgProfile color="#dc2626" />
       ) : (
         <CiLogin color="#dc2626" />
