@@ -17,14 +17,17 @@ function ProjectCard({ name, description, tags, mentor }: IProject) {
         </h3>
         <p className="mb-4 break-words">{description}</p>
         <div className="flex flex-wrap gap-2 mb-8 justify-center">
-          {tags.sort().slice(0, 6).map((tag, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 cursor-pointer text-s font-bold rounded-md bg-slate-700"
-            >
-              {tag}
-            </span>
-          ))}
+          {tags
+            .sort()
+            .slice(0, 6)
+            .map((tag, i) => (
+              <span
+                key={i}
+                className="px-3 py-1 cursor-pointer text-s font-bold rounded-md bg-slate-700"
+              >
+                {tag}
+              </span>
+            ))}
         </div>
         <div className="flex justify-center gap-2 align-bottom">
           <button className="px-4 py-2 rounded-md bg-blue-950 hover:bg-blue-900 text-lg font-bold flex justify-center items-center">
