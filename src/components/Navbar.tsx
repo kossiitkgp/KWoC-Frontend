@@ -18,7 +18,13 @@ const LINKS = [
 
 function BrandLogo() {
   return (
-    <img className="object-contain h-12 w-12" src={kwoc_logo} alt="KWoC Logo" />
+    <Link to={"/"}>
+      <img
+        className="object-contain cursor-pointer h-12 w-12"
+        src={kwoc_logo}
+        alt="KWoC Logo"
+      />
+    </Link>
   );
 }
 
@@ -30,7 +36,7 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
         className={
           (isMobile
             ? "block p-2 text-sm font-semibold "
-            : "px-2 py-1 font-semibold") +
+            : "px-2 py-1 font-semibold ") +
           (isLinkActive(link.link)
             ? "text-blue-500 hover:drop-shadow-glow duration-500"
             : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-blue-700")
@@ -89,7 +95,6 @@ function Navbar() {
         }`}
       >
         <BrandLogo />
-
         <div className="lg:hidden ml-auto -mr-5">
           <button
             className="flex items-center text-blue-600 p-3"
