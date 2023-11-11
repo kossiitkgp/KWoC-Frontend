@@ -28,7 +28,9 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
       <Link
         to={link.link}
         className={
-          (isMobile ? "block p-2 text-sm font-semibold " : "px-2 py-1 ") +
+          (isMobile
+            ? "block p-2 text-sm font-semibold "
+            : "px-2 py-1 font-semibold") +
           (isLinkActive(link.link)
             ? "text-blue-500 hover:drop-shadow-glow duration-500"
             : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-blue-700")
