@@ -91,12 +91,12 @@ function Hero() {
       <img
         src={Santa}
         alt="Santa"
-        className="z-[-2] fixed lg:visible lg:top-[0] lg:right-[0]"
+        className="bottom-[-10%] sm:top-[45%] sm:right-[25%] z-[-2] fixed lg:visible lg:top-[0] lg:right-[0]"
       />
       <img
         src={Moon}
         alt="Moon"
-        className="z-[-3] fixed lg:top-[-60%] lg:right-[-40%] brightness-[50%] overflow-x-hidden"
+        className="bottom-[-10%] sm:top-[40%] z-[-3] fixed lg:top-[-70%] lg:right-[-36%] brightness-[35%] lg:brightness-[50%] overflow-x-hidden"
       />
       <div className="m-auto">
         <h1
