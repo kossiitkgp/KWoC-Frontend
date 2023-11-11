@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
-// import { CgProfile } from "react-icons/cg";
-// import { CiLogin } from "react-icons/ci";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
-import { ROUTER_PATHS } from "../util/constants";
-// import { useAuthContext } from "../util/auth";
+import { ROUTER_PATHS, GH_OAUTH_URL } from "../util/constants";
+import { useAuthContext } from "../util/auth";
 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
-  // { name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
+  { name: "STUDENT REGISTRATION", link: ROUTER_PATHS.MENTOR_FORM },
+  { name: "MENTOR REGISTRATION", link: ROUTER_PATHS.STUDENT_FORM },
+  //{ name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
   // { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
 ];
@@ -29,10 +29,21 @@ function BrandLogo() {
 }
 
 function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
+  const authContext = useAuthContext();
+
   return LINKS.map((link) => (
     <li key={link.name} className={isMobile ? "mb-1" : "md:ml-4 md:mr-4"}>
       <Link
         to={link.link}
+        onClick={() => {
+          if (link.name === "STUDENT REGISTRATION") {
+            authContext.setUserType("student");
+            window.location.href = GH_OAUTH_URL + ROUTER_PATHS.STUDENT_FORM;
+          } else if (link.name === "MENTOR REGISTRATION") {
+            authContext.setUserType("mentor");
+            window.location.href = GH_OAUTH_URL + ROUTER_PATHS.MENTOR_FORM;
+          }
+        }}
         className={
           (isMobile
             ? "block p-2 text-sm font-semibold "
@@ -46,31 +57,6 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
       </Link>
     </li>
   ));
-}
-
-function LoginButton({ isMobile }: { isMobile: boolean }) {
-  // const authContext = useAuthContext();
-  console.log(isMobile);
-
-  return <></>;
-  // return (
-  //   // <Link
-  //   //   to={
-  //   //     authContext.isAuthenticated
-  //   //       ? authContext.isRegistered
-  //   //         ? authContext.dashboardLink
-  //   //         : authContext.formLink
-  //   //       : GH_OAUTH_URL
-  //   //   }
-  //   //   className={isMobile ? "flex justify-end pr-2 pt-2" : ""}
-  //   // >
-  //   //   {authContext.isAuthenticated && authContext.isRegistered ? (
-  //   //     <CgProfile color="#dc2626" />
-  //   //   ) : (
-  //   //     <CiLogin color="#dc2626" />
-  //   //   )}
-  //   // </Link>
-  // );
 }
 
 function Navbar() {
@@ -113,7 +99,7 @@ function Navbar() {
             {LinksList(isLinkActive, false)}
 
             <IconContext.Provider value={{ size: "2.3em" }}>
-              <LoginButton isMobile={false} />
+              {/* You can add any additional components here if needed */}
             </IconContext.Provider>
           </ul>
         </div>
@@ -154,7 +140,7 @@ function MobileNavbar({
           <ul className="mr-4 text-right">
             {LinksList(isLinkActive, true)}
             <IconContext.Provider value={{ size: "2.5em" }}>
-              <LoginButton isMobile={true} />
+              
             </IconContext.Provider>
           </ul>
         </div>
