@@ -34,8 +34,10 @@ export const KOSS_LINKEDIN_URL =
 export const KOSS_TWITTER_URL = "https://twitter.com/kossiitkgp";
 export const FOSSU_WEBSITE_URL = "https://fossunited.org";
 
-export const MENTOR_MANUAL_LINK = "https://drive.google.com/file/d/1qNl6RGQ6dnkFu20L3LwC4bcBFOOpd_vV/view?usp=drive_link";
-export const STUDENT_MANUAL_LINK = "https://drive.google.com/file/d/18RqKEQnyS9YDKyaVQB8rvnqJtbxejf0M/view?usp=drive_link";
+export const MENTOR_MANUAL_LINK =
+  "https://drive.google.com/file/d/1qNl6RGQ6dnkFu20L3LwC4bcBFOOpd_vV/view?usp=drive_link";
+export const STUDENT_MANUAL_LINK =
+  "https://drive.google.com/file/d/18RqKEQnyS9YDKyaVQB8rvnqJtbxejf0M/view?usp=drive_link";
 
 export const GH_OAUTH_CLIENT_ID = import.meta.env.VITE_GH_OAUTH_CLIENT_ID;
 export const GH_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GH_OAUTH_CLIENT_ID}&state=replacethiswithrandomtextlater`;
