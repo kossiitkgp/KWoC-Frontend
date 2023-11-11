@@ -7,7 +7,7 @@ type MappedObject<S, T> = {
   [Property in keyof S]: T;
 };
 
-type InputSettings = IObject<IInputFields>;
+export type InputSettings = IObject<IInputFields>;
 type Responses<S extends InputSettings> = MappedObject<S, string>;
 
 interface IFormProps<S extends InputSettings> {

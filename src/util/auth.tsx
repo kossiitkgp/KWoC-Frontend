@@ -142,7 +142,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         : ROUTER_PATHS.MENTOR_DASHBOARD,
     );
     setUserAuth(auth);
-  }
+  };
 
   const onLogin = (auth: ILocalStorageAuthObj) => {
     setIsAuthenticated(true);
@@ -154,11 +154,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const newUserAuth = {
       ...userAuth,
-      userData
-    }
+      userData,
+    };
 
     updateAuth(newUserAuth);
-  }
+  };
 
   const onLogout = () => {
     localStorage.removeItem("auth");
@@ -187,7 +187,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setUserType,
       onLogin,
       onRegister,
-      onLogout
+      onLogout,
     }),
     [isAuthenticated, userAuth, onLogin, onRegister, onLogout],
   );

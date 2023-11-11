@@ -34,9 +34,7 @@ function OAuth() {
         });
 
         navigate(
-          auth.is_new_user
-            ? authContext.formLink
-            : authContext.dashboardLink,
+          auth.is_new_user ? authContext.formLink : authContext.dashboardLink,
         );
       }
     } catch (e) {

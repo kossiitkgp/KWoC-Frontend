@@ -14,8 +14,7 @@ function StudentForm() {
   const [isRegistering, setIsRegistering] = useState(false);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    setIsRegistering(urlParams.get("register") !== null);
+    setIsRegistering(!authContext.isRegistered);
 
     if (!authContext.isAuthenticated) {
       navigate(ROUTER_PATHS.HOME);
@@ -59,16 +58,18 @@ function StudentForm() {
           setError(null);
           setInfo(null);
 
+          const userData = {
+            username: authContext.userData.username,
+            name: responses.name,
+            email: responses.email,
+            college: responses.college,
+          };
+
           try {
             const res = await makeRequest(
               "student/form",
               isRegistering ? "post" : "put",
-              {
-                username: authContext.userData.username,
-                name: responses.name,
-                email: responses.email,
-                college: responses.college,
-              },
+              userData,
               authContext.jwt,
             );
 
@@ -76,6 +77,7 @@ function StudentForm() {
             else {
               if (isRegistering) {
                 navigate(authContext.dashboardLink);
+                authContext.onRegister({ ...userData, type: "student" });
               } else setInfo("Information successfully changed.");
             }
 
