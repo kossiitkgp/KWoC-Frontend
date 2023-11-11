@@ -18,11 +18,13 @@ interface IUserAuthData {
 
 interface ILocalStorageAuthObj {
   jwt: string;
+  isRegistered: boolean;
   userData: IUserAuthData;
 }
 const DEFAULT_AUTH_OBJ: ILocalStorageAuthObj = {
   // Random defaults
   jwt: "",
+  isRegistered: false,
   userData: {
     username: "",
     name: "",
@@ -33,17 +35,20 @@ const DEFAULT_AUTH_OBJ: ILocalStorageAuthObj = {
 
 interface IAuthContext {
   isAuthenticated: boolean;
+  isRegistered: boolean;
   jwt: string;
   userData: IUserAuthData;
   formLink: ROUTER_PATHS.STUDENT_FORM | ROUTER_PATHS.MENTOR_FORM;
   dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD | ROUTER_PATHS.MENTOR_DASHBOARD;
   setUserType: (type: UserType) => void;
   onLogin: (auth: ILocalStorageAuthObj) => void;
+  onRegister: (auth: IUserAuthData) => void;
   onLogout: () => void;
 }
 
 const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   isAuthenticated: false,
+  isRegistered: false,
   // Random defaults
   userData: DEFAULT_AUTH_OBJ.userData,
   formLink: ROUTER_PATHS.STUDENT_FORM,
@@ -51,6 +56,7 @@ const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   jwt: DEFAULT_AUTH_OBJ.jwt,
   setUserType: () => {},
   onLogin: () => {},
+  onRegister: () => {},
   onLogout: () => {},
 };
 
@@ -85,6 +91,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [userAuth, setUserAuth] = useState<ILocalStorageAuthObj>(
     getLsAuthObj() ?? DEFAULT_AUTH_OBJ,
   );
+
+  const [isRegistered, setIsRegistered] = useState(userAuth.isRegistered);
+
   const [formLink, setFormLink] = useState<IAuthContext["formLink"]>(
     userAuth.userData.type === "mentor"
       ? ROUTER_PATHS.MENTOR_FORM
@@ -136,6 +145,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUserAuth(auth);
   };
 
+  const onRegister = (userData: IUserAuthData) => {
+    setIsRegistered(true);
+
+    const newUserAuth = {
+      ...userAuth,
+      userData
+    }
+
+    onLogin(newUserAuth);
+  }
+
   const onLogout = () => {
     localStorage.removeItem("auth");
 
@@ -155,15 +175,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
       isAuthenticated,
+      isRegistered,
       userData: userAuth.userData,
       formLink,
       dashboardLink,
       jwt: userAuth.jwt,
       setUserType,
       onLogin,
-      onLogout,
+      onRegister,
+      onLogout
     }),
-    [isAuthenticated, userAuth, onLogin, onLogout],
+    [isAuthenticated, userAuth, onLogin, onRegister, onLogout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
