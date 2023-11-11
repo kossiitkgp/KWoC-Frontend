@@ -15,19 +15,18 @@ function ProjectCard({ name, description, tags, mentor }: IProject) {
             {mentor.name}
           </a>
         </h3>
-        <p className="mb-4">{description}</p>
-        <div className="flex flex-wrap gap-2 mb-8">
-          {tags.sort().map((tag, i) => (
+        <p className="mb-4 break-words">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-8 justify-center">
+          {tags.sort().slice(0, 6).map((tag, i) => (
             <span
               key={i}
-              style={{ backgroundColor: (projectTags as IProjectTags)[tag] }}
-              className="px-3 py-1 cursor-pointer text-xs font-bold rounded-md"
+              className="px-3 py-1 cursor-pointer text-s font-bold rounded-md bg-slate-700"
             >
               {tag}
             </span>
           ))}
         </div>
-        <div className="flex justify-center gap-2">
+        <div className="flex justify-center gap-2 align-bottom">
           <button className="px-4 py-2 rounded-md bg-blue-950 hover:bg-blue-900 text-lg font-bold flex justify-center items-center">
             View Project
           </button>
