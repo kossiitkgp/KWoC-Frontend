@@ -127,11 +127,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("auth", JSON.stringify(userAuth));
   };
 
-  const onLogin = (auth: ILocalStorageAuthObj) => {
+  const updateAuth = (auth: ILocalStorageAuthObj) => {
     // Set the JWT in the local storage
     localStorage.setItem("auth", JSON.stringify(auth));
 
-    setIsAuthenticated(true);
     setFormLink(
       auth.userData.type === "student"
         ? ROUTER_PATHS.STUDENT_FORM
@@ -143,6 +142,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         : ROUTER_PATHS.MENTOR_DASHBOARD,
     );
     setUserAuth(auth);
+  }
+
+  const onLogin = (auth: ILocalStorageAuthObj) => {
+    setIsAuthenticated(true);
+    updateAuth(auth);
   };
 
   const onRegister = (userData: IUserAuthData) => {
@@ -153,7 +157,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       userData
     }
 
-    onLogin(newUserAuth);
+    updateAuth(newUserAuth);
   }
 
   const onLogout = () => {
