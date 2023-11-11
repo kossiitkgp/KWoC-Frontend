@@ -24,6 +24,7 @@ function OAuth() {
 
         authContext.onLogin({
           jwt: auth.jwt,
+          isRegistered: !auth.is_new_user,
           userData: {
             username: auth.username,
             name: auth.name,
@@ -34,7 +35,7 @@ function OAuth() {
 
         navigate(
           auth.is_new_user
-            ? `${authContext.formLink}?register=true`
+            ? authContext.formLink
             : authContext.dashboardLink,
         );
       }
