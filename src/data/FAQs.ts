@@ -1,9 +1,11 @@
-[
+import TIMELINE from "./timeline.json"
+
+export const FAQs = [
   {
     "question": "I do not have any prior knowledge of git and/or any programming language. Can I do this?",
     "answer": [
       "Absolutely. This program is specifically catered to the growth and smooth transition of people like you who want to learn. KOSS and the mentors will help you wherever possible.",
-      "To learn more about git and github, check <a class='text-blue-500 font-semibold' target='_blank' href='https://github.com/kossiitkgp/Git-and-Github-2021'>these</a>"
+      "To learn more about git and github, check <a class='text-blue-500 font-semibold' target='_blank' href='https://github.com/kossiitkgp/events/tree/main/2023/Spring/Git-github'>these</a>."
     ]
   },
   {
@@ -11,13 +13,6 @@
     "answer": [
       "There is no deadline for selecting projects nor is there any restriction on the number of projects you can contribute to",
       "you can also switch between projects as much as you want. The only necessity is that you should have atleast one merged PR per week."
-    ]
-  },
-  {
-    "question": "Do you provide any stipend or Goodies?",
-    "answer": [
-      "Top 5 selected contributors will receive swag kits provided by Postman.",
-      "The evaluation will be subjective where we will look for the quantity as well as the quality of contribution."
     ]
   },
   {
@@ -35,7 +30,7 @@
   {
     "question": "Can I participate in KWoC as both a mentor and a student?",
     "answer": [
-      "Yes, you can. Although we won't count your contribution to your own project. We do encourage participation into project development from everyone."
+      "No, you can not."
     ]
   },
   {
@@ -51,7 +46,7 @@
     ]
   },
   {
-    "question": "How should I get selected in KWOC?",
+    "question": "How should I get selected in KWoC?",
     "answer": [
       "There is absolutely no selection criteria for students. You are selected in the program as soon as you register. So you don't have to ask your mentors 'How to get selected for your project?', but instead go ahead with <b>'How can I contribute to your project?'</b>."
     ]
@@ -59,20 +54,14 @@
   {
     "question": "My mentor is not replying, What should I do?",
     "answer": [
-      "Please be patient with your mentor(s). If you do not get a response on the communication channel, contact the mentor on their email id. If no response for 3 days, inform us."
+      "Please be patient with your mentor(s). If you do not get a response on the communication channel, contact the mentor on their email id. If no response for 3 days, inform us at <a class='text-blue-500 font-semibold' target='_blank' href='mailto:contact@kossiitkgp.org'>contact@kossiitkgp.org</a>."
     ]
   },
   {
     "question": "What is the last date of student registration?",
     "answer": [
       "'Early bird catches the worm'",
-      "Students registration deadline is 6th December. The contribution chart goes live at the same time, so be quick."
-    ]
-  },
-  {
-    "question": "My mentor is not replying, What should I do?",
-    "answer": [
-      "Please be patient with your mentor(s). If you do not get a response on the communication channel, contact the mentor on their email id. If no response for 3 days, inform us."
+      `Students registration deadline is ${TIMELINE[3].date}. The contribution chart goes live at the same time, so be quick.`
     ]
   },
   {
@@ -82,15 +71,9 @@
     ]
   },
   {
-    "question": "Can I apply if I am not a student of IIT Kharagpur?",
-    "answer": [
-      "Sure! Our program is open to <b>all</b> students irrespective of college! Is there. Read <a class='text-blue-500 font-semibold' target='_blank' href='https://www.quora.com/What-is-the-prerequisite-for-participating-in-Kharagpur-Winter-of-Code-2016'>this</a> Quora answer by Pranit Bauva."
-    ]
-  },
-  {
     "question": "Can you provide me any advice so that I can start preparing for it beforehand?",
     "answer": [
-      "Get familiar with git and Github. Check <a class='text-blue-500 font-semibold' target='_blank' href='https://opensource.guide'>this</a> Open Source guide. Also, practice git <a class='text-blue-500 font-semibold' target='_blank' href='https://gitimmersion.com/index.html'>here</a>. You can also begin by following <a class='text-blue-500 font-semibold' target='_blank' href='https://www.codecademy.com/learn/learn-git'>Codecademy's git interactive tutorial</a>."
+      "Get familiar with Git and Github. Check <a class='text-blue-500 font-semibold' target='_blank' href='https://opensource.guide'>this</a> Open Source guide. Also, practice git <a class='text-blue-500 font-semibold' target='_blank' href='https://gitimmersion.com/index.html'>here</a>. You can also begin by following <a class='text-blue-500 font-semibold' target='_blank' href='https://www.codecademy.com/learn/learn-git'>Codecademy's git interactive tutorial</a>."
     ]
   },
   {
@@ -108,13 +91,13 @@
   {
     "question": "Will I receive a certificate at the end of the KWoC?",
     "answer": [
-      "If you remain with us till the end of the program, then you'll receive a certificate for completion of the program. You would have to clear both the mid and end evaluation to get the certificate. More details can be found in our <a class='text-blue-500 font-semibold' target='_blank' href='https://drive.google.com/file/d/1Bq_1tEgjBZo7g2Pi-BWuHsiCIc3aYRMe/view'>manual</a>."
+      "If you remain with us till the end of the program, then you'll receive a certificate for completion of the program. You would have to clear both the mid and end evaluation to get the certificate. More details can be found in our manual."
     ]
   },
   {
     "question": "Which programming language(s) do I need to be fluent in?",
     "answer": [
-      "Programming languages are just like communication languages; it is sufficient to know one or two, but the more you know the better it is."
+      "Tt is sufficient to know one or two, but the more you know the better it is. You can also learn a language during KWoC."
     ]
   },
   {
@@ -131,7 +114,7 @@
   },
   {
     "question": "What if I am unable to meet the deadlines due to some unavoidable reasons?",
-    "answer": ["Contact us via admin@kossiitkgp.org."]
+    "answer": ["Contact us via <a class='text-blue-500 font-semibold' target='_blank' href='mailto:contact@kossiitkgp.org'>contact@kossiitkgp.org</a>."]
   },
   {
     "question": "Will this programme help me in improving competitive coding skills or get selected for ACM ICPC?",
@@ -149,15 +132,13 @@
   {
     "question": "How are commits counted?",
     "answer": [
-      "Commits are counted only after your PR is merged.",
-      "Commits are counted if they are merged in the default branch.",
-      "Commits are not linked to your github account if your email configuration is not set properly. See <a href='https://github.com/kossiitkgp/kwoc-bugs/issues/22#issuecomment-747068412'>this</a> for details."
+      "Commits are counted only after your PR is merged in the mentor's repository. The PR must be opened using the Github account you logged in with and your username should not be changed during the KWoC coding period."
     ]
   },
   {
     "question": "What to do,if my stats are not being updated?",
     "answer": [
-      "Stats are only counted once coding period starts. Check if the any of the above condition are satisfied, if the problem still persists contact us via admin@kossiitkgp.org."
+      "Stats are only counted once coding period starts. They are updated periodically and it may take a few hours for them to update. If your stats do not update in a day, contact us at <a class='text-blue-500 font-semibold' target='_blank' href='mailto:contact@kossiitkgp.org'>contact@kossiitkgp.org</a>."
     ]
   }
 ]
