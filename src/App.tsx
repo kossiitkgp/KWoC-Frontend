@@ -22,7 +22,7 @@ function App() {
             <Route path={ROUTER_PATHS.MENTOR_FORM} element={<MentorForm />} />
             <Route path={ROUTER_PATHS.STUDENT_FORM} element={<StudentForm />} />
             <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
-            <Route path={ROUTER_PATHS.FAQ} element={<FAQ />} />
+            {/* <Route path={ROUTER_PATHS.FAQ} element={<FAQ />} /> */}
             <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
             <Route
               path={ROUTER_PATHS.TESTIMONIALS}
