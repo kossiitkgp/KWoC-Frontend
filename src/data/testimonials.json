@@ -1,0 +1,214 @@
+{
+  "testimonials": [
+    {
+      "name": "Musavveer Rehaman",
+      "role": "KWoC '22 Student",
+      "quote": "Contributing to open source is one of the great experience, I got to learn many things and I also learnt various technologies.",
+      "imageLink": "https://avatars.githubusercontent.com/u/62888562?v=4",
+      "blogLink": "https://medium.com/@iammusavveer/kwoc-kharagpur-winter-of-code-b770857f51bf"
+    },
+    {
+      "name": "Barun Pari",
+      "role": "KWoC '22 Student",
+      "quote": "Finding a project we like and suggesting or adding functionalities gives great scope for learning rather than just doing courses.",
+      "imageLink": "https://avatars.githubusercontent.com/u/76466796?v=4",
+      "blogLink": "https://docs.google.com/document/d/1jNawXIBTvzMiHP3QeamAIH_PS4_3Vi9KtTwCfyyZ1-s/edit"
+    },
+    {
+      "name": "Shreyansh Khaitan",
+      "role": "KWoC '22 Student",
+      "quote": "I got this wonderful opportunity to network with so many enthusiastic and like-minded people. It also helped me to put my skills learned into practical use.",
+      "imageLink": "https://avatars.githubusercontent.com/u/90243443?v=4",
+      "blogLink": "https://shrey1411.medium.com/my-kwoc-22-project-report-49339f96d810"
+    },
+    {
+      "name": "Somil Rathore",
+      "role": "KWoC '22 Student",
+      "quote": "I learnt lots of things and gain new experience of contributing in open source competition. This was my first hackathon in which I contributed, and enjoyed alot to it.",
+      "imageLink": "https://avatars.githubusercontent.com/u/105368919?v=4",
+      "blogLink": "https://medium.com/@somilrathore01/kwoc-2022-c57a82eb454e"
+    },
+    {
+      "name": "Vikramaditya singh",
+      "role": "KWoC '22 Student",
+      "quote": "The satisfaction is beyond mentioning. Finally contributed to the open source and started my OPEN-SOURCE JOURNEY!!!",
+      "imageLink": "https://avatars.githubusercontent.com/u/59855919?v=4",
+      "blogLink": "https://ghatotkach.hashnode.dev/kwoc-experience"
+    },
+    {
+      "name": "Yash Raj",
+      "role": "KWoC '22 Student",
+      "quote": "I can say that KWoC is a unique open-source program to make your short winter breaks productive.",
+      "imageLink": "https://avatars.githubusercontent.com/u/80768955?v=4",
+      "blogLink": "https://medium.com/@yashraj44777/my-journey-through-kharagpur-winter-of-code-kwoc-2022-d922c8a7a914"
+    },
+    {
+      "name": "Rahil Saini",
+      "role": "KWoC '22 Student",
+      "quote": "Kharagpur winter of code (KWOC) is an amazing open source program for anyone who wants to kickoff their journey in open source",
+      "imageLink": "https://avatars.githubusercontent.com/u/118007944?v=4",
+      "blogLink": "https://medium.com/@madeupgalaxy/my-kwoc-experience-289b9188cd11"
+    },
+    {
+      "name": "Ashutosh Pandey",
+      "role": "KWoC '22 Student",
+      "quote": "By engaging with the community you entice them to share issues and bugs, but also feature requests and great ideas for further development! All of these help in creating something for them.",
+      "imageLink": "https://avatars.githubusercontent.com/u/98882610?v=4",
+      "blogLink": "https://ashupandey1620.blogspot.com/2023/01/kharagpur-winter-of-code-2022-kharagpur.html"
+    },
+    {
+      "name": "Anup Chandak",
+      "role": "KWoC '22 Student",
+      "quote": "KWoC was a great kickstart into the world of Open Source, which also taught various aspects of GitHub, understanding the codebase, and making meaningful contributions as a beginner.",
+      "imageLink": "https://avatars.githubusercontent.com/u/85943077?v=4",
+      "blogLink": "https://medium.com/@anupchandak013/kwoc-project-report-a9dd6f362b91"
+    },
+    {
+      "name": "Kshitij Patil",
+      "role": "KWoC '22 Student",
+      "quote": "I would like to thank organizers of KWoC for conducting such a event that helped many newbie’s like me to get exposure to version controls and Open-Source Community.",
+      "imageLink": "https://avatars.githubusercontent.com/u/91470808?v=4",
+      "blogLink": "https://medium.com/@kshitijpatil1098/kwoc-project-report-705e81aad052"
+    },
+    {
+      "name": "Niharika Sharma",
+      "role": "KWoC '22 Student",
+      "quote": "Finally, I want to say this journey is full of knowledge and learning",
+      "imageLink": "https://avatars.githubusercontent.com/u/89354985?v=4",
+      "blogLink": "https://medium.com/@niharikash1808/kwoc-dff95b50a86f"
+    },
+    {
+      "name": "Sushovan Banerjee",
+      "role": "KWoC '21 Student",
+      "quote": "After successfully navigating through the competition for 5 weeks and now standing at the end , it’s my firm belief that KWoC has enriched my knowledge of Open Source Software while teaching me how to communicate with the right people in order to get advice and execute the task at hand.",
+      "imageLink": "https://avatars.githubusercontent.com/sushovanb02",
+      "blogLink": "https://medium.com/@sushovanb02/kharagpur-winter-of-code-kwoc-2021-project-report-sushovan-banerjee-ccc0779b3cee"
+    },
+    {
+      "name": "Athitya Kumar",
+      "role": "KWoC '16 and '17 Mentor",
+      "quote": "The experience has been great both the years, with a lot of new students learning open-source development from KWoC by contributing to the projects. Some of my mentees have even gone ahead to do a GSoC project as well in the following summers, and are definitely are still actively contributing to open-source.",
+      "imageLink": "https://avatars.githubusercontent.com/athityakumar",
+      "blogLink": "https://athityakumar.github.io/blog/posts/Kharagpur_Winter_of_Code_2016/"
+    },
+    {
+      "name": "Biswabasu Roy",
+      "role": "KWoC '20 Student",
+      "quote": "Before KWoC 2020, I didn’t know what git or GitHub is. I had almost no idea about how a team of developers contribute independently to a single project and they get merged.",
+      "imageLink": "https://avatars.githubusercontent.com/Bbiswabasu",
+      "blogLink": "https://bbiswabasuroy2001.medium.com/kwoc-2020-end-evaluation-report-40762b5f5738"
+    },
+    {
+      "name": "Jigyasa Gupta",
+      "role": "KWoC '21 Student",
+      "quote": "KWoC was a great kickstart into the world of Open Source, which also taught various aspects of GitHub, understanding the codebase and making meaningful contributions as a beginner. Another worthy facade was learning the mannerisms of communicating with the mentors and fellow contributors who gave valuable insight and feedback.",
+      "imageLink": "https://avatars.githubusercontent.com/Jigyasa-G",
+      "blogLink": "https://medium.com/@jigyasatata_23607/kwoc-project-report-66a01c897f47"
+    },
+    {
+      "name": "Jessica John Britto",
+      "role": "KWoC '21 Student",
+      "quote": "Participating in KWOC has given me exposure to the open source community as well as a number of other open source programmes. I’ve also picked up a few more GitHub features and Git commands. It’s also given me the confidence to learn new tech tools/frameworks in a limited period of time that are relevant to the projects I’m interested in working on.",
+      "imageLink": "https://avatars.githubusercontent.com/JessicaJohnBritto",
+      "blogLink": "https://medium.com/@jessjohnbritto/kwoc-kharagpur-winter-of-code-project-report-4b7d852ec1e4"
+    },
+    {
+      "name": "Sumukh VR",
+      "role": "KWoC '21 Student",
+      "quote": "I have only worked alone until now, I got the experience of working in a team dividing workload to increase efficiency. Last five weeks made me realize that there are many ways of writing code for any task but it is important that your code is readable and precise so that people working with you are able to understand what you have tried to do.",
+      "imageLink": "https://avatars.githubusercontent.com/KiZaRu507",
+      "blogLink": "https://medium.com/@vrsumukh32/kwoc-project-report-58f40b00404d"
+    },
+    {
+      "name": "Rohit Padage",
+      "role": "KWoC '21 Student",
+      "quote": "KWoC provided the privilege to meet some of the highly motivated and enthusiastic mentors and people through my project. If you are a beginner who is looking to work on Open-source projects under the guidance of a mentor, then KWoC is the best open source community program organized by Kharagpur open-source society.",
+      "imageLink": "https://avatars.githubusercontent.com/rohitpadage",
+      "blogLink": "https://medium.com/@rohitpadage/kwoc-2021-experience-f186fa91f649"
+    },
+    {
+      "name": "Ashutosh Agarwal",
+      "role": "KWoC '20 Student",
+      "quote": "It was quite an eventful December for me! I learned many things about Open Source Contribution, Git, GitHub, Android and MVVM architecture. It’s the first time I gained confidence in contributing to open source.",
+      "imageLink": "https://avatars.githubusercontent.com/codeDamon",
+      "blogLink": "https://medium.com/@ashutoshagarwal365/kwoc-contributions-report-54ec3453e475"
+    },
+    {
+      "name": "Vinay Kumar Srivastava",
+      "role": "KWoC '20 Student",
+      "quote": "Open Source turned out to be one of the most exciting fields to venture into and I would like to thank KOSS for their incessant efforts.",
+      "imageLink": "https://avatars.githubusercontent.com/vinaysrivastava273",
+      "blogLink": "https://vinaysrivastava273.medium.com/kwoc-project-report-29058e6d65c9"
+    },
+    {
+      "name": "Rajas Bhatt",
+      "role": "KWoC '20 Student",
+      "quote": "KWoC was not only a good introduction to the world of open source but also allows people and especially newcomers to contribute to meaningful projects used for the greater benefit of the society.",
+      "imageLink": "https://avatars.githubusercontent.com/dope-dependent",
+      "blogLink": "https://dope-dependent.medium.com/project-report-632e089a9444"
+    },
+    {
+      "name": "Yash Sharma",
+      "role": "KWoC '17 Student",
+      "quote": "My experience with Kharagpur Winter of Code has been quite good, as the level of contribution is quite apt, considering for the beginners.",
+      "imageLink": "https://avatars.githubusercontent.com/yashrsharma44",
+      "blogLink": "https://medium.com/@yashrsharma44/kwoc-project-report-c337e7222246"
+    },
+    {
+      "name": "Raghav Jajodia",
+      "role": "KWoC '17 Mentor",
+      "quote": "KWoC has provided me opportunities to learn more about open source, accelerate the growth of my projects, along with helping new developers explore the power and opportunities of FOSS. I highly recommend open source enthusiasts and GSoC aspirants to participate in KWoC.",
+      "imageLink": "https://avatars.githubusercontent.com/jajodiaraghav",
+      "blogLink": "http://jajodiaraghav.github.io/"
+    },
+    {
+      "name": "Shantanu Pramanik",
+      "role": "KWoC '17 Student",
+      "quote": "It was a great experience to take part in KWoC. Thanks to IIT Kharagpur for organizing such an event. I sincerely hope to be a part of more and more such programs.",
+      "imageLink": "https://avatars.githubusercontent.com/shantanu0323",
+      "blogLink": "https://shantanu0323.wordpress.com/2018/01/05/kwoc-report/"
+    },
+    {
+      "name": " Dhruv Apte",
+      "role": "KWoC '17 Mentor",
+      "quote": "I had a really good time at KWoC '17. My projects prospered well because of inputs from participants. Regular chaperoning from KOSS maintained that the quality of the coding program never touched alow point and maintained the coding frequency consistent throughout the program.",
+      "imageLink": "https://avatars.githubusercontent.com/the-ethan-hunt",
+      "blogLink": "https://the-ethan-hunt.github.io/about/"
+    },
+    {
+      "name": "Nishant Singh Hada",
+      "role": "KWoC '17 Student",
+      "quote": "KWOC is a very good opportunity for every student to hone their technical skills. Thank you IIT Kharagpur, KOSS for hosting a beginner friendly program.",
+      "imageLink": "https://avatars.githubusercontent.com/ThisIsNSH",
+      "blogLink": "https://nishantshada.blogspot.com/"
+    },
+    {
+      "name": "Gautham Santhosh",
+      "role": "KWoC '17 Mentor",
+      "quote": "My project was a normal one before KWOC, something I had worked on in a hackathon. But I loved the idea but found it hard to do alone. But due to KWoC I got very good quality amazing contributors who helped to changed that small project into a top 3 product in ProductHunt and featured in many tech publications.",
+      "imageLink": "https://avatars.githubusercontent.com/gauthamzz",
+      "blogLink": "https://gauthamzz.github.io/"
+    },
+    {
+      "name": "Navaneeth Suresh",
+      "role": "KWoC '17 Student",
+      "quote": "KWoC is a great initiative by KOSS to encourage students in programming environment with experienced mentors and make them ready  for GSoC.",
+      "imageLink": "https://avatars.githubusercontent.com/themousepotato",
+      "blogLink": "https://medium.com/@themousepotato/kharagpur-winter-of-code-2017-6e350c2252c7"
+    },
+    {
+      "name": "Sayan Sinha",
+      "role": "KWoC '16 Student",
+      "quote": "KWoC was a lot more than experience and learning. Now, I had worked on the repositories and had interacted with their makers.",
+      "imageLink": "https://avatars2.githubusercontent.com/u/23132358?s=460&v=4",
+      "blogLink": "https://medium.com/kharagpur-open-source-society/kharagpur-winter-of-code-c4eeb4af71f1"
+    },
+    {
+      "name": "Rahul Vernwal",
+      "role": "KWoC '16 Student",
+      "quote": "I got to learn a lot about web scraping and webdriver automation.Lots of thanks to my mentor Nitin Choudhary and KOSS for such a wonderful initiative.",
+      "imageLink": "https://avatars1.githubusercontent.com/u/23414388?s=460&v=4",
+      "blogLink": "http://vernwalrahul.blogspot.in/"
+    }
+  ]
+}

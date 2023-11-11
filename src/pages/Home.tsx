@@ -8,6 +8,7 @@ import snowflake_particle2 from "../assets/snowflake2.svg";
 import snowflake_particle3 from "../assets/snowflake3.svg";
 import JoinOurCommunity from "../components/JoinOurCommunity";
 import Timeline from "../components/Timeline";
+import Testimonials from "../components/Testimonials";
 
 const snowflake_images = [
   snowflake_particle1,
@@ -50,6 +51,7 @@ function Home() {
         <About />
         <WhyKWoC />
         <Timeline />
+        <Testimonials />
         <JoinOurCommunity />
       </section>
     </>

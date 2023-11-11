@@ -14,9 +14,10 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
-    "prettier": "^3.0.3",
     "@studio-freight/lenis": "^1.0.27",
+    "fuse.js": "^7.0.0",
     "gsap": "^3.12.2",
+    "prettier": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
