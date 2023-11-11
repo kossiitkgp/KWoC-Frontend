@@ -46,7 +46,11 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
   return (
     <Link
       to={
-        authContext.isAuthenticated ? (authContext.isRegistered ? authContext.dashboardLink : authContext.formLink) : GH_OAUTH_URL
+        authContext.isAuthenticated
+          ? authContext.isRegistered
+            ? authContext.dashboardLink
+            : authContext.formLink
+          : GH_OAUTH_URL
       }
       className={isMobile ? "flex justify-end pr-2 pt-2" : ""}
     >
