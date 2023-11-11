@@ -7,7 +7,13 @@ function ProjectCard({ name, description, tags, mentor }: IProject) {
       <div className="p-4 rounded-md w-full h-full bg-[#0f0f27]">
         <h2 className="text-3xl font-bold text-center mb-1">{name}</h2>
         <h3 className="text-lg text-center mb-3">
-          <span className="font-bold">Mentor</span>: <a className="text-blue-500 font-semibold hover:text-blue-600 hover:underline" href={`https://github.com/${mentor.username}`}>{mentor.name}</a>
+          <span className="font-bold">Mentor</span>:{" "}
+          <a
+            className="text-blue-500 font-semibold hover:text-blue-600 hover:underline"
+            href={`https://github.com/${mentor.username}`}
+          >
+            {mentor.name}
+          </a>
         </h3>
         <p className="mb-4">{description}</p>
         <div className="flex flex-wrap gap-2 mb-8">
