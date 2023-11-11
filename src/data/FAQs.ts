@@ -1,3 +1,4 @@
+import { KOSS_CONTACT_EMAIL } from "../util/constants"
 import TIMELINE from "./timeline.json"
 
 export const FAQs = [
@@ -54,7 +55,7 @@ export const FAQs = [
   {
     "question": "My mentor is not replying, What should I do?",
     "answer": [
-      "Please be patient with your mentor(s). If you do not get a response on the communication channel, contact the mentor on their email id. If no response for 3 days, inform us at <a class='text-blue-500 font-semibold' target='_blank' href='mailto:contact@kossiitkgp.org'>contact@kossiitkgp.org</a>."
+      `Please be patient with your mentor(s). If you do not get a response on the communication channel, contact the mentor on their email id. If no response for 3 days, inform us at <a class='text-blue-500 font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`
     ]
   },
   {
@@ -114,7 +115,7 @@ export const FAQs = [
   },
   {
     "question": "What if I am unable to meet the deadlines due to some unavoidable reasons?",
-    "answer": ["Contact us via <a class='text-blue-500 font-semibold' target='_blank' href='mailto:contact@kossiitkgp.org'>contact@kossiitkgp.org</a>."]
+    "answer": [`Contact us via <a class='text-blue-500 font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`]
   },
   {
     "question": "Will this programme help me in improving competitive coding skills or get selected for ACM ICPC?",
@@ -138,7 +139,7 @@ export const FAQs = [
   {
     "question": "What to do,if my stats are not being updated?",
     "answer": [
-      "Stats are only counted once coding period starts. They are updated periodically and it may take a few hours for them to update. If your stats do not update in a day, contact us at <a class='text-blue-500 font-semibold' target='_blank' href='mailto:contact@kossiitkgp.org'>contact@kossiitkgp.org</a>."
+      `Stats are only counted once coding period starts. They are updated periodically and it may take a few hours for them to update. If your stats do not update in a day, contact us at <a class='text-blue-500 font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`
     ]
   }
 ]
