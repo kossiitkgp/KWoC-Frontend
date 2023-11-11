@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MentorResources from "../data/mentorResources.json";
 import MentorProjectCard from "../components/MentorProjectCard";
-import { ProjectType } from "../util/types";
+import { IProjectDashboardInfo } from "../util/types";
 import { BiPlus } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../util/auth";
@@ -11,7 +11,7 @@ function MentorDashboard() {
   const navigate = useNavigate();
   const authContext = useAuthContext();
 
-  const [projects, setProjects] = useState<ProjectType[]>([]);
+  const [projects, setProjects] = useState<IProjectDashboardInfo[]>([]);
 
   useEffect(() => {
     if (!authContext.isAuthenticated) {
@@ -23,40 +23,7 @@ function MentorDashboard() {
     }
 
     // API Call
-    setProjects([
-      {
-        linesAdded: 2,
-        linesRemoved: 3,
-        nCommit: 4,
-        nPull: 3,
-        projectName: "Bhattu",
-        username: "rohan-b-84",
-      },
-      {
-        linesAdded: 2,
-        linesRemoved: 3,
-        nCommit: 4,
-        nPull: 3,
-        projectName: "KWoC-Backend",
-        username: "rohan-b-84",
-      },
-      {
-        linesAdded: 2,
-        linesRemoved: 3,
-        nCommit: 4,
-        nPull: 3,
-        projectName: "YAKW",
-        username: "rohan-b-84",
-      },
-      {
-        linesAdded: 2,
-        linesRemoved: 3,
-        nCommit: 4,
-        nPull: 3,
-        projectName: "KWoC-Frontend",
-        username: "rohan-b-84",
-      },
-    ]);
+    setProjects([]);
   }, [authContext]);
 
   return (
@@ -85,12 +52,7 @@ function MentorDashboard() {
             <div className="flex flex-wrap justify-center gap-2 items-stretch">
               {projects.map((project) => (
                 <MentorProjectCard
-                  linesAdded={project.linesAdded}
-                  linesRemoved={project.linesRemoved}
-                  nCommit={project.nCommit}
-                  nPull={project.nPull}
-                  projectName={project.projectName}
-                  username={project.username}
+                  {...project}
                 />
               ))}
               <button className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center min-h-[280px]">

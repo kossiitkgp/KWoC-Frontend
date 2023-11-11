@@ -1,18 +1,19 @@
 import projectTags from "../data/projectTags.json";
-import { IProjectCard, IProjectTags } from "../util/types";
+import { IProject, IProjectTags } from "../util/types";
 
-function ProjectCard({ name, description, tags, mentor }: IProjectCard) {
+function ProjectCard({ name, description, tags, mentor }: IProject) {
   return (
     <>
       <div className="p-4 rounded-md w-full h-full bg-[#0f0f27]">
         <h2 className="text-3xl font-bold text-center mb-1">{name}</h2>
         <h3 className="text-lg text-center mb-3">
-          <span className="font-bold">Mentored By</span>: {mentor}
+          <span className="font-bold">Mentored By</span>: {mentor.name}
         </h3>
         <p className="mb-4">{description}</p>
         <div className="flex flex-wrap gap-2 mb-8">
-          {tags.sort().map((tag: string) => (
+          {tags.sort().map((tag, i) => (
             <span
+              key={i}
               style={{ backgroundColor: (projectTags as IProjectTags)[tag] }}
               className="px-3 py-1 cursor-pointer text-xs font-bold rounded-md"
             >

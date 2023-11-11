@@ -37,22 +37,37 @@ export interface IEndpointTypes {
     };
     response: IHTTPMessage;
   };
+  "project": {
+    request: null;
+    response: IProject[];
+  }
 }
 
-export interface ProjectType {
-  username: string;
-  projectName: string;
-  linesAdded: number;
-  linesRemoved: number;
-  nCommit: number;
-  nPull: number;
-}
-
-export interface IProjectCard {
+export interface IMentor {
   name: string;
-  description: string;
-  tags: string[];
-  mentor: string;
+  username: string;
+}
+
+export interface IProject {
+  id: number,
+  name: string,
+  description: string,
+  tags: string[],
+  repo_link: string,
+  comm_channel: string,
+  readme_link: string,
+  mentor: IMentor
+}
+
+export interface IProjectDashboardInfo {
+	name:          string,
+	repo_link:      string,
+	project_status: boolean,
+	commit_count: number,
+	pull_count:    number,
+	lines_added:   number,
+	lines_removed: number,
+	pulls: string[]
 }
 
 export interface IProjectTags {
