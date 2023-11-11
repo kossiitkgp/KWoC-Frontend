@@ -3,15 +3,25 @@ import MentorResources from "../data/mentorResources.json";
 import MentorProjectCard from "../components/MentorProjectCard";
 import { ProjectType } from "../util/types";
 import { BiPlus } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../util/auth";
+import { ROUTER_PATHS } from "../util/constants";
 
 function MentorDashboard() {
+  const navigate = useNavigate();
+  const authContext = useAuthContext();
+
   const [projects, setProjects] = useState<ProjectType[]>([]);
-  const [user, setUser] = useState<{
-    username: null;
-    fullName: null;
-  }>({ username: null, fullName: null });
 
   useEffect(() => {
+    if (!authContext.isAuthenticated) {
+      navigate(ROUTER_PATHS.HOME);
+    }
+
+    if (authContext.userData.type !== "mentor") {
+      navigate(ROUTER_PATHS.HOME);
+    }
+
     // API Call
     setProjects([
       {
@@ -47,8 +57,7 @@ function MentorDashboard() {
         username: "rohan-b-84",
       },
     ]);
-    setUser({ username: null, fullName: null });
-  }, []);
+  }, [authContext]);
 
   return (
     <>
@@ -57,11 +66,11 @@ function MentorDashboard() {
           <div className="w-full aspect-square bg-blue-950 rounded-full mb-2 overflow-hidden">
             <img
               className="w-full h-full block"
-              src={`https://github.com/${user.username || null}.png`}
+              src={`https://github.com/${authContext.userData.username}.png`}
             />
           </div>
           <h2 className="font-bold text-2xl text-center ">
-            {user.fullName || "John Doe"}
+            {authContext.userData.name}
           </h2>
           <p className="text-center">Any other things to mention</p>
           <p className="text-center">Any other things to mention</p>
