@@ -2,8 +2,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import TestimonialCard from "./TestimonialCard";
 import testimonialsData from "../data/testimonials.json";
-import { Link } from "react-router-dom";
-import { ROUTER_PATHS } from "../util/constants";
+// import { Link } from "react-router-dom";
+// import { ROUTER_PATHS } from "../util/constants";
 
 export default function Testimonials() {
   // Selecting first 5 testimonial data to render
