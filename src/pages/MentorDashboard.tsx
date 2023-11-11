@@ -51,9 +51,7 @@ function MentorDashboard() {
             </h2>
             <div className="flex flex-wrap justify-center gap-2 items-stretch">
               {projects.map((project) => (
-                <MentorProjectCard
-                  {...project}
-                />
+                <MentorProjectCard {...project} />
               ))}
               <button className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center min-h-[280px]">
                 <BiPlus />

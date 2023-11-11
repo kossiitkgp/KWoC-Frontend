@@ -5,7 +5,9 @@ import { IEndpointTypes } from "../util/types";
 import Fuse from "fuse.js";
 
 function Projects() {
-  const [projects, setProjects] = useState<IEndpointTypes['project']['response']>([]);
+  const [projects, setProjects] = useState<
+    IEndpointTypes["project"]["response"]
+  >([]);
   const [error, setError] = useState<string | null>(null);
 
   const [query, setQuery] = useState("");
@@ -15,27 +17,29 @@ function Projects() {
   };
 
   const fuse = new Fuse(projects, {
-    keys: ['name', 'description', 'tags']
+    keys: ["name", "description", "tags"],
   });
 
   const results = fuse.search(query);
 
-  const searchResults = query !== '' ? results.map((result) => result.item) : projects;
+  const searchResults =
+    query !== "" ? results.map((result) => result.item) : projects;
 
   useEffect(() => {
-    makeRequest('project', 'get').then((response) => {
-      if (response.is_ok) {
-        setProjects(response.response);
-      } else {
-        setError('Error fetching projects.');
-        console.log(response.response);
-      }
-    })
-    .catch((e) => {
-      setError('Error fetching projects.');
-      console.log(e);
-    })
-  }, [])
+    makeRequest("project", "get")
+      .then((response) => {
+        if (response.is_ok) {
+          setProjects(response.response);
+        } else {
+          setError("Error fetching projects.");
+          console.log(response.response);
+        }
+      })
+      .catch((e) => {
+        setError("Error fetching projects.");
+        console.log(e);
+      });
+  }, []);
 
   return (
     <div className="flex flex-col items-center pt-28">
@@ -55,13 +59,9 @@ function Projects() {
       {error && <p>{error}</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 px-8 items-start">
         <div className="grid gap-4">
-          {searchResults
-            .map((project, i) => (
-              <ProjectCard
-                key={i}
-                {...project}
-              />
-            ))}
+          {searchResults.map((project, i) => (
+            <ProjectCard key={i} {...project} />
+          ))}
         </div>
       </div>
     </div>

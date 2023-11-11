@@ -1,7 +1,13 @@
 import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
 import { IProjectDashboardInfo } from "../util/types";
 
-function MentorProjectCard({name, commit_count, pull_count, lines_added, lines_removed}: IProjectDashboardInfo) {
+function MentorProjectCard({
+  name,
+  commit_count,
+  pull_count,
+  lines_added,
+  lines_removed,
+}: IProjectDashboardInfo) {
   return (
     <>
       <div className="px-4 py-4 w-80 rounded-md bg-[#0f0f27]">
@@ -31,11 +37,15 @@ function MentorProjectCard({name, commit_count, pull_count, lines_added, lines_r
             </span>
             <div className="w-full mx-2 flex">
               <div
-                style={{ flex: lines_added / (lines_added + lines_removed) + "%" }}
+                style={{
+                  flex: lines_added / (lines_added + lines_removed) + "%",
+                }}
                 className="border-2 border-green-700"
               ></div>
               <div
-                style={{ flex: lines_removed / (lines_added + lines_removed) + "%" }}
+                style={{
+                  flex: lines_removed / (lines_added + lines_removed) + "%",
+                }}
                 className="border-2 border-red-700"
               ></div>
             </div>
