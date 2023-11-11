@@ -33,6 +33,7 @@ function StudentForm() {
         }
         error={error}
         info={info}
+        submitWithoutChange={isRegistering}
         fields={{
           name: {
             field: "Name",

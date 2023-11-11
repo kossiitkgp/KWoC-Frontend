@@ -15,6 +15,7 @@ interface IFormProps<S extends InputSettings> {
   fields: S;
   error: string | null;
   info: string | null;
+  submitWithoutChange?: boolean;
   onSubmit: (responses: Responses<S>) => Promise<boolean>;
 }
 
@@ -60,7 +61,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            if (responsesChanged) {
+            if (responsesChanged || props.submitWithoutChange) {
               const isOk = await props.onSubmit(responses);
               setResponsesChanged(!isOk);
             }
@@ -72,7 +73,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
             <button
               type="submit"
               className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
-              disabled={!responsesChanged}
+              disabled={!responsesChanged && !props.submitWithoutChange}
             >
               Submit
             </button>
