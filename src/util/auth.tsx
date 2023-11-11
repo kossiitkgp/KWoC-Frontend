@@ -81,11 +81,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(
     getLsAuthJwt() !== null,
   );
-  const [userAuth, setUserAuth] =
-    useState<ILocalStorageAuthObj>(DEFAULT_AUTH_OBJ);
-  const [formLink, setFormLink] = useState(DEFAULT_AUTH_CONTEXT.formLink);
-  const [dashboardLink, setDashboardLink] = useState(
-    DEFAULT_AUTH_CONTEXT.dashboardLink,
+
+  const [userAuth, setUserAuth] = useState<ILocalStorageAuthObj>(
+    getLsAuthObj() ?? DEFAULT_AUTH_OBJ,
+  );
+  const [formLink, setFormLink] = useState<IAuthContext["formLink"]>(
+    userAuth.userData.type === "mentor"
+      ? ROUTER_PATHS.MENTOR_FORM
+      : ROUTER_PATHS.STUDENT_FORM,
+  );
+  const [dashboardLink, setDashboardLink] = useState<
+    IAuthContext["dashboardLink"]
+  >(
+    userAuth.userData.type === "mentor"
+      ? ROUTER_PATHS.MENTOR_DASHBOARD
+      : ROUTER_PATHS.STUDENT_DASHBOARD,
   );
 
   const setUserType = (type: UserType) => {
