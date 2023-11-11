@@ -15,12 +15,12 @@ function Projects() {
   };
 
   const fuse = new Fuse(projects, {
-    keys: ["name", "description", "tags"],
+    keys: ['name', 'description', 'tags']
   });
 
   const results = fuse.search(query);
 
-  const searchResults = query ? results.map((result) => result.item) : projects;
+  const searchResults = query !== '' ? results.map((result) => result.item) : projects;
 
   useEffect(() => {
     makeRequest('project', 'get').then((response) => {
