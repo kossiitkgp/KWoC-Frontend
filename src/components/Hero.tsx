@@ -2,16 +2,17 @@ import { useState, useEffect, MouseEvent, useCallback } from "react";
 import Santa from "../assets/Santa.png";
 import Moon from "../assets/Moon.png";
 import StarsBG from "../assets/stars.png";
+import { MENTOR_MANUAL_LINK, STUDENT_MANUAL_LINK } from "../util/constants";
 
 function ManualButton() {
   return (
     <div className="flex justify-center">
-      <button className="text-white focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 hover:bg-gray-700 focus:ring-gray-700 border-gray-700">
+      <a target="_blank" rel="noreferrer" href={STUDENT_MANUAL_LINK} className="text-white focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 hover:bg-gray-700 focus:ring-gray-700 border-gray-700">
         Student Manual
-      </button>
-      <button className="text-white focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 hover:bg-gray-700 focus:ring-gray-700 border-gray-700">
+      </a>
+      <a target="_blank" rel="noreferrer" href={MENTOR_MANUAL_LINK} className="text-white focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 bg-gray-800 hover:bg-gray-700 focus:ring-gray-700 border-gray-700">
         Mentor Manual
-      </button>
+      </a>
     </div>
   );
 }
