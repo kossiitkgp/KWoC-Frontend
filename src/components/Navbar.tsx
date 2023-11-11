@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
-import { CgProfile } from "react-icons/cg";
-import { CiLogin } from "react-icons/ci";
+// import { CgProfile } from "react-icons/cg";
+// import { CiLogin } from "react-icons/ci";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
-import { GH_OAUTH_URL, ROUTER_PATHS } from "../util/constants";
-import { useAuthContext } from "../util/auth";
+import { ROUTER_PATHS } from "../util/constants";
+// import { useAuthContext } from "../util/auth";
 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
@@ -41,26 +41,28 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
 }
 
 function LoginButton({ isMobile }: { isMobile: boolean }) {
-  const authContext = useAuthContext();
+  // const authContext = useAuthContext();
+  console.log(isMobile);
 
-  return (
-    <Link
-      to={
-        authContext.isAuthenticated
-          ? authContext.isRegistered
-            ? authContext.dashboardLink
-            : authContext.formLink
-          : GH_OAUTH_URL
-      }
-      className={isMobile ? "flex justify-end pr-2 pt-2" : ""}
-    >
-      {authContext.isAuthenticated && authContext.isRegistered ? (
-        <CgProfile color="#dc2626" />
-      ) : (
-        <CiLogin color="#dc2626" />
-      )}
-    </Link>
-  );
+  return <></>;
+  // return (
+  //   // <Link
+  //   //   to={
+  //   //     authContext.isAuthenticated
+  //   //       ? authContext.isRegistered
+  //   //         ? authContext.dashboardLink
+  //   //         : authContext.formLink
+  //   //       : GH_OAUTH_URL
+  //   //   }
+  //   //   className={isMobile ? "flex justify-end pr-2 pt-2" : ""}
+  //   // >
+  //   //   {authContext.isAuthenticated && authContext.isRegistered ? (
+  //   //     <CgProfile color="#dc2626" />
+  //   //   ) : (
+  //   //     <CiLogin color="#dc2626" />
+  //   //   )}
+  //   // </Link>
+  // );
 }
 
 function Navbar() {
