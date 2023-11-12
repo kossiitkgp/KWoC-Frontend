@@ -28,8 +28,6 @@ function BrandLogo() {
 }
 
 function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
-  const authContext = useAuthContext();
-
   return LINKS.map((link) => (
     <li key={link.name} className={isMobile ? "mb-1" : "md:ml-4 md:mr-4"}>
       <Link
