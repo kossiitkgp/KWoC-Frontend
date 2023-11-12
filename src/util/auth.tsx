@@ -165,6 +165,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.removeItem("auth");
 
     setIsAuthenticated(false);
+    setIsRegistered(false);
     setUserAuth(DEFAULT_AUTH_OBJ);
   };
 
