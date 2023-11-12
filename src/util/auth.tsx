@@ -86,7 +86,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const lsAuthJwt = getLsAuthJwt();
   const [isAuthenticated, setIsAuthenticated] = useState(
-    lsAuthJwt !== null || lsAuthJwt !== ""
+    lsAuthJwt !== null || lsAuthJwt !== "",
   );
 
   const [userAuth, setUserAuth] = useState<ILocalStorageAuthObj>(
