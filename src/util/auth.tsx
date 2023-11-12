@@ -84,8 +84,9 @@ export const useAuthContext = () => useContext(AuthContext);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
 
+  const lsAuthJwt = getLsAuthJwt();
   const [isAuthenticated, setIsAuthenticated] = useState(
-    getLsAuthJwt() !== null,
+    lsAuthJwt !== null || lsAuthJwt !== ""
   );
 
   const [userAuth, setUserAuth] = useState<ILocalStorageAuthObj>(
