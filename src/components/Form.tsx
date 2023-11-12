@@ -57,8 +57,6 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   return (
     <div className="pt-32 w-full md:w-96 md:max-w-full mx-auto rounded-md">
       <div className="p-10 border border-slate-700 sm:rounded-md">
-        {props.error && <p>{props.error}</p>}
-        {props.info && <p>{props.info}</p>}
         <form
           onSubmit={async (e) => {
             e.preventDefault();
@@ -69,6 +67,9 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           }}
         >
           <h1 className="text-center text-3xl mb-10">{props.title}</h1>
+          {props.error && <p className="text-red-500">{props.error}</p>}
+          {props.info && <p className="text-blue-500">{props.info}</p>}
+
           {Object.values(inputs)}
           <div className="flex justify-around">
             <div className="mb-4 text-center">

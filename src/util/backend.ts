@@ -75,7 +75,7 @@ export async function makeRequest<E extends keyof IEndpointTypes>(
       status_code: response.status,
       response: {
         status_code: response.status,
-        message: e as string,
+        message: "An unexpected error occurred.",
       },
     };
   }

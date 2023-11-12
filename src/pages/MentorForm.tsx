@@ -71,6 +71,7 @@ function MentorForm() {
               authContext.jwt,
             );
 
+            console.log(res.response);
             if (!res.is_ok) setError(res.response.message);
             else {
               if (isRegistering) {
