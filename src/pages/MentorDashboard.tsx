@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import MentorResources from "../data/mentorResources.json";
 import MentorProjectCard from "../components/MentorProjectCard";
-import { IProjectDashboardInfo } from "../util/types";
+import { IEndpointTypes } from "../util/types";
 import { BiPlus } from "react-icons/bi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../util/auth";
 import { ROUTER_PATHS } from "../util/constants";
+import { makeRequest } from "../util/backend";
 
 function MentorDashboard() {
   const navigate = useNavigate();
   const authContext = useAuthContext();
 
-  const [projects, setProjects] = useState<IProjectDashboardInfo[]>([]);
+  const [dashboard, setDashboard] = useState<IEndpointTypes['mentor/dashboard']['response'] | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authContext.isAuthenticated) {
@@ -22,8 +24,12 @@ function MentorDashboard() {
       navigate(ROUTER_PATHS.HOME);
     }
 
-    // API Call
-    setProjects([]);
+    makeRequest('mentor/dashboard', 'get', null, authContext.jwt)
+      .then((res) => {
+        if (res.is_ok) setDashboard(res.response);
+        else setError(res.response.message);
+      })
+      .catch(() => setError('An unexpected error occurred.'))
   }, [authContext]);
 
   return (
@@ -37,29 +43,30 @@ function MentorDashboard() {
             />
           </div>
           <h2 className="font-bold text-2xl text-center ">
-            {authContext.userData.name}
+            {authContext.userData.name} (@{authContext.userData.username})
           </h2>
-          <p className="text-center">Any other things to mention</p>
-          <p className="text-center">Any other things to mention</p>
-          <p className="text-center">Any other things to mention</p>
+          <p className="text-center w-full"><Link to={ROUTER_PATHS.MENTOR_FORM}>Edit</Link></p>
         </div>
 
-        <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
-          <div className="lg:pt-28">
-            <h2 className="text-3xl font-bold text-center mb-8 py-4">
-              Projects
-            </h2>
-            <div className="flex flex-wrap justify-center gap-2 items-stretch">
-              {projects.map((project) => (
-                <MentorProjectCard {...project} />
-              ))}
-              <button className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center min-h-[280px]">
-                <BiPlus />
-                Add Project
-              </button>
+        { dashboard !== null ?
+          <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
+            <div className="lg:pt-28">
+              <h2 className="text-3xl font-bold text-center mb-8 py-4">
+                Projects
+              </h2>
+              <div className="flex flex-wrap justify-center gap-2 items-stretch">
+                {dashboard.projects.map((project) => (
+                  <MentorProjectCard {...project} />
+                ))}
+                <button className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center min-h-[280px]">
+                  <BiPlus />
+                  Add Project
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
+          </div> :
+          error
+        }
 
         <div className="lg:sticky lg:self-start lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
           <div className="mb-8">
