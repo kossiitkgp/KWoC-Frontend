@@ -9,8 +9,8 @@ import { useAuthContext } from "../util/auth";
 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
-  { name: "STUDENT REGISTRATION", link: ROUTER_PATHS.MENTOR_FORM },
-  { name: "MENTOR REGISTRATION", link: ROUTER_PATHS.STUDENT_FORM },
+  { name: "STUDENT REGISTRATION", link: "#!" },
+  { name: "MENTOR REGISTRATION", link: "#!" },
   //{ name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
   // { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
