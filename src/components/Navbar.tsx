@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { CiMenuBurger } from "react-icons/ci";
+import { CiLogin, CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
+import { CgProfile } from "react-icons/cg";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
 import { ROUTER_PATHS, GH_OAUTH_URL } from "../util/constants";
@@ -9,8 +10,6 @@ import { useAuthContext } from "../util/auth";
 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
-  // { name: "STUDENT REGISTRATION", link: "#!" },
-  // { name: "MENTOR REGISTRATION", link: "#!" },
   //{ name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
   // { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
@@ -35,15 +34,6 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
     <li key={link.name} className={isMobile ? "mb-1" : "md:ml-4 md:mr-4"}>
       <Link
         to={link.link}
-        onClick={() => {
-          if (link.name === "STUDENT REGISTRATION") {
-            authContext.setUserType("student");
-            window.location.href = GH_OAUTH_URL;
-          } else if (link.name === "MENTOR REGISTRATION") {
-            authContext.setUserType("mentor");
-            window.location.href = GH_OAUTH_URL;
-          }
-        }}
         className={
           (isMobile
             ? "block p-2 text-sm font-semibold "
@@ -57,6 +47,33 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
       </Link>
     </li>
   ));
+}
+
+
+function LoginButton({ isMobile }: { isMobile: boolean }) {
+  const authContext = useAuthContext();
+
+  return (
+    <Link
+      to={
+        authContext.isAuthenticated
+          ? (authContext.isRegistered
+            ? authContext.dashboardLink
+            : authContext.formLink)
+          : GH_OAUTH_URL
+      }
+      className={isMobile ? "flex justify-end pr-2 pt-2 font-semibold text-sm" : "font-semibold"}
+    >
+      {
+        authContext.isAuthenticated ? (
+          authContext.isRegistered ?
+            <CgProfile color="#dc2626" /> :
+            <CiLogin color="#dc2626" />
+        ) :
+        "MENTOR REGISTRATION"
+      }
+    </Link>
+  );
 }
 
 function Navbar() {
@@ -99,7 +116,7 @@ function Navbar() {
             {LinksList(isLinkActive, false)}
 
             <IconContext.Provider value={{ size: "2.3em" }}>
-              {/* You can add any additional components here if needed */}
+              <LoginButton isMobile={false} />
             </IconContext.Provider>
           </ul>
         </div>
@@ -141,7 +158,9 @@ function MobileNavbar({
             {LinksList(isLinkActive, true)}
             <IconContext.Provider
               value={{ size: "2.5em" }}
-            ></IconContext.Provider>
+            >
+              <LoginButton isMobile={true} />
+            </IconContext.Provider>
           </ul>
         </div>
       </nav>

@@ -17,6 +17,7 @@ interface IFormProps<S extends InputSettings> {
   info: string | null;
   submitWithoutChange?: boolean;
   onSubmit: (responses: Responses<S>) => Promise<boolean>;
+  onCancel?: (responses: Responses<S>) => void;
 }
 
 function Form<S extends InputSettings>(props: IFormProps<S>) {
@@ -67,16 +68,29 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
             }
           }}
         >
-          <h1 className="text-center text-3xl mb-10 ">{props.title}</h1>
+          <h1 className="text-center text-3xl mb-10">{props.title}</h1>
           {Object.values(inputs)}
-          <div className="mb-4 text-center">
-            <button
-              type="submit"
-              className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
-              disabled={!responsesChanged && !props.submitWithoutChange}
-            >
-              Submit
-            </button>
+          <div className="flex justify-around">
+            <div className="mb-4 text-center">
+              <button
+                type="submit"
+                className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
+                disabled={!responsesChanged && !props.submitWithoutChange}
+              >
+                Submit
+              </button>
+            </div>
+            {props.onCancel !== undefined &&
+              <div className="mb-4 text-center">
+                <button
+                  type="reset"
+                  className="h-10 px-5 text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600"
+                  onClick={() => props.onCancel!(responses)}
+                >
+                  Cancel
+                </button>
+              </div>
+            }
           </div>
         </form>
       </div>
