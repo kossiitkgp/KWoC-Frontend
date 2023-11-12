@@ -20,14 +20,13 @@ function App() {
           <Routes>
             <Route index element={<Home />} />
             <Route path={ROUTER_PATHS.MENTOR_FORM} element={<MentorForm />} />
-            <Route path={ROUTER_PATHS.STUDENT_FORM} element={<StudentForm />} />
-            <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
+            {/* <Route path={ROUTER_PATHS.STUDENT_FORM} element={<StudentForm />} /> */}
+            {/* <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} /> */}
             <Route path={ROUTER_PATHS.FAQ} element={<FAQ />} />
-            <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
-            <Route
+            {/* <Route
               path={ROUTER_PATHS.TESTIMONIALS}
               element={<Testimonials />}
-            />
+            /> */}
             <Route path={ROUTER_PATHS.OAUTH} element={<OAuth />} />
             <Route
               path={ROUTER_PATHS.MENTOR_DASHBOARD}
