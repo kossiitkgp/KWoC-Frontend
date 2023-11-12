@@ -29,7 +29,7 @@ const DEFAULT_AUTH_OBJ: ILocalStorageAuthObj = {
     username: "",
     name: "",
     email: "",
-    type: "student",
+    type: "mentor",
   },
 };
 
