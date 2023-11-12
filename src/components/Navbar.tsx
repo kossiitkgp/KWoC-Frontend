@@ -38,10 +38,10 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
         onClick={() => {
           if (link.name === "STUDENT REGISTRATION") {
             authContext.setUserType("student");
-            window.location.href = GH_OAUTH_URL + ROUTER_PATHS.STUDENT_FORM;
+            window.location.href = GH_OAUTH_URL;
           } else if (link.name === "MENTOR REGISTRATION") {
             authContext.setUserType("mentor");
-            window.location.href = GH_OAUTH_URL + ROUTER_PATHS.MENTOR_FORM;
+            window.location.href = GH_OAUTH_URL;
           }
         }}
         className={
@@ -140,7 +140,7 @@ function MobileNavbar({
           <ul className="mr-4 text-right">
             {LinksList(isLinkActive, true)}
             <IconContext.Provider value={{ size: "2.5em" }}>
-              
+
             </IconContext.Provider>
           </ul>
         </div>
