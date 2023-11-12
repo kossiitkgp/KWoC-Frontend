@@ -1,5 +1,4 @@
-import projectTags from "../data/projectTags.json";
-import { IProject, IProjectTags } from "../util/types";
+import { IProject } from "../util/types";
 
 function ProjectCard({ name, description, tags, mentor }: IProject) {
   return (
