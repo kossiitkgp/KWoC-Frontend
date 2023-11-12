@@ -174,7 +174,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     if (auth !== null) {
       setUserAuth(auth);
-      if (auth.jwt !== "") setIsAuthenticated(true);
+      if (auth.jwt !== "" && auth.jwt !== null) setIsAuthenticated(true);
+      setIsRegistered(auth.isRegistered);
     }
   }, [navigate]);
 
