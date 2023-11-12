@@ -81,7 +81,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
                 Submit
               </button>
             </div>
-            {props.onCancel !== undefined &&
+            {props.onCancel !== undefined && (
               <div className="mb-4 text-center">
                 <button
                   type="reset"
@@ -91,7 +91,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
                   Cancel
                 </button>
               </div>
-            }
+            )}
           </div>
         </form>
       </div>

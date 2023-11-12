@@ -49,7 +49,6 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
   ));
 }
 
-
 function LoginButton({ isMobile }: { isMobile: boolean }) {
   const authContext = useAuthContext();
 
@@ -57,21 +56,26 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
     <Link
       to={
         authContext.isAuthenticated
-          ? (authContext.isRegistered
+          ? authContext.isRegistered
             ? authContext.dashboardLink
-            : authContext.formLink)
+            : authContext.formLink
           : GH_OAUTH_URL
       }
-      className={isMobile ? "flex justify-end pr-2 pt-2 font-semibold text-sm" : "font-semibold"}
-    >
-      {
-        authContext.isAuthenticated ? (
-          authContext.isRegistered ?
-            <CgProfile color="#dc2626" /> :
-            <CiLogin color="#dc2626" />
-        ) :
-        "MENTOR REGISTRATION"
+      className={
+        isMobile
+          ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
+          : "font-semibold"
       }
+    >
+      {authContext.isAuthenticated ? (
+        authContext.isRegistered ? (
+          <CgProfile color="#dc2626" />
+        ) : (
+          <CiLogin color="#dc2626" />
+        )
+      ) : (
+        "MENTOR REGISTRATION"
+      )}
     </Link>
   );
 }
@@ -156,9 +160,7 @@ function MobileNavbar({
         <div>
           <ul className="mr-4 text-right">
             {LinksList(isLinkActive, true)}
-            <IconContext.Provider
-              value={{ size: "2.5em" }}
-            >
+            <IconContext.Provider value={{ size: "2.5em" }}>
               <LoginButton isMobile={true} />
             </IconContext.Provider>
           </ul>

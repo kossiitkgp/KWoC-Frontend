@@ -29,7 +29,9 @@ function MentorForm() {
     <>
       <Form
         title={
-          isRegistering ? "Complete Mentor Registration" : "Edit Your Information"
+          isRegistering
+            ? "Complete Mentor Registration"
+            : "Edit Your Information"
         }
         error={error}
         info={info}
@@ -51,7 +53,9 @@ function MentorForm() {
           },
         }}
         onCancel={() => {
-          isRegistering ? authContext.onLogout() : navigate(ROUTER_PATHS.MENTOR_DASHBOARD);
+          isRegistering
+            ? authContext.onLogout()
+            : navigate(ROUTER_PATHS.MENTOR_DASHBOARD);
         }}
         onSubmit={async (responses) => {
           setError(null);
