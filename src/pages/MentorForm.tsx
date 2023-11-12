@@ -19,14 +19,11 @@ function MentorForm() {
     if (!authContext.isAuthenticated) {
       navigate(ROUTER_PATHS.HOME);
     }
-   
 
     if (authContext.userData.type !== "mentor") {
       navigate(ROUTER_PATHS.HOME);
-      
     }
   });
-  
 
   return (
     <>

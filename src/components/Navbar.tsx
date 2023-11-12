@@ -139,9 +139,9 @@ function MobileNavbar({
         <div>
           <ul className="mr-4 text-right">
             {LinksList(isLinkActive, true)}
-            <IconContext.Provider value={{ size: "2.5em" }}>
-
-            </IconContext.Provider>
+            <IconContext.Provider
+              value={{ size: "2.5em" }}
+            ></IconContext.Provider>
           </ul>
         </div>
       </nav>
