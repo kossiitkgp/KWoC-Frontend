@@ -42,15 +42,15 @@ export interface IEndpointTypes {
     response: IProject[];
   };
   "mentor/dashboard": {
-    request: null,
+    request: null;
     response: {
       name: string;
       username: string;
       email: string;
       projects: IProjectDashboardInfo[];
       students: IStudentInfo[];
-    }
-  }
+    };
+  };
 }
 
 export interface IMentor {
