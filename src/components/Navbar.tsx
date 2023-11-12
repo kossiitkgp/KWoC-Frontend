@@ -10,7 +10,7 @@ import { useAuthContext } from "../util/auth";
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
   // { name: "STUDENT REGISTRATION", link: "#!" },
-  { name: "MENTOR REGISTRATION", link: "#!" },
+  // { name: "MENTOR REGISTRATION", link: "#!" },
   //{ name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
   // { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
