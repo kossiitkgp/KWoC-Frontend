@@ -55,7 +55,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   }
 
   return (
-    <div className="pt-32 w-full md:w-96 md:max-w-full mx-auto rounded-md">
+    <div className="pt-32 w-full md:w-[50%] md:max-w-full mx-auto rounded-md">
       <div className="p-10 border border-slate-700 sm:rounded-md">
         <form
           onSubmit={async (e) => {

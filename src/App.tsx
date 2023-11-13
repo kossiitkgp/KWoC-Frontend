@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import { AuthProvider } from "./util/auth";
 import { ROUTER_PATHS } from "./util/constants";
 import MentorDashboard from "./pages/MentorDashboard";
+import ProjectForm from "./pages/ProjectForm";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path={ROUTER_PATHS.MENTOR_FORM} element={<MentorForm />} />
             {/* <Route path={ROUTER_PATHS.STUDENT_FORM} element={<StudentForm />} /> */}
             {/* <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} /> */}
+            <Route path={ROUTER_PATHS.PROJECT_FORM} element={<ProjectForm />} />
             <Route path={ROUTER_PATHS.FAQ} element={<FAQ />} />
             {/* <Route
               path={ROUTER_PATHS.TESTIMONIALS}
