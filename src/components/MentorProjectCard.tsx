@@ -7,13 +7,15 @@ function MentorProjectCard({
   pull_count,
   lines_added,
   lines_removed,
-  project_status
+  project_status,
 }: IProjectDashboardInfo) {
   return (
     <>
       <div className="px-4 py-4 w-80 rounded-md bg-[#0f0f27]">
         <div className="flex gap-2 items-center mb-4">
-          <h3 className="font-semibold text-xl">{name} ({project_status ? 'Approved' : 'Awaiting Approval'})</h3>
+          <h3 className="font-semibold text-xl">
+            {name} ({project_status ? "Approved" : "Awaiting Approval"})
+          </h3>
         </div>
         <div className="mb-3 space-y-1">
           <div className="flex gap-2 items-center">
