@@ -34,6 +34,11 @@ function MentorDashboard() {
       .catch(() => setError("An unexpected error occurred."));
   }, [authContext]);
 
+  const pulls = [];
+  if (dashboard != null) {
+    for (let project of dashboard.projects) pulls.push(...project.pulls);
+  }
+
   return (
     <>
       <div className="min-h-screen flex flex-col lg:flex-row">
@@ -79,9 +84,7 @@ function MentorDashboard() {
               Merged Pull Requests
             </h3>
             <div className="space-y-1">
-              <p>username / repo_name - Pull: pull_idx</p>
-              <p>username / repo_name - Pull: pull_idx</p>
-              <p>username / repo_name - Pull: pull_idx</p>
+              {pulls.length > 0 ? pulls.map((pull) => <a href={pull}>{pull}</a>) : 'No Pull Requests.'}
             </div>
           </div>
 
@@ -89,15 +92,15 @@ function MentorDashboard() {
             <h3 className="font-semibold text-2xl mb-2">Mentor Resources</h3>
             <div className="space-y-4">
               {MentorResources.map((resource) => (
-                <a target="_blank" className="block" href={resource.url}>
-                  <li className="list-none gap-4 flex items-center">
+                <a target="_blank" className="block text-blue-500 hover:text-blue-600 hover:underline" href={resource.url}>
+                  <li className="list-none gap-4 flex items-center text-inherit">
                     <div className="w-10 h-10 rounded-full overflow-hidden flex-none">
                       <img
                         src={resource.avatar}
                         className="h-full w-full block"
                       />
                     </div>
-                    <div>{resource.message}</div>
+                    <div className="text-inherit">{resource.message}</div>
                   </li>
                 </a>
               ))}
