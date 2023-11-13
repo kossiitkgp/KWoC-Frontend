@@ -38,7 +38,7 @@ export interface IEndpointTypes {
     response: IHTTPMessage;
   };
   project: {
-    request: null;
+    request: IProjectReg;
     response: IProject[];
   };
   "mentor/dashboard": {
@@ -72,6 +72,17 @@ export interface IProject {
   comm_channel: string;
   readme_link: string;
   mentor: IMentor;
+}
+
+interface IProjectReg {
+  name: string;
+  description: string;
+  tags: string[];
+  repo_link: string;
+  comm_channel: string;
+  readme_link: string;
+  secondary_mentor_username: string;
+  mentor_username: string;
 }
 
 export interface IProjectDashboardInfo {

@@ -33,7 +33,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
       onChange: (value) => {
         const newResponses = {
           ...responses,
-          name: value,
+          [name]: value,
         };
 
         setResponses(newResponses);
