@@ -84,7 +84,9 @@ function MentorDashboard() {
               Merged Pull Requests
             </h3>
             <div className="space-y-1">
-              {pulls.length > 0 ? pulls.map((pull) => <a href={pull}>{pull}</a>) : 'No Pull Requests.'}
+              {pulls.length > 0
+                ? pulls.map((pull) => <a href={pull}>{pull}</a>)
+                : "No Pull Requests."}
             </div>
           </div>
 
@@ -92,7 +94,11 @@ function MentorDashboard() {
             <h3 className="font-semibold text-2xl mb-2">Mentor Resources</h3>
             <div className="space-y-4">
               {MentorResources.map((resource) => (
-                <a target="_blank" className="block text-blue-500 hover:text-blue-600 hover:underline" href={resource.url}>
+                <a
+                  target="_blank"
+                  className="block text-blue-500 hover:text-blue-600 hover:underline"
+                  href={resource.url}
+                >
                   <li className="list-none gap-4 flex items-center text-inherit">
                     <div className="w-10 h-10 rounded-full overflow-hidden flex-none">
                       <img
