@@ -52,7 +52,6 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
 
   return (
     <Link
-      hidden={true}
       to={
         authContext.isAuthenticated
           ? authContext.isRegistered
