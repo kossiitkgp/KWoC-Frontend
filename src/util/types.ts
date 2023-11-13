@@ -88,7 +88,6 @@ interface IProjectReg {
 export interface IProjectDashboardInfo {
   name: string;
   description: string;
-  t;
   repo_link: string;
   project_status: boolean;
   commit_count: number;
