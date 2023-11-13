@@ -67,7 +67,10 @@ function MentorDashboard() {
                 {dashboard.projects.map((project, i) => (
                   <MentorProjectCard key={i} {...project} />
                 ))}
-                <Link to={ROUTER_PATHS.PROJECT_FORM} className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center">
+                <Link
+                  to={ROUTER_PATHS.PROJECT_FORM}
+                  className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center"
+                >
                   <BiPlus />
                   Add Project
                 </Link>

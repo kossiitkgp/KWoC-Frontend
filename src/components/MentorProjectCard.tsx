@@ -22,22 +22,26 @@ function MentorProjectCard({
 
         <div>
           <div className="mt-3 mb-3 space-y-1">
-            {commit_count > 0 && project_status && <div className="flex gap-2 items-center">
-              <div className="flex gap-2 items-center text-sm font-semibold">
-                <BiGitCommit />
-                Commit Count:
+            {commit_count > 0 && project_status && (
+              <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center text-sm font-semibold">
+                  <BiGitCommit />
+                  Commit Count:
+                </div>
+                <p className="font-bold text-base">{commit_count}</p>
               </div>
-              <p className="font-bold text-base">{commit_count}</p>
-            </div>}
-            {pull_count > 0 && project_status && <div className="flex gap-2 items-center">
-              <div className="flex gap-2 items-center text-sm font-semibold">
-                <BiGitPullRequest /> Pull Count:
+            )}
+            {pull_count > 0 && project_status && (
+              <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center text-sm font-semibold">
+                  <BiGitPullRequest /> Pull Count:
+                </div>
+                <p className="font-bold text-base">{pull_count}</p>
               </div>
-              <p className="font-bold text-base">{pull_count}</p>
-            </div>}
+            )}
           </div>
-          {
-          project_status && (lines_added > 0 || lines_removed > 0) && <div className="mb-3">
+          {project_status && (lines_added > 0 || lines_removed > 0) && (
+            <div className="mb-3">
               <p className="text-sm font-semibold">Lines Added / Removed</p>
               <div className="w-full flex items-center">
                 <span className="flex-none text-green-700 text-sm font-bold">
@@ -62,7 +66,7 @@ function MentorProjectCard({
                 </span>
               </div>
             </div>
-          }
+          )}
         </div>
         <button className="mt-auto align-bottom text-center font-semibold text-lg w-full p-2 bg-blue-950 rounded-md hover:bg-blue-900">
           View Project
