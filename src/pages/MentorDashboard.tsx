@@ -121,7 +121,7 @@ function MentorDashboard() {
           </div> */}
 
           <div>
-            <h3 className="font-semibold text-2xl mb-2">Mentor Resources</h3>
+            <h3 className="font-semibold text-2xl mb-6">Mentor Resources</h3>
             <div className="space-y-4">
               {MentorResources.map((resource) => (
                 <a
@@ -129,14 +129,16 @@ function MentorDashboard() {
                   className="block text-blue-500 hover:text-blue-600 hover:underline"
                   href={resource.url}
                 >
-                  <li className="list-none gap-4 flex items-center text-inherit">
+                  <li className="list-none gap-5 flex items-center text-inherit">
                     <div className="w-10 h-10 rounded-full overflow-hidden flex-none">
                       <img
                         src={resource.avatar}
                         className="h-full w-full block"
                       />
                     </div>
-                    <div className="text-inherit">{resource.message}</div>
+                    <div className="text-inherit text-sm">
+                      {resource.message}
+                    </div>
                   </li>
                 </a>
               ))}
