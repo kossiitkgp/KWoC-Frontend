@@ -59,8 +59,12 @@ function MentorDashboard() {
             />
           </div>
 
-          <h2 className="font-bold text-2xl text-center ">
-            {authContext.userData.name} (@{authContext.userData.username})
+          <h2 className="font-bold text-2xl text-center my-3">
+            {authContext.userData.name}
+            <br />
+            <span className="font-medium text-lg text-gray-400">
+              (@{authContext.userData.username})
+            </span>
           </h2>
 
           <div className="flex mt-2 justify-center gap-3">
@@ -80,16 +84,13 @@ function MentorDashboard() {
         </div>
         <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
           <div className="lg:pt-28">
-            <h2 className="text-3xl font-bold text-center mb-8 py-4">
-              Projects
+            <h2 className="font-display text-6xl font-bold text-center mb-8 py-4">
+              PROJECTS
             </h2>
             {isLoading ? (
               <SpinnerLoader />
             ) : dashboard !== null ? (
               <div className="flex flex-wrap justify-center gap-2 items-stretch">
-                {dashboard.projects.map((project, i) => (
-                  <MentorProjectCard key={i} {...project} />
-                ))}
                 <Link
                   to={ROUTER_PATHS.PROJECT_FORM}
                   className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center"
@@ -97,6 +98,9 @@ function MentorDashboard() {
                   <BiPlus />
                   Add Project
                 </Link>
+                {dashboard.projects.map((project, i) => (
+                  <MentorProjectCard key={i} {...project} />
+                ))}
               </div>
             ) : (
               <p className="text-center text-red-500">{error}</p>
