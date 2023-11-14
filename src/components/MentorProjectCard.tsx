@@ -69,12 +69,13 @@ function MentorProjectCard({
             </div>
           )}
         </div>
-        <button
+        <a
           className="mt-auto align-bottom text-center font-semibold text-lg w-full p-2 bg-blue-950 rounded-md hover:bg-blue-900"
-          onClick={() => window.open(repo_link, "_blank")}
+          href={repo_link}
+          target="_blank"
         >
           View Project
-        </button>
+        </a>
       </div>
     </>
   );
