@@ -59,9 +59,9 @@ function Projects() {
       </div>
 
       {error && <p>{error}</p>}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 px-8 items-start">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-7xl gap-4 px-8 items-start">
         {searchResults.map((project, i) => (
-          <ProjectCard key={i} {...project} />
+          <ProjectCard key={i} {...project} isStudentView={true} />
         ))}
       </div>
     </div>
