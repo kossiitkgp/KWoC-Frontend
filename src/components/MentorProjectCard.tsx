@@ -9,7 +9,7 @@ function MentorProjectCard({
   lines_added,
   lines_removed,
   project_status,
-  repo_link
+  repo_link,
 }: IProjectDashboardInfo) {
   return (
     <>
@@ -69,7 +69,10 @@ function MentorProjectCard({
             </div>
           )}
         </div>
-        <button className="mt-auto align-bottom text-center font-semibold text-lg w-full p-2 bg-blue-950 rounded-md hover:bg-blue-900" onClick={() => window.open(repo_link, '_blank')}>
+        <button
+          className="mt-auto align-bottom text-center font-semibold text-lg w-full p-2 bg-blue-950 rounded-md hover:bg-blue-900"
+          onClick={() => window.open(repo_link, "_blank")}
+        >
           View Project
         </button>
       </div>
