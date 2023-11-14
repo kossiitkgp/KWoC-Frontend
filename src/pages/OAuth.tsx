@@ -55,9 +55,15 @@ function OAuth() {
     }
   });
 
-  return <div className="pt-32 flex justify-center">
-    {error === null ? <SpinnerLoader /> : <p className="text-red-500">{error}</p>}
-  </div>;
+  return (
+    <div className="pt-32 flex justify-center">
+      {error === null ? (
+        <SpinnerLoader />
+      ) : (
+        <p className="text-red-500">{error}</p>
+      )}
+    </div>
+  );
 }
 
 export default OAuth;
