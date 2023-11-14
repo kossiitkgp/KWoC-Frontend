@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
-import { CgProfile } from "react-icons/cg";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
 import { ROUTER_PATHS, GH_OAUTH_URL } from "../util/constants";
@@ -29,16 +28,14 @@ function BrandLogo() {
 
 function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
   return LINKS.map((link) => (
-    <li key={link.name} className={isMobile ? "mb-1" : "md:ml-4 md:mr-4"}>
+    <li key={link.name} className={isMobile ? "mb-1" : "md:ml-4"}>
       <Link
         to={link.link}
         className={
-          (isMobile
-            ? "block p-2 text-sm font-semibold "
-            : "px-2 py-1 font-semibold ") +
+          (isMobile ? "block p-2 text-sm font-semibold " : "font-semibold ") +
           (isLinkActive(link.link)
-            ? "text-blue-500 hover:drop-shadow-glow duration-500"
-            : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-blue-700")
+            ? "text-primary hover:drop-shadow-glow duration-500"
+            : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-primary-700")
         }
       >
         {link.name}
@@ -67,7 +64,10 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
         }
       >
         {authContext.isAuthenticated ? (
-          <CgProfile color="#dc2626" />
+          <img
+            className="w-10 h-full rounded-full block"
+            src={`https://github.com/${authContext.userData.username}.png`}
+          />
         ) : (
           "MENTOR REGISTRATION"
         )}
@@ -112,7 +112,7 @@ function Navbar() {
         <BrandLogo />
         <div className="lg:hidden ml-auto -mr-5">
           <button
-            className="flex items-center text-blue-600 p-3"
+            className="flex items-center text-primary-600 p-3"
             onClick={toggleMobileMenu}
           >
             <CiMenuBurger size="2em" color="#3b82f6" />

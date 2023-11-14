@@ -32,7 +32,7 @@ export default function TestimonialCard(props: TestimonialCardProps) {
         </p>
       </div>
       <a href={blogLink} target="_blank" rel="noopener noreferrer">
-        <div className="w-fit m-auto px-6 py-2 bg-blue-950 hover:bg-blue-900 rounded-lg  hover:text-black hover:shadow-md transition-all duration-300 ease-in-out">
+        <div className="w-fit m-auto px-6 py-2 bg-primary-950 hover:bg-primary-900 rounded-lg  hover:text-black hover:shadow-md transition-all duration-300 ease-in-out">
           <p className="text-white text-center font-bold">Read Full Blog</p>
         </div>
       </a>

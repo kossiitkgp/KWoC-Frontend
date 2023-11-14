@@ -11,31 +11,37 @@ import { AuthProvider } from "./util/auth";
 import { ROUTER_PATHS } from "./util/constants";
 import MentorDashboard from "./pages/MentorDashboard";
 import ProjectForm from "./pages/ProjectForm";
+import ScrollToTop from "./util/scrollToTop";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <AuthProvider>
-          <Navbar />
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path={ROUTER_PATHS.MENTOR_FORM} element={<MentorForm />} />
-            {/* <Route path={ROUTER_PATHS.STUDENT_FORM} element={<StudentForm />} /> */}
-            {/* <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} /> */}
-            <Route path={ROUTER_PATHS.PROJECT_FORM} element={<ProjectForm />} />
-            <Route path={ROUTER_PATHS.FAQ} element={<FAQ />} />
-            {/* <Route
+        <ScrollToTop>
+          <AuthProvider>
+            <Navbar />
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path={ROUTER_PATHS.MENTOR_FORM} element={<MentorForm />} />
+              {/* <Route path={ROUTER_PATHS.STUDENT_FORM} element={<StudentForm />} /> */}
+              {/* <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} /> */}
+              <Route
+                path={ROUTER_PATHS.PROJECT_FORM}
+                element={<ProjectForm />}
+              />
+              <Route path={ROUTER_PATHS.FAQ} element={<FAQ />} />
+              {/* <Route
               path={ROUTER_PATHS.TESTIMONIALS}
               element={<Testimonials />}
             /> */}
-            <Route path={ROUTER_PATHS.OAUTH} element={<OAuth />} />
-            <Route
-              path={ROUTER_PATHS.MENTOR_DASHBOARD}
-              element={<MentorDashboard />}
-            />
-          </Routes>
-        </AuthProvider>
+              <Route path={ROUTER_PATHS.OAUTH} element={<OAuth />} />
+              <Route
+                path={ROUTER_PATHS.MENTOR_DASHBOARD}
+                element={<MentorDashboard />}
+              />
+            </Routes>
+          </AuthProvider>
+        </ScrollToTop>
       </BrowserRouter>
     </div>
   );
