@@ -68,14 +68,14 @@ function MentorProjectCard({
           </div>
         </div>
         <div className="mb-3 flex justify-around font-semibold">
-          <a
+          {/* <a
             onClick={() => {
-              // TODO
+              // TODO: complete edit project
             }}
             className="text-base text-primary-500 cursor-pointer hover:text-primary-600"
           >
             Edit
-          </a>
+          </a> */}
           <a
             href={`${repo_link}/issues`}
             target="_blank"
