@@ -14,7 +14,9 @@ function ProjectCard({ name, description, tags, mentor }: IProject) {
             {mentor.name}
           </a>
         </h3>
-        <p className="mb-4 break-words">{description}</p>
+        <p className="mb-4 break-words line-clamp-4" title={description}>
+          {description}
+        </p>
         <div className="flex flex-wrap gap-2 mb-8 justify-center">
           {tags
             .sort()
