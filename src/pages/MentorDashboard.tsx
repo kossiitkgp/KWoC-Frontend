@@ -64,8 +64,18 @@ function MentorDashboard() {
           </h2>
 
           <div className="flex mt-2 justify-center gap-3">
-            <Link className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600" to={ROUTER_PATHS.MENTOR_FORM}>Edit Info</Link>
-            <button className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600" onClick={authContext.onLogout}>Sign Out</button>
+            <Link
+              className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
+              to={ROUTER_PATHS.MENTOR_FORM}
+            >
+              Edit Info
+            </Link>
+            <button
+              className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600"
+              onClick={authContext.onLogout}
+            >
+              Sign Out
+            </button>
           </div>
         </div>
         <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
