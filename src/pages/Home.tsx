@@ -32,19 +32,21 @@ function Home() {
   return (
     <>
       <section>
-        <Snowfall
-          style={{
-            width: "100%",
-            height: "120%",
-            zIndex: -1,
-          }}
-          snowflakeCount={number_of_particles}
-          images={snowflake_images}
-          radius={[15.0, 40.0]}
-          speed={[0.5, 4.0]}
-          wind={[-0.5, 1.0]}
-          rotationSpeed={[-1.0, 1.0]}
-        />
+        {process.env.NODE_ENV === "production" && (
+          <Snowfall
+            style={{
+              width: "100%",
+              height: "120%",
+              zIndex: -1,
+            }}
+            snowflakeCount={number_of_particles}
+            images={snowflake_images}
+            radius={[15.0, 40.0]}
+            speed={[0.5, 4.0]}
+            wind={[-0.5, 1.0]}
+            rotationSpeed={[-1.0, 1.0]}
+          />
+        )}
         <Hero />
       </section>
       <section className="bg-black/60 py-32 clip-path-polygonDesignSmall md:clip-path-polygonDesign">
