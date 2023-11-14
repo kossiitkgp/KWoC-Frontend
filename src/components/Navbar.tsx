@@ -72,7 +72,7 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
           "MENTOR REGISTRATION"
         )}
       </Link>
-      {!authContext.isAuthenticated &&
+      {!authContext.isAuthenticated && (
         <Link
           to={GH_OAUTH_URL}
           className={
@@ -83,7 +83,7 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
         >
           SIGN IN
         </Link>
-      }
+      )}
     </>
   );
 }
