@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
-import { CgProfile } from "react-icons/cg";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
 import { ROUTER_PATHS, GH_OAUTH_URL } from "../util/constants";
