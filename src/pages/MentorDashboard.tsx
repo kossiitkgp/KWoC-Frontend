@@ -56,13 +56,12 @@ function MentorDashboard() {
             <Link to={ROUTER_PATHS.MENTOR_FORM}>Edit</Link>
           </p>
         </div>
-
-        {dashboard !== null ? (
-          <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
-            <div className="lg:pt-28">
-              <h2 className="text-3xl font-bold text-center mb-8 py-4">
-                Projects
-              </h2>
+        <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
+          <div className="lg:pt-28">
+            <h2 className="text-3xl font-bold text-center mb-8 py-4">
+              Projects
+            </h2>
+            {dashboard !== null ? (
               <div className="flex flex-wrap justify-center gap-2 items-stretch">
                 {dashboard.projects.map((project, i) => (
                   <MentorProjectCard key={i} {...project} />
@@ -75,11 +74,11 @@ function MentorDashboard() {
                   Add Project
                 </Link>
               </div>
-            </div>
+            ) : (
+              error
+            )}
           </div>
-        ) : (
-          error
-        )}
+        </div>
 
         <div className="lg:sticky lg:self-start lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
           <div className="mb-8">
