@@ -67,7 +67,10 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
         }
       >
         {authContext.isAuthenticated ? (
-          <CgProfile color="#dc2626" />
+          <img
+            className="w-10 h-full rounded-full block"
+            src={`https://github.com/${authContext.userData.username}.png`}
+          />
         ) : (
           "MENTOR REGISTRATION"
         )}
