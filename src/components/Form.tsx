@@ -7,7 +7,7 @@ type MappedObject<S, T> = {
   [Property in keyof S]: T;
 };
 
-type InputSettings = IObject<IInputFields>;
+export type InputSettings = IObject<IInputFields>;
 type Responses<S extends InputSettings> = MappedObject<S, string>;
 
 interface IFormProps<S extends InputSettings> {
@@ -15,7 +15,9 @@ interface IFormProps<S extends InputSettings> {
   fields: S;
   error: string | null;
   info: string | null;
+  submitWithoutChange?: boolean;
   onSubmit: (responses: Responses<S>) => Promise<boolean>;
+  onCancel?: (responses: Responses<S>) => void;
 }
 
 function Form<S extends InputSettings>(props: IFormProps<S>) {
@@ -31,7 +33,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
       onChange: (value) => {
         const newResponses = {
           ...responses,
-          name: value,
+          [name]: value,
         };
 
         setResponses(newResponses);
@@ -53,29 +55,43 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   }
 
   return (
-    <div className="pt-32 w-full md:w-96 md:max-w-full mx-auto rounded-md">
+    <div className="pt-32 w-[80%] md:w-[60%] md:max-w-full lg:w-[50%] mx-auto rounded-md">
       <div className="p-10 border border-slate-700 sm:rounded-md">
-        {props.error && <p>{props.error}</p>}
-        {props.info && <p>{props.info}</p>}
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            if (responsesChanged) {
+            if (responsesChanged || props.submitWithoutChange) {
               const isOk = await props.onSubmit(responses);
               setResponsesChanged(!isOk);
             }
           }}
         >
-          <h1 className="text-center text-3xl mb-10 ">{props.title}</h1>
+          <h1 className="text-center text-3xl mb-10">{props.title}</h1>
+          {props.error && <p className="text-red-500">{props.error}</p>}
+          {props.info && <p className="text-blue-500">{props.info}</p>}
+
           {Object.values(inputs)}
-          <div className="mb-4 text-center">
-            <button
-              type="submit"
-              className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
-              disabled={!responsesChanged}
-            >
-              Submit
-            </button>
+          <div className="flex justify-around">
+            <div className="mb-4 text-center">
+              <button
+                type="submit"
+                className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
+                disabled={!responsesChanged && !props.submitWithoutChange}
+              >
+                Submit
+              </button>
+            </div>
+            {props.onCancel !== undefined && (
+              <div className="mb-4 text-center">
+                <button
+                  type="reset"
+                  className="h-10 px-5 text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600"
+                  onClick={() => props.onCancel!(responses)}
+                >
+                  Cancel
+                </button>
+              </div>
+            )}
           </div>
         </form>
       </div>

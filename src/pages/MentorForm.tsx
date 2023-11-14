@@ -14,8 +14,7 @@ function MentorForm() {
   const [isRegistering, setIsRegistering] = useState(false);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    setIsRegistering(urlParams.get("register") !== null);
+    setIsRegistering(!authContext.isRegistered);
 
     if (!authContext.isAuthenticated) {
       navigate(ROUTER_PATHS.HOME);
@@ -24,16 +23,19 @@ function MentorForm() {
     if (authContext.userData.type !== "mentor") {
       navigate(ROUTER_PATHS.HOME);
     }
-  }, [authContext]);
+  });
 
   return (
     <>
       <Form
         title={
-          isRegistering ? "Complete Registration" : "Edit Your Information"
+          isRegistering
+            ? "Complete Mentor Registration"
+            : "Edit Your Information"
         }
         error={error}
         info={info}
+        submitWithoutChange={isRegistering}
         fields={{
           name: {
             field: "Name",
@@ -50,25 +52,35 @@ function MentorForm() {
             required: true,
           },
         }}
+        onCancel={() => {
+          isRegistering
+            ? authContext.onLogout()
+            : navigate(ROUTER_PATHS.MENTOR_DASHBOARD);
+        }}
         onSubmit={async (responses) => {
           setError(null);
           setInfo(null);
+
+          const userData = {
+            username: authContext.userData.username,
+            name: responses.name,
+            email: responses.email,
+          };
 
           try {
             const res = await makeRequest(
               "mentor/form",
               isRegistering ? "post" : "put",
-              {
-                username: authContext.userData.username,
-                name: responses.name,
-                email: responses.email,
-              },
+              userData,
               authContext.jwt,
             );
 
+            console.log(res.response);
             if (!res.is_ok) setError(res.response.message);
             else {
               if (isRegistering) {
+                authContext.onRegister({ ...userData, type: "mentor" });
+
                 navigate(authContext.dashboardLink);
               } else setInfo("Information successfully changed.");
             }

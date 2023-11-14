@@ -2,6 +2,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import TestimonialCard from "./TestimonialCard";
 import testimonialsData from "../data/testimonials.json";
+// import { Link } from "react-router-dom";
+// import { ROUTER_PATHS } from "../util/constants";
 
 export default function Testimonials() {
   // Selecting first 5 testimonial data to render
@@ -28,9 +30,10 @@ export default function Testimonials() {
           ))}
         </Carousel>
         <div className="sm:w-1/5 m-auto text-center text-zinc-400 font-bold text-xl underline underline-offset-4">
-          <a href="/testimonials" className="hover:text-zinc-300">
+
+          {/* <Link to={ROUTER_PATHS.TESTIMONIALS} className="hover:text-zinc-300">
             See More
-          </a>
+          </Link> */}
         </div>
       </div>
     </div>

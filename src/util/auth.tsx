@@ -18,32 +18,37 @@ interface IUserAuthData {
 
 interface ILocalStorageAuthObj {
   jwt: string;
+  isRegistered: boolean;
   userData: IUserAuthData;
 }
 const DEFAULT_AUTH_OBJ: ILocalStorageAuthObj = {
   // Random defaults
   jwt: "",
+  isRegistered: false,
   userData: {
     username: "",
     name: "",
     email: "",
-    type: "student",
+    type: "mentor",
   },
 };
 
 interface IAuthContext {
   isAuthenticated: boolean;
+  isRegistered: boolean;
   jwt: string;
   userData: IUserAuthData;
   formLink: ROUTER_PATHS.STUDENT_FORM | ROUTER_PATHS.MENTOR_FORM;
   dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD | ROUTER_PATHS.MENTOR_DASHBOARD;
   setUserType: (type: UserType) => void;
   onLogin: (auth: ILocalStorageAuthObj) => void;
+  onRegister: (auth: IUserAuthData) => void;
   onLogout: () => void;
 }
 
 const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   isAuthenticated: false,
+  isRegistered: false,
   // Random defaults
   userData: DEFAULT_AUTH_OBJ.userData,
   formLink: ROUTER_PATHS.STUDENT_FORM,
@@ -51,6 +56,7 @@ const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   jwt: DEFAULT_AUTH_OBJ.jwt,
   setUserType: () => {},
   onLogin: () => {},
+  onRegister: () => {},
   onLogout: () => {},
 };
 
@@ -78,14 +84,28 @@ export const useAuthContext = () => useContext(AuthContext);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
 
+  const lsAuthJwt = getLsAuthJwt();
   const [isAuthenticated, setIsAuthenticated] = useState(
-    getLsAuthJwt() !== null,
+    lsAuthJwt !== null && lsAuthJwt !== "",
   );
-  const [userAuth, setUserAuth] =
-    useState<ILocalStorageAuthObj>(DEFAULT_AUTH_OBJ);
-  const [formLink, setFormLink] = useState(DEFAULT_AUTH_CONTEXT.formLink);
-  const [dashboardLink, setDashboardLink] = useState(
-    DEFAULT_AUTH_CONTEXT.dashboardLink,
+
+  const [userAuth, setUserAuth] = useState<ILocalStorageAuthObj>(
+    getLsAuthObj() ?? DEFAULT_AUTH_OBJ,
+  );
+
+  const [isRegistered, setIsRegistered] = useState(userAuth.isRegistered);
+
+  const [formLink, setFormLink] = useState<IAuthContext["formLink"]>(
+    userAuth.userData.type === "mentor"
+      ? ROUTER_PATHS.MENTOR_FORM
+      : ROUTER_PATHS.STUDENT_FORM,
+  );
+  const [dashboardLink, setDashboardLink] = useState<
+    IAuthContext["dashboardLink"]
+  >(
+    userAuth.userData.type === "mentor"
+      ? ROUTER_PATHS.MENTOR_DASHBOARD
+      : ROUTER_PATHS.STUDENT_DASHBOARD,
   );
 
   const setUserType = (type: UserType) => {
@@ -108,11 +128,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("auth", JSON.stringify(userAuth));
   };
 
-  const onLogin = (auth: ILocalStorageAuthObj) => {
+  const updateAuth = (auth: ILocalStorageAuthObj) => {
     // Set the JWT in the local storage
     localStorage.setItem("auth", JSON.stringify(auth));
 
-    setIsAuthenticated(true);
     setFormLink(
       auth.userData.type === "student"
         ? ROUTER_PATHS.STUDENT_FORM
@@ -126,10 +145,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUserAuth(auth);
   };
 
+  const onLogin = (auth: ILocalStorageAuthObj) => {
+    setIsAuthenticated(true);
+    updateAuth(auth);
+  };
+
+  const onRegister = (userData: IUserAuthData) => {
+    setIsRegistered(true);
+
+    const newUserAuth = {
+      ...userAuth,
+      userData,
+    };
+
+    updateAuth(newUserAuth);
+  };
+
   const onLogout = () => {
     localStorage.removeItem("auth");
 
     setIsAuthenticated(false);
+    setIsRegistered(false);
     setUserAuth(DEFAULT_AUTH_OBJ);
   };
 
@@ -138,22 +174,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     if (auth !== null) {
       setUserAuth(auth);
-      if (auth.jwt !== "") setIsAuthenticated(true);
+      if (auth.jwt !== "" && auth.jwt !== null) setIsAuthenticated(true);
+      setIsRegistered(auth.isRegistered);
     }
   }, [navigate]);
 
   const value = useMemo(
     () => ({
       isAuthenticated,
+      isRegistered,
       userData: userAuth.userData,
       formLink,
       dashboardLink,
       jwt: userAuth.jwt,
       setUserType,
       onLogin,
+      onRegister,
       onLogout,
     }),
-    [isAuthenticated, userAuth, onLogin, onLogout],
+    [isAuthenticated, userAuth, onLogin, onRegister, onLogout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

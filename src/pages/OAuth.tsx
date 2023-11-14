@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { makeRequest } from "../util/backend";
 import { useAuthContext } from "../util/auth";
 import { useNavigate } from "react-router-dom";
+import SpinnerLoader from "../components/SpinnerLoader";
 
 function OAuth() {
   const authContext = useAuthContext();
@@ -24,6 +25,7 @@ function OAuth() {
 
         authContext.onLogin({
           jwt: auth.jwt,
+          isRegistered: !auth.is_new_user,
           userData: {
             username: auth.username,
             name: auth.name,
@@ -33,9 +35,7 @@ function OAuth() {
         });
 
         navigate(
-          auth.is_new_user
-            ? `${authContext.formLink}?register=true`
-            : authContext.dashboardLink,
+          auth.is_new_user ? authContext.formLink : authContext.dashboardLink,
         );
       }
     } catch (e) {
@@ -55,7 +55,15 @@ function OAuth() {
     }
   });
 
-  return <div>{error ?? ""}</div>;
+  return (
+    <div className="pt-32 flex justify-center">
+      {error === null ? (
+        <SpinnerLoader />
+      ) : (
+        <p className="text-red-500">{error}</p>
+      )}
+    </div>
+  );
 }
 
 export default OAuth;

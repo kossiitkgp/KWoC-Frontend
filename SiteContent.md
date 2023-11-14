@@ -149,7 +149,7 @@ Nothing makes us happier than people spreading words about open-source; to begin
 
 #### What if I have a question not answered in this FAQ?
 
-Please make sure to read the website. If after reading through it you still don't have an answer please consider reaching out to us on our mail address admin@kossiitkgp.org.
+Please make sure to read the website. If after reading through it you still don't have an answer please consider reaching out to us on our mail address contact@kossiitkgp.org.
 
 ### Students
 

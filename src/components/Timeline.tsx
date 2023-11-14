@@ -71,7 +71,7 @@ function Timeline() {
   }, []);
 
   return (
-    <div className=" mb-60">
+    <div className="mb-60" id="timeline">
       <h1 className="text-zinc-300 text-center mb-12 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-12 lg:text-8xl lg:mb-36">
         TIMELINE
       </h1>

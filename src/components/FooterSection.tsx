@@ -1,5 +1,6 @@
 import {
   DISCORD_INVITE,
+  KOSS_CONTACT_EMAIL,
   KOSS_LINKEDIN_URL,
   KOSS_TWITTER_URL,
   KOSS_WEBSITE_URL,
@@ -75,6 +76,15 @@ export default function FooterSection() {
                 href={KOSS_WEBSITE_URL}
               >
                 About KOSS
+              </a>
+            </li>
+            <li className="hover:text-white/50">
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
+                href={`mailto:${KOSS_CONTACT_EMAIL}`}
+              >
+                {KOSS_CONTACT_EMAIL}
               </a>
             </li>
           </ul>

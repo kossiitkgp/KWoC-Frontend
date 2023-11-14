@@ -3,22 +3,27 @@ import { Link, useLocation } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
-import { CiLogin } from "react-icons/ci";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
-import { GH_OAUTH_URL, ROUTER_PATHS } from "../util/constants";
+import { ROUTER_PATHS, GH_OAUTH_URL } from "../util/constants";
 import { useAuthContext } from "../util/auth";
 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
-  { name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
-  { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
+  //{ name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
+  // { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
 ];
 
 function BrandLogo() {
   return (
-    <img className="object-contain h-12 w-12" src={kwoc_logo} alt="KWoC Logo" />
+    <Link to={"/"}>
+      <img
+        className="object-contain cursor-pointer h-12 w-12"
+        src={kwoc_logo}
+        alt="KWoC Logo"
+      />
+    </Link>
   );
 }
 
@@ -28,7 +33,9 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
       <Link
         to={link.link}
         className={
-          (isMobile ? "block p-2 text-sm font-semibold " : "px-2 py-1 ") +
+          (isMobile
+            ? "block p-2 text-sm font-semibold "
+            : "px-2 py-1 font-semibold ") +
           (isLinkActive(link.link)
             ? "text-blue-500 hover:drop-shadow-glow duration-500"
             : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-blue-700")
@@ -44,18 +51,40 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
   const authContext = useAuthContext();
 
   return (
-    <Link
-      to={
-        authContext.isAuthenticated ? authContext.dashboardLink : GH_OAUTH_URL
-      }
-      className={isMobile ? "flex justify-end pr-2 pt-2" : ""}
-    >
-      {authContext.isAuthenticated ? (
-        <CgProfile color="#dc2626" />
-      ) : (
-        <CiLogin color="#dc2626" />
+    <>
+      <Link
+        to={
+          authContext.isAuthenticated
+            ? authContext.isRegistered
+              ? authContext.dashboardLink
+              : authContext.formLink
+            : GH_OAUTH_URL
+        }
+        className={
+          isMobile
+            ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
+            : "font-semibold"
+        }
+      >
+        {authContext.isAuthenticated ? (
+          <CgProfile color="#dc2626" />
+        ) : (
+          "MENTOR REGISTRATION"
+        )}
+      </Link>
+      {!authContext.isAuthenticated && (
+        <Link
+          to={GH_OAUTH_URL}
+          className={
+            isMobile
+              ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
+              : "font-semibold"
+          }
+        >
+          SIGN IN
+        </Link>
       )}
-    </Link>
+    </>
   );
 }
 
@@ -81,7 +110,6 @@ function Navbar() {
         }`}
       >
         <BrandLogo />
-
         <div className="lg:hidden ml-auto -mr-5">
           <button
             className="flex items-center text-blue-600 p-3"

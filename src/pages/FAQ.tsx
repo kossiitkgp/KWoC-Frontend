@@ -1,6 +1,6 @@
 import Fuse from "fuse.js";
 import React, { useState } from "react";
-import FAQs from "../data/FAQs.json";
+import { FAQs } from "../data/FAQs";
 
 export default function FAQ() {
   const [query, setQuery] = useState("");

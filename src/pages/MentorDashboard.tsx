@@ -1,54 +1,52 @@
 import { useEffect, useState } from "react";
 import MentorResources from "../data/mentorResources.json";
 import MentorProjectCard from "../components/MentorProjectCard";
-import { ProjectType } from "../util/types";
+import { IEndpointTypes } from "../util/types";
 import { BiPlus } from "react-icons/bi";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../util/auth";
+import { ROUTER_PATHS } from "../util/constants";
+import { makeRequest } from "../util/backend";
+import SpinnerLoader from "../components/SpinnerLoader";
 
 function MentorDashboard() {
-  const [projects, setProjects] = useState<ProjectType[]>([]);
-  const [user, setUser] = useState<{
-    username: null;
-    fullName: null;
-  }>({ username: null, fullName: null });
+  const navigate = useNavigate();
+  const authContext = useAuthContext();
+
+  const [dashboard, setDashboard] = useState<
+    IEndpointTypes["mentor/dashboard"]["response"] | null
+  >(null);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // API Call
-    setProjects([
-      {
-        linesAdded: 2,
-        linesRemoved: 3,
-        nCommit: 4,
-        nPull: 3,
-        projectName: "Bhattu",
-        username: "rohan-b-84",
-      },
-      {
-        linesAdded: 2,
-        linesRemoved: 3,
-        nCommit: 4,
-        nPull: 3,
-        projectName: "KWoC-Backend",
-        username: "rohan-b-84",
-      },
-      {
-        linesAdded: 2,
-        linesRemoved: 3,
-        nCommit: 4,
-        nPull: 3,
-        projectName: "YAKW",
-        username: "rohan-b-84",
-      },
-      {
-        linesAdded: 2,
-        linesRemoved: 3,
-        nCommit: 4,
-        nPull: 3,
-        projectName: "KWoC-Frontend",
-        username: "rohan-b-84",
-      },
-    ]);
-    setUser({ username: null, fullName: null });
-  }, []);
+    if (!authContext.isAuthenticated) {
+      navigate(ROUTER_PATHS.HOME);
+    }
+
+    if (authContext.userData.type !== "mentor") {
+      navigate(ROUTER_PATHS.HOME);
+    }
+
+    setIsLoading(true);
+    makeRequest("mentor/dashboard", "get", null, authContext.jwt)
+      .then((res) => {
+        if (res.is_ok) setDashboard(res.response);
+        else setError(res.response.message);
+
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError("An unexpected error occurred.");
+        setIsLoading(false);
+      });
+  }, [authContext]);
+
+  const pulls = [];
+  if (dashboard != null) {
+    for (let project of dashboard.projects) pulls.push(...project.pulls);
+  }
 
   return (
     <>
@@ -57,38 +55,52 @@ function MentorDashboard() {
           <div className="w-full aspect-square bg-blue-950 rounded-full mb-2 overflow-hidden">
             <img
               className="w-full h-full block"
-              src={`https://github.com/${user.username || null}.png`}
+              src={`https://github.com/${authContext.userData.username}.png`}
             />
           </div>
-          <h2 className="font-bold text-2xl text-center ">
-            {user.fullName || "John Doe"}
-          </h2>
-          <p className="text-center">Any other things to mention</p>
-          <p className="text-center">Any other things to mention</p>
-          <p className="text-center">Any other things to mention</p>
-        </div>
 
+          <h2 className="font-bold text-2xl text-center ">
+            {authContext.userData.name} (@{authContext.userData.username})
+          </h2>
+
+          <div className="flex mt-2 justify-center gap-3">
+            <Link
+              className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
+              to={ROUTER_PATHS.MENTOR_FORM}
+            >
+              Edit Info
+            </Link>
+            <button
+              className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600"
+              onClick={authContext.onLogout}
+            >
+              Sign Out
+            </button>
+          </div>
+        </div>
         <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
           <div className="lg:pt-28">
             <h2 className="text-3xl font-bold text-center mb-8 py-4">
               Projects
             </h2>
-            <div className="flex flex-wrap justify-center gap-2 items-stretch">
-              {projects.map((project) => (
-                <MentorProjectCard
-                  linesAdded={project.linesAdded}
-                  linesRemoved={project.linesRemoved}
-                  nCommit={project.nCommit}
-                  nPull={project.nPull}
-                  projectName={project.projectName}
-                  username={project.username}
-                />
-              ))}
-              <button className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center min-h-[280px]">
-                <BiPlus />
-                Add Project
-              </button>
-            </div>
+            {isLoading ? (
+              <SpinnerLoader />
+            ) : dashboard !== null ? (
+              <div className="flex flex-wrap justify-center gap-2 items-stretch">
+                {dashboard.projects.map((project, i) => (
+                  <MentorProjectCard key={i} {...project} />
+                ))}
+                <Link
+                  to={ROUTER_PATHS.PROJECT_FORM}
+                  className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center"
+                >
+                  <BiPlus />
+                  Add Project
+                </Link>
+              </div>
+            ) : (
+              <p className="text-center text-red-500">{error}</p>
+            )}
           </div>
         </div>
 
@@ -98,9 +110,9 @@ function MentorDashboard() {
               Merged Pull Requests
             </h3>
             <div className="space-y-1">
-              <p>username / repo_name - Pull: pull_idx</p>
-              <p>username / repo_name - Pull: pull_idx</p>
-              <p>username / repo_name - Pull: pull_idx</p>
+              {pulls.length > 0
+                ? pulls.map((pull) => <a href={pull}>{pull}</a>)
+                : "No Pull Requests."}
             </div>
           </div>
 
@@ -108,15 +120,19 @@ function MentorDashboard() {
             <h3 className="font-semibold text-2xl mb-2">Mentor Resources</h3>
             <div className="space-y-4">
               {MentorResources.map((resource) => (
-                <a target="_blank" className="block" href={resource.url}>
-                  <li className="list-none gap-4 flex items-center">
+                <a
+                  target="_blank"
+                  className="block text-blue-500 hover:text-blue-600 hover:underline"
+                  href={resource.url}
+                >
+                  <li className="list-none gap-4 flex items-center text-inherit">
                     <div className="w-10 h-10 rounded-full overflow-hidden flex-none">
                       <img
                         src={resource.avatar}
                         className="h-full w-full block"
                       />
                     </div>
-                    <div>{resource.message}</div>
+                    <div className="text-inherit">{resource.message}</div>
                   </li>
                 </a>
               ))}
