@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { CiLogin, CiMenuBurger } from "react-icons/ci";
+import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import { IconContext } from "react-icons";
