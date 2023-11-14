@@ -4,9 +4,7 @@ export default function Card(props: any) {
       <h1 className="mb-4 font-extrabold leading-none tracking-tight text-3xl sm:text-4xl md:text-3xl lg:text-5xl sm:px-16 md:px-2 xl:px-10">
         {props.header}
       </h1>
-      <p className="text-[15px] sm:text-base md:text-sm lg:text-base md:px-2 xl:px-10 mt-10">
-        {props.content} <br /> {props.secondary}
-      </p>
+      <p className="text-lg md:px-2 xl:px-10 mt-10">{props.content}</p>
     </div>
   );
 }

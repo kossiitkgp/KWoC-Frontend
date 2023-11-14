@@ -5,7 +5,7 @@ import { DISCORD_INVITE, SLACK_INVITE } from "../util/constants";
 export default function JoinOurCommunity() {
   return (
     <>
-      <h1 className="text-zinc-300 text-center mb-4 mx-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">
+      <h1 className=" font-display text-zinc-300 text-center mb-4 mx-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">
         Join Our Community
       </h1>
 

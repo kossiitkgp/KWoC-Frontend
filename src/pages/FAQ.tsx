@@ -21,7 +21,7 @@ export default function FAQ() {
     <div className="flex flex-col items-center pt-24">
       <div className="sticky lg:-top-40 md:-top-40 sm:-top-52 max-[640px]:-top-[10rem] max-[540px]:-top-[12rem] max-[500px]:-top-[14rem] max-[300px]:-top-[18rem] flex flex-col items-center bg-[#0a0a19]">
         <section className="px-16 py-4 my-8 mx-0">
-          <h1 className="font-bold text-3xl sm:text-5xl mb-8 text-center">
+          <h1 className=" font-display font-bold text-3xl sm:text-5xl mb-8 text-center">
             Frequently Asked Questions
           </h1>
           <p className="text-xl font-semibold mb-16 text-center">

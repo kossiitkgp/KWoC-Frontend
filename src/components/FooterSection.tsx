@@ -92,7 +92,7 @@ export default function FooterSection() {
       </nav>
 
       <div>
-        <h1 className="text-center text-zinc-300 mb-4 text-2xl sm:text-4xl font-extrabold leading-none tracking-tight mt-12">
+        <h1 className=" font-display text-center text-zinc-300 mb-4 text-2xl sm:text-4xl font-extrabold leading-none tracking-tight mt-12">
           Kharagpur Winter of Code
         </h1>
         <h2 className="text-center text-zinc-300 mb-4 text-xl font-extrabold leading-none tracking-tight mt-4">
