@@ -51,7 +51,7 @@ function MentorDashboard() {
   return (
     <>
       <div className="min-h-screen flex flex-col lg:flex-row">
-        <div className="lg:sticky lg:self-start lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
+        <div className="lg:sticky lg:self-start lg:translate-y-1/4 lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
           <div className="w-full aspect-square bg-blue-950 rounded-full mb-2 overflow-hidden">
             <img
               className="w-full h-full block"
@@ -108,7 +108,7 @@ function MentorDashboard() {
           </div>
         </div>
 
-        <div className="lg:sticky lg:self-start lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
+        <div className="lg:sticky lg:self-start lg:translate-y-1/4 lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
           {/* <div className="mb-8">
             <h3 className="font-semibold text-2xl mb-2">
               Merged Pull Requests
