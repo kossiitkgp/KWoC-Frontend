@@ -30,7 +30,7 @@ function ProjectCard({
         <h3 className="text-lg text-center mb-3">
           <span className="font-bold">Mentor</span>:{" "}
           <a
-            className="text-blue-500 font-semibold hover:text-blue-600 hover:underline"
+            className="text-primary font-semibold hover:text-primary-600 hover:underline"
             href={`https://github.com/${mentor.username}`}
           >
             {mentor.name}
@@ -56,7 +56,7 @@ function ProjectCard({
         <div className="flex justify-center gap-2 align-bottom">
           <button
             onClick={() => window.open(repo_link, "_blank")}
-            className="px-4 py-2 rounded-md bg-blue-950 hover:bg-blue-900 text-lg font-bold flex justify-center items-center"
+            className="px-4 py-2 rounded-md bg-primary-950 hover:bg-primary-900 text-lg font-bold flex justify-center items-center"
           >
             View Project
           </button>
@@ -65,7 +65,7 @@ function ProjectCard({
               onClick={() => {
                 window.open(comm_channel, "_blank");
               }}
-              className="px-4 py-2 rounded-md bg-blue-950 hover:bg-blue-900 text-lg font-bold flex justify-center items-center"
+              className="px-4 py-2 rounded-md bg-primary-950 hover:bg-primary-900 text-lg font-bold flex justify-center items-center"
             >
               Join Channel
             </button>
@@ -74,7 +74,7 @@ function ProjectCard({
               onClick={() => {
                 // TODO
               }}
-              className="px-4 py-2 rounded-md bg-blue-950 hover:bg-blue-900 text-lg font-bold flex justify-center items-center"
+              className="px-4 py-2 rounded-md bg-primary-950 hover:bg-primary-900 text-lg font-bold flex justify-center items-center"
             >
               Edit Project
             </button>

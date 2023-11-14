@@ -46,7 +46,7 @@ export default function WhyKWoC() {
               Top performers in KWoC also have the opportunity to win fantastic
               prizes and rewards from{" "}
               <a
-                className="text-blue-500 font-semibold hover:text-blue-600"
+                className="text-primary font-semibold hover:text-primary-600"
                 href={FOSSU_WEBSITE_URL}
                 target="_blank"
               >

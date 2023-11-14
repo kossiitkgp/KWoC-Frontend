@@ -7,7 +7,7 @@ export const FAQs = [
       "I do not have any prior knowledge of git and/or any programming language. Can I do this?",
     answer: [
       "Absolutely. This program is specifically catered to the growth and smooth transition of people like you who want to learn. KOSS and the mentors will help you wherever possible.",
-      "To learn more about git and github, check <a class='text-blue-500 font-semibold' target='_blank' href='https://github.com/kossiitkgp/events/tree/main/2023/Spring/Git-github'>these</a>.",
+      "To learn more about git and github, check <a class='text-primary font-semibold' target='_blank' href='https://github.com/kossiitkgp/events/tree/main/2023/Spring/Git-github'>these</a>.",
     ],
   },
   {
@@ -29,7 +29,7 @@ export const FAQs = [
     question:
       "What is the purpose of this program? Is this some kind of internship?",
     answer: [
-      "<b>No</b>, KWoC is a program which aims at helping participants learn how to contribute in the open-source world. This activity prepares you for various open source opportunities such as <a class='text-blue-500 font-semibold' target='_blank' href='https://summerofcode.withgoogle.com/archive/'>Google Summer of Code</a>, <a class='text-blue-500 font-semibold' target='_blank' href='https://railsgirlssummerofcode.org'>Rail Girl's Summer of Code and Outreachy</a>.",
+      "<b>No</b>, KWoC is a program which aims at helping participants learn how to contribute in the open-source world. This activity prepares you for various open source opportunities such as <a class='text-primary font-semibold' target='_blank' href='https://summerofcode.withgoogle.com/archive/'>Google Summer of Code</a>, <a class='text-primary font-semibold' target='_blank' href='https://railsgirlssummerofcode.org'>Rail Girl's Summer of Code and Outreachy</a>.",
     ],
   },
   {
@@ -39,7 +39,7 @@ export const FAQs = [
   {
     question: "What can I do to help spread the word about KWoC?",
     answer: [
-      "Nothing makes us happier than people spreading words about open-source; to begin, you can connect with our <a class='text-blue-500 font-semibold' target='_blank' href='https://www.facebook.com/kossiitkgp'>Facebook</a>, <a class='text-blue-500 font-semibold' target='_blank' href='https://www.linkedin.com/company/kharagpur-open-source-society'>Linkedin</a>, <a class='text-blue-500 font-semibold' target='_blank' href='https://twitter.com/kossiitkgp'>Twitter</a> handles and increase awareness about KWoC in your college; nothing works better than word of mouth.",
+      "Nothing makes us happier than people spreading words about open-source; to begin, you can connect with our <a class='text-primary font-semibold' target='_blank' href='https://www.facebook.com/kossiitkgp'>Facebook</a>, <a class='text-primary font-semibold' target='_blank' href='https://www.linkedin.com/company/kharagpur-open-source-society'>Linkedin</a>, <a class='text-primary font-semibold' target='_blank' href='https://twitter.com/kossiitkgp'>Twitter</a> handles and increase awareness about KWoC in your college; nothing works better than word of mouth.",
     ],
   },
   {
@@ -57,7 +57,7 @@ export const FAQs = [
   {
     question: "My mentor is not replying, What should I do?",
     answer: [
-      `Please be patient with your mentor(s). If you do not get a response on the communication channel, contact the mentor on their email id. If no response for 3 days, inform us at <a class='text-blue-500 font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`,
+      `Please be patient with your mentor(s). If you do not get a response on the communication channel, contact the mentor on their email id. If no response for 3 days, inform us at <a class='text-primary font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`,
     ],
   },
   {
@@ -78,14 +78,14 @@ export const FAQs = [
     question:
       "Can you provide me any advice so that I can start preparing for it beforehand?",
     answer: [
-      "Get familiar with Git and Github. Check <a class='text-blue-500 font-semibold' target='_blank' href='https://opensource.guide'>this</a> Open Source guide. Also, practice git <a class='text-blue-500 font-semibold' target='_blank' href='https://gitimmersion.com/index.html'>here</a>. You can also begin by following <a class='text-blue-500 font-semibold' target='_blank' href='https://www.codecademy.com/learn/learn-git'>Codecademy's git interactive tutorial</a>.",
+      "Get familiar with Git and Github. Check <a class='text-primary font-semibold' target='_blank' href='https://opensource.guide'>this</a> Open Source guide. Also, practice git <a class='text-primary font-semibold' target='_blank' href='https://gitimmersion.com/index.html'>here</a>. You can also begin by following <a class='text-primary font-semibold' target='_blank' href='https://www.codecademy.com/learn/learn-git'>Codecademy's git interactive tutorial</a>.",
     ],
   },
   {
     question:
       "Is there any other similar kind of program that I might find interesting?",
     answer: [
-      "Other programs similar to KWoC are <a class='text-blue-500 font-semibold' target='_blank' href='https://gssoc.girlscript.tech'>GirlScript Summer of Code</a> organised by GirlScript India. If you meant similar to GSoC, then check out <a class='text-blue-500 font-semibold' target='_blank' href='https://github.com/deepanshu1422/List-Of-Open-Source-Internships-Programs'>this</a> awesome list of programs.",
+      "Other programs similar to KWoC are <a class='text-primary font-semibold' target='_blank' href='https://gssoc.girlscript.tech'>GirlScript Summer of Code</a> organised by GirlScript India. If you meant similar to GSoC, then check out <a class='text-primary font-semibold' target='_blank' href='https://github.com/deepanshu1422/List-Of-Open-Source-Internships-Programs'>this</a> awesome list of programs.",
     ],
   },
   {
@@ -122,7 +122,7 @@ export const FAQs = [
     question:
       "What if I am unable to meet the deadlines due to some unavoidable reasons?",
     answer: [
-      `Contact us via <a class='text-blue-500 font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`,
+      `Contact us via <a class='text-primary font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`,
     ],
   },
   {
@@ -149,7 +149,7 @@ export const FAQs = [
   {
     question: "What to do,if my stats are not being updated?",
     answer: [
-      `Stats are only counted once coding period starts. They are updated periodically and it may take a few hours for them to update. If your stats do not update in a day, contact us at <a class='text-blue-500 font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`,
+      `Stats are only counted once coding period starts. They are updated periodically and it may take a few hours for them to update. If your stats do not update in a day, contact us at <a class='text-primary font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`,
     ],
   },
 ];

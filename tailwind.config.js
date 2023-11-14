@@ -11,7 +11,24 @@ export default {
     fontFamily: {
       display: ["Macondo", "cursive"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "#6096B4",
+          50: "#DDE8EF",
+          100: "#CFDFE8",
+          200: "#B3CDDB",
+          300: "#97BBCE",
+          400: "#7CA8C1",
+          500: "#6096B4",
+          600: "#467995",
+          700: "#355A6F",
+          800: "#233B49",
+          900: "#111C23",
+          950: "#080D10",
+        },
+      },
+    },
   },
   plugins: [require("tailwind-clip-path")],
 };

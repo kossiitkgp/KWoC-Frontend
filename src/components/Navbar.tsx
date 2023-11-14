@@ -34,8 +34,8 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
         className={
           (isMobile ? "block p-2 text-sm font-semibold " : "font-semibold ") +
           (isLinkActive(link.link)
-            ? "text-blue-500 hover:drop-shadow-glow duration-500"
-            : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-blue-700")
+            ? "text-primary hover:drop-shadow-glow duration-500"
+            : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-primary-700")
         }
       >
         {link.name}
@@ -112,7 +112,7 @@ function Navbar() {
         <BrandLogo />
         <div className="lg:hidden ml-auto -mr-5">
           <button
-            className="flex items-center text-blue-600 p-3"
+            className="flex items-center text-primary-600 p-3"
             onClick={toggleMobileMenu}
           >
             <CiMenuBurger size="2em" color="#3b82f6" />

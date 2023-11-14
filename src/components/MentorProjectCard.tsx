@@ -27,11 +27,11 @@ function MentorProjectCard({
 
   return (
     <>
-      <div className="px-4 py-4 w-80 rounded-md bg-[#0f0f27]">
+      <div className="px-4 py-4 w-80 rounded-md bg-[#2a2a2aa3]">
         <div className="flex gap-2 items-center mb-4">
-          <h3 className="font-semibold text-xl">{name}</h3>
+          <h3 className="font-semibold text-2xl">{name}</h3>
         </div>
-        <div className="mb-3 space-y-1">
+        <div className="mb-5 space-y-1">
           <div className="flex gap-2 items-center">
             <div className="flex gap-2 items-center text-sm font-semibold">
               <BiGitCommit />
@@ -46,8 +46,8 @@ function MentorProjectCard({
             <p className="font-bold text-base">{pull_count}</p>
           </div>
         </div>
-        <div className="mb-3">
-          <p className="text-sm font-semibold">Lines Added / Removed</p>
+        <div className="mb-5">
+          <p className="text-sm font-semibold mb-1">Lines Added / Removed</p>
           <div className="w-full flex items-center">
             <span className="flex-none text-green-700 text-sm font-bold">
               + {lines_added}
@@ -59,10 +59,10 @@ function MentorProjectCard({
               ></div>
               <div
                 style={{ flex: removedPercentage + "%" }}
-                className="border-2 border-red-900"
+                className="border-2 border-red-700"
               ></div>
             </div>
-            <span className="flex-none text-red-900 text-sm font-bold">
+            <span className="flex-none text-red-700 text-sm font-bold">
               - {lines_removed}
             </span>
           </div>
@@ -72,28 +72,28 @@ function MentorProjectCard({
             onClick={() => {
               // TODO
             }}
-            className="text-base text-blue-500 cursor-pointer hover:text-blue-600"
+            className="text-base text-primary-500 cursor-pointer hover:text-primary-600"
           >
             Edit
           </a>
           <a
             href={`${repo_link}/issues`}
             target="_blank"
-            className="text-base text-blue-500 cursor-pointer hover:text-blue-600"
+            className="text-base text-primary-500 cursor-pointer hover:text-primary-600"
           >
             Issues
           </a>
           <a
             href={`${repo_link}/pulls`}
             target="_blank"
-            className="text-base text-blue-500 cursor-pointer hover:text-blue-600"
+            className="text-base text-primary-500 cursor-pointer hover:text-primary-600"
           >
             PRs
           </a>
         </div>
         <button
           onClick={() => window.open(repo_link, "_blank")}
-          className="text-center font-semibold text-lg w-full p-2 bg-blue-950 rounded-md hover:bg-blue-900"
+          className="text-center font-semibold text-lg w-full p-2 bg-primary-700 rounded-md hover:bg-primary-800"
         >
           View Project
         </button>

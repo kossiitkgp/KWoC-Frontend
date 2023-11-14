@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MentorResources from "../data/mentorResources.json";
 import MentorProjectCard from "../components/MentorProjectCard";
 import { IEndpointTypes } from "../util/types";
-import { BiPlus } from "react-icons/bi";
+import { HiOutlineViewGridAdd } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../util/auth";
 import { ROUTER_PATHS } from "../util/constants";
@@ -52,7 +52,7 @@ function MentorDashboard() {
     <>
       <div className="min-h-screen flex flex-col lg:flex-row">
         <div className="lg:sticky lg:self-start lg:translate-y-1/4 lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
-          <div className="w-full aspect-square bg-blue-950 rounded-full mb-2 overflow-hidden">
+          <div className="w-full aspect-square bg-primary-950 rounded-full mb-2 overflow-hidden">
             <img
               className="w-full h-full block"
               src={`https://github.com/${authContext.userData.username}.png`}
@@ -69,13 +69,13 @@ function MentorDashboard() {
 
           <div className="flex mt-2 justify-center gap-3">
             <Link
-              className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
+              className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-primary-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
               to={ROUTER_PATHS.MENTOR_FORM}
             >
               Edit Info
             </Link>
             <button
-              className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600"
+              className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-red-800 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600"
               onClick={authContext.onLogout}
             >
               Sign Out
@@ -90,17 +90,17 @@ function MentorDashboard() {
             {isLoading ? (
               <SpinnerLoader />
             ) : dashboard !== null ? (
-              <div className="flex flex-wrap justify-center gap-2 items-stretch">
-                <Link
-                  to={ROUTER_PATHS.PROJECT_FORM}
-                  className="px-4 py-4 w-80 rounded-md bg-[#0f0f27] hover:bg-[#161632] text-3xl font-bold flex justify-center items-center"
-                >
-                  <BiPlus />
-                  Add Project
-                </Link>
+              <div className="flex flex-wrap justify-center gap-5 items-stretch">
                 {dashboard.projects.map((project, i) => (
                   <MentorProjectCard key={i} {...project} />
                 ))}
+                <Link
+                  to={ROUTER_PATHS.PROJECT_FORM}
+                  className="px-4 py-4 w-80 rounded-md bg-primary-700 hover:bg-primary-800 text-3xl font-bold flex flex-col gap-3 justify-center items-center"
+                >
+                  <HiOutlineViewGridAdd size={50} />
+                  <div>Add Project</div>
+                </Link>
               </div>
             ) : (
               <p className="text-center text-red-500">{error}</p>
@@ -126,7 +126,7 @@ function MentorDashboard() {
               {MentorResources.map((resource) => (
                 <a
                   target="_blank"
-                  className="block text-blue-500 hover:text-blue-600 hover:underline"
+                  className="block text-primary hover:text-primary-600 hover:underline"
                   href={resource.url}
                 >
                   <li className="list-none gap-5 flex items-center text-inherit">
