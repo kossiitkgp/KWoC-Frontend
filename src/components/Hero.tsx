@@ -112,7 +112,7 @@ function Hero() {
       <div className="m-auto">
         <h1
           data-value="KWoC 23"
-          className="justify-center text-center mb-4 font-extrabold leading-none tracking-tight text-[60px] sm:text-[120px] lg:text-[156px] text-white"
+          className="justify-center font-display text-center mb-4 font-extrabold leading-none tracking-tight text-[60px] sm:text-[120px] lg:text-[156px] text-white"
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
           style={{

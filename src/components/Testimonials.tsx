@@ -15,7 +15,7 @@ export default function Testimonials() {
       className="testimonials-container m-auto w-[95%] md:w-[70%] bg-black/50 py-12 md:px-20 rounded-lg  border border-[#FFFFFF]/[0.16]"
     >
       <div className="content-container">
-        <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-7xl">
+        <h1 className=" font-display  text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-7xl">
           What Past Participants Say
         </h1>
         <Carousel

@@ -43,7 +43,9 @@ function Projects() {
 
   return (
     <div className="flex flex-col items-center pt-28">
-      <h1 className="text-5xl md:text-7xl font-bold text-center">Projects</h1>
+      <h1 className=" font-display text-5xl md:text-7xl font-bold text-center">
+        Projects
+      </h1>
       <div className="p-4 my-4 mx-0">
         <div className="w-full bg-none border-none">
           <input

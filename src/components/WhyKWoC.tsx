@@ -4,7 +4,7 @@ import Card from "./Card";
 export default function WhyKWoC() {
   return (
     <>
-      <h1 className="text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">
+      <h1 className=" font-display text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">
         WHY KWoC ?
       </h1>
       <div className="flex flex-col lg:flex-row items-stretch px-8 m-auto mt-10 w-[90%]">
@@ -13,7 +13,8 @@ export default function WhyKWoC() {
             <span>
               Intro to
               <br />
-              Open Source
+              Open <br />
+              Source
             </span>
           }
           content="Get started with open source collaboration. Hone programmer skills with Git and GitHub. Make meaningful contributions guided by mentors. Build a portfolio showcasing your talents."
@@ -22,7 +23,8 @@ export default function WhyKWoC() {
         <Card
           header={
             <span>
-              Prepare for
+              Prepare <br />
+              for
               <br />
               GSoC
             </span>
@@ -33,7 +35,8 @@ export default function WhyKWoC() {
         <Card
           header={
             <span>
-              Win Exciting
+              Win <br />
+              Exciting
               <br />
               Goodies
             </span>
