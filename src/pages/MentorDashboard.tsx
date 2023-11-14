@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../util/auth";
 import { ROUTER_PATHS } from "../util/constants";
 import { makeRequest } from "../util/backend";
+import SpinnerLoader from "../components/SpinnerLoader";
 
 function MentorDashboard() {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ function MentorDashboard() {
   const [dashboard, setDashboard] = useState<
     IEndpointTypes["mentor/dashboard"]["response"] | null
   >(null);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -26,12 +29,18 @@ function MentorDashboard() {
       navigate(ROUTER_PATHS.HOME);
     }
 
+    setIsLoading(true);
     makeRequest("mentor/dashboard", "get", null, authContext.jwt)
       .then((res) => {
         if (res.is_ok) setDashboard(res.response);
         else setError(res.response.message);
+
+        setIsLoading(false);
       })
-      .catch(() => setError("An unexpected error occurred."));
+      .catch(() => {
+        setError("An unexpected error occurred.");
+        setIsLoading(false);
+      });
   }, [authContext]);
 
   const pulls = [];
@@ -61,7 +70,9 @@ function MentorDashboard() {
             <h2 className="text-3xl font-bold text-center mb-8 py-4">
               Projects
             </h2>
-            {dashboard !== null ? (
+            {isLoading ? (
+              <SpinnerLoader />
+            ) : dashboard !== null ? (
               <div className="flex flex-wrap justify-center gap-2 items-stretch">
                 {dashboard.projects.map((project, i) => (
                   <MentorProjectCard key={i} {...project} />
