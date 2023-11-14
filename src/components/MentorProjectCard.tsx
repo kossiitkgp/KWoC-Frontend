@@ -4,6 +4,7 @@ import { IProjectDashboardInfo } from "../util/types";
 
 function MentorProjectCard({
   name,
+  project_status,
   lines_added = 0,
   lines_removed = 0,
   commit_count = 0,
@@ -28,8 +29,14 @@ function MentorProjectCard({
   return (
     <>
       <div className="px-4 py-4 w-80 rounded-md bg-[#2a2a2aa3]">
-        <div className="flex gap-2 items-center mb-4">
+        <div className="flex flex-col mb-4">
           <h3 className="font-semibold text-2xl">{name}</h3>
+
+          {project_status ? (
+            <p className="text-[0.7rem] text-green-700">Approved</p>
+          ) : (
+            <p className="text-[0.7rem] text-yellow-600">Waiting Approval</p>
+          )}
         </div>
         <div className="mb-5 space-y-1">
           <div className="flex gap-2 items-center">
