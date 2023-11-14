@@ -61,7 +61,7 @@ function Projects() {
       {error && <p>{error}</p>}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-7xl gap-4 px-8 items-start">
         {searchResults.map((project, i) => (
-          <ProjectCard key={i} {...project} isStudentView={true} />
+          <ProjectCard key={i} {...project} />
         ))}
       </div>
     </div>

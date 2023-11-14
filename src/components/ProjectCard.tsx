@@ -8,8 +8,7 @@ function ProjectCard({
   mentor,
   comm_channel,
   repo_link,
-  isStudentView,
-}: IProject & { isStudentView: boolean }) {
+}: IProject) {
   function getColor(tag: string) {
     if (tag in projectTags) {
       return (projectTags as IProjectTags)[tag];
@@ -60,25 +59,14 @@ function ProjectCard({
           >
             View Project
           </button>
-          {isStudentView ? (
-            <button
-              onClick={() => {
-                window.open(comm_channel, "_blank");
-              }}
-              className="px-4 py-2 rounded-md bg-primary-950 hover:bg-primary-900 text-lg font-bold flex justify-center items-center"
-            >
-              Join Channel
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                // TODO
-              }}
-              className="px-4 py-2 rounded-md bg-primary-950 hover:bg-primary-900 text-lg font-bold flex justify-center items-center"
-            >
-              Edit Project
-            </button>
-          )}
+          <button
+            onClick={() => {
+              window.open(comm_channel, "_blank");
+            }}
+            className="px-4 py-2 rounded-md bg-primary-950 hover:bg-primary-900 text-lg font-bold flex justify-center items-center"
+          >
+            Join Channel
+          </button>
         </div>
       </div>
     </>

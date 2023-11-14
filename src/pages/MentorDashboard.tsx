@@ -96,7 +96,7 @@ function MentorDashboard() {
                 ))}
                 <Link
                   to={ROUTER_PATHS.PROJECT_FORM}
-                  className="px-4 py-4 w-80 rounded-md bg-primary-700 hover:bg-primary-800 text-3xl font-bold flex flex-col gap-3 justify-center items-center"
+                  className="px-4 py-4 w-80 rounded-md bg-primary-700 hover:bg-primary-800 text-3xl font-bold flex flex-row-reverse md:flex-col gap-3 justify-center items-center"
                 >
                   <HiOutlineViewGridAdd size={50} />
                   <div>Add Project</div>
