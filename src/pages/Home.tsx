@@ -9,6 +9,7 @@ import snowflake_particle3 from "../assets/snowflake3.svg";
 import JoinOurCommunity from "../components/JoinOurCommunity";
 import Timeline from "../components/Timeline";
 import Testimonials from "../components/Testimonials";
+import FooterSection from "../components/FooterSection";
 
 const snowflake_images = [
   snowflake_particle1,
@@ -55,6 +56,7 @@ function Home() {
         <Timeline />
         <Testimonials />
         <JoinOurCommunity />
+        <FooterSection />
       </section>
     </>
   );

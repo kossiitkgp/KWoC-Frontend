@@ -109,7 +109,7 @@ function MentorDashboard() {
         </div>
 
         <div className="lg:sticky lg:self-start lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <h3 className="font-semibold text-2xl mb-2">
               Merged Pull Requests
             </h3>
@@ -118,7 +118,7 @@ function MentorDashboard() {
                 ? pulls.map((pull) => <a href={pull}>{pull}</a>)
                 : "No Pull Requests."}
             </div>
-          </div>
+          </div> */}
 
           <div>
             <h3 className="font-semibold text-2xl mb-2">Mentor Resources</h3>
