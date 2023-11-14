@@ -51,30 +51,40 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
   const authContext = useAuthContext();
 
   return (
-    <Link
-      to={
-        authContext.isAuthenticated
-          ? authContext.isRegistered
-            ? authContext.dashboardLink
-            : authContext.formLink
-          : GH_OAUTH_URL
-      }
-      className={
-        isMobile
-          ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
-          : "font-semibold"
-      }
-    >
-      {authContext.isAuthenticated ? (
-        authContext.isRegistered ? (
+    <>
+      <Link
+        to={
+          authContext.isAuthenticated
+            ? authContext.isRegistered
+              ? authContext.dashboardLink
+              : authContext.formLink
+            : GH_OAUTH_URL
+        }
+        className={
+          isMobile
+            ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
+            : "font-semibold"
+        }
+      >
+        {authContext.isAuthenticated ? (
           <CgProfile color="#dc2626" />
         ) : (
-          <CiLogin color="#dc2626" />
-        )
-      ) : (
-        "MENTOR REGISTRATION"
-      )}
-    </Link>
+          "MENTOR REGISTRATION"
+        )}
+      </Link>
+      {!authContext.isAuthenticated &&
+        <Link
+          to={GH_OAUTH_URL}
+          className={
+            isMobile
+              ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
+              : "font-semibold"
+          }
+        >
+          SIGN IN
+        </Link>
+      }
+    </>
   );
 }
 
