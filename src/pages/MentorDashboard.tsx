@@ -123,8 +123,9 @@ function MentorDashboard() {
           <div>
             <h3 className="font-semibold text-2xl mb-6">Mentor Resources</h3>
             <div className="space-y-4">
-              {MentorResources.map((resource) => (
+              {MentorResources.map((resource, i) => (
                 <a
+                  key={i}
                   target="_blank"
                   className="block text-primary hover:text-primary-600 hover:underline"
                   href={resource.url}
