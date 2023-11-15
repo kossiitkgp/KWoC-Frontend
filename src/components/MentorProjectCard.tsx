@@ -1,4 +1,5 @@
 import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
+import { IoPersonSharp } from "react-icons/io5";
 import { useMemo } from "react";
 import { IProjectDashboardInfo } from "../util/types";
 
@@ -10,6 +11,8 @@ function MentorProjectCard({
   commit_count = 0,
   pull_count = 0,
   repo_link,
+  mentor_username,
+  secondary_mentor_username
 }: IProjectDashboardInfo) {
   const totalLinesChanged = useMemo(
     () => lines_added + lines_removed,
@@ -39,6 +42,26 @@ function MentorProjectCard({
           )}
         </div>
         <div className="mb-5 space-y-1">
+          <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center text-sm font-semibold">
+              <IoPersonSharp />
+              Mentor:
+            </div>
+            <a href={`https://github.com/${mentor_username}`} className="font-bold text-base hover:underline">@{mentor_username}</a>
+          </div>
+          <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center text-sm font-semibold">
+              <IoPersonSharp />
+              Secondary Mentor:
+            </div>
+            <a
+              href={secondary_mentor_username !== '' ? `https://github.com/${secondary_mentor_username}` : undefined}
+              className={`font-bold text-base ${secondary_mentor_username !== '' ? 'hover:underline' : ''}`}
+            >
+              {secondary_mentor_username !== '' ? `@${secondary_mentor_username}` : 'None'}
+            </a>
+          </div>
+
           <div className="flex gap-2 items-center">
             <div className="flex gap-2 items-center text-sm font-semibold">
               <BiGitCommit />

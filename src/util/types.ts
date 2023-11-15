@@ -95,6 +95,8 @@ export interface IProjectDashboardInfo {
   lines_added: number;
   lines_removed: number;
   pulls: string[];
+  mentor_username: string;
+  secondary_mentor_username: string;
 }
 
 export interface IProjectTags {
