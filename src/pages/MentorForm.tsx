@@ -82,7 +82,10 @@ function MentorForm() {
                 authContext.onRegister({ ...userData, type: "mentor" });
 
                 navigate(authContext.dashboardLink);
-              } else setInfo("Information successfully changed.");
+              } else {
+                authContext.updateUserData(responses.name, responses.email);
+                setInfo("Information successfully changed.");
+              }
             }
 
             return res.is_ok;

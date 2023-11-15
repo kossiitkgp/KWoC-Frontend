@@ -41,6 +41,7 @@ interface IAuthContext {
   formLink: ROUTER_PATHS.STUDENT_FORM | ROUTER_PATHS.MENTOR_FORM;
   dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD | ROUTER_PATHS.MENTOR_DASHBOARD;
   setUserType: (type: UserType) => void;
+  updateUserData: (name: string, email: string) => void,
   onLogin: (auth: ILocalStorageAuthObj) => void;
   onRegister: (auth: IUserAuthData) => void;
   onLogout: () => void;
@@ -55,6 +56,7 @@ const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD,
   jwt: DEFAULT_AUTH_OBJ.jwt,
   setUserType: () => {},
+  updateUserData: () => {},
   onLogin: () => {},
   onRegister: () => {},
   onLogout: () => {},
@@ -124,14 +126,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         ? ROUTER_PATHS.STUDENT_DASHBOARD
         : ROUTER_PATHS.MENTOR_DASHBOARD,
     );
-
-    localStorage.setItem("auth", JSON.stringify(userAuth));
   };
 
-  const updateAuth = (auth: ILocalStorageAuthObj) => {
-    // Set the JWT in the local storage
-    localStorage.setItem("auth", JSON.stringify(auth));
+  const updateUserData = (name: string, email: string) => {
+    setUserAuth({
+      ...userAuth,
+      userData: {
+        ...userAuth.userData,
+        name: name,
+        email: email
+      }
+    })
+  }
 
+  const updateAuth = (auth: ILocalStorageAuthObj) => {
     setFormLink(
       auth.userData.type === "student"
         ? ROUTER_PATHS.STUDENT_FORM
@@ -170,6 +178,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
+    localStorage.setItem('auth', JSON.stringify(userAuth));
+  }, [userAuth])
+
+  useEffect(() => {
     const auth = getLsAuthObj();
 
     if (auth !== null) {
@@ -191,8 +203,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       onLogin,
       onRegister,
       onLogout,
+      updateUserData
     }),
-    [isAuthenticated, userAuth, onLogin, onRegister, onLogout],
+    [isAuthenticated, userAuth, onLogin, onRegister, onLogout, updateUserData],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
