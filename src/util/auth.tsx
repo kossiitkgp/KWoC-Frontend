@@ -41,7 +41,7 @@ interface IAuthContext {
   formLink: ROUTER_PATHS.STUDENT_FORM | ROUTER_PATHS.MENTOR_FORM;
   dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD | ROUTER_PATHS.MENTOR_DASHBOARD;
   setUserType: (type: UserType) => void;
-  updateUserData: (name: string, email: string) => void,
+  updateUserData: (name: string, email: string) => void;
   onLogin: (auth: ILocalStorageAuthObj) => void;
   onRegister: (auth: IUserAuthData) => void;
   onLogout: () => void;
@@ -134,10 +134,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       userData: {
         ...userAuth.userData,
         name: name,
-        email: email
-      }
-    })
-  }
+        email: email,
+      },
+    });
+  };
 
   const updateAuth = (auth: ILocalStorageAuthObj) => {
     setFormLink(
@@ -178,8 +178,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    localStorage.setItem('auth', JSON.stringify(userAuth));
-  }, [userAuth])
+    localStorage.setItem("auth", JSON.stringify(userAuth));
+  }, [userAuth]);
 
   useEffect(() => {
     const auth = getLsAuthObj();
@@ -203,7 +203,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       onLogin,
       onRegister,
       onLogout,
-      updateUserData
+      updateUserData,
     }),
     [isAuthenticated, userAuth, onLogin, onRegister, onLogout, updateUserData],
   );
