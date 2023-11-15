@@ -72,6 +72,7 @@ export interface IProject {
   comm_channel: string;
   readme_link: string;
   mentor: IMentor;
+  secondary_mentor: IMentor;
 }
 
 interface IProjectReg {
