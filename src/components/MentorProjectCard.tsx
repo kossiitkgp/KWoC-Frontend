@@ -38,7 +38,7 @@ function MentorProjectCard({
           {project_status ? (
             <p className="text-[0.7rem] text-green-700">Approved</p>
           ) : (
-            <p className="text-[0.7rem] text-yellow-600">Waiting Approval</p>
+            <p className="text-[0.7rem] text-yellow-600">Awaiting Approval</p>
           )}
         </div>
         <div className="mb-5 space-y-1">
@@ -78,13 +78,13 @@ function MentorProjectCard({
           <div className="flex gap-2 items-center">
             <div className="flex gap-2 items-center text-sm font-semibold">
               <BiGitCommit />
-              Commit Count:
+              Merged Commits:
             </div>
             <p className="font-bold text-base">{commit_count}</p>
           </div>
           <div className="flex gap-2 items-center">
             <div className="flex gap-2 items-center text-sm font-semibold">
-              <BiGitPullRequest /> Pull Count:
+              <BiGitPullRequest /> Merged Pull Requests:
             </div>
             <p className="font-bold text-base">{pull_count}</p>
           </div>
@@ -122,14 +122,14 @@ function MentorProjectCard({
           <a
             href={`${repo_link}/issues`}
             target="_blank"
-            className="text-base text-primary-500 cursor-pointer hover:text-primary-600"
+            className="text-base hover:underline text-primary-500 cursor-pointer hover:text-primary-600"
           >
             Issues
           </a>
           <a
             href={`${repo_link}/pulls`}
             target="_blank"
-            className="text-base text-primary-500 cursor-pointer hover:text-primary-600"
+            className="text-base hover:underline text-primary-500 cursor-pointer hover:text-primary-600"
           >
             PRs
           </a>
