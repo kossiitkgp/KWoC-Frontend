@@ -9,6 +9,8 @@ export enum ROUTER_PATHS {
   // Project routes
   PROJECTS_LIST = "/projects",
   PROJECT_FORM = "/form/project/",
+  PROJECT_EDIT_FORM = "/form/project/edit/:id",
+  PROJECT_EDIT_FORM_NOSUFFIX = "/form/project/edit/",
 
   // Registration routes
   STUDENT_FORM = "/form/student",

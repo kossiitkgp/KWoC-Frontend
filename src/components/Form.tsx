@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 
 interface IObject<T> {
   [name: string]: T;
@@ -23,6 +23,7 @@ interface IFormProps<S extends InputSettings> {
 function Form<S extends InputSettings>(props: IFormProps<S>) {
   const inputProps: IObject<IFormInputProps> = {};
   const default_responses: Responses<S> = {} as Responses<S>;
+
   const [responses, setResponses] = useState<Responses<S>>(default_responses);
   const [responsesChanged, setResponsesChanged] = useState(false);
   const inputs: ReactNode[] = [];
@@ -45,12 +46,12 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           }
         }
 
+
         setResponsesChanged(false);
       },
     };
 
     default_responses[name] = inputProps[name].defaultValue ?? "";
-
     inputs.push(<FormInput key={name} {...inputProps[name]} />);
   }
 

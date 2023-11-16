@@ -38,7 +38,7 @@ export interface IEndpointTypes {
     response: IHTTPMessage;
   };
   project: {
-    request: IProjectReg;
+    request: IProjectReg | IProjectEdit;
     response: IProject[];
   };
   "mentor/dashboard": {
@@ -51,6 +51,10 @@ export interface IEndpointTypes {
       students: IStudentInfo[];
     };
   };
+  [route: `project/${number}`]: {
+    request: null;
+    response: IProject;
+  }
 }
 
 export interface IMentor {
@@ -84,6 +88,10 @@ interface IProjectReg {
   readme_link: string;
   secondary_mentor_username: string;
   mentor_username: string;
+}
+
+interface IProjectEdit extends IProjectReg {
+  id: number;
 }
 
 export interface IProjectDashboardInfo extends IProject {

@@ -2,8 +2,11 @@ import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
 import { IoPersonSharp } from "react-icons/io5";
 import { useMemo } from "react";
 import { IProjectDashboardInfo } from "../util/types";
+import { ROUTER_PATHS } from "../util/constants";
+import { Link } from "react-router-dom";
 
 function MentorProjectCard({
+  id,
   name,
   project_status,
   lines_added = 0,
@@ -134,12 +137,21 @@ function MentorProjectCard({
             PRs
           </a>
         </div>
-        <button
-          onClick={() => window.open(repo_link, "_blank")}
-          className="text-center font-semibold text-lg w-full p-2 bg-primary-700 rounded-md hover:bg-primary-800"
-        >
-          View Project
-        </button>
+        <div className="mb-2 flex justify-around gap-2">
+          <a
+            href={repo_link}
+            target="_blank"
+            className="text-center font-semibold text-lg w-full p-2 bg-primary-700 rounded-md hover:bg-primary-800"
+          >
+            View Project
+          </a>
+          <Link
+            to={ROUTER_PATHS.PROJECT_EDIT_FORM_NOSUFFIX + id.toString()}
+            className="text-center font-semibold text-lg w-full p-2 bg-orange-700 rounded-md hover:bg-orange-800"
+          >
+            Edit Project
+          </Link>
+        </div>
       </div>
     </>
   );

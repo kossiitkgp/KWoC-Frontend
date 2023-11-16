@@ -29,6 +29,10 @@ function App() {
                 path={ROUTER_PATHS.PROJECT_FORM}
                 element={<ProjectForm />}
               />
+              <Route
+                path={ROUTER_PATHS.PROJECT_EDIT_FORM}
+                element={<ProjectForm isEditing={true} />}
+              />
               <Route path={ROUTER_PATHS.FAQ} element={<FAQ />} />
               {/* <Route
               path={ROUTER_PATHS.TESTIMONIALS}
