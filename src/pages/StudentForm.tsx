@@ -79,7 +79,10 @@ function StudentForm() {
               if (isRegistering) {
                 navigate(authContext.dashboardLink);
                 authContext.onRegister({ ...userData, type: "student" });
-              } else setInfo("Information successfully changed.");
+              } else {
+                authContext.updateUserData(responses.name, responses.email);
+                setInfo("Information successfully changed.");
+              }
             }
 
             return res.is_ok;
