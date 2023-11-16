@@ -148,14 +148,14 @@ function MentorProjectCard({
           >
             View Project
           </a>
-          {mentor.username === authContext.userData.username &&
+          {mentor.username === authContext.userData.username && (
             <Link
               to={ROUTER_PATHS.PROJECT_EDIT_FORM_NOSUFFIX + id.toString()}
               className="text-center font-semibold text-lg w-full p-2 bg-orange-700 rounded-md hover:bg-orange-800"
             >
               Edit Project
             </Link>
-          }
+          )}
         </div>
       </div>
     </>
