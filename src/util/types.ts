@@ -54,7 +54,7 @@ export interface IEndpointTypes {
   [route: `project/${number}`]: {
     request: null;
     response: IProject;
-  }
+  };
 }
 
 export interface IMentor {

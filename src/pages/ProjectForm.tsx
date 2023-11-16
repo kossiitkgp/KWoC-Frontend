@@ -7,12 +7,12 @@ import { makeRequest } from "../util/backend";
 import { IProject } from "../util/types";
 import SpinnerLoader from "../components/SpinnerLoader";
 
-function ProjectForm(props: {isEditing?: boolean}) {
+function ProjectForm(props: { isEditing?: boolean }) {
   const isEditing = props.isEditing ?? false;
 
   const authContext = useAuthContext();
   const navigate = useNavigate();
-  const {id} = useParams();
+  const { id } = useParams();
 
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
@@ -30,29 +30,26 @@ function ProjectForm(props: {isEditing?: boolean}) {
 
   useEffect(() => {
     if (isEditing && id !== undefined) {
-      makeRequest(`project/${parseInt(id)}`, 'get')
-      .then((response) => {
-
-        if (response.is_ok) {
-          setProjectInfo(response.response);
-        }
-        else {
-          setError(response.response.message);
-        }
-      })
-      .catch((e) => {
-        console.log(e);
-        setError('An unexpected error occured.');
-      })
+      makeRequest(`project/${parseInt(id)}`, "get")
+        .then((response) => {
+          if (response.is_ok) {
+            setProjectInfo(response.response);
+          } else {
+            setError(response.response.message);
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+          setError("An unexpected error occured.");
+        });
     }
-  }, [navigate, id, isEditing])
+  }, [navigate, id, isEditing]);
 
   return (
     <>
-      {
-        (!isEditing || projectInfo !== null || error !== null) ?
+      {!isEditing || projectInfo !== null || error !== null ? (
         <Form
-          title={isEditing ? 'Edit Project' : 'Register A Project'}
+          title={isEditing ? "Edit Project" : "Register A Project"}
           error={error}
           info={info}
           fields={{
@@ -61,47 +58,49 @@ function ProjectForm(props: {isEditing?: boolean}) {
               required: true,
               type: "text",
               placeholder: "My Awesome App",
-              defaultValue: isEditing ? projectInfo?.name : undefined
+              defaultValue: isEditing ? projectInfo?.name : undefined,
             },
             description: {
               field: "Description",
               required: true,
               type: "text",
               placeholder: "A short description for the project.",
-              defaultValue: isEditing ? projectInfo?.description : undefined
+              defaultValue: isEditing ? projectInfo?.description : undefined,
             },
             repo_link: {
               field: "Repository Link",
               required: true,
               type: "url",
               placeholder: "https://github.com/kossiitkgp/KWoC-Frontend",
-              defaultValue: isEditing ? projectInfo?.repo_link : undefined
+              defaultValue: isEditing ? projectInfo?.repo_link : undefined,
             },
             comm_channel: {
               field: "Communication Channel",
               required: true,
               type: "url",
               placeholder: DISCORD_INVITE,
-              defaultValue: isEditing ? projectInfo?.comm_channel : undefined
+              defaultValue: isEditing ? projectInfo?.comm_channel : undefined,
             },
             readme_link: {
               field: "README Link",
               required: true,
               type: "url",
               placeholder: "https://github.com/kossiitkgp/KWoC-Frontend#readme",
-              defaultValue: isEditing ? projectInfo?.readme_link : undefined
+              defaultValue: isEditing ? projectInfo?.readme_link : undefined,
             },
             tags: {
               field: "Tags (Optional)",
               type: "text",
               placeholder: "javascript,html,css",
-              defaultValue: isEditing ? projectInfo?.tags.join(',') : undefined
+              defaultValue: isEditing ? projectInfo?.tags.join(",") : undefined,
             },
             secondary_mentor_username: {
               field: "Secondary Mentor Username (Optional)",
               type: "text",
               placeholder: "proffapt",
-              defaultValue: isEditing ? projectInfo?.secondary_mentor.username : undefined
+              defaultValue: isEditing
+                ? projectInfo?.secondary_mentor.username
+                : undefined,
             },
           }}
           onCancel={() => {
@@ -121,7 +120,7 @@ function ProjectForm(props: {isEditing?: boolean}) {
                     responses.secondary_mentor_username ?? "",
                   tags: responses.tags !== "" ? responses.tags.split(",") : [],
                   mentor_username: authContext.userData.username,
-                  id: isEditing ? (id ? parseInt(id) : undefined) : undefined
+                  id: isEditing ? (id ? parseInt(id) : undefined) : undefined,
                 },
                 authContext.jwt,
               );
@@ -142,11 +141,12 @@ function ProjectForm(props: {isEditing?: boolean}) {
               return false;
             }
           }}
-        /> :
+        />
+      ) : (
         <div className="pt-32">
           <SpinnerLoader />
         </div>
-      }
+      )}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useState } from "react";
 
 interface IObject<T> {
   [name: string]: T;
@@ -45,7 +45,6 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
             return;
           }
         }
-
 
         setResponsesChanged(false);
       },
