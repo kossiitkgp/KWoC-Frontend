@@ -11,8 +11,8 @@ function MentorProjectCard({
   commit_count = 0,
   pull_count = 0,
   repo_link,
-  mentor_username,
-  secondary_mentor_username,
+  mentor,
+  secondary_mentor,
 }: IProjectDashboardInfo) {
   const totalLinesChanged = useMemo(
     () => lines_added + lines_removed,
@@ -48,10 +48,10 @@ function MentorProjectCard({
               Mentor:
             </div>
             <a
-              href={`https://github.com/${mentor_username}`}
+              href={`https://github.com/${mentor.username}`}
               className="font-bold text-base hover:underline"
             >
-              @{mentor_username}
+              @{mentor.username}
             </a>
           </div>
           <div className="flex gap-2 items-center">
@@ -61,16 +61,16 @@ function MentorProjectCard({
             </div>
             <a
               href={
-                secondary_mentor_username !== ""
-                  ? `https://github.com/${secondary_mentor_username}`
+                secondary_mentor.username !== ""
+                  ? `https://github.com/${secondary_mentor.username}`
                   : undefined
               }
               className={`font-bold text-base ${
-                secondary_mentor_username !== "" ? "hover:underline" : ""
+                secondary_mentor.username !== "" ? "hover:underline" : ""
               }`}
             >
-              {secondary_mentor_username !== ""
-                ? `@${secondary_mentor_username}`
+              {secondary_mentor.username !== ""
+                ? `@${secondary_mentor.username}`
                 : "None"}
             </a>
           </div>

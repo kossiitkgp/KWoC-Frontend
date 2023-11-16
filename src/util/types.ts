@@ -86,18 +86,13 @@ interface IProjectReg {
   mentor_username: string;
 }
 
-export interface IProjectDashboardInfo {
-  name: string;
-  description: string;
-  repo_link: string;
+export interface IProjectDashboardInfo extends IProject {
   project_status: boolean;
   commit_count: number;
   pull_count: number;
   lines_added: number;
   lines_removed: number;
   pulls: string[];
-  mentor_username: string;
-  secondary_mentor_username: string;
 }
 
 export interface IProjectTags {
