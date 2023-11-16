@@ -30,7 +30,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
 
   useEffect(() => {
     if (isEditing && id !== undefined) {
-      makeRequest(`project/${parseInt(id)}`, "get")
+      makeRequest(`project/${parseInt(id)}`, "get", null, authContext.jwt)
         .then((response) => {
           if (response.is_ok) {
             setProjectInfo(response.response);
