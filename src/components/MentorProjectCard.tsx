@@ -55,7 +55,7 @@ function MentorProjectCard({
             </div>
             <a
               href={`https://github.com/${mentor.username}`}
-              className="font-bold text-base hover:underline"
+              className="font-bold text-base hover:underline text-primary-500 hover:text-primary-600"
             >
               @{mentor.username}
             </a>
@@ -72,7 +72,7 @@ function MentorProjectCard({
                   : undefined
               }
               className={`font-bold text-base ${
-                secondary_mentor.username !== "" ? "hover:underline" : ""
+                secondary_mentor.username !== "" ? "hover:underline text-primary-500 hover:text-primary-600" : ""
               }`}
             >
               {secondary_mentor.username !== ""
@@ -115,30 +115,6 @@ function MentorProjectCard({
               - {lines_removed}
             </span>
           </div>
-        </div>
-        <div className="mb-3 flex justify-around font-semibold">
-          {/* <a
-            onClick={() => {
-              // TODO: complete edit project
-            }}
-            className="text-base text-primary-500 cursor-pointer hover:text-primary-600"
-          >
-            Edit
-          </a> */}
-          <a
-            href={`${repo_link}/issues`}
-            target="_blank"
-            className="text-base hover:underline text-primary-500 cursor-pointer hover:text-primary-600"
-          >
-            Issues
-          </a>
-          <a
-            href={`${repo_link}/pulls`}
-            target="_blank"
-            className="text-base hover:underline text-primary-500 cursor-pointer hover:text-primary-600"
-          >
-            PRs
-          </a>
         </div>
         <div className="mb-2 flex justify-around gap-2">
           <a
