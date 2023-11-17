@@ -72,7 +72,9 @@ function MentorProjectCard({
                   : undefined
               }
               className={`font-bold text-base ${
-                secondary_mentor.username !== "" ? "hover:underline text-primary-500 hover:text-primary-600" : ""
+                secondary_mentor.username !== ""
+                  ? "hover:underline text-primary-500 hover:text-primary-600"
+                  : ""
               }`}
             >
               {secondary_mentor.username !== ""
