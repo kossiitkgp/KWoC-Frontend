@@ -36,7 +36,7 @@ function ProjectCard({
               </div>
               <a
                 href={`https://github.com/${mentor.username}`}
-                className="font-bold text-base hover:underline"
+                className="font-bold text-base hover:underline text-primary-500 hover:text-primary-600"
               >
                 @{mentor.username}
               </a>
@@ -53,7 +53,7 @@ function ProjectCard({
                     : undefined
                 }
                 className={`font-bold text-base ${
-                  secondary_mentor.username !== "" ? "hover:underline" : ""
+                  secondary_mentor.username !== "" ? "hover:underline text-primary-500 hover:text-primary-600" : ""
                 }`}
               >
                 {secondary_mentor.username !== ""
