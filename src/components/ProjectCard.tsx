@@ -16,7 +16,7 @@ function ProjectCard({
         <div>
           <div className="flex flex-col mb-4 gap-1">
             <h3 className="font-semibold text-2xl">{name}</h3>
-            <div className="flex gap-2.5">
+            <div className="flex flex-wrap gap-2.5">
               {tags.map((tag) => (
                 <p className="rounded-md px-2.5 py-0.5 bg-primary-800 text-sm">
                   {tag}
