@@ -3,6 +3,7 @@ import ProjectCard from "../components/ProjectCard";
 import { makeRequest } from "../util/backend";
 import { IEndpointTypes } from "../util/types";
 import Fuse from "fuse.js";
+import SpinnerLoader from "../components/SpinnerLoader";
 
 function Projects() {
   const [projects, setProjects] = useState<
@@ -58,12 +59,19 @@ function Projects() {
         </div>
       </div>
 
-      {error && <p>{error}</p>}
-      <div className="grid grid-cols-1 pb-16 md:grid-cols-2 lg:grid-cols-3 max-w-7xl gap-4 px-8">
-        {searchResults.map((project, i) => (
-          <ProjectCard key={i} {...project} />
-        ))}
-      </div>
+      {
+        error !== null ?
+          <p className="text-center text-red-500">{error}</p> :
+
+          (projects.length > 0 ?
+            <div className="grid grid-cols-1 pb-16 md:grid-cols-2 lg:grid-cols-3 max-w-7xl gap-4 px-8">
+              {searchResults.map((project, i) => (
+                <ProjectCard key={i} {...project} />
+              ))}
+            </div> :
+            <SpinnerLoader />
+          )
+      }
     </div>
   );
 }
