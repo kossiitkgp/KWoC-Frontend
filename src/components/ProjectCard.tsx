@@ -30,14 +30,16 @@ function ProjectCard({
               {name}
             </h3>
             <div className="flex flex-wrap gap-2.5">
-              {tags.filter((tag) => tag.length > 0).map((tag) => (
-                <button
-                  onClick={() => setQuery(tag)}
-                  className="hover:underline rounded-md px-2.5 py-0.5 bg-primary-800 text-sm"
-                >
-                  {tag}
-                </button>
-              ))}
+              {tags
+                .filter((tag) => tag.length > 0)
+                .map((tag) => (
+                  <button
+                    onClick={() => setQuery(tag)}
+                    className="hover:underline rounded-md px-2.5 py-0.5 bg-primary-800 text-sm"
+                  >
+                    {tag}
+                  </button>
+                ))}
             </div>
           </div>
 
