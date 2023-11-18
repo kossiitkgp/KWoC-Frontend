@@ -64,7 +64,11 @@ function Projects() {
       ) : projects.length > 0 ? (
         <div className="grid grid-cols-1 pb-16 md:grid-cols-2 lg:grid-cols-3 max-w-7xl gap-4 px-8">
           {searchResults.map((project, i) => (
-            <ProjectCard key={i} project={project} setQuery={(query) => setQuery(query)} />
+            <ProjectCard
+              key={i}
+              project={project}
+              setQuery={(query) => setQuery(query)}
+            />
           ))}
         </div>
       ) : (

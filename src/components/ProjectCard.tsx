@@ -1,7 +1,13 @@
 import { IoPersonSharp } from "react-icons/io5";
 import { IProject } from "../util/types";
 
-function ProjectCard({project, setQuery}: {project: IProject, setQuery: (query: string) => void}) {
+function ProjectCard({
+  project,
+  setQuery,
+}: {
+  project: IProject;
+  setQuery: (query: string) => void;
+}) {
   const {
     name,
     description,
@@ -25,7 +31,10 @@ function ProjectCard({project, setQuery}: {project: IProject, setQuery: (query: 
             </h3>
             <div className="flex flex-wrap gap-2.5">
               {tags.map((tag) => (
-                <button onClick={() => setQuery(tag)} className="hover:underline rounded-md px-2.5 py-0.5 bg-primary-800 text-sm">
+                <button
+                  onClick={() => setQuery(tag)}
+                  className="hover:underline rounded-md px-2.5 py-0.5 bg-primary-800 text-sm"
+                >
                   {tag}
                 </button>
               ))}
