@@ -17,6 +17,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [projectInfo, setProjectInfo] = useState<IProject | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (!authContext.isAuthenticated) {
@@ -29,7 +30,10 @@ function ProjectForm(props: { isEditing?: boolean }) {
   });
 
   useEffect(() => {
+
     if (isEditing && id !== undefined) {
+      setLoading(true);
+
       makeRequest(`project/${parseInt(id)}`, "get", null, authContext.jwt)
         .then((response) => {
           if (response.is_ok) {
@@ -37,10 +41,13 @@ function ProjectForm(props: { isEditing?: boolean }) {
           } else {
             setError(response.response.message);
           }
+
+          setLoading(false);
         })
         .catch((e) => {
           console.log(e);
           setError("An unexpected error occured.");
+          setLoading(false);
         });
     }
   }, [navigate, id, isEditing]);
@@ -52,6 +59,8 @@ function ProjectForm(props: { isEditing?: boolean }) {
           title={isEditing ? "Edit Project" : "Register A Project"}
           error={error}
           info={info}
+          loading={loading}
+          disabled={loading}
           fields={{
             name: {
               field: "Project Name",
@@ -111,6 +120,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
             setInfo(null);
 
             try {
+              setLoading(true);
               const res = await makeRequest(
                 "project",
                 isEditing ? "put" : "post",
@@ -127,16 +137,19 @@ function ProjectForm(props: { isEditing?: boolean }) {
 
               if (res.is_ok) {
                 navigate(ROUTER_PATHS.MENTOR_DASHBOARD);
+                setLoading(false);
                 return true;
               } else {
                 setError(
                   `${res.response.status_code} Error: ${res.response.message}`,
                 );
+                setLoading(false);
                 return false;
               }
             } catch (e) {
               console.log(e);
               setError("An unexpected error occurred.");
+              setLoading(false);
 
               return false;
             }
