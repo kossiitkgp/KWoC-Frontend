@@ -15,7 +15,12 @@ function ProjectCard({
       <div className="px-4 py-4 w-80 rounded-md bg-[#2a2a2aa3] flex flex-col justify-between">
         <div>
           <div className="flex flex-col mb-4 gap-1">
-            <h3 className="font-semibold text-2xl" style={{wordBreak: 'break-word'}}>{name}</h3>
+            <h3
+              className="font-semibold text-2xl"
+              style={{ wordBreak: "break-word" }}
+            >
+              {name}
+            </h3>
             <div className="flex flex-wrap gap-2.5">
               {tags.map((tag) => (
                 <p className="rounded-md px-2.5 py-0.5 bg-primary-800 text-sm">
@@ -25,7 +30,9 @@ function ProjectCard({
             </div>
           </div>
 
-          <p className="mb-4" style={{wordBreak: 'break-word'}}>{description}</p>
+          <p className="mb-4" style={{ wordBreak: "break-word" }}>
+            {description}
+          </p>
         </div>
         <div>
           <div className="mb-5 space-y-1">
