@@ -69,21 +69,9 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
             src={`https://github.com/${authContext.userData.username}.png`}
           />
         ) : (
-          "MENTOR REGISTRATION"
+          "MENTOR LOGIN"
         )}
       </Link>
-      {!authContext.isAuthenticated && (
-        <Link
-          to={GH_OAUTH_URL}
-          className={
-            isMobile
-              ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
-              : "font-semibold"
-          }
-        >
-          SIGN IN
-        </Link>
-      )}
     </>
   );
 }
