@@ -32,17 +32,17 @@ function MentorDashboard() {
 
   useEffect(() => {
     makeRequest("mentor/dashboard", "get", null, authContext.jwt)
-    .then((res) => {
-      if (res.is_ok) setDashboard(res.response);
-      else setError(res.response.message);
+      .then((res) => {
+        if (res.is_ok) setDashboard(res.response);
+        else setError(res.response.message);
 
-      setIsLoading(false);
-    })
-    .catch(() => {
-      setError("An unexpected error occurred.");
-      setIsLoading(false);
-    });
-  }, [])
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError("An unexpected error occurred.");
+        setIsLoading(false);
+      });
+  }, []);
 
   const pulls = [];
   if (dashboard != null) {
