@@ -54,7 +54,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 
         setResponsesChanged(false);
       },
-      disabled
+      disabled,
     };
 
     default_responses[name] = inputProps[name].defaultValue ?? "";
@@ -84,7 +84,9 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
               <button
                 type="submit"
                 className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
-                disabled={(!responsesChanged && !props.submitWithoutChange) || disabled}
+                disabled={
+                  (!responsesChanged && !props.submitWithoutChange) || disabled
+                }
               >
                 Submit
               </button>

@@ -30,7 +30,6 @@ function ProjectForm(props: { isEditing?: boolean }) {
   });
 
   useEffect(() => {
-
     if (isEditing && id !== undefined) {
       setLoading(true);
 
