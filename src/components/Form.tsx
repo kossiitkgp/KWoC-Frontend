@@ -83,7 +83,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
             <div className="mb-4 text-center">
               <button
                 type="submit"
-                className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
+                className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:text-gray-300 disabled:bg-gray-600"
                 disabled={
                   (!responsesChanged && !props.submitWithoutChange) || disabled
                 }
@@ -95,7 +95,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
               <div className="mb-4 text-center">
                 <button
                   type="reset"
-                  className="h-10 px-5 text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600"
+                  className="h-10 px-5 text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:text-gray-600 disabled:bg-gray-600"
                   onClick={() => props.onCancel!(responses)}
                 >
                   Cancel
@@ -128,7 +128,7 @@ function FormInput(props: IFormInputProps) {
       <input
         type={props.type}
         disabled={props.disabled ?? false}
-        className="block w-full mt-2 px-2 py-1 bg-gray-800 text-white border-slate-700 rounded-md shadow-sm focus:border-indigo-700 focus:ring focus:ring-indigo-700 focus:ring-opacity-50"
+        className="block w-full mt-2 px-2 py-1 bg-gray-800 text-white border-slate-700 rounded-md shadow-sm focus:border-indigo-700 focus:ring focus:ring-indigo-700 focus:ring-opacity-5 disabled:text-gray-600 disabled:placeholder:text-gray-600"
         placeholder={props.placeholder}
         required={props.required ?? false}
         defaultValue={props.defaultValue ?? ""}
