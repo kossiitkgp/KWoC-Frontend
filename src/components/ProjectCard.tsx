@@ -1,15 +1,17 @@
 import { IoPersonSharp } from "react-icons/io5";
 import { IProject } from "../util/types";
 
-function ProjectCard({
-  name,
-  description,
-  tags,
-  mentor,
-  secondary_mentor,
-  comm_channel,
-  repo_link,
-}: IProject) {
+function ProjectCard({project, setQuery}: {project: IProject, setQuery: (query: string) => void}) {
+  const {
+    name,
+    description,
+    tags,
+    mentor,
+    secondary_mentor,
+    comm_channel,
+    repo_link,
+  } = project;
+
   return (
     <>
       <div className="px-4 py-4 w-80 rounded-md bg-[#2a2a2aa3] flex flex-col justify-between">
@@ -23,9 +25,9 @@ function ProjectCard({
             </h3>
             <div className="flex flex-wrap gap-2.5">
               {tags.map((tag) => (
-                <p className="rounded-md px-2.5 py-0.5 bg-primary-800 text-sm">
+                <button onClick={() => setQuery(tag)} className="hover:underline rounded-md px-2.5 py-0.5 bg-primary-800 text-sm">
                   {tag}
-                </p>
+                </button>
               ))}
             </div>
           </div>
