@@ -32,7 +32,7 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
       <Link
         to={link.link}
         className={
-          (isMobile ? "block p-2 text-sm font-semibold " : "font-semibold ") +
+          (isMobile ? "block p-2 text-sm font-semibold " : "font-semibold hover:underline ") +
           (isLinkActive(link.link)
             ? "text-primary hover:drop-shadow-glow duration-500"
             : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-primary-700")
@@ -60,7 +60,7 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
         className={
           isMobile
             ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
-            : "font-semibold"
+            : "font-semibold hover:underline text-white opacity-80"
         }
       >
         {authContext.isAuthenticated ? (
