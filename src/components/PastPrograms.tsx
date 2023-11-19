@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { ROUTER_PATHS } from "../util/constants";
+
 export default function PastPrograms() {
   return (
     <>
@@ -8,11 +11,11 @@ export default function PastPrograms() {
         Dive into our coding journey—explore past programs that showcase our
         dedication, innovation, and coding excellence.
       </p>
-      <a href="#" target="_blank" rel="noopener noreferrer">
-        <div className="text-xl w-fit m-auto px-12 py-5 bg-black/50 border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-white/25">
+      <Link to={ROUTER_PATHS.PASTPROGRAMS} rel="noopener noreferrer" className="flex w-fit mx-auto">
+        <div className="text-xl m-auto px-12 py-5 bg-black/50 border border-[#FFFFFF]/[0.16] rounded-lg shadow-sm hover:transition hover:duration-200 hover:bg-white/25">
           <p className="text-white text-center font-bold">Explore</p>
         </div>
-      </a>
+      </Link>
     </>
   );
 }
