@@ -63,7 +63,7 @@ function MentorProjectCard({
           <div className="flex gap-2 items-center">
             <div className="flex gap-2 items-center text-sm font-semibold">
               <IoPersonSharp />
-              Secondary Mentor:
+              Co-Mentor:
             </div>
             <a
               href={

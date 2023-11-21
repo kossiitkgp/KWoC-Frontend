@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { MdCancel } from "react-icons/md";
 import ProjectCard from "../components/ProjectCard";
 import { makeRequest } from "../util/backend";
 import { IEndpointTypes } from "../util/types";
 import Fuse from "fuse.js";
+import SpinnerLoader from "../components/SpinnerLoader";
+import { IconContext } from "react-icons";
 
 function Projects() {
   const [projects, setProjects] = useState<
@@ -47,23 +50,37 @@ function Projects() {
         Projects
       </h1>
       <div className="p-4 my-4 mx-0">
-        <div className="w-full bg-none border-none">
+        <div className="flex py-4 px-6 rounded-md outline-none w-[80vw] max-w-3xl border-none text-white bg-slate-900 font-semibold bg-none">
           <input
-            className="py-4 px-6 rounded-md outline-none w-[80vw] max-w-3xl border-none text-white bg-slate-900 font-semibold bg-none"
+            className="rounded-md outline-none w-full border-none text-white bg-slate-900 font-semibold bg-none"
             type="text"
             placeholder="Search for projects by name or topic"
             onChange={onQueryChangeHandler}
             value={query}
           ></input>
+          <button onClick={() => setQuery("")}>
+            <IconContext.Provider value={{ size: "1.8rem" }}>
+              <MdCancel />
+            </IconContext.Provider>
+          </button>
         </div>
       </div>
 
-      {error && <p>{error}</p>}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-7xl gap-4 px-8 items-start">
-        {searchResults.map((project, i) => (
-          <ProjectCard key={i} {...project} />
-        ))}
-      </div>
+      {error !== null ? (
+        <p className="text-center text-red-500">{error}</p>
+      ) : projects.length > 0 ? (
+        <div className="grid grid-cols-1 pb-16 md:grid-cols-2 lg:grid-cols-3 max-w-7xl gap-4 px-8">
+          {searchResults.map((project, i) => (
+            <ProjectCard
+              key={i}
+              project={project}
+              setQuery={(query) => setQuery(query)}
+            />
+          ))}
+        </div>
+      ) : (
+        <SpinnerLoader />
+      )}
     </div>
   );
 }

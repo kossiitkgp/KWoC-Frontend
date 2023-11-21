@@ -10,6 +10,7 @@ function StudentForm() {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [isRegistering, setIsRegistering] = useState(false);
 
@@ -33,6 +34,8 @@ function StudentForm() {
         }
         error={error}
         info={info}
+        loading={loading}
+        disabled={loading}
         submitWithoutChange={isRegistering}
         fields={{
           name: {
@@ -67,6 +70,7 @@ function StudentForm() {
           };
 
           try {
+            setLoading(true);
             const res = await makeRequest(
               "student/form",
               isRegistering ? "post" : "put",
@@ -85,10 +89,14 @@ function StudentForm() {
               }
             }
 
+            setLoading(false);
+
             return res.is_ok;
           } catch (e) {
             setError("Error sending the request. Please try again later.");
             console.log(e);
+            setLoading(false);
+
             return false;
           }
         }}

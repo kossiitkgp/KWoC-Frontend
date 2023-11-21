@@ -10,6 +10,7 @@ function MentorForm() {
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [isRegistering, setIsRegistering] = useState(false);
 
@@ -35,6 +36,8 @@ function MentorForm() {
         }
         error={error}
         info={info}
+        loading={loading}
+        disabled={loading}
         submitWithoutChange={isRegistering}
         fields={{
           name: {
@@ -68,6 +71,7 @@ function MentorForm() {
           };
 
           try {
+            setLoading(true);
             const res = await makeRequest(
               "mentor/form",
               isRegistering ? "post" : "put",
@@ -75,7 +79,6 @@ function MentorForm() {
               authContext.jwt,
             );
 
-            console.log(res.response);
             if (!res.is_ok) setError(res.response.message);
             else {
               if (isRegistering) {
@@ -86,11 +89,15 @@ function MentorForm() {
                 authContext.updateUserData(responses.name, responses.email);
                 setInfo("Information successfully changed.");
               }
+
+              setLoading(false);
             }
 
             return res.is_ok;
           } catch (e) {
             setError("Error sending the request. Please try again later.");
+            setLoading(false);
+
             console.log(e);
             return false;
           }
