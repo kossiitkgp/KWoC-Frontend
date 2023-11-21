@@ -9,7 +9,7 @@ import { useAuthContext } from "../util/auth";
 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
-  //{ name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
+  { name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
   // { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
 ];
@@ -32,7 +32,9 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
       <Link
         to={link.link}
         className={
-          (isMobile ? "block p-2 text-sm font-semibold " : "font-semibold ") +
+          (isMobile
+            ? "block p-2 text-sm font-semibold "
+            : "font-semibold hover:underline ") +
           (isLinkActive(link.link)
             ? "text-primary hover:drop-shadow-glow duration-500"
             : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-primary-700")
@@ -60,7 +62,7 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
         className={
           isMobile
             ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
-            : "font-semibold"
+            : "font-semibold hover:underline text-white opacity-80"
         }
       >
         {authContext.isAuthenticated ? (
@@ -69,21 +71,9 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
             src={`https://github.com/${authContext.userData.username}.png`}
           />
         ) : (
-          "MENTOR REGISTRATION"
+          "MENTOR LOGIN"
         )}
       </Link>
-      {!authContext.isAuthenticated && (
-        <Link
-          to={GH_OAUTH_URL}
-          className={
-            isMobile
-              ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
-              : "font-semibold"
-          }
-        >
-          SIGN IN
-        </Link>
-      )}
     </>
   );
 }

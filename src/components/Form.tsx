@@ -1,4 +1,5 @@
 import React, { ReactNode, useState } from "react";
+import SpinnerLoader from "./SpinnerLoader";
 
 interface IObject<T> {
   [name: string]: T;
@@ -15,6 +16,8 @@ interface IFormProps<S extends InputSettings> {
   fields: S;
   error: string | null;
   info: string | null;
+  disabled?: boolean;
+  loading?: boolean;
   submitWithoutChange?: boolean;
   onSubmit: (responses: Responses<S>) => Promise<boolean>;
   onCancel?: (responses: Responses<S>) => void;
@@ -27,6 +30,9 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   const [responses, setResponses] = useState<Responses<S>>(default_responses);
   const [responsesChanged, setResponsesChanged] = useState(false);
   const inputs: ReactNode[] = [];
+
+  const disabled = props.disabled ?? false;
+  const loading = props.loading ?? false;
 
   for (let name in props.fields) {
     inputProps[name] = {
@@ -48,6 +54,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 
         setResponsesChanged(false);
       },
+      disabled,
     };
 
     default_responses[name] = inputProps[name].defaultValue ?? "";
@@ -60,7 +67,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            if (responsesChanged || props.submitWithoutChange) {
+            if ((responsesChanged || props.submitWithoutChange) && !disabled) {
               const isOk = await props.onSubmit(responses);
               setResponsesChanged(!isOk);
             }
@@ -69,14 +76,17 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           <h1 className="text-center text-3xl mb-10">{props.title}</h1>
           {props.error && <p className="text-red-500">{props.error}</p>}
           {props.info && <p className="text-primary">{props.info}</p>}
+          {loading && <SpinnerLoader />}
 
           {Object.values(inputs)}
           <div className="flex justify-around">
             <div className="mb-4 text-center">
               <button
                 type="submit"
-                className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:bg-gray-600"
-                disabled={!responsesChanged && !props.submitWithoutChange}
+                className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:text-gray-300 disabled:bg-gray-600"
+                disabled={
+                  (!responsesChanged && !props.submitWithoutChange) || disabled
+                }
               >
                 Submit
               </button>
@@ -85,7 +95,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
               <div className="mb-4 text-center">
                 <button
                   type="reset"
-                  className="h-10 px-5 text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600"
+                  className="h-10 px-5 text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:text-gray-600 disabled:bg-gray-600"
                   onClick={() => props.onCancel!(responses)}
                 >
                   Cancel
@@ -103,6 +113,7 @@ interface IInputFields {
   field: string;
   placeholder: string;
   defaultValue?: string;
+  disabled?: boolean;
   required?: boolean;
   type: React.InputHTMLAttributes<HTMLInputElement>["type"];
 }
@@ -116,7 +127,8 @@ function FormInput(props: IFormInputProps) {
       <span className="text-white">{props.field}</span>
       <input
         type={props.type}
-        className="block w-full mt-2 px-2 py-1 bg-gray-800 text-white border-slate-700 rounded-md shadow-sm focus:border-indigo-700 focus:ring focus:ring-indigo-700 focus:ring-opacity-50"
+        disabled={props.disabled ?? false}
+        className="block w-full mt-2 px-2 py-1 bg-gray-800 text-white border-slate-700 rounded-md shadow-sm focus:border-indigo-700 focus:ring focus:ring-indigo-700 focus:ring-opacity-5 disabled:text-gray-600 disabled:placeholder:text-gray-600"
         placeholder={props.placeholder}
         required={props.required ?? false}
         defaultValue={props.defaultValue ?? ""}

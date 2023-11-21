@@ -28,8 +28,9 @@ function MentorDashboard() {
     if (authContext.userData.type !== "mentor") {
       navigate(ROUTER_PATHS.HOME);
     }
+  }, [authContext]);
 
-    setIsLoading(true);
+  useEffect(() => {
     makeRequest("mentor/dashboard", "get", null, authContext.jwt)
       .then((res) => {
         if (res.is_ok) setDashboard(res.response);
@@ -41,7 +42,7 @@ function MentorDashboard() {
         setError("An unexpected error occurred.");
         setIsLoading(false);
       });
-  }, [authContext]);
+  }, []);
 
   const pulls = [];
   if (dashboard != null) {
