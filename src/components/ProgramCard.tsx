@@ -20,21 +20,21 @@ function ProgramCard({
       <h3 className="font-semibold text-5xl text-center text-white">{year}</h3>
       <div className="flex gap-8 mt-8 justify-center">
         <div >
-          <p className="font-bold text-primary">Participants</p>
+          <p className="font-bold text-blue-300">Participants</p>
           <h6 className="text-2xl font-bold text-white">{participants}+</h6>
         </div>
         <div>
-          <p className="font-bold text-primary">PR's</p>
+          <p className="font-bold text-blue-300">PR's</p>
           <h6 className="text-2xl font-bold text-white">{prs}+</h6>
         </div>
         {projects ? (
           <div>
-            <p className="font-bold text-primary">Projects</p>
+            <p className="font-bold text-blue-300">Projects</p>
             <h6 className="text-2xl font-bold text-white">{projects}+</h6>
           </div>
         ) : (
           <div>
-            <p className="font-bold text-primary">Lines of Code</p>
+            <p className="font-bold text-blue-300">Lines of Code</p>
             <h6 className="text-2xl font-bold text-white">{locs}M+</h6>
           </div>
         )}

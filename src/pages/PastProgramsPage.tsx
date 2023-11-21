@@ -1,4 +1,6 @@
 import ProgramCard from "../components/ProgramCard";
+import PROGRAMS from "../data/programs.json";
+
 
 export default function PastProgramsPage() {
   return (
@@ -8,10 +10,9 @@ export default function PastProgramsPage() {
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 my-14">
-        <ProgramCard year={2022} locs={0.5} participants={1200} prs={390} link="https://kwoc22.kossiitkgp.org"/>
-        <ProgramCard year={2021} participants={1200} locs={5.2} prs={750} link="https://kwoc21.kossiitkgp.org"/>
-        <ProgramCard year={2020} participants={2000} projects={150} prs={600} link="https://kwoc20.kossiitkgp.org"/>
-        <ProgramCard year={2019} locs={3} participants={2000} prs={600} link="https://kwoc19.kossiitkgp.org"/>
+        {
+          PROGRAMS.map(program=> program.projects? <ProgramCard year={program.year} participants={program.participants} projects={program.projects} prs={program.prs} link={program.link} key={program.link}/>:<ProgramCard year={program.year} participants={program.participants} locs={program.locs} prs={program.prs} link={program.link} key={program.link}/>)
+        }
       </div>
     </div>
   );
