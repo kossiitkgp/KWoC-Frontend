@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   DISCORD_INVITE,
   ROUTER_PATHS,
@@ -7,9 +7,21 @@ import {
 } from "../util/constants";
 import { useAuthContext } from "../util/auth";
 import StudentResources from "../data/studentResources.json";
+import { useEffect } from "react";
 
 function StudentDashboard() {
+  const navigate = useNavigate();
   const authContext = useAuthContext();
+
+  useEffect(() => {
+    if (!authContext.isAuthenticated) {
+      navigate(ROUTER_PATHS.HOME);
+    }
+
+    if (authContext.userData.type !== "student") {
+      navigate(ROUTER_PATHS.HOME);
+    }
+  }, [authContext]);
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">

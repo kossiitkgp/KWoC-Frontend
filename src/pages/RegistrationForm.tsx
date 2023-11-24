@@ -5,7 +5,7 @@ import { ROUTER_PATHS } from "../util/constants";
 import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 
-function StudentForm() {
+function RegistrationForm({isStudent}: {isStudent: boolean}) {
   const authContext = useAuthContext();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
@@ -14,6 +14,8 @@ function StudentForm() {
 
   const [isRegistering, setIsRegistering] = useState(false);
 
+  const userType = isStudent ? 'student' : 'mentor';
+
   useEffect(() => {
     setIsRegistering(!authContext.isRegistered);
 
@@ -21,42 +23,52 @@ function StudentForm() {
       navigate(ROUTER_PATHS.HOME);
     }
 
-    if (authContext.userData.type !== "student") {
+    if (authContext.userData.type !== userType) {
       navigate(ROUTER_PATHS.HOME);
     }
-  }, [authContext]);
+  });
+
+  const fields: any = {
+    name: {
+      field: "Name",
+      placeholder: "Jane Doe",
+      type: "text",
+      defaultValue: authContext.userData.name ?? "",
+      required: true,
+    },
+    email: {
+      field: "Email",
+      placeholder: "jane.doe@example.com",
+      type: "email",
+      defaultValue: authContext.userData.email ?? "",
+      required: true,
+    }
+  }
+
+  if (isStudent) fields['college'] = {
+    field: "College (Optional)",
+    placeholder: "IIT Kharagpur",
+    type: "text"
+  }
 
   return (
     <>
       <Form
         title={
-          isRegistering ? "Complete Registration" : "Edit Your Information"
+          isRegistering
+            ? `Complete ${userType[0].toUpperCase() + userType.slice(1)} Registration`
+            : "Edit Your Information"
         }
         error={error}
         info={info}
         loading={loading}
         disabled={loading}
         submitWithoutChange={isRegistering}
-        fields={{
-          name: {
-            field: "Name",
-            placeholder: "Jane Doe",
-            type: "text",
-            defaultValue: authContext.userData.name ?? "",
-            required: true,
-          },
-          email: {
-            field: "Email",
-            placeholder: "jane.doe@example.com",
-            type: "email",
-            defaultValue: authContext.userData.email ?? "",
-            required: true,
-          },
-          college: {
-            field: "College",
-            placeholder: "IIT Kharagpur (Optional)",
-            type: "text",
-          },
+        fields={fields}
+        onCancel={() => {
+          isRegistering
+            ? authContext.onLogout()
+            : navigate(authContext.dashboardLink);
         }}
         onSubmit={async (responses) => {
           setError(null);
@@ -66,37 +78,40 @@ function StudentForm() {
             username: authContext.userData.username,
             name: responses.name,
             email: responses.email,
-            college: responses.college,
           };
 
           try {
             setLoading(true);
             const res = await makeRequest(
-              "student/form",
+              `${userType}/form`,
               isRegistering ? "post" : "put",
               userData,
               authContext.jwt,
             );
 
+            console.log(res)
+
             if (!res.is_ok) setError(res.response.message);
             else {
               if (isRegistering) {
+                console.log('lol', userData, userType, authContext.userData.type)
+                authContext.onRegister({ ...userData, type: userType });
+
                 navigate(authContext.dashboardLink);
-                authContext.onRegister({ ...userData, type: "student" });
               } else {
                 authContext.updateUserData(responses.name, responses.email);
                 setInfo("Information successfully changed.");
               }
-            }
 
-            setLoading(false);
+              setLoading(false);
+            }
 
             return res.is_ok;
           } catch (e) {
             setError("Error sending the request. Please try again later.");
-            console.log(e);
             setLoading(false);
 
+            console.log(e);
             return false;
           }
         }}
@@ -105,4 +120,4 @@ function StudentForm() {
   );
 }
 
-export default StudentForm;
+export default RegistrationForm;
