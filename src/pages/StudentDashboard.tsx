@@ -8,6 +8,7 @@ import {
 import { useAuthContext } from "../util/auth";
 import StudentResources from "../data/studentResources.json";
 import { useEffect } from "react";
+import { Profile } from "../components/DashboardElements";
 
 function StudentDashboard() {
   const navigate = useNavigate();
@@ -25,37 +26,7 @@ function StudentDashboard() {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
-      <div className="lg:sticky lg:self-start lg:translate-y-1/4 lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
-        <div className="w-full aspect-square bg-primary-950 rounded-full mb-2 overflow-hidden">
-          <img
-            className="w-full h-full block"
-            src={`https://github.com/${authContext?.userData?.username}.png`}
-          />
-        </div>
-
-        <h2 className="font-bold text-2xl text-center my-3">
-          {authContext?.userData.name}
-          <br />
-          <span className="font-medium text-lg text-gray-400">
-            (@{authContext?.userData.username})
-          </span>
-        </h2>
-
-        <div className="flex mt-2 justify-center gap-3">
-          <Link
-            className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-primary-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-primary-800 disabled:bg-gray-600"
-            to={ROUTER_PATHS.STUDENT_FORM}
-          >
-            Edit Info
-          </Link>
-          <button
-            className="text-center py-2 px-5 py-auto h-fit text-indigo-100 bg-red-800 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:bg-gray-600"
-            onClick={authContext?.onLogout}
-          >
-            Sign Out
-          </button>
-        </div>
-      </div>
+      <Profile />
 
       <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
         <div className="lg:pt-28 max-w-2xl mx-auto px-4">
