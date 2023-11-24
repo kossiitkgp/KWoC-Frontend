@@ -42,6 +42,7 @@ interface IResource {
 	message: string;
 	url: string;
 	avatar: string;
+	noAvatarRounding?: boolean;
 }
 export function Resources({title, resources}: {title: string, resources: IResource[]}) {
 	return <div>
@@ -55,7 +56,7 @@ export function Resources({title, resources}: {title: string, resources: IResour
 			href={resource.url}
 			>
 			<li className="list-none gap-5 flex items-center text-inherit">
-				<div className="w-10 h-10 rounded-full overflow-hidden flex-none">
+				<div className={`w-10 h-10 ${resource.noAvatarRounding ? 'p-1' : 'rounded-full'} overflow-hidden flex-none`}>
 				<img
 					src={resource.avatar}
 					className="h-full w-full block"
