@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
 import { IconContext } from "react-icons";
@@ -27,19 +27,25 @@ function BrandLogo() {
   );
 }
 
-function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
+function getNavbarLinkClasses(isMobile: boolean, isActive: boolean = false) {
+  return (isMobile
+    ? "w-full text-end block p-2 text-sm font-semibold "
+    : "font-semibold hover:underline "
+  ) +
+  (isActive
+    ? "text-primary"
+    : ""
+  )
+}
+
+function LinksList(isMobile: boolean) {
+  const location = useLocation();
+
   return LINKS.map((link) => (
     <li key={link.name} className={isMobile ? "mb-1" : "md:ml-4"}>
       <Link
         to={link.link}
-        className={
-          (isMobile
-            ? "block p-2 text-sm font-semibold "
-            : "font-semibold hover:underline ") +
-          (isLinkActive(link.link)
-            ? "text-primary hover:drop-shadow-glow duration-500"
-            : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-primary-700")
-        }
+        className={getNavbarLinkClasses(isMobile, location.pathname == link.link)}
       >
         {link.name}
       </Link>
@@ -49,12 +55,8 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
 
 function LoginButton({ isMobile }: { isMobile: boolean }) {
   const authContext = useAuthContext();
-  const navigate = useNavigate();
 
-  const linkClasses =
-    isMobile
-      ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
-      : "font-semibold hover:underline text-white opacity-80"
+  const linkClasses = getNavbarLinkClasses(isMobile);
 
   return (
     <>
@@ -86,9 +88,6 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
 }
 
 function Navbar() {
-  const location = useLocation();
-  const isLinkActive = (path: string) => location.pathname === path;
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -122,7 +121,7 @@ function Navbar() {
               mobileMenuOpen ? "block" : "hidden"
             }`}
           >
-            {LinksList(isLinkActive, false)}
+            {LinksList(false)}
 
             <IconContext.Provider value={{ size: "2.3em" }}>
               <LoginButton isMobile={false} />
@@ -134,7 +133,6 @@ function Navbar() {
       {mobileMenuOpen && (
         <MobileNavbar
           toggleMobileMenu={toggleMobileMenu}
-          isLinkActive={isLinkActive}
         />
       )}
     </div>
@@ -142,11 +140,9 @@ function Navbar() {
 }
 
 function MobileNavbar({
-  toggleMobileMenu,
-  isLinkActive,
+  toggleMobileMenu
 }: {
   toggleMobileMenu: () => void;
-  isLinkActive: (link: string) => boolean;
 }) {
   return (
     <div className="w-full z-50 h-screen transition-transform transform ease-in-out duration-500 translate-x-0 p-2 flex justify-end">
@@ -164,7 +160,7 @@ function MobileNavbar({
 
         <div>
           <ul className="mr-4 text-right">
-            {LinksList(isLinkActive, true)}
+            {LinksList(true)}
             <IconContext.Provider value={{ size: "2.5em" }}>
               <LoginButton isMobile={true} />
             </IconContext.Provider>
