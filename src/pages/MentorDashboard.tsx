@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MentorResources from "../data/mentorResources.json";
+import MENTOR_RESOURCES from "../data/mentorResources.json";
 import MentorProjectCard from "../components/MentorProjectCard";
 import { IEndpointTypes } from "../util/types";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
@@ -8,7 +8,7 @@ import { useAuthContext } from "../util/auth";
 import { ROUTER_PATHS } from "../util/constants";
 import { makeRequest } from "../util/backend";
 import SpinnerLoader from "../components/SpinnerLoader";
-import { Profile } from "../components/DashboardElements";
+import { Profile, Resources } from "../components/DashboardElements";
 
 function MentorDashboard() {
   const navigate = useNavigate();
@@ -93,31 +93,7 @@ function MentorDashboard() {
             </div>
           </div> */}
 
-          <div>
-            <h3 className="font-semibold text-2xl mb-6">Mentor Resources</h3>
-            <div className="space-y-4">
-              {MentorResources.map((resource, i) => (
-                <a
-                  key={i}
-                  target="_blank"
-                  className="block text-primary hover:text-primary-600 hover:underline"
-                  href={resource.url}
-                >
-                  <li className="list-none gap-5 flex items-center text-inherit">
-                    <div className="w-10 h-10 rounded-full overflow-hidden flex-none">
-                      <img
-                        src={resource.avatar}
-                        className="h-full w-full block"
-                      />
-                    </div>
-                    <div className="text-inherit text-sm">
-                      {resource.message}
-                    </div>
-                  </li>
-                </a>
-              ))}
-            </div>
-          </div>
+          <Resources title="Mentor Resources" resources={MENTOR_RESOURCES} />
         </div>
       </div>
     </>

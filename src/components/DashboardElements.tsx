@@ -37,3 +37,34 @@ export function Profile() {
 		</div>
 	)
 }
+
+interface IResource {
+	message: string;
+	url: string;
+	avatar: string;
+}
+export function Resources({title, resources}: {title: string, resources: IResource[]}) {
+	return <div>
+		<h3 className="font-semibold text-2xl mb-6">{title}</h3>
+		<div className="space-y-4">
+		{resources.map((resource, i) => (
+			<a
+			key={i}
+			target="_blank"
+			className="block text-primary hover:text-primary-600 hover:underline"
+			href={resource.url}
+			>
+			<li className="list-none gap-5 flex items-center text-inherit">
+				<div className="w-10 h-10 rounded-full overflow-hidden flex-none">
+				<img
+					src={resource.avatar}
+					className="h-full w-full block"
+				/>
+				</div>
+				<div className="text-inherit text-sm">{resource.message}</div>
+			</li>
+			</a>
+		))}
+		</div>
+	</div>
+}

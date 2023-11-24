@@ -6,9 +6,9 @@ import {
   STUDENT_MANUAL_LINK,
 } from "../util/constants";
 import { useAuthContext } from "../util/auth";
-import StudentResources from "../data/studentResources.json";
+import STUDENT_RESOURCES from "../data/studentResources.json";
 import { useEffect } from "react";
-import { Profile } from "../components/DashboardElements";
+import { Profile, Resources } from "../components/DashboardElements";
 
 function StudentDashboard() {
   const navigate = useNavigate();
@@ -115,29 +115,7 @@ function StudentDashboard() {
             </div>
           </div> */}
 
-        <div>
-          <h3 className="font-semibold text-2xl mb-6">Student Resources</h3>
-          <div className="space-y-4">
-            {StudentResources.map((resource, i) => (
-              <a
-                key={i}
-                target="_blank"
-                className="block text-primary hover:text-primary-600 hover:underline"
-                href={resource.url}
-              >
-                <li className="list-none gap-5 flex items-center text-inherit">
-                  <div className="w-10 h-10 rounded-full overflow-hidden flex-none">
-                    <img
-                      src={resource.avatar}
-                      className="h-full w-full block"
-                    />
-                  </div>
-                  <div className="text-inherit text-sm">{resource.message}</div>
-                </li>
-              </a>
-            ))}
-          </div>
-        </div>
+        <Resources title="Student Resources" resources={STUDENT_RESOURCES} />
       </div>
     </div>
   );
