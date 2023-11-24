@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
 import { ROUTER_PATHS, GH_OAUTH_URL } from "../util/constants";
 import { useAuthContext } from "../util/auth";
+import { UserType } from "../util/types";
 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
@@ -48,32 +49,38 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
 
 function LoginButton({ isMobile }: { isMobile: boolean }) {
   const authContext = useAuthContext();
+  const navigate = useNavigate();
+
+  const linkClasses =
+    isMobile
+      ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
+      : "font-semibold hover:underline text-white opacity-80"
 
   return (
     <>
-      <Link
-        to={
-          authContext.isAuthenticated
-            ? authContext.isRegistered
-              ? authContext.dashboardLink
-              : authContext.formLink
-            : GH_OAUTH_URL
-        }
-        className={
-          isMobile
-            ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
-            : "font-semibold hover:underline text-white opacity-80"
-        }
-      >
-        {authContext.isAuthenticated ? (
-          <img
-            className="w-10 h-full rounded-full block"
-            src={`https://github.com/${authContext.userData.username}.png`}
-          />
-        ) : (
-          "MENTOR LOGIN"
-        )}
-      </Link>
+      {
+        authContext.isAuthenticated ?
+          <Link className={linkClasses} to={authContext.isRegistered ? authContext.dashboardLink : authContext.formLink}>
+            <img
+              className="w-10 h-full rounded-full block"
+              src={`https://github.com/${authContext.userData.username}.png`}
+            />
+          </Link> :
+        ['mentor', 'student'].map((userType, i) =>
+          <button
+            key={i}
+            className={linkClasses}
+            onClick={(e) => {
+              e.preventDefault();
+
+              authContext.setUserType(userType as UserType);
+              window.location.href = GH_OAUTH_URL;
+            }}
+          >
+            {userType.toUpperCase()} LOGIN
+          </button>
+        )
+      }
     </>
   );
 }
