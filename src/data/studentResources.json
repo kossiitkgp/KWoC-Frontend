@@ -1,23 +1,14 @@
 [
   {
-    "message": "Writing Kickass READMEs",
-    "url": "https://bauva.com/blog/writing-kickass-readmes/",
-    "avatar": "https://bauva.com/images/pranit.jpg"
-  },
-  {
     "message": "Everything you need to ace KWoC",
     "url": "https://medium.com/kharagpur-open-source-society/an-informal-introduction-to-kwoc-62fc5e686f79",
-    "avatar": "https://miro.medium.com/max/66/1*S7YHjDmgGnBEJcE116qQ7w.jpeg"
-  },
-  {
-    "message": "How to choose a Project for KWoC",
-    "url": "https://telegra.ph/How-to-choose-a-Project-for-KWoC-12-01",
-    "avatar": "https://telegra.ph/favicon.ico"
+    "avatar": "https://raw.githubusercontent.com/kossiitkgp/design/master/logo/koss/main/koss-logo.svg"
   },
   {
     "message": "Codeacademy: Learn Git",
     "url": "https://www.codecademy.com/learn/learn-git",
-    "avatar": "https://www.codecademy.com/favicon.ico"
+    "avatar": "https://www.codecademy.com/favicon.ico",
+    "noAvatarRounding": true
   },
   {
     "message": "Git Flight Rules: Cookbook for Git",
