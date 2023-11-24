@@ -6,6 +6,7 @@ import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
 import { ROUTER_PATHS, GH_OAUTH_URL } from "../util/constants";
 import { useAuthContext } from "../util/auth";
+import { UserType } from "../util/types";
 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
@@ -26,19 +27,25 @@ function BrandLogo() {
   );
 }
 
-function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
+function getNavbarLinkClasses(isMobile: boolean, isActive: boolean = false) {
+  return (isMobile
+    ? "w-full text-end block p-2 text-sm font-semibold "
+    : "font-semibold hover:underline "
+  ) +
+  (isActive
+    ? "text-primary"
+    : ""
+  )
+}
+
+function LinksList(isMobile: boolean) {
+  const location = useLocation();
+
   return LINKS.map((link) => (
     <li key={link.name} className={isMobile ? "mb-1" : "md:ml-4"}>
       <Link
         to={link.link}
-        className={
-          (isMobile
-            ? "block p-2 text-sm font-semibold "
-            : "font-semibold hover:underline ") +
-          (isLinkActive(link.link)
-            ? "text-primary hover:drop-shadow-glow duration-500"
-            : "text-white opacity-80 hover:drop-shadow-glow duration-500 active:text-primary-700")
-        }
+        className={getNavbarLinkClasses(isMobile, location.pathname == link.link)}
       >
         {link.name}
       </Link>
@@ -49,39 +56,38 @@ function LinksList(isLinkActive: (link: string) => boolean, isMobile: boolean) {
 function LoginButton({ isMobile }: { isMobile: boolean }) {
   const authContext = useAuthContext();
 
+  const linkClasses = getNavbarLinkClasses(isMobile);
+
   return (
     <>
-      <Link
-        to={
-          authContext.isAuthenticated
-            ? authContext.isRegistered
-              ? authContext.dashboardLink
-              : authContext.formLink
-            : GH_OAUTH_URL
-        }
-        className={
-          isMobile
-            ? "flex justify-end pr-2 pt-2 font-semibold text-sm"
-            : "font-semibold hover:underline text-white opacity-80"
-        }
-      >
-        {authContext.isAuthenticated ? (
-          <img
-            className="w-10 h-full rounded-full block"
-            src={`https://github.com/${authContext.userData.username}.png`}
-          />
-        ) : (
-          "MENTOR LOGIN"
-        )}
-      </Link>
+      {
+        authContext.isAuthenticated ?
+          <Link className={linkClasses} to={authContext.isRegistered ? authContext.dashboardLink : authContext.formLink}>
+            <img
+              className="w-10 h-full rounded-full block"
+              src={`https://github.com/${authContext.userData.username}.png`}
+            />
+          </Link> :
+        ['mentor', 'student'].map((userType, i) =>
+          <button
+            key={i}
+            className={linkClasses}
+            onClick={(e) => {
+              e.preventDefault();
+
+              authContext.setUserType(userType as UserType);
+              window.location.href = GH_OAUTH_URL;
+            }}
+          >
+            {userType.toUpperCase()} LOGIN
+          </button>
+        )
+      }
     </>
   );
 }
 
 function Navbar() {
-  const location = useLocation();
-  const isLinkActive = (path: string) => location.pathname === path;
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -115,7 +121,7 @@ function Navbar() {
               mobileMenuOpen ? "block" : "hidden"
             }`}
           >
-            {LinksList(isLinkActive, false)}
+            {LinksList(false)}
 
             <IconContext.Provider value={{ size: "2.3em" }}>
               <LoginButton isMobile={false} />
@@ -127,7 +133,6 @@ function Navbar() {
       {mobileMenuOpen && (
         <MobileNavbar
           toggleMobileMenu={toggleMobileMenu}
-          isLinkActive={isLinkActive}
         />
       )}
     </div>
@@ -135,11 +140,9 @@ function Navbar() {
 }
 
 function MobileNavbar({
-  toggleMobileMenu,
-  isLinkActive,
+  toggleMobileMenu
 }: {
   toggleMobileMenu: () => void;
-  isLinkActive: (link: string) => boolean;
 }) {
   return (
     <div className="w-full z-50 h-screen transition-transform transform ease-in-out duration-500 translate-x-0 p-2 flex justify-end">
@@ -157,7 +160,7 @@ function MobileNavbar({
 
         <div>
           <ul className="mr-4 text-right">
-            {LinksList(isLinkActive, true)}
+            {LinksList(true)}
             <IconContext.Provider value={{ size: "2.5em" }}>
               <LoginButton isMobile={true} />
             </IconContext.Provider>

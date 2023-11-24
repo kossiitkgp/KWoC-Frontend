@@ -140,17 +140,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateAuth = (auth: ILocalStorageAuthObj) => {
+    setUserAuth(auth);
     setFormLink(
-      auth.userData.type === "student"
+      userAuth.userData.type === "student"
         ? ROUTER_PATHS.STUDENT_FORM
         : ROUTER_PATHS.MENTOR_FORM,
     );
     setDashboardLink(
-      auth.userData.type === "student"
+      userAuth.userData.type === "student"
         ? ROUTER_PATHS.STUDENT_DASHBOARD
         : ROUTER_PATHS.MENTOR_DASHBOARD,
     );
-    setUserAuth(auth);
   };
 
   const onLogin = (auth: ILocalStorageAuthObj) => {
@@ -164,6 +164,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const newUserAuth = {
       ...userAuth,
       userData,
+      isRegistered: true
     };
 
     updateAuth(newUserAuth);
