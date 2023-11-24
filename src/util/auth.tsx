@@ -164,7 +164,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const newUserAuth = {
       ...userAuth,
       userData,
-      isRegistered: true
+      isRegistered: true,
     };
 
     updateAuth(newUserAuth);

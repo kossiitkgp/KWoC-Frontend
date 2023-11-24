@@ -22,9 +22,18 @@ function App() {
             <Navbar />
             <Routes>
               <Route index element={<Home />} />
-              <Route path={ROUTER_PATHS.MENTOR_FORM} element={<RegistrationForm isStudent={false} />} />
-              <Route path={ROUTER_PATHS.STUDENT_FORM} element={<RegistrationForm isStudent={true} />} />
-              <Route path={ROUTER_PATHS.STUDENT_DASHBOARD} element={<StudentDashboard />} />
+              <Route
+                path={ROUTER_PATHS.MENTOR_FORM}
+                element={<RegistrationForm isStudent={false} />}
+              />
+              <Route
+                path={ROUTER_PATHS.STUDENT_FORM}
+                element={<RegistrationForm isStudent={true} />}
+              />
+              <Route
+                path={ROUTER_PATHS.STUDENT_DASHBOARD}
+                element={<StudentDashboard />}
+              />
               <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
               <Route
                 path={ROUTER_PATHS.PROJECT_FORM}

@@ -5,7 +5,7 @@ import { ROUTER_PATHS } from "../util/constants";
 import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 
-function RegistrationForm({isStudent}: {isStudent: boolean}) {
+function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const authContext = useAuthContext();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +14,7 @@ function RegistrationForm({isStudent}: {isStudent: boolean}) {
 
   const [isRegistering, setIsRegistering] = useState(false);
 
-  const userType = isStudent ? 'student' : 'mentor';
+  const userType = isStudent ? "student" : "mentor";
 
   useEffect(() => {
     setIsRegistering(!authContext.isRegistered);
@@ -42,21 +42,24 @@ function RegistrationForm({isStudent}: {isStudent: boolean}) {
       type: "email",
       defaultValue: authContext.userData.email ?? "",
       required: true,
-    }
-  }
+    },
+  };
 
-  if (isStudent) fields['college'] = {
-    field: "College (Optional)",
-    placeholder: "IIT Kharagpur",
-    type: "text"
-  }
+  if (isStudent)
+    fields["college"] = {
+      field: "College (Optional)",
+      placeholder: "IIT Kharagpur",
+      type: "text",
+    };
 
   return (
     <>
       <Form
         title={
           isRegistering
-            ? `Complete ${userType[0].toUpperCase() + userType.slice(1)} Registration`
+            ? `Complete ${
+                userType[0].toUpperCase() + userType.slice(1)
+              } Registration`
             : "Edit Your Information"
         }
         error={error}
@@ -89,12 +92,17 @@ function RegistrationForm({isStudent}: {isStudent: boolean}) {
               authContext.jwt,
             );
 
-            console.log(res)
+            console.log(res);
 
             if (!res.is_ok) setError(res.response.message);
             else {
               if (isRegistering) {
-                console.log('lol', userData, userType, authContext.userData.type)
+                console.log(
+                  "lol",
+                  userData,
+                  userType,
+                  authContext.userData.type,
+                );
                 authContext.onRegister({ ...userData, type: userType });
 
                 navigate(authContext.dashboardLink);

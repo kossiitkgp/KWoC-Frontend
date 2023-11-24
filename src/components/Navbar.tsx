@@ -28,14 +28,11 @@ function BrandLogo() {
 }
 
 function getNavbarLinkClasses(isMobile: boolean, isActive: boolean = false) {
-  return (isMobile
-    ? "w-full text-end block p-2 text-sm font-semibold "
-    : "font-semibold hover:underline "
-  ) +
-  (isActive
-    ? "text-primary"
-    : ""
-  )
+  return (
+    (isMobile
+      ? "w-full text-end block p-2 text-sm font-semibold "
+      : "font-semibold hover:underline ") + (isActive ? "text-primary" : "")
+  );
 }
 
 function LinksList(isMobile: boolean) {
@@ -45,7 +42,10 @@ function LinksList(isMobile: boolean) {
     <li key={link.name} className={isMobile ? "mb-1" : "md:ml-4"}>
       <Link
         to={link.link}
-        className={getNavbarLinkClasses(isMobile, location.pathname == link.link)}
+        className={getNavbarLinkClasses(
+          isMobile,
+          location.pathname == link.link,
+        )}
       >
         {link.name}
       </Link>
@@ -60,15 +60,22 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
 
   return (
     <>
-      {
-        authContext.isAuthenticated ?
-          <Link className={linkClasses} to={authContext.isRegistered ? authContext.dashboardLink : authContext.formLink}>
-            <img
-              className="w-10 h-full rounded-full block"
-              src={`https://github.com/${authContext.userData.username}.png`}
-            />
-          </Link> :
-        ['mentor', 'student'].map((userType, i) =>
+      {authContext.isAuthenticated ? (
+        <Link
+          className={linkClasses}
+          to={
+            authContext.isRegistered
+              ? authContext.dashboardLink
+              : authContext.formLink
+          }
+        >
+          <img
+            className="w-10 h-full rounded-full block"
+            src={`https://github.com/${authContext.userData.username}.png`}
+          />
+        </Link>
+      ) : (
+        ["mentor", "student"].map((userType, i) => (
           <button
             key={i}
             className={linkClasses}
@@ -81,8 +88,8 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
           >
             {userType.toUpperCase()} LOGIN
           </button>
-        )
-      }
+        ))
+      )}
     </>
   );
 }
@@ -130,20 +137,12 @@ function Navbar() {
         </div>
       </nav>
 
-      {mobileMenuOpen && (
-        <MobileNavbar
-          toggleMobileMenu={toggleMobileMenu}
-        />
-      )}
+      {mobileMenuOpen && <MobileNavbar toggleMobileMenu={toggleMobileMenu} />}
     </div>
   );
 }
 
-function MobileNavbar({
-  toggleMobileMenu
-}: {
-  toggleMobileMenu: () => void;
-}) {
+function MobileNavbar({ toggleMobileMenu }: { toggleMobileMenu: () => void }) {
   return (
     <div className="w-full z-50 h-screen transition-transform transform ease-in-out duration-500 translate-x-0 p-2 flex justify-end">
       <div className="navbar-backdrop fixed bg-gray-800 opacity-25"></div>
