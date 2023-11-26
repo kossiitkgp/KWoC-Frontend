@@ -103,7 +103,7 @@ export const FAQs = [
   {
     question: "Which programming language(s) do I need to be fluent in?",
     answer: [
-      "Tt is sufficient to know one or two, but the more you know the better it is. You can also learn a language during KWoC.",
+      "It is sufficient to know one or two, but the more you know the better it is. You can also learn a language during KWoC.",
     ],
   },
   {
