@@ -19,7 +19,7 @@ function ProgramCard({
     <div className="p-8 rounded-md bg-[#2a2a2aa3] col-span-1">
       <h3 className="font-semibold text-5xl text-center text-white">{year}</h3>
       <div className="flex gap-8 mt-8 justify-center">
-        <div >
+        <div>
           <p className="font-bold text-blue-300">Participants</p>
           <h6 className="text-2xl font-bold text-white">{participants}+</h6>
         </div>
