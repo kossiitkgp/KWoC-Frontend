@@ -81,6 +81,15 @@ export default function FooterSection() {
               <a
                 target="_blank"
                 rel="noreferrer noopener"
+                href={ROUTER_PATHS.PASTPROGRAMS}
+              >
+                Past Programs
+              </a>
+            </li>
+            <li className="hover:text-white/50">
+              <a
+                target="_blank"
+                rel="noreferrer noopener"
                 href={`mailto:${KOSS_CONTACT_EMAIL}`}
               >
                 {KOSS_CONTACT_EMAIL}

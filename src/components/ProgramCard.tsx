@@ -41,7 +41,7 @@ function ProgramCard({
       </div>
 
       <a
-        className="flex font-bold justify-center bg-primary text-white mt-8 mx-auto p-2 md:w-9/12 rounded-md text-xl"
+        className="flex font-bold justify-center bg-primary text-white mt-8 mx-auto p-2 md:w-9/12 rounded-md text-xl hover:bg-primary-800"
         href={link}
         target="_blank"
       >

@@ -1,9 +1,11 @@
+import FooterSection from "../components/FooterSection";
 import ProgramCard from "../components/ProgramCard";
 import PROGRAMS from "../data/programs.json";
 
 
 export default function PastProgramsPage() {
   return (
+    <>
     <div className="flex flex-col items-center pt-28">
       <h1 className=" font-display text-5xl md:text-7xl font-bold text-center">
         Our Past Programs
@@ -15,5 +17,7 @@ export default function PastProgramsPage() {
         }
       </div>
     </div>
+    <FooterSection/>
+        </>
   );
 }

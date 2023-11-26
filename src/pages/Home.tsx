@@ -10,7 +10,6 @@ import JoinOurCommunity from "../components/JoinOurCommunity";
 import Timeline from "../components/Timeline";
 import Testimonials from "../components/Testimonials";
 import FooterSection from "../components/FooterSection";
-import PastPrograms from "../components/PastPrograms";
 
 const snowflake_images = [
   snowflake_particle1,
@@ -56,7 +55,6 @@ function Home() {
         <WhyKWoC />
         <Timeline />
         <Testimonials />
-        <PastPrograms/>
         <JoinOurCommunity />
         <FooterSection />
       </section>
