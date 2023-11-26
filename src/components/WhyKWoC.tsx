@@ -1,5 +1,7 @@
 import { FOSSU_WEBSITE_URL } from "../util/constants";
 import Card from "./Card";
+import "./animation.css"; 
+
 
 export default function WhyKWoC() {
   return (
@@ -20,17 +22,19 @@ export default function WhyKWoC() {
           content="Get started with open source collaboration. Hone programmer skills with Git and GitHub. Make meaningful contributions guided by mentors. Build a portfolio showcasing your talents."
         />
 
-        <Card
-          header={
-            <span>
-              Prepare <br />
-              for
-              <br />
-              GSoC
-            </span>
-          }
-          content="Research organizations and connect with mentors. Create quality proposals and sharpen skills. Gain insider tips to boost your GSoC chances. Open doors through impressive abilities."
-        />
+<Card
+  className="breathing-card"
+  header={
+    <span>
+      Prepare <br />
+      for
+      <br />
+      GSoC
+    </span>
+  }
+  content="Research organizations and connect with mentors. Create quality proposals and sharpen skills. Gain insider tips to boost your GSO chances. Open doors through impressive abilities."
+/>
+
 
         <Card
           header={

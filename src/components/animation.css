@@ -1,0 +1,19 @@
+.hover-card {
+    transition: transform 0.3s ease;
+    display: inline-block;  /* Ensures transform applies correctly */
+  }
+  
+  .hover-card:hover {
+    transform: scale(1.1);
+    animation: shake 0.5s ease-in-out infinite;
+  }
+  
+  @keyframes shake {
+    0%, 100% {
+      transform: scale(1.1) rotate(-1deg);
+    }
+    50% {
+      transform: scale(1.1) rotate(1deg);
+    }
+  }
+  
