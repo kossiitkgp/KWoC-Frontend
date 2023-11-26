@@ -81,6 +81,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
             username: authContext.userData.username,
             name: responses.name,
             email: responses.email,
+            college: responses.college || null,
           };
 
           try {
