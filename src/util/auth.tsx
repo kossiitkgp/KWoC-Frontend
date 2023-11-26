@@ -14,6 +14,7 @@ interface IUserAuthData {
   name: string;
   email: string;
   type: UserType;
+  college: string | undefined;
 }
 
 interface ILocalStorageAuthObj {
@@ -30,6 +31,7 @@ const DEFAULT_AUTH_OBJ: ILocalStorageAuthObj = {
     name: "",
     email: "",
     type: "mentor",
+    college: "",
   },
 };
 
@@ -41,7 +43,11 @@ interface IAuthContext {
   formLink: ROUTER_PATHS.STUDENT_FORM | ROUTER_PATHS.MENTOR_FORM;
   dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD | ROUTER_PATHS.MENTOR_DASHBOARD;
   setUserType: (type: UserType) => void;
-  updateUserData: (name: string, email: string) => void;
+  updateUserData: (
+    name: string,
+    email: string,
+    college: string | undefined,
+  ) => void;
   onLogin: (auth: ILocalStorageAuthObj) => void;
   onRegister: (auth: IUserAuthData) => void;
   onLogout: () => void;
@@ -128,13 +134,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     );
   };
 
-  const updateUserData = (name: string, email: string) => {
+  const updateUserData = (
+    name: string,
+    email: string,
+    college: string | undefined = undefined,
+  ) => {
     setUserAuth({
       ...userAuth,
       userData: {
         ...userAuth.userData,
         name: name,
         email: email,
+        college: college,
       },
     });
   };

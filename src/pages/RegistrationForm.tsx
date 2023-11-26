@@ -45,12 +45,15 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
     },
   };
 
-  if (isStudent)
+  if (isStudent) {
     fields["college"] = {
       field: "College (Optional)",
       placeholder: "IIT Kharagpur",
       type: "text",
+      defaultValue: authContext.userData?.college ?? "",
+      required: false,
     };
+  }
 
   return (
     <>
@@ -81,7 +84,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
             username: authContext.userData.username,
             name: responses.name,
             email: responses.email,
-            college: responses.college || null,
+            college: responses.college,
           };
 
           try {
@@ -100,7 +103,11 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
 
                 navigate(authContext.dashboardLink);
               } else {
-                authContext.updateUserData(responses.name, responses.email);
+                authContext.updateUserData(
+                  responses.name,
+                  responses.email,
+                  responses?.college,
+                );
                 setInfo("Information successfully changed.");
               }
             }
