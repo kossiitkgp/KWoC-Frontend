@@ -103,10 +103,9 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
                 authContext.updateUserData(responses.name, responses.email);
                 setInfo("Information successfully changed.");
               }
-
-              setLoading(false);
             }
 
+            setLoading(false);
             return res.is_ok;
           } catch (e) {
             setError("Error sending the request. Please try again later.");
