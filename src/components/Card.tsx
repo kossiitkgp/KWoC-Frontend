@@ -1,4 +1,3 @@
-import React from 'react';
 import './animation.css'; // Make sure this is the correct path to your CSS file
 
 export default function Card(props: any) {
