@@ -93,17 +93,9 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
               authContext.jwt,
             );
 
-            console.log(res);
-
             if (!res.is_ok) setError(res.response.message);
             else {
               if (isRegistering) {
-                console.log(
-                  "lol",
-                  userData,
-                  userType,
-                  authContext.userData.type,
-                );
                 authContext.onRegister({ ...userData, type: userType });
 
                 navigate(authContext.dashboardLink);
