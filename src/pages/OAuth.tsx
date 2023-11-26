@@ -31,6 +31,7 @@ function OAuth() {
             name: auth.name,
             email: auth.email,
             type: auth.type,
+            college: auth.college,
           },
         });
 

@@ -45,12 +45,15 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
     },
   };
 
-  if (isStudent)
+  if (isStudent) {
     fields["college"] = {
       field: "College (Optional)",
       placeholder: "IIT Kharagpur",
       type: "text",
+      defaultValue: authContext.userData?.college ?? "",
+      required: false,
     };
+  }
 
   return (
     <>
@@ -81,6 +84,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
             username: authContext.userData.username,
             name: responses.name,
             email: responses.email,
+            college: responses.college,
           };
 
           try {
@@ -92,28 +96,23 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
               authContext.jwt,
             );
 
-            console.log(res);
-
             if (!res.is_ok) setError(res.response.message);
             else {
               if (isRegistering) {
-                console.log(
-                  "lol",
-                  userData,
-                  userType,
-                  authContext.userData.type,
-                );
                 authContext.onRegister({ ...userData, type: userType });
 
                 navigate(authContext.dashboardLink);
               } else {
-                authContext.updateUserData(responses.name, responses.email);
+                authContext.updateUserData(
+                  responses.name,
+                  responses.email,
+                  responses?.college,
+                );
                 setInfo("Information successfully changed.");
               }
-
-              setLoading(false);
             }
 
+            setLoading(false);
             return res.is_ok;
           } catch (e) {
             setError("Error sending the request. Please try again later.");
