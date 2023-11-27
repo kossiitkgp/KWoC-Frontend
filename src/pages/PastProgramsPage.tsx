@@ -7,7 +7,7 @@ export default function PastProgramsPage() {
     <>
       <div className="flex flex-col items-center pt-28">
         <h1 className=" font-display text-5xl md:text-7xl font-bold text-center">
-          Our Past Programs
+          Past Editions of KWoC
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6 my-14">
