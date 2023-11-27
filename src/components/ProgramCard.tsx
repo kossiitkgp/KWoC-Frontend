@@ -1,10 +1,10 @@
-interface Program {
+interface Pulls {
   year: number;
   participants: number;
   prs: number;
   archive_link: string;
   projects?: number;
-  locs?: number;
+  lines_of_code?: number;
 }
 
 function ProgramCard({
@@ -12,9 +12,9 @@ function ProgramCard({
   participants,
   prs,
   projects,
-  locs,
+  lines_of_code,
   link,
-}: Program) {
+}: Pulls) {
   return (
     <div className="px-4 py-8 md:py-8 md:px-8 rounded-md bg-[#2a2a2aa3] col-span-1">
       <h3 className="font-semibold text-5xl text-center text-white">{year}</h3>
@@ -35,7 +35,7 @@ function ProgramCard({
         ) : (
           <div>
             <p className="font-bold text-blue-300">Lines of Code</p>
-            <h6 className="text-2xl font-bold text-white">{locs}M+</h6>
+            <h6 className="text-2xl font-bold text-white">{lines_of_code}M+</h6>
           </div>
         )}
       </div>
