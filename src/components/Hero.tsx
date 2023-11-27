@@ -110,11 +110,14 @@ function Hero() {
         className="bottom-[-10%] sm:top-[40%] z-[-3] fixed lg:top-[-70%] lg:right-[-36%] brightness-[35%] lg:brightness-[50%] overflow-x-hidden"
       />
       <div className="m-auto">
+
+
         <h1
           data-value="KWoC 23"
-          className="justify-center font-display text-center mb-4 font-extrabold leading-none tracking-tight text-[60px] sm:text-[120px] lg:text-[156px] text-white"
+          className="justify-center font-display text-center mb-4 font-extrabold leading-none tracking-tight text-[60px] sm:text-[120px] lg:text-[156px] text-white cursor-pointer select-none"
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
+          onClick={()=>{window.location.reload()}}
           style={{
             transform: `perspective(1000px) rotateX(${
               rotate.x / 3
@@ -124,7 +127,7 @@ function Hero() {
         >
           {text}
         </h1>
-        <h3 className="justify-center text-center mb-16 font-extrabold leading-none tracking-tight text-[20px] lg:text-[35px] text-white">
+        <h3 className="justify-center text-center mb-16 font-extrabold leading-none tracking-tight text-[20px] lg:text-[35px] text-white select-none">
           For the love of open source!
         </h3>
         <ManualButton />
