@@ -2,7 +2,7 @@ interface Program {
   year: number;
   participants: number;
   prs: number;
-  link: string;
+  archive_link: string;
   projects?: number;
   locs?: number;
 }
