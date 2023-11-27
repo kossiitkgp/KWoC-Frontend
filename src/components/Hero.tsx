@@ -107,14 +107,11 @@ function Hero() {
       <img
         src={Moon}
         alt="Moon"
-        className="bottom-[-10%] sm:top-[40%] z-[-3] fixed lg:top-[-70%] lg:right-[-36%] brightness-[35%] lg:brightness-[50%] overflow-x-hidden"
-      />
-      <div className="m-auto">
-
-
+        className="bottom-[-10%] sm:top-[40%] z-[-3] fixed lg:top-[-70%] lg:right-[-36%] brightness-[35%] lg:brightness-[50%] overflow-x-hidden"/>
+      <div className="m-auto">  
         <h1
           data-value="KWoC 23"
-          className="justify-center font-display text-center mb-4 font-extrabold leading-none tracking-tight text-[60px] sm:text-[120px] lg:text-[156px] text-white cursor-pointer select-none"
+          className="justify-center font-display text-center mb-4 font-extrabold leading-none tracking-tight text-[60px] sm:text-[120px] lg:text-[156px] text-white  select-none"
           onMouseMove={onMouseMove}
           onMouseLeave={onMouseLeave}
           onClick={()=>{window.location.reload()}}
