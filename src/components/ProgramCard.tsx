@@ -13,7 +13,7 @@ function ProgramCard({
   prs,
   projects,
   lines_of_code,
-  link,
+  archive_link,
 }: Pulls) {
   return (
     <div className="px-4 py-8 md:py-8 md:px-8 rounded-md bg-[#2a2a2aa3] col-span-1">
@@ -42,7 +42,7 @@ function ProgramCard({
 
       <a
         className="flex font-bold justify-center bg-primary text-white mt-8 mx-auto p-2 md:w-9/12 rounded-md text-xl hover:bg-primary-800"
-        href={link}
+        href={archive_link}
         target="_blank"
       >
         View Archive
