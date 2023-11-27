@@ -18,6 +18,7 @@ export interface IEndpointTypes {
       name: string;
       type: UserType;
       username: string;
+      college: string | undefined;
     };
   };
   "student/form": {
