@@ -7,6 +7,16 @@ import Fuse from "fuse.js";
 import SpinnerLoader from "../components/SpinnerLoader";
 import { IconContext } from "react-icons";
 
+// function to randomly shuffle an array
+function shuffle(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+}
+
 function Projects() {
   const [projects, setProjects] = useState<
     IEndpointTypes["project"]["response"]
@@ -32,6 +42,7 @@ function Projects() {
     makeRequest("project", "get")
       .then((response) => {
         if (response.is_ok) {
+          shuffle(response.response);// shuffles the array
           setProjects(response.response);
         } else {
           setError("Error fetching projects.");
