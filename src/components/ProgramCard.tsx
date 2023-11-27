@@ -45,7 +45,7 @@ function ProgramCard({
         href={link}
         target="_blank"
       >
-        View
+        View Archive
       </a>
     </div>
   );
