@@ -5,6 +5,7 @@ Hi :wave: there, welcome to KWoC React project. We are glad that you considered 
 ## Guidelines
 
 - We do not commit to `master` branch directly. We open pull requests and merge them in master after review.
+- Please comment under the issue and wait for it to be assigned to you.
 
 ### We are using:
 
@@ -16,6 +17,7 @@ Hi :wave: there, welcome to KWoC React project. We are glad that you considered 
 - Each contribution begins with an issue in this repo.
   - Create the issue as necessary.
   - If you lack the technical knowhow, refer to [Learning Guide](learn.md) or ask for help to anyone.
+- Comment under the issue and wait for it to be assigned to you.
 - Create a Branch and Commit your changes.
   - Name the branch carefully. For example `feature-card-component`, `bugfix-overlay`. Do not use generic names such as `develop`, `work`, your username etc.
   - Name the commits meaningfully. For help read [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/).
