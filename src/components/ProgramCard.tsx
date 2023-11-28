@@ -1,7 +1,7 @@
 interface Pulls {
   year: number;
   participants: number;
-  prs: number;
+  pull_count: number;
   archive_link: string;
   projects?: number;
   lines_of_code?: number;
@@ -10,7 +10,7 @@ interface Pulls {
 function ProgramCard({
   year,
   participants,
-  prs,
+  pull_count,
   projects,
   lines_of_code,
   archive_link,
@@ -25,7 +25,7 @@ function ProgramCard({
         </div>
         <div>
           <p className="font-bold text-blue-300">PR's</p>
-          <h6 className="text-2xl font-bold text-white">{prs}+</h6>
+          <h6 className="text-2xl font-bold text-white">{pull_count}+</h6>
         </div>
         {projects ? (
           <div>

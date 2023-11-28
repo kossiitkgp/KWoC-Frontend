@@ -17,7 +17,7 @@ export default function PastProgramsPage() {
                 year={program.year}
                 participants={program.participants}
                 projects={program.projects}
-                prs={program.prs}
+                pull_count={program.prs}
                 archive_link={program.link}
                 key={program.link}
               />
@@ -26,7 +26,7 @@ export default function PastProgramsPage() {
                 year={program.year}
                 participants={program.participants}
                 lines_of_code={program.locs}
-                prs={program.prs}
+                pull_count={program.prs}
                 archive_link={program.link}
                 key={program.link}
               />
