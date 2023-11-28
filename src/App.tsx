@@ -12,6 +12,7 @@ import ProjectForm from "./pages/ProjectForm";
 import ScrollToTop from "./util/scrollToTop";
 import StudentDashboard from "./pages/StudentDashboard";
 import RegistrationForm from "./pages/RegistrationForm";
+import NotFoundPage from './pages/404';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
                 path={ROUTER_PATHS.MENTOR_DASHBOARD}
                 element={<MentorDashboard />}
               />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </AuthProvider>
         </ScrollToTop>
