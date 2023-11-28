@@ -14,7 +14,6 @@ import PastProgramsPage from "./pages/PastProgramsPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import RegistrationForm from "./pages/RegistrationForm";
 
-
 function App() {
   return (
     <div className="App">
@@ -55,7 +54,10 @@ function App() {
                 path={ROUTER_PATHS.MENTOR_DASHBOARD}
                 element={<MentorDashboard />}
               />
-              <Route path={ROUTER_PATHS.PASTPROGRAMS} element={<PastProgramsPage />} />
+              <Route
+                path={ROUTER_PATHS.PASTPROGRAMS}
+                element={<PastProgramsPage />}
+              />
             </Routes>
           </AuthProvider>
         </ScrollToTop>

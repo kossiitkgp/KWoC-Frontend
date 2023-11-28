@@ -79,11 +79,7 @@ export default function FooterSection() {
               </a>
             </li>
             <li className="hover:text-white/50">
-              <Link
-                to={ROUTER_PATHS.PASTPROGRAMS}
-              >
-                Past Programs
-              </Link>
+              <Link to={ROUTER_PATHS.PASTPROGRAMS}>Past Programs</Link>
             </li>
             <li className="hover:text-white/50">
               <a
