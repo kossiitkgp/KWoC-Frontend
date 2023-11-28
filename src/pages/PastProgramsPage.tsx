@@ -18,16 +18,16 @@ export default function PastProgramsPage() {
                 participants={program.participants}
                 projects={program.projects}
                 prs={program.prs}
-                link={program.link}
+                archive_link={program.link}
                 key={program.link}
               />
             ) : (
               <ProgramCard
                 year={program.year}
                 participants={program.participants}
-                locs={program.locs}
+                lines_of_code={program.locs}
                 prs={program.prs}
-                link={program.link}
+                archive_link={program.link}
                 key={program.link}
               />
             ),
