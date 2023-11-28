@@ -30,7 +30,7 @@ function BrandLogo() {
 function getNavbarLinkClasses(isMobile: boolean, isActive: boolean = false) {
   return (
     (isMobile
-      ? "w-full text-end block p-2 text-sm font-semibold "
+      ? "w-full text-end block p-2 text-sm font-semibold flex justify-end "
       : "font-semibold hover:underline ") + (isActive ? "text-primary" : "")
   );
 }
