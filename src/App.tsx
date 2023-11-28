@@ -10,8 +10,10 @@ import { ROUTER_PATHS } from "./util/constants";
 import MentorDashboard from "./pages/MentorDashboard";
 import ProjectForm from "./pages/ProjectForm";
 import ScrollToTop from "./util/scrollToTop";
+import PastProgramsPage from "./pages/PastProgramsPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import RegistrationForm from "./pages/RegistrationForm";
+
 
 function App() {
   return (
@@ -53,6 +55,7 @@ function App() {
                 path={ROUTER_PATHS.MENTOR_DASHBOARD}
                 element={<MentorDashboard />}
               />
+              <Route path={ROUTER_PATHS.PASTPROGRAMS} element={<PastProgramsPage />} />
             </Routes>
           </AuthProvider>
         </ScrollToTop>
