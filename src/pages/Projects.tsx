@@ -40,9 +40,9 @@ function Projects() {
 
   useEffect(() => {
     makeRequest("project", "get")
-      .then((response) => {
+      .then(async (response) => {
         if (response.is_ok) {
-          shuffle(response.response);// shuffles the array
+          await shuffle(response.response);// shuffles the array
           setProjects(response.response);
         } else {
           setError("Error fetching projects.");
