@@ -8,7 +8,6 @@ import Fuse from "fuse.js";
 import SpinnerLoader from "../components/SpinnerLoader";
 import { IconContext } from "react-icons";
 
-
 function Projects() {
   const [projects, setProjects] = useState<
     IEndpointTypes["project"]["response"]
@@ -34,8 +33,7 @@ function Projects() {
     makeRequest("project", "get")
       .then((response) => {
         if (response.is_ok) {
-          shuffle(response.response);// shuffles the array
-          setProjects(response.response);
+          setProjects(shuffle(response.response));
         } else {
           setError("Error fetching projects.");
           console.log(response.response);
