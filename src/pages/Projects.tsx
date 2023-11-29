@@ -3,6 +3,7 @@ import { MdCancel } from "react-icons/md";
 import ProjectCard from "../components/ProjectCard";
 import { makeRequest } from "../util/backend";
 import { IEndpointTypes } from "../util/types";
+import { shuffle } from "../util/shuffle";
 import Fuse from "fuse.js";
 import SpinnerLoader from "../components/SpinnerLoader";
 import { IconContext } from "react-icons";
@@ -32,7 +33,7 @@ function Projects() {
     makeRequest("project", "get")
       .then((response) => {
         if (response.is_ok) {
-          setProjects(response.response);
+          setProjects(shuffle(response.response));
         } else {
           setError("Error fetching projects.");
           console.log(response.response);

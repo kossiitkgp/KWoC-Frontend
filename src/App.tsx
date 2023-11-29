@@ -10,9 +10,10 @@ import { ROUTER_PATHS } from "./util/constants";
 import MentorDashboard from "./pages/MentorDashboard";
 import ProjectForm from "./pages/ProjectForm";
 import ScrollToTop from "./util/scrollToTop";
+import PastProgramsPage from "./pages/PastProgramsPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import RegistrationForm from "./pages/RegistrationForm";
-import NotFoundPage from './pages/404';
+import NotFoundPage from "./pages/404";
 
 function App() {
   return (
@@ -53,6 +54,10 @@ function App() {
               <Route
                 path={ROUTER_PATHS.MENTOR_DASHBOARD}
                 element={<MentorDashboard />}
+              />
+              <Route
+                path={ROUTER_PATHS.PASTPROGRAMS}
+                element={<PastProgramsPage />}
               />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

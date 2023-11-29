@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   DISCORD_INVITE,
   KOSS_CONTACT_EMAIL,
@@ -76,6 +77,9 @@ export default function FooterSection() {
               >
                 About KOSS
               </a>
+            </li>
+            <li className="hover:text-white/50">
+              <Link to={ROUTER_PATHS.PASTPROGRAMS}>Past Programs</Link>
             </li>
             <li className="hover:text-white/50">
               <a

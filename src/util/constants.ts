@@ -4,6 +4,7 @@ export enum ROUTER_PATHS {
   HOME = "/",
   FAQ = "/faq",
   TESTIMONIALS = "/testimonials",
+  PASTPROGRAMS = "/pastprograms",
   OAUTH = "/oauth",
 
   // Project routes
