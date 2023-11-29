@@ -1,0 +1,43 @@
+name: Good First Issue
+title: "👶[GOOD FIRST ISSUE] <title>"
+description: Create a good first issue to help new contributors
+labels: ["good first issue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out the sections below to properly describe the new feature you are suggesting.
+
+        **Contribution Guidelines**
+
+        - If you want to work on an issue, please let us know in a comment below.
+        - Do not begin work on the issue unless it has been assigned to you.
+        - If you do not respond in 3 days, the issue may be reassigned to someone else.
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the feature/bug
+      placeholder: A clear and concise description.
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Steps to reproduce bug/implement feature
+      placeholder: Clear and concise steps to reproduce the bug or implement the feature.
+  - type: textarea
+    id: context
+    attributes:
+      label: Resources
+      placeholder: |
+        Add links or screenshots to help new contributors understand the issue.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Extra fields
+      options:
+        - label: I have used the search function to check if an issue already exists
+          required: true
+        - label: I'd like to work on this issue
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your suggestion! Let's see together if it can be implemented.
