@@ -5,6 +5,7 @@ import { ROUTER_PATHS } from "../util/constants";
 import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 
+
 function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const authContext = useAuthContext();
   const navigate = useNavigate();
@@ -73,8 +74,8 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
         submitWithoutChange={isRegistering}
         staticMessage={
           isStudent
-            ? "⚠️ Students cannot register as mentors"
-            : " ⚠️ Mentors cannot register as students"
+            ? "Students cannot register as mentors"
+            : "Mentors cannot register as students"
         }
         fields={fields}
         onCancel={() => {
