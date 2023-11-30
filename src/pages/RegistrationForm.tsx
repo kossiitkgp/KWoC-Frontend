@@ -74,8 +74,8 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
         submitWithoutChange={isRegistering}
         staticMessage={
           isStudent
-            ? "Students cannot register as mentors"
-            : "Mentors cannot register as students"
+            ? "Note: Students cannot register as mentors"
+            : "Note: Mentors cannot register as students"
         }
         fields={fields}
         onCancel={() => {
