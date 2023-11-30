@@ -7,10 +7,6 @@ interface IObject<T> {
 type MappedObject<S, T> = {
   [Property in keyof S]: T;
 };
-interface IStaticMessageField {
-  staticMessage?: string; // New field for a static warning message
-}
-
 
 export type InputSettings = IObject<IInputFields>;
 type Responses<S extends InputSettings> = MappedObject<S, string>;
