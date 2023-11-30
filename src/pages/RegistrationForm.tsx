@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import Form from "../components/Form";
 import { useAuthContext } from "../util/auth";
 import { ROUTER_PATHS } from "../util/constants";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 
 function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const authContext = useAuthContext();
   const navigate = useNavigate();
+  const location = useLocation(); 
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -16,17 +17,20 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
 
   const userType = isStudent ? "student" : "mentor";
 
-  useEffect(() => {
-    setIsRegistering(!authContext.isRegistered);
+  const isStudentForm = location.pathname === "/form/student";
+  const isMentorForm = location.pathname === "/form/mentor";
 
-    if (!authContext.isAuthenticated) {
-      navigate(ROUTER_PATHS.HOME);
-    }
+  // useEffect(() => {
+  //   setIsRegistering(!authContext.isRegistered);
 
-    if (authContext.userData.type !== userType) {
-      navigate(ROUTER_PATHS.HOME);
-    }
-  });
+  //   if (!authContext.isAuthenticated) {
+  //     navigate(ROUTER_PATHS.HOME);
+  //   }
+
+  //   if (authContext.userData.type !== userType) {
+  //     navigate(ROUTER_PATHS.HOME);
+  //   }
+  // });
 
   const fields: any = {
     name: {
@@ -56,7 +60,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   }
 
   return (
-    <>
+    <> 
       <Form
         title={
           isRegistering
@@ -70,6 +74,11 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
         loading={loading}
         disabled={loading}
         submitWithoutChange={isRegistering}
+        staticMessage={
+          isStudent
+            ? "Note: Students cannot register as mentors"
+            : "Note: Mentors cannot register as students"
+        }
         fields={fields}
         onCancel={() => {
           isRegistering
@@ -120,8 +129,9 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
 
             console.log(e);
             return false;
-          }
+          }          
         }}
+        
       />
     </>
   );
