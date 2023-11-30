@@ -35,7 +35,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   // Include a static warning message
   if (props.staticMessage) {
     inputs.push(
-      <p key="staticMessage" style={{ color: "red", textAlign: "center" }}>
+      <p key="staticMessage" style={{ color: "yellow", textAlign: "center" }}>
         {props.staticMessage}
       </p>
     );
