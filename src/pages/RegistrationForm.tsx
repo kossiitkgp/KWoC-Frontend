@@ -17,17 +17,17 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const userType = isStudent ? "student" : "mentor";
 
 
-  // useEffect(() => {
-  //   setIsRegistering(!authContext.isRegistered);
+  useEffect(() => {
+    setIsRegistering(!authContext.isRegistered);
 
-  //   if (!authContext.isAuthenticated) {
-  //     navigate(ROUTER_PATHS.HOME);
-  //   }
+    if (!authContext.isAuthenticated) {
+      navigate(ROUTER_PATHS.HOME);
+    }
 
-  //   if (authContext.userData.type !== userType) {
-  //     navigate(ROUTER_PATHS.HOME);
-  //   }
-  // });
+    if (authContext.userData.type !== userType) {
+      navigate(ROUTER_PATHS.HOME);
+    }
+  });
 
   const fields: any = {
     name: {
