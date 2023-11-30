@@ -29,9 +29,3 @@ body:
       label: Resources
       placeholder: |
         Add links or screenshots to help new contributors understand the issue.
-  - type: checkboxes
-    id: checks
-    attributes:
-      label: Additional Information
-      options:
-        - label: I'd like to work on this issue

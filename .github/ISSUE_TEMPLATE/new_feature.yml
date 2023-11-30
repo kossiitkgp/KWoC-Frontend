@@ -38,3 +38,7 @@ body:
       options:
         - label: I have used the search function to check if an issue already exists
         - label: I'd like to work on this issue
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your suggestion! Let's see together if it can be implemented.
