@@ -1,12 +1,12 @@
 name: Good First Issue
-title: "👶[GOOD FIRST ISSUE] <title>"
+title: "<title>"
 description: Create a good first issue to help new contributors
 labels: ["good first issue"]
 body:
   - type: markdown
     attributes:
       value: |
-        Please fill out the sections below to properly describe the new feature you are suggesting.
+        Please fill out the sections below to properly describe the new feature or the bug.
 
         **Contribution Guidelines**
 
@@ -32,12 +32,6 @@ body:
   - type: checkboxes
     id: checks
     attributes:
-      label: Extra fields
+      label: Additional Information
       options:
-        - label: I have used the search function to check if an issue already exists
-          required: true
         - label: I'd like to work on this issue
-  - type: markdown
-    attributes:
-      value: |
-        Thanks for your suggestion! Let's see together if it can be implemented.
