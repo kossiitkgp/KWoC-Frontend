@@ -2,8 +2,6 @@ import React, { ReactNode, useState } from "react";
 import { RiErrorWarningFill } from 'react-icons/ri';
 import SpinnerLoader from "./SpinnerLoader";
 
-
-
 interface IObject<T> {
   [name: string]: T;
 }
@@ -36,14 +34,14 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   const inputs: ReactNode[] = [];
 
   // Include a static warning message
-if (props.staticMessage) {
-  inputs.push(
+  if (props.staticMessage) {
+    inputs.push(
     <div key="staticMessage" className="flex items-center justify-center">
-     <RiErrorWarningFill className="mr-2 fill-yellow-400"/>      
-      <span className="text-yellow-400">{props.staticMessage}</span>
+     <RiErrorWarningFill className="mr-2 fill-gray-300"/>      
+      <span className="text-gray-300">{props.staticMessage}</span>
     </div>
-  );
-}
+   );
+  }
 
   const disabled = props.disabled ?? false;
   const loading = props.loading ?? false;
@@ -87,7 +85,7 @@ if (props.staticMessage) {
             }
           }}
         >
-          <h1 className="mb-10 text-3xl text-center">{props.title}</h1>
+          <h1 className="text-center text-3xl mb-10">{props.title}</h1>
           {props.error && <p className="text-red-500">{props.error}</p>}
           {props.info && <p className="text-primary">{props.info}</p>}
           {loading && <SpinnerLoader />}
@@ -97,7 +95,7 @@ if (props.staticMessage) {
             <div className="mb-4 text-center">
               <button
                 type="submit"
-                className="h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800 disabled:text-gray-300 disabled:bg-gray-600"
+                className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:text-gray-300 disabled:bg-gray-600"
                 disabled={
                   (!responsesChanged && !props.submitWithoutChange) || disabled
                 }
@@ -109,7 +107,7 @@ if (props.staticMessage) {
               <div className="mb-4 text-center">
                 <button
                   type="reset"
-                  className="h-10 px-5 text-indigo-100 transition-colors duration-150 bg-red-700 rounded-lg focus:shadow-outline hover:bg-red-800 disabled:text-gray-600 disabled:bg-gray-600"
+                  className="h-10 px-5 text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:text-gray-600 disabled:bg-gray-600"
                   onClick={() => props.onCancel!(responses)}
                 >
                   Cancel
@@ -142,7 +140,7 @@ function FormInput(props: IFormInputProps) {
       <input
         type={props.type}
         disabled={props.disabled ?? false}
-        className="block w-full px-2 py-1 mt-2 text-white bg-gray-800 rounded-md shadow-sm border-slate-700 focus:border-indigo-700 focus:ring focus:ring-indigo-700 focus:ring-opacity-5 disabled:text-gray-600 disabled:placeholder:text-gray-600"
+        className="block w-full mt-2 px-2 py-1 bg-gray-800 text-white border-slate-700 rounded-md shadow-sm focus:border-indigo-700 focus:ring focus:ring-indigo-700 focus:ring-opacity-5 disabled:text-gray-600 disabled:placeholder:text-gray-600"
         placeholder={props.placeholder}
         required={props.required ?? false}
         defaultValue={props.defaultValue ?? ""}
