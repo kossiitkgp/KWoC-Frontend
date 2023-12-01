@@ -1,4 +1,5 @@
 import React, { ReactNode, useState } from "react";
+import { RiErrorWarningFill } from 'react-icons/ri';
 import SpinnerLoader from "./SpinnerLoader";
 
 interface IObject<T> {
@@ -18,6 +19,7 @@ interface IFormProps<S extends InputSettings> {
   info: string | null;
   disabled?: boolean;
   loading?: boolean;
+  staticMessage?: string | ReactNode; // New prop for a static warning message
   submitWithoutChange?: boolean;
   onSubmit: (responses: Responses<S>) => Promise<boolean>;
   onCancel?: (responses: Responses<S>) => void;
@@ -74,6 +76,12 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           }}
         >
           <h1 className="text-center text-3xl mb-10">{props.title}</h1>
+          {props.staticMessage&&(
+            <p className="flex items-center justify-center">
+              <RiErrorWarningFill className="mr-2 fill-gray-300" />
+              <span className="text-gray-300">{props.staticMessage}</span>
+            </p>)
+          }
           {props.error && <p className="text-red-500">{props.error}</p>}
           {props.info && <p className="text-primary">{props.info}</p>}
           {loading && <SpinnerLoader />}
