@@ -125,7 +125,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
 
             console.log(e);
             return false;
-          }          
+          }
         }}
       />
     </>

@@ -33,16 +33,6 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   const [responsesChanged, setResponsesChanged] = useState(false);
   const inputs: ReactNode[] = [];
 
-  // Include a static warning message
-  if (props.staticMessage) {
-    inputs.push(
-    <div key="staticMessage" className="flex items-center justify-center">
-     <RiErrorWarningFill className="mr-2 fill-gray-300"/>      
-      <span className="text-gray-300">{props.staticMessage}</span>
-    </div>
-   );
-  }
-
   const disabled = props.disabled ?? false;
   const loading = props.loading ?? false;
 
@@ -86,6 +76,12 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           }}
         >
           <h1 className="text-center text-3xl mb-10">{props.title}</h1>
+          {props.staticMessage&&(
+            <p className="flex items-center justify-center">
+              <RiErrorWarningFill className="mr-2 fill-gray-300" />
+              <span className="text-gray-300">{props.staticMessage}</span>
+            </p>)
+          }
           {props.error && <p className="text-red-500">{props.error}</p>}
           {props.info && <p className="text-primary">{props.info}</p>}
           {loading && <SpinnerLoader />}
