@@ -5,7 +5,6 @@ import { ROUTER_PATHS } from "../util/constants";
 import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 
-
 function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const authContext = useAuthContext();
   const navigate = useNavigate();
@@ -16,7 +15,6 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const [isRegistering, setIsRegistering] = useState(false);
 
   const userType = isStudent ? "student" : "mentor";
-
 
   useEffect(() => {
     setIsRegistering(!authContext.isRegistered);
@@ -58,7 +56,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   }
 
   return (
-    <> 
+    <>
       <Form
         title={
           isRegistering
@@ -129,7 +127,6 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
             return false;
           }          
         }}
-        
       />
     </>
   );
