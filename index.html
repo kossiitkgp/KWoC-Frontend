@@ -1,33 +1,50 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Welcome to Kharagpur Winter of Code 2023, an event that helps students take their first steps in the vast world of Open-Source. Organized by Kharagpur Open Source Society, we organize this free of cost event to encourage new and budding minds to explore the spirit of Free and Open Source Software."
-    />
-    <link rel="icon" type="image/png" href="/kwoc_logo.png" />
-    <meta name="theme-color" content="#04142E" />
-    <!--PLACEHOLDER, MIGHT CHANGE WHEN WE DECIDE THEME-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Social Media card tags-->
-    <meta property="og:title" content="Kharagpur Winter of Code 2023" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/banner.png" />
-    <meta property="twitter:image" content="/banner.png" />
-    <meta property="og:url" content="https://kwoc.kossiitkgp.org/" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      property="og:description"
-      content="Opportunity for students to explore the world of Free and Open Source Software."
-    />
-    <meta property="og:site_name" content="Kharagpur Winter of Code 2023" />
-    <meta name="twitter:image:alt" content="Kharagpur Winter of Code logo" />
 
-    <title>Kharagpur Winter of Code | For the love of Open Source</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description"
+    content="Welcome to Kharagpur Winter of Code 2023, an event that helps students take their first steps in the vast world of Open-Source. Organized by Kharagpur Open Source Society, we organize this free of cost event to encourage new and budding minds to explore the spirit of Free and Open Source Software." />
+  <link rel="icon" type="image/png" href="/kwoc_logo.png" />
+  <meta name="theme-color" content="#04142E" />
+  <!--PLACEHOLDER, MIGHT CHANGE WHEN WE DECIDE THEME-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Social Media card tags-->
+  <meta property="og:title" content="Kharagpur Winter of Code 2023" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/banner.png" />
+  <meta property="twitter:image" content="/banner.png" />
+  <meta property="og:url" content="https://kwoc.kossiitkgp.org/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:description"
+    content="Opportunity for students to explore the world of Free and Open Source Software." />
+  <meta property="og:site_name" content="Kharagpur Winter of Code 2023" />
+  <meta name="twitter:image:alt" content="Kharagpur Winter of Code logo" />
+
+  <title>Kharagpur Winter of Code | For the love of Open Source</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+  <script type="module">
+    import { characterCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+
+    new characterCursor({
+      element: document.querySelector("#character"),
+      characters: ["❄️"],
+      font: "15px serif",
+      characterLifeSpanFunction: function () {
+        return Math.floor(Math.random() * 10 + 50);
+      },
+      initialCharacterVelocityFunction: function () {
+        return {
+          x: (Math.random() < 0.5 ? -1 : 1) * Math.random() * 2,
+          y: (Math.random() < 0.5 ? -1 : 1) * Math.random() * 2,
+        }
+      }
+    })
+  </script>
+</body>
+
 </html>
