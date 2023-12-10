@@ -59,11 +59,16 @@ function Projects() {
             onChange={onQueryChangeHandler}
             value={query}
           ></input>
-          <button onClick={() => setQuery("")}>
-            <IconContext.Provider value={{ size: "1.8rem" }}>
-              <MdCancel />
-            </IconContext.Provider>
-          </button>
+          {/* button only display while query is not empty */}
+          {
+            query !== "" && (
+              <button onClick={() => setQuery("")}>
+                <IconContext.Provider value={{ size: "1.8rem" }}>
+                  <MdCancel />
+                </IconContext.Provider>
+              </button>
+            )
+          }
         </div>
       </div>
 
