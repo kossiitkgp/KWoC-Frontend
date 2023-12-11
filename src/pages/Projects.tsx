@@ -65,8 +65,7 @@ function Projects() {
               <MdCancel />
             </IconContext.Provider>
           </button>
-          )
-          }
+          )}
         </div>
       </div>
 
