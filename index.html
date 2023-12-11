@@ -27,24 +27,7 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
-  <script type="module">
-    import { characterCursor } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
-
-    new characterCursor({
-      element: document.querySelector("#character"),
-      characters: ["❄️"],
-      font: "15px serif",
-      characterLifeSpanFunction: function () {
-        return Math.floor(Math.random() * 10 + 50);
-      },
-      initialCharacterVelocityFunction: function () {
-        return {
-          x: (Math.random() < 0.5 ? -1 : 1) * Math.random() * 2,
-          y: (Math.random() < 0.5 ? -1 : 1) * Math.random() * 2,
-        }
-      }
-    })
-  </script>
+  <script src="/src/mouse_transition.js"></script>
 </body>
 
 </html>
