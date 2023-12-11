@@ -2,6 +2,8 @@ import Fuse from "fuse.js";
 import React, { useState } from "react";
 import { FAQs } from "../data/FAQs";
 import FooterSection from "../components/FooterSection";
+import { IconContext } from "react-icons";
+import { MdCancel } from "react-icons/md";
 
 export default function FAQ() {
   const [query, setQuery] = useState("");
@@ -30,16 +32,22 @@ export default function FAQ() {
               Wanna ask us a question? Check these first.
             </p>
           </section>
-
           <div className="p-4 my-4 mx-0">
-            <div className="w-full bg-none border-none">
+        <div className="flex py-4 px-6 rounded-md outline-none w-[80vw] max-w-3xl border-none text-white bg-slate-900 font-semibold bg-none">
               <input
-                className="py-4 px-6 rounded-md outline-none w-[80vw] max-w-3xl border-none text-white bg-slate-900 font-semibold bg-none"
+                className="rounded-md outline-none w-full border-none text-white bg-slate-900 font-semibold bg-none"
                 type="text"
                 placeholder="Search your query"
                 onChange={onChangeHandler}
                 value={query}
               ></input>
+              {query !== "" && (
+                <button onClick={() => setQuery("")}>
+                  <IconContext.Provider value={{ size: "1.6rem" }}>
+                    <MdCancel />
+                  </IconContext.Provider>
+                </button>
+              )}
             </div>
           </div>
         </div>
