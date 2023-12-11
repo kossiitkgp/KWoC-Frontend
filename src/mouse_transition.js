@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const container = document.body;
     const snowflakeSVGs = [
-        'src/assets/snowflake1.svg',
-        'src/assets/snowflake2.svg',
-        'src/assets/snowflake3.svg'
+        './src/assets/snowflake1.svg',
+        './src/assets/snowflake2.svg',
+        './src/assets/snowflake3.svg'
     ];
 
     let lastTimestamp = 0;
