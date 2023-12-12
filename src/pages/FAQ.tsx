@@ -32,7 +32,7 @@ export default function FAQ() {
               Wanna ask us a question? Check these first.
             </p>
           </section>
-          
+
           <div className="p-4 my-4 mx-0">
             <div className="flex py-4 px-6 rounded-md outline-none w-[80vw] max-w-3xl border-none text-white bg-slate-900 font-semibold bg-none">
               <input

@@ -60,11 +60,11 @@ function Projects() {
             value={query}
           ></input>
           {query !== "" && (
-          <button onClick={() => setQuery("")}>
-            <IconContext.Provider value={{ size: "1.6rem" }}>
-              <MdCancel />
-            </IconContext.Provider>
-          </button>
+            <button onClick={() => setQuery("")}>
+              <IconContext.Provider value={{ size: "1.6rem" }}>
+                <MdCancel />
+              </IconContext.Provider>
+            </button>
           )}
         </div>
       </div>
