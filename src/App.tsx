@@ -37,10 +37,12 @@ function App() {
                 element={<StudentDashboard />}
               />
               <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
-              {REGISTRATIONS_OPEN && <Route
-                path={ROUTER_PATHS.PROJECT_FORM}
-                element={<ProjectForm />}
-              />}
+              {REGISTRATIONS_OPEN && (
+                <Route
+                  path={ROUTER_PATHS.PROJECT_FORM}
+                  element={<ProjectForm />}
+                />
+              )}
               <Route
                 path={ROUTER_PATHS.PROJECT_EDIT_FORM}
                 element={<ProjectForm isEditing={true} />}

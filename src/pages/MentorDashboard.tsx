@@ -67,13 +67,15 @@ function MentorDashboard() {
                 {dashboard.projects.map((project, i) => (
                   <MentorProjectCard key={i} {...project} />
                 ))}
-                {REGISTRATIONS_OPEN && <Link
-                  to={ROUTER_PATHS.PROJECT_FORM}
-                  className="px-4 py-4 w-80 rounded-md bg-primary-700 hover:bg-primary-800 text-3xl font-bold flex flex-row-reverse md:flex-col gap-3 justify-center items-center"
-                >
-                  <HiOutlineViewGridAdd size={50} />
-                  <div>Add Project</div>
-                </Link>}
+                {REGISTRATIONS_OPEN && (
+                  <Link
+                    to={ROUTER_PATHS.PROJECT_FORM}
+                    className="px-4 py-4 w-80 rounded-md bg-primary-700 hover:bg-primary-800 text-3xl font-bold flex flex-row-reverse md:flex-col gap-3 justify-center items-center"
+                  >
+                    <HiOutlineViewGridAdd size={50} />
+                    <div>Add Project</div>
+                  </Link>
+                )}
               </div>
             ) : (
               <p className="text-center text-red-500">{error}</p>

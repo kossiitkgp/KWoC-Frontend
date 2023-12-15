@@ -4,7 +4,11 @@ import { CiMenuBurger } from "react-icons/ci";
 import { RiCloseLine } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import kwoc_logo from "../assets/kwoc_logo.png";
-import { ROUTER_PATHS, GH_OAUTH_URL, REGISTRATIONS_OPEN } from "../util/constants";
+import {
+  ROUTER_PATHS,
+  GH_OAUTH_URL,
+  REGISTRATIONS_OPEN,
+} from "../util/constants";
 import { useAuthContext } from "../util/auth";
 import { UserType } from "../util/types";
 
@@ -74,8 +78,7 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
             src={`https://github.com/${authContext.userData.username}.png`}
           />
         </Link>
-      ) : (
-        REGISTRATIONS_OPEN ?
+      ) : REGISTRATIONS_OPEN ? (
         ["mentor", "student"].map((userType, i) => (
           <button
             key={i}
@@ -89,13 +92,11 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
           >
             {userType.toUpperCase()} LOGIN
           </button>
-        )) :
+        ))
+      ) : (
         <Link
           to={GH_OAUTH_URL}
-          className={getNavbarLinkClasses(
-            isMobile,
-            false,
-          )}
+          className={getNavbarLinkClasses(isMobile, false)}
         >
           LOGIN
         </Link>

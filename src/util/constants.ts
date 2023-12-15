@@ -1,5 +1,6 @@
 export const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-export const REGISTRATIONS_OPEN = import.meta.env.VITE_REGISTRATIONS_OPEN == 'true';
+export const REGISTRATIONS_OPEN =
+  import.meta.env.VITE_REGISTRATIONS_OPEN == "true";
 
 export enum ROUTER_PATHS {
   HOME = "/",
