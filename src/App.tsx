@@ -6,7 +6,7 @@ import Projects from "./pages/Projects";
 import OAuth from "./pages/OAuth";
 import Navbar from "./components/Navbar";
 import { AuthProvider } from "./util/auth";
-import { ROUTER_PATHS } from "./util/constants";
+import { REGISTRATIONS_OPEN, ROUTER_PATHS } from "./util/constants";
 import MentorDashboard from "./pages/MentorDashboard";
 import ProjectForm from "./pages/ProjectForm";
 import ScrollToTop from "./util/scrollToTop";
@@ -37,10 +37,10 @@ function App() {
                 element={<StudentDashboard />}
               />
               <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
-              <Route
+              {REGISTRATIONS_OPEN && <Route
                 path={ROUTER_PATHS.PROJECT_FORM}
                 element={<ProjectForm />}
-              />
+              />}
               <Route
                 path={ROUTER_PATHS.PROJECT_EDIT_FORM}
                 element={<ProjectForm isEditing={true} />}

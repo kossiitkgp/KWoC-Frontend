@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Form from "../components/Form";
 import { useAuthContext } from "../util/auth";
-import { DISCORD_INVITE, ROUTER_PATHS } from "../util/constants";
+import { DISCORD_INVITE, REGISTRATIONS_OPEN, ROUTER_PATHS } from "../util/constants";
 import { useNavigate, useParams } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 import { IProject } from "../util/types";
@@ -20,6 +20,11 @@ function ProjectForm(props: { isEditing?: boolean }) {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    if (!isEditing && !REGISTRATIONS_OPEN) {
+      // Redirect if registrations are closed and not editing.
+      navigate(ROUTER_PATHS.HOME);
+    }
+
     if (!authContext.isAuthenticated) {
       navigate(ROUTER_PATHS.HOME);
     } else if (!authContext.isRegistered) {
