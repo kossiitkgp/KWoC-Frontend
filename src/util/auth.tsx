@@ -154,7 +154,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const updateAuth = (auth: ILocalStorageAuthObj) => {
     setUserAuth(auth);
 
-    console.log(auth);
     setFormLink(
       userAuth.userData.type === "student"
         ? ROUTER_PATHS.STUDENT_FORM
