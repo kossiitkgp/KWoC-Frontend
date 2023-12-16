@@ -62,11 +62,11 @@ const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   formLink: ROUTER_PATHS.STUDENT_FORM,
   dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD,
   jwt: DEFAULT_AUTH_OBJ.jwt,
-  setUserType: () => { },
-  updateUserData: () => { },
-  onLogin: () => { },
-  onRegister: () => { },
-  onLogout: () => { },
+  setUserType: () => {},
+  updateUserData: () => {},
+  onLogin: () => {},
+  onRegister: () => {},
+  onLogout: () => {},
 };
 
 const getLsAuthObj = () => {
@@ -154,7 +154,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const updateAuth = (auth: ILocalStorageAuthObj) => {
     setUserAuth(auth);
 
-    console.log(auth)
+    console.log(auth);
     setFormLink(
       userAuth.userData.type === "student"
         ? ROUTER_PATHS.STUDENT_FORM
@@ -197,27 +197,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Load the profile once
   useEffect(() => {
     if (isAuthenticated) {
-      makeRequest(
-        'profile',
-        'get',
-        null,
-        userAuth.jwt
-      ).then(({ response, is_ok }) => {
-        if (is_ok) {
-          onRegister({ username: response.username, name: response.name, email: response.email, college: userAuth.userData.college, type: response.type });
-        } else {
-          if (response.status_code === 400) {
-            setIsRegistered(false);
+      makeRequest("profile", "get", null, userAuth.jwt)
+        .then(({ response, is_ok }) => {
+          if (is_ok) {
+            onRegister({
+              username: response.username,
+              name: response.name,
+              email: response.email,
+              college: userAuth.userData.college,
+              type: response.type,
+            });
           } else {
-            onLogout();
+            if (response.status_code === 400) {
+              setIsRegistered(false);
+            } else {
+              onLogout();
+            }
           }
-        }
-      })
-        .catch((err) => {
-          console.log('Error fetching profile from the backend: ', err);
         })
+        .catch((err) => {
+          console.log("Error fetching profile from the backend: ", err);
+        });
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("auth", JSON.stringify(userAuth));

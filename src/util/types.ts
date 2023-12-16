@@ -28,8 +28,8 @@ export interface IEndpointTypes {
       username: string;
       email: string;
       type: UserType;
-    }
-  },
+    };
+  };
   "student/form": {
     request: {
       username: string;
