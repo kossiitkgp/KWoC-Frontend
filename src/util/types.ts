@@ -21,6 +21,15 @@ export interface IEndpointTypes {
       college: string | undefined;
     };
   };
+  profile: {
+    request: null;
+    response: {
+      name: string;
+      username: string;
+      email: string;
+      type: UserType;
+    }
+  },
   "student/form": {
     request: {
       username: string;
