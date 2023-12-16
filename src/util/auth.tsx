@@ -153,6 +153,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const updateAuth = (auth: ILocalStorageAuthObj) => {
     setUserAuth(auth);
+
+    console.log(auth)
     setFormLink(
       userAuth.userData.type === "student"
         ? ROUTER_PATHS.STUDENT_FORM
@@ -167,11 +169,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const onLogin = (auth: ILocalStorageAuthObj) => {
     setIsAuthenticated(true);
+    setUserType(auth.userData.type);
     updateAuth(auth);
   };
 
   const onRegister = (userData: IUserAuthData) => {
     setIsRegistered(true);
+    setUserType(userData.type);
 
     const newUserAuth = {
       ...userAuth,
