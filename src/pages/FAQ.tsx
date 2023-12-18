@@ -7,7 +7,9 @@ import { MdCancel } from "react-icons/md";
 
 export default function FAQ() {
   const [query, setQuery] = useState("");
-
+  
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
   };
@@ -19,6 +21,11 @@ export default function FAQ() {
   const results = fuse.search(query);
 
   const searchResults = query ? results.map((result) => result.item) : FAQs;
+
+
+  const toggleAccordion = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
     <>
@@ -59,21 +66,23 @@ export default function FAQ() {
               const { question, answer } = FAQ;
               return (
                 <li className="space-y-4" key={`q-${i}`}>
-                  <div className="font-bold text-lg">
+                  <div className="font-bold text-lg cursor-pointer"
+                  onClick={() => toggleAccordion(i)}
+                  >
                     <strong>{question}</strong>
                   </div>
-                  <div>
-                    <ul className="list-disc mx-12 space-y-2 leading-6">
-                      {answer.map((item) => {
-                        return (
+                  {activeIndex === i && (
+                    <div>
+                      <ul className="list-disc mx-12 space-y-2 leading-6">
+                        {answer.map((item, index) => (
                           <li
-                            key={item}
+                            key={index}
                             dangerouslySetInnerHTML={{ __html: item }}
                           ></li>
-                        );
-                      })}
-                    </ul>
-                  </div>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </li>
               );
             })}
