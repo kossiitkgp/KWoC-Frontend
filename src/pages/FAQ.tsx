@@ -29,7 +29,7 @@ export default function FAQ() {
   return (
     <>
       <div className="flex flex-col items-center pt-24">
-        <div className="sticky lg:-top-40 md:-top-40 sm:-top-52 max-[640px]:-top-[10rem] max-[540px]:-top-[12rem] max-[500px]:-top-[14rem] max-[300px]:-top-[18rem] flex flex-col items-center bg-[#0a0a19]">
+        <div className="sticky lg:-top-40 md:-top-40 sm:-top-52 max-[640px]:-top-[10rem] max-[540px]:-top-[12rem] max-[500px]:-top-[14rem] max-[300px]:-top-[18rem] flex flex-col items-center bg-[#0a0a19] relative z-[200]">
           <section className="px-16 py-4 my-8 mx-0">
             <h1 className=" font-display font-bold text-3xl sm:text-5xl mb-8 text-center">
               Frequently Asked Questions
@@ -60,12 +60,12 @@ export default function FAQ() {
         </div>
 
         <div className="flex flex-col items-center max-w-3xl px-4">
-          <div className=" py-2 space-y-12">
+          <div className="py-2 space-y-3">
             {searchResults.map((FAQ, i) => {
               const { question, answer } = FAQ;
               return (
-                <div key={`q-${i}`}>
-                  <h2>
+                <div key={`q-${i}`} className="">
+                  <h2 className={`py-3 px-3 bg-[#233B49] ${activeIndex === i? 'delay-100 rounded-t-xl' : 'delay-100 rounded-xl' }`}>
                     <button
                       id="faqs-title-07"
                       type="button"
@@ -76,7 +76,7 @@ export default function FAQ() {
                     >
                       <span>{question}</span>
                       <svg
-                        className={`fill-indigo-500 relative z-[-10] shrink-0 ml-8 transform origin-center transition duration-200 ease-out ${
+                        className={`fill-white relative z-[0] shrink-0 ml-8 transform origin-center transition duration-200 ease-out ${
                           activeIndex === i ? "rotate-180" : ""
                         }`}
                         width="16"
@@ -89,7 +89,7 @@ export default function FAQ() {
                           height="2"
                           rx="1"
                           className={`transform origin-center transition duration-200 ease-out ${
-                            activeIndex === i ? "rotate-180" : ""
+                            activeIndex === i ? "" : ""
                           }`}
                         />
                         <rect
@@ -97,21 +97,20 @@ export default function FAQ() {
                           width="16"
                           height="2"
                           rx="1"
-                          className={`transform origin-center rotate-90 transition duration-200 ease-out ${
-                            activeIndex === i ? "rotate-180" : ""
+                          className={`transform origin-center transition duration-200 ease-out ${
+                            activeIndex === i ? "" : "rotate-90"
                           }`}
                         />
                       </svg>
                     </button>
                   </h2>
-
                   <div
                     id="faqs-text-07"
                     role="region"
                     aria-labelledby="faqs-title-07"
-                    className={`grid text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out ${
+                    className={`grid text-sm text-slate-600 bg-[#355A6F] rounded-b-xl overflow-hidden transition-all duration-300 ease-in-out ${
                       activeIndex === i
-                        ? "grid-rows-[1fr] opacity-100"
+                        ? "grid-rows-[1fr] opacity-100 pt-5 pb-3 px-3 border-t-4 border-black"
                         : "grid-rows-[0fr] opacity-0"
                     }`}
                   >
