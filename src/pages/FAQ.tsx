@@ -7,9 +7,9 @@ import { MdCancel } from "react-icons/md";
 
 export default function FAQ() {
   const [query, setQuery] = useState("");
-  
+
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  
+
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
   };
@@ -21,7 +21,6 @@ export default function FAQ() {
   const results = fuse.search(query);
 
   const searchResults = query ? results.map((result) => result.item) : FAQs;
-
 
   const toggleAccordion = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
@@ -61,32 +60,75 @@ export default function FAQ() {
         </div>
 
         <div className="flex flex-col items-center max-w-3xl px-4">
-          <ul className="list-none py-2 space-y-12">
+          <div className=" py-2 space-y-12">
             {searchResults.map((FAQ, i) => {
               const { question, answer } = FAQ;
               return (
-                <li className="space-y-4" key={`q-${i}`}>
-                  <div className="font-bold text-lg cursor-pointer"
-                  onClick={() => toggleAccordion(i)}
+                <div key={`q-${i}`}>
+                  <h2>
+                    <button
+                      id="faqs-title-07"
+                      type="button"
+                      className="flex items-center justify-between w-full text-left font-semibold py-2"
+                      onClick={() => toggleAccordion(i)}
+                      // aria-expanded={expanded}
+                      aria-controls="faqs-text-07"
+                    >
+                      <span>{question}</span>
+                      <svg
+                        className={`fill-indigo-500 relative z-[-10] shrink-0 ml-8 transform origin-center transition duration-200 ease-out ${
+                          activeIndex === i ? "rotate-180" : ""
+                        }`}
+                        width="16"
+                        height="16"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          y="7"
+                          width="16"
+                          height="2"
+                          rx="1"
+                          className={`transform origin-center transition duration-200 ease-out ${
+                            activeIndex === i ? "rotate-180" : ""
+                          }`}
+                        />
+                        <rect
+                          y="7"
+                          width="16"
+                          height="2"
+                          rx="1"
+                          className={`transform origin-center rotate-90 transition duration-200 ease-out ${
+                            activeIndex === i ? "rotate-180" : ""
+                          }`}
+                        />
+                      </svg>
+                    </button>
+                  </h2>
+
+                  <div
+                    id="faqs-text-07"
+                    role="region"
+                    aria-labelledby="faqs-title-07"
+                    className={`grid text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out ${
+                      activeIndex === i
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
                   >
-                    <strong>{question}</strong>
-                  </div>
-                  {activeIndex === i && (
-                    <div>
-                      <ul className="list-disc mx-12 space-y-2 leading-6">
-                        {answer.map((item, index) => (
-                          <li
-                            key={index}
-                            dangerouslySetInnerHTML={{ __html: item }}
-                          ></li>
-                        ))}
-                      </ul>
+                    <div className="overflow-hidden">
+                      {answer.map((item, index) => (
+                        <p
+                          className="pb-3"
+                          key={index}
+                          dangerouslySetInnerHTML={{ __html: item }}
+                        ></p>
+                      ))}
                     </div>
-                  )}
-                </li>
+                  </div>
+                </div>
               );
             })}
-          </ul>
+          </div>
         </div>
       </div>
       <FooterSection />
