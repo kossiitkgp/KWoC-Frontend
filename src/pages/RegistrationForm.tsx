@@ -5,6 +5,14 @@ import { REGISTRATIONS_OPEN, ROUTER_PATHS } from "../util/constants";
 import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 
+interface Field {
+  field: string;
+  placeholder: string;
+  type: string;
+  defaultValue: string | undefined;
+  required: boolean;
+}
+
 function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const authContext = useAuthContext();
   const navigate = useNavigate();
@@ -12,7 +20,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const [isRegistering, setIsRegistering] = useState(false);
+  const [isRegistering, setIsRegistering] = useState<boolean>(false);
 
   const userType = isStudent ? "student" : "mentor";
 
@@ -31,9 +39,9 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
     if (authContext.userData.type !== userType) {
       navigate(ROUTER_PATHS.HOME);
     }
-  });
+  }, [authContext, isRegistering, navigate, userType]);
 
-  const fields: any = {
+  const fields: Record<string, Field> = {
     name: {
       field: "Name",
       placeholder: "Jane Doe",
