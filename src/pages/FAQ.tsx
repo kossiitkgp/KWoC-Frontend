@@ -1,28 +1,33 @@
-import Fuse from "fuse.js";
-import React, { useState } from "react";
-import { FAQs } from "../data/FAQs";
-import FooterSection from "../components/FooterSection";
-import { IconContext } from "react-icons";
-import { MdCancel } from "react-icons/md";
+import Fuse from 'fuse.js';
+import React, { useState, ChangeEvent } from 'react';
+import { FAQs } from '../data/FAQs';
+import FooterSection from '../components/FooterSection';
+import { IconContext } from 'react-icons';
+import { MdCancel } from 'react-icons/md';
+
+interface FAQItem {
+  question: string;
+  answer: string[];
+}
 
 export default function FAQ() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string>('');
 
-  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
   };
 
-  const fuse = new Fuse(FAQs, {
-    keys: ["question"],
+  const fuse = new Fuse<FAQItem>(FAQs, {
+    keys: ['question'],
   });
 
   const results = fuse.search(query);
 
-  const searchResults = query ? results.map((result) => result.item) : FAQs;
+  const searchResults: FAQItem[] = query ? results.map((result) => result.item) : FAQs;
 
   return (
     <>
-      <div className="flex flex-col items-center pt-24">
+       <div className="flex flex-col items-center pt-24">
         <div className="sticky lg:-top-40 md:-top-40 sm:-top-52 max-[640px]:-top-[10rem] max-[540px]:-top-[12rem] max-[500px]:-top-[14rem] max-[300px]:-top-[18rem] flex flex-col items-center bg-[#0a0a19]">
           <section className="px-16 py-4 my-8 mx-0">
             <h1 className=" font-display font-bold text-3xl sm:text-5xl mb-8 text-center">

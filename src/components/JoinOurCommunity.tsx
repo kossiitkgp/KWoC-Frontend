@@ -2,7 +2,9 @@ import DiscordLogo from "../assets/discord_logo.svg";
 import SlackLogo from "../assets/slack_logo.svg";
 import { DISCORD_INVITE, SLACK_INVITE } from "../util/constants";
 
-export default function JoinOurCommunity() {
+interface JoinOurCommunityProps {}
+
+const JoinOurCommunity: React.FC<JoinOurCommunityProps> = () => {
   return (
     <>
       <h1 className=" font-display text-zinc-300 text-center mb-4 mx-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">
@@ -42,4 +44,7 @@ export default function JoinOurCommunity() {
       </div>
     </>
   );
-}
+};
+
+export default JoinOurCommunity;
+

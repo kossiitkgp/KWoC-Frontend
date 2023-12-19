@@ -1,12 +1,14 @@
+import React from 'react';
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import TestimonialCard from "./TestimonialCard";
 import testimonialsData from "../data/testimonials.json";
-// import { Link } from "react-router-dom";
-// import { ROUTER_PATHS } from "../util/constants";
+// Import necessary types/interfaces if using TypeScript
 
-export default function Testimonials() {
-  // Selecting first 5 testimonial data to render
+interface TestimonialsProps {}
+
+const Testimonials: React.FC<TestimonialsProps> = () => {
+  
   let testimonialsDatatoRender = testimonialsData.testimonials.slice(0, 5);
 
   return (
@@ -28,7 +30,7 @@ export default function Testimonials() {
           interval={6000}
           swipeable={false}
         >
-          {testimonialsDatatoRender.map((testimonial, index) => (
+          {testimonialsDatatoRender.map((testimonial, index: number) => (
             <TestimonialCard key={index} testimonial={testimonial} />
           ))}
         </Carousel>
@@ -40,4 +42,7 @@ export default function Testimonials() {
       </div>
     </div>
   );
-}
+};
+
+export default Testimonials;
+

@@ -52,7 +52,7 @@ function MentorDashboard() {
 
   return (
     <>
-      <div className="min-h-screen flex flex-col lg:flex-row">
+     <div className="min-h-screen flex flex-col lg:flex-row">
         <Profile />
 
         <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">

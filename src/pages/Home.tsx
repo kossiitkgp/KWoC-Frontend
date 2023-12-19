@@ -1,30 +1,34 @@
-import { useRef, useState, useEffect } from "react";
-import Hero from "../components/Hero";
-import About from "../components/About";
-import WhyKWoC from "../components/WhyKWoC";
-import Snowfall from "react-snowfall";
-import snowflake_particle1 from "../assets/snowflake1.svg";
-import snowflake_particle2 from "../assets/snowflake2.svg";
-import snowflake_particle3 from "../assets/snowflake3.svg";
-import JoinOurCommunity from "../components/JoinOurCommunity";
-import Timeline from "../components/Timeline";
-import Testimonials from "../components/Testimonials";
-import FooterSection from "../components/FooterSection";
+import { useRef, useState, useEffect } from 'react';
+import Hero from '../components/Hero';
+import About from '../components/About';
+import WhyKWoC from '../components/WhyKWoC';
+import Snowfall  from 'react-snowfall';
+import snowflake_particle1 from '../assets/snowflake1.svg';
+import snowflake_particle2 from '../assets/snowflake2.svg';
+import snowflake_particle3 from '../assets/snowflake3.svg';
+import JoinOurCommunity from '../components/JoinOurCommunity';
+import Timeline from '../components/Timeline';
+import Testimonials from '../components/Testimonials';
+import FooterSection from '../components/FooterSection';
 
-const snowflake_images = [
+type SnowflakeImage = HTMLImageElement;
+
+const snowflake_images: SnowflakeImage[] = [
   snowflake_particle1,
   snowflake_particle2,
   snowflake_particle3,
-].map((img_src) => {
-  const img_elem = document.createElement("img");
+].map((img_src: string) => {
+  const img_elem = document.createElement('img');
   img_elem.src = img_src;
 
   return img_elem;
 });
 
-function Home() {
-  const [number_of_particles, set_number_of_particles] = useState(20);
-  const windowWidth = useRef(window.innerWidth);
+interface HomeProps {} // Add props if needed
+
+const Home: React.FC<HomeProps> = () => {
+  const [number_of_particles, set_number_of_particles] = useState<number>(20);
+  const windowWidth = useRef<number>(window.innerWidth);
 
   useEffect(() => {
     set_number_of_particles(() => Math.floor(windowWidth.current / 50));
@@ -60,6 +64,6 @@ function Home() {
       </section>
     </>
   );
-}
+};
 
 export default Home;
