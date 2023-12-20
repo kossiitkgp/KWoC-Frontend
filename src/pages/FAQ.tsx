@@ -4,6 +4,8 @@ import { FAQs } from "../data/FAQs";
 import FooterSection from "../components/FooterSection";
 import { IconContext } from "react-icons";
 import { MdCancel } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
+import { FaMinus } from "react-icons/fa";
 
 export default function FAQ() {
   const [query, setQuery] = useState("");
@@ -64,55 +66,35 @@ export default function FAQ() {
             {searchResults.map((FAQ, i) => {
               const { question, answer } = FAQ;
               return (
-                <div key={`q-${i}`} className="">
-                  <h2 className={`py-3 px-3 bg-[#233B49] ${activeIndex === i? 'delay-100 rounded-t-xl' : 'delay-100 rounded-xl' }`}>
+                <div key={i}>
+                  <h2 className={`py-3 px-3 bg-[#233B49] ${activeIndex === i ? 'delay-100 rounded-t-xl' : 'delay-100 rounded-xl'}`}>
                     <button
-                      id="faqs-title-07"
                       type="button"
                       className="flex items-center justify-between w-full text-left font-semibold py-2"
                       onClick={() => toggleAccordion(i)}
-                      // aria-expanded={expanded}
                       aria-controls="faqs-text-07"
                     >
                       <span>{question}</span>
-                      <svg
-                        className={`fill-white relative z-[0] shrink-0 ml-8 transform origin-center transition duration-200 ease-out ${
-                          activeIndex === i ? "rotate-180" : ""
-                        }`}
-                        width="16"
-                        height="16"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <rect
-                          y="7"
-                          width="16"
-                          height="2"
-                          rx="1"
-                          className={`transform origin-center transition duration-200 ease-out ${
-                            activeIndex === i ? "" : ""
-                          }`}
+                      <div className="relative pe-6 pb-4">
+                        <FaPlus
+                          className={`fill-white absolute top-0 left-0 transform origin-center transition duration-500 ease-out ${activeIndex === i ? 'rotate-180 scale-0' : 'scale-100'
+                            }`}
                         />
-                        <rect
-                          y="7"
-                          width="16"
-                          height="2"
-                          rx="1"
-                          className={`transform origin-center transition duration-200 ease-out ${
-                            activeIndex === i ? "" : "rotate-90"
-                          }`}
+                        <FaMinus
+                          className={`fill-white absolute top-0 left-0 transform origin-center transition duration-500 ease-out ${activeIndex === i ? 'rotate-180 scale-100' : 'scale-0'
+                            }`}
                         />
-                      </svg>
+                      </div>
                     </button>
                   </h2>
                   <div
                     id="faqs-text-07"
                     role="region"
                     aria-labelledby="faqs-title-07"
-                    className={`grid text-sm text-slate-600 bg-[#0a2638] rounded-b-xl overflow-hidden transition-all duration-300 ease-in-out ${
-                      activeIndex === i
+                    className={`grid text-sm text-slate-600 bg-[#0a2638] rounded-b-xl overflow-hidden transition-all duration-300 ease-in-out ${activeIndex === i
                         ? "grid-rows-[1fr] opacity-100 pt-5 pb-3 px-3 border-t-4 border-black"
                         : "grid-rows-[0fr] opacity-0"
-                    }`}
+                      }`}
                   >
                     <div className="overflow-hidden">
                       {answer.map((item, index) => (
