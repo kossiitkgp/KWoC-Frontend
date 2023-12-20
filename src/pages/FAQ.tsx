@@ -67,7 +67,13 @@ export default function FAQ() {
               const { question, answer } = FAQ;
               return (
                 <div key={i}>
-                  <h2 className={`py-3 px-3 bg-[#233B49] ${activeIndex === i ? 'delay-100 rounded-t-xl' : 'delay-100 rounded-xl'}`}>
+                  <h2
+                    className={`py-3 px-3 bg-[#233B49] ${
+                      activeIndex === i
+                        ? "delay-100 rounded-t-xl"
+                        : "delay-100 rounded-xl"
+                    }`}
+                  >
                     <button
                       type="button"
                       className="flex items-center justify-between w-full text-left font-semibold py-2"
@@ -77,12 +83,18 @@ export default function FAQ() {
                       <span>{question}</span>
                       <div className="relative pe-6 pb-4">
                         <FaPlus
-                          className={`fill-white absolute top-0 left-0 transform origin-center transition duration-500 ease-out ${activeIndex === i ? 'rotate-180 scale-0' : 'scale-100'
-                            }`}
+                          className={`fill-white absolute top-0 left-0 transform origin-center transition duration-500 ease-out ${
+                            activeIndex === i
+                              ? "rotate-180 scale-0"
+                              : "scale-100"
+                          }`}
                         />
                         <FaMinus
-                          className={`fill-white absolute top-0 left-0 transform origin-center transition duration-500 ease-out ${activeIndex === i ? 'rotate-180 scale-100' : 'scale-0'
-                            }`}
+                          className={`fill-white absolute top-0 left-0 transform origin-center transition duration-500 ease-out ${
+                            activeIndex === i
+                              ? "rotate-180 scale-100"
+                              : "scale-0"
+                          }`}
                         />
                       </div>
                     </button>
@@ -91,10 +103,11 @@ export default function FAQ() {
                     id="faqs-text-07"
                     role="region"
                     aria-labelledby="faqs-title-07"
-                    className={`grid text-sm text-slate-600 bg-[#0a2638] rounded-b-xl overflow-hidden transition-all duration-300 ease-in-out ${activeIndex === i
+                    className={`grid text-sm text-slate-600 bg-[#0a2638] rounded-b-xl overflow-hidden transition-all duration-300 ease-in-out ${
+                      activeIndex === i
                         ? "grid-rows-[1fr] opacity-100 pt-5 pb-3 px-3 border-t-4 border-black"
                         : "grid-rows-[0fr] opacity-0"
-                      }`}
+                    }`}
                   >
                     <div className="overflow-hidden">
                       {answer.map((item, index) => (
