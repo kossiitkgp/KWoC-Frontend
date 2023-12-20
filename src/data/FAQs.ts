@@ -147,7 +147,7 @@ export const FAQs = [
     ],
   },
   {
-    question: "What to do,if my stats are not being updated?",
+    question: "What to do, if my stats are not being updated?",
     answer: [
       `Stats are only counted once coding period starts. They are updated periodically and it may take a few hours for them to update. If your stats do not update in a day, contact us at <a class='text-primary font-semibold' target='_blank' href='mailto:${KOSS_CONTACT_EMAIL}'>${KOSS_CONTACT_EMAIL}</a>.`,
     ],
