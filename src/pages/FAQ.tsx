@@ -108,7 +108,7 @@ export default function FAQ() {
                     id="faqs-text-07"
                     role="region"
                     aria-labelledby="faqs-title-07"
-                    className={`grid text-sm text-slate-600 bg-[#355A6F] rounded-b-xl overflow-hidden transition-all duration-300 ease-in-out ${
+                    className={`grid text-sm text-slate-600 bg-[#0a2638] rounded-b-xl overflow-hidden transition-all duration-300 ease-in-out ${
                       activeIndex === i
                         ? "grid-rows-[1fr] opacity-100 pt-5 pb-3 px-3 border-t-4 border-black"
                         : "grid-rows-[0fr] opacity-0"
