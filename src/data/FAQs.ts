@@ -143,7 +143,7 @@ export const FAQs = [
   {
     question: "How are commits counted?",
     answer: [
-      " are counted only after your PR is merged in the mentor's repository. The PR must be opened using the Github account you logged in with and your username should not be changed during the KWoC coding period.",
+      "Commits are counted only after your PR is merged in the mentor's repository. The PR must be opened using the Github account you logged in with and your username should not be changed during the KWoC coding period.",
     ],
   },
   {
