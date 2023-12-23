@@ -125,3 +125,23 @@ The development for the next KWoC website continues in the default branch.
 ---
 
 > Please update this documentation whenever changes are made to this project or any other relevant project that may affect this one. Future humans will praise you.
+
+## Changes Overview
+
+### Overall Statistics
+
+- **Added Total Commits and Total Pull Requests**: Calculated and displayed the total number of commits and pull requests across all projects.
+
+- **Added Total Projects and Approved Projects**: Included the count of total projects and approved projects in the overall statistics section.
+
+### Merged Pull Requests List
+
+- **Included Merged Pull Requests List**: Displayed a list of merged pull requests across all projects in a dedicated section.
+
+### Icons
+
+- **Added Icons for Statistics**: Utilized icons (`BiGitCommit`, `BiGitPullRequest`, `IoPersonSharp`, `HiOutlineViewGridAdd`) to enhance the visual representation of total commits, total pull requests, total projects, and approved projects.
+
+### Mentor Project Card
+
+- **Enhanced Project Card**: Improved the `MentorProjectCard` component to display additional information, including the number of merged commits and pull requests.

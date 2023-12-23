@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import MENTOR_RESOURCES from "../data/mentorResources.json";
 import MentorProjectCard from "../components/MentorProjectCard";
 import { IEndpointTypes } from "../util/types";
 import { HiOutlineViewGridAdd } from "react-icons/hi";
+import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
+import { IoPersonSharp } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../util/auth";
 import { REGISTRATIONS_OPEN, ROUTER_PATHS } from "../util/constants";
@@ -23,7 +25,7 @@ function MentorDashboard() {
 
   useEffect(() => {
     if (!authContext.isAuthenticated) {
-      navigate(ROUTER_PATHS.HOME);
+       navigate(ROUTER_PATHS.HOME);
     }
 
     if (authContext.userData.type !== "mentor") {
@@ -45,9 +47,26 @@ function MentorDashboard() {
       });
   }, []);
 
-  const pulls = [];
-  if (dashboard != null) {
-    for (let project of dashboard.projects) pulls.push(...project.pulls);
+  // Calculate overall stats
+  let totalPRs = 0;
+  let totalCommits = 0;
+  let totalProjects = 0;
+  let approvedProjects = 0;
+
+  if (dashboard !== null) {
+    dashboard.projects.forEach((project) => {
+      totalPRs += project.pulls.length;
+
+      project.commits.forEach((commit) => {
+        totalCommits += commit.commit_count;
+      });
+
+      totalProjects += 1;
+
+      if (project.project_status) {
+        approvedProjects += 1;
+      }
+    });
   }
 
   return (
@@ -84,16 +103,56 @@ function MentorDashboard() {
         </div>
 
         <div className="lg:sticky lg:self-start lg:translate-y-1/4 lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
-          {/* <div className="mb-8">
-            <h3 className="font-semibold text-2xl mb-2">
-              Merged Pull Requests
-            </h3>
-            <div className="space-y-1">
-              {pulls.length > 0
-                ? pulls.map((pull) => <a href={pull}>{pull}</a>)
-                : "No Pull Requests."}
+          <div className="mb-8">
+            <h3 className="font-semibold text-2xl mb-2">Overall Stats</h3>
+            <div>
+              <div className="flex gap-2 items-center justify-between">
+                <div className="flex gap-2 items-center text-sm font-semibold">
+                  <BiGitCommit />
+                  <span>Total Commits:</span>
+                </div>
+                <p className="font-bold text-base">{totalCommits}</p>
+              </div>
+              <div className="flex gap-2 items-center justify-between">
+                <div className="flex gap-2 items-center text-sm font-semibold">
+                  <BiGitPullRequest />
+                  <span>Total Pull Requests:</span>
+                </div>
+                <p className="font-bold text-base">{totalPRs}</p>
+              </div>
+              <div className="flex gap-2 items-center justify-between">
+                <div className="flex gap-2 items-center text-sm font-semibold">
+                  <HiOutlineViewGridAdd size={20} />
+                  <span>Total Projects:</span>
+                </div>
+                <p className="font-bold text-base">{totalProjects}</p>
+              </div>
+              <div className="flex gap-2 items-center justify-between">
+                <div className="flex gap-2 items-center text-sm font-semibold">
+                  <IoPersonSharp />
+                  <span>Approved Projects:</span>
+                </div>
+                <p className="font-bold text-base">{approvedProjects}</p>
+              </div>
             </div>
-          </div> */}
+          </div>
+
+          {dashboard !== null && (
+            <div className="mb-8">
+              <h3 className="font-semibold text-2xl mb-2">
+                Merged Pull Requests
+              </h3>
+              <div className="space-y-1">
+                {dashboard.projects
+                  .flatMap((project) => project.pulls)
+                  .map((pull, index) => (
+                    <a key={index} href={pull} target="_blank" rel="noopener noreferrer">
+                      {pull}
+                    </a>
+                  ))}
+              </div>
+            </div>
+          )}
 
           <Resources title="Mentor Resources" resources={MENTOR_RESOURCES} />
         </div>
