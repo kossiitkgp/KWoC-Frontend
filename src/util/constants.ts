@@ -26,6 +26,7 @@ export enum ROUTER_PATHS {
   // Stats routes
   ALL_STUDENT_STATS = "/stats/students",
   ALL_PROJECT_STATS = "/stats/projects",
+  ALl_MENTOR_STATS = "/stats/mentors",
   ONE_STUDENT_STATS = "/stats/student/:id",
   ONE_MENTOR_STATS = "/stats/mentor/:id",
   ONE_PROJECT_STATS = "/stats/project/:id",

@@ -7,7 +7,7 @@ async function makeBackendRequest(
   endpoint: string,
   method: AllowedBackendMethods,
   jwt: string | null,
-  body: Object | null,
+  body: object | null,
 ): Promise<Response> {
   const headers: {
     "Content-Type"?: string;
