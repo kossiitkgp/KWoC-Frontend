@@ -99,7 +99,7 @@ function MentorDashboard() {
           </div>
         </div>
 
-        <div className="lg:sticky lg:self-start lg:translate-y-1/4 lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
+        <div className="lg:sticky lg:self-start lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
           <div className="mb-8">
             <h3 className="font-semibold text-2xl mb-2">Overall Stats</h3>
             <div>

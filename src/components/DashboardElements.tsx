@@ -4,7 +4,7 @@ import { useAuthContext } from "../util/auth";
 export function Profile() {
   const authContext = useAuthContext();
   return (
-    <div className="lg:sticky lg:self-start lg:translate-y-1/4 lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
+    <div className="lg:sticky lg:self-start lg:top-28 mt-28 overflow-auto self-center px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
       <div className="w-full aspect-square bg-primary-950 rounded-full mb-2 overflow-hidden">
         <img
           className="w-full h-full block"
