@@ -7,12 +7,21 @@ import {
 } from "../util/constants";
 import { useAuthContext } from "../util/auth";
 import STUDENT_RESOURCES from "../data/studentResources.json";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Profile, Resources } from "../components/DashboardElements";
+import { IEndpointTypes } from "../util/types";
+import { makeRequest } from "../util/backend";
 
 function StudentDashboard() {
   const navigate = useNavigate();
   const authContext = useAuthContext();
+
+  const [dashboard, setDashboard] = useState<
+    IEndpointTypes["student/dashboard"]["response"] | null
+  >(null);
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authContext.isAuthenticated) {
@@ -23,6 +32,27 @@ function StudentDashboard() {
       navigate(ROUTER_PATHS.HOME);
     }
   }, [authContext]);
+
+  useEffect(() => {
+    makeRequest("student/dashboard", "get", null, authContext.jwt)
+      .then((res) => {
+        console.log(res)
+        if (res.is_ok) setDashboard(res.response);
+        else setError(res.response.message);
+
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError("An unexpected error occurred.");
+        setIsLoading(false);
+      });
+  }, []);
+
+  let totalLinesChanged = dashboard !== null ? (dashboard.lines_added + dashboard.lines_removed) : 0;
+
+  let addedPercentage = totalLinesChanged === 0 ? 0 : (dashboard !== null ? dashboard.lines_added / totalLinesChanged : 0);
+
+  let removedPercentage = totalLinesChanged === 0 ? 0 : (dashboard !== null ? dashboard.lines_removed / totalLinesChanged : 0);
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
