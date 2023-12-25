@@ -55,7 +55,7 @@ function MentorDashboard() {
 
   if (dashboard !== null) {
     dashboard.projects.forEach((project) => {
-      totalPRs += project.pulls.length;
+      totalPRs += project.pull_count;
 
       totalCommits += project.commit_count;
       totalProjects += 1;
