@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { Profile, Resources } from "../components/DashboardElements";
 import { IEndpointTypes } from "../util/types";
 import { makeRequest } from "../util/backend";
+import SpinnerLoader from "../components/SpinnerLoader";
 
 function StudentDashboard() {
   const navigate = useNavigate();
@@ -48,27 +49,39 @@ function StudentDashboard() {
       });
   }, []);
 
-  let totalLinesChanged = dashboard !== null ? (dashboard.lines_added + dashboard.lines_removed) : 0;
-
-  let addedPercentage = totalLinesChanged === 0 ? 0 : (dashboard !== null ? dashboard.lines_added / totalLinesChanged : 0);
-
-  let removedPercentage = totalLinesChanged === 0 ? 0 : (dashboard !== null ? dashboard.lines_removed / totalLinesChanged : 0);
-
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
-      <Profile />
 
       <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
-        <div className="lg:pt-28 max-w-2xl mx-auto px-4">
-          <div className="mb-8 py-4">
-            <h2 className="font-display text-5xl mb-4 font-bold text-center">
-              Welcome to KWoC 2023!
-            </h2>
-            <p className="text-xl text-center">
-              Congratulations! Your registration for Kharagpur Winter of Code
-              (KWoC) 2023 was successful. We are thrilled to have you on board
-              for this exciting coding journey.
-            </p>
+        <div className="lg:pt-28 max-w-5xl mx-auto px-4">
+          <div className="dashboard-content flex items-center justify-center">
+            <div className="flex">
+              <Profile />
+              <div className="p-6 rounded-lg shadow-md mb-6 mr-6">
+                <div className="lg:mt-20">
+                  {isLoading ? (
+                    <SpinnerLoader />
+                  ) : (
+                    <>
+                      <p className="mb-2 text-green-300">Lines Added: {dashboard?.lines_added}</p>
+                      <p className="mb-2 text-red-500">Lines Removed: {dashboard?.lines_removed}</p>
+                      <p className="mb-2">Pull Count: {dashboard?.pull_count}</p>
+                      <p className="mb-2">Commit Count: {dashboard?.commit_count}</p>
+                      {dashboard?.passed_mid_evals ? (
+                        <p className="mb-2 text-green-300">Mid Evaluation Status: PASSED</p>
+                      ) : (
+                        <p className="mb-2 text-red-500">Mid Evaluation Status: Pending</p>
+                      )}
+                      <p className="mb-2 ">Languages Used: {dashboard?.languages_used.slice(0, 3).join(', ')}</p>
+                      <p className="mb-2 ">Projects: {dashboard?.projects_worked.map(project => project.name).join(', ')}</p>
+                    </>
+                  )}
+                </div>
+              </div>
+              <div className="p-6 rounded-lg shadow-md lg:mt-20">
+                <Resources title="Student Resources" resources={STUDENT_RESOURCES} />
+              </div>
+            </div>
           </div>
           <div className="mb-8 px-4 py-4 lg:px-10 bg-primary-800 rounded-md flex flex-col">
             <h3 className="font-display text-3xl font-bold text-center mb-5">
@@ -131,21 +144,6 @@ function StudentDashboard() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="lg:sticky lg:self-start lg:translate-y-1/4 lg:top-28 mt-28 overflow-auto self-center px-4 lg:px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
-        {/* <div className="mb-8">
-            <h3 className="font-semibold text-2xl mb-2">
-              Merged Pull Requests
-            </h3>
-            <div className="space-y-1">
-              {pulls.length > 0
-                ? pulls.map((pull) => <a href={pull}>{pull}</a>)
-                : "No Pull Requests."}
-            </div>
-          </div> */}
-
-        <Resources title="Student Resources" resources={STUDENT_RESOURCES} />
       </div>
     </div>
   );
