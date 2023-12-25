@@ -139,7 +139,7 @@ function MentorDashboard() {
               <h3 className="font-semibold text-2xl mb-2">
                 Merged Pull Requests
               </h3>
-              <div className="space-y-1">
+              <div className="space-y-1 flex flex-col">
                 {dashboard.projects
                   .flatMap((project) => project.pulls)
                   .map((pull, index) => (
@@ -148,8 +148,9 @@ function MentorDashboard() {
                       href={pull}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="text-primary hover:text-primary-600 hover:underline"
                     >
-                      {pull}
+                      {pull.replace('https://github.com/', '').replace('pull/', '').replace(/\/\d/, '#')}
                     </a>
                   ))}
               </div>
