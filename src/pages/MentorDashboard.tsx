@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MENTOR_RESOURCES from "../data/mentorResources.json";
 import MentorProjectCard from "../components/MentorProjectCard";
 import { IEndpointTypes } from "../util/types";
@@ -57,10 +57,7 @@ function MentorDashboard() {
     dashboard.projects.forEach((project) => {
       totalPRs += project.pulls.length;
 
-      project.commits.forEach((commit) => {
-        totalCommits += commit.commit_count;
-      });
-
+      totalCommits += project.commit_count;
       totalProjects += 1;
 
       if (project.project_status) {
