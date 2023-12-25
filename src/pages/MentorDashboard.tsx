@@ -25,7 +25,7 @@ function MentorDashboard() {
 
   useEffect(() => {
     if (!authContext.isAuthenticated) {
-       navigate(ROUTER_PATHS.HOME);
+      navigate(ROUTER_PATHS.HOME);
     }
 
     if (authContext.userData.type !== "mentor") {
@@ -143,7 +143,12 @@ function MentorDashboard() {
                 {dashboard.projects
                   .flatMap((project) => project.pulls)
                   .map((pull, index) => (
-                    <a key={index} href={pull} target="_blank" rel="noopener noreferrer">
+                    <a
+                      key={index}
+                      href={pull}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {pull}
                     </a>
                   ))}
