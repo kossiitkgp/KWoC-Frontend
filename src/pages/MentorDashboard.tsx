@@ -150,7 +150,10 @@ function MentorDashboard() {
                       rel="noopener noreferrer"
                       className="text-primary hover:text-primary-600 hover:underline"
                     >
-                      {pull.replace('https://github.com/', '').replace('pull/', '').replace(/\/\d/, '#')}
+                      {pull
+                        .replace("https://github.com/", "")
+                        .replace("pull/", "")
+                        .replace(/\/\d/, "#")}
                     </a>
                   ))}
               </div>
