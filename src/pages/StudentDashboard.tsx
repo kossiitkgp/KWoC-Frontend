@@ -248,7 +248,7 @@ function StudentDashboard() {
             <h3 className="font-semibold text-2xl mb-2">
               Projects Worked On
             </h3>
-            <div className="space-y-1 flex flex-col">
+            <div className="space-y-0.5 flex flex-col">
               {dashboard.projects_worked.length > 0 ? dashboard.projects_worked
                 .map(({ name, repo_link }, i) => (
                   <a
@@ -270,7 +270,7 @@ function StudentDashboard() {
             <h3 className="font-semibold text-2xl mb-2">
               Merged Pull Requests
             </h3>
-            <div className="space-y-1 flex flex-col">
+            <div className="space-y-0.5 flex flex-col">
               {dashboard.pulls.length > 0 ?
                 dashboard.pulls.map((pull, i) => (
                   <a
