@@ -21,7 +21,7 @@ function StudentDashboard() {
     IEndpointTypes["student/dashboard"]["response"] | null
   >(null);
 
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function StudentDashboard() {
   useEffect(() => {
     makeRequest("student/dashboard", "get", null, authContext.jwt)
       .then((res) => {
-        console.log(res)
+        console.log(res);
         if (res.is_ok) setDashboard(res.response);
         else setError(res.response.message);
 
@@ -51,7 +51,6 @@ function StudentDashboard() {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
-
       <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
         <div className="lg:pt-28 max-w-5xl mx-auto px-4">
           <div className="dashboard-content flex items-center justify-center">
@@ -61,25 +60,50 @@ function StudentDashboard() {
                 <div className="lg:mt-20">
                   {isLoading ? (
                     <SpinnerLoader />
+                  ) : error !== null ? (
+                    <p className="text-center text-red-500">{error}</p>
                   ) : (
                     <>
-                      <p className="mb-2 text-green-300">Lines Added: {dashboard?.lines_added}</p>
-                      <p className="mb-2 text-red-500">Lines Removed: {dashboard?.lines_removed}</p>
-                      <p className="mb-2">Pull Count: {dashboard?.pull_count}</p>
-                      <p className="mb-2">Commit Count: {dashboard?.commit_count}</p>
+                      <p className="mb-2 text-green-300">
+                        Lines Added: {dashboard?.lines_added}
+                      </p>
+                      <p className="mb-2 text-red-500">
+                        Lines Removed: {dashboard?.lines_removed}
+                      </p>
+                      <p className="mb-2">
+                        Pull Count: {dashboard?.pull_count}
+                      </p>
+                      <p className="mb-2">
+                        Commit Count: {dashboard?.commit_count}
+                      </p>
                       {dashboard?.passed_mid_evals ? (
-                        <p className="mb-2 text-green-300">Mid Evaluation Status: PASSED</p>
+                        <p className="mb-2 text-green-300">
+                          Mid Evaluation Status: PASSED
+                        </p>
                       ) : (
-                        <p className="mb-2 text-red-500">Mid Evaluation Status: Pending</p>
+                        <p className="mb-2 text-red-500">
+                          Mid Evaluation Status: Pending
+                        </p>
                       )}
-                      <p className="mb-2 ">Languages Used: {dashboard?.languages_used.slice(0, 3).join(', ')}</p>
-                      <p className="mb-2 ">Projects: {dashboard?.projects_worked.map(project => project.name).join(', ')}</p>
+                      <p className="mb-2 ">
+                        Languages Used:{" "}
+                        {dashboard?.languages_used.slice(0, 3).join(", ")}
+                      </p>
+                      <p className="mb-2 ">
+                        Projects:{" "}
+                        {dashboard?.projects_worked
+                          .map((project) => project.name)
+                          .join(", ")}
+                      </p>
                     </>
                   )}
                 </div>
               </div>
               <div className="p-6 rounded-lg shadow-md lg:mt-20">
-                <Resources title="Student Resources" resources={STUDENT_RESOURCES} />
+                <Resources
+                  title="Student Resources"
+                  resources={STUDENT_RESOURCES}
+                />
               </div>
             </div>
           </div>
