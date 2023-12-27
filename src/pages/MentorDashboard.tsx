@@ -153,7 +153,7 @@ function MentorDashboard() {
                       {pull
                         .replace("https://github.com/", "")
                         .replace("pull/", "")
-                        .replace(/\/\d/, "#")}
+                        .replace("/", "#")}
                     </a>
                   ))}
               </div>
