@@ -7,12 +7,26 @@ import {
 } from "../util/constants";
 import { useAuthContext } from "../util/auth";
 import STUDENT_RESOURCES from "../data/studentResources.json";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Profile, Resources } from "../components/DashboardElements";
+import { IEndpointTypes } from "../util/types";
+import { makeRequest } from "../util/backend";
+import SpinnerLoader from "../components/SpinnerLoader";
+import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
+import { MdOutlineDifference } from "react-icons/md";
+import { FaCode } from "react-icons/fa";
+import { HiOutlineDocumentReport } from "react-icons/hi";
 
 function StudentDashboard() {
   const navigate = useNavigate();
   const authContext = useAuthContext();
+
+  const [dashboard, setDashboard] = useState<
+    IEndpointTypes["student/dashboard"]["response"] | null
+  >(null);
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authContext.isAuthenticated) {
@@ -24,22 +38,147 @@ function StudentDashboard() {
     }
   }, [authContext]);
 
+  useEffect(() => {
+    makeRequest("student/dashboard", "get", null, authContext.jwt)
+      .then((res) => {
+        if (res.is_ok) setDashboard(res.response);
+        else setError(res.response.message);
+
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError("An unexpected error occurred.");
+        setIsLoading(false);
+      });
+  }, []);
+
+  // Lines changed percentages
+  let totalLinesChanged =
+    dashboard !== null ? dashboard.lines_added + dashboard.lines_removed : 0;
+  let addedPercentage =
+    dashboard !== null
+      ? totalLinesChanged === 0
+        ? 0
+        : dashboard.lines_added / totalLinesChanged
+      : 0;
+  let removedPercentage =
+    dashboard !== null
+      ? totalLinesChanged === 0
+        ? 0
+        : dashboard.lines_removed / totalLinesChanged
+      : 0;
+
+  // Languages used and projects
+  let languages_used =
+    dashboard === null
+      ? []
+      : dashboard.languages_used;
+
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       <Profile />
-
       <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
-        <div className="lg:pt-28 max-w-2xl mx-auto px-4">
-          <div className="mb-8 py-4">
-            <h2 className="font-display text-5xl mb-4 font-bold text-center">
-              Welcome to KWoC 2023!
-            </h2>
-            <p className="text-xl text-center">
-              Congratulations! Your registration for Kharagpur Winter of Code
-              (KWoC) 2023 was successful. We are thrilled to have you on board
-              for this exciting coding journey.
-            </p>
+        <div className="pt-28 max-w-5xl mx-auto px-4">
+          <div className="flex gap-5 rounded-lg shadow-md mb-6 mr-6">
+            <div className="w-[50%]">
+              {isLoading ? (
+                <SpinnerLoader />
+              ) : error !== null ? (
+                <p className="text-center text-red-500">{error}</p>
+              ) : (
+                <>
+                  <div className="flex gap-2 items-center justify-between">
+                    <div className="flex gap-2 items-center font-semibold">
+                      <BiGitPullRequest />
+                      <span>Total Pull Requests:</span>
+                    </div>
+                    <p className="font-bold text-base">
+                      {dashboard?.pull_count}
+                    </p>
+                  </div>
+
+                  <div className="flex gap-2 items-center justify-between">
+                    <div className="flex gap-2 items-center font-semibold">
+                      <BiGitCommit />
+                      <span>Total Commits:</span>
+                    </div>
+                    <p className="font-bold text-base">
+                      {dashboard?.commit_count}
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="flex gap-2 items-center font-semibold">
+                      <MdOutlineDifference />
+                      <span>Lines Changed:</span>
+                    </div>
+                    <div className="w-full flex items-center">
+                      <span className="flex-none text-green-700 font-bold">
+                        + {dashboard?.lines_added}
+                      </span>
+                      <div className="w-full mx-2 flex">
+                        <div
+                          style={{ flex: addedPercentage + "%" }}
+                          className="border-2 border-green-700"
+                        ></div>
+                        <div
+                          style={{ flex: removedPercentage + "%" }}
+                          className="border-2 border-red-700"
+                        ></div>
+                      </div>
+                      <span className="flex-none text-red-700 font-bold">
+                        - {dashboard?.lines_removed}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-2 items-start">
+                    <div className="flex items-center gap-2 font-semibold min-w-fit">
+                      <FaCode />
+                      <span>Languages Used:</span>
+                    </div>
+                    <p className="font-bold text-sm">
+                      {languages_used.length > 0
+                        ? languages_used.join(", ")
+                        : "None"}
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div>
+              {isLoading ? (
+                <SpinnerLoader />
+              ) : error !== null ? (
+                <p className="text-center text-red-500">{error}</p>
+              ) : (
+                <>
+                  <div className="flex gap-2 items-center justify-between">
+                    <div className="flex gap-2 items-center font-semibold">
+                      <HiOutlineDocumentReport />
+                      <span>Mid Evaluation:</span>
+                    </div>
+                    <p className="font-bold text-base">
+                      {dashboard?.passed_mid_evals ? <span className="text-green-300">Passed</span> : <span className="text-yellow-400">Pending</span>}
+                    </p>
+                  </div>
+
+                  <div className="flex gap-2 items-center justify-between">
+                    <div className="flex gap-2 items-center font-semibold">
+                      <HiOutlineDocumentReport />
+                      <span>End Evaluation:</span>
+                    </div>
+                    <p className="font-bold text-base">
+                      {dashboard?.passed_end_evals ? <span className="text-green-300">Passed</span> : <span className="text-yellow-400">Pending</span>}
+                    </p>
+                  </div>
+                </>
+              )
+              }
+            </div>
           </div>
+
           <div className="mb-8 px-4 py-4 lg:px-10 bg-primary-800 rounded-md flex flex-col">
             <h3 className="font-display text-3xl font-bold text-center mb-5">
               Projects
@@ -103,19 +242,58 @@ function StudentDashboard() {
         </div>
       </div>
 
-      <div className="lg:sticky lg:self-start lg:translate-y-1/4 lg:top-28 mt-28 overflow-auto self-center px-4 lg:px-10 py-4 w-80 h-fit mb-8 lg:mb-0">
-        {/* <div className="mb-8">
+      <div className="p-6 rounded-lg shadow-md lg:mt-20 flex flex-col">
+        {dashboard !== null && (
+          <div className="mb-8">
+            <h3 className="font-semibold text-2xl mb-2">
+              Projects Worked On
+            </h3>
+            <div className="space-y-0.5 flex flex-col">
+              {dashboard.projects_worked.length > 0 ? dashboard.projects_worked
+                .map(({ name, repo_link }, i) => (
+                  <a
+                    key={i}
+                    href={repo_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary-600 hover:underline"
+                  >
+                    {name}
+                  </a>
+                )) : 'None'}
+            </div>
+          </div>
+        )}
+
+        {dashboard !== null && (
+          <div className="mb-8">
             <h3 className="font-semibold text-2xl mb-2">
               Merged Pull Requests
             </h3>
-            <div className="space-y-1">
-              {pulls.length > 0
-                ? pulls.map((pull) => <a href={pull}>{pull}</a>)
-                : "No Pull Requests."}
+            <div className="space-y-0.5 flex flex-col">
+              {dashboard.pulls.length > 0 ?
+                dashboard.pulls.map((pull, i) => (
+                  <a
+                    key={i}
+                    href={pull}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary-600 hover:underline"
+                  >
+                    {pull
+                      .replace("https://github.com/", "")
+                      .replace("pull/", "")
+                      .replace(/\/\d/, "#")}
+                  </a>
+                )) : 'None'}
             </div>
-          </div> */}
+          </div>
+        )}
 
-        <Resources title="Student Resources" resources={STUDENT_RESOURCES} />
+        <Resources
+          title="Student Resources"
+          resources={STUDENT_RESOURCES}
+        />
       </div>
     </div>
   );
