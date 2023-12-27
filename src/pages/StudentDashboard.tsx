@@ -72,11 +72,7 @@ function StudentDashboard() {
   let languages_used =
     dashboard === null
       ? []
-      : dashboard.languages_used.filter((lang) => lang !== "");
-  let projects =
-    dashboard === null
-      ? []
-      : dashboard.projects_worked.filter((proj) => proj.repo_link !== "");
+      : dashboard.languages_used;
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
@@ -253,7 +249,7 @@ function StudentDashboard() {
               Projects Worked On
             </h3>
             <div className="space-y-1 flex flex-col">
-              {projects.length > 0 ? projects
+              {dashboard.projects_worked.length > 0 ? dashboard.projects_worked
                 .map(({ name, repo_link }, i) => (
                   <a
                     key={i}
@@ -275,8 +271,8 @@ function StudentDashboard() {
               Merged Pull Requests
             </h3>
             <div className="space-y-1 flex flex-col">
-              {dashboard.pulls
-                .map((pull, i) => (
+              {dashboard.pulls.length > 0 ?
+                dashboard.pulls.map((pull, i) => (
                   <a
                     key={i}
                     href={pull}
@@ -289,7 +285,7 @@ function StudentDashboard() {
                       .replace("pull/", "")
                       .replace(/\/\d/, "#")}
                   </a>
-                ))}
+                )) : 'None'}
             </div>
           </div>
         )}
