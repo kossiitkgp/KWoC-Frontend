@@ -52,6 +52,7 @@ export interface IEndpointTypes {
       lines_added: number;
       lines_removed: number;
       languages_used: string[];
+      pulls: string[];
       projects_worked: { name: string; repo_link: string }[];
     };
   };
