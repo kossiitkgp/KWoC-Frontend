@@ -81,107 +81,109 @@ function StudentDashboard() {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
+      <Profile />
       <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
         <div className="pt-28 max-w-5xl mx-auto px-4">
-          <div className="dashboard-content flex items-center justify-center">
-            <div className="flex">
-              <Profile />
-              <div className="p-6 rounded-lg shadow-md mb-6 mr-6">
-                <div className="lg:mt-20">
-                  {isLoading ? (
-                    <SpinnerLoader />
-                  ) : error !== null ? (
-                    <p className="text-center text-red-500">{error}</p>
-                  ) : (
-                    <>
-                      <div className="flex gap-2 items-center justify-between">
-                        <div className="flex gap-2 items-center text-sm font-semibold">
-                          <BiGitPullRequest />
-                          <span>Total Pull Requests:</span>
-                        </div>
-                        <p className="font-bold text-base">
-                          {dashboard?.pull_count}
-                        </p>
-                      </div>
+          <div className="flex gap-5 rounded-lg shadow-md mb-6 mr-6">
+            <div className="w-[50%]">
+              {isLoading ? (
+                <SpinnerLoader />
+              ) : error !== null ? (
+                <p className="text-center text-red-500">{error}</p>
+              ) : (
+                <>
+                  <div className="flex gap-2 items-center justify-between">
+                    <div className="flex gap-2 items-center font-semibold">
+                      <BiGitPullRequest />
+                      <span>Total Pull Requests:</span>
+                    </div>
+                    <p className="font-bold text-base">
+                      {dashboard?.pull_count}
+                    </p>
+                  </div>
 
-                      <div className="flex gap-2 items-center justify-between">
-                        <div className="flex gap-2 items-center text-sm font-semibold">
-                          <BiGitCommit />
-                          <span>Total Commits:</span>
-                        </div>
-                        <p className="font-bold text-base">
-                          {dashboard?.commit_count}
-                        </p>
-                      </div>
+                  <div className="flex gap-2 items-center justify-between">
+                    <div className="flex gap-2 items-center font-semibold">
+                      <BiGitCommit />
+                      <span>Total Commits:</span>
+                    </div>
+                    <p className="font-bold text-base">
+                      {dashboard?.commit_count}
+                    </p>
+                  </div>
 
-                      <div>
-                        <div className="flex gap-2 items-center text-sm font-semibold">
-                          <MdOutlineDifference />
-                          <span>Lines Changed:</span>
-                        </div>
-                        <div className="w-full flex items-center">
-                          <span className="flex-none text-green-700 font-bold">
-                            + {dashboard?.lines_added}
-                          </span>
-                          <div className="w-full mx-2 flex">
-                            <div
-                              style={{ flex: addedPercentage + "%" }}
-                              className="border-2 border-green-700"
-                            ></div>
-                            <div
-                              style={{ flex: removedPercentage + "%" }}
-                              className="border-2 border-red-700"
-                            ></div>
-                          </div>
-                          <span className="flex-none text-red-700 font-bold">
-                            - {dashboard?.lines_removed}
-                          </span>
-                        </div>
+                  <div>
+                    <div className="flex gap-2 items-center font-semibold">
+                      <MdOutlineDifference />
+                      <span>Lines Changed:</span>
+                    </div>
+                    <div className="w-full flex items-center">
+                      <span className="flex-none text-green-700 font-bold">
+                        + {dashboard?.lines_added}
+                      </span>
+                      <div className="w-full mx-2 flex">
+                        <div
+                          style={{ flex: addedPercentage + "%" }}
+                          className="border-2 border-green-700"
+                        ></div>
+                        <div
+                          style={{ flex: removedPercentage + "%" }}
+                          className="border-2 border-red-700"
+                        ></div>
                       </div>
+                      <span className="flex-none text-red-700 font-bold">
+                        - {dashboard?.lines_removed}
+                      </span>
+                    </div>
+                  </div>
 
-                      <div className="flex gap-2 items-center justify-between">
-                        <div className="flex gap-2 items-center text-sm font-semibold">
-                          <FaCode />
-                          <span>Languages Used:</span>
-                        </div>
-                        <p className="font-bold text-base">
-                          {languages_used.length > 0
-                            ? languages_used.join(", ")
-                            : "None"}
-                        </p>
-                      </div>
+                  <div className="flex gap-2">
+                    <div className="flex gap-2 items-center font-semibold min-w-fit">
+                      <FaCode />
+                      <span>Languages Used:</span>
+                    </div>
+                    <p className="font-bold text-base">
+                      {languages_used.length > 0
+                        ? languages_used.join(", ")
+                        : "None"}
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
 
-                      <div className="flex gap-2 items-center justify-between">
-                        <div className="flex gap-2 items-center text-sm font-semibold">
-                          <RiGitRepositoryLine />
-                          <span>Projects:</span>
-                        </div>
-                        <p className="font-bold text-base">
-                          {projects.length > 0 ? projects.join(", ") : "None"}
-                        </p>
-                      </div>
+            <div>
+              {isLoading ? (
+                <SpinnerLoader />
+              ) : error !== null ? (
+                <p className="text-center text-red-500">{error}</p>
+              ) : (
+                <>
+                  <div className="flex gap-2 items-center justify-between">
+                    <div className="flex gap-2 items-center font-semibold">
+                      <HiOutlineDocumentReport />
+                      <span>Mid Evaluation:</span>
+                    </div>
+                    <p className="font-bold text-base">
+                      {dashboard?.passed_mid_evals ? <span className="text-green-300">Passed</span> : <span className="text-yellow-400">Pending</span>}
+                    </p>
+                  </div>
 
-                      <div className="flex gap-2 items-center justify-between">
-                        <div className="flex gap-2 items-center text-sm font-semibold">
-                          <HiOutlineDocumentReport />
-                          <span>Mid Evaluation:</span>
-                        </div>
-                        <p className="font-bold text-base">
-                        {dashboard?.passed_mid_evals ? <span className="text-green-300">Passed</span> : <span className="text-yellow-400">Pending</span>}
-                        </p>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
-              <div className="p-6 rounded-lg shadow-md lg:mt-20">
-                <Resources
-                  title="Student Resources"
-                  resources={STUDENT_RESOURCES}
-                />
-              </div>
+                  <div className="flex gap-2 items-center justify-between">
+                    <div className="flex gap-2 items-center font-semibold">
+                      <HiOutlineDocumentReport />
+                      <span>End Evaluation:</span>
+                    </div>
+                    <p className="font-bold text-base">
+                      {dashboard?.passed_end_evals ? <span className="text-green-300">Passed</span> : <span className="text-yellow-400">Pending</span>}
+                    </p>
+                  </div>
+                </>
+              )
+              }
             </div>
           </div>
+
           <div className="mb-8 px-4 py-4 lg:px-10 bg-primary-800 rounded-md flex flex-col">
             <h3 className="font-display text-3xl font-bold text-center mb-5">
               Projects
@@ -243,6 +245,12 @@ function StudentDashboard() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="p-6 rounded-lg shadow-md lg:mt-20">
+        <Resources
+          title="Student Resources"
+          resources={STUDENT_RESOURCES}
+        />
       </div>
     </div>
   );
