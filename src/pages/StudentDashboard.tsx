@@ -12,6 +12,11 @@ import { Profile, Resources } from "../components/DashboardElements";
 import { IEndpointTypes } from "../util/types";
 import { makeRequest } from "../util/backend";
 import SpinnerLoader from "../components/SpinnerLoader";
+import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
+import { MdOutlineDifference } from "react-icons/md";
+import { FaCode } from "react-icons/fa";
+import { RiGitRepositoryLine } from "react-icons/ri";
+import { HiOutlineDocumentReport } from "react-icons/hi";
 
 function StudentDashboard() {
   const navigate = useNavigate();
@@ -37,7 +42,6 @@ function StudentDashboard() {
   useEffect(() => {
     makeRequest("student/dashboard", "get", null, authContext.jwt)
       .then((res) => {
-        console.log(res);
         if (res.is_ok) setDashboard(res.response);
         else setError(res.response.message);
 
@@ -48,6 +52,32 @@ function StudentDashboard() {
         setIsLoading(false);
       });
   }, []);
+
+  // Lines changed percentages
+  let totalLinesChanged =
+    dashboard !== null ? dashboard.lines_added + dashboard.lines_removed : 0;
+  let addedPercentage =
+    dashboard !== null
+      ? totalLinesChanged === 0
+        ? 0
+        : dashboard.lines_added / totalLinesChanged
+      : 0;
+  let removedPercentage =
+    dashboard !== null
+      ? totalLinesChanged === 0
+        ? 0
+        : dashboard.lines_removed / totalLinesChanged
+      : 0;
+
+  // Languages used and projects
+  let languages_used =
+    dashboard === null
+      ? []
+      : dashboard.languages_used.filter((lang) => lang !== "");
+  let projects =
+    dashboard === null
+      ? []
+      : dashboard.projects_worked.filter((proj) => proj.repo_link !== "");
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
@@ -64,37 +94,82 @@ function StudentDashboard() {
                     <p className="text-center text-red-500">{error}</p>
                   ) : (
                     <>
-                      <p className="mb-2">
-                        Lines Added: {dashboard?.lines_added}
-                      </p>
-                      <p className="mb-2">
-                        Lines Removed: {dashboard?.lines_removed}
-                      </p>
-                      <p className="mb-2">
-                        Pull Count: {dashboard?.pull_count}
-                      </p>
-                      <p className="mb-2">
-                        Commit Count: {dashboard?.commit_count}
-                      </p>
-                      {dashboard?.passed_mid_evals ? (
-                        <p className="mb-2 text-green-300">
-                          Mid Evaluation Status: PASSED
+                      <div className="flex gap-2 items-center justify-between">
+                        <div className="flex gap-2 items-center text-sm font-semibold">
+                          <BiGitPullRequest />
+                          <span>Total Pull Requests:</span>
+                        </div>
+                        <p className="font-bold text-base">
+                          {dashboard?.pull_count}
                         </p>
-                      ) : (
-                        <p className="mb-2 text-red-500">
-                          Mid Evaluation Status: Pending
+                      </div>
+
+                      <div className="flex gap-2 items-center justify-between">
+                        <div className="flex gap-2 items-center text-sm font-semibold">
+                          <BiGitCommit />
+                          <span>Total Commits:</span>
+                        </div>
+                        <p className="font-bold text-base">
+                          {dashboard?.commit_count}
                         </p>
-                      )}
-                      <p className="mb-2 ">
-                        Languages Used:{" "}
-                        {dashboard?.languages_used.slice(0, 3).join(", ")}
-                      </p>
-                      <p className="mb-2 ">
-                        Projects:{" "}
-                        {dashboard?.projects_worked
-                          .map((project) => project.name)
-                          .join(", ")}
-                      </p>
+                      </div>
+
+                      <div>
+                        <div className="flex gap-2 items-center text-sm font-semibold">
+                          <MdOutlineDifference />
+                          <span>Lines Changed:</span>
+                        </div>
+                        <div className="w-full flex items-center">
+                          <span className="flex-none text-green-700 font-bold">
+                            + {dashboard?.lines_added}
+                          </span>
+                          <div className="w-full mx-2 flex">
+                            <div
+                              style={{ flex: addedPercentage + "%" }}
+                              className="border-2 border-green-700"
+                            ></div>
+                            <div
+                              style={{ flex: removedPercentage + "%" }}
+                              className="border-2 border-red-700"
+                            ></div>
+                          </div>
+                          <span className="flex-none text-red-700 font-bold">
+                            - {dashboard?.lines_removed}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2 items-center justify-between">
+                        <div className="flex gap-2 items-center text-sm font-semibold">
+                          <FaCode />
+                          <span>Languages Used:</span>
+                        </div>
+                        <p className="font-bold text-base">
+                          {languages_used.length > 0
+                            ? languages_used.join(", ")
+                            : "None"}
+                        </p>
+                      </div>
+
+                      <div className="flex gap-2 items-center justify-between">
+                        <div className="flex gap-2 items-center text-sm font-semibold">
+                          <RiGitRepositoryLine />
+                          <span>Projects:</span>
+                        </div>
+                        <p className="font-bold text-base">
+                          {projects.length > 0 ? projects.join(", ") : "None"}
+                        </p>
+                      </div>
+
+                      <div className="flex gap-2 items-center justify-between">
+                        <div className="flex gap-2 items-center text-sm font-semibold">
+                          <HiOutlineDocumentReport />
+                          <span>Mid Evaluation:</span>
+                        </div>
+                        <p className="font-bold text-base">
+                        {dashboard?.passed_mid_evals ? <span className="text-green-300">Passed</span> : <span className="text-yellow-400">Pending</span>}
+                        </p>
+                      </div>
                     </>
                   )}
                 </div>

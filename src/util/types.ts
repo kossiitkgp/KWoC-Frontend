@@ -42,19 +42,19 @@ export interface IEndpointTypes {
   "student/dashboard": {
     request: null;
     response: {
-      name: string,
-      username: string,
-      college: string,
-      passed_mid_evals: boolean,
-      passed_end_evals: boolean,
-      commit_count: number,
-      pull_count: number,
-      lines_added: number,
-      lines_removed: number,
-      languages_used: string[],
-      projects_worked: { name: string, repo_link: string }[],
-    }
-  }
+      name: string;
+      username: string;
+      college: string;
+      passed_mid_evals: boolean;
+      passed_end_evals: boolean;
+      commit_count: number;
+      pull_count: number;
+      lines_added: number;
+      lines_removed: number;
+      languages_used: string[];
+      projects_worked: { name: string; repo_link: string }[];
+    };
+  };
   "mentor/form": {
     request: {
       username: string;
