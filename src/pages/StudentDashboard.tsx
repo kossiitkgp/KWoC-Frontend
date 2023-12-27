@@ -15,7 +15,6 @@ import SpinnerLoader from "../components/SpinnerLoader";
 import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
 import { MdOutlineDifference } from "react-icons/md";
 import { FaCode } from "react-icons/fa";
-import { RiGitRepositoryLine } from "react-icons/ri";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 
 function StudentDashboard() {
@@ -246,7 +245,30 @@ function StudentDashboard() {
           </div>
         </div>
       </div>
-      <div className="p-6 rounded-lg shadow-md lg:mt-20">
+
+      <div className="p-6 rounded-lg shadow-md lg:mt-20 flex flex-col">
+        {dashboard !== null && (
+          <div className="mb-8">
+            <h3 className="font-semibold text-2xl mb-2">
+              Projects Worked On
+            </h3>
+            <div className="space-y-1 flex flex-col">
+              {projects.length > 0 ? projects
+                .map(({ name, repo_link }, i) => (
+                  <a
+                    key={i}
+                    href={repo_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary-600 hover:underline"
+                  >
+                    {name}
+                  </a>
+                )) : 'None'}
+            </div>
+          </div>
+        )}
+
         <Resources
           title="Student Resources"
           resources={STUDENT_RESOURCES}
