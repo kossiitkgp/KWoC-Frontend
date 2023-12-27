@@ -52,7 +52,7 @@ function StudentDashboard() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
       <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
-        <div className="lg:pt-28 max-w-5xl mx-auto px-4">
+        <div className="pt-28 max-w-5xl mx-auto px-4">
           <div className="dashboard-content flex items-center justify-center">
             <div className="flex">
               <Profile />
@@ -64,10 +64,10 @@ function StudentDashboard() {
                     <p className="text-center text-red-500">{error}</p>
                   ) : (
                     <>
-                      <p className="mb-2 text-green-300">
+                      <p className="mb-2">
                         Lines Added: {dashboard?.lines_added}
                       </p>
-                      <p className="mb-2 text-red-500">
+                      <p className="mb-2">
                         Lines Removed: {dashboard?.lines_removed}
                       </p>
                       <p className="mb-2">
