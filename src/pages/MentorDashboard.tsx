@@ -11,6 +11,7 @@ import { REGISTRATIONS_OPEN, ROUTER_PATHS } from "../util/constants";
 import { makeRequest } from "../util/backend";
 import SpinnerLoader from "../components/SpinnerLoader";
 import { Profile, Resources } from "../components/DashboardElements";
+import { formatPullRequest } from "../util/format";
 
 function MentorDashboard() {
   const navigate = useNavigate();
@@ -150,10 +151,7 @@ function MentorDashboard() {
                       rel="noopener noreferrer"
                       className="text-primary hover:text-primary-600 hover:underline"
                     >
-                      {pull
-                        .replace("https://github.com/", "")
-                        .replace("pull/", "")
-                        .replace(/\/\d/, "#")}
+                      {formatPullRequest(pull)}
                     </a>
                   ))}
               </div>
