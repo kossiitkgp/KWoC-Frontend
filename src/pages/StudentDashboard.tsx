@@ -69,10 +69,7 @@ function StudentDashboard() {
       : 0;
 
   // Languages used and projects
-  let languages_used =
-    dashboard === null
-      ? []
-      : dashboard.languages_used;
+  let languages_used = dashboard === null ? [] : dashboard.languages_used;
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
@@ -160,7 +157,11 @@ function StudentDashboard() {
                       <span>Mid Evaluation:</span>
                     </div>
                     <p className="font-bold text-base">
-                      {dashboard?.passed_mid_evals ? <span className="text-green-300">Passed</span> : <span className="text-yellow-400">Pending</span>}
+                      {dashboard?.passed_mid_evals ? (
+                        <span className="text-green-300">Passed</span>
+                      ) : (
+                        <span className="text-yellow-400">Pending</span>
+                      )}
                     </p>
                   </div>
 
@@ -170,12 +171,15 @@ function StudentDashboard() {
                       <span>End Evaluation:</span>
                     </div>
                     <p className="font-bold text-base">
-                      {dashboard?.passed_end_evals ? <span className="text-green-300">Passed</span> : <span className="text-yellow-400">Pending</span>}
+                      {dashboard?.passed_end_evals ? (
+                        <span className="text-green-300">Passed</span>
+                      ) : (
+                        <span className="text-yellow-400">Pending</span>
+                      )}
                     </p>
                   </div>
                 </>
-              )
-              }
+              )}
             </div>
           </div>
 
@@ -245,22 +249,21 @@ function StudentDashboard() {
       <div className="p-6 rounded-lg shadow-md lg:mt-20 flex flex-col">
         {dashboard !== null && (
           <div className="mb-8">
-            <h3 className="font-semibold text-2xl mb-2">
-              Projects Worked On
-            </h3>
+            <h3 className="font-semibold text-2xl mb-2">Projects Worked On</h3>
             <div className="space-y-0.5 flex flex-col">
-              {dashboard.projects_worked.length > 0 ? dashboard.projects_worked
-                .map(({ name, repo_link }, i) => (
-                  <a
-                    key={i}
-                    href={repo_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-primary-600 hover:underline"
-                  >
-                    {name}
-                  </a>
-                )) : 'None'}
+              {dashboard.projects_worked.length > 0
+                ? dashboard.projects_worked.map(({ name, repo_link }, i) => (
+                    <a
+                      key={i}
+                      href={repo_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary-600 hover:underline"
+                    >
+                      {name}
+                    </a>
+                  ))
+                : "None"}
             </div>
           </div>
         )}
@@ -271,29 +274,27 @@ function StudentDashboard() {
               Merged Pull Requests
             </h3>
             <div className="space-y-0.5 flex flex-col">
-              {dashboard.pulls.length > 0 ?
-                dashboard.pulls.map((pull, i) => (
-                  <a
-                    key={i}
-                    href={pull}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-primary-600 hover:underline"
-                  >
-                    {pull
-                      .replace("https://github.com/", "")
-                      .replace("pull/", "")
-                      .replace(/\/\d/, "#")}
-                  </a>
-                )) : 'None'}
+              {dashboard.pulls.length > 0
+                ? dashboard.pulls.map((pull, i) => (
+                    <a
+                      key={i}
+                      href={pull}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:text-primary-600 hover:underline"
+                    >
+                      {pull
+                        .replace("https://github.com/", "")
+                        .replace("pull/", "")
+                        .replace(/\/\d/, "#")}
+                    </a>
+                  ))
+                : "None"}
             </div>
           </div>
         )}
 
-        <Resources
-          title="Student Resources"
-          resources={STUDENT_RESOURCES}
-        />
+        <Resources title="Student Resources" resources={STUDENT_RESOURCES} />
       </div>
     </div>
   );
