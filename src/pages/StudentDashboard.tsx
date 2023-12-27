@@ -16,6 +16,7 @@ import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
 import { MdOutlineDifference } from "react-icons/md";
 import { FaCode } from "react-icons/fa";
 import { HiOutlineDocumentReport } from "react-icons/hi";
+import { formatPullRequest } from "../util/format";
 
 function StudentDashboard() {
   const navigate = useNavigate();
@@ -283,10 +284,7 @@ function StudentDashboard() {
                       rel="noopener noreferrer"
                       className="text-primary hover:text-primary-600 hover:underline"
                     >
-                      {pull
-                        .replace("https://github.com/", "")
-                        .replace("pull/", "")
-                        .replace("/", "#")}
+                      {formatPullRequest(pull)}
                     </a>
                   ))
                 : "None"}
