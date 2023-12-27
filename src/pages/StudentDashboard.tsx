@@ -132,12 +132,12 @@ function StudentDashboard() {
                     </div>
                   </div>
 
-                  <div className="flex gap-2">
-                    <div className="flex gap-2 items-center font-semibold min-w-fit">
+                  <div className="flex gap-2 items-start">
+                    <div className="flex items-center gap-2 font-semibold min-w-fit">
                       <FaCode />
                       <span>Languages Used:</span>
                     </div>
-                    <p className="font-bold text-base">
+                    <p className="font-bold text-sm">
                       {languages_used.length > 0
                         ? languages_used.join(", ")
                         : "None"}
