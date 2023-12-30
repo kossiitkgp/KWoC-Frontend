@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import {
   DISCORD_INVITE,
+  END_EVALS_ENDED,
+  MID_EVALS_ENDED,
   ROUTER_PATHS,
   SLACK_INVITE,
   STUDENT_MANUAL_LINK,
@@ -161,7 +163,9 @@ function StudentDashboard() {
                       {dashboard?.passed_mid_evals ? (
                         <span className="text-green-300">Passed</span>
                       ) : (
-                        <span className="text-yellow-400">Pending</span>
+                        MID_EVALS_ENDED ?
+                          <span className="text-red-500">Failed</span>
+                        : <span className="text-yellow-400">Pending</span>
                       )}
                     </p>
                   </div>
@@ -175,7 +179,9 @@ function StudentDashboard() {
                       {dashboard?.passed_end_evals ? (
                         <span className="text-green-300">Passed</span>
                       ) : (
-                        <span className="text-yellow-400">Pending</span>
+                        END_EVALS_ENDED ?
+                          <span className="text-red-500">Failed</span>
+                        : <span className="text-yellow-400">Pending</span>
                       )}
                     </p>
                   </div>
