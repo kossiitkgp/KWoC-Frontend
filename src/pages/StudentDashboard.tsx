@@ -180,6 +180,8 @@ function StudentDashboard() {
                         <span className="text-green-300">Passed</span>
                       ) : END_EVALS_ENDED ? (
                         <span className="text-red-500">Failed</span>
+                      ) : END_EVALS_ENDED || !dashboard?.passed_mid_evals ? (
+                        <span className="text-red-500">Failed</span>
                       ) : (
                         <span className="text-yellow-400">Pending</span>
                       )}
