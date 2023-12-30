@@ -162,10 +162,10 @@ function StudentDashboard() {
                     <p className="font-bold text-base">
                       {dashboard?.passed_mid_evals ? (
                         <span className="text-green-300">Passed</span>
+                      ) : MID_EVALS_ENDED ? (
+                        <span className="text-red-500">Failed</span>
                       ) : (
-                        MID_EVALS_ENDED ?
-                          <span className="text-red-500">Failed</span>
-                        : <span className="text-yellow-400">Pending</span>
+                        <span className="text-yellow-400">Pending</span>
                       )}
                     </p>
                   </div>
@@ -178,10 +178,10 @@ function StudentDashboard() {
                     <p className="font-bold text-base">
                       {dashboard?.passed_end_evals ? (
                         <span className="text-green-300">Passed</span>
+                      ) : END_EVALS_ENDED ? (
+                        <span className="text-red-500">Failed</span>
                       ) : (
-                        END_EVALS_ENDED ?
-                          <span className="text-red-500">Failed</span>
-                        : <span className="text-yellow-400">Pending</span>
+                        <span className="text-yellow-400">Pending</span>
                       )}
                     </p>
                   </div>
