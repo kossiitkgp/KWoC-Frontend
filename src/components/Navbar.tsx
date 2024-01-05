@@ -7,13 +7,19 @@ import kwoc_logo from "../assets/kwoc_logo.png";
 import { ROUTER_PATHS, GH_OAUTH_URL } from "../util/constants";
 import { useAuthContext } from "../util/auth";
 import { UserType } from "../util/types";
+import "./Scrollbar.css";
 
+
+
+
+ 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
   { name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
   // { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
 ];
+
 
 function BrandLogo() {
   return (
@@ -26,6 +32,8 @@ function BrandLogo() {
     </Link>
   );
 }
+
+
 
 function getNavbarLinkClasses(isMobile: boolean, isActive: boolean = false) {
   return (
@@ -96,6 +104,13 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [bodyStyle, setBodyStyle] = useState({});
+
+  useEffect(() => {
+    setBodyStyle({
+      overflow: "hidden",
+    });
+ }, []);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -106,6 +121,7 @@ function Navbar() {
   };
 
   return (
+    <div className="App" style={bodyStyle}>
     <div className="fixed inset-x-0 z-50 w-full">
       <nav
         className={`flex shadow-md mt-4 items-center justify-between max-w-7xl gap-4 mx-auto border border-[#FFFFFF]/[0.16] px-4 py-2 rounded-lg w-[95%] inset-x-0 backdrop-blur-md z-50 ${
@@ -139,11 +155,20 @@ function Navbar() {
 
       {mobileMenuOpen && <MobileNavbar toggleMobileMenu={toggleMobileMenu} />}
     </div>
+    </div>
   );
 }
 
 function MobileNavbar({ toggleMobileMenu }: { toggleMobileMenu: () => void }) {
+  const [bodyStyle, setBodyStyle] = useState({});
+
+  useEffect(() => {
+    setBodyStyle({
+      overflow: "hidden",
+    });
+ }, []);
   return (
+    <div className="App" style={bodyStyle}>
     <div className="w-full z-50 h-screen transition-transform transform ease-in-out duration-500 translate-x-0 p-2 flex justify-end">
       <div className="navbar-backdrop fixed bg-gray-800 opacity-25"></div>
       <nav className="h-full flex flex-col w-5/6 max-w-sm py-5 px-5 border border-[#FFFFFF]/[0.16] rounded-lg backdrop-blur-md overflow-y-auto">
@@ -167,7 +192,10 @@ function MobileNavbar({ toggleMobileMenu }: { toggleMobileMenu: () => void }) {
         </div>
       </nav>
     </div>
+    </div>
   );
-}
+  }
+
 
 export default Navbar;
+
