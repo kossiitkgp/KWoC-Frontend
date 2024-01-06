@@ -7,12 +7,7 @@ import kwoc_logo from "../assets/kwoc_logo.png";
 import { ROUTER_PATHS, GH_OAUTH_URL } from "../util/constants";
 import { useAuthContext } from "../util/auth";
 import { UserType } from "../util/types";
-import "./Scrollbar.css";
 
-
-
-
- 
 const LINKS = [
   { name: "HOME", link: ROUTER_PATHS.HOME },
   { name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
@@ -32,7 +27,6 @@ function BrandLogo() {
     </Link>
   );
 }
-
 
 
 function getNavbarLinkClasses(isMobile: boolean, isActive: boolean = false) {
@@ -160,13 +154,7 @@ function Navbar() {
 }
 
 function MobileNavbar({ toggleMobileMenu }: { toggleMobileMenu: () => void }) {
-  const [bodyStyle, setBodyStyle] = useState({});
-
-  useEffect(() => {
-    setBodyStyle({
-      overflow: "hidden",
-    });
- }, []);
+  const [bodyStyle] = useState({});
   return (
     <div className="App" style={bodyStyle}>
     <div className="w-full z-50 h-screen transition-transform transform ease-in-out duration-500 translate-x-0 p-2 flex justify-end">
@@ -195,7 +183,6 @@ function MobileNavbar({ toggleMobileMenu }: { toggleMobileMenu: () => void }) {
     </div>
   );
   }
-
 
 export default Navbar;
 
