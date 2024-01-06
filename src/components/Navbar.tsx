@@ -106,12 +106,10 @@ function Navbar() {
   };
 
   return (
-
     <div className="fixed inset-x-0 z-50 w-full">
       <nav
-        className={`flex shadow-md mt-4 items-center justify-between max-w-7xl gap-4 mx-auto border border-[#FFFFFF]/[0.16] px-4 py-2 rounded-lg w-[95%] inset-x-0 backdrop-blur-md z-50 ${
-          mobileMenuOpen ? "hidden" : ""
-        }`}
+        className={`flex shadow-md mt-4 items-center justify-between max-w-7xl gap-4 mx-auto border border-[#FFFFFF]/[0.16] px-4 py-2 rounded-lg w-[95%] inset-x-0 backdrop-blur-md z-50 ${mobileMenuOpen ? "hidden" : ""
+          }`}
       >
         <BrandLogo />
         <div className="lg:hidden ml-auto -mr-5">
@@ -125,9 +123,8 @@ function Navbar() {
 
         <div className={`${mobileMenuOpen ? "hidden" : null}`}>
           <ul
-            className={`lg:flex lg:items-center lg:w-auto lg:space-x-6 ${
-              mobileMenuOpen ? "block" : "hidden"
-            }`}
+            className={`lg:flex lg:items-center lg:w-auto lg:space-x-6 ${mobileMenuOpen ? "block" : "hidden"
+              }`}
           >
             {LinksList(false)}
 
@@ -144,9 +141,7 @@ function Navbar() {
 }
 
 function MobileNavbar({ toggleMobileMenu }: { toggleMobileMenu: () => void }) {
-  const [bodyStyle] = useState({});
   return (
-    <div className="App" style={bodyStyle}>
     <div className="w-full z-50 h-screen transition-transform transform ease-in-out duration-500 translate-x-0 p-2 flex justify-end">
       <div className="navbar-backdrop fixed bg-gray-800 opacity-25"></div>
       <nav className="h-full flex flex-col w-5/6 max-w-sm py-5 px-5 border border-[#FFFFFF]/[0.16] rounded-lg backdrop-blur-md overflow-y-auto">
@@ -170,9 +165,8 @@ function MobileNavbar({ toggleMobileMenu }: { toggleMobileMenu: () => void }) {
         </div>
       </nav>
     </div>
-    </div>
   );
-  }
+}
 
 export default Navbar;
 
