@@ -98,14 +98,6 @@ function LoginButton({ isMobile }: { isMobile: boolean }) {
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [bodyStyle, setBodyStyle] = useState({});
-
-  useEffect(() => {
-    setBodyStyle({
-      overflow: "hidden",
-    });
- }, []);
-
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
@@ -115,7 +107,7 @@ function Navbar() {
   };
 
   return (
-    <div className="App" style={bodyStyle}>
+
     <div className="fixed inset-x-0 z-50 w-full">
       <nav
         className={`flex shadow-md mt-4 items-center justify-between max-w-7xl gap-4 mx-auto border border-[#FFFFFF]/[0.16] px-4 py-2 rounded-lg w-[95%] inset-x-0 backdrop-blur-md z-50 ${
@@ -148,7 +140,6 @@ function Navbar() {
       </nav>
 
       {mobileMenuOpen && <MobileNavbar toggleMobileMenu={toggleMobileMenu} />}
-    </div>
     </div>
   );
 }
