@@ -82,10 +82,11 @@ export interface IEndpointTypes {
     request: null;
     response: {
       name: string;
-      username: string;
-      email: string;
-      projects: IProjectDashboardInfo[];
-      students: IStudentInfo[];
+      repo_link: string;
+      commit_count: uint;
+      pull_count: uint;
+      lines_added: uint;
+      lines_removed: uint;
     };
   };
   [route: `project/${number}`]: {

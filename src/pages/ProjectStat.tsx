@@ -1,26 +1,21 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";  // Import useParams for accessing route parameters
-import { makeRequest } from "../util/backend";
-import { useAuthContext } from "../util/auth";
-import { IEndpointTypes } from "../util/types";
-//import { Console } from "console";
+
+
+
 
 function ProjectStats() {
-  console.log("abcd") 
+   
   const authContext = useAuthContext();
   const [projectStats, setProjectStats] = useState<
     IEndpointTypes["stats/projects"]["response"] | null
   >(null);
-  const [error, setError] = useState<string | null>(null);
-
-  // Access the project ID from the route parameters
-  const { } = useParams();
+  
 
   useEffect(() => {
     // Make a request to the specific project stats endpoint
     makeRequest("stats/projects", "get", null, authContext.jwt)
       .then((response) => {
-        console.log(response)
+        
         if (response.is_ok) {
           setProjectStats(response.response);
         } else {
@@ -50,7 +45,8 @@ function ProjectStats() {
                 <th>Repository Link</th>
                 <th>Commit Count</th>
                 <th>Pull Count</th>
-                {/* Add more columns as needed */}
+                <th>Lines Added</th> 
+                <th>Lines Removed</th> 
               </tr>
             </thead>
             <tbody>
@@ -60,7 +56,8 @@ function ProjectStats() {
                   <td>{project.repo_link}</td>
                   <td>{project.commit_count}</td>
                   <td>{project.pull_count}</td>
-                  {/* Add more cells as needed */}
+                  <td>{project.lines_added}</td>
+                  <td>{project.lines_removed}</td>
                 </tr>
               ))}
             </tbody>
