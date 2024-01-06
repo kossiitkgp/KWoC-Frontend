@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { makeRequest } from "../util/backend";
 import { IEndpointTypes } from "../util/types";
 import { useAuthContext } from "../util/auth";
+
+
 function ProjectStats() {
    
   const authContext = useAuthContext();
   const [projectStats, setProjectStats] = useState<
     IEndpointTypes["stats/projects"]["response"] | null
   >(null);
-  ;
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Make a request to the specific project stats endpoint
@@ -17,8 +19,14 @@ function ProjectStats() {
         
         if (response.is_ok) {
           setProjectStats(response.response);
-        } 
-       
+        } else {
+          setError("Error fetching project stats.");
+          console.log(response.response);
+        }
+      })
+      .catch((e) => {
+        setError("Error fetching project stats.");
+        console.log(e);
       });
   }, []);  
 
@@ -27,8 +35,8 @@ function ProjectStats() {
       <h1 className="font-display text-5xl md:text-7xl font-bold text-center">
         Project Stats
       </h1>
-     (
-        <p className="text-center text-red-500"></p>
+      {error !== null ? (
+        <p className="text-center text-red-500">{error}</p>
       ) : projectStats !== null ? (
         <div className="max-w-7xl px-8 py-4">
           <table className="min-w-full">
@@ -40,7 +48,7 @@ function ProjectStats() {
                 <th>Pull Count</th>
                 <th>Lines Added</th> 
                 <th>Lines Removed</th> 
-                <th>Languages Used</th>
+                <th>Language Used</th>
               </tr>
             </thead>
             <tbody>
