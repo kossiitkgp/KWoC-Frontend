@@ -15,7 +15,6 @@ const LINKS = [
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
 ];
 
-
 function BrandLogo() {
   return (
     <Link to={"/"}>
