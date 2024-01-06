@@ -78,6 +78,16 @@ export interface IEndpointTypes {
       students: IStudentInfo[];
     };
   };
+  "stats/projects": {
+    request: null;
+    response: {
+      name: string;
+      username: string;
+      email: string;
+      projects: IProjectDashboardInfo[];
+      students: IStudentInfo[];
+    };
+  };
   [route: `project/${number}`]: {
     request: null;
     response: IProject;

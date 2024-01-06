@@ -17,6 +17,7 @@ const LINKS = [
   { name: "PROJECTS", link: ROUTER_PATHS.PROJECTS_LIST },
   // { name: "TESTIMONIALS", link: ROUTER_PATHS.TESTIMONIALS },
   { name: "FAQs", link: ROUTER_PATHS.FAQ },
+  { name: "PROJECT STATS", link: ROUTER_PATHS.ALL_PROJECT_STATS },
 ];
 
 function BrandLogo() {
