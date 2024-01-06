@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
-
-
-
-
+import { makeRequest } from "../util/backend";
+import { IEndpointTypes } from "../util/types";
+import { useAuthContext } from "../util/auth";
+import { useParams } from "react-router-dom";
 function ProjectStats() {
    
   const authContext = useAuthContext();
   const [projectStats, setProjectStats] = useState<
     IEndpointTypes["stats/projects"]["response"] | null
   >(null);
-  
+  const [error, setError] = useState<string | null>(null);
+
+  // Access the project ID from the route parameters
+  const { } = useParams();
 
   useEffect(() => {
     // Make a request to the specific project stats endpoint
@@ -47,6 +50,7 @@ function ProjectStats() {
                 <th>Pull Count</th>
                 <th>Lines Added</th> 
                 <th>Lines Removed</th> 
+                <th>Languages Used</th>
               </tr>
             </thead>
             <tbody>
@@ -58,6 +62,7 @@ function ProjectStats() {
                   <td>{project.pull_count}</td>
                   <td>{project.lines_added}</td>
                   <td>{project.lines_removed}</td>
+                  <td>{project.languages_used.join(", ")}</td>
                 </tr>
               ))}
             </tbody>
