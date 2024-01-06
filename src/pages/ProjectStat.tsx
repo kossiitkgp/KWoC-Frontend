@@ -3,9 +3,7 @@ import { makeRequest } from "../util/backend";
 import { IEndpointTypes } from "../util/types";
 import { useAuthContext } from "../util/auth";
 
-
 function ProjectStats() {
-   
   const authContext = useAuthContext();
   const [projectStats, setProjectStats] = useState<
     IEndpointTypes["stats/projects"]["response"] | null
@@ -13,10 +11,8 @@ function ProjectStats() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Make a request to the specific project stats endpoint
     makeRequest("stats/projects", "get", null, authContext.jwt)
       .then((response) => {
-        
         if (response.is_ok) {
           setProjectStats(response.response);
         } else {
@@ -48,11 +44,11 @@ function ProjectStats() {
                 <th>Pull Count</th>
                 <th>Lines Added</th> 
                 <th>Lines Removed</th> 
-                <th>Language Used</th>
+                <th>Languages Used</th>
               </tr>
             </thead>
             <tbody>
-              {projectStats.projects.map((project) => (
+              {projectStats.map((project) => (
                 <tr key={project.id}>
                   <td>{project.name}</td>
                   <td>{project.repo_link}</td>
@@ -66,9 +62,7 @@ function ProjectStats() {
             </tbody>
           </table>
         </div>
-      ) : (
-        null
-      )}
+      ) : null}
     </div>
   );
 }
