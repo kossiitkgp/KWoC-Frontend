@@ -3,6 +3,8 @@ import { makeRequest } from "../util/backend";
 import { IEndpointTypes } from "../util/types";
 import { useAuthContext } from "../util/auth";
 
+// ... (imports)
+
 function ProjectStats() {
   const authContext = useAuthContext();
   const [projectStats, setProjectStats] = useState<
@@ -49,7 +51,7 @@ function ProjectStats() {
             </thead>
             <tbody>
               {projectStats.map((project) => (
-                <tr key={project.id}>
+                <tr key={project.repo_link}>
                   <td>{project.name}</td>
                   <td>{project.repo_link}</td>
                   <td>{project.commit_count}</td>

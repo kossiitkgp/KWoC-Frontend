@@ -87,7 +87,8 @@ export interface IEndpointTypes {
       pull_count: number;
       lines_added: number;
       lines_removed: number;
-    };
+      languages_used: string[];
+    }[];
   };
   [route: `project/${number}`]: {
     request: null;
