@@ -83,10 +83,10 @@ export interface IEndpointTypes {
     response: {
       name: string;
       repo_link: string;
-      commit_count: uint;
-      pull_count: uint;
-      lines_added: uint;
-      lines_removed: uint;
+      commit_count: number;
+      pull_count: number;
+      lines_added: number;
+      lines_removed: number;
     };
   };
   [route: `project/${number}`]: {
