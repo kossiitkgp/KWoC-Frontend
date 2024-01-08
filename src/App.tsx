@@ -14,6 +14,7 @@ import PastProgramsPage from "./pages/PastProgramsPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import RegistrationForm from "./pages/RegistrationForm";
 import NotFoundPage from "./pages/404";
+import MentorsStats from './pages/MentorsStats';
 
 function App() {
   return (
@@ -61,6 +62,8 @@ function App() {
                 path={ROUTER_PATHS.PASTPROGRAMS}
                 element={<PastProgramsPage />}
               />
+              <Route path={ROUTER_PATHS.ALl_MENTOR_STATS} 
+              element={<MentorsStats />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </AuthProvider>
