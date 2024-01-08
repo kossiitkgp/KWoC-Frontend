@@ -119,8 +119,9 @@ function Navbar() {
   return (
     <div className="fixed inset-x-0 z-[210] w-full">
       <nav
-        className={`flex shadow-md mt-4 items-center justify-between max-w-7xl gap-4 mx-auto border border-[#FFFFFF]/[0.16] px-4 py-2 rounded-lg w-[95%] inset-x-0 backdrop-blur-md z-50 ${mobileMenuOpen ? "hidden" : ""
-          }`}
+        className={`flex shadow-md mt-4 items-center justify-between max-w-7xl gap-4 mx-auto border border-[#FFFFFF]/[0.16] px-4 py-2 rounded-lg w-[95%] inset-x-0 backdrop-blur-md z-50 ${
+          mobileMenuOpen ? "hidden" : ""
+        }`}
       >
         <BrandLogo />
         <div className="lg:hidden ml-auto -mr-5">
@@ -134,8 +135,9 @@ function Navbar() {
 
         <div className={`${mobileMenuOpen ? "hidden" : null}`}>
           <ul
-            className={`lg:flex lg:items-center lg:w-auto lg:space-x-6 ${mobileMenuOpen ? "block" : "hidden"
-              }`}
+            className={`lg:flex lg:items-center lg:w-auto lg:space-x-6 ${
+              mobileMenuOpen ? "block" : "hidden"
+            }`}
           >
             {LinksList(false)}
 
