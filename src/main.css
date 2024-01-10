@@ -14,13 +14,10 @@
 body {
   background: url("./assets/stars.png"), #0a0a19;
 }
-
-
-   /* ===== Scrollbar CSS ===== */
-
+ /* ===== Scrollbar CSS ===== */
    * {
-    scrollbar-width: auto;
-    scrollbar-color: #2997db #ffffff;
+    scrollbar-width: thin;
+    scrollbar-color: #008aff #0000;
     background-color: transparent;
   }
 
