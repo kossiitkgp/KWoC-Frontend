@@ -14,6 +14,7 @@ import PastProgramsPage from "./pages/PastProgramsPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import RegistrationForm from "./pages/RegistrationForm";
 import NotFoundPage from "./pages/404";
+import BlogForm from "./pages/BlogForm";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <ScrollToTop>
           <AuthProvider>
             <Navbar />
+            <BlogForm />
             <Routes>
               <Route index element={<Home />} />
               <Route
