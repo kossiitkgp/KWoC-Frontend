@@ -1,126 +1,101 @@
 import { useEffect, useState } from "react";
 import Form from "../components/Form";
 import { useAuthContext } from "../util/auth";
-import {  
-  ROUTER_PATHS,
-} from "../util/constants";
-import { useNavigate, useParams } from "react-router-dom";
+import { ROUTER_PATHS } from "../util/constants";
+import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../util/backend";
-import { IProject } from "../util/types";
-import SpinnerLoader from "../components/SpinnerLoader";
 
-function BlogForm(props: { isEditing?: boolean }) {
-  const isEditing = props.isEditing ?? false;
-
+function BlogForm({ isStudent }: { isStudent: boolean }) {
   const authContext = useAuthContext();
   const navigate = useNavigate();
-  const { id } = useParams();
-
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
-  const [projectInfo, setProjectInfo] = useState<IProject | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (!isEditing) {
-      // Redirect if registrations are closed and not editing.
-      navigate(ROUTER_PATHS.HOME);
-    }
+  const [isRegistering, setIsRegistering] = useState(false);
 
-    if (!authContext.isAuthenticated) {
+  const userType = isStudent ? "student" : "mentor";
+
+  useEffect(() => {
+    setIsRegistering(!authContext.isRegistered);
+
+    if (authContext.userData.type !== userType) {
       navigate(ROUTER_PATHS.HOME);
-    } else if (!authContext.isRegistered) {
-      navigate(authContext.formLink);
-    } else if (authContext.userData.type !== "student") {
-      navigate(authContext.dashboardLink);
     }
   });
 
-  useEffect(() => {
-    if (isEditing && id !== undefined) {
-      setLoading(true);
-
-      makeRequest(`project/${parseInt(id)}`, "get", null, authContext.jwt)
-        .then((response) => {
-          if (response.is_ok) {
-            setProjectInfo(response.response);
-          } else {
-            setError(response.response.message);
-          }
-
-          setLoading(false);
-        })
-        .catch((e) => {
-          console.log(e);
-          setError("An unexpected error occurred.");
-          setLoading(false);
-        });
-    }
-  }, [navigate, id, isEditing]);
+  const fields: any = {
+    name: {
+      field: "Submission Link",
+      placeholder: "",
+      type: "url",
+      required: true,
+    },
+  };
 
   return (
     <>
-      {!isEditing || projectInfo !== null || error !== null ? (
-        <Form
-          title={isEditing ? "Edit Blog" : "Blog Submission"}
-          error={error}
-          info={info}
-          loading={loading}
-          disabled={loading}
-          fields={{
-            blog_link: {
-              field: "Blog Link",
-              required: true,
-              type: "url",
-              placeholder: "",
-              defaultValue: isEditing ? projectInfo?.repo_link : undefined,
-            },
-          }}
-          onCancel={() => {
-            navigate(ROUTER_PATHS.MENTOR_DASHBOARD);
-          }}
-          onSubmit={async (responses) => {
-            setError(null);
-            setInfo(null);
+      <Form
+        title="Blog Submission Form"
+        error={error}
+        info={info}
+        loading={loading}
+        disabled={loading}
+        submitWithoutChange={isRegistering}
+        staticMessage="Note: The name on your profile will be used for the certificate. So change it accordingly"
+        fields={fields}
+        onCancel={() => {
+          isRegistering
+            ? authContext.onLogout()
+            : navigate(authContext.dashboardLink);
+        }}
+        onSubmit={async (responses) => {
+          setError(null);
+          setInfo(null);
 
-            try {
-              setLoading(true);
-              const res = await makeRequest(
-                "project",
-                isEditing ? "put" : "post",
-                {
-                  ...responses,
-                  student_username: authContext.userData.username,
-                  id: isEditing ? (id ? parseInt(id) : undefined) : undefined,
-                },
-                authContext.jwt,
-              );
+          const userData = {
+            username: authContext.userData.username,
+            name: responses.name,
+            email: responses.email,
+            college: responses.college,
+          };
 
-              if (res.is_ok) {
-                navigate(ROUTER_PATHS.STUDENT_DASHBOARD);
-                setLoading(false);
-                return true;
+          try {
+            setLoading(true);
+            const res = await makeRequest(
+              `${userType}/form`,
+              isRegistering ? "post" : "put",
+              userData,
+              authContext.jwt,
+            );
+
+            if (!res.is_ok) setError(res.response.message);
+            else {
+              if (isRegistering) {
+                authContext.onRegister({ ...userData, type: userType });
+
+                navigate(authContext.dashboardLink);
               } else {
-                setError(
-                  `${res.response.status_code} Error: ${res.response.message}`,
+                authContext.updateUserData(
+                  responses.name,
+                  responses.email,
+                  responses?.college,
                 );
-                setLoading(false);
-                return false;
+                setInfo("Blog submitted successfully!");
               }
-            } catch (e) {
-              console.log(e);
-              setError("An unexpected error occurred.");
-              setLoading(false);
-
-              return false;
             }
-          }}
-        />
-      ) : (
-        <div className="pt-32">
-          <SpinnerLoader />
-        </div>
-      )}
+
+            setLoading(false);
+            return res.is_ok;
+          } catch (e) {
+            setError("Error sending the request. Please try again later.");
+            setLoading(false);
+
+            console.log(e);
+            return false;
+          }
+        }}
+      />
     </>
   );
 }
