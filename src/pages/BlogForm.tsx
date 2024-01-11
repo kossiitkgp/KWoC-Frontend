@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Form from "../components/Form";
 import { useAuthContext } from "../util/auth";
-import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 
 function BlogForm() {
@@ -30,7 +29,7 @@ function BlogForm() {
         staticMessage="Note: The name on your profile will be used for the certificate. So change it accordingly"
         fields={fields}
         
-        onSubmit={async (responses) => {
+        onSubmit={async () => {
           setError(null);
           setInfo(null);
 
