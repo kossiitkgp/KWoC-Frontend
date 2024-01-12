@@ -80,10 +80,9 @@ export interface IEndpointTypes {
   };
   "student/bloglink": {
     request: {
-      username: string;
       blog_link: string;
     };
-    response: IHTTPMessage;
+    response: IStudentBlogLink[];
   };
   [route: `project/${number}`]: {
     request: null;
@@ -142,6 +141,5 @@ export interface IProjectTags {
 }
 
 export interface IStudentBlogLink {
-  username: string;
   blog_link: string;
 }

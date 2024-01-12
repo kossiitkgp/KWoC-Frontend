@@ -3,6 +3,8 @@ import Form from "./Form";
 import { useAuthContext } from "../util/auth";
 import { makeRequest } from "../util/backend";
 import { useNavigate } from "react-router-dom";
+import { IStudentBlogLink } from "../util/types";
+import SpinnerLoader from "./SpinnerLoader";
 
 function BlogForm() {
   const authContext = useAuthContext();
@@ -10,12 +12,33 @@ function BlogForm() {
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const [blogLink, setBlogLink] = useState<IStudentBlogLink | null>(null);
 
   useEffect(() => {
     if (!authContext.isAuthenticated) {
       navigate("/");
     }
   });
+
+  useEffect(() => {
+    setLoading(true);
+
+    makeRequest(`student/bloglink`, "get", null, authContext.jwt)
+      .then((response) => {
+        if (response.is_ok) {
+          setBlogLink(response.response);
+        } else {
+          setError(response.response.message);
+        }
+
+        setLoading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+        setError("An unexpected error occurred.");
+        setLoading(false);
+      });
+  }, [navigate, authContext]);
 
   const fields: any = {
     blog: {
@@ -28,6 +51,7 @@ function BlogForm() {
 
   return (
     <>
+    {blogLink !== null || error !== null ? (
       <Form
         title="Blog Submission Form"
         error={error}
@@ -63,7 +87,12 @@ function BlogForm() {
             return false;
           }
         }}
-      />
+        />
+        ) : (
+        <div className="pt-32">
+          <SpinnerLoader />
+        </div>
+    )}
     </>
   );
 }
