@@ -23,7 +23,6 @@ function App() {
         <ScrollToTop>
           <AuthProvider>
             <Navbar />
-            <BlogForm />
             <Routes>
               <Route index element={<Home />} />
               <Route
@@ -33,6 +32,10 @@ function App() {
               <Route
                 path={ROUTER_PATHS.STUDENT_FORM}
                 element={<RegistrationForm isStudent={true} />}
+              />
+              <Route
+                path={ROUTER_PATHS.STUDENT_DASHBOARD}
+                element={<BlogForm />}
               />
               <Route
                 path={ROUTER_PATHS.STUDENT_DASHBOARD}

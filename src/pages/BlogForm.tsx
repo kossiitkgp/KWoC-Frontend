@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "../components/Form";
 import { useAuthContext } from "../util/auth";
 import { makeRequest } from "../util/backend";
+import { useNavigate } from "react-router-dom";
 
 function BlogForm() {
   const authContext = useAuthContext();
+  const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (!authContext.isAuthenticated) {
+      navigate("/");
+    }
+  });
+
   const fields: any = {
     blog: {
       field: "Submission Link",
-      placeholder: "",
+      placeholder: "https://medium.com/my-blog",
       type: "url",
       required: true,
     },
