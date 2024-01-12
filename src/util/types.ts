@@ -82,7 +82,7 @@ export interface IEndpointTypes {
     request: {
       blog_link: string;
     };
-    response: IStudentBlogLink[];
+    response: IStudentBlogLink;
   };
   [route: `project/${number}`]: {
     request: null;
