@@ -140,3 +140,8 @@ export interface IProjectDashboardInfo extends IProject {
 export interface IProjectTags {
   [key: string]: string;
 }
+
+export interface IStudentBlogLink {
+  username: string;
+  blog_link: string;
+}
