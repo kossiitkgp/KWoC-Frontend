@@ -61,15 +61,20 @@ function BlogForm() {
         staticMessage="Note: The name on your profile will be used for the certificate. So change it accordingly"
         fields={fields}
         
-        onSubmit={async () => {
+        onSubmit={async (responses) => {
           setError(null);
           setInfo(null);
 
           try {
             setLoading(true);
             const res = await makeRequest(
-              `${authContext.userData.type}/form`,
+              `student/bloglink`,
               "post",
+              {
+                ...responses,
+                blog_link: responses.blog,
+              },
+              authContext.jwt
             );
 
             if (!res.is_ok) setError(res.response.message);
