@@ -78,6 +78,13 @@ export interface IEndpointTypes {
       students: IStudentInfo[];
     };
   };
+  "student/bloglink": {
+    request: {
+      username: string;
+      blog_link: string;
+    };
+    response: IHTTPMessage;
+  };
   [route: `project/${number}`]: {
     request: null;
     response: IProject;
