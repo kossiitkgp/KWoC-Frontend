@@ -51,53 +51,52 @@ function ReportForm() {
 
   return (
     <>
-    {reportLink !== null || error !== null ? (
-      <Form
-        title="Report Submission Form"
-        error={error}
-        info={info}
-        loading={loading}
-        disabled={loading}
-        staticMessage="Note: The name on your profile will be used for the certificate. So change it accordingly"
-        fields={fields}
-        
-        onSubmit={async (responses) => {
-          setError(null);
-          setInfo(null);
+      {reportLink !== null || error !== null ? (
+        <Form
+          title="Report Submission Form"
+          error={error}
+          info={info}
+          loading={loading}
+          disabled={loading}
+          staticMessage="Note: The name on your profile will be used for the certificate. So change it accordingly"
+          fields={fields}
+          onSubmit={async (responses) => {
+            setError(null);
+            setInfo(null);
 
-          try {
-            setLoading(true);
-            const res = await makeRequest(
-              `student/bloglink`,
-              "post",
-              {
-                ...responses,
-                report_link: responses.report,
-              },
-              authContext.jwt
-            );
+            try {
+              setLoading(true);
+              const res = await makeRequest(
+                `student/bloglink`,
+                "post",
+                {
+                  ...responses,
+                  report_link: responses.report,
+                },
+                authContext.jwt,
+              );
 
-            if (!res.is_ok) setError(res.response.message);
-            else {
+              if (!res.is_ok) setError(res.response.message);
+              else {
                 setInfo("Report submitted successfully!");
+              }
+
+              setLoading(false);
+              return res.is_ok;
+            } catch (e) {
+              setError("Error sending the request. Please try again later.");
+              setLoading(false);
+
+              console.log(e);
+              return false;
             }
-
-            setLoading(false);
-            return res.is_ok;
-          } catch (e) {
-            setError("Error sending the request. Please try again later.");
-            setLoading(false);
-
-            console.log(e);
-            return false;
-          }
-        }}
+          }}
         />
-        ) : (
+      ) : (
         <div className="pt-32">
           <SpinnerLoader />
         </div>
-    )}
+      )}
     </>
   );
 }

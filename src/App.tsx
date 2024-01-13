@@ -14,7 +14,6 @@ import PastProgramsPage from "./pages/PastProgramsPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import RegistrationForm from "./pages/RegistrationForm";
 import NotFoundPage from "./pages/404";
-import BlogForm from "./components/BlogForm";
 
 function App() {
   return (
@@ -32,10 +31,6 @@ function App() {
               <Route
                 path={ROUTER_PATHS.STUDENT_FORM}
                 element={<RegistrationForm isStudent={true} />}
-              />
-              <Route
-                path={ROUTER_PATHS.STUDENT_DASHBOARD}
-                element={<BlogForm />}
               />
               <Route
                 path={ROUTER_PATHS.STUDENT_DASHBOARD}
