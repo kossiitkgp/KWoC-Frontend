@@ -76,14 +76,18 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           }}
         >
           <h1 className="text-center text-3xl mb-5">{props.title}</h1>
-          {props.error && <p className="text-red-500 text-center">{props.error}</p>}
+          {props.error && (
+            <p className="text-red-500 text-center">{props.error}</p>
+          )}
           {props.staticMessage && (
             <p className="flex items-center justify-center">
               <RiErrorWarningFill className="mr-2 fill-gray-300" />
               <span className="text-gray-300">{props.staticMessage}</span>
             </p>
           )}
-          {props.info && <p className="text-primary text-center">{props.info}</p>}
+          {props.info && (
+            <p className="text-primary text-center">{props.info}</p>
+          )}
           {loading && <SpinnerLoader />}
 
           {Object.values(inputs)}

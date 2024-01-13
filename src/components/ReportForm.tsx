@@ -36,7 +36,7 @@ function ReportForm() {
             "post",
             {
               username: authContext.userData.username,
-              blog_link: responses.report
+              blog_link: responses.report,
             },
             authContext.jwt,
           );
