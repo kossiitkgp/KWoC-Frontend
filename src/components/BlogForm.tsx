@@ -3,16 +3,16 @@ import Form from "./Form";
 import { useAuthContext } from "../util/auth";
 import { makeRequest } from "../util/backend";
 import { useNavigate } from "react-router-dom";
-import { IStudentBlogLink } from "../util/types";
+import { IStudentReportLink } from "../util/types";
 import SpinnerLoader from "./SpinnerLoader";
 
-function BlogForm() {
+function ReportForm() {
   const authContext = useAuthContext();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
-  const [blogLink, setBlogLink] = useState<IStudentBlogLink | null>(null);
+  const [reportLink, setReportLink] = useState<IStudentReportLink | null>(null);
 
   useEffect(() => {
     if (!authContext.isAuthenticated) {
@@ -26,7 +26,7 @@ function BlogForm() {
     makeRequest(`student/bloglink`, "get", null, authContext.jwt)
       .then((response) => {
         if (response.is_ok) {
-          setBlogLink(response.response);
+          setReportLink(response.response);
         } else {
           setError(response.response.message);
         }
@@ -41,9 +41,9 @@ function BlogForm() {
   }, [navigate, authContext]);
 
   const fields: any = {
-    blog: {
+    report: {
       field: "Submission Link",
-      placeholder: "https://medium.com/my-blog",
+      placeholder: "https://medium.com/my-report",
       type: "url",
       required: true,
     },
@@ -51,9 +51,9 @@ function BlogForm() {
 
   return (
     <>
-    {blogLink !== null || error !== null ? (
+    {reportLink !== null || error !== null ? (
       <Form
-        title="Blog Submission Form"
+        title="Report Submission Form"
         error={error}
         info={info}
         loading={loading}
@@ -72,14 +72,14 @@ function BlogForm() {
               "post",
               {
                 ...responses,
-                blog_link: responses.blog,
+                report_link: responses.report,
               },
               authContext.jwt
             );
 
             if (!res.is_ok) setError(res.response.message);
             else {
-                setInfo("Blog submitted successfully!");
+                setInfo("Report submitted successfully!");
             }
 
             setLoading(false);
@@ -102,4 +102,4 @@ function BlogForm() {
   );
 }
 
-export default BlogForm;
+export default ReportForm;
