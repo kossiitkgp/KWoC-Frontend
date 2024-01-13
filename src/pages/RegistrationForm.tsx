@@ -61,7 +61,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   }
 
   return (
-    <div className="pt-28">
+    <div className="pt-28 w-[80%] md:w-[60%] md:max-w-full lg:w-[50%] mx-auto">
       <Form
         title={
           isRegistering

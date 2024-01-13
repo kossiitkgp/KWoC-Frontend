@@ -61,7 +61,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
   }, [navigate, id, isEditing]);
 
   return (
-    <div className="pt-28">
+    <div className="pt-28 w-[80%] md:w-[60%] md:max-w-full lg:w-[50%] mx-auto">
       {!isEditing || projectInfo !== null || error !== null ? (
         <Form
           title={isEditing ? "Edit Project" : "Register A Project"}
