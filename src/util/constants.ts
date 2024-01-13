@@ -3,7 +3,8 @@ export const REGISTRATIONS_OPEN =
   import.meta.env.VITE_REGISTRATIONS_OPEN == "true";
 export const MID_EVALS_ENDED = import.meta.env.VITE_MID_EVALS_ENDED == "true";
 export const END_EVALS_ENDED = import.meta.env.VITE_END_EVALS_ENDED == "true";
-export const REPORT_SUBMISSION_OPEN = import.meta.env.VITE_REPORT_SUBMISSION_OPEN == "true";
+export const REPORT_SUBMISSION_OPEN =
+  import.meta.env.VITE_REPORT_SUBMISSION_OPEN == "true";
 
 export enum ROUTER_PATHS {
   HOME = "/",

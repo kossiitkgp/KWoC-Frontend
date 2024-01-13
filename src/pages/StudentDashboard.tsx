@@ -81,7 +81,12 @@ function StudentDashboard() {
       <Profile />
       <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
         <div className="pt-28 max-w-5xl mx-auto px-4">
-          {(REPORT_SUBMISSION_OPEN && dashboard?.passed_end_evals) && <ReportForm currentLink={dashboard.blog_link} />}
+          {REPORT_SUBMISSION_OPEN && dashboard?.passed_end_evals && (
+            <div className="mb-5">
+              <ReportForm currentLink={dashboard.blog_link} />
+            </div>
+          )}
+
           <div className="flex gap-5 rounded-lg shadow-md mb-6">
             <div className="w-[50%]">
               {isLoading ? (

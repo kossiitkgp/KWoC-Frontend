@@ -3,7 +3,7 @@ import Form from "./Form";
 import { useAuthContext } from "../util/auth";
 import { makeRequest } from "../util/backend";
 
-function ReportForm({currentLink}: {currentLink: string}) {
+function ReportForm({ currentLink }: { currentLink: string }) {
   const authContext = useAuthContext();
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
