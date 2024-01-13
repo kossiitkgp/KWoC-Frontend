@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { RiErrorWarningFill } from "react-icons/ri";
+import { IconContext } from "react-icons";
 import SpinnerLoader from "./SpinnerLoader";
 
 interface IObject<T> {
@@ -64,8 +65,8 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   }
 
   return (
-    <div className="pt-32 w-[80%] md:w-[60%] md:max-w-full lg:w-[50%] mx-auto rounded-md">
-      <div className="p-10 border border-slate-700 sm:rounded-md">
+    <div className="rounded-md">
+      <div className="p-8 border border-slate-700 sm:rounded-md">
         <form
           onSubmit={async (e) => {
             e.preventDefault();
@@ -75,20 +76,31 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
             }
           }}
         >
-          <h1 className="text-center text-3xl mb-10">{props.title}</h1>
+          <h1 className="text-center text-3xl mb-5">{props.title}</h1>
+          {props.error && (
+            <p className="text-red-500 text-center">{props.error}</p>
+          )}
+          {props.info && (
+            <p className="text-primary text-center">{props.info}</p>
+          )}
+          {loading && <SpinnerLoader />}
+
           {props.staticMessage && (
-            <p className="flex items-center justify-center">
-              <RiErrorWarningFill className="mr-2 fill-gray-300" />
+            <p className="flex items-center justify-center mb-3">
+              {typeof props.staticMessage == "string" && (
+                <span className="h-full">
+                  <IconContext.Provider value={{ size: "1.5rem" }}>
+                    <RiErrorWarningFill className="mr-2 fill-gray-300" />
+                  </IconContext.Provider>
+                </span>
+              )}
               <span className="text-gray-300">{props.staticMessage}</span>
             </p>
           )}
-          {props.error && <p className="text-red-500">{props.error}</p>}
-          {props.info && <p className="text-primary">{props.info}</p>}
-          {loading && <SpinnerLoader />}
 
           {Object.values(inputs)}
           <div className="flex justify-around">
-            <div className="mb-4 text-center">
+            <div className="mb-2 text-center">
               <button
                 type="submit"
                 className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:text-gray-300 disabled:bg-gray-600"
@@ -100,7 +112,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
               </button>
             </div>
             {props.onCancel !== undefined && (
-              <div className="mb-4 text-center">
+              <div className="mb-2 text-center">
                 <button
                   type="reset"
                   className="h-10 px-5 text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:text-gray-600 disabled:bg-gray-600"
@@ -131,7 +143,7 @@ interface IFormInputProps extends IInputFields {
 }
 function FormInput(props: IFormInputProps) {
   return (
-    <label className="block mb-10">
+    <label className="block mb-6">
       <span className="text-white">{props.field}</span>
       <input
         type={props.type}

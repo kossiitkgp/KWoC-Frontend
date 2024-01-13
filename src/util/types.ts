@@ -47,6 +47,7 @@ export interface IEndpointTypes {
       college: string;
       passed_mid_evals: boolean;
       passed_end_evals: boolean;
+      blog_link: string;
       commit_count: number;
       pull_count: number;
       lines_added: number;
@@ -77,6 +78,13 @@ export interface IEndpointTypes {
       projects: IProjectDashboardInfo[];
       students: IStudentInfo[];
     };
+  };
+  "student/bloglink": {
+    request: {
+      username: string;
+      blog_link: string;
+    };
+    response: null;
   };
   [route: `project/${number}`]: {
     request: null;
