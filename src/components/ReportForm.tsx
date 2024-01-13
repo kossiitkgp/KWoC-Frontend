@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Form from "./Form";
 import { useAuthContext } from "../util/auth";
 import { makeRequest } from "../util/backend";
-import { ROUTER_PATHS } from "../util/constants";
 
 function ReportForm({ currentLink }: { currentLink: string }) {
   const authContext = useAuthContext();
@@ -20,8 +19,22 @@ function ReportForm({ currentLink }: { currentLink: string }) {
       disabled={loading}
       staticMessage={
         <ul>
-          <li className="mb-1 text-lg text-yellow-500">Note: Your profile name will be displayed on the certificate. Please update it <Link className="hover:underline text-primary-500 hover:text-primary-600" to={authContext.formLink}>here</Link> if required.</li>
-          <li>The report should include a list of projects you worked on, a list of pull requests you have created, along with links, and a concise yet informative summary of your work and your learnings.</li>
+          <li className="mb-1 text-lg text-yellow-500">
+            Note: Your profile name will be displayed on the certificate. Please
+            update it{" "}
+            <Link
+              className="hover:underline text-primary-500 hover:text-primary-600"
+              to={authContext.formLink}
+            >
+              here
+            </Link>{" "}
+            if required.
+          </li>
+          <li>
+            The report should include a list of projects you worked on, a list
+            of pull requests you have created, along with links, and a concise
+            yet informative summary of your work and your learnings.
+          </li>
         </ul>
       }
       fields={{

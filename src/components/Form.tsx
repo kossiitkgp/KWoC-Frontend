@@ -87,13 +87,13 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 
           {props.staticMessage && (
             <p className="flex items-center justify-center mb-3">
-              {typeof props.staticMessage == 'string' &&
+              {typeof props.staticMessage == "string" && (
                 <span className="h-full">
                   <IconContext.Provider value={{ size: "1.5rem" }}>
                     <RiErrorWarningFill className="mr-2 fill-gray-300" />
                   </IconContext.Provider>
                 </span>
-              }
+              )}
               <span className="text-gray-300">{props.staticMessage}</span>
             </p>
           )}
