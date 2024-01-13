@@ -81,7 +81,7 @@ export interface IEndpointTypes {
   "student/bloglink": {
     request: {
       username: string;
-      report_link: string;
+      blog_link: string;
     };
     response: null;
   };
