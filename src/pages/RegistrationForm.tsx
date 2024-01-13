@@ -61,7 +61,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   }
 
   return (
-    <>
+    <div className="pt-28">
       <Form
         title={
           isRegistering
@@ -133,7 +133,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
           }
         }}
       />
-    </>
+    </div>
   );
 }
 

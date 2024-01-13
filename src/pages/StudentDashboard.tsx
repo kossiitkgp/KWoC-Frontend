@@ -80,8 +80,8 @@ function StudentDashboard() {
       <Profile />
       <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
         <div className="pt-28 max-w-5xl mx-auto px-4">
-          <BlogForm />
           <div className="flex gap-5 rounded-lg shadow-md mb-6 mr-6">
+          <BlogForm />
             <div className="w-[50%]">
               {isLoading ? (
                 <SpinnerLoader />
