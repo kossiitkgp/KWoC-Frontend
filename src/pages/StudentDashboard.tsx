@@ -3,6 +3,7 @@ import {
   DISCORD_INVITE,
   END_EVALS_ENDED,
   MID_EVALS_ENDED,
+  REPORT_SUBMISSION_OPEN,
   ROUTER_PATHS,
   SLACK_INVITE,
   STUDENT_MANUAL_LINK,
@@ -80,7 +81,7 @@ function StudentDashboard() {
       <Profile />
       <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
         <div className="pt-28 max-w-5xl mx-auto px-4">
-          <ReportForm />
+          {REPORT_SUBMISSION_OPEN && <ReportForm />}
           <div className="flex gap-5 rounded-lg shadow-md mb-6">
             <div className="w-[50%]">
               {isLoading ? (
