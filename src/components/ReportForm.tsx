@@ -16,7 +16,7 @@ function ReportForm() {
       info={info}
       loading={loading}
       disabled={loading}
-      staticMessage="Note: The name on your profile will be displayed on the certificate. Change it accordingly."
+      staticMessage="Note: The name on your profile will be displayed on the certificate. Please update it if necessary."
       fields={{
         report: {
           field: "Submission Link",
@@ -32,7 +32,7 @@ function ReportForm() {
         try {
           setLoading(true);
           const res = await makeRequest(
-            `student/bloglink`,
+            "student/bloglink",
             "post",
             {
               username: authContext.userData.username,
