@@ -80,20 +80,23 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           {props.error && (
             <p className="text-red-500 text-center">{props.error}</p>
           )}
-          {props.staticMessage && (
-            <p className="flex items-center justify-center mb-1">
-              <span className="h-full">
-                <IconContext.Provider value={{ size: "1.5rem" }}>
-                  <RiErrorWarningFill className="mr-2 fill-gray-300" />
-                </IconContext.Provider>
-              </span>
-              <span className="text-gray-300">{props.staticMessage}</span>
-            </p>
-          )}
           {props.info && (
             <p className="text-primary text-center">{props.info}</p>
           )}
           {loading && <SpinnerLoader />}
+
+          {props.staticMessage && (
+            <p className="flex items-center justify-center mb-3">
+              {typeof props.staticMessage == 'string' &&
+                <span className="h-full">
+                  <IconContext.Provider value={{ size: "1.5rem" }}>
+                    <RiErrorWarningFill className="mr-2 fill-gray-300" />
+                  </IconContext.Provider>
+                </span>
+              }
+              <span className="text-gray-300">{props.staticMessage}</span>
+            </p>
+          )}
 
           {Object.values(inputs)}
           <div className="flex justify-around">
