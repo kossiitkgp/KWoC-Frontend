@@ -78,6 +78,18 @@ export interface IEndpointTypes {
       students: IStudentInfo[];
     };
   };
+  "stats/projects": {
+    request: null;
+    response: {
+      name: string;
+      repo_link: string;
+      commit_count: number;
+      pull_count: number;
+      lines_added: number;
+      lines_removed: number;
+      languages_used: string[];
+    }[];
+  };
   [route: `project/${number}`]: {
     request: null;
     response: IProject;
