@@ -80,9 +80,10 @@ export interface IEndpointTypes {
   };
   "student/bloglink": {
     request: {
+      username: string;
       report_link: string;
     };
-    response: IStudentReportLink;
+    response: null;
   };
   [route: `project/${number}`]: {
     request: null;
@@ -138,8 +139,4 @@ export interface IProjectDashboardInfo extends IProject {
 
 export interface IProjectTags {
   [key: string]: string;
-}
-
-export interface IStudentReportLink {
-  report_link: string;
 }
