@@ -47,6 +47,7 @@ export interface IEndpointTypes {
       college: string;
       passed_mid_evals: boolean;
       passed_end_evals: boolean;
+      blog_link: string;
       commit_count: number;
       pull_count: number;
       lines_added: number;
