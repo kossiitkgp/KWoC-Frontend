@@ -7,14 +7,15 @@ import { makeRequest } from "../util/backend";
 function ReportForm({ currentLink }: { currentLink: string }) {
   const authContext = useAuthContext();
   const [error, setError] = useState<string | null>(null);
-  const [info, setInfo] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(currentLink !== "" ? "Submitted" : null);
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <Form
       title="Report Submission Form"
       error={error}
-      info={info}
+      success={success}
+      info={null}
       loading={loading}
       disabled={loading}
       staticMessage={
@@ -48,7 +49,7 @@ function ReportForm({ currentLink }: { currentLink: string }) {
       }}
       onSubmit={async (responses) => {
         setError(null);
-        setInfo(null);
+        setSuccess(null);
 
         try {
           setLoading(true);
@@ -64,7 +65,7 @@ function ReportForm({ currentLink }: { currentLink: string }) {
 
           if (!res.is_ok) setError(res.response.message);
           else {
-            setInfo("Report submitted successfully!");
+            setSuccess("Report submitted successfully!");
           }
 
           setLoading(false);

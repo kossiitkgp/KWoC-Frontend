@@ -9,7 +9,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const authContext = useAuthContext();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
-  const [info, setInfo] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const [isRegistering, setIsRegistering] = useState(false);
@@ -71,7 +71,8 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
             : "Edit Your Information"
         }
         error={error}
-        info={info}
+        success={success}
+        info={null}
         loading={loading}
         disabled={loading}
         submitWithoutChange={isRegistering}
@@ -88,7 +89,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
         }}
         onSubmit={async (responses) => {
           setError(null);
-          setInfo(null);
+          setSuccess(null);
 
           const userData = {
             username: authContext.userData.username,
@@ -118,7 +119,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
                   responses.email,
                   responses?.college,
                 );
-                setInfo("Information successfully changed.");
+                setSuccess("Information successfully changed.");
               }
             }
 

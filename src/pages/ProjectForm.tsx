@@ -19,7 +19,6 @@ function ProjectForm(props: { isEditing?: boolean }) {
   const { id } = useParams();
 
   const [error, setError] = useState<string | null>(null);
-  const [info, setInfo] = useState<string | null>(null);
   const [projectInfo, setProjectInfo] = useState<IProject | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -66,7 +65,8 @@ function ProjectForm(props: { isEditing?: boolean }) {
         <Form
           title={isEditing ? "Edit Project" : "Register A Project"}
           error={error}
-          info={info}
+          info={null}
+          success={null}
           loading={loading}
           disabled={loading}
           fields={{
@@ -125,7 +125,6 @@ function ProjectForm(props: { isEditing?: boolean }) {
           }}
           onSubmit={async (responses) => {
             setError(null);
-            setInfo(null);
 
             try {
               setLoading(true);

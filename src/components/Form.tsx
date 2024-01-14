@@ -18,6 +18,7 @@ interface IFormProps<S extends InputSettings> {
   fields: S;
   error: string | null;
   info: string | null;
+  success: string | null;
   disabled?: boolean;
   loading?: boolean;
   staticMessage?: string | ReactNode; // New prop for a static warning message
@@ -82,6 +83,9 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           )}
           {props.info && (
             <p className="text-primary text-center">{props.info}</p>
+          )}
+          {props.success && (
+            <p className="text-green-500 text-center">{props.success}</p>
           )}
           {loading && <SpinnerLoader />}
 
