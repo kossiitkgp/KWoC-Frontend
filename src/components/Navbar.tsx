@@ -4,12 +4,12 @@ import kwoc_logo from "../assets/kwoc_logo.png";
 import "../styles/Navbar.css";
 import {
     ROUTER_PATHS,
-    GH_OAUTH_URL,
-    REGISTRATIONS_OPEN,
+    //GH_OAUTH_URL,
+    //REGISTRATIONS_OPEN,
 } from "../util/constants";
 
 const Navbar = () => {
-    const [LINKS, setLINKS] = useState([
+    const [LINKS, _] = useState([
         { name: "Home", link: ROUTER_PATHS.HOME, isActive: true },
         { name: "Projects", link: ROUTER_PATHS.PROJECTS_LIST, isActive: false },
         { name: "FAQs", link: ROUTER_PATHS.FAQ, isActive: false },

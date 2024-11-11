@@ -6,7 +6,7 @@ import ProjectForm from "./pages/ProjectForm";
 // import Projects from "./pages/Projects";
 // import Testimonials from "./pages/Testimonials";
 // import OAuth from "./pages/OAuth";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import { AuthProvider } from "./util/auth";
 import { REGISTRATIONS_OPEN, ROUTER_PATHS } from "./util/constants";
 // import MentorDashboard from "./pages/MentorDashboard";
