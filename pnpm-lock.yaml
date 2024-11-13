@@ -64,7 +64,7 @@ importers:
         specifier: ^8.10.0
         version: 8.11.0(eslint@9.13.0(jiti@1.21.6))(typescript@5.6.3)
       vite:
-        specifier: ^5.4.9
+        specifier: ^5.4.10
         version: 5.4.10
 
 packages:
