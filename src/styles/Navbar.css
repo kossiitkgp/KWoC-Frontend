@@ -38,6 +38,13 @@
     transition: 0.5s;
 }
 
+.profile-picture-navbar {
+    width: 2.5rem;       
+    height: 100%;        
+    border-radius: 50%; 
+    display: block;
+}
+
 .burger {
     position: absolute;
     right: 40px;

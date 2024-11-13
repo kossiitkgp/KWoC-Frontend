@@ -1,21 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FAQ from "./pages/FAQ";
 import Home from "./pages/Home";
-import Projects from "./pages/Projects";
-import ProjectForm from "./pages/ProjectForm";
 // import Projects from "./pages/Projects";
+import ProjectForm from "./pages/ProjectForm";
+import NotFoundPage from "./pages/NotFoundPage";
+import Projects from "./pages/Projects";
 // import Testimonials from "./pages/Testimonials";
-// import OAuth from "./pages/OAuth";
-// import Navbar from "./components/Navbar";
+import OAuth from "./pages/OAuth";
 import { AuthProvider } from "./util/auth";
 import { REGISTRATIONS_OPEN, ROUTER_PATHS } from "./util/constants";
-// import MentorDashboard from "./pages/MentorDashboard";
-// import ProjectForm from "./pages/ProjectForm";
+import MentorDashboard from "./pages/MentorDashboard";
 // import ScrollToTop from "./util/scrollToTop";
-// import PastProgramsPage from "./pages/PastProgramsPage";
-// import StudentDashboard from "./pages/StudentDashboard";
+import PastProgramsPage from "./pages/PastProgramsPage";
+import StudentDashboard from "./pages/StudentDashboard";
 import RegistrationForm from "./pages/RegistrationForm";
-// import NotFoundPage from "./pages/404";
 import Snowfall from "react-snowfall";
 import Lottie from "lottie-react";
 import { CSSProperties, useState, useEffect } from "react";
@@ -105,10 +103,10 @@ function App() {
               element={<RegistrationForm isStudent={true} />}
             />
             <Route path={ROUTER_PATHS.FAQ} element={<FAQ />} />
-            {/* <Route
+            <Route
               path={ROUTER_PATHS.STUDENT_DASHBOARD}
               element={<StudentDashboard />}
-            /> */}
+            />
             <Route path={ROUTER_PATHS.PROJECTS_LIST} element={<Projects />} />
             {REGISTRATIONS_OPEN && (
               <Route
@@ -116,11 +114,11 @@ function App() {
                 element={<ProjectForm />}
               />
             )}
-            {/* <Route
+            <Route path={ROUTER_PATHS.OAUTH} element={<OAuth />} />
+            <Route
               path={ROUTER_PATHS.PROJECT_EDIT_FORM}
               element={<ProjectForm isEditing={true} />}
             />
-            <Route path={ROUTER_PATHS.OAUTH} element={<OAuth />} />
             <Route
               path={ROUTER_PATHS.MENTOR_DASHBOARD}
               element={<MentorDashboard />}
@@ -129,7 +127,7 @@ function App() {
               path={ROUTER_PATHS.PASTPROGRAMS}
               element={<PastProgramsPage />}
             />
-            <Route path="*" element={<NotFoundPage />} /> */}
+          <Route path="*" element={<NotFoundPage />} /> 
           </Routes>
         </AuthProvider>
       </BrowserRouter>

@@ -38,10 +38,10 @@ function FAQ() {
             Wanna ask us a question? Check these first.
           </p>
         </section>
-        <div className="search-bar">
-          <div className="search-input-container">
+        <div className="faq-search-bar">
+          <div className="faq-search-input-container">
             <input
-              className="search-input"
+              className="faq-search-input"
               type="text"
               placeholder="Search your query"
               onChange={onChangeHandler}

@@ -1,0 +1,140 @@
+/* MentorProjectCard.css */
+.mentor-project-card {
+    padding: 16px;
+    width: 320px;
+    background-color: rgba(42, 42, 42, 0.64);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .project-header {
+    margin-bottom: 16px;
+  }
+  
+  .project-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  .status-approved {
+    font-size: 0.875rem;
+    color: #4caf50;
+  }
+  
+  .status-awaiting {
+    font-size: 0.875rem;
+    color: #f57c00;
+  }
+  
+  .mentor-info {
+    margin-bottom: 24px;
+  }
+  
+  .mentor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .mentor span {
+    font-weight: bold;
+    margin-left: 4px;
+  }
+  
+  .mentor-link,
+  .co-mentor-link {
+    font-weight: bold;
+    color: #1976d2;
+    text-decoration: none;
+  }
+  
+  .co-mentor-link.no-co-mentor {
+    color: #757575;
+  }
+  
+  .co-mentor-link:hover,
+  .mentor-link:hover {
+    text-decoration: underline;
+  }
+  
+  .commit-pull-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .info-item svg {
+    margin-right: 8px;
+  }
+  
+  .lines-changed {
+    margin-bottom: 16px;
+  }
+  
+  .lines-header {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .lines-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .added-bar {
+    background-color: #4caf50;
+    height: 6px;
+    border-radius: 4px;
+  }
+  
+  .removed-bar {
+    background-color: #f44336;
+    height: 6px;
+    border-radius: 4px;
+  }
+  
+  .lines-added,
+  .lines-removed {
+    font-weight: bold;
+    font-size: 0.875rem;
+  }
+  
+  .project-links {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .view-project-btn,
+  .edit-project-btn {
+    width: 48%;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .view-project-btn {
+    background-color: #1976d2;
+  }
+  
+  .view-project-btn:hover {
+    background-color: #1565c0;
+  }
+  
+  .edit-project-btn {
+    background-color: #ff9800;
+  }
+  
+  .edit-project-btn:hover {
+    background-color: #f57c00;
+  }
+  

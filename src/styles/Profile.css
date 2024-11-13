@@ -1,0 +1,78 @@
+/* Container styling for Profile component */
+.profileContainer {
+    position: sticky;
+    align-self: start;
+    margin-top: 7rem;
+    overflow: auto;
+    padding: 1rem 2.5rem;
+    width: 10rem;
+    height: fit-content;
+    margin-bottom: 2rem;
+  }
+  
+  /* Styling for profile picture wrapper */
+  .profilePictureWrapper {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #1c1f4a; /* Equivalent of bg-primary-950 */
+    border-radius: 9999px;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+  }
+  
+  /* Profile picture styling */
+  .profilePicture {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  /* Profile name text styling */
+  .profileName {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0.75rem 0;
+  }
+  
+  .profileUsername {
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: #9ca3af; /* Equivalent of text-gray-400 */
+  }
+  
+  /* Link and button styling */
+  .buttonContainer {
+    display: flex;
+    margin-top: 0.5rem;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .editButton,
+  .signOutButton {
+    text-align: center;
+    padding: 0.5rem 1.25rem;
+    height: fit-content;
+    color: #e0e7ff; /* Equivalent of text-indigo-100 */
+    border-radius: 0.5rem;
+    transition: background-color 0.15s;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0);
+  }
+  
+  .editButton {
+    background-color: #4338ca; /* Equivalent of bg-primary-700 */
+  }
+  
+  .editButton:hover {
+    background-color: #3730a3; /* Equivalent of hover:bg-primary-800 */
+  }
+  
+  .signOutButton {
+    background-color: #b91c1c; /* Equivalent of bg-red-800 */
+  }
+  
+  .signOutButton:hover {
+    background-color: #991b1b; /* Equivalent of hover:bg-red-800 */
+  }
+  

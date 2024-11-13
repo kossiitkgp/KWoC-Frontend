@@ -1,0 +1,48 @@
+.resourcesContainer {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .resourceList {
+    margin-top: 1rem;
+  }
+  
+  .resourceLink {
+    display: block;
+    color: #1d4ed8; /* Equivalent of text-primary */
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  
+  .resourceLink:hover {
+    color: #2563eb; /* Equivalent of hover:text-primary-600 */
+    text-decoration: underline;
+  }
+  
+  .resourceItem {
+    list-style: none;
+    gap: 1.25rem;
+    display: flex;
+    align-items: center;
+    color: inherit;
+  }
+  
+  .avatarWrapper {
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  .avatarImage {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  .messageText {
+    color: inherit;
+    font-size: 0.875rem;
+  }
+  
