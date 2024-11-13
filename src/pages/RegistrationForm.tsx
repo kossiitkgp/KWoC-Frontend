@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Form from "../components/Form";
 import { useAuthContext } from "../util/auth";
-// import { REGISTRATIONS_OPEN, ROUTER_PATHS } from "../util/constants";
+import { REGISTRATIONS_OPEN, ROUTER_PATHS } from "../util/constants";
 import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 
@@ -19,18 +19,18 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   useEffect(() => {
     setIsRegistering(!authContext.isRegistered);
 
-    // if (isRegistering && !REGISTRATIONS_OPEN) {
-    //   // Redirect if registrations are closed and is registering
-    //   navigate(ROUTER_PATHS.HOME);
-    // }
+    if (isRegistering && !REGISTRATIONS_OPEN) {
+      // Redirect if registrations are closed and is registering
+      navigate(ROUTER_PATHS.HOME);
+    }
 
-    // if (!authContext.isAuthenticated) {
-    //   navigate(ROUTER_PATHS.HOME);
-    // }
+    if (!authContext.isAuthenticated) {
+      navigate(ROUTER_PATHS.HOME);
+    }
 
-    // if (authContext.userData.type !== userType) {
-    //   navigate(ROUTER_PATHS.HOME);
-    // }
+    if (authContext.userData.type !== userType) {
+      navigate(ROUTER_PATHS.HOME);
+    }
   });
 
   const fields: any = {
