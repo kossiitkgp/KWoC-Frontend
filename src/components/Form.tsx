@@ -104,7 +104,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
             <div className="mb-2 text-center">
               <button
                 type="submit"
-                className="button"
+                className="form-button"
                 disabled={
                   (!responsesChanged && !props.submitWithoutChange) || disabled
                 }
@@ -116,7 +116,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
               <div className="mb-2 text-center">
                 <button
                   type="reset"
-                  className="button cancel-button"
+                  className="form-button cancel-button"
                   onClick={() => props.onCancel!(responses)}
                 >
                   Cancel

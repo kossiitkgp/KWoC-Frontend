@@ -10,7 +10,7 @@ import {
 import { useAuthContext } from '../util/auth';
 import { UserType } from '../util/types';
 
-function LoginButton({ isMobile }: { isMobile: boolean }) {
+function LoginButton() {
     const authContext = useAuthContext();
     
     return (
@@ -89,7 +89,7 @@ const Navbar = () => {
                     </li>
                 ))}
 
-                <LoginButton isMobile={false}/>
+                <LoginButton />
 
                 {/* <button className='reg-button'>Registration Opens Soon!</button> */}
             </ul>

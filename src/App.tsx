@@ -17,6 +17,9 @@ import RegistrationForm from "./pages/RegistrationForm";
 import Snowfall from "react-snowfall";
 import Lottie from "lottie-react";
 import { CSSProperties, useState, useEffect } from "react";
+import { Header } from "./components/Header";
+import Footer from "./components/Footer";
+
 
 const santaAnimationStyle: CSSProperties = {
   position: "fixed",
@@ -68,6 +71,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <AuthProvider>
+          <Header />
           <Snowfall // the image can be edited into anything we want, feel free to change
             snowflakeCount={150}
             speed={[0.5, 1]} // array takes [min, max]
@@ -129,6 +133,7 @@ function App() {
             />
           <Route path="*" element={<NotFoundPage />} /> 
           </Routes>
+          <Footer />
         </AuthProvider>
       </BrowserRouter>
     </div>

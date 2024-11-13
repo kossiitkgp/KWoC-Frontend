@@ -1,30 +1,20 @@
 /* Container styling for Profile component */
 .profileContainer {
     position: sticky;
-    align-self: start;
-    margin-top: 7rem;
+    margin-top: 1rem;
     overflow: auto;
-    padding: 1rem 2.5rem;
-    width: 10rem;
-    height: fit-content;
-    margin-bottom: 2rem;
-  }
-  
-  /* Styling for profile picture wrapper */
-  .profilePictureWrapper {
-    width: 100%;
-    aspect-ratio: 1;
-    background-color: #1c1f4a; /* Equivalent of bg-primary-950 */
-    border-radius: 9999px;
-    margin-bottom: 0.5rem;
-    overflow: hidden;
+    padding: 1rem 2rem;
+    width: 16vw;
+    text-align: center; /* Center everything inside the container */
   }
   
   /* Profile picture styling */
   .profilePicture {
-    width: 100%;
-    height: 100%;
+    width: 80px; /* Adjust width as needed */
+    height: 80px; /* Adjust height as needed */
     display: block;
+    margin: 0 auto; /* Center horizontally */
+    border-radius: 50%;
   }
   
   /* Profile name text styling */
@@ -49,18 +39,17 @@
     gap: 0.75rem;
   }
   
-  .editButton,
-  .signOutButton {
+  /* Edit Button Styling */
+  .editButton {
     text-align: center;
-    padding: 0.5rem 1.25rem;
-    height: fit-content;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: max-content;
+    padding: 0.5rem 1rem; /* Adjust padding for better button sizing */
     color: #e0e7ff; /* Equivalent of text-indigo-100 */
     border-radius: 0.5rem;
     transition: background-color 0.15s;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0);
-  }
-  
-  .editButton {
     background-color: #4338ca; /* Equivalent of bg-primary-700 */
   }
   
@@ -68,7 +57,17 @@
     background-color: #3730a3; /* Equivalent of hover:bg-primary-800 */
   }
   
+  /* Sign Out Button Styling */
   .signOutButton {
+    text-align: center;
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    width: max-content;
+    padding: 0.5rem 1rem; /* Adjust padding for better button sizing */
+    color: #e0e7ff; /* Equivalent of text-indigo-100 */
+    border-radius: 0.5rem;
+    transition: background-color 0.15s;
     background-color: #b91c1c; /* Equivalent of bg-red-800 */
   }
   

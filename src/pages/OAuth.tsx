@@ -3,6 +3,7 @@ import { makeRequest } from "../util/backend";
 import { useAuthContext } from "../util/auth";
 import { useNavigate } from "react-router-dom";
 import SpinnerLoader from "../components/SpinnerLoader";
+import "../styles/OAuth.css"
 
 function OAuth() {
   const authContext = useAuthContext();
@@ -57,13 +58,16 @@ function OAuth() {
   });
 
   return (
-    <div className="pt-32 flex justify-center">
-      {error === null ? (
-        <SpinnerLoader />
+    <div className="loading-container">
+      {error !== null ? (
+        <div className="loader-wrapper">
+          <SpinnerLoader  />
+        </div>
       ) : (
-        <p className="text-red-500">{error}</p>
+        <p className="error-text">{error}</p>
       )}
     </div>
+
   );
 }
 

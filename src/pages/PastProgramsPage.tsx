@@ -1,4 +1,3 @@
-import Footer from "../components/Footer";
 import ProgramCard from "../components/ProgramCard";
 import PROGRAMS from "../data/programs.json";
 
@@ -34,7 +33,6 @@ export default function PastProgramsPage() {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

@@ -39,55 +39,56 @@ function MentorProjectCard({
     <div className="mentor-project-card">
       {/* Project Title and Status */}
       <div className="project-header">
-        <h3 className="project-title">{name}</h3>
+        <h4 className="project-title">{name}</h4>
         {project_status ? (
-          <p className="status-approved">Approved</p>
+          <span className="status-approved">Approved</span>
         ) : (
-          <p className="status-awaiting">Awaiting Approval</p>
+          <span className="status-awaiting">Awaiting Approval</span>
         )}
       </div>
 
-      {/* Mentor and Co-Mentor Info */}
-      <div className="mentor-info">
-        <div className="mentor">
-          <IoPersonSharp />
-          <span>Mentor:</span>
-          <a
-            href={`https://github.com/${mentor.username}`}
-            className="mentor-link"
-          >
-            @{mentor.username}
-          </a>
-        </div>
+      {/* Mentor and Commit Info Section */}
+      <div className="info-container">
+          <div className="mentor">
+            <IoPersonSharp size={16} />
+            <span>Mentor:</span>
+            <a
+              href={`https://github.com/${mentor.username}`}
+              className="mentor-link"
+            >
+              @{mentor.username}
+            </a>
+          </div>
 
-        <div className="mentor">
-          <IoPersonSharp />
-          <span>Co-Mentor:</span>
-          <a
-            href={
-              secondary_mentor.username !== ""
-                ? `https://github.com/${secondary_mentor.username}`
-                : "#"
-            }
-            className={`co-mentor-link ${
-              secondary_mentor.username === "" ? "no-co-mentor" : ""
-            }`}
-          >
-            {secondary_mentor.username !== ""
-              ? `@${secondary_mentor.username}`
-              : "None"}
-          </a>
-        </div>
+          <div className="mentor">
+            <IoPersonSharp size={16} />
+            <span>Co-Mentor:</span>
+            <a
+              href={
+                secondary_mentor.username !== ""
+                  ? `https://github.com/${secondary_mentor.username}`
+                  : "#"
+              }
+              className={`co-mentor-link ${
+                secondary_mentor.username === "" ? "no-co-mentor" : ""
+              }`}
+            >
+              {secondary_mentor.username !== ""
+                ? `@${secondary_mentor.username}`
+                : "None"}
+            </a>
+          </div>
 
+        {/* Commit and Pull Request Info */}
         <div className="commit-pull-info">
           <div className="info-item">
-            <BiGitCommit />
+            <BiGitCommit size={16} />
             <span>Merged Commits:</span>
             <p>{commit_count}</p>
           </div>
           <div className="info-item">
-            <BiGitPullRequest />
-            <span>Merged Pull Requests:</span>
+            <BiGitPullRequest size={16} />
+            <span>Merged PRs:</span>
             <p>{pull_count}</p>
           </div>
         </div>
@@ -95,9 +96,8 @@ function MentorProjectCard({
 
       {/* Lines Added/Removed */}
       <div className="lines-changed">
-        <p className="lines-header">Lines Added / Removed</p>
         <div className="lines-bar">
-          <span className="lines-added">+ {lines_added}</span>
+          <span className="lines-added">+{lines_added}</span>
           <div className="bar">
             <div
               style={{ flex: addedPercentage + "%" }}
@@ -108,25 +108,21 @@ function MentorProjectCard({
               className="removed-bar"
             ></div>
           </div>
-          <span className="lines-removed">- {lines_removed}</span>
+          <span className="lines-removed">-{lines_removed}</span>
         </div>
       </div>
 
       {/* Project Links */}
       <div className="project-links">
-        <a
-          href={repo_link}
-          target="_blank"
-          className="view-project-btn"
-        >
-          View Project
+        <a href={repo_link} target="_blank" className="view-project-btn">
+          View
         </a>
         {mentor.username === authContext.userData.username && (
           <Link
             to={ROUTER_PATHS.PROJECT_EDIT_FORM_NOSUFFIX + id.toString()}
             className="edit-project-btn"
           >
-            Edit Project
+            Edit
           </Link>
         )}
       </div>

@@ -67,12 +67,23 @@ function MentorDashboard() {
   }
 
   return (
-    <div className="profileContainer">
-      <Profile />
+    <div className="mentorDashboardContainer">
+      {/* Left Sidebar - Profile */}
+      <div className="profileSidebar">
+        <Profile />
+        <Resources title="Mentor Resources" resources={MENTOR_RESOURCES} />
+      </div>
 
+      {/* Middle Section - Projects */}
       <div className="projectSection">
-        <div className="projectTitle">
-          <h2>PROJECTS</h2>
+        <div className="projectHeader">
+          <h2 className="projectTitle">PROJECTS</h2>
+          {REGISTRATIONS_OPEN && (
+            <Link to={ROUTER_PATHS.PROJECT_FORM} className="addProjectButton">
+              <HiOutlineViewGridAdd size={30} />
+              <div>Add Project</div>
+            </Link>
+          )}
         </div>
         {isLoading ? (
           <SpinnerLoader />
@@ -81,20 +92,16 @@ function MentorDashboard() {
             {dashboard.projects.map((project, i) => (
               <MentorProjectCard key={i} {...project} />
             ))}
-            {REGISTRATIONS_OPEN && (
-              <Link to={ROUTER_PATHS.PROJECT_FORM} className="addProjectButton">
-                <HiOutlineViewGridAdd size={50} />
-                <div>Add Project</div>
-              </Link>
-            )}
           </div>
         ) : (
           <p className="text-center text-red-500">{error}</p>
         )}
       </div>
 
-      <div className="profileSidebar">
-        <div className="mb-8">
+      {/* Right Sidebar - Stats & Resources */}
+      <div className="rightSidebar">
+      <div className="statsSectionCard">
+        <div className="statsSection">
           <h3 className="statsHeader">Overall Stats</h3>
           <div>
             <div className="statsItem">
@@ -126,22 +133,30 @@ function MentorDashboard() {
               <p className="statsValue">{approvedProjects}</p>
             </div>
           </div>
+          </div>
         </div>
 
+        {/* Merged Pull Requests */}
         {dashboard !== null && (
-          <div className="mb-8">
+          <div className="mergedPullsSection">
             <h3 className="statsHeader">Merged Pull Requests</h3>
             <div className="resourceList">
-              {dashboard.projects.flatMap((project) => project.pulls).map((pull, index) => (
-                <a key={index} href={pull} target="_blank" rel="noopener noreferrer" className="resourceLink">
-                  {formatPullRequest(pull)}
-                </a>
-              ))}
+              {dashboard.projects
+                .flatMap((project) => project.pulls)
+                .map((pull, index) => (
+                  <a
+                    key={index}
+                    href={pull}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="resourceLink"
+                  >
+                    {formatPullRequest(pull)}
+                  </a>
+                ))}
             </div>
           </div>
         )}
-
-        <Resources title="Mentor Resources" resources={MENTOR_RESOURCES} />
       </div>
     </div>
   );
