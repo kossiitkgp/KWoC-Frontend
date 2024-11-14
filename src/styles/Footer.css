@@ -1,6 +1,7 @@
 .footer {
     text-align: center;
     color: #1a1a1a;
+    margin-top: -400px;
     font-family: Arial, sans-serif;
   }
   
@@ -14,9 +15,10 @@
   
   .footer-columns {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
-    padding: 250px 0 100px; 
+    align-items: center;
+    padding: 500px 0 100px; 
     background-image: url('../assets/Group-16.png'); 
     background-size: cover;
     background-repeat: no-repeat;
@@ -27,17 +29,46 @@
   }
   
   .footer-column {
-    background-color: #ffffff;
     padding: 40px 0;
-    margin-top: 180px;
+    margin-top: 10px;
     margin-bottom: -100px;
     text-align: center;
-    font-size: large;
+    font-size: medium;
     color: #000000;
     max-width: 200px;
     height: 10%;
   }
   
+  @media (min-width: 768px) {
+    .footer {
+      margin-top: 0px;
+    }
+    .footer-columns {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 250px 0 100px; 
+      background-image: url('../assets/Group-16.png'); 
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-bottom: -40px;
+      background-position: center 135px; 
+      position: relative;
+      color: #fff;
+    }
+    
+    .footer-column {
+      padding: 40px 0;
+      margin-top: 180px;
+      margin-bottom: -100px;
+      text-align: center;
+      font-size: large;
+      color: #000000;
+      max-width: 200px;
+      height: 10%;
+    }
+  }
   .footer-column h2 {
     font-weight: bold;
     margin-bottom: 10px;

@@ -20,7 +20,7 @@ function Testimonials() {
   return (
     <div className="testimonials-container">
       <section className="testimonials-header">
-        <h1 className="testimonials-title  center mb-12 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-12 lg:text-8xl lg:mb-36" style={{color:"#ffe336",fontSize:"4rem",  fontWeight:"900", fontStyle:"italic"}}>
+        <h1 className="testimonials-title">
           <em >What Past Participants Say</em>
         </h1>
         <p className="testimonials-subtitle" style={{color:"white", fontSize: "2rem", fontWeight: "600" }}>
