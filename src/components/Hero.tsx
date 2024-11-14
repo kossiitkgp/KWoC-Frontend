@@ -3,6 +3,7 @@ import hook from '../assets/igloo-scroll-hook-edit.png';
 import sign from '../assets/sign-post.png';
 import "../styles/Hero.css";
 import "../styles/App.css";
+import { MENTOR_MANUAL_LINK, STUDENT_MANUAL_LINK } from '../util/constants';
 
 export const HeroComponent = () => {
   return (
@@ -15,8 +16,8 @@ export const HeroComponent = () => {
           <h1>Kharagpur <span className='yellow-text'>Winter<br />of Code</span> 2024</h1>
         </div>
         <div className="hero-button-container">
-        <button className="hero-button"> <a href="https://drive.google.com/file/d/1gc2NWeMDA3ZFzH4RWVspuerduRdfY9yu/view?usp=drive_link" target="_blank">Student Manual </a></button>
-        <button className="hero-button"> <a href="https://drive.google.com/file/d/1XUGfHygE3_KYX_qhcpvw8jhKLlcRkzHP/view?usp=drive_link" target="_blank">Mentor Manual </a></button>
+        <button className="hero-button"> <a href={STUDENT_MANUAL_LINK} target="_blank">Student Manual </a></button>
+        <button className="hero-button"> <a href={MENTOR_MANUAL_LINK} target="_blank">Mentor Manual </a></button>
         </div>
       </div>
       <div className="hero-images">

@@ -5,7 +5,6 @@ import {
   MID_EVALS_ENDED,
   REPORT_SUBMISSION_OPEN,
   ROUTER_PATHS,
-  SLACK_INVITE,
   STUDENT_MANUAL_LINK,
 } from "../util/constants";
 import { useAuthContext } from "../util/auth";
@@ -246,12 +245,6 @@ function StudentDashboard() {
               announcements.
             </p>
             <div className="flex justify-center gap-4 mx-auto">
-              <Link
-                to={SLACK_INVITE}
-                className="text-white w-fit mx-auto focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-primary-700 hover:bg-primary-600 focus:ring-primary-600 border-primary-600"
-              >
-                Slack Workspace
-              </Link>
               <Link
                 to={DISCORD_INVITE}
                 className="text-white w-fit mx-auto focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-primary-700 hover:bg-primary-600 focus:ring-primary-600 border-primary-600"
