@@ -4,61 +4,61 @@ import kwoc_logo from "../assets/kwoc_logo.png";
 import "../styles/Navbar.css";
 import {
     ROUTER_PATHS,
-    GH_OAUTH_URL,
-    REGISTRATIONS_OPEN,
+    // GH_OAUTH_URL,
+    // REGISTRATIONS_OPEN,
 } from "../util/constants";
-import { useAuthContext } from '../util/auth';
-import { UserType } from '../util/types';
+// import { useAuthContext } from '../util/auth';
+// import { UserType } from '../util/types';
 
-function LoginButton() {
-    const authContext = useAuthContext();
+// function LoginButton() {
+//     const authContext = useAuthContext();
     
-    return (
-      <>
-        {authContext.isAuthenticated ? (
-          <Link
-            to={
-              authContext.isRegistered
-                ? authContext.dashboardLink
-                : authContext.formLink
-            }
-          >
-            <img
-              className="profile-picture-navbar"
-              src={`https://github.com/${authContext.userData.username}.png`}
-            />
-          </Link>
-        ) : REGISTRATIONS_OPEN ? (
-          ["mentor", "student"].map((userType, i) => (
-            <button
-              className='reg-button'
-              key={i}
-              onClick={(e) => {
-                e.preventDefault();
+//     return (
+//       <>
+//         {authContext.isAuthenticated ? (
+//           <Link
+//             to={
+//               authContext.isRegistered
+//                 ? authContext.dashboardLink
+//                 : authContext.formLink
+//             }
+//           >
+//             <img
+//               className="profile-picture-navbar"
+//               src={`https://github.com/${authContext.userData.username}.png`}
+//             />
+//           </Link>
+//         ) : REGISTRATIONS_OPEN ? (
+//           ["mentor", "student"].map((userType, i) => (
+//             <button
+//               className='reg-button'
+//               key={i}
+//               onClick={(e) => {
+//                 e.preventDefault();
   
-                authContext.setUserType(userType as UserType);
-                window.location.href=GH_OAUTH_URL
-              }}
-            >
-              {userType.toUpperCase()} LOGIN
-            </button>
-          ))
-        ) : (
-          <Link
-            to={GH_OAUTH_URL}
-          >
-            LOGIN
-          </Link>
-        )}
-      </>
-    );
-  }  
+//                 authContext.setUserType(userType as UserType);
+//                 window.location.href=GH_OAUTH_URL
+//               }}
+//             >
+//               {userType.toUpperCase()} LOGIN
+//             </button>
+//           ))
+//         ) : (
+//           <Link
+//             to={GH_OAUTH_URL}
+//           >
+//             LOGIN
+//           </Link>
+//         )}
+//       </>
+//     );
+//   }  
 
 const Navbar = () => {
     const location = useLocation();
     const [LINKS, setLINKS] = useState([
         { name: "Home", link: ROUTER_PATHS.HOME, isActive: false },
-        { name: "Projects", link: ROUTER_PATHS.PROJECTS_LIST, isActive: false },
+        // { name: "Projects", link: ROUTER_PATHS.PROJECTS_LIST, isActive: false },
         { name: "FAQs", link: ROUTER_PATHS.FAQ, isActive: false },
     ]);
     const [isOpen, setIsOpen] = useState(false);
@@ -98,7 +98,8 @@ const Navbar = () => {
                     </li>
                 ))}
 
-                <LoginButton />
+                {/* <LoginButton /> */}
+                <p>Registrations Coming Soon!</p>
 
                 {/* <button className='reg-button'>Registration Opens Soon!</button> */}
             </ul>
