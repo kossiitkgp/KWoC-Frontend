@@ -8,8 +8,7 @@ const Footer = () => {
                 <div className="footer-columns">
                     <div className="footer-column">
                         <h2>Social Groups</h2>
-                        <p><a href="https://discord.gg/efFwh6fnjk">Discord</a></p>
-                        <p><a href="https://kwoc-koss.slack.com/join/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ#/shared-invite/email">Slack</a></p>
+                        <p><a href="https://discord.gg/efFwh6fnjk" target="_blank">Discord</a></p>
                         <p><a href="https://www.linkedin.com/company/kharagpur-open-source-society/mycompany/">LinkedIn</a></p>
                         <p><a href="https://x.com/kossiitkgp">Twitter</a></p>
                     </div>
@@ -22,8 +21,8 @@ const Footer = () => {
                     <div className="footer-column">
                         <h2>Other</h2>
                         <p><a href="https://kossiitkgp.org/">About KOSS</a></p>
-                        <p><a href="">Past Programs</a></p>
-                        <p><a href="">contact@kossiitkgp.org</a></p>
+                        {/*<p><a href="">Past Programs</a></p>*/}
+                        <p><a href="mailto:contact@kossiitkgp.org">contact@kossiitkgp.org</a></p>
                     </div>
                 </div>
             </div>
