@@ -36,7 +36,7 @@ export enum ROUTER_PATHS {
 }
 export const DISCORD_INVITE = "https://discord.gg/efFwh6fnjk";
 export const KOSS_WEBSITE_URL = "https://kossiitkgp.org";
-export const KOSS_CONTACT_EMAIL = "contact@kossiitkgp.org";
+export const KOSS_CONTACT_EMAIL = "mailto:contact@kossiitkgp.org";
 export const KOSS_LINKEDIN_URL =
   "https://www.linkedin.com/company/kharagpur-open-source-society/";
 export const KOSS_TWITTER_URL = "https://twitter.com/kossiitkgp";
