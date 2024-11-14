@@ -7,7 +7,6 @@ import { MdCancel } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa";
 import "../styles/FAQ.css";
-import { Header } from "../components/Header";
 
 function FAQ() {
   const [query, setQuery] = useState("");
@@ -30,7 +29,6 @@ function FAQ() {
 
   return (
     <>
-      <Header />
       <div className="faq-container">
         <section className="faq-header">
           <div className="faq-title">Frequently Asked Questions</div>

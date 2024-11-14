@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from "react-router-dom";
 import kwoc_logo from "../assets/kwoc_logo.png";
 import "../styles/Navbar.css";
 import {
@@ -55,14 +55,23 @@ function LoginButton() {
   }  
 
 const Navbar = () => {
-    const [LINKS, _] = useState([
-        { name: "Home", link: ROUTER_PATHS.HOME, isActive: true },
+    const location = useLocation();
+    const [LINKS, setLINKS] = useState([
+        { name: "Home", link: ROUTER_PATHS.HOME, isActive: false },
         { name: "Projects", link: ROUTER_PATHS.PROJECTS_LIST, isActive: false },
         { name: "FAQs", link: ROUTER_PATHS.FAQ, isActive: false },
     ]);
     const [isOpen, setIsOpen] = useState(false);
 
-
+    useEffect(() => {
+        setLINKS((prevLinks) =>
+            prevLinks.map((link) => ({
+                ...link,
+                isActive: link.link === location.pathname,
+            }))
+        );
+    }, [location.pathname]);
+    
     return (
         <div className='navbar'>
             <div className="container">
