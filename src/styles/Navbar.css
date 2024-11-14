@@ -1,8 +1,10 @@
 .navbar {
     display: flex;
-    width: 90vw;
+    width: 100vw;
+    padding: 0 1rem;
     margin: auto;
     justify-content: space-between;
+    position: relative;
 }
 
 .logo {
@@ -17,17 +19,17 @@
     font-size: 1.3rem;
     flex-direction: column;
     justify-content: start;
-    padding: 50px;
+    padding: 6vw;
     padding-top: 100px;
     align-items: center;
-    gap: 30px;
+    gap: 0.7rem;
     position: absolute;
-    width: 450px;
+    width: 70vw;
     max-width: 80vw;
     border-radius: 10px;
     top: 1vh;
-    right: -110%;
-    bottom: 1vh;
+    right: -150vw;
+    height: 50vh;
     background-color: aquamarine;
     list-style: none;
     background: rgba(255, 255, 255, 0.1);
@@ -47,12 +49,13 @@
 
 .burger {
     position: absolute;
-    right: 40px;
-    font-size: 1.6rem;
+    right: 1rem;
+    font-size: 1.3rem;
     cursor: pointer;
-    top: 60px;
-    height: 70px;
-    width: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 40px;
     background-color: #242424;
     color: #393939;
     display: flex;
@@ -83,6 +86,8 @@
         box-shadow: none;
         border: none;
         right: 0;
+        height: auto;
+        margin-right: 3rem;
     }
 
     .burger {
@@ -91,7 +96,7 @@
 }
 
 .link-container.open {
-    right: 30px;
+    right: 9vw;
 }
 
 .link {
