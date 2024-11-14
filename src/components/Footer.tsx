@@ -1,4 +1,5 @@
 import "../styles/Footer.css";
+import { ROUTER_PATHS } from "../util/constants";
 
 const Footer = () => {
     return (
@@ -7,20 +8,20 @@ const Footer = () => {
                 <div className="footer-columns">
                     <div className="footer-column">
                         <h2>Social Groups</h2>
-                        <p><a href="">Discord</a></p>
-                        <p><a href="">Slack</a></p>
+                        <p><a href="https://discord.gg/efFwh6fnjk">Discord</a></p>
+                        <p><a href="https://kwoc-koss.slack.com/join/shared_invite/zt-wlftnk75-VoQHEEB9WpkHfza6~GGpWQ#/shared-invite/email">Slack</a></p>
                         <p><a href="https://www.linkedin.com/company/kharagpur-open-source-society/mycompany/">LinkedIn</a></p>
                         <p><a href="https://x.com/kossiitkgp">Twitter</a></p>
                     </div>
                     <div className="footer-column">
                         <h2>Quick Links</h2>
-                        <p><a href="">Timeline</a></p>
-                        <p><a href="">FAQs</a></p>
-                        <p><a href="">About KWoC</a></p>
+                        <p><a href={`${ROUTER_PATHS.HOME}#timeline`}>Timeline</a></p>
+                        <p><a href={ROUTER_PATHS.FAQ}>FAQs</a></p>
+                        <p><a href={`${ROUTER_PATHS.HOME}#about`}>About KWoC</a></p>
                     </div>
                     <div className="footer-column">
                         <h2>Other</h2>
-                        <p><a href="">About KOSS</a></p>
+                        <p><a href="https://kossiitkgp.org/">About KOSS</a></p>
                         <p><a href="">Past Programs</a></p>
                         <p><a href="">contact@kossiitkgp.org</a></p>
                     </div>

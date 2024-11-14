@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Fuse from "fuse.js";
 import { FAQs } from "../data/FAQs";
-import Footer from "../components/Footer";
 import { IconContext } from "react-icons";
 import { MdCancel } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
@@ -97,7 +96,6 @@ function FAQ() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
