@@ -35,7 +35,7 @@
     background-color: #fff;
     border-radius: 50px;
     border: 1px solid #dcdfe5;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
     padding: 0.5rem 1rem;
     max-width: 800px;
     width: 100%;
@@ -85,6 +85,7 @@
     font-weight: 500;
     color: #333;
     width: 100%;
+    text-align: left;
 }
 
 .accordion-toggle {
@@ -110,7 +111,8 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
     transform: scale(1);
     opacity: 1;
-    margin-left: 8px; /* Adds space between question text and icon */
+    margin-left: 8px;
+    /* Adds space between question text and icon */
 }
 
 /* Minus Icon */
@@ -141,10 +143,12 @@
 }
 
 .accordion-item.open .accordion-content {
-    max-height: 1000px; /* Large enough to reveal full content */
+    max-height: 1000px;
+    /* Large enough to reveal full content */
     opacity: 1;
     padding: 1rem;
     border-top: 4px solid #071b44;
+    text-align: left;
 }
 
 .accordion-content p {

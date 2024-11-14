@@ -71,8 +71,11 @@ function FAQ() {
                     <div className="accordion-header">
                       <span>{question}</span>
                       <div className="accordion-icon">
-                        <FaPlus className={`plus-icon ${activeIndex === i ? "hidden" : ""}`} />
-                        <FaMinus className={`minus-icon ${activeIndex === i ? "visible" : ""}`} />
+                        {activeIndex === i ? (
+                          <FaMinus className={`minus-icon visible`} />
+                        ) : (
+                          <FaPlus className={`plus-icon hidden`} />
+                        )}
                       </div>
                     </div>
                   </button>

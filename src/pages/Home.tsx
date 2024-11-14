@@ -8,13 +8,13 @@ import Testimonials from "../components/Testimonials";
 function Home() {
 
   return (
-    <>
+    <div>
       <HeroComponent />
       <AboutSection />
       <WhyKWoC />
       <Timeline />
       <Testimonials />
-    </>
+    </div>
   );
 }
 

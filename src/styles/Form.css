@@ -6,12 +6,15 @@
 }
 
 .form-container {
-  background-color: #ffffff; /* White background for the form */
+  background-color: #ffffff;
+  /* White background for the form */
   padding: 2rem;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for the form */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  /* Soft shadow for the form */
   width: 100%;
-  max-width: 600px; /* Limiting the form width */
+  max-width: 600px;
+  /* Limiting the form width */
   transition: box-shadow 0.3s ease-in-out;
 }
 
@@ -78,7 +81,6 @@
 
 .button:hover {
   background-color: #3730a3;
-  transform: scale(1.05); /* Slight scaling effect on hover */
 }
 
 /* Disabled button styling */
@@ -96,7 +98,6 @@
 
 .cancel-button:hover {
   background-color: #991b1b;
-  transform: scale(1.05);
 }
 
 /* Form input field styles */
