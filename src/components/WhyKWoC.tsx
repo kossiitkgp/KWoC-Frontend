@@ -1,62 +1,22 @@
-import { FOSSU_WEBSITE_URL } from "../util/constants";
-import Card from "./Card";
+import "../styles/WhyKWoC.css";
+import { WhyCard } from "./WhyCard";
 
-export default function WhyKWoC() {
+export const WhyKWoC = () => {
   return (
-    <>
-      <h1 className=" font-display text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-36 lg:text-8xl">
-        WHY KWoC ?
-      </h1>
-      <div className="flex flex-col lg:flex-row items-stretch px-8 m-auto mt-10 w-[90%]">
-        <Card
-          header={
-            <span>
-              Intro to
-              <br />
-              Open <br />
-              Source
-            </span>
-          }
-          content="Get started with open source collaboration. Hone programmer skills with Git and GitHub. Make meaningful contributions guided by mentors. Build a portfolio showcasing your talents."
-        />
-
-        <Card
-          header={
-            <span>
-              Prepare <br />
-              for
-              <br />
-              GSoC
-            </span>
-          }
-          content="Research organizations and connect with mentors. Create quality proposals and sharpen skills. Gain insider tips to boost your GSoC chances. Open doors through impressive abilities."
-        />
-
-        <Card
-          header={
-            <span>
-              Win <br />
-              Exciting
-              <br />
-              Goodies
-            </span>
-          }
-          content={
-            <span>
-              Top performers in KWoC also have the opportunity to win fantastic
-              prizes and rewards from{" "}
-              <a
-                className="text-primary font-semibold hover:text-primary-600"
-                href={FOSSU_WEBSITE_URL}
-                target="_blank"
-              >
-                FOSS United
-              </a>
-              , making their participation even more rewarding.
-            </span>
-          }
-        />
+    <div className="why-kwoc-container" >
+      <div className="why-header">
+        <h1 className="why-title">
+          <em>Why KWoC?</em>
+        </h1>
+        <p className="why-tagline">
+          Ignite your Open-Source Journey!
+        </p>
       </div>
-    </>
-  );
+      <div className="why-cards">
+        <WhyCard title="Intro to Open Source" description="Get started with open source collaboration. Hone programmer skills with Git and GitHub. Make meaningful contributions guided by mentors. Build a portfolio showcasing your talents." />
+        <WhyCard title="Intro to Open Source" description="Get started with open source collaboration. Hone programmer skills with Git and GitHub. Make meaningful contributions guided by mentors. Build a portfolio showcasing your talents." />
+        <WhyCard title="Intro to Open Source" description="Get started with open source collaboration. Hone programmer skills with Git and GitHub. Make meaningful contributions guided by mentors. Build a portfolio showcasing your talents." />
+      </div>
+    </div>
+  )
 }

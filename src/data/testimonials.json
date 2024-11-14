@@ -1,6 +1,27 @@
 {
   "testimonials": [
     {
+      "name": "Ahmed Anwar",
+      "role": "KWoC '23 Student",
+      "quote": "I explored the open-source community, and I became a lot more enthusiastic to contribute more to it. It was a great experience that really helped my growth.",
+      "imageLink": "https://avatars.githubusercontent.com/u/87152151?v=4",
+      "blogLink": "https://ahmedanwar-45178.medium.com/kwoc-2023-report-d34bd3d611f9"
+    },
+    {
+      "name": "Abhishek Bhattacharjee",
+      "role": "KWoC '23 Student",
+      "quote": "KWoC has provided a platform for practical application of my skills, contributing to real-world projects, and connecting with the broader open-source community.",
+      "imageLink": "https://avatars.githubusercontent.com/u/127030695?v=4",
+      "blogLink": "https://medium.com/@abhishekbhattacharjee12345/kwoc-2023-report-07c4260cf12a"
+    },
+    {
+      "name": "Adithya Awati",
+      "role": "KWoC '23 Student",
+      "quote": "Stepping out of KWoC, I carry not just a programmatic skillset, but a profound appreciation for collaborative development.",
+      "imageLink": "https://avatars.githubusercontent.com/u/64393108?v=4",
+      "blogLink": "https://medium.com/@aditya.n.awati/kwoc-kharagpur-winter-of-code-2023-project-report-0ff90efc4bb5"
+    },
+    {
       "name": "Musavveer Rehaman",
       "role": "KWoC '22 Student",
       "quote": "Contributing to open source is one of the great experience, I got to learn many things and I also learnt various technologies.",

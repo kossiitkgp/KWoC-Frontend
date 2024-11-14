@@ -1,0 +1,72 @@
+/* Resource Section Header */
+.resourcesContainer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  /* Styling for the list of resources */
+  .resourceList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Each resource item style */
+  .resourceItem {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .resourceItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Styling for the resource link (for clicking) */
+  .resourceLink {
+    text-decoration: none;
+    color: inherit; /* Prevent link color override */
+  }
+  
+  /* Avatar styling */
+  .avatarWrapper {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    overflow: hidden;
+    border-radius: 50%; /* Circle the avatar */
+  }
+  
+  .avatarImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image fits properly within the circle */
+  }
+  
+  /* For no avatar rounding case */
+  .noAvatarRounding .avatarImage {
+    border-radius: 0%; /* Removes the circular border */
+  }
+  
+  /* Styling for the message text */
+  .messageText {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+    flex-grow: 1; /* Allow the text to take up remaining space */
+  }
+  
+  /* Hover effect for resource link */
+  .resourceLink:hover .messageText {
+    color: #2563eb;
+  }
+  

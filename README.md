@@ -28,7 +28,7 @@
 
   <p align="center">
   <!-- UPDATE -->
-    <i>The truth redefined, once again.</i>
+    <i>frontend for KWoC 2024</i>
     <br />
     <a href="#table-of-contents"><strong>Get Started »</strong></a>
     <br />
@@ -45,6 +45,8 @@
 - [Project Structure](#project-structure)
   - [File Structure](#file-structure)
   - [Libraries/Frameworks Used](#librariesframeworks-used)
+- [Responsibilities](#responsibilities)
+  - [Frontend](#frontend)
 - [Archival](#archival)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -58,8 +60,15 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 - Install or enable [PNPM](https://pnpm.io/installation).
 - Clone this repository.
 - Run `pnpm install` in the cloned repository to download all dependencies.
-- Run `pnpm start` to start a local development server.
+- Run `pnpm run dev` to start a local development server.
 - Optionally set up [KWoC Backend](https://github.com/kossiitkgp/kwoc-backend) locally.
+
+```
+git clone https://github.com/kossiitkgp/KWoC-Frontend/blob/kwoc24.git
+cd KWoC-Frontend
+pnpm install
+pnpm run dev
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -94,9 +103,22 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 
 ### Libraries/Frameworks Used
 
-- [React](https://reactjs.dev): For redefining the truth.
-- [SASS](https://sass-lang.com/): For redefining CSS styles.
+- [React](https://reactjs.dev)
+- [react-snowfall](https://github.com/cahilfoley/react-snowfall) for a pretty snowfall effect
 - And [many more](./package.json).
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Responsibilities
+
+### Frontend
+- Design: 
+  - [@dakshyadav1810](https://github.com/dakshyadav1810)
+- Header and Footer: 
+  - [@premagarwals](https://github.com/premagarwals)
+  - [@Ananya-m0140](https://github.com/Ananya-m0140)
+- Hero and Timeline: 
+  - [@Majestic9169](https://github.com/Majestic9169)
+  - [@Faizan2005](https://github.com/Faizan2005)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Archival
@@ -125,3 +147,55 @@ The development for the next KWoC website continues in the default branch.
 ---
 
 > Please update this documentation whenever changes are made to this project or any other relevant project that may affect this one. Future humans will praise you.
+
+
+<!-- # React + TypeScript + Vite -->
+<!---->
+<!-- This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules. -->
+<!---->
+<!-- Currently, two official plugins are available: -->
+<!---->
+<!-- - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh -->
+<!-- - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh -->
+<!---->
+<!-- ## Expanding the ESLint configuration -->
+<!---->
+<!-- If you are developing a production application, we recommend updating the configuration to enable type aware lint rules: -->
+<!---->
+<!-- - Configure the top-level `parserOptions` property like this: -->
+<!---->
+<!-- ```js -->
+<!-- export default tseslint.config({ -->
+<!--   languageOptions: { -->
+<!--     // other options... -->
+<!--     parserOptions: { -->
+<!--       project: ['./tsconfig.node.json', './tsconfig.app.json'], -->
+<!--       tsconfigRootDir: import.meta.dirname, -->
+<!--     }, -->
+<!--   }, -->
+<!-- }) -->
+<!-- ``` -->
+<!---->
+<!-- - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked` -->
+<!-- - Optionally add `...tseslint.configs.stylisticTypeChecked` -->
+<!-- - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config: -->
+<!---->
+<!-- ```js -->
+<!-- // eslint.config.js -->
+<!-- import react from 'eslint-plugin-react' -->
+<!---->
+<!-- export default tseslint.config({ -->
+<!--   // Set the react version -->
+<!--   settings: { react: { version: '18.3' } }, -->
+<!--   plugins: { -->
+<!--     // Add the react plugin -->
+<!--     react, -->
+<!--   }, -->
+<!--   rules: { -->
+<!--     // other rules... -->
+<!--     // Enable its recommended rules -->
+<!--     ...react.configs.recommended.rules, -->
+<!--     ...react.configs['jsx-runtime'].rules, -->
+<!--   }, -->
+<!-- }) -->
+<!-- ``` -->

@@ -1,0 +1,153 @@
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.faq-title {
+    font-size: 3rem;
+    color: #f9fafb;
+    font-weight: 600;
+}
+
+.faq-subtitle {
+    font-size: 1rem;
+    color: #c3c9ce;
+}
+
+.faq-search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.faq-search-input-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 50px;
+    border: 1px solid #dcdfe5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 1rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.faq-search-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #333;
+    background-color: transparent;
+}
+
+.search-clear-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.faq-items-container {
+    width: 70%;
+    max-width: 70vw;
+}
+
+.accordion-item {
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    width: 100%;
+}
+
+.accordion-toggle {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+}
+
+/* Overall Accordion Icon Styling */
+.accordion-icon {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Plus Icon */
+.plus-icon {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: scale(1);
+    opacity: 1;
+    margin-left: 8px; /* Adds space between question text and icon */
+}
+
+/* Minus Icon */
+.minus-icon {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: scale(0.5);
+    opacity: 0;
+    margin-left: 8px;
+}
+
+/* When Accordion is Open */
+.accordion-item.open .plus-icon {
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+.accordion-item.open .minus-icon {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.accordion-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 1rem;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.accordion-item.open .accordion-content {
+    max-height: 1000px; /* Large enough to reveal full content */
+    opacity: 1;
+    padding: 1rem;
+    border-top: 4px solid #071b44;
+}
+
+.accordion-content p {
+    color: #555;
+    margin: 0.5rem 0;
+}

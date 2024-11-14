@@ -7,6 +7,7 @@ import { shuffle } from "../util/shuffle";
 import Fuse from "fuse.js";
 import SpinnerLoader from "../components/SpinnerLoader";
 import { IconContext } from "react-icons";
+import "../styles/Projects.css";
 
 function Projects() {
   const [projects, setProjects] = useState<
@@ -46,21 +47,19 @@ function Projects() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center pt-28">
-      <h1 className=" font-display text-5xl md:text-7xl font-bold text-center">
-        Projects
-      </h1>
-      <div className="p-4 my-4 mx-0">
-        <div className="flex py-4 px-6 rounded-md outline-none w-[80vw] max-w-3xl border-none text-white bg-slate-900 font-semibold bg-none">
+    <div className="projects-container">
+      <h1 className="projects-title">Projects</h1>
+      <div className="search-container">
+        <div className="search-bar">
           <input
-            className="rounded-md outline-none w-full border-none text-white bg-slate-900 font-semibold bg-none"
+            className="search-input"
             type="text"
             placeholder="Search for projects by name or topic"
             onChange={onQueryChangeHandler}
             value={query}
-          ></input>
+          />
           {query !== "" && (
-            <button onClick={() => setQuery("")}>
+            <button onClick={() => setQuery("")} className="search-cancel">
               <IconContext.Provider value={{ size: "1.6rem" }}>
                 <MdCancel />
               </IconContext.Provider>
@@ -70,9 +69,9 @@ function Projects() {
       </div>
 
       {error !== null ? (
-        <p className="text-center text-red-500">{error}</p>
+        <p className="error-message">{error}</p>
       ) : projects.length > 0 ? (
-        <div className="grid grid-cols-1 pb-16 md:grid-cols-2 lg:grid-cols-3 max-w-7xl gap-4 px-8">
+        <div className="projects-grid">
           {searchResults.map((project, i) => (
             <ProjectCard
               key={i}

@@ -1,0 +1,132 @@
+/* Layout for the Mentor Dashboard */
+.mentorDashboardContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; /* 3 columns layout */
+    grid-gap: 1rem;
+    padding: 1rem;
+  }
+  
+  /* Sidebar containing the profile */
+  .profileSidebar {
+    padding: 1rem;
+    border-radius: 8px;
+    width: fit-content;
+  }
+  
+  /* Project section in the center */
+  .projectSection {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  /* Title and Add Project Button - Styling */
+  .projectHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+  
+  .projectTitle {
+    font-size: 1.5rem;
+  }
+  
+  .addProjectButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem; /* Vertical and horizontal padding */
+    font-size: 1rem; /* Font size for text */
+    height: 2.5rem; /* Match the height of the PROJECTS title */
+    background-color: #4338ca;
+    color: #fff;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    margin-left: 1rem; /* Space between the title and the button */
+  }
+  
+  .addProjectButton:hover {
+    background-color: #3730a3;
+  }
+  
+  .addProjectButton span {
+    margin-left: 0.5rem; /* Space between icon and text */
+  }
+        
+  .addProjectButton div {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .projectGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  /* Right Sidebar - Stats & Resources */
+  .rightSidebar {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+.statsSectionCard {
+    background-color: #020f2b; /* White background for the card */
+    padding: 1.5rem; /* Add padding around the content */
+    border-radius: 0.75rem; /* Rounded corners for the card */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    margin-bottom: 1.5rem; /* Space below the card */
+  }
+  
+  /* Header for Stats Section */
+  .statsHeader {
+    font-size: 1.5rem; /* Header font size */
+    font-weight: 600; /* Bold text */
+    margin-bottom: 1rem; /* Space below the header */
+  }
+  
+  /* Individual Stat Item */
+  .statsItem {
+    display: flex;
+    justify-content: space-between; /* Space between icon/text and value */
+    align-items: center; /* Vertically align items */
+    margin-bottom: 1rem; /* Space between items */
+  }
+  
+  /* Icon and Text Container */
+  .statsIconText {
+    display: flex;
+    align-items: center; /* Align icon and text horizontally */
+  }
+  
+  .statsIconText span {
+    margin-left: 0.5rem; /* Space between icon and text */
+    font-size: 1rem; /* Font size for the label */
+  }
+  
+  /* Stat Value */
+  .statsValue {
+    font-size: 1.125rem; /* Larger font size for values */
+    font-weight: 600; /* Bold value */
+    color: #9c96dc; /* Matching color to header */
+  }
+    
+  /* Resource Links */
+  .resourceList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .resourceLink {
+    color: #d1daf3;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  .resourceLink:hover {
+    color: #2563eb;
+  }
+  

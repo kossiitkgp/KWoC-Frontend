@@ -1,0 +1,27 @@
+.about-container {
+  background-color: #071b44;
+  margin: 0;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.about-text {
+  padding: 8rem;
+  background-color: #fff;
+}
+
+.about-container h1 {
+  margin: 0;
+  font-size: 6rem;
+}
+
+.about-container p {
+  text-align: left;
+  font-size: 2rem;
+}
+
+.about-container img {
+  width: 100%;
+}

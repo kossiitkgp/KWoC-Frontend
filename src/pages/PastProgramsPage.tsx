@@ -1,4 +1,3 @@
-import FooterSection from "../components/FooterSection";
 import ProgramCard from "../components/ProgramCard";
 import PROGRAMS from "../data/programs.json";
 
@@ -34,7 +33,6 @@ export default function PastProgramsPage() {
           )}
         </div>
       </div>
-      <FooterSection />
     </>
   );
 }

@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 import { IProject } from "../util/types";
 import SpinnerLoader from "../components/SpinnerLoader";
+import "../styles/ProjectForm.css";
 
 function ProjectForm(props: { isEditing?: boolean }) {
   const isEditing = props.isEditing ?? false;
@@ -25,7 +26,6 @@ function ProjectForm(props: { isEditing?: boolean }) {
 
   useEffect(() => {
     if (!isEditing && !REGISTRATIONS_OPEN) {
-      // Redirect if registrations are closed and not editing.
       navigate(ROUTER_PATHS.HOME);
     }
 
@@ -54,14 +54,14 @@ function ProjectForm(props: { isEditing?: boolean }) {
         })
         .catch((e) => {
           console.log(e);
-          setError("An unexpected error occured.");
+          setError("An unexpected error occurred.");
           setLoading(false);
         });
     }
   }, [navigate, id, isEditing]);
 
   return (
-    <div className="pt-28 w-[80%] md:w-[60%] md:max-w-full lg:w-[50%] mx-auto">
+    <div className="project-form-container">
       {!isEditing || projectInfo !== null || error !== null ? (
         <Form
           title={isEditing ? "Edit Project" : "Register A Project"}
@@ -140,7 +140,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
                   mentor_username: authContext.userData.username,
                   id: isEditing ? (id ? parseInt(id) : undefined) : undefined,
                 },
-                authContext.jwt,
+                authContext.jwt
               );
 
               if (res.is_ok) {
@@ -149,7 +149,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
                 return true;
               } else {
                 setError(
-                  `${res.response.status_code} Error: ${res.response.message}`,
+                  `${res.response.status_code} Error: ${res.response.message}`
                 );
                 setLoading(false);
                 return false;

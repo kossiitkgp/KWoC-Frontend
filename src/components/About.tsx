@@ -1,21 +1,14 @@
-export default function About() {
+import "../styles/About.css";
+import cloudBottom from "../assets/Cloud-About-edited.png";
+
+export const AboutSection = () => {
   return (
-    <>
-      <div
-        id="about"
-        className="w-0"
-        style={{ transform: "translateY(-50px" }}
-      />
-      <h1 className="text-zinc-300 font-display text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-12 lg:text-8xl">
-        ABOUT
-      </h1>
-      <p className="text-zinc-300 text-center mb-6 text-lg font-normal lg:text-2xl px-10 sm:px-16 xl:px-96 mt-10">
-        Kharagpur Winter of Code is a 5-week long online program for students
-        who are new to open source software development. The program not only
-        helps students to get involved in open source, but also prepares them
-        for many open source summer programs; Google Summer of Code being one of
-        them.
-      </p>
-    </>
-  );
+    <div id="about" className="about-container">
+      <div className="about-text">
+        <h1 className="about-title">About KWoC</h1>
+        <p className="about-content">Kharagpur Winter of Code is a 5-week long online program for students who are new to open source software development. The program not only helps students to get involved in open source, but also prepares them for many open source summer programs; Google Summer of Code being one of them.</p>
+      </div>
+      <img className="about-bottom-image" src={cloudBottom} />
+    </div >
+  )
 }

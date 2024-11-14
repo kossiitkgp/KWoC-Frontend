@@ -1,0 +1,30 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0;
+  padding: 3rem;
+}
+
+.nav-bar {
+  float: right;
+  display: flex;
+  align-content: baseline;
+  padding: 0.5rem;
+}
+
+.nav-element {
+  padding: 0.5rem 3rem;
+  color: #fff;
+  text-decoration: none;
+  transition: scale 300ms, text-decoration 300ms;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-element:hover {
+  scale: 1.25;
+  color: #ffe336;
+  text-decoration: underline;
+}

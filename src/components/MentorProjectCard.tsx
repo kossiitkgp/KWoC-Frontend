@@ -36,45 +36,41 @@ function MentorProjectCard({
   const authContext = useAuthContext();
 
   return (
-    <>
-      <div className="px-4 py-4 w-80 rounded-md bg-[#2a2a2aa3]">
-        <div className="flex flex-col mb-4">
-          <h3 className="font-semibold text-2xl">{name}</h3>
+    <div className="mentor-project-card">
+      {/* Project Title and Status */}
+      <div className="project-header">
+        <h4 className="project-title">{name}</h4>
+        {project_status ? (
+          <span className="status-approved">Approved</span>
+        ) : (
+          <span className="status-awaiting">Awaiting Approval</span>
+        )}
+      </div>
 
-          {project_status ? (
-            <p className="text-[0.7rem] text-green-700">Approved</p>
-          ) : (
-            <p className="text-[0.7rem] text-yellow-600">Awaiting Approval</p>
-          )}
-        </div>
-        <div className="mb-5 space-y-1">
-          <div className="flex gap-2 items-center">
-            <div className="flex gap-2 items-center text-sm font-semibold">
-              <IoPersonSharp />
-              Mentor:
-            </div>
+      {/* Mentor and Commit Info Section */}
+      <div className="info-container">
+          <div className="mentor">
+            <IoPersonSharp size={16} />
+            <span>Mentor:</span>
             <a
               href={`https://github.com/${mentor.username}`}
-              className="font-bold text-base hover:underline text-primary-500 hover:text-primary-600"
+              className="mentor-link"
             >
               @{mentor.username}
             </a>
           </div>
-          <div className="flex gap-2 items-center">
-            <div className="flex gap-2 items-center text-sm font-semibold">
-              <IoPersonSharp />
-              Co-Mentor:
-            </div>
+
+          <div className="mentor">
+            <IoPersonSharp size={16} />
+            <span>Co-Mentor:</span>
             <a
               href={
                 secondary_mentor.username !== ""
                   ? `https://github.com/${secondary_mentor.username}`
-                  : undefined
+                  : "#"
               }
-              className={`font-bold text-base ${
-                secondary_mentor.username !== ""
-                  ? "hover:underline text-primary-500 hover:text-primary-600"
-                  : ""
+              className={`co-mentor-link ${
+                secondary_mentor.username === "" ? "no-co-mentor" : ""
               }`}
             >
               {secondary_mentor.username !== ""
@@ -83,60 +79,54 @@ function MentorProjectCard({
             </a>
           </div>
 
-          <div className="flex gap-2 items-center">
-            <div className="flex gap-2 items-center text-sm font-semibold">
-              <BiGitCommit />
-              Merged Commits:
-            </div>
-            <p className="font-bold text-base">{commit_count}</p>
+        {/* Commit and Pull Request Info */}
+        <div className="commit-pull-info">
+          <div className="info-item">
+            <BiGitCommit size={16} />
+            <span>Merged Commits:</span>
+            <p>{commit_count}</p>
           </div>
-          <div className="flex gap-2 items-center">
-            <div className="flex gap-2 items-center text-sm font-semibold">
-              <BiGitPullRequest /> Merged Pull Requests:
-            </div>
-            <p className="font-bold text-base">{pull_count}</p>
+          <div className="info-item">
+            <BiGitPullRequest size={16} />
+            <span>Merged PRs:</span>
+            <p>{pull_count}</p>
           </div>
-        </div>
-        <div className="mb-5">
-          <p className="text-sm font-semibold mb-1">Lines Added / Removed</p>
-          <div className="w-full flex items-center">
-            <span className="flex-none text-green-700 text-sm font-bold">
-              + {lines_added}
-            </span>
-            <div className="w-full mx-2 flex">
-              <div
-                style={{ flex: addedPercentage + "%" }}
-                className="border-2 border-green-700"
-              ></div>
-              <div
-                style={{ flex: removedPercentage + "%" }}
-                className="border-2 border-red-700"
-              ></div>
-            </div>
-            <span className="flex-none text-red-700 text-sm font-bold">
-              - {lines_removed}
-            </span>
-          </div>
-        </div>
-        <div className="mb-2 flex justify-around gap-2">
-          <a
-            href={repo_link}
-            target="_blank"
-            className="text-center font-semibold text-lg w-full p-2 bg-primary-700 rounded-md hover:bg-primary-800"
-          >
-            View Project
-          </a>
-          {mentor.username === authContext.userData.username && (
-            <Link
-              to={ROUTER_PATHS.PROJECT_EDIT_FORM_NOSUFFIX + id.toString()}
-              className="text-center font-semibold text-lg w-full p-2 bg-orange-700 rounded-md hover:bg-orange-800"
-            >
-              Edit Project
-            </Link>
-          )}
         </div>
       </div>
-    </>
+
+      {/* Lines Added/Removed */}
+      <div className="lines-changed">
+        <div className="lines-bar">
+          <span className="lines-added">+{lines_added}</span>
+          <div className="bar">
+            <div
+              style={{ flex: addedPercentage + "%" }}
+              className="added-bar"
+            ></div>
+            <div
+              style={{ flex: removedPercentage + "%" }}
+              className="removed-bar"
+            ></div>
+          </div>
+          <span className="lines-removed">-{lines_removed}</span>
+        </div>
+      </div>
+
+      {/* Project Links */}
+      <div className="project-links">
+        <a href={repo_link} target="_blank" className="view-project-btn">
+          View
+        </a>
+        {mentor.username === authContext.userData.username && (
+          <Link
+            to={ROUTER_PATHS.PROJECT_EDIT_FORM_NOSUFFIX + id.toString()}
+            className="edit-project-btn"
+          >
+            Edit
+          </Link>
+        )}
+      </div>
+    </div>
   );
 }
 

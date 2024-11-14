@@ -2,6 +2,7 @@ import React, { ReactNode, useState } from "react";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import SpinnerLoader from "./SpinnerLoader";
+import "../styles/Form.css";
 
 interface IObject<T> {
   [name: string]: T;
@@ -65,8 +66,8 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   }
 
   return (
-    <div className="rounded-md">
-      <div className="p-8 border border-slate-700 sm:rounded-md">
+    <div className="centered-container">
+      <div className="form-container form-border">
         <form
           onSubmit={async (e) => {
             e.preventDefault();
@@ -76,7 +77,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
             }
           }}
         >
-          <h1 className="text-center text-3xl mb-5">{props.title}</h1>
+          <h1 className="form-header">{props.title}</h1>
           {props.error && (
             <p className="text-red-500 text-center">{props.error}</p>
           )}
@@ -86,11 +87,11 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           {loading && <SpinnerLoader />}
 
           {props.staticMessage && (
-            <p className="flex items-center justify-center mb-3">
+            <p className="flex-center">
               {typeof props.staticMessage == "string" && (
                 <span className="h-full">
                   <IconContext.Provider value={{ size: "1.5rem" }}>
-                    <RiErrorWarningFill className="mr-2 fill-gray-300" />
+                    <RiErrorWarningFill className="icon-size" />
                   </IconContext.Provider>
                 </span>
               )}
@@ -99,11 +100,11 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           )}
 
           {Object.values(inputs)}
-          <div className="flex justify-around">
+          <div className="button-container">
             <div className="mb-2 text-center">
               <button
                 type="submit"
-                className="h-10 px-5 text-indigo-100 bg-indigo-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-indigo-800 disabled:text-gray-300 disabled:bg-gray-600"
+                className="form-button"
                 disabled={
                   (!responsesChanged && !props.submitWithoutChange) || disabled
                 }
@@ -115,7 +116,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
               <div className="mb-2 text-center">
                 <button
                   type="reset"
-                  className="h-10 px-5 text-indigo-100 bg-red-700 rounded-lg transition-colors duration-150 focus:shadow-outline hover:bg-red-800 disabled:text-gray-600 disabled:bg-gray-600"
+                  className="form-button cancel-button"
                   onClick={() => props.onCancel!(responses)}
                 >
                   Cancel
@@ -143,12 +144,12 @@ interface IFormInputProps extends IInputFields {
 }
 function FormInput(props: IFormInputProps) {
   return (
-    <label className="block mb-6">
-      <span className="text-white">{props.field}</span>
+    <label className="form-label">
+      <span>{props.field}</span>
       <input
         type={props.type}
         disabled={props.disabled ?? false}
-        className="block w-full mt-2 px-2 py-1 bg-gray-800 text-white border-slate-700 rounded-md shadow-sm focus:border-indigo-700 focus:ring focus:ring-indigo-700 focus:ring-opacity-5 disabled:text-gray-600 disabled:placeholder:text-gray-600"
+        className="form-input"
         placeholder={props.placeholder}
         required={props.required ?? false}
         defaultValue={props.defaultValue ?? ""}

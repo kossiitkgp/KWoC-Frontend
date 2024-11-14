@@ -1,0 +1,78 @@
+.hero-container {
+  background-color: #071b44;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.hero-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-quote {
+  margin: 0;
+  padding: 0;
+}
+
+.hero-title h1 {
+  font-size: 5rem;
+  color: #d9d9d9;
+  padding: 0;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.yellow-text {
+  color: #ffe336;
+}
+
+.hero-button {
+  background: #fff;
+  color: #0a0a19;
+  box-shadow: 4px 4px #6a6a6a;
+  transition: scale 200ms;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.hero-button:hover {
+  scale: 1.05;
+  cursor: pointer;
+}
+
+.hero-images {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+.house-image,
+.igloo-image,
+.sign-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.hero-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

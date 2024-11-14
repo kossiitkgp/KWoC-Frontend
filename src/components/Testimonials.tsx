@@ -1,43 +1,50 @@
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useState, useEffect } from "react";
 import TestimonialCard from "./TestimonialCard";
 import testimonialsData from "../data/testimonials.json";
-// import { Link } from "react-router-dom";
-// import { ROUTER_PATHS } from "../util/constants";
+import "../styles/Testimonials.css";
 
-export default function Testimonials() {
-  // Selecting first 5 testimonial data to render
-  let testimonialsDatatoRender = testimonialsData.testimonials.slice(0, 5);
+function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === testimonialsData.testimonials.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div
-      id="testimonial"
-      className="testimonials-container m-auto w-[95%] md:w-[70%] bg-black/50 py-12 md:px-20 rounded-lg  border border-[#FFFFFF]/[0.16]"
-    >
-      <div className="content-container">
-        <h1 className=" font-display  text-zinc-300 text-center mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl lg:text-7xl">
-          What Past Participants Say
+    <div className="testimonials-container">
+      <section className="testimonials-header">
+        <h1 className="testimonials-title  center mb-12 text-4xl font-extrabold leading-none tracking-tight md:text-5xl mt-12 lg:text-8xl lg:mb-36" style={{color:"#ffe336",fontSize:"4rem",  fontWeight:"900", fontStyle:"italic"}}>
+          <em >What Past Participants Say</em>
         </h1>
-        <Carousel
-          showArrows={false}
-          infiniteLoop={true}
-          showThumbs={false}
-          showStatus={false}
-          showIndicators={false}
-          autoPlay={true}
-          interval={6000}
-          swipeable={false}
-        >
-          {testimonialsDatatoRender.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
-          ))}
-        </Carousel>
-        <div className="sm:w-1/5 m-auto text-center text-zinc-400 font-bold text-xl underline underline-offset-4">
-          {/* <Link to={ROUTER_PATHS.TESTIMONIALS} className="hover:text-zinc-300">
-            See More
-          </Link> */}
-        </div>
+        <p className="testimonials-subtitle" style={{color:"white", fontSize: "2rem", fontWeight: "600" }}>
+          Stories of Growth and Success!
+        </p>
+        <br />
+      </section>
+      
+      
+      <div className="testimonial-slideshow">
+        {testimonialsData.testimonials.map((testimonial, index) => (
+          <TestimonialCard
+            key={index}
+            testimonial={testimonial}
+            isActive={index === currentIndex}
+            isPrevious={index === currentIndex - 1 || (currentIndex === 0 && index === testimonialsData.testimonials.length - 1)}
+            isNext={index === currentIndex + 1 || (currentIndex === testimonialsData.testimonials.length - 1 && index === 0)}
+          />
+        ))}
       </div>
+
+     
     </div>
   );
 }
+
+export default Testimonials;
