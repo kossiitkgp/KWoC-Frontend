@@ -8,18 +8,31 @@
 }
 
 .about-text {
-  padding: 8rem;
+  padding: 1rem;
   background-color: #fff;
 }
 
 .about-container h1 {
   margin: 0;
-  font-size: 6rem;
+  font-size: 4rem;
 }
 
 .about-container p {
   text-align: left;
-  font-size: 2rem;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .about-text {
+    padding: 8rem;
+  }
+  .about-container h1 {
+    font-size: 6rem;
+  }
+  
+  .about-container p {
+    font-size: 2rem;
+  }
 }
 
 .about-container img {
