@@ -72,6 +72,17 @@ const Navbar = () => {
     );
   }, [location.pathname]);
 
+  function closeNavbar() {
+    const element = document.getElementById('linkList');
+
+    if (element) { 
+      element.addEventListener('click', () => {
+        element.classList.remove('open');
+      });
+    }
+    setIsOpen(false);
+  }
+
   return (
     <div className='navbar'>
       <div className='light-logo'>
@@ -91,10 +102,10 @@ const Navbar = () => {
           <div className="dots dot6"></div>
         </div>
       </div>
-      <ul className={`link-container ${isOpen ? 'open' : ''}`}>
+      <ul id="linkList" className={`link-container ${isOpen ? 'open' : ''}`}>
         {LINKS.map((link) => (
           <li key={link.name}>
-            <Link to={link.link} className={link.isActive ? `link nav-glow` : `link`}>
+            <Link to={link.link} className={link.isActive ? `link nav-glow` : `link`} onClick={() => { closeNavbar() }}>
               {link.name}
             </Link>
           </li>
