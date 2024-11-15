@@ -13,6 +13,8 @@ import { UserType } from '../util/types';
 function LoginButton() {
   const authContext = useAuthContext();
 
+  console.log(authContext);
+
   return (
     <>
       {authContext.isAuthenticated ? (
