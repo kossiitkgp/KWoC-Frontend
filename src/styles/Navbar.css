@@ -10,8 +10,17 @@
 .logo {
     height: 60px;
     width: 60px;
-    animation: anti-rotate 20s linear infinite;
     cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 51%;
+    transform: translate(-50%,-50%);
+}
+
+.light-logo {
+    position: relative;
+    transform: scale(0.7);
 }
 
 .link-container {
@@ -92,6 +101,10 @@
 
     .burger {
         display: none;
+    }
+
+    .light-logo{
+        transform: scale(0.9);
     }
 }
 
@@ -200,16 +213,6 @@
 
     100% {
         transform: rotate(360deg);
-    }
-}
-
-@keyframes anti-rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(-360deg);
     }
 }
 
