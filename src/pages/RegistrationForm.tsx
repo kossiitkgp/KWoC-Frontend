@@ -19,9 +19,10 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   useEffect(() => {
     setIsRegistering(!authContext.isRegistered);
 
-    // if (isRegistering && !REGISTRATIONS_OPEN) {
-    //   navigate(ROUTER_PATHS.HOME);
-    // }
+    if (isRegistering && !REGISTRATIONS_OPEN) {
+      console.log("REDIRECTING HOME");
+      navigate(ROUTER_PATHS.HOME);
+    }
 
     if (!authContext.isAuthenticated) {
       navigate(ROUTER_PATHS.HOME);
