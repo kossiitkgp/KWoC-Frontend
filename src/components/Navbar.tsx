@@ -99,7 +99,6 @@ const Navbar = () => {
                 ))}
 
                 <LoginButton />
-                <p>Register as Mentor</p>
             </ul>
             <div className='burger' onClick={() => setIsOpen(!isOpen)}>{isOpen ? '✖' : '☰'}</div>
         </div>
