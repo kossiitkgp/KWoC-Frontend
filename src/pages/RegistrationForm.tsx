@@ -13,13 +13,17 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
   const [loading, setLoading] = useState<boolean>(false);
 
   const [isRegistering, setIsRegistering] = useState(false);
+  const [registrationsOpen, setRegistrationsOpen] = useState(true);
 
   const userType = isStudent ? "student" : "mentor";
+
+
+  if(REGISTRATIONS_OPEN === false) setRegistrationsOpen(false);
 
   useEffect(() => {
     setIsRegistering(!authContext.isRegistered);
 
-    if (isRegistering && !REGISTRATIONS_OPEN) {
+    if (isRegistering && !registrationsOpen) {
       // Redirect if registrations are closed and is registering
       navigate(ROUTER_PATHS.HOME);
     }
