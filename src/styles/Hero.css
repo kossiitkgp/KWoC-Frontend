@@ -51,9 +51,41 @@
   border-radius: 0.5rem;
 }
 
+.discord-button {
+  background-color: #272a2f;
+  box-shadow: 4px 4px #6a6a6a;
+  transition: background-color 200ms;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+}
+
+.discord-button p {
+  margin: 0;
+  padding: 0;
+}
+
+.discord-icon {
+  color: #7289d7;
+  transition: color 200ms;
+}
+
 .hero-button:hover {
   background-color: rgba(256, 256, 256, 0.8);
   cursor: pointer;
+}
+
+.discord-button:hover {
+  cursor: pointer;
+  background-color: #7289d7;
+}
+
+.discord-button:hover .discord-icon {
+  color: #272a2f;
 }
 
 .hero-images {
