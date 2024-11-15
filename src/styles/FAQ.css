@@ -62,10 +62,16 @@
 }
 
 .faq-items-container {
-    width: 70%;
-    max-width: 70vw;
+    width: 90%;
+    max-width: 80vw;
 }
 
+@media (min-width: 768px) {
+    .faq-items-container {
+        width: 70%;
+        max-width: 70vw;
+    }
+}
 .accordion-item {
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);

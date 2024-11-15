@@ -3,6 +3,7 @@
     color: #1a1a1a;
     margin-top: -400px;
     font-family: Arial, sans-serif;
+    margin-top: 0px;
   }
   
   .footer-content {
@@ -40,9 +41,6 @@
   }
   
   @media (min-width: 768px) {
-    .footer {
-      margin-top: 0px;
-    }
     .footer-columns {
       display: flex;
       flex-direction: row;
