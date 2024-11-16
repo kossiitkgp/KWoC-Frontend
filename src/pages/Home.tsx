@@ -1,21 +1,20 @@
-import Snowfall from "react-snowfall";
 import { HeroComponent } from "../components/Hero";
+import Timeline from "../components/Timeline";
 import { AboutSection } from "../components/About";
-import { Header } from "../components/Header";
+import { WhyKWoC } from "../components/WhyKWoC";
+import "../styles/Santa.css";
+import Testimonials from "../components/Testimonials";
 
 function Home() {
+
   return (
-    <>
-      <Snowfall // the image can be edited into anything we want, feel free to change
-        snowflakeCount={150}
-        speed={[0.5, 1]} // array takes [min, max]
-        wind={[-0.5, 0.5]}
-        radius={[0.5, 1.5]}
-      />
-      <Header />
+    <div>
       <HeroComponent />
       <AboutSection />
-    </>
+      <WhyKWoC />
+      <Timeline />
+      <Testimonials />
+    </div>
   );
 }
 

@@ -1,15 +1,26 @@
 .navbar {
     display: flex;
-    width: 90vw;
+    width: 100vw;
+    padding: 0 1rem;
     margin: auto;
     justify-content: space-between;
+    position: relative;
 }
 
 .logo {
     height: 60px;
     width: 60px;
-    animation: anti-rotate 20s linear infinite;
     cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 51%;
+    transform: translate(-50%,-50%);
+}
+
+.light-logo {
+    position: relative;
+    transform: scale(0.7);
 }
 
 .link-container {
@@ -17,17 +28,17 @@
     font-size: 1.3rem;
     flex-direction: column;
     justify-content: start;
-    padding: 50px;
+    padding: 6vw;
     padding-top: 100px;
     align-items: center;
-    gap: 30px;
+    gap: 0.7rem;
     position: absolute;
-    width: 450px;
+    width: 70vw;
     max-width: 80vw;
     border-radius: 10px;
     top: 1vh;
-    right: -110%;
-    bottom: 1vh;
+    right: -150vw;
+    height: 50vh;
     background-color: aquamarine;
     list-style: none;
     background: rgba(255, 255, 255, 0.1);
@@ -38,14 +49,22 @@
     transition: 0.5s;
 }
 
+.profile-picture-navbar {
+    width: 2.5rem;       
+    height: 100%;        
+    border-radius: 50%; 
+    display: block;
+}
+
 .burger {
     position: absolute;
-    right: 40px;
-    font-size: 1.6rem;
+    right: 1rem;
+    font-size: 1.3rem;
     cursor: pointer;
-    top: 60px;
-    height: 70px;
-    width: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 40px;
+    width: 40px;
     background-color: #242424;
     color: #393939;
     display: flex;
@@ -76,15 +95,21 @@
         box-shadow: none;
         border: none;
         right: 0;
+        height: auto;
+        margin-right: 3rem;
     }
 
     .burger {
         display: none;
     }
+
+    .light-logo{
+        transform: scale(0.9);
+    }
 }
 
 .link-container.open {
-    right: 30px;
+    right: 9vw;
 }
 
 .link {
@@ -104,9 +129,10 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     padding-top: 0.5rem;
-    padding-bottom: 0.5rem; 
+    padding-bottom: 0.5rem;
     border-radius: 5px;
-    box-shadow: 3px 3px 0 3px #707070;
+    box-shadow: 4px 4px #6a6a6a;
+    cursor: pointer;
 }
 
 .container {
@@ -187,16 +213,6 @@
 
     100% {
         transform: rotate(360deg);
-    }
-}
-
-@keyframes anti-rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(-360deg);
     }
 }
 

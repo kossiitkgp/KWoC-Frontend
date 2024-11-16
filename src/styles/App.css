@@ -6,17 +6,7 @@ body {
   justify-content: center;
   height: 100%;
   width: 100%;
-}
-
-.button {
-  background: #fff;
-  color: #0a0a19;
-  box-shadow: 4px 4px #6a6a6a;
-  transition: scale 150ms;
-}
-
-.button:hover {
-  scale: 1.08;
+  overflow-x: hidden;
 }
 
 #root {
