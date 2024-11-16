@@ -17,9 +17,11 @@ export const HeroComponent = () => {
           <h1>Kharagpur <span className='yellow-text'>Winter<br />of Code</span> 2024</h1>
         </div>
         <div className="hero-button-container">
-          <a href={STUDENT_MANUAL_LINK} target="_blank"><button className='hero-button'>Student Manual</button> </a>
-          <a href={MENTOR_MANUAL_LINK} target="_blank"><button className='hero-button'>Mentor Manual</button> </a>
-          <a href={DISCORD_INVITE} target="_blank"><button className='discord-button'><FaDiscord className='discord-icon' /><p>Discord Server</p></button> </a>
+          <div className='manual'>
+            <a href={STUDENT_MANUAL_LINK} target="_blank"><button className='hero-button left-button'>Student Manual</button> </a>
+            <a href={MENTOR_MANUAL_LINK} target="_blank"><button className='hero-button right-button'>Mentor Manual</button> </a>
+          </div>
+          <a href={DISCORD_INVITE} target="_blank"><button className='discord-button'><FaDiscord className='discord-icon' /><p>Join Our Discord Server</p></button> </a>
         </div>
       </div>
       <div className="hero-images">

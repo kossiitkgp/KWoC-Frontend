@@ -15,6 +15,27 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.hero-button-container {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  width: auto;
+  flex-wrap: wrap;
+}
+
+.hero-button-container .manual {
+  display: flex;
+  gap: 0.4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .hero-quote {
@@ -31,37 +52,75 @@
   margin-bottom: 4rem;
 }
 
-@media (min-width: 768px) {
-  .hero-title h1 {
-    font-size: 5rem;
-  }
-}
-
 .yellow-text {
   color: #ffe336;
 }
 
 .hero-button {
+  display: inline;
+  width: 100%;
   background: #fff;
   color: #0a0a19;
-  box-shadow: 4px 4px #6a6a6a;
   transition: background-color 200ms;
+  border: none;
   font-size: 1rem;
+  font-weight: 500;
   padding: 1rem;
   border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.1s;
 }
 
 .discord-button {
   background-color: #272a2f;
-  box-shadow: 4px 4px #6a6a6a;
+  box-shadow: 0px 4px #3a3a3a;
+  border: none;
   transition: background-color 200ms;
   font-size: 1rem;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  font-weight: bold;
+  width: 100%;
   display: flex;
   justify-content: center;
   gap: 6px;
   align-items: center;
+  cursor: pointer;
+  transition: 0.1s;
+  border-radius: 50px;
+}
+
+.left-button {
+  border-radius: 50px;
+  box-shadow: 4px -6px 8px rgba(256, 256, 256, 0.2);
+}
+
+.right-button {
+  border-radius: 50px;
+  box-shadow: -4px 6px 8px rgba(256, 256, 256, 0.2);
+}
+
+@media (min-width: 768px) {
+  .hero-title h1 {
+    font-size: 5rem;
+  }
+
+  .hero-button {
+    padding: 1rem 1.5rem;
+  }
+
+  .hero-button-container .manual {
+    flex-direction: row;
+  }
+
+  .left-button {
+    border-radius: 50px 0 0 50px;
+    box-shadow: -6px 4px 8px rgba(256, 256, 256, 0.2);
+  }
+
+  .right-button {
+    border-radius: 0 50px 50px 0;
+    box-shadow: 6px 4px 8px rgba(256, 256, 256, 0.2);
+  }
 }
 
 .discord-button p {
@@ -72,16 +131,20 @@
 .discord-icon {
   color: #7289d7;
   transition: color 200ms;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .hero-button:hover {
   background-color: rgba(256, 256, 256, 0.8);
+  transform: scale(1.04);
   cursor: pointer;
 }
 
 .discord-button:hover {
   cursor: pointer;
   background-color: #7289d7;
+  transform: scale(1.04);
 }
 
 .discord-button:hover .discord-icon {
@@ -105,13 +168,4 @@
   max-width: 100%;
   height: auto;
   margin: 0;
-}
-
-.hero-button-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
 }
