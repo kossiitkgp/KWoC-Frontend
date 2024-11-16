@@ -17,6 +17,7 @@ import RegistrationForm from "./pages/RegistrationForm";
 import Snowfall from "react-snowfall";
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
+import OrgDash from "./pages/OrgDash";
 
 function App() {
   return (
@@ -68,6 +69,10 @@ function App() {
               path={ROUTER_PATHS.MENTOR_DASHBOARD}
               element={<MentorDashboard />}
             />
+            <Route 
+              path={ROUTER_PATHS.ORGANISOR_DASHBOARD}
+              element={<OrgDash/>}
+              />
             <Route
               path={ROUTER_PATHS.PASTPROGRAMS}
               element={<PastProgramsPage />}

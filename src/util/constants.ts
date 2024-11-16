@@ -26,6 +26,7 @@ export enum ROUTER_PATHS {
   // Dashboards
   STUDENT_DASHBOARD = "/dashboard/student",
   MENTOR_DASHBOARD = "/dashboard/mentor",
+  ORGANISOR_DASHBOARD = "/dashboard/organiser",
 
   // Stats routes
   ALL_STUDENT_STATS = "/stats/students",
