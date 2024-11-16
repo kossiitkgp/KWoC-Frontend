@@ -15,7 +15,7 @@
     z-index: 2;
     top: 50%;
     left: 51%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 .light-logo {
@@ -51,9 +51,9 @@
 }
 
 .profile-picture-navbar {
-    width: 2.5rem;       
-    height: 100%;        
-    border-radius: 50%; 
+    width: 2.5rem;
+    height: 100%;
+    border-radius: 50%;
     display: block;
 }
 
@@ -104,7 +104,7 @@
         display: none;
     }
 
-    .light-logo{
+    .light-logo {
         transform: scale(0.9);
     }
 }
@@ -131,16 +131,22 @@
 }
 
 .reg-button {
-    /* text-gray-950 bg-white px-6 py-2 rounded shadow-[3px_3px_0_3px_#707070] */
-    color: #080808;
-    background-color: #fff;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-radius: 5px;
-    box-shadow: 4px 4px #6a6a6a;
+    background: #fff;
+    color: #0a0a19;
+    transition: background-color 200ms;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
     cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 0 10px 0px rgba(255, 255, 255, .2);
+}
+
+.reg-button:hover {
+    color: #393939;
+    box-shadow: 0 5px 10px 1px rgba(255, 255, 255, .2);
 }
 
 .container {
