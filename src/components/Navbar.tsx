@@ -58,7 +58,7 @@ const Navbar = () => {
   const location = useLocation();
   const [LINKS, setLINKS] = useState([
     { name: "Home", link: ROUTER_PATHS.HOME, isActive: false },
-    // { name: "Projects", link: ROUTER_PATHS.PROJECTS_LIST, isActive: false },
+    { name: "Projects", link: ROUTER_PATHS.PROJECTS_LIST, isActive: false },
     { name: "FAQs", link: ROUTER_PATHS.FAQ, isActive: false },
   ]);
   const [isOpen, setIsOpen] = useState(false);
