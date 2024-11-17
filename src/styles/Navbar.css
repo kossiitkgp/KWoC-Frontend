@@ -10,7 +10,6 @@
 .logo {
     height: 60px;
     width: 60px;
-    cursor: pointer;
     position: absolute;
     z-index: 2;
     top: 50%;
