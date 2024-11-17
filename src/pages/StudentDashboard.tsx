@@ -80,229 +80,313 @@ function StudentDashboard() {
   let languages_used = dashboard === null ? [] : dashboard.languages_used;
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row">
-      <Profile />
-      <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
-        <div className="pt-28 max-w-5xl mx-auto px-4">
-          {REPORT_SUBMISSION_OPEN && dashboard?.passed_end_evals && (
-            <div className="mb-5">
-              <ReportForm currentLink={dashboard.blog_link} />
-            </div>
-          )}
+    <div className="screen-cont">
+      <div style={{width: "80%"}}>
+        <Profile />
+        <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
+          <div className="pt-28 max-w-5xl mx-auto px-4">
+            {REPORT_SUBMISSION_OPEN && dashboard?.passed_end_evals && (
+              <div className="mb-5">
+                <ReportForm currentLink={dashboard.blog_link} />
+              </div>
+            )}
 
-          <div className="flex gap-5 rounded-lg shadow-md mb-6">
-            <div className="w-[50%]">
-              {isLoading ? (
-                <SpinnerLoader />
-              ) : error !== null ? (
-                <p className="text-center text-red-500">{error}</p>
-              ) : (
-                <>
-                  <div className="flex gap-2 items-center justify-between">
-                    <div className="flex gap-2 items-center font-semibold">
-                      <BiGitPullRequest />
-                      <span>Total Pull Requests:</span>
-                    </div>
-                    <p className="font-bold text-base">
-                      {dashboard?.pull_count}
-                    </p>
-                  </div>
-
-                  <div className="flex gap-2 items-center justify-between">
-                    <div className="flex gap-2 items-center font-semibold">
-                      <BiGitCommit />
-                      <span>Total Commits:</span>
-                    </div>
-                    <p className="font-bold text-base">
-                      {dashboard?.commit_count}
-                    </p>
-                  </div>
-
-                  <div>
-                    <div className="flex gap-2 items-center font-semibold">
-                      <MdOutlineDifference />
-                      <span>Lines Changed:</span>
-                    </div>
-                    <div className="w-full flex items-center">
-                      <span className="flex-none text-green-700 font-bold">
-                        + {dashboard?.lines_added}
-                      </span>
-                      <div className="w-full mx-2 flex">
-                        <div
-                          style={{ flex: addedPercentage + "%" }}
-                          className="border-2 border-green-700"
-                        ></div>
-                        <div
-                          style={{ flex: removedPercentage + "%" }}
-                          className="border-2 border-red-700"
-                        ></div>
+            <div className="all-cont">
+              <div className="w-[50%]">
+                {isLoading ? (
+                  <SpinnerLoader />
+                ) : error !== null ? (
+                  <p className="text-center text-red-500">{error}</p>
+                ) : (
+                  <div className="stat-cont">
+                    <div>
+                      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600' }}>
+                        <BiGitPullRequest />
+                        <span>Total Pull Requests:</span>
+                        <p style={{ fontWeight: '700', fontSize: '1rem' }}>
+                          {dashboard?.pull_count}
+                        </p>
                       </div>
-                      <span className="flex-none text-red-700 font-bold">
-                        - {dashboard?.lines_removed}
-                      </span>
                     </div>
-                  </div>
 
-                  <div className="flex gap-2 items-start">
-                    <div className="flex items-center gap-2 font-semibold min-w-fit">
-                      <FaCode />
-                      <span>Languages Used:</span>
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600' }}>
+                        <BiGitCommit />
+                        <span>Total Commits:</span>
+                      </div>
+                      <p style={{ fontWeight: '700', fontSize: '1rem' }}>
+                        {dashboard?.commit_count}
+                      </p>
                     </div>
-                    <p className="font-bold text-sm">
-                      {languages_used.length > 0
-                        ? languages_used.join(", ")
-                        : "None"}
-                    </p>
+
+
+                    <div>
+                      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600' }}>
+                        <MdOutlineDifference />
+                        <span>Lines Changed:</span>
+                      </div>
+                      <div style={{ display: 'flex', width: '100%', alignItems: 'center' }}>
+                        <span style={{ flex: 'none', color: '#2F855A', fontWeight: '700' }}>+ {dashboard?.lines_added}</span>
+                        <div style={{ display: 'flex', width: '100%', margin: '0 0.5rem' }}>
+                          <div style={{ flex: `${addedPercentage}%`, border: '2px solid #2F855A' }}></div>
+                          <div style={{ flex: `${removedPercentage}%`, border: '2px solid #C53030' }}></div>
+                        </div>
+                        <span style={{ flex: 'none', color: '#C53030', fontWeight: '700' }}>- {dashboard?.lines_removed}</span>
+                      </div>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600', minWidth: 'fit-content' }}>
+                        <FaCode />
+                        <span>Languages Used:</span>
+                        <p style={{ fontWeight: '700', fontSize: '0.875rem' }}>
+                          {languages_used.length > 0 ? languages_used.join(", ") : "None"}
+                        </p>
+                      </div>
+                    </div>
+
                   </div>
-                </>
-              )}
+                )}
+              </div>
+
+              <div>
+                {isLoading ? (
+                  <SpinnerLoader />
+                ) : error !== null ? (
+                  <p style={{ textAlign: 'center', color: '#f56565' }}>{error}</p>
+                ) : (
+                  <div className="eval-cont">
+                    <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600' }}>
+                        <HiOutlineDocumentReport />
+                        <span>Mid Evaluation:</span>
+                      </div>
+                      <p style={{ fontWeight: '700', fontSize: '1rem' }}>
+                        {dashboard?.passed_mid_evals ? (
+                          <span style={{ color: '#68D391' }}>Passed</span>
+                        ) : MID_EVALS_ENDED ? (
+                          <span style={{ color: '#F56565' }}>Failed</span>
+                        ) : (
+                          <span style={{ color: '#F6E05E' }}>Pending</span>
+                        )}
+                      </p>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600' }}>
+                        <HiOutlineDocumentReport />
+                        <span>End Evaluation:</span>
+                      </div>
+                      <p style={{ fontWeight: '700', fontSize: '1rem' }}>
+                        {dashboard?.passed_end_evals ? (
+                          <span style={{ color: '#68D391' }}>Passed</span>
+                        ) : END_EVALS_ENDED ? (
+                          <span style={{ color: '#F56565' }}>Failed</span>
+                        ) : END_EVALS_ENDED || !dashboard?.passed_mid_evals ? (
+                          <span style={{ color: '#F56565' }}>Failed</span>
+                        ) : (
+                          <span style={{ color: '#F6E05E' }}>Pending</span>
+                        )}
+                      </p>
+                    </div>
+
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div>
-              {isLoading ? (
-                <SpinnerLoader />
-              ) : error !== null ? (
-                <p className="text-center text-red-500">{error}</p>
-              ) : (
-                <>
-                  <div className="flex gap-2 items-center justify-between">
-                    <div className="flex gap-2 items-center font-semibold">
-                      <HiOutlineDocumentReport />
-                      <span>Mid Evaluation:</span>
-                    </div>
-                    <p className="font-bold text-base">
-                      {dashboard?.passed_mid_evals ? (
-                        <span className="text-green-300">Passed</span>
-                      ) : MID_EVALS_ENDED ? (
-                        <span className="text-red-500">Failed</span>
-                      ) : (
-                        <span className="text-yellow-400">Pending</span>
-                      )}
-                    </p>
-                  </div>
+            <div className="card-cont">
+              <div className="card-item" style={{ marginBottom: '2rem', padding: '1rem 1rem 1rem 1rem', backgroundColor: '#2d3748', borderRadius: '0.375rem', display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{ fontFamily: 'display', fontSize: '1.875rem', fontWeight: '700', textAlign: 'center', marginBottom: '1.25rem' }}>
+                  Projects
+                </h3>
+                <p style={{ fontSize: '1.125rem', textAlign: 'center', marginBottom: '0.75rem' }}>
+                  Discover exciting projects that you can contribute to and
+                  collaborate on. Each project is an opportunity to apply your
+                  skills, learn new technologies, and make a real impact.
+                </p>
+                <Link
+                  to={ROUTER_PATHS.PROJECTS_LIST}
+                  style={{
+                    color: 'white',
+                    display: 'inline-block',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    outline: 'none',
+                    padding: '0.625rem 1.25rem',
+                    backgroundColor: '#2b6cb0',
+                    borderRadius: '0.375rem',
+                    fontWeight: '500',
+                    fontSize: '0.875rem',
+                    textAlign: 'center',
+                    border: '1px solid #3182ce',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => (e.target.style.backgroundColor = '#2b6cb0')}
+                  onMouseLeave={(e) => (e.target.style.backgroundColor = '#3182ce')}
+                  onFocus={(e) => (e.target.style.boxShadow = '0 0 0 4px rgba(56, 189, 248, 0.5)')}
+                  onBlur={(e) => (e.target.style.boxShadow = 'none')}
+                >
+                  List of Projects
+                </Link>
+              </div>
 
-                  <div className="flex gap-2 items-center justify-between">
-                    <div className="flex gap-2 items-center font-semibold">
-                      <HiOutlineDocumentReport />
-                      <span>End Evaluation:</span>
-                    </div>
-                    <p className="font-bold text-base">
-                      {dashboard?.passed_end_evals ? (
-                        <span className="text-green-300">Passed</span>
-                      ) : END_EVALS_ENDED ? (
-                        <span className="text-red-500">Failed</span>
-                      ) : END_EVALS_ENDED || !dashboard?.passed_mid_evals ? (
-                        <span className="text-red-500">Failed</span>
-                      ) : (
-                        <span className="text-yellow-400">Pending</span>
-                      )}
-                    </p>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
+              <div className="card-item" style={{ marginBottom: '2rem', padding: '1rem 1rem 1rem 1rem', backgroundColor: '#2d3748', borderRadius: '0.375rem', display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{ fontFamily: 'display', fontSize: '1.875rem', fontWeight: '700', textAlign: 'center', marginBottom: '1.25rem' }}>
+                  Student Manual
+                </h3>
+                <p style={{ fontSize: '1.125rem', textAlign: 'center', marginBottom: '0.75rem' }}>
+                  Student Manual Download the KWoC Student Manual for comprehensive
+                  information about the program structure, guidelines, and
+                  expectations. This manual is your go-to guide for a smooth and
+                  successful journey through KWoC.
+                </p>
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href={STUDENT_MANUAL_LINK}
+                  style={{
+                    color: 'white',
+                    display: 'inline-block',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    outline: 'none',
+                    padding: '0.625rem 1.25rem',
+                    backgroundColor: '#2b6cb0',
+                    borderRadius: '0.375rem',
+                    fontWeight: '500',
+                    fontSize: '0.875rem',
+                    textAlign: 'center',
+                    border: '1px solid #3182ce',
+                    cursor: 'pointer',
+                    transition: 'background-color 0.2s ease',
+                  }}
+                  onMouseEnter={(e) => (e.target.style.backgroundColor = '#2b6cb0')}
+                  onMouseLeave={(e) => (e.target.style.backgroundColor = '#3182ce')}
+                  onFocus={(e) => (e.target.style.boxShadow = '0 0 0 4px rgba(56, 189, 248, 0.5)')}
+                  onBlur={(e) => (e.target.style.boxShadow = 'none')}
+                >
+                  Student Manual
+                </a>
+              </div>
 
-          <div className="mb-8 px-4 py-4 lg:px-10 bg-primary-800 rounded-md flex flex-col">
-            <h3 className="font-display text-3xl font-bold text-center mb-5">
-              Projects
-            </h3>
-            <p className="text-lg text-center mb-3">
-              Discover exciting projects that you can contribute to and
-              collaborate on. Each project is an opportunity to apply your
-              skills, learn new technologies, and make a real impact.
-            </p>
-            <Link
-              to={ROUTER_PATHS.PROJECTS_LIST}
-              className="text-white w-fit mx-auto focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-primary-700 hover:bg-primary-600 focus:ring-primary-600 border-primary-600"
-            >
-              List of Projects
-            </Link>
-          </div>
-          <div className="mb-8 px-4 py-4 lg:px-10 bg-primary-800 rounded-md flex flex-col">
-            <h3 className="font-display text-3xl font-bold text-center mb-5">
-              Student Manual
-            </h3>
-            <p className="text-lg text-center mb-3">
-              Student Manual Download the KWoC Student Manual for comprehensive
-              information about the program structure, guidelines, and
-              expectations. This manual is your go-to guide for a smooth and
-              successful journey through KWoC.
-            </p>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href={STUDENT_MANUAL_LINK}
-              className="text-white w-fit mx-auto focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-primary-700 hover:bg-primary-600 focus:ring-primary-600 border-primary-600"
-            >
-              Student Manual
-            </a>
-          </div>
-          <div className="mb-8 px-4 py-4 lg:px-10 bg-primary-800 rounded-md flex flex-col">
-            <h3 className="font-display text-3xl font-bold text-center mb-5">
-              Stay Connected
-            </h3>
-            <p className="text-lg text-center mb-3">
-              Stay Connected Connect with fellow participants, mentors, and
-              organizers. Join our [Platform/Community Name] to engage in
-              discussions, seek help, and stay updated on the latest program
-              announcements.
-            </p>
-            <div className="flex justify-center gap-4 mx-auto">
-              <Link
-                to={DISCORD_INVITE}
-                className="text-white w-fit mx-auto focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 bg-primary-700 hover:bg-primary-600 focus:ring-primary-600 border-primary-600"
-              >
-                Discord Server
-              </Link>
+              <div className="card-item" style={{ marginBottom: '2rem', padding: '1rem 1rem 1rem 1rem', backgroundColor: '#2d3748', borderRadius: '0.375rem', display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{ fontFamily: 'display', fontSize: '1.875rem', fontWeight: '700', textAlign: 'center', marginBottom: '1.25rem' }}>
+                  Stay Connected
+                </h3>
+                <p style={{ fontSize: '1.125rem', textAlign: 'center', marginBottom: '0.75rem' }}>
+                  Stay Connected Connect with fellow participants, mentors, and
+                  organizers. Join our [Platform/Community Name] to engage in
+                  discussions, seek help, and stay updated on the latest program
+                  announcements.
+                </p>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginLeft: 'auto', marginRight: 'auto' }}>
+                  <Link
+                    to={DISCORD_INVITE}
+                    style={{
+                      color: 'white',
+                      display: 'inline-block',
+                      marginLeft: 'auto',
+                      marginRight: 'auto',
+                      outline: 'none',
+                      padding: '0.625rem 1.25rem',
+                      backgroundColor: '#2b6cb0',
+                      borderRadius: '0.375rem',
+                      fontWeight: '500',
+                      fontSize: '0.875rem',
+                      textAlign: 'center',
+                      border: '1px solid #3182ce',
+                      cursor: 'pointer',
+                      transition: 'background-color 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => (e.target.style.backgroundColor = '#2b6cb0')}
+                    onMouseLeave={(e) => (e.target.style.backgroundColor = '#3182ce')}
+                    onFocus={(e) => (e.target.style.boxShadow = '0 0 0 4px rgba(56, 189, 248, 0.5)')}
+                    onBlur={(e) => (e.target.style.boxShadow = 'none')}
+                  >
+                    Discord Server
+                  </Link>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
-
-      <div className="p-6 rounded-lg shadow-md lg:mt-20 flex flex-col">
+      <div className="end-cont" style={{ padding: '1.5rem', borderRadius: '0.5rem', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', marginTop: '5rem', display: 'flex', flexDirection: 'column' }}>
         {dashboard !== null && (
-          <div className="mb-8">
-            <h3 className="font-semibold text-2xl mb-2">Projects Worked On</h3>
-            <div className="space-y-0.5 flex flex-col">
+          <div style={{ marginBottom: '2rem' }}>
+            <h3 style={{ fontWeight: '600', fontSize: '1.5rem', marginBottom: '0.5rem' }}>
+              Projects Worked On
+            </h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem' }}>
               {dashboard.projects_worked.length > 0
                 ? dashboard.projects_worked.map(({ name, repo_link }, i) => (
-                    <a
-                      key={i}
-                      href={repo_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-primary-600 hover:underline"
-                    >
-                      {name}
-                    </a>
-                  ))
+                  <a
+                    key={i}
+                    href={repo_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: '#2b6cb0', // primary color
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={(e) => {
+                      const target = e.target as HTMLAnchorElement;
+                      target.style.color = '#3182ce';
+                    }}
+                    onMouseLeave={(e) => {
+                      const target = e.target as HTMLAnchorElement;
+                      target.style.color = '#2b6cb0';
+                    }}
+                    onFocus={(e) => (e.target.style.textDecoration = 'underline')}
+                    onBlur={(e) => (e.target.style.textDecoration = 'none')}
+                  >
+                    {name}
+                  </a>
+                ))
                 : "None"}
             </div>
           </div>
+
         )}
 
         {dashboard !== null && (
-          <div className="mb-8">
-            <h3 className="font-semibold text-2xl mb-2">
+          <div style={{ marginBottom: '2rem' }}>
+            <h3 style={{ fontWeight: '600', fontSize: '1.5rem', marginBottom: '0.5rem' }}>
               Merged Pull Requests
             </h3>
-            <div className="space-y-0.5 flex flex-col">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.125rem' }}>
               {dashboard.pulls.length > 0
                 ? dashboard.pulls.map((pull, i) => (
-                    <a
-                      key={i}
-                      href={pull}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:text-primary-600 hover:underline"
-                    >
-                      {formatPullRequest(pull)}
-                    </a>
-                  ))
+                  <a
+                    key={i}
+                    href={pull}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: '#2b6cb0', // primary color
+                      textDecoration: 'none',
+                    }}
+                    onMouseEnter={(e) => {
+                      const target = e.target as HTMLAnchorElement;
+                      target.style.color = '#3182ce';
+                    }}
+                    onMouseLeave={(e) => {
+                      const target = e.target as HTMLAnchorElement;
+                      target.style.color = '#2b6cb0';
+                    }}
+                    onFocus={(e) => (e.target.style.textDecoration = 'underline')}
+                    onBlur={(e) => (e.target.style.textDecoration = 'none')}
+                  >
+                    {formatPullRequest(pull)}
+                  </a>
+                ))
                 : "None"}
             </div>
           </div>
+
         )}
 
         <Resources title="Student Resources" resources={STUDENT_RESOURCES} />
