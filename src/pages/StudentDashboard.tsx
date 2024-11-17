@@ -37,6 +37,10 @@ function StudentDashboard() {
       navigate(ROUTER_PATHS.HOME);
     }
 
+    if (authContext.userData.type === "mentor") {
+      navigate(ROUTER_PATHS.MENTOR_DASHBOARD);
+    }
+
     if (authContext.userData.type !== "student") {
       navigate(ROUTER_PATHS.HOME);
     }
