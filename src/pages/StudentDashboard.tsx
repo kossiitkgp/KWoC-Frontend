@@ -20,6 +20,8 @@ import { FaCode } from "react-icons/fa";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { formatPullRequest } from "../util/format";
 import ReportForm from "../components/ReportForm";
+import "../styles/StudentDashboard.css";
+
 
 function StudentDashboard() {
   const navigate = useNavigate();
@@ -81,7 +83,7 @@ function StudentDashboard() {
 
   return (
     <div className="screen-cont">
-      <div style={{width: "80%"}}>
+      <div className="start-cont">
         <Profile />
         <div className="relative overflow-x-hidden flex-1 flex-col flex flex-wrap">
           <div className="pt-28 max-w-5xl mx-auto px-4">
@@ -99,17 +101,17 @@ function StudentDashboard() {
                   <p className="text-center text-red-500">{error}</p>
                 ) : (
                   <div className="stat-cont">
-                    <div>
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'space-between', width: "100%" }}>
                       <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600' }}>
                         <BiGitPullRequest />
                         <span>Total Pull Requests:</span>
-                        <p style={{ fontWeight: '700', fontSize: '1rem' }}>
-                          {dashboard?.pull_count}
-                        </p>
                       </div>
+                      <p style={{ fontWeight: '700', fontSize: '1rem' }}>
+                        {dashboard?.pull_count}
+                      </p>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'space-between', width: "100%" }}>
                       <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600' }}>
                         <BiGitCommit />
                         <span>Total Commits:</span>
@@ -121,7 +123,7 @@ function StudentDashboard() {
 
 
                     <div>
-                      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600' }}>
+                      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600', justifyContent: "space-between", width: "100%" }}>
                         <MdOutlineDifference />
                         <span>Lines Changed:</span>
                       </div>
@@ -135,16 +137,16 @@ function StudentDashboard() {
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600', minWidth: 'fit-content' }}>
-                        <FaCode />
+                    <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'space-between', width: "100%" }}>
+                      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', fontWeight: '600' }}>
+                      <FaCode />
                         <span>Languages Used:</span>
-                        <p style={{ fontWeight: '700', fontSize: '0.875rem' }}>
-                          {languages_used.length > 0 ? languages_used.join(", ") : "None"}
-                        </p>
                       </div>
+                      <p style={{ fontWeight: '700', fontSize: '0.875rem' }}>
+                        {languages_used.length > 0 ? languages_used.join(", ") : "None"}
+                      </p>
                     </div>
-
+                    
                   </div>
                 )}
               </div>
