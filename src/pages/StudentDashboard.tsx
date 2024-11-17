@@ -225,8 +225,8 @@ function StudentDashboard() {
                     cursor: 'pointer',
                     transition: 'background-color 0.2s ease',
                   }}
-                  onMouseEnter={(e) => (e.target.style.backgroundColor = '#2b6cb0')}
-                  onMouseLeave={(e) => (e.target.style.backgroundColor = '#3182ce')}
+                  onMouseEnter={(e) => ((e.target as HTMLAnchorElement).style.backgroundColor = '#2b6cb0')}
+                  onMouseLeave={(e) => ((e.target as HTMLAnchorElement).style.backgroundColor = '#3182ce')}
                   onFocus={(e) => (e.target.style.boxShadow = '0 0 0 4px rgba(56, 189, 248, 0.5)')}
                   onBlur={(e) => (e.target.style.boxShadow = 'none')}
                 >
@@ -264,8 +264,8 @@ function StudentDashboard() {
                     cursor: 'pointer',
                     transition: 'background-color 0.2s ease',
                   }}
-                  onMouseEnter={(e) => (e.target.style.backgroundColor = '#2b6cb0')}
-                  onMouseLeave={(e) => (e.target.style.backgroundColor = '#3182ce')}
+                  onMouseEnter={(e) => ((e.target as HTMLAnchorElement).style.backgroundColor = '#2b6cb0')}
+                  onMouseLeave={(e) => ((e.target as HTMLAnchorElement).style.backgroundColor = '#3182ce')}
                   onFocus={(e) => (e.target.style.boxShadow = '0 0 0 4px rgba(56, 189, 248, 0.5)')}
                   onBlur={(e) => (e.target.style.boxShadow = 'none')}
                 >
@@ -302,8 +302,8 @@ function StudentDashboard() {
                       cursor: 'pointer',
                       transition: 'background-color 0.2s ease',
                     }}
-                    onMouseEnter={(e) => (e.target.style.backgroundColor = '#2b6cb0')}
-                    onMouseLeave={(e) => (e.target.style.backgroundColor = '#3182ce')}
+                    onMouseEnter={(e) => ((e.target as HTMLAnchorElement).style.backgroundColor = '#2b6cb0')}
+                    onMouseLeave={(e) => ((e.target as HTMLAnchorElement).style.backgroundColor = '#3182ce')}
                     onFocus={(e) => (e.target.style.boxShadow = '0 0 0 4px rgba(56, 189, 248, 0.5)')}
                     onBlur={(e) => (e.target.style.boxShadow = 'none')}
                   >
