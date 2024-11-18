@@ -3,7 +3,7 @@ import { makeRequest } from "../util/backend";
 import { useAuthContext } from "../util/auth";
 import { useNavigate } from "react-router-dom";
 import SpinnerLoader from "../components/SpinnerLoader";
-import "../styles/OAuth.css"
+import "../styles/OAuth.css";
 
 function OAuth() {
   const authContext = useAuthContext();
@@ -61,13 +61,12 @@ function OAuth() {
     <div className="loading-container">
       {error !== null ? (
         <div className="loader-wrapper">
-          <SpinnerLoader  />
+          <SpinnerLoader />
         </div>
       ) : (
         <p className="error-text">{error}</p>
       )}
     </div>
-
   );
 }
 

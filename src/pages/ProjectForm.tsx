@@ -140,7 +140,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
                   mentor_username: authContext.userData.username,
                   id: isEditing ? (id ? parseInt(id) : undefined) : undefined,
                 },
-                authContext.jwt
+                authContext.jwt,
               );
 
               if (res.is_ok) {
@@ -149,7 +149,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
                 return true;
               } else {
                 setError(
-                  `${res.response.status_code} Error: ${res.response.message}`
+                  `${res.response.status_code} Error: ${res.response.message}`,
                 );
                 setLoading(false);
                 return false;

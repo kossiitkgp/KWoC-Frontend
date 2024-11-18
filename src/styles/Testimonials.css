@@ -28,7 +28,9 @@
   width: 650px;
   height: 1rem;
   position: absolute;
-  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+  transition:
+    transform 0.8s ease-in-out,
+    opacity 0.8s ease-in-out;
   transform: scale(0.8);
   opacity: 0.6;
   z-index: 0;
@@ -54,7 +56,6 @@
   font-style: italic;
 }
 
-
 @media (max-width: 768px) {
   .testimonials-container {
     padding: 40px 15px;
@@ -76,9 +77,6 @@
     transform: scale(1);
     opacity: 1;
   }
-
-
-
 
   .testimonial-card {
     padding: 1rem 1.5rem;
@@ -126,7 +124,9 @@
     width: 300px;
     height: 1rem;
     position: absolute;
-    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    transition:
+      transform 0.5s ease-in-out,
+      opacity 0.3s ease-in-out;
     transform: scale(0.8);
     opacity: 0.6;
     z-index: 0;

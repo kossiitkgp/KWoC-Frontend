@@ -3,7 +3,9 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
   padding: 20px;
   margin: 15px;
   max-width: 380px;
@@ -60,14 +62,16 @@
   font-weight: 500;
 }
 
-.mentor-link, .co-mentor-link {
+.mentor-link,
+.co-mentor-link {
   color: #1e88e5;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s;
 }
 
-.mentor-link:hover, .co-mentor-link:hover {
+.mentor-link:hover,
+.co-mentor-link:hover {
   color: #1565c0;
 }
 
@@ -131,7 +135,8 @@
   align-items: center;
 }
 
-.view-project-btn, .edit-project-btn {
+.view-project-btn,
+.edit-project-btn {
   padding: 8px 15px;
   font-size: 0.875rem;
   font-weight: 600;

@@ -64,7 +64,7 @@ const Navbar = () => {
       prevLinks.map((link) => ({
         ...link,
         isActive: link.link === location.pathname,
-      }))
+      })),
     );
   }, [location.pathname]);
 

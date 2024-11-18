@@ -17,8 +17,7 @@ function RegistrationForm({ isStudent }: { isStudent: boolean }) {
 
   const userType = isStudent ? "student" : "mentor";
 
-
-  if(REGISTRATIONS_OPEN === false) setRegistrationsOpen(false);
+  if (REGISTRATIONS_OPEN === false) setRegistrationsOpen(false);
 
   useEffect(() => {
     setIsRegistering(!authContext.isRegistered);

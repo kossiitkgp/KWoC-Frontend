@@ -1,12 +1,9 @@
 import "../styles/Santa.css";
 
 function NotFoundPage() {
-
   return (
     <>
-        <div>
-            OOPS Page not found
-        </div>
+      <div>OOPS Page not found</div>
     </>
   );
 }

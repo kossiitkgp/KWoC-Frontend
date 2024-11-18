@@ -75,7 +75,9 @@
   color: #ffffff;
   background-color: #4338ca;
   border-radius: 0.5rem;
-  transition: background-color 0.2s, transform 0.2s ease-in-out;
+  transition:
+    background-color 0.2s,
+    transform 0.2s ease-in-out;
   font-weight: 600;
 }
 
