@@ -1,4 +1,4 @@
-export type UserType = "mentor" | "student";
+export type UserType = "mentor" | "student" | "organiser";
 
 export interface IHTTPMessage {
   status_code: number;

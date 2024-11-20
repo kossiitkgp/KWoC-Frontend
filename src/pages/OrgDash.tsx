@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react'
 import ListItem from '../components/ListItem'
 import DetailsViewer from '../components/DetailsViewer'
 import { Project } from '../util/types'
-import testData from '../testData.json'
-import { PAGENATION_LEN } from '../util/constants'
+import { BACKEND_URL, PAGENATION_LEN, ROUTER_PATHS } from '../util/constants'
 import '../styles/OrgDash.css'
+import { useAuthContext } from '../util/auth'
+import { useNavigate } from 'react-router-dom'
 
 function OrgDash() {
+	const navigate = useNavigate();
+	const authContext = useAuthContext();
 	const [allData, setAllData] = useState<Project[]>([]);
 	const [filterData, setFilterData] = useState<Project[]>([]);
 	const [currPage, setCurrPage] = useState<Project[]>([]);
@@ -15,7 +18,37 @@ function OrgDash() {
 	const [selItem, setSelItem] = useState<Project>({} as Project);
 
 	useEffect(() => {
-		setAllData(testData as Project[]);
+		if (!authContext.isAuthenticated) {
+		  navigate(ROUTER_PATHS.HOME);
+		}
+	
+		if (authContext.userData.type === "student") {
+		  navigate(ROUTER_PATHS.STUDENT_DASHBOARD);
+		}
+	
+		if (authContext.userData.type === "mentor") {
+		  navigate(ROUTER_PATHS.MENTOR_DASHBOARD);
+		}
+
+		if(authContext.userData.type !== "organiser"){
+			navigate(ROUTER_PATHS.HOME);
+		}
+	  }, [authContext]);
+
+	  useEffect(() => {
+		fetch(`${BACKEND_URL}/project/all`, {
+			method: "GET",
+			headers: {
+				'Bearer' : `${authContext.jwt} `
+			}
+		}).then((res) => {
+			if(res.ok){
+				res.json().then((res) => setAllData(res as Project[]));
+			}
+		});
+	  }, [])
+
+	useEffect(() => {
 		const fItems = allData.filter((item) => !item.isProjectReview);
 		setFilterData(fItems);
 		setPgNo(1);
