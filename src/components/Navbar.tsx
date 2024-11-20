@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import kwoc_logo from "../assets/kwoc_logo.png";
 import "../styles/Navbar.css";
@@ -7,8 +7,8 @@ import {
   GH_OAUTH_URL,
   REGISTRATIONS_OPEN,
 } from "../util/constants";
-import { useAuthContext } from '../util/auth';
-import { UserType } from '../util/types';
+import { useAuthContext } from "../util/auth";
+import { UserType } from "../util/types";
 
 function LoginButton() {
   const authContext = useAuthContext();
@@ -31,24 +31,20 @@ function LoginButton() {
       ) : REGISTRATIONS_OPEN ? (
         ["mentor", "student"].map((userType, i) => (
           <button
-            className='reg-button'
+            className="reg-button"
             key={i}
             onClick={(e) => {
               e.preventDefault();
 
               authContext.setUserType(userType as UserType);
-              window.location.href = GH_OAUTH_URL
+              window.location.href = GH_OAUTH_URL;
             }}
           >
             {userType.toUpperCase()} LOGIN
           </button>
         ))
       ) : (
-        <Link
-          to={GH_OAUTH_URL}
-        >
-          LOGIN
-        </Link>
+        <Link to={GH_OAUTH_URL}>LOGIN</Link>
       )}
     </>
   );
@@ -58,7 +54,7 @@ const Navbar = () => {
   const location = useLocation();
   const [LINKS, setLINKS] = useState([
     { name: "Home", link: ROUTER_PATHS.HOME, isActive: false },
-    // { name: "Projects", link: ROUTER_PATHS.PROJECTS_LIST, isActive: false },
+    { name: "Projects", link: ROUTER_PATHS.PROJECTS_LIST, isActive: false },
     { name: "FAQs", link: ROUTER_PATHS.FAQ, isActive: false },
   ]);
   const [isOpen, setIsOpen] = useState(false);
@@ -68,31 +64,25 @@ const Navbar = () => {
       prevLinks.map((link) => ({
         ...link,
         isActive: link.link === location.pathname,
-      }))
+      })),
     );
   }, [location.pathname]);
 
   function closeNavbar() {
-    const element = document.getElementById('linkList');
+    const element = document.getElementById("linkList");
 
-    if (element) { 
-      element.addEventListener('click', () => {
-        element.classList.remove('open');
+    if (element) {
+      element.addEventListener("click", () => {
+        element.classList.remove("open");
       });
     }
     setIsOpen(false);
   }
 
   return (
-    <div className='navbar'>
-      <div className='light-logo'>
-        <Link to="/">
-          <img
-            className="logo"
-            src={kwoc_logo}
-            alt="KWoC Logo"
-          />
-        </Link>
+    <div className="navbar">
+      <div className="light-logo">
+        <img className="logo" src={kwoc_logo} alt="KWoC Logo" />
         <div className="container">
           <div className="dots dot1"></div>
           <div className="dots dot2"></div>
@@ -102,10 +92,16 @@ const Navbar = () => {
           <div className="dots dot6"></div>
         </div>
       </div>
-      <ul id="linkList" className={`link-container ${isOpen ? 'open' : ''}`}>
+      <ul id="linkList" className={`link-container ${isOpen ? "open" : ""}`}>
         {LINKS.map((link) => (
           <li key={link.name}>
-            <Link to={link.link} className={link.isActive ? `link nav-glow` : `link`} onClick={() => { closeNavbar() }}>
+            <Link
+              to={link.link}
+              className={link.isActive ? `link nav-glow` : `link`}
+              onClick={() => {
+                closeNavbar();
+              }}
+            >
               {link.name}
             </Link>
           </li>
@@ -113,9 +109,11 @@ const Navbar = () => {
 
         <LoginButton />
       </ul>
-      <div className='burger' onClick={() => setIsOpen(!isOpen)}>{isOpen ? '✖' : '☰'}</div>
+      <div className="burger" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? "✖" : "☰"}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

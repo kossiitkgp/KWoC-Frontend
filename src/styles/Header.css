@@ -19,7 +19,9 @@
   padding: 0.5rem 3rem;
   color: #fff;
   text-decoration: none;
-  transition: scale 300ms, text-decoration 300ms;
+  transition:
+    scale 300ms,
+    text-decoration 300ms;
   white-space: nowrap;
   overflow: hidden;
 }

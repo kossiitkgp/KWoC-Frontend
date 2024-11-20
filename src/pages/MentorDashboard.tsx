@@ -30,6 +30,10 @@ function MentorDashboard() {
       navigate(ROUTER_PATHS.HOME);
     }
 
+    if (authContext.userData.type === "student") {
+      navigate(ROUTER_PATHS.STUDENT_DASHBOARD);
+    }
+
     if (authContext.userData.type !== "mentor") {
       navigate(ROUTER_PATHS.HOME);
     }
@@ -100,39 +104,39 @@ function MentorDashboard() {
 
       {/* Right Sidebar - Stats & Resources */}
       <div className="rightSidebar">
-      <div className="statsSectionCard">
-        <div className="statsSection">
-          <h3 className="statsHeader">Overall Stats</h3>
-          <div>
-            <div className="statsItem">
-              <div className="statsIconText">
-                <BiGitCommit />
-                <span>Total Commits:</span>
+        <div className="statsSectionCard">
+          <div className="statsSection">
+            <h3 className="statsHeader">Overall Stats</h3>
+            <div>
+              <div className="statsItem">
+                <div className="statsIconText">
+                  <BiGitCommit />
+                  <span>Total Commits:</span>
+                </div>
+                <p className="statsValue">{totalCommits}</p>
               </div>
-              <p className="statsValue">{totalCommits}</p>
-            </div>
-            <div className="statsItem">
-              <div className="statsIconText">
-                <BiGitPullRequest />
-                <span>Total Pull Requests:</span>
+              <div className="statsItem">
+                <div className="statsIconText">
+                  <BiGitPullRequest />
+                  <span>Total Pull Requests:</span>
+                </div>
+                <p className="statsValue">{totalPRs}</p>
               </div>
-              <p className="statsValue">{totalPRs}</p>
-            </div>
-            <div className="statsItem">
-              <div className="statsIconText">
-                <HiOutlineViewGridAdd size={20} />
-                <span>Total Projects:</span>
+              <div className="statsItem">
+                <div className="statsIconText">
+                  <HiOutlineViewGridAdd size={20} />
+                  <span>Total Projects:</span>
+                </div>
+                <p className="statsValue">{totalProjects}</p>
               </div>
-              <p className="statsValue">{totalProjects}</p>
-            </div>
-            <div className="statsItem">
-              <div className="statsIconText">
-                <IoPersonSharp />
-                <span>Approved Projects:</span>
+              <div className="statsItem">
+                <div className="statsIconText">
+                  <IoPersonSharp />
+                  <span>Approved Projects:</span>
+                </div>
+                <p className="statsValue">{approvedProjects}</p>
               </div>
-              <p className="statsValue">{approvedProjects}</p>
             </div>
-          </div>
           </div>
         </div>
 

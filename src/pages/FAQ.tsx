@@ -45,7 +45,10 @@ function FAQ() {
               value={query}
             />
             {query !== "" && (
-              <button onClick={() => setQuery("")} className="search-clear-button">
+              <button
+                onClick={() => setQuery("")}
+                className="search-clear-button"
+              >
                 <IconContext.Provider value={{ size: "1.6rem" }}>
                   <MdCancel />
                 </IconContext.Provider>
@@ -60,7 +63,10 @@ function FAQ() {
             {searchResults.map((FAQ, i) => {
               const { question, answer } = FAQ;
               return (
-                <div key={i} className={`accordion-item ${activeIndex === i ? "open" : ""}`}>
+                <div
+                  key={i}
+                  className={`accordion-item ${activeIndex === i ? "open" : ""}`}
+                >
                   <button
                     type="button"
                     className="accordion-toggle"

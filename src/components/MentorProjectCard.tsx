@@ -49,35 +49,35 @@ function MentorProjectCard({
 
       {/* Mentor and Commit Info Section */}
       <div className="info-container">
-          <div className="mentor">
-            <IoPersonSharp size={16} />
-            <span>Mentor:</span>
-            <a
-              href={`https://github.com/${mentor.username}`}
-              className="mentor-link"
-            >
-              @{mentor.username}
-            </a>
-          </div>
+        <div className="mentor">
+          <IoPersonSharp size={16} />
+          <span>Mentor:</span>
+          <a
+            href={`https://github.com/${mentor.username}`}
+            className="mentor-link"
+          >
+            @{mentor.username}
+          </a>
+        </div>
 
-          <div className="mentor">
-            <IoPersonSharp size={16} />
-            <span>Co-Mentor:</span>
-            <a
-              href={
-                secondary_mentor.username !== ""
-                  ? `https://github.com/${secondary_mentor.username}`
-                  : "#"
-              }
-              className={`co-mentor-link ${
-                secondary_mentor.username === "" ? "no-co-mentor" : ""
-              }`}
-            >
-              {secondary_mentor.username !== ""
-                ? `@${secondary_mentor.username}`
-                : "None"}
-            </a>
-          </div>
+        <div className="mentor">
+          <IoPersonSharp size={16} />
+          <span>Co-Mentor:</span>
+          <a
+            href={
+              secondary_mentor.username !== ""
+                ? `https://github.com/${secondary_mentor.username}`
+                : "#"
+            }
+            className={`co-mentor-link ${
+              secondary_mentor.username === "" ? "no-co-mentor" : ""
+            }`}
+          >
+            {secondary_mentor.username !== ""
+              ? `@${secondary_mentor.username}`
+              : "None"}
+          </a>
+        </div>
 
         {/* Commit and Pull Request Info */}
         <div className="commit-pull-info">
