@@ -24,7 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
 }
 
@@ -39,6 +39,11 @@
 
 .org-dash-type-btn button{
     width: 100%;
+    height: 20%;
+    border-radius: 2rem;
+    font-size: 100%;
+    padding: 0.5rem;
+    border: none;
 }
 
 .org-dash-btn-all{
@@ -71,6 +76,11 @@
     align-items: center;
     justify-content: space-evenly;
     height: 10%;
+}
+
+.org-dash-table-back, .org-dash-table-next{
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 15px;
 }
 
 .org-dash-table{
