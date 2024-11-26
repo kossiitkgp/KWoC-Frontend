@@ -49,7 +49,7 @@ function OrgDash() {
 	  }, [])
 
 	useEffect(() => {
-		const fItems = allData.filter((item) => !item.isProjectReview);
+		const fItems = allData.filter((item) => item.status_remark == null);
 		setFilterData(fItems);
 		setPgNo(1);
 		setSelItem(fItems[0]);
@@ -62,21 +62,21 @@ function OrgDash() {
 	}, [pgNo, filterData]);
 
 	const showAll = () => {
-		const fItems = allData.filter((item) => !item.isProjectReview);
+		const fItems = allData.filter((item) => !item.status_remark);
 		setFilterData(fItems);
 		setPgNo(1);
 		setSelItem(fItems[0]);
 	}
 
 	const showAccept = () => {
-		const fItems = allData.filter((item) => item.isProjectReview && item.isProjectApprove);
+		const fItems = allData.filter((item) => item.status_remark && item.project_status);
 		setFilterData(fItems);
 		setPgNo(1);
 		setSelItem(fItems[0]);
 	}
 
 	const showReject = () => {
-		const fItems = allData.filter((item) => item.isProjectReview && !item.isProjectApprove);
+		const fItems = allData.filter((item) => item.status_remark && !item.project_status);
 		setFilterData(fItems);
 		setPgNo(1);
 		setSelItem(fItems[0]);

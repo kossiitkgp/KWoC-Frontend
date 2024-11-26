@@ -25,13 +25,13 @@ function DetailsViewer({item} : {item : Project}) {
                     Name: {item.name}
                 </div>
                 <div className="org-dash-url">
-                    URL: <a href={item.repoUrl} target="_blank">{item.repoUrl}</a>
+                    URL: <a href={item.repo_link} target="_blank">{item.repo_link}</a>
                 </div>
                 <div className="org-dash-a-mentor">
-                    Mentor Name: {item.mentorAName}
+                    Mentor Name: {item.mentor.name}
                 </div>
                 <div className="org-dash-b-mentor">
-                    Secondary Mentor Name: {item.mentorBName}
+                    Secondary Mentor Name: {item.secondary_mentor.name}
                 </div>
                 <div className="org-dash-desc">
                     Description: {item.description}
@@ -42,18 +42,18 @@ function DetailsViewer({item} : {item : Project}) {
                     ))}
                 </div>
                 <div className="org-dash-comm">
-                    Comm Channel: {item.communicationChannel}
+                    Comm Channel: {item.comm_channel}
                 </div>
                 <div className="org-dash-pull">
-                    Pull Requests: {item.pullRequests}
+                    Pull Requests: {item.pull_count}
                 </div>
-                {item.isProjectReview && 
+                {item.status_remark && 
                     <div className="org-dash-review">
-                        {item.isProjectApprove ? <div className="org-dash-approve">Approved</div> : <div className="org-dash-reject">Rejected</div>}
+                        {item.project_status ? <div className="org-dash-approve">Approved</div> : <div className="org-dash-reject">Rejected</div>}
                     </div>
                 }
             </div>
-            {!item.isProjectReview && <div className="org-dash-det-btn">
+            {!item.status_remark && <div className="org-dash-det-btn">
                 <div className="org-dash-det-btn-accept">
                     <button className="approve-btn" onClick={() => openModal(false)}>Approve</button>
                 </div>
@@ -61,12 +61,12 @@ function DetailsViewer({item} : {item : Project}) {
                     <button className="reject-btn" onClick={() => openModal(true)}>Reject</button>
                 </div>
             </div>}
-            {item.isProjectReview && <div className="org-dash-det-btn">
+            {item.status_remark && <div className="org-dash-det-btn">
                 <div className="org-dash-det-btn-accept">
                     <button>Review</button>
                 </div>
                 <div className="org-dash-det-btn-reject">
-                {item.isProjectApprove ? <button className="reject-btn" onClick={() => openModal(true)}>Reject</button> : <button className="approve-btn" onClick={() => openModal(false)}>Approve</button>}
+                {item.project_status ? <button className="reject-btn" onClick={() => openModal(true)}>Reject</button> : <button className="approve-btn" onClick={() => openModal(false)}>Approve</button>}
                 </div>
             </div>}
             {isOpen && <OrgDashModal isReject={isReject} onClose={closeModal}/>}

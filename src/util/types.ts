@@ -143,16 +143,16 @@ export interface IProjectTags {
 }
 
 export type Project = {
+  id: number;
   name: string;
   description: string;
-  repoUrl: string;
-  readmeUrl: string;
   tags: string[];
-  communicationChannel?: string; 
-  pullRequests: number;
-  mentorAName: string;
-  mentorBName: string;
-  isProjectApprove: boolean;
-  isProjectReview: boolean;
-  projectReview: string
-};
+  repo_link: string;
+  comm_channel: string;
+  readme_link: string;
+  mentor: IMentor;
+  secondary_mentor: IMentor;
+  status_remark: string | null;
+  project_status: boolean;
+  pull_count: number;
+}
