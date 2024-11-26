@@ -12,7 +12,7 @@ function OrgDashModal({ isReject, onClose, project } : {isReject : boolean, onCl
         }
     };
 
-    const [review, setReview] = useState<string>("");
+    const [review, setReview] = useState<string>(project.status_remark!);
 
     const onBtnClick = () => {
         fetch(`${BACKEND_URL}/project/updt_status`, {
