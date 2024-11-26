@@ -1,6 +1,6 @@
 import { IoPersonSharp } from "react-icons/io5";
 import { IProject } from "../util/types";
-import "../styles/MentorProjectCard.css";
+import "../styles/ProjectCard.css";
 
 function ProjectCard({
   project,

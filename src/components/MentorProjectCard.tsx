@@ -5,6 +5,7 @@ import { IProjectDashboardInfo } from "../util/types";
 import { ROUTER_PATHS } from "../util/constants";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../util/auth";
+import "../styles/MentorProjectCard.css";
 
 function MentorProjectCard({
   id,
