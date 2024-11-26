@@ -73,7 +73,7 @@ function ListItem({ item } : {item : Project}) {
                 )}
 
             </div>
-            {isOpen && <OrgDashModal isReject={isReject} onClose={closeModal} msg={actProj.status_remark} projectId={actProj.id}/>}
+            {isOpen && <OrgDashModal isReject={isReject} onClose={closeModal} project={actProj}/>}
         </div>
     )
 }

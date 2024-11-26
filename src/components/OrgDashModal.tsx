@@ -2,8 +2,9 @@ import { useState } from "react";
 import "../styles/OrgDashModal.css"
 import { BACKEND_URL } from "../util/constants";
 import { useAuthContext } from "../util/auth";
+import { Project } from "../util/types";
 
-function OrgDashModal({ isReject, onClose, msg, projectId } : {isReject : boolean, onClose : () => void, msg: string | null, projectId: number}) {
+function OrgDashModal({ isReject, onClose, project } : {isReject : boolean, onClose : () => void, project: Project}) {
     const authContext = useAuthContext();
     const handleWrapperClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (e.target === e.currentTarget) {
@@ -20,12 +21,16 @@ function OrgDashModal({ isReject, onClose, msg, projectId } : {isReject : boolea
 				'Bearer' : `${authContext.jwt} `
 			},
             body: JSON.stringify({
-                "id": projectId,
+                "id": project.id,
                 "project_status": !isReject,
                 "status_remark": review,
             })
         }).then((resp) => {
-            if(resp.ok) onClose();
+            if(resp.ok){
+                project.project_status = !isReject;
+                project.status_remark = review;
+                onClose();
+            }
         })
     }
     return (
@@ -37,7 +42,7 @@ function OrgDashModal({ isReject, onClose, msg, projectId } : {isReject : boolea
                     </div>
                     <div className="modal-inp">
                         <textarea className="modal-textarea" placeholder="Enter your review..." onChange={(e) => setReview(e.target.value)}>
-                            {msg}
+                            {project.status_remark}
                         </textarea>
                     </div>
                     <div className="modal-btn">

@@ -40,17 +40,15 @@ function OrgDash() {
 			}
 		}).then((res) => {
 			if(res.ok){
-				res.json().then((res) => setAllData(res as Project[]));
+				res.json().then((res:Project[]) => {
+					setAllData(res);
+					setFilterData(res.filter((item) => !item.status_remark));
+					setPgNo(1);
+				});
 				console.log(allData.length)
 			}
 		});
-	  }, [])
-
-	useEffect(() => {
-		const fItems = allData.filter((item) => item.status_remark == null);
-		setFilterData(fItems);
-		setPgNo(1);
-	}, []);
+	  }, []);
 
 	useEffect(() => {
 		const startidx = (pgNo - 1) * PAGENATION_LEN;
