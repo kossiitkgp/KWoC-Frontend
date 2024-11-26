@@ -65,3 +65,8 @@
 .approve-btn:hover {
     background-color: #4cae4c;
 }
+
+.modal-cancel{
+    font-size: 1.25rem;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+}

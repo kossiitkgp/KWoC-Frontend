@@ -1,6 +1,18 @@
+import { useState } from "react"
 import { Project } from "../util/types"
+import OrgDashModal from "./OrgDashModal"
 
 function ListItem({ item } : {item : Project}) {
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isReject, setIsReject] = useState<boolean>(false);
+    const [actProj, setACtProject] = useState<Project>({} as Project);
+
+    const closeModal = () => setIsOpen(false);
+    const openModal = (isReject: boolean) => {
+        setIsOpen(true);
+        setIsReject(isReject);
+        setACtProject(item);
+    }
     return (
         <div className="ls-comp">
             <h3 className="ls-comp-name">{item.name}</h3>
@@ -43,24 +55,25 @@ function ListItem({ item } : {item : Project}) {
             <div className="ls-compo-action-btn">
                 {!item.status_remark ? (
                     <>
-                        <button className="approve-btn">Accept</button>
-                        <button className="reject-btn">Reject</button>
+                        <button className="approve-btn" onClick={() => openModal(false)}>Accept</button>
+                        <button className="reject-btn" onClick={() => openModal(true)}>Reject</button>
                     </>
                 ) : (
                     item.project_status ? (
                         <>
-                            <button className="review-btn">Review</button>
-                            <button className="reject-btn">Reject</button>
+                            <button className="review-btn"  onClick={() => openModal(false)}>Review</button>
+                            <button className="reject-btn" onClick={() => openModal(true)}>Reject</button>
                         </>
                     ) : (
                         <>
-                            <button className="approve-btn">Accept</button>
-                            <button className="review-btn">Review</button>
+                            <button className="approve-btn" onClick={() => openModal(false)}>Accept</button>
+                            <button className="review-btn" onClick={() => openModal(true)}>Review</button>
                         </>
                     )
                 )}
 
             </div>
+            {isOpen && <OrgDashModal isReject={isReject} onClose={closeModal} msg={actProj.status_remark} projectId={actProj.id}/>}
         </div>
     )
 }

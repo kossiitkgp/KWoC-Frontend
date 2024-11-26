@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import ListItem from '../components/ListItem'
-import DetailsViewer from '../components/DetailsViewer'
 import { Project } from '../util/types'
 import { BACKEND_URL, PAGENATION_LEN, ROUTER_PATHS } from '../util/constants'
 import '../styles/OrgDash.css'
@@ -14,8 +13,6 @@ function OrgDash() {
 	const [filterData, setFilterData] = useState<Project[]>([]);
 	const [currPage, setCurrPage] = useState<Project[]>([]);
 	const [pgNo, setPgNo] = useState<number>(0);
-
-	const [selItem, setSelItem] = useState<Project>({} as Project);
 
 	useEffect(() => {
 		if (!authContext.isAuthenticated) {
@@ -44,6 +41,7 @@ function OrgDash() {
 		}).then((res) => {
 			if(res.ok){
 				res.json().then((res) => setAllData(res as Project[]));
+				console.log(allData.length)
 			}
 		});
 	  }, [])
@@ -52,7 +50,6 @@ function OrgDash() {
 		const fItems = allData.filter((item) => item.status_remark == null);
 		setFilterData(fItems);
 		setPgNo(1);
-		setSelItem(fItems[0]);
 	}, []);
 
 	useEffect(() => {
@@ -65,21 +62,18 @@ function OrgDash() {
 		const fItems = allData.filter((item) => !item.status_remark);
 		setFilterData(fItems);
 		setPgNo(1);
-		setSelItem(fItems[0]);
 	}
 
 	const showAccept = () => {
 		const fItems = allData.filter((item) => item.status_remark && item.project_status);
 		setFilterData(fItems);
 		setPgNo(1);
-		setSelItem(fItems[0]);
 	}
 
 	const showReject = () => {
 		const fItems = allData.filter((item) => item.status_remark && !item.project_status);
 		setFilterData(fItems);
 		setPgNo(1);
-		setSelItem(fItems[0]);
 	}
 
 	const nextPage = () => {
@@ -106,11 +100,9 @@ function OrgDash() {
 				</div>
 				<div className="org-dash-view">
 					<div className="org-dash-table">
-						<table className="org-dash-table-tab">
 							{currPage.map((value) => (
-								<ListItem item={value} onClick={setSelItem}/>
+								<ListItem item={value}/>
 							))}
-						</table>
 					</div>
 					<div className="org-dash-table-nav">
 						<button className='org-dash-table-back' onClick={() => prevPage()}>&lt;</button>
@@ -120,9 +112,6 @@ function OrgDash() {
 						<button className='org-dash-table-next' onClick={() => nextPage()}>&gt;</button>
 					</div>
 				</div>
-			</div>
-			<div className="org-dash-right">
-				{selItem && <DetailsViewer item={selItem}/>}
 			</div>
 		</div>
   	)
