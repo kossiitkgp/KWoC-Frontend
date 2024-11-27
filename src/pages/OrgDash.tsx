@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import ListItem from '../components/ListItem'
 import { Project } from '../util/types'
-import { BACKEND_URL, PAGENATION_LEN, ROUTER_PATHS } from '../util/constants'
+import { BACKEND_URL, GH_OAUTH_ORG_URL, PAGENATION_LEN, ROUTER_PATHS } from '../util/constants'
 import '../styles/OrgDash.css'
 import { useAuthContext } from '../util/auth'
 import { useNavigate } from 'react-router-dom'
@@ -28,7 +28,7 @@ function OrgDash() {
 		}
 
 		if(authContext.userData.type !== "organiser"){
-			navigate(ROUTER_PATHS.HOME);
+			document.location = GH_OAUTH_ORG_URL;
 		}
 	  }, [authContext]);
 
@@ -97,10 +97,12 @@ function OrgDash() {
 					</div>
 				</div>
 				<div className="org-dash-view">
-					<div className="org-dash-table">
-							{currPage.map((value) => (
-								<ListItem item={value}/>
-							))}
+					<div className="org-dash-table-wrap">
+						<div className="org-dash-table">
+								{currPage.map((value) => (
+									<ListItem item={value}/>
+								))}
+						</div>
 					</div>
 					<div className="org-dash-table-nav">
 						<button className='org-dash-table-back' onClick={() => prevPage()}>&lt;</button>

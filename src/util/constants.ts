@@ -50,6 +50,7 @@ export const STUDENT_MANUAL_LINK =
   "https://drive.google.com/file/d/1gc2NWeMDA3ZFzH4RWVspuerduRdfY9yu/view?usp=drive_link";
 
 export const GH_OAUTH_CLIENT_ID = import.meta.env.VITE_GH_OAUTH_CLIENT_ID;
-export const GH_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GH_OAUTH_CLIENT_ID}&state=replacethiswithrandomtextlater&scope=read:org`;
+export const GH_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GH_OAUTH_CLIENT_ID}&state=replacethiswithrandomtextlater`;
+export const GH_OAUTH_ORG_URL = `https://github.com/login/oauth/authorize?client_id=${GH_OAUTH_CLIENT_ID}&state=replacethiswithrandomtextlater&scope=read:org`;
 
 export const PAGENATION_LEN = 3;
