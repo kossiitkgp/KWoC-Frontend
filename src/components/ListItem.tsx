@@ -30,7 +30,7 @@ function ListItem({ item } : {item : Project}) {
             <div className="ls-comp-mentor">
                 Mentor: 
                 <a href={'https://github.com/' + item.mentor.username}>
-                    {'@'+item.mentor.name}
+                    {'@'+item.mentor.username}
                 </a>
             </div>
             <div className="ls-comp-mentor-b">

@@ -22,10 +22,8 @@ function OrgDash() {
 		if (authContext.userData.type === "student") {
 		  navigate(ROUTER_PATHS.STUDENT_DASHBOARD);
 		}
-	
-		if (authContext.userData.type === "mentor") {
-		  navigate(ROUTER_PATHS.MENTOR_DASHBOARD);
-		}
+
+		console.log(authContext.userData.type)
 
 		if(authContext.userData.type !== "organiser"){
 			document.location = GH_OAUTH_ORG_URL;
