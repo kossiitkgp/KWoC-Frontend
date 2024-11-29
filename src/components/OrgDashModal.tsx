@@ -15,13 +15,13 @@ function OrgDashModal({ isReject, onClose, project } : {isReject : boolean, onCl
     const [review, setReview] = useState<string>(project.status_remark!);
 
     const onBtnClick = () => {
-        fetch(`${BACKEND_URL}/project/updt_status`, {
-            method: "POST",
+        fetch(`${BACKEND_URL}/project/`, {
+            method: "PUT",
             headers: {
 				'Bearer' : `${authContext.jwt} `
 			},
             body: JSON.stringify({
-                "id": project.id,
+                ...project,
                 "project_status": !isReject,
                 "status_remark": review,
             })
