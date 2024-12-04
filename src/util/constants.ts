@@ -43,10 +43,8 @@ export const KOSS_LINKEDIN_URL =
 export const KOSS_TWITTER_URL = "https://twitter.com/kossiitkgp";
 export const FOSSU_WEBSITE_URL = "https://fossunited.org";
 
-export const MENTOR_MANUAL_LINK =
-  "https://0x0.st/X7pL.pdf"
-export const STUDENT_MANUAL_LINK =
-  "https://0x0.st/X7p9.pdf"
+export const MENTOR_MANUAL_LINK = "https://0x0.st/X7pL.pdf";
+export const STUDENT_MANUAL_LINK = "https://0x0.st/X7p9.pdf";
 
 export const GH_OAUTH_CLIENT_ID = import.meta.env.VITE_GH_OAUTH_CLIENT_ID;
 export const GH_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GH_OAUTH_CLIENT_ID}&state=replacethiswithrandomtextlater`;
