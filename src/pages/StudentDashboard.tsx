@@ -303,7 +303,7 @@ function StudentDashboard() {
                           <span style={{ color: "#68D391" }}>Passed</span>
                         ) : END_EVALS_ENDED ? (
                           <span style={{ color: "#F56565" }}>Failed</span>
-                        ) : END_EVALS_ENDED || !dashboard?.passed_mid_evals ? (
+                        ) : END_EVALS_ENDED || (!dashboard?.passed_mid_evals && MID_EVALS_ENDED) ? (
                           <span style={{ color: "#F56565" }}>Failed</span>
                         ) : (
                           <span style={{ color: "#F6E05E" }}>Pending</span>
