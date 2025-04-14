@@ -34,7 +34,7 @@ function MentorDashboard() {
       navigate(ROUTER_PATHS.STUDENT_DASHBOARD);
     }
 
-    if (authContext.userData.type !== "mentor") {
+    if (authContext.userData.type !== "mentor" && authContext.userData.type !== "organiser") {
       navigate(ROUTER_PATHS.HOME);
     }
   }, [authContext]);

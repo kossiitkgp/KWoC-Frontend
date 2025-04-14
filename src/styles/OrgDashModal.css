@@ -1,0 +1,72 @@
+.modal-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-wrapper {
+    background-color: rgb(7, 27, 68);
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.modal-inp {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-textarea {
+    resize: none;
+    height: 5lh;
+}
+
+.modal-btn {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.reject-btn{
+    background-color: #ff7a66;
+}
+
+.reject-btn:hover {
+    background-color: #c9302c;
+}
+
+.approve-btn{
+    background-color: #208d44;
+}
+
+.approve-btn:hover {
+    background-color: #4cae4c;
+}
+
+.modal-cancel{
+    font-size: 1.25rem;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+}

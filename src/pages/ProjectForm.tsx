@@ -33,7 +33,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
       navigate(ROUTER_PATHS.HOME);
     } else if (!authContext.isRegistered) {
       navigate(authContext.formLink);
-    } else if (authContext.userData.type !== "mentor") {
+    } else if (authContext.userData.type !== "mentor" && authContext.userData.type != "organiser") {
       navigate(authContext.dashboardLink);
     }
   });

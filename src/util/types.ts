@@ -1,4 +1,4 @@
-export type UserType = "mentor" | "student";
+export type UserType = "mentor" | "student" | "organiser";
 
 export interface IHTTPMessage {
   status_code: number;
@@ -140,4 +140,19 @@ export interface IProjectDashboardInfo extends IProject {
 
 export interface IProjectTags {
   [key: string]: string;
+}
+
+export type Project = {
+  id: number;
+  name: string;
+  description: string;
+  tags: string[];
+  repo_link: string;
+  comm_channel: string;
+  readme_link: string;
+  mentor: IMentor;
+  secondary_mentor: IMentor;
+  status_remark: string | null;
+  project_status: boolean;
+  pull_count: number;
 }

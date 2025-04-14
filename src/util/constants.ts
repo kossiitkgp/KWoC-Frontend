@@ -27,6 +27,7 @@ export enum ROUTER_PATHS {
   // Dashboards
   STUDENT_DASHBOARD = "/dashboard/student",
   MENTOR_DASHBOARD = "/dashboard/mentor",
+  ORGANISOR_DASHBOARD = "/dashboard/organiser",
 
   // Stats routes
   ALL_STUDENT_STATS = "/stats/students",
@@ -48,3 +49,6 @@ export const STUDENT_MANUAL_LINK = "https://0x0.st/X7p9.pdf";
 
 export const GH_OAUTH_CLIENT_ID = import.meta.env.VITE_GH_OAUTH_CLIENT_ID;
 export const GH_OAUTH_URL = `https://github.com/login/oauth/authorize?client_id=${GH_OAUTH_CLIENT_ID}&state=replacethiswithrandomtextlater`;
+export const GH_OAUTH_ORG_URL = `https://github.com/login/oauth/authorize?client_id=${GH_OAUTH_CLIENT_ID}&state=replacethiswithrandomtextlater&scope=read:org`;
+
+export const PAGENATION_LEN = 3;
