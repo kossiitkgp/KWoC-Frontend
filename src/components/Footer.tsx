@@ -1,64 +1,44 @@
-import "../styles/Footer.css";
-import {
-  ROUTER_PATHS,
-  DISCORD_INVITE,
-  KOSS_CONTACT_EMAIL,
-  KOSS_LINKEDIN_URL,
-  KOSS_TWITTER_URL,
-  KOSS_WEBSITE_URL,
-} from "../util/constants";
+import { Link } from "react-router-dom";
+import "../styles/footer.css";
 
-const Footer = () => {
+function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-columns">
-          <div className="footer-column">
-            <h2>Social Groups</h2>
-            <p>
-              <a href={DISCORD_INVITE}>Discord</a>
-            </p>
-            <p>
-              <a href={KOSS_LINKEDIN_URL}>LinkedIn</a>
-            </p>
-            <p>
-              <a href={KOSS_TWITTER_URL}>Twitter</a>
-            </p>
+    <div className="footer">
+      <div className="link-content">
+        <div className="section">
+          <div className="section-title">Social Groups</div>
+          <div className="links">
+            <a href="https://discord.gg/efFwh6fnjk">Discord</a>
+            <a href="https://www.linkedin.com/company/kharagpur-open-source-society/">
+              LinkedIn
+            </a>
+            <a href="https://twitter.com/kossiitkgp">Twitter</a>
           </div>
-          <div className="footer-column">
-            <h2>Quick Links</h2>
-            <p>
-              <a href={`${ROUTER_PATHS.HOME}#timeline`}>Timeline</a>
-            </p>
-            <p>
-              <a href={ROUTER_PATHS.FAQ}>FAQs</a>
-            </p>
-            <p>
-              <a href={`${ROUTER_PATHS.HOME}#about`}>About KWoC</a>
-            </p>
+        </div>
+        <div className="section">
+          <div className="section-title">Quick Links</div>
+          <div className="links">
+            <a href="#timeline">Timeline</a>
+            <Link to="/faq">FAQs</Link>
+            <a href="#about">About KWoC</a>
           </div>
-          <div className="footer-column">
-            <h2>Other</h2>
-            <p>
-              <a href={KOSS_WEBSITE_URL}>About KOSS</a>
-            </p>
-            <p>
-              <a href="https://kwoc23.kossiitkgp.org/pastprograms">
-                Past Programs
-              </a>
-            </p>
-            <p>
-              <a href={KOSS_CONTACT_EMAIL}>contact@kossiitkgp.org</a>
-            </p>
+        </div>
+        <div className="section">
+          <div className="section-title">Other</div>
+          <div className="links">
+            <a href="https://kossiitkgp.org">About KOSS</a>
+            {/* <div>Past Programs</div> */}
+            <a href="mailto:contact@kossiitkgp.org">contact@kossiitkgp.org</a>
           </div>
         </div>
       </div>
+
       <div className="footer-bottom">
-        <h1>Kharagpur Winter of Code</h1>
-        <p>With 💙 by KOSS</p>
+        <div className="kwoc">Kharagpur Winter of Code</div>
+        <div className="koss">With ♥ by KOSS</div>
       </div>
-    </footer>
+    </div>
   );
-};
+}
 
 export default Footer;

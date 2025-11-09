@@ -1,0 +1,30 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    text-align: center;
+
+    & .quote {
+        font-family: var(--font-accent);
+        font-size: 32px;
+    }
+
+    & .title {
+        font-size: 78px;
+        font-weight: 900;
+        margin-bottom: 40px;
+        width: 40%;
+
+        & .highlight {
+            color: #63B6E4;
+        }
+    }
+
+    & .actions {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+    }
+}
