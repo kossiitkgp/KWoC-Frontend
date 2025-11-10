@@ -2,14 +2,16 @@ import Button from "../Button";
 import "../../styles/Home/hero.css";
 import { useAuthContext } from "../../util/auth";
 import { GITHUB_OAUTH_URL } from "../../util/constants";
+import { UserType } from "../../util/types";
 
 
 function HeroSection() {
   const auth = useAuthContext();
 
-  const handleLogin = () => {
+  const handleLogin = (userType: string) => {
+    auth.setUserType(userType as UserType);
     window.location.href = GITHUB_OAUTH_URL;
-  }
+  };
 
   return (
     <div className="hero">
@@ -28,8 +30,20 @@ function HeroSection() {
           </Button>
         ) : (
           <>
-            <Button onClick={handleLogin}>Student Login</Button>
-            <Button onClick={handleLogin}>Mentor Login</Button>
+            <Button
+              onClick={() => {
+                handleLogin("student");
+              }}
+            >
+              Student Login
+            </Button>
+            <Button
+              onClick={() => {
+                handleLogin("mentor");
+              }}
+            >
+              Mentor Login
+            </Button>
           </>
         )}
       </div>

@@ -8,16 +8,12 @@ import React, {
 import { useNavigate } from "react-router-dom";
 import { UserType } from "./types";
 import { makeRequest } from "./backend";
+import { ROUTER_PATHS } from "./constants";
 
-// const MENTOR_FORM = "/mentor/form" as const;
-// const STUDENT_FORM = "/student/form" as const;
-// const MENTOR_DASHBOARD = "/mentor/dashboard" as const;
-// const STUDENT_DASHBOARD = "/student/dashboard" as const;
-
-// type MENTOR_FORM = typeof MENTOR_FORM;
-// type STUDENT_FORM = typeof STUDENT_FORM;
-// type MENTOR_DASHBOARD = typeof MENTOR_DASHBOARD;
-// type STUDENT_DASHBOARD = typeof STUDENT_DASHBOARD;
+type MENTOR_FORM = typeof ROUTER_PATHS.MENTOR_FORM;
+type STUDENT_FORM = typeof ROUTER_PATHS.STUDENT_FORM;
+type MENTOR_DASHBOARD = typeof ROUTER_PATHS.MENTOR_DASHBOARD;
+type STUDENT_DASHBOARD = typeof ROUTER_PATHS.STUDENT_DASHBOARD;
 
 interface IUserAuthData {
   username: string;
@@ -50,8 +46,8 @@ interface IAuthContext {
   isRegistered: boolean;
   jwt: string;
   userData: IUserAuthData;
-  // formLink: STUDENT_FORM | MENTOR_FORM;
-  // dashboardLink: STUDENT_DASHBOARD | MENTOR_DASHBOARD;
+  formLink: STUDENT_FORM | MENTOR_FORM;
+  dashboardLink: STUDENT_DASHBOARD | MENTOR_DASHBOARD;
   setUserType: (type: UserType) => void;
   updateUserData: (
     name: string,
@@ -68,6 +64,8 @@ const DEFAULT_AUTH_CONTEXT: IAuthContext = {
   isRegistered: false,
   // Random defaults
   userData: DEFAULT_AUTH_OBJ.userData,
+  formLink: ROUTER_PATHS.STUDENT_FORM,
+  dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD,
   jwt: DEFAULT_AUTH_OBJ.jwt,
   setUserType: () => {},
   updateUserData: () => {},
@@ -111,6 +109,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const [isRegistered, setIsRegistered] = useState(userAuth.isRegistered);
 
+  const [formLink, setFormLink] = useState<IAuthContext["formLink"]>(
+    userAuth.userData.type === "mentor"
+      ? ROUTER_PATHS.MENTOR_FORM
+      : ROUTER_PATHS.STUDENT_FORM,
+  );
+
+  const [dashboardLink, setDashboardLink] = useState<
+    IAuthContext["dashboardLink"]
+  >(
+    userAuth.userData.type === "mentor"
+      ? ROUTER_PATHS.MENTOR_DASHBOARD
+      : ROUTER_PATHS.STUDENT_DASHBOARD,
+  );
+
   const setUserType = (type: UserType) => {
     setUserAuth({
       ...userAuth,
@@ -119,6 +131,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         type,
       },
     });
+    setFormLink(
+      type === "student" ? ROUTER_PATHS.STUDENT_FORM : ROUTER_PATHS.MENTOR_FORM,
+    );
+    setDashboardLink(
+      type === "student"
+        ? ROUTER_PATHS.STUDENT_DASHBOARD
+        : ROUTER_PATHS.MENTOR_DASHBOARD,
+    );
   };
 
   const updateUserData = (
@@ -139,6 +159,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const updateAuth = (auth: ILocalStorageAuthObj) => {
     setUserAuth(auth);
+
+    setFormLink(
+      userAuth.userData.type === "student"
+        ? ROUTER_PATHS.STUDENT_FORM
+        : ROUTER_PATHS.MENTOR_FORM,
+    );
+    setDashboardLink(
+      userAuth.userData.type === "student"
+        ? ROUTER_PATHS.STUDENT_DASHBOARD
+        : ROUTER_PATHS.MENTOR_DASHBOARD,
+    );
   };
 
   const onLogin = (auth: ILocalStorageAuthObj) => {
@@ -214,6 +245,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       isAuthenticated,
       isRegistered,
       userData: userAuth.userData,
+      formLink,
+      dashboardLink,
       jwt: userAuth.jwt,
       setUserType,
       onLogin,

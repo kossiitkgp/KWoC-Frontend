@@ -4,9 +4,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Galaxy from "./components/Galaxy";
 import { AuthProvider } from "./util/auth";
-import RegForm from "./pages/Form";
+import RegForm from "./pages/RegForm";
 import OAuth from "./pages/OAuth";
 import Faq from "./components/faq/faq";
+import { ROUTER_PATHS } from "./util/constants";
+import StudentDashboard from "./pages/StudentDashboard";
+import MentorDashboard from "./pages/MentorDashboard";
 
 function App() {
   return (
@@ -28,17 +31,27 @@ function App() {
           <Header />
           <Routes>
             <Route index element={<Home />} />
+
             <Route
-              path="/form"
-              element={<RegForm />}
+              path={ROUTER_PATHS.MENTOR_FORM}
+              element={<RegForm isStudent={false} />}
             />
             <Route
-              path="/oauth"
-              element={<OAuth />}
+              path={ROUTER_PATHS.STUDENT_FORM}
+              element={<RegForm isStudent={true} />}
             />
-            <Route 
-              path="/faq" 
-              element={<Faq />} /> 
+            <Route path="/faq" element={<Faq />} />
+
+            <Route
+              path={ROUTER_PATHS.STUDENT_DASHBOARD}
+              element={<StudentDashboard />}
+            />
+            <Route
+              path={ROUTER_PATHS.MENTOR_DASHBOARD}
+              element={<MentorDashboard />}
+            />
+
+            <Route path="/oauth" element={<OAuth />} />
           </Routes>
           <Footer />
         </AuthProvider>
