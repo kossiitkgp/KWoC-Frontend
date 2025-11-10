@@ -1,19 +1,26 @@
 :root {
-    --font-main: 'Inter', sans-serif;
-    --font-accent: 'Hi Melody', cursive;
+  --font-main: "Inter", sans-serif;
+  --font-accent: "Hi Melody", cursive;
 }
 
 body {
-    font-family: var(--font-main);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #000000;
-    color: #FFFFFF;
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #000000;
+  color: #ffffff;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
+button {
+  outline: none;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+}
