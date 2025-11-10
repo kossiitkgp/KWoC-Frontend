@@ -21,7 +21,7 @@ function Header() {
     window.location.href =
       "https://kwoctest.github.io/KWoC-Frontend/login.html";
   };
-  
+
   return (
     <div className="header">
       <img src={KWoCLogo} width={50} />
