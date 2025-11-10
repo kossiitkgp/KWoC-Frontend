@@ -8,6 +8,7 @@ import { FiMenu } from "react-icons/fi";
 import { useState } from "react";
 import { useAuthContext } from "../util/auth";
 
+
 function Header() {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const auth = useAuthContext();

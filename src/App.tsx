@@ -6,6 +6,7 @@ import Galaxy from "./components/Galaxy";
 import { AuthProvider } from "./util/auth";
 import RegForm from "./pages/Form";
 import OAuth from "./pages/OAuth";
+import Faq from "./components/faq/faq";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
               path="/oauth"
               element={<OAuth />}
             />
+            <Route 
+              path="/faq" 
+              element={<Faq />} /> 
           </Routes>
           <Footer />
         </AuthProvider>

@@ -5,6 +5,7 @@ function Home() {
     <div>
       <HeroSection />
     </div>
+    
   );
 }
 
