@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import FaqBox from "../faq/faqBox";
-import { FAQs } from "../../data/faq"; 
+import { FAQs } from "../../data/faq";
 import "../../styles/faq.css";
 
 const Faq: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
- 
   const filteredFaqs = FAQs.filter((faq) =>
-    faq.question.toLowerCase().includes(searchTerm.toLowerCase())
+    faq.question.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (

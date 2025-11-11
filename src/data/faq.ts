@@ -5,7 +5,7 @@ export interface FAQItem {
   answer: string[];
 }
 
-export const FAQs: FAQItem[]= [
+export const FAQs: FAQItem[] = [
   {
     question:
       "I do not have any prior knowledge of git and/or any programming language. Can I do this?",
@@ -18,8 +18,8 @@ export const FAQs: FAQItem[]= [
     question:
       "What is the deadline for selecting projects? How many projects can we select?",
     answer: [
-      "There is no deadline for selecting projects nor is there any restriction on the number of projects you can contribute to",
-      "you can also switch between projects as much as you want. The only necessity is that you should have atleast one merged PR per week.",
+      "There is no deadline for selecting projects nor is there any restriction on the number of projects you can contribute to.",
+      "You can also switch between projects as much as you want. The only necessity is that you should have atleast one merged PR per week.",
     ],
   },
   {
@@ -67,7 +67,7 @@ export const FAQs: FAQItem[]= [
   {
     question: "What is the last date of student registration?",
     answer: [
-      "'Early bird catches the worm'",
+      "'Early bird catches the worm'", // TODO UPDATE
       `Students registration deadline is . The contribution chart goes live at the same time, so be quick.`,
     ],
   },
@@ -157,5 +157,3 @@ export const FAQs: FAQItem[]= [
     ],
   },
 ];
-
-

@@ -4,7 +4,6 @@ import { useAuthContext } from "../../util/auth";
 import { GITHUB_OAUTH_URL } from "../../util/constants";
 import { UserType } from "../../util/types";
 
-
 function HeroSection() {
   const auth = useAuthContext();
 
@@ -47,7 +46,6 @@ function HeroSection() {
           </>
         )}
       </div>
-     
     </div>
   );
 }
