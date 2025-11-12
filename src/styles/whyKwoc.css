@@ -20,6 +20,7 @@
     background-color: transparent;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
 }
 
 .whyKwoc h1 {
@@ -48,13 +49,25 @@
 
 @media (max-width:1500px) {
     .whyKwocSection {
-        flex-direction: column;
         gap: 4vh;
     }
 
     .kwocCard {
         width: 60vw;
-        height: 30vh;
+        height: 60vh;
+        gap: 2vh;
+    }
+
+}
+
+@media (max-width:1000px) {
+    .whyKwocSection {
+        gap: 4vh;
+    }
+
+    .kwocCard {
+        width: 60vw;
+        height: 45vh;
         gap: 2vh;
     }
 
