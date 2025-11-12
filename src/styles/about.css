@@ -1,0 +1,80 @@
+.about {
+    height: 100vh;
+    width: 70vw;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about h1 {
+    font-size: 15vh;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.about h1 span {
+    color: #63b6e4;
+}
+
+.about p {
+    color: white;
+    font-size: 5vh;
+    font-weight: 400;
+}
+
+@media (max-width: 1200px) {
+    .about {
+        width: 80vw;
+    }
+
+    .about h1 {
+        font-size: 10vh;
+    }
+
+    .about p {
+        font-size: 3.5vh;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .about {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about h1 {
+        font-size: 8vh;
+    }
+
+    .about p {
+        font-size: 2.5vh;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .about {
+        height: 35vh;
+        padding: 2rem 1rem;
+        width: 90vw;
+    }
+
+    .about h1 {
+        font-size: 6vh;
+        text-align: center;
+    }
+
+    .about p {
+        font-size: 2vh;
+        text-align: center;
+    }
+}

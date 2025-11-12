@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 70vh;
+  min-height: 100vh;
   text-align: center;
 
   & .quote {
@@ -30,17 +30,32 @@
 
 @media (max-width: 768px) {
   .hero {
+    padding: 1.5rem;
+
     & .title {
-      font-size: 36px;
-    }
+      font-size: clamp(2rem, 8vw, 36px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      word-break: break-word;
 
-    & .quote {
-      font-size: 24px;
-    }
+      & .quote {
+        font-size: clamp(1.1rem, 4vw, 24px);
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
 
-    & .actions {
-      flex-direction: column;
-      gap: 10px;
+      & .actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        align-items: center;
+
+        & button,
+        & a {
+          width: 100%;
+          font-size: 1rem;
+        }
+      }
     }
   }
 }

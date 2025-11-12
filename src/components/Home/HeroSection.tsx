@@ -3,6 +3,7 @@ import "../../styles/Home/hero.css";
 import { useAuthContext } from "../../util/auth";
 import { GITHUB_OAUTH_URL } from "../../util/constants";
 import { UserType } from "../../util/types";
+import About from "../About";
 
 function HeroSection() {
   const auth = useAuthContext();
@@ -46,6 +47,7 @@ function HeroSection() {
           </>
         )}
       </div>
+      <About />
     </div>
   );
 }
