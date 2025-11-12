@@ -6,7 +6,7 @@ import Galaxy from "./components/Galaxy";
 import { AuthProvider } from "./util/auth";
 import RegForm from "./pages/RegForm";
 import OAuth from "./pages/OAuth";
-import Faq from "./components/faq/faq";
+import Faq from "./components/faq/Faq";
 import { ROUTER_PATHS } from "./util/constants";
 import StudentDashboard from "./pages/StudentDashboard";
 import MentorDashboard from "./pages/MentorDashboard";

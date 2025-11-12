@@ -4,6 +4,7 @@ import { useAuthContext } from "../../util/auth";
 import { GITHUB_OAUTH_URL } from "../../util/constants";
 import { UserType } from "../../util/types";
 import About from "../About";
+import WhySection from "../whyKwocSection";
 
 function HeroSection() {
   const auth = useAuthContext();
@@ -44,10 +45,12 @@ function HeroSection() {
             >
               Mentor Login
             </Button>
+
           </>
         )}
       </div>
       <About />
+      <WhySection />
     </div>
   );
 }

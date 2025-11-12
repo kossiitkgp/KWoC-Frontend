@@ -1,0 +1,90 @@
+.kwocCard {
+    height: 60vh;
+    width: 20vw;
+    background-color: rgba(128, 128, 128, 0.3);
+    margin-left: 2.5vh;
+    margin-right: 2.5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 3vh;
+    gap: 7vh;
+    padding-top: 10vh;
+}
+
+.whyKwocSection {
+    min-height: 50vh;
+    width: 90vw;
+    display: flex;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+}
+
+.whyKwoc h1 {
+    font-size: 10vh;
+}
+
+.whyKwoc {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100vh;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5vh;
+}
+
+.kwocCard h2 {
+    font-size: 4vh;
+    color: #63b6e4;
+}
+
+.kwocCard p {
+    font-size: 3vh;
+}
+
+@media (max-width:1500px) {
+    .whyKwocSection {
+        flex-direction: column;
+        gap: 4vh;
+    }
+
+    .kwocCard {
+        width: 60vw;
+        height: 30vh;
+        gap: 2vh;
+    }
+
+    .kwocCard p {
+        font-size: 2vh;
+    }
+
+    .whyKwoc h1 {
+        font-size: 5vh;
+    }
+}
+
+
+@media (max-width:800px) {
+    .whyKwocSection {
+        flex-direction: column;
+        gap: 4vh;
+    }
+
+    .kwocCard {
+        width: 60vw;
+        height: 40vh;
+        gap: 2vh;
+    }
+
+    .kwocCard p {
+        font-size: 2vh;
+    }
+
+    .whyKwoc h1 {
+        font-size: 5vh;
+    }
+}

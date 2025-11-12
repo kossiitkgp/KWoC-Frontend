@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FaqBox from "../faq/faqBox";
+import FaqBox from "./faqBox";
 import { FAQs } from "../../data/faq";
 import "../../styles/faq.css";
 
