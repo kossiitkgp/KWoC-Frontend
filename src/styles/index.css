@@ -24,3 +24,11 @@ button {
   color: inherit;
   font: inherit;
 }
+
+.hl {
+  color: #63b6e4;
+}
+
+.bold {
+  font-weight: 700;
+}

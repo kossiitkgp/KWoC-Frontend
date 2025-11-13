@@ -42,11 +42,11 @@ function Header() {
             FAQs
           </Link>
           {auth.isRegistered ? (
-            <Button icon={<FaArrowRight size={12} />} to="/dashboard">
+            <Button icon={<FaArrowRight size={12} />} to={auth.dashboardLink}>
               Dashboard
             </Button>
           ) : auth.isAuthenticated ? (
-            <Button icon={<FaArrowRight size={12} />} to="/form">
+            <Button icon={<FaArrowRight size={12} />} to={auth.formLink}>
               Complete Registration
             </Button>
           ) : (

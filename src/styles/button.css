@@ -16,4 +16,14 @@
     align-items: center;
     gap: 10px;
   }
+
+  &.red {
+    background-color: #d80f0f;
+    color: #fff;
+  }
+
+  &.blue {
+    background-color: #0e5dc5;
+    color: #fff;
+  }
 }

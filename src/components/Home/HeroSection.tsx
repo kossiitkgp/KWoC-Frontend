@@ -3,9 +3,6 @@ import "../../styles/Home/hero.css";
 import { useAuthContext } from "../../util/auth";
 import { GITHUB_OAUTH_URL } from "../../util/constants";
 import { UserType } from "../../util/types";
-import About from "../About";
-import WhySection from "../whyKwocSection";
-import Timeline from "../Timeline";
 
 function HeroSection() {
   const auth = useAuthContext();
@@ -27,7 +24,7 @@ function HeroSection() {
       </div>
       <div className="actions">
         {auth.isAuthenticated ? (
-          <Button to={auth.isRegistered ? "/dashboard" : "/form"}>
+          <Button to={auth.isRegistered ? auth.dashboardLink : auth.formLink}>
             Go to Dashboard
           </Button>
         ) : (
@@ -46,13 +43,9 @@ function HeroSection() {
             >
               Mentor Login
             </Button>
-
           </>
         )}
       </div>
-      <About />
-      <WhySection />
-      <Timeline />
     </div>
   );
 }

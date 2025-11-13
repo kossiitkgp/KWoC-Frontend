@@ -1,13 +1,14 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import "./styles/constants.css"
+import { AuthProvider } from "./util/auth";
+import { ROUTER_PATHS } from "./util/constants";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Galaxy from "./components/Galaxy";
-import { AuthProvider } from "./util/auth";
+import Home from "./pages/Home";
 import RegForm from "./pages/RegForm";
 import OAuth from "./pages/OAuth";
-import Faq from "./components/faq/Faq";
-import { ROUTER_PATHS } from "./util/constants";
+import Faq from "./pages/FAQPage";
 import StudentDashboard from "./pages/StudentDashboard";
 import MentorDashboard from "./pages/MentorDashboard";
 
@@ -16,18 +17,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <AuthProvider>
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              position: "fixed",
-              zIndex: -1,
-              top: 0,
-              left: 0,
-            }}
-          >
-            <Galaxy />
-          </div>
+          <Galaxy />
           <Header />
           <Routes>
             <Route index element={<Home />} />
