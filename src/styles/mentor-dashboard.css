@@ -1,0 +1,35 @@
+.mentor-dash {
+  width: 70vw;
+  margin: 0 auto;
+
+  & .projects-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    & .project-card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+
+      & h3 {
+        margin: 0 0 10px 0;
+        font-size: 20px;
+        color: var(--color-primary);
+      }
+
+      & p {
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 768px) {
+  .mentor-dash {
+    width: 90vw;
+  }
+}

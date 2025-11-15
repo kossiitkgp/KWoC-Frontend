@@ -3,7 +3,7 @@ import { makeRequest } from "../util/backend";
 import { IEndpointTypes } from "../util/types";
 import { useAuthContext } from "../util/auth";
 import { useNavigate } from "react-router-dom";
-import "../styles/student-dashboard.css";
+import "../styles/mentor-dashboard.css";
 import UserCard from "../components/Dashboard/UserCard";
 
 type MentorDashData = IEndpointTypes["mentor/dashboard"]["response"];
@@ -53,10 +53,26 @@ function MentorDashboard() {
   }, []);
 
   return (
-    <div className="student-dash">
+    <div className="mentor-dash">
       {data ? (
         <>
           <UserCard username={data.username} name={data.name} auth={auth} />
+
+          {data.projects.length > 0 ? (
+            <>
+              <h2>Your Projects</h2>
+              <div className="projects-list">
+                {data.projects.map((project) => (
+                  <div key={project.id} className="project-card">
+                    <h3>{project.name}</h3>
+                    <p>{project.description}</p>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p>Add a project!</p>
+          )}
         </>
       ) : status == "loading" ? (
         <p>Loading your dashboard...</p>
