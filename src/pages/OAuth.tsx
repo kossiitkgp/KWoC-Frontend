@@ -33,12 +33,6 @@ function OAuth() {
             college: auth.college,
           },
         });
-
-        console.log(auth);
-        console.log(authContext.formLink, authContext.dashboardLink);
-        navigate(
-          auth.is_new_user ? authContext.formLink : authContext.dashboardLink,
-        );
       }
     } catch (e) {
       setErr("Error connecting to the server. Please try again later.");
@@ -55,7 +49,17 @@ function OAuth() {
     } else {
       loginHandler(urlParams.get("code") as string);
     }
-  });
+  }, []);
+
+  useEffect(() => {
+    if (authContext.isAuthenticated) {
+      if (authContext.isRegistered) {
+        navigate(authContext.dashboardLink);
+      } else {
+        navigate(authContext.formLink);
+      }
+    }
+  }, [authContext.isAuthenticated, authContext.isRegistered]);
 
   return (
     <div>{err !== null ? <div>redirecting...</div> : <div>{err}</div>}</div>

@@ -159,22 +159,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const updateAuth = (auth: ILocalStorageAuthObj) => {
     setUserAuth(auth);
-
-    setFormLink(
-      userAuth.userData.type === "student"
-        ? ROUTER_PATHS.STUDENT_FORM
-        : ROUTER_PATHS.MENTOR_FORM,
-    );
-    setDashboardLink(
-      userAuth.userData.type === "student"
-        ? ROUTER_PATHS.STUDENT_DASHBOARD
-        : ROUTER_PATHS.MENTOR_DASHBOARD,
-    );
   };
 
   const onLogin = (auth: ILocalStorageAuthObj) => {
     setIsAuthenticated(true);
     setUserType(auth.userData.type);
+    setIsRegistered(auth.isRegistered);
     updateAuth(auth);
   };
 
@@ -197,6 +187,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsAuthenticated(false);
     setIsRegistered(false);
     setUserAuth(DEFAULT_AUTH_OBJ);
+
+    navigate("/");
   };
 
   // Load the profile once

@@ -16,11 +16,6 @@ function Header() {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleLogin = () => {
-    window.location.href =
-      "https://kwoctest.github.io/KWoC-Frontend/login.html";
-  };
-
   return (
     <div className="header">
       <img src={KWoCLogo} width={50} />
@@ -50,9 +45,10 @@ function Header() {
               Complete Registration
             </Button>
           ) : (
-            <Button icon={<FaArrowRight size={12} />} onClick={handleLogin}>
-              Register
-            </Button>
+            // <Button icon={<FaArrowRight size={12} />} onClick={handleLogin}>
+            //   Register
+            // </Button>
+            <></>
           )}
         </div>
       )}

@@ -12,6 +12,11 @@ function UserCard({
   auth: ReturnType<typeof useAuthContext>;
 }) {
   const data = { username, name };
+
+  const handleSignOut = () => {
+    auth.onLogout();
+  };
+
   return (
     <div className="user-info">
       <img
@@ -26,7 +31,7 @@ function UserCard({
         <Button to={auth.formLink} className="blue">
           Edit Profile
         </Button>
-        <Button className="red">Sign Out</Button>
+        <Button onClick={handleSignOut} className="red">Sign Out</Button>
       </div>
     </div>
   );
