@@ -48,3 +48,11 @@ button {
   border-radius: 5px;
   color: #ff4d4d;
 }
+
+.success-message {
+  background-color: #003300;
+  border: 1px solid #4dff4d;
+  padding: 5px 20px;
+  border-radius: 5px;
+  color: #4dff4d;
+}

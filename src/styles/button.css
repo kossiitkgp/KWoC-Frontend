@@ -26,4 +26,9 @@
     background-color: #0e5dc5;
     color: #fff;
   }
+
+  &.green {
+    background-color: #0aa445;
+    color: #fff;
+  }
 }

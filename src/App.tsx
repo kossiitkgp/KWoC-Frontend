@@ -12,6 +12,7 @@ import Faq from "./pages/FAQPage";
 import Projects from "./pages/Projects";
 import StudentDashboard from "./pages/StudentDashboard";
 import MentorDashboard from "./pages/MentorDashboard";
+import AdminDashboard from "./pages/Admin";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Header />
           <Routes>
             <Route index element={<Home />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/projects" element={<Projects />} />
 
             <Route
               path={ROUTER_PATHS.MENTOR_FORM}
@@ -31,8 +34,6 @@ function App() {
               path={ROUTER_PATHS.STUDENT_FORM}
               element={<RegForm isStudent={true} />}
             />
-            <Route path="/faq" element={<Faq />} />
-            <Route path="/projects" element={<Projects />} />
 
             <Route
               path={ROUTER_PATHS.STUDENT_DASHBOARD}
@@ -42,6 +43,8 @@ function App() {
               path={ROUTER_PATHS.MENTOR_DASHBOARD}
               element={<MentorDashboard />}
             />
+
+            <Route path="/admin" element={<AdminDashboard />} />
 
             <Route path="/oauth" element={<OAuth />} />
           </Routes>
