@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import { makeRequest } from "../util/backend";
 import { IEndpointTypes } from "../util/types";
 import { useAuthContext } from "../util/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/mentor-dashboard.css";
 import UserCard from "../components/Dashboard/UserCard";
+import { HiOutlineViewGrid } from "react-icons/hi";
+import { ROUTER_PATHS, REG_OPEN } from "../util/constants";
+import MentorProjectCard from "../components/Dashboard/MentorProjectCard";
 
 type MentorDashData = IEndpointTypes["mentor/dashboard"]["response"];
 
@@ -58,15 +61,21 @@ function MentorDashboard() {
         <>
           <UserCard username={data.username} name={data.name} auth={auth} />
 
+          <div className="add-project-container">
+            <h2>Your Projects</h2>
+            {REG_OPEN && (
+              <Link to={ROUTER_PATHS.PROJECT_FORM} className="add-project-btn">
+                <HiOutlineViewGrid size={30} />
+                <p>Add project +</p>
+              </Link>
+            )}
+          </div>
+
           {data.projects.length > 0 ? (
             <>
-              <h2>Your Projects</h2>
               <div className="projects-list">
                 {data.projects.map((project) => (
-                  <div key={project.id} className="project-card">
-                    <h3>{project.name}</h3>
-                    <p>{project.description}</p>
-                  </div>
+                  <MentorProjectCard key={project.id} {...project} />
                 ))}
               </div>
             </>

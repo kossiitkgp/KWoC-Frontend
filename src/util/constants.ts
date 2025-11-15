@@ -32,3 +32,6 @@ export enum ROUTER_PATHS {
   ONE_MENTOR_STATS = "/stats/mentor/:id",
   ONE_PROJECT_STATS = "/stats/project/:id",
 }
+
+export const REG_OPEN = import.meta.env.VITE_REGISTRATIONS_OPEN;
+export const DISCORD_INVITE = "a discord link";

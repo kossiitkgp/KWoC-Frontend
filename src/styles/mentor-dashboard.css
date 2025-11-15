@@ -6,26 +6,30 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-
-    & .project-card {
-      background-color: #1a1a1a;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-
-      & h3 {
-        margin: 0 0 10px 0;
-        font-size: 20px;
-        color: var(--color-primary);
-      }
-
-      & p {
-        font-size: 16px;
-        margin: 0;
-      }
-    }
   }
+}
 
+.add-project-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0.5rem;
+}
+
+.add-project-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem; /* Vertical and horizontal padding */
+  font-size: 1rem; /* Font size for text */
+  height: 2.5rem; /* Match the height of the PROJECTS title */
+  background-color: #4338ca;
+  color: #fff;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  margin-left: 1rem; /* Space between the title and the button */
 }
 
 @media (max-width: 768px) {

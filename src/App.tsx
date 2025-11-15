@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./styles/constants.css"
+import "./styles/constants.css";
 import { AuthProvider } from "./util/auth";
-import { ROUTER_PATHS } from "./util/constants";
+import { REG_OPEN, ROUTER_PATHS } from "./util/constants";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Galaxy from "./components/Galaxy";
@@ -13,6 +13,7 @@ import Projects from "./pages/Projects";
 import StudentDashboard from "./pages/StudentDashboard";
 import MentorDashboard from "./pages/MentorDashboard";
 import AdminDashboard from "./pages/Admin";
+import ProjectForm from "./pages/ProjectForm";
 
 function App() {
   return (
@@ -45,6 +46,19 @@ function App() {
             />
 
             <Route path="/admin" element={<AdminDashboard />} />
+
+            {REG_OPEN && (
+              <>
+                <Route
+                  path={ROUTER_PATHS.PROJECT_FORM}
+                  element={<ProjectForm />}
+                />
+                <Route
+                  path={ROUTER_PATHS.PROJECT_EDIT_FORM}
+                  element={<ProjectForm isEditing={true} />}
+                />
+              </>
+            )}
 
             <Route path="/oauth" element={<OAuth />} />
           </Routes>
