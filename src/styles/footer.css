@@ -2,6 +2,7 @@
   text-align: center;
   padding: 20px;
   margin: 20px 120px;
+  margin-top: auto;
 
   & .link-content {
     display: flex;

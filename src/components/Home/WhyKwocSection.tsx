@@ -1,4 +1,4 @@
-import { whyData } from "../../data/WhyKwoc";
+import data from "../../data/why-kwoc.json";
 import "../../styles/Home/whyKwoc.css";
 
 function WhyKwocSection() {
@@ -6,7 +6,7 @@ function WhyKwocSection() {
     <div className="whyKwoc">
       <h1>Why <span className="hl">KWOC</span>?</h1>
       <section className="cards">
-        {whyData.map((item, index) => (
+        {data.map((item, index) => (
           <Card
             key={index}
             heading={item.heading}

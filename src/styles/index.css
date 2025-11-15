@@ -12,6 +12,14 @@ body {
   color: #ffffff;
 }
 
+.App {
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -31,4 +39,12 @@ button {
 
 .bold {
   font-weight: 700;
+}
+
+.error-message {
+  background-color: #330000;
+  border: 1px solid #ff4d4d;
+  padding: 5px 20px;
+  border-radius: 5px;
+  color: #ff4d4d;
 }

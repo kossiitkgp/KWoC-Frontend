@@ -1,0 +1,11 @@
+.projects-page {
+  width: 70vw;
+  margin: 0 auto;
+
+  & h1 {
+    text-align: center;
+    font-size: 54px;
+    margin: 40px 0;
+    /* color: var(--color-primary); */
+  }
+}

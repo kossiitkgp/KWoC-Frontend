@@ -1,0 +1,36 @@
+.user-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  & img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+
+  & .details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  & h2 {
+    font-size: 40px;
+    margin: 0;
+  }
+
+  & p {
+    font-size: 18px;
+    margin: 0;
+    color: gray;
+  }
+
+  & .actions {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+  }
+}

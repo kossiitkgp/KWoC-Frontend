@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import RegForm from "./pages/RegForm";
 import OAuth from "./pages/OAuth";
 import Faq from "./pages/FAQPage";
+import Projects from "./pages/Projects";
 import StudentDashboard from "./pages/StudentDashboard";
 import MentorDashboard from "./pages/MentorDashboard";
 
@@ -31,6 +32,7 @@ function App() {
               element={<RegForm isStudent={true} />}
             />
             <Route path="/faq" element={<Faq />} />
+            <Route path="/projects" element={<Projects />} />
 
             <Route
               path={ROUTER_PATHS.STUDENT_DASHBOARD}

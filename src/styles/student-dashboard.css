@@ -1,41 +1,29 @@
 .student-dash {
   width: 70vw;
-  margin: auto;
+  margin: 0 auto;
 
-  & .user-info {
+  & .stats {
     display: flex;
-    align-items: center;
-    width: 100%;
+    justify-content: space-between;
+    margin-top: 40px;
+    gap: 20px;
 
-    & img {
-      border-radius: 50%;
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      margin-right: 20px;
-    }
+    & .stat-card {
+      background-color: #1a1a1a;
+      padding: 20px;
+      border-radius: 10px;
+      width: 23%;
 
-    & .details {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+      & h3 {
+        margin: 0 0 10px 0;
+        font-size: 20px;
+        color: var(--color-primary);
+      }
 
-    & h2 {
-      font-size: 40px;
-      margin: 0;
-    }
-
-    & p {
-      font-size: 18px;
-      margin: 0;
-      color: gray;
-    }
-
-    & .actions {
-      margin-left: auto;
-      display: flex;
-      gap: 10px;
+      & p {
+        font-size: 24px;
+        margin: 0;
+      }
     }
   }
 }
