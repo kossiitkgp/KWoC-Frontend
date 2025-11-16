@@ -104,6 +104,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
                 disabled={
                   (!responsesChanged && !props.submitWithoutChange) || disabled
                 }
+                onClick={() => props.onSubmit(responses)}
               >
                 Submit
               </Button>

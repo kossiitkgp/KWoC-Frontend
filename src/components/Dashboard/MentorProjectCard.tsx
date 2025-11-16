@@ -1,11 +1,10 @@
-import { BiGitCommit, BiGitPullRequest } from "react-icons/bi";
-import "../../styles/MentorProjectCard.css";
 import { IProjectDashboardInfo } from "../../util/types";
 import { useMemo } from "react";
-import { IoPersonSharp } from "react-icons/io5";
-import { ROUTER_PATHS } from "../../util/constants";
-import { Link } from "react-router-dom";
 import { useAuthContext } from "../../util/auth";
+import Button from "../Button";
+import { FaUsers } from "react-icons/fa";
+import { FaCodeCommit, FaCodePullRequest } from "react-icons/fa6";
+import "../../styles/MentorProjectCard.css";
 
 function MentorProjectCard({
   id,
@@ -17,6 +16,8 @@ function MentorProjectCard({
   pull_count = 0,
   repo_link,
   mentor,
+  tags,
+  description,
   secondary_mentor,
 }: IProjectDashboardInfo) {
   const totalLinesChanged = useMemo(
@@ -37,95 +38,80 @@ function MentorProjectCard({
   const authContext = useAuthContext();
 
   return (
-    <div className="project-card">
-      {/* Project Title and Status */}
-      <div className="project-header">
-        <h3 className="project-title">{name}</h3>
-        {project_status ? (
-          <span className="status-approved">Approved</span>
-        ) : (
-          <span className="status-awaiting">Awaiting Approval</span>
-        )}
+    <div key={id} className="project-card">
+      <div className="top">
+        <h3>{name}</h3>
+        <span
+          className={
+            "status-badge " + (project_status ? "approved" : "")
+          }
+        >
+          {project_status ? "Approved" : "Awaiting Approval"}
+        </span>
       </div>
-
-      {/* Mentor and Commit Info Section */}
-      <div className="info-container">
+      <p className="description">{description}</p>
+      <div className="tags">
+        {tags.map((tag, index) => (
+          <span key={index} className="tag">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <div className="mentors">
         <div className="mentor">
-          <IoPersonSharp size={16} />
-          <span>Mentor:</span>
+          <FaUsers className="icon" />
+          <div className="label">Mentor:</div>
           <a
-            href={`https://github.com/${mentor.username}`}
-            className="mentor-link"
+            href={"https://github.com/" + mentor.username}
+            target="_blank"
+            className="name"
           >
             @{mentor.username}
           </a>
         </div>
 
         <div className="mentor">
-          <IoPersonSharp size={16} />
-          <span>Co-Mentor:</span>
-          <a
-            href={
-              secondary_mentor.username !== ""
-                ? `https://github.com/${secondary_mentor.username}`
-                : "#"
-            }
-            className={`co-mentor-link ${
-              secondary_mentor.username === "" ? "no-co-mentor" : ""
-            }`}
-          >
-            {secondary_mentor.username !== ""
-              ? `@${secondary_mentor.username}`
-              : "None"}
-          </a>
+          <FaUsers className="icon" />
+          <div className="label">Co-Mentor:</div>
+          {secondary_mentor.username ? (
+            <a
+              href={"https://github.com/" + secondary_mentor.username}
+              target="_blank"
+              className="name"
+            >
+              @{secondary_mentor.username}
+            </a>
+          ) : (
+            "None"
+          )}
         </div>
-
-        {/* Commit and Pull Request Info */}
-        <div className="commit-pull-info">
-          <div className="info-item">
-            <BiGitCommit size={16} />
-            <span>Merged Commits:</span>
-            <p>{commit_count}</p>
-          </div>
-          <div className="info-item">
-            <BiGitPullRequest size={16} />
-            <span>Merged PRs:</span>
-            <p>{pull_count}</p>
-          </div>
+      </div>
+      <div className="stats">
+        <div className="stat">
+          <FaCodeCommit className="icon" />
+          <h4 className="stat-label">Commits</h4>
+          <div className="stat-value">{commit_count}</div>
+        </div>
+        <div className="stat">
+          <FaCodePullRequest className="icon" />
+          <h4 className="stat-label">Pull Requests</h4>
+          <div className="stat-value">{pull_count}</div>
         </div>
       </div>
 
-      {/* Lines Added/Removed */}
-      <div className="lines-changed">
-        <div className="lines-bar">
-          <span className="lines-added">+{lines_added}</span>
-          <div className="bar">
-            <div
-              style={{ flex: addedPercentage + "%" }}
-              className="added-bar"
-            ></div>
-            <div
-              style={{ flex: removedPercentage + "%" }}
-              className="removed-bar"
-            ></div>
-          </div>
-          <span className="lines-removed">-{lines_removed}</span>
-        </div>
-      </div>
+      {/* line visual of lines changed */}
 
-      {/* Project Links */}
-      <div className="project-links">
-        <a href={repo_link} target="_blank" className="view-project-btn">
-          View
+      <div className="actions">
+        <Button
+          className="edit-button"
+          variant="blue"
+          to={`/project/form/${id}`}
+        >
+          Edit
+        </Button>
+        <a href={repo_link} className="open-button" target="_blank">
+          <Button variant="green">Open</Button>
         </a>
-        {mentor.username === authContext.userData.username && (
-          <Link
-            to={ROUTER_PATHS.PROJECT_EDIT_FORM_NOSUFFIX + id.toString()}
-            className="edit-project-btn"
-          >
-            Edit
-          </Link>
-        )}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ function Button({
   className,
   type = "button",
   disabled = false,
+  variant = "",
   onClick,
 }: {
   children: React.ReactNode;
@@ -15,12 +16,13 @@ function Button({
   to?: string;
   className?: string;
   type?: "button" | "submit" | "reset";
+  variant?: string;
   disabled?: boolean;
   onClick?: () => void;
 }) {
   const btn = (
     <button
-      className={["block-btn", icon && "icon", className].filter((x) => x).join(" ")}
+      className={["block-btn", icon && "icon", to ? "" : className, variant].filter((x) => x).join(" ")}
       onClick={onClick}
       type={type}
       disabled={disabled}
@@ -30,7 +32,7 @@ function Button({
   );
 
   if (to) {
-    return <Link to={to}>{btn}</Link>;
+    return <Link to={to} className={className}>{btn}</Link>;
   }
 
   return btn;

@@ -50,11 +50,11 @@ function App() {
             {REG_OPEN && (
               <>
                 <Route
-                  path={ROUTER_PATHS.PROJECT_FORM}
-                  element={<ProjectForm />}
+                  path={"/project/form"}
+                  element={<ProjectForm isEditing={false} />}
                 />
                 <Route
-                  path={ROUTER_PATHS.PROJECT_EDIT_FORM}
+                  path={"/project/form/:id"}
                   element={<ProjectForm isEditing={true} />}
                 />
               </>

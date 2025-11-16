@@ -21,13 +21,13 @@ function RegForm({ isStudent }: { isStudent: boolean }) {
     setIsRegistering(!authContext.isRegistered);
 
     if (isRegistering && !registrationsOpen) {
-      navigate(ROUTER_PATHS.HOME);
+      navigate("/");
     }
     if (!authContext.isAuthenticated) {
-      navigate(ROUTER_PATHS.HOME);
+      navigate("/");
     }
     if (authContext.userData.type !== userType) {
-      navigate(ROUTER_PATHS.HOME);
+      navigate("/");
     }
   }, []);
 

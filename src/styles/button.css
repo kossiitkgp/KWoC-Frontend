@@ -31,4 +31,11 @@
     background-color: #0aa445;
     color: #fff;
   }
+
+  &:disabled {
+    background-color: #c4c4c4;
+    color: #6a6a6a;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
 }

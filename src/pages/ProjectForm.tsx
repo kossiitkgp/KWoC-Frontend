@@ -21,11 +21,11 @@ function ProjectForm(props: { isEditing?: boolean }) {
 
   useEffect(() => {
     if (!isEditing && !REG_OPEN) {
-      navigate(ROUTER_PATHS.HOME);
+      navigate("/");
     }
 
     if (!authContext.isAuthenticated) {
-      navigate(ROUTER_PATHS.HOME);
+      navigate("/");
     } else if (!authContext.isRegistered) {
       navigate(authContext.formLink);
     } else if (authContext.userData.type !== "mentor") {
