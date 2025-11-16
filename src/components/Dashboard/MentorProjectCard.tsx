@@ -20,7 +20,7 @@ function MentorProjectCard({
   secondary_mentor,
 }: IProjectDashboardInfo) {
   return (
-    <div key={id} className="project-card">
+    <div key={id} className="mentor-project-card">
       <div className="top">
         <h3>{name}</h3>
         <span

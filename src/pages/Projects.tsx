@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "../styles/projects.css";
 import { IProject } from "../util/types";
 import { makeRequest } from "../util/backend";
+import { FaUsers } from "react-icons/fa";
+import Button from "../components/Button";
 
 const PROJECTS_STARTED = import.meta.env.VITE_PROJECTS_STARTED === "true";
 
@@ -34,26 +36,80 @@ function Projects() {
       setStatus("fetched");
     }
   }, []);
-  
+
   return (
     <div className="projects-page">
       <h1>Projects</h1>
-      
+
       {PROJECTS_STARTED ? (
         <>
           {status === "loading" && <p>Loading projects...</p>}
-          {status === "failed" && <div className="error-message"><p>Failed to load projects. Please try again later.</p></div>}
-          {status === "fetched" && projects.length === 0 && <p>No projects available at the moment.</p>}
+          {status === "failed" && (
+            <div className="error-message">
+              <p>Failed to load projects. Please try again later.</p>
+            </div>
+          )}
+          {status === "fetched" && projects.length === 0 && (
+            <p>No projects available at the moment.</p>
+          )}
           {status === "fetched" && projects.length > 0 && (
-            <ul className="projects-list">
+            <div className="projects-list">
               {projects.map((project) => (
-                <li key={project.id} className="project-item">
+                <div key={project.id} className="project-item">
                   <h2>{project.name}</h2>
-                  <p>{project.description}</p>
-                  <p><strong>Mentor:</strong> {project.mentor.name}</p>
-                </li>
+                  <p className="description">{project.description}</p>
+                  <div className="mentors">
+                    <div className="mentor">
+                      <FaUsers className="icon" />
+                      <div className="label">Mentor:</div>
+                      <a
+                        href={"https://github.com/" + project.mentor.username}
+                        target="_blank"
+                        className="name"
+                      >
+                        @{project.mentor.username}
+                      </a>
+                    </div>
+
+                    <div className="mentor">
+                      <FaUsers className="icon" />
+                      <div className="label">Co-Mentor:</div>
+                      {project.secondary_mentor.username ? (
+                        <a
+                          href={
+                            "https://github.com/" +
+                            project.secondary_mentor.username
+                          }
+                          target="_blank"
+                          className="name"
+                        >
+                          @{project.secondary_mentor.username}
+                        </a>
+                      ) : (
+                        "None"
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="tags">
+                    {project.tags.map((tag, index) => (
+                      <span key={index} className="tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="actions">
+                    <a href={project.repo_link} target="_blank" rel="noreferrer">
+                      <Button className="blue">View Repo</Button>
+                    </a>
+                    <a href={project.comm_channel} target="_blank" rel="noreferrer">
+                      <Button className="green">Communication Channel</Button>
+                    </a>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           )}
         </>
       ) : (

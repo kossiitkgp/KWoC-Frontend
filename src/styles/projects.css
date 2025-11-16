@@ -16,4 +16,95 @@
     font-weight: 500;
     color: var(--color-secondary);
   }
+
+  .projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: calc(3 * 300px + 2 * 20px);
+    gap: 20px;
+  }
+
+  .project-item {
+    padding: 24px;
+    border-radius: 12px;
+    background-color: rgba(15, 23, 42, 0.7);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    & h2 {
+      font-size: 24px;
+      margin: 0;
+      color: var(--color-primary);
+    }
+    
+    & .description {
+      font-size: 18px;
+      margin: 0;
+      flex: 1;
+    }
+
+    & .mentors {
+      font-size: 15px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      
+      & .mentor {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        & .name {
+          color: var(--color-primary);
+          text-decoration: none;
+        }
+      }
+    }
+
+    & .tags {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+
+      & .tag {
+        display: inline-block;
+        background: rgba(100, 116, 139, 0.2);
+        color: var(--color-text);
+        padding: 4px 10px;
+        border-radius: 8px;
+        font-size: 12px;
+        margin-right: 8px;
+        border: 1px solid rgba(100, 116, 139, 0.2);
+      }
+    }
+
+    & .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+
+      & > a {
+        width: 100%;
+
+        & button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .projects-page {
+    width: 90vw;
+  }
 }

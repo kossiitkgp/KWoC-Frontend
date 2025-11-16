@@ -5,7 +5,6 @@ import { DISCORD_INVITE, REG_OPEN, ROUTER_PATHS } from "../util/constants";
 import { useNavigate, useParams } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 import { IProject } from "../util/types";
-import "../styles/ProjectForm.css";
 
 function ProjectForm(props: { isEditing?: boolean }) {
   const isEditing = props.isEditing ?? false;

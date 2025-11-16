@@ -67,7 +67,7 @@ function MentorDashboard() {
               {data.projects.map((project) => (
                 <MentorProjectCard key={project.id} {...project} />
               ))}
-              {REG_OPEN && <Link to="/project/form" className="project-card add-project-card">
+              {REG_OPEN && <Link to="/project/form" className="mentor-project-card add-project-card">
                 <FaPlus className="icon" size="30px" />
                 <h3>Add a Project</h3>
               </Link>}
