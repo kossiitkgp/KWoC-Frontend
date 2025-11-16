@@ -15,3 +15,6 @@ export const REG_OPEN = import.meta.env.VITE_REGISTRATIONS_OPEN == "true";
 export const MID_EVALS_ENDED = import.meta.env.VITE_MID_EVALS_ENDED == "true";
 export const END_EVALS_ENDED = import.meta.env.VITE_END_EVALS_ENDED == "true";
 export const DISCORD_INVITE = "a discord link";
+
+export const STUDENT_MANUAL = `https://google.com`;
+export const MENTOR_MANUAL = `https://google.com`;

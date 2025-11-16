@@ -1,6 +1,7 @@
 .mentor-dash {
   width: 70vw;
   margin: 0 auto;
+  margin-bottom: 40px;
 
   & .projects-list {
     display: grid;
@@ -25,6 +26,72 @@
       }
 
       h3 {
+        margin: 0;
+      }
+    }
+  }
+
+  & > .stats {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+
+    & .stat {
+      flex: 1;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      & .stat-label {
+        font-size: 15px;
+        color: white;
+        font-weight: 400;
+        margin: 0;
+      }
+
+      & .icon {
+        color: white;
+      }
+
+      & .stat-label::after {
+        content: ":";
+      }
+
+      & .stat-value {
+        font-weight: 600;
+        margin: 0;
+      }
+    }
+  }
+
+  & .resources {
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    & .resource {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 20px;
+      border-radius: 10px;
+      background-color: rgba(15, 23, 42, 0.7);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+      & img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      & p {
+        font-size: 18px;
         margin: 0;
       }
     }

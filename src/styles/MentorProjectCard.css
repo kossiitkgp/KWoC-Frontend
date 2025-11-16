@@ -43,7 +43,6 @@
     & .tag {
       display: inline-block;
       background: rgba(100, 116, 139, 0.2);
-      color: var(--color-text);
       padding: 4px 10px;
       border-radius: 8px;
       font-size: 12px;
@@ -116,7 +115,6 @@
       & .stat-value {
         font-size: 18px;
         font-weight: 600;
-        color: var(--color-text);
         margin: 0;
       }
     }

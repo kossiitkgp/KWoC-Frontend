@@ -6,8 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/mentor-dashboard.css";
 import UserCard from "../components/Dashboard/UserCard";
 import { FaPlus } from "react-icons/fa";
-import { REG_OPEN } from "../util/constants";
+import { MENTOR_MANUAL, REG_OPEN } from "../util/constants";
 import MentorProjectCard from "../components/Dashboard/MentorProjectCard";
+import { FaCodeCommit, FaCodePullRequest } from "react-icons/fa6";
+import { IoApps, IoAppsOutline, IoDocument } from "react-icons/io5";
+import MentorResources from "../data/mentorResources.json";
+import kwoc_logo from "../assets/kwoc_logo.png";
 
 type MentorDashData = IEndpointTypes["mentor/dashboard"]["response"];
 
@@ -55,6 +59,15 @@ function MentorDashboard() {
     fetchData();
   }, []);
 
+  const commit_count = data?.projects.reduce(
+    (acc, project) => acc + project.commit_count,
+    0,
+  );
+  const pull_count = data?.projects.reduce(
+    (acc, project) => acc + project.pull_count,
+    0,
+  );
+
   return (
     <div className="mentor-dash">
       {data ? (
@@ -67,15 +80,65 @@ function MentorDashboard() {
               {data.projects.map((project) => (
                 <MentorProjectCard key={project.id} {...project} />
               ))}
-              {REG_OPEN && <Link to="/project/form" className="mentor-project-card add-project-card">
-                <FaPlus className="icon" size="30px" />
-                <h3>Add a Project</h3>
-              </Link>}
+              {REG_OPEN && (
+                <Link
+                  to="/project/form"
+                  className="mentor-project-card add-project-card"
+                >
+                  <FaPlus className="icon" size="30px" />
+                  <h3>Add a Project</h3>
+                </Link>
+              )}
             </div>
           }
-          {!REG_OPEN && data.projects.length == 0 && (
-            <p>Stay tuned!</p>
-          )}
+          {!REG_OPEN && data.projects.length == 0 && <p>Stay tuned!</p>}
+
+          <h2>Statistics</h2>
+          <div className="stats">
+            <div className="stat">
+              <FaCodeCommit className="icon" />
+              <h4 className="stat-label">Total Commits</h4>
+              <div className="stat-value">{commit_count}</div>
+            </div>
+            <div className="stat">
+              <FaCodePullRequest className="icon" />
+              <h4 className="stat-label">Total Pull Requests</h4>
+              <div className="stat-value">{pull_count}</div>
+            </div>
+            <div className="stat">
+              <IoApps className="icon" />
+              <h4 className="stat-label">Total Projects</h4>
+              <div className="stat-value">{data.projects.length}</div>
+            </div>
+            <div className="stat">
+              <IoAppsOutline className="icon" />
+              <h4 className="stat-label">Total Approved Projects</h4>
+              <div className="stat-value">
+                {
+                  data.projects.filter((project) => project.project_status)
+                    .length
+                }
+              </div>
+            </div>
+          </div>
+
+          <h2>Resources</h2>
+          <div className="resources">
+            <a href={MENTOR_MANUAL} target="_blank" rel="noreferrer">
+              <div className="resource">
+                <img src={kwoc_logo} alt="KWoC Logo" />
+                <p><strong>KWoC Mentor Manual</strong></p>
+              </div>
+            </a>
+            {MentorResources.map((resource) => (
+              <a href={resource.url} key={resource.message} target="_blank" rel="noreferrer">
+                <div className="resource">
+                  {resource.avatar ? <img src={resource.avatar} alt={resource.message} /> : <IoDocument className="icon" size="30px"/>}
+                  <p>{resource.message}</p>
+                </div>
+              </a>
+            ))}
+          </div>
         </>
       ) : status == "loading" ? (
         <p>Loading your dashboard...</p>

@@ -76,7 +76,6 @@
       & .tag {
         display: inline-block;
         background: rgba(100, 116, 139, 0.2);
-        color: var(--color-text);
         padding: 4px 10px;
         border-radius: 8px;
         font-size: 12px;
