@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../util/auth";
 import { useEffect, useState } from "react";
-import { ROUTER_PATHS } from "../util/constants";
 import Form from "../components/Form";
 import { makeRequest } from "../util/backend";
 

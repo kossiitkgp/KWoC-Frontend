@@ -1,10 +1,9 @@
 import { IProjectDashboardInfo } from "../../util/types";
-import { useMemo } from "react";
-import { useAuthContext } from "../../util/auth";
 import Button from "../Button";
 import { FaUsers } from "react-icons/fa";
 import { FaCodeCommit, FaCodePullRequest } from "react-icons/fa6";
 import "../../styles/MentorProjectCard.css";
+import LinesChanged from "../LinesChanged";
 
 function MentorProjectCard({
   id,
@@ -20,23 +19,6 @@ function MentorProjectCard({
   description,
   secondary_mentor,
 }: IProjectDashboardInfo) {
-  const totalLinesChanged = useMemo(
-    () => lines_added + lines_removed,
-    [lines_added, lines_removed],
-  );
-  const addedPercentage = useMemo(
-    () =>
-      totalLinesChanged === 0 ? 0 : (lines_added / totalLinesChanged) * 100,
-    [lines_added, totalLinesChanged],
-  );
-  const removedPercentage = useMemo(
-    () =>
-      totalLinesChanged === 0 ? 0 : (lines_removed / totalLinesChanged) * 100,
-    [lines_removed, totalLinesChanged],
-  );
-
-  const authContext = useAuthContext();
-
   return (
     <div key={id} className="project-card">
       <div className="top">
@@ -99,7 +81,7 @@ function MentorProjectCard({
         </div>
       </div>
 
-      {/* line visual of lines changed */}
+      <LinesChanged lines_added={lines_added} lines_removed={lines_removed} />
 
       <div className="actions">
         <Button

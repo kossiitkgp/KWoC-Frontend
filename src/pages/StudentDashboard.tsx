@@ -7,6 +7,7 @@ import "../styles/student-dashboard.css";
 import UserCard from "../components/Dashboard/UserCard";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import { END_EVALS_ENDED, MID_EVALS_ENDED } from "../util/constants";
+import LinesChanged from "../components/LinesChanged";
 
 type StudentDashData = IEndpointTypes["student/dashboard"]["response"];
 
@@ -73,32 +74,7 @@ function StudentDashboard() {
               <div className="stat-card">
                 {/* Lines Added/Removed */}
                 <h3>Lines Changed</h3>
-                <div className="lines-changed">
-                  <div className="lines-bar">
-                    <span className="lines-added">+{data.lines_added}</span>
-                    <div className="bar">
-                      <div
-                        style={{
-                          flex:
-                            data.lines_added /
-                              (data.lines_added + data.lines_removed) +
-                            "%",
-                        }}
-                        className="added-bar"
-                      ></div>
-                      <div
-                        style={{
-                          flex:
-                            data.lines_removed /
-                              (data.lines_added + data.lines_removed) +
-                            "%",
-                        }}
-                        className="removed-bar"
-                      ></div>
-                    </div>
-                    <span className="lines-removed">-{data.lines_removed}</span>
-                  </div>
-                </div>
+                <LinesChanged lines_added={data.lines_added} lines_removed={data.lines_removed} />
               </div>
               <div className="stat-card">
                 <h3>Languages Used</h3>
@@ -135,8 +111,6 @@ function StudentDashboard() {
                 <p className="eval-result">
                   {data?.passed_end_evals ? (
                     <span className="passed">Passed</span>
-                  ) : END_EVALS_ENDED ? (
-                    <span className="failed">Failed</span>
                   ) : END_EVALS_ENDED ||
                     (!data?.passed_mid_evals && MID_EVALS_ENDED) ? (
                     <span className="failed">Failed</span>
