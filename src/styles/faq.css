@@ -1,6 +1,6 @@
 .faqBox {
   background-color: #111111;
-  text-align: center;
+  /* text-align: center; */
   width: 70vw;
   margin: 12px auto;
   border-radius: 10px;
@@ -16,7 +16,6 @@
   text-align: left;
   padding-left: 20px;
   width: 70vw;
-  border: solid 1px;
   border-radius: 10px;
   margin-bottom: 3vh;
   margin-top: 3vh;
@@ -28,7 +27,7 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 20px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -39,7 +38,6 @@
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
   }
-
 }
 
 .faqQuestion h3 {
@@ -59,9 +57,13 @@
 .faqAnswer {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  padding: 15px;
+  padding: 10px 15px;
   animation: fadeIn 0.3s ease;
   line-height: 1.6;
+
+  & p {
+    margin-bottom: 5px;
+  }
 }
 
 .faqPage {
