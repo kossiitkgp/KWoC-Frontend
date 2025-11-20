@@ -9,6 +9,7 @@
     height: 120px;
     object-fit: cover;
     margin-right: 20px;
+    background-color: gray;
   }
 
   & .details {

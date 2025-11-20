@@ -12,6 +12,10 @@ body {
   color: #ffffff;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   min-height: 100vh;
   overflow-x: hidden;

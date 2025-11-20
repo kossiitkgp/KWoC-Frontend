@@ -69,7 +69,7 @@ function MentorDashboard() {
   );
 
   return (
-    <div className="mentor-dash">
+    <div className="mentor-dash dashboard">
       {data ? (
         <>
           <UserCard username={data.username} name={data.name} auth={auth} />

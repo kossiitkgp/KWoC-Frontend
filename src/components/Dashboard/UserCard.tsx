@@ -21,7 +21,7 @@ function UserCard({
     <div className="user-info">
       <img
         src={`https://github.com/${data.username}.png`}
-        alt="Profile Picture"
+        className="profile-pic"
       />
       <div className="details">
         <h2>{data.name}</h2>

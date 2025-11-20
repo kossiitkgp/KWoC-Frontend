@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import "../styles/footer.css";
+import { DISCORD_INVITE } from "../util/constants";
 
-function Footer() {
+function Footer() { // TODO: fix links
   return (
     <div className="footer">
       <div className="link-content">
         <div className="section">
           <div className="section-title">Social Groups</div>
           <div className="links">
-            <a href="https://discord.gg/efFwh6fnjk">Discord</a>
+            <a href={DISCORD_INVITE}>Discord</a>
             <a href="https://www.linkedin.com/company/kharagpur-open-source-society/">
               LinkedIn
             </a>

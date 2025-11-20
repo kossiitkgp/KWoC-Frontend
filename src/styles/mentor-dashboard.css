@@ -67,7 +67,9 @@
       }
     }
   }
+}
 
+.dashboard {
   & .resources {
     border-radius: 10px;
     display: flex;
@@ -101,5 +103,11 @@
 @media (max-width: 768px) {
   .mentor-dash {
     width: 90vw;
+  }
+
+  .dashboard {
+    & .resources {
+      flex-direction: column;
+    }
   }
 }
