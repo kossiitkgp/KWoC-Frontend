@@ -2,6 +2,7 @@ import Button from "../Button";
 import "../../styles/Home/hero.css";
 import { useAuthContext } from "../../util/auth";
 import {
+  DISCORD_INVITE,
   GITHUB_OAUTH_URL,
   MENTOR_MANUAL,
   STUDENT_MANUAL,
@@ -62,6 +63,14 @@ function HeroSection() {
         </a>
         <a href={MENTOR_MANUAL} target="_blank" rel="noreferrer">
           Mentor Manual
+        </a>
+      </div>
+
+      {/* discord */}
+      <div className="discord">
+        <a href={DISCORD_INVITE} target="_blank" rel="noreferrer">
+          <img src="https://avatars.githubusercontent.com/u/1965106?v=4" alt="discord" />
+          Join our Discord server
         </a>
       </div>
     </div>
