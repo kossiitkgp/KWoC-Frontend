@@ -2,7 +2,7 @@ import "../../styles/Home/about.css";
 
 function About() {
   return (
-    <div className="about">
+    <div className="about" id="about">
       <h1>
         About <span className="hl">KWOC</span>
       </h1>

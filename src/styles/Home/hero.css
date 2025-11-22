@@ -25,6 +25,42 @@
     display: flex;
     gap: 20px;
     justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .manual-links {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  .manual-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .manual-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #64b5f6, #42a5f5);
+    transition: width 0.3s ease;
+  }
+
+  .manual-links a:hover {
+    color: #64b5f6;
+  }
+
+  .manual-links a:hover::after {
+    width: 100%;
   }
 }
 
