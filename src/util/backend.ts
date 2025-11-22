@@ -1,5 +1,6 @@
-import { BACKEND_URL } from "./constants";
 import { IEndpointTypes, IHTTPMessage } from "./types";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 type AllowedBackendMethods = "get" | "post" | "put";
 

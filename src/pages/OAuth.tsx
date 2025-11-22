@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-import { makeRequest } from "../util/backend";
 import { useAuthContext } from "../util/auth";
 import { useNavigate } from "react-router-dom";
-import SpinnerLoader from "../components/SpinnerLoader";
-import "../styles/OAuth.css";
+import { makeRequest } from "../util/backend";
 
 function OAuth() {
   const authContext = useAuthContext();
-  const [error, setError] = useState<string | null>(null);
+  const [err, setErr] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const loginHandler = async (oauthCode: string) => {
@@ -20,7 +18,7 @@ function OAuth() {
       });
 
       if (!authRes.is_ok) {
-        setError(authRes.response.message);
+        setErr(authRes.response.message);
       } else {
         const auth = authRes.response;
 
@@ -35,13 +33,9 @@ function OAuth() {
             college: auth.college,
           },
         });
-
-        navigate(
-          auth.is_new_user ? authContext.formLink : authContext.dashboardLink,
-        );
       }
     } catch (e) {
-      setError("Error connecting to the server. Please try again later.");
+      setErr("Error connecting to the server. Please try again later.");
       console.log(e);
     }
   };
@@ -50,23 +44,25 @@ function OAuth() {
     const urlParams = new URLSearchParams(location.search);
 
     if (urlParams.get("code") === null) {
-      setError("No OAuth code found. Redirecting to home page.");
+      setErr("No OAuth code found. Redirecting to home page.");
       navigate("/");
     } else {
       loginHandler(urlParams.get("code") as string);
     }
-  });
+  }, []);
+
+  useEffect(() => {
+    if (authContext.isAuthenticated) {
+      if (authContext.isRegistered) {
+        navigate(authContext.dashboardLink);
+      } else {
+        navigate(authContext.formLink);
+      }
+    }
+  }, [authContext.isAuthenticated, authContext.isRegistered]);
 
   return (
-    <div className="loading-container">
-      {error !== null ? (
-        <div className="loader-wrapper">
-          <SpinnerLoader />
-        </div>
-      ) : (
-        <p className="error-text">{error}</p>
-      )}
-    </div>
+    <div>{err !== null ? <div>redirecting...</div> : <div>{err}</div>}</div>
   );
 }
 

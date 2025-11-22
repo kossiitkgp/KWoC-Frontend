@@ -1,0 +1,48 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  text-align: center;
+
+  & .quote {
+    font-family: var(--font-accent);
+    font-size: 32px;
+  }
+
+  & .title {
+    font-size: 80px;
+    font-weight: 900;
+    margin-bottom: 40px;
+
+    & .highlight {
+      color: #63b6e4;
+    }
+  }
+
+  & .actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 1.5rem;
+
+    & .title {
+      font-size: 36px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      word-break: break-word;
+
+      & .quote {
+        font-size: 24px;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+    }
+  }
+}

@@ -1,8 +1,7 @@
 import React, { ReactNode, useState } from "react";
 import { RiErrorWarningFill } from "react-icons/ri";
-import { IconContext } from "react-icons";
-import SpinnerLoader from "./SpinnerLoader";
-import "../styles/Form.css";
+import "../styles/form.css";
+import Button from "./Button";
 
 interface IObject<T> {
   [name: string]: T;
@@ -36,7 +35,6 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
   const inputs: ReactNode[] = [];
 
   const disabled = props.disabled ?? false;
-  const loading = props.loading ?? false;
 
   for (let name in props.fields) {
     inputProps[name] = {
@@ -67,7 +65,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 
   return (
     <div className="centered-container">
-      <div className="form-container form-border">
+      <div className="form-container">
         <form
           onSubmit={async (e) => {
             e.preventDefault();
@@ -84,43 +82,42 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
           {props.info && (
             <p className="text-primary text-center">{props.info}</p>
           )}
-          {loading && <SpinnerLoader />}
 
           {props.staticMessage && (
             <p className="flex-center">
               {typeof props.staticMessage == "string" && (
                 <span className="h-full">
-                  <IconContext.Provider value={{ size: "1.5rem" }}>
-                    <RiErrorWarningFill className="icon-size" />
-                  </IconContext.Provider>
+                  <RiErrorWarningFill className="icon-size" />
                 </span>
               )}
               <span className="text-gray-300">{props.staticMessage}</span>
             </p>
           )}
-
-          {Object.values(inputs)}
+          <div className="inputs">
+            {Object.values(inputs)}
+          </div>
           <div className="button-container">
             <div className="mb-2 text-center">
-              <button
+              <Button
                 type="submit"
-                className="form-button"
+                className="blue"
                 disabled={
                   (!responsesChanged && !props.submitWithoutChange) || disabled
                 }
+                onClick={() => props.onSubmit(responses)}
               >
                 Submit
-              </button>
+              </Button>
             </div>
             {props.onCancel !== undefined && (
               <div className="mb-2 text-center">
-                <button
+                <Button
                   type="reset"
-                  className="form-button cancel-button"
+                  className="red"
                   onClick={() => props.onCancel!(responses)}
                 >
                   Cancel
-                </button>
+                </Button>
               </div>
             )}
           </div>

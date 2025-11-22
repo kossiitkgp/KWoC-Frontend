@@ -28,7 +28,7 @@
 
   <p align="center">
   <!-- UPDATE -->
-    <i>frontend for KWoC 2024</i>
+    <i>frontend for KWoC 2025</i>
     <br />
     <a href="#table-of-contents"><strong>Get Started »</strong></a>
     <br />
@@ -64,7 +64,7 @@ See also [Contributing Guide](./CONTRIBUTING.md), [Learning Guide](./learn.md).
 - Optionally set up [KWoC Backend](https://github.com/kossiitkgp/kwoc-backend) locally.
 
 ```
-git clone https://github.com/kossiitkgp/KWoC-Frontend/blob/kwoc24.git
+git clone https://github.com/kossiitkgp/KWoC-Frontend
 cd KWoC-Frontend
 pnpm install
 pnpm run dev
@@ -104,21 +104,13 @@ pnpm run dev
 ### Libraries/Frameworks Used
 
 - [React](https://reactjs.dev)
-- [react-snowfall](https://github.com/cahilfoley/react-snowfall) for a pretty snowfall effect
 - And [many more](./package.json).
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Responsibilities
 
 ### Frontend
-- Design: 
-  - [@dakshyadav1810](https://github.com/dakshyadav1810)
-- Header and Footer: 
-  - [@premagarwals](https://github.com/premagarwals)
-  - [@Ananya-m0140](https://github.com/Ananya-m0140)
-- Hero and Timeline: 
-  - [@Majestic9169](https://github.com/Majestic9169)
-  - [@Faizan2005](https://github.com/Faizan2005)
+TBD
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Archival

@@ -7,8 +7,13 @@ import React, {
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserType } from "./types";
-import { ROUTER_PATHS } from "./constants";
 import { makeRequest } from "./backend";
+import { ROUTER_PATHS } from "./constants";
+
+type MENTOR_FORM = typeof ROUTER_PATHS.MENTOR_FORM;
+type STUDENT_FORM = typeof ROUTER_PATHS.STUDENT_FORM;
+type MENTOR_DASHBOARD = typeof ROUTER_PATHS.MENTOR_DASHBOARD;
+type STUDENT_DASHBOARD = typeof ROUTER_PATHS.STUDENT_DASHBOARD;
 
 interface IUserAuthData {
   username: string;
@@ -41,8 +46,8 @@ interface IAuthContext {
   isRegistered: boolean;
   jwt: string;
   userData: IUserAuthData;
-  formLink: ROUTER_PATHS.STUDENT_FORM | ROUTER_PATHS.MENTOR_FORM;
-  dashboardLink: ROUTER_PATHS.STUDENT_DASHBOARD | ROUTER_PATHS.MENTOR_DASHBOARD;
+  formLink: STUDENT_FORM | MENTOR_FORM;
+  dashboardLink: STUDENT_DASHBOARD | MENTOR_DASHBOARD;
   setUserType: (type: UserType) => void;
   updateUserData: (
     name: string,
@@ -109,6 +114,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       ? ROUTER_PATHS.MENTOR_FORM
       : ROUTER_PATHS.STUDENT_FORM,
   );
+
   const [dashboardLink, setDashboardLink] = useState<
     IAuthContext["dashboardLink"]
   >(
@@ -153,22 +159,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const updateAuth = (auth: ILocalStorageAuthObj) => {
     setUserAuth(auth);
-
-    setFormLink(
-      userAuth.userData.type === "student"
-        ? ROUTER_PATHS.STUDENT_FORM
-        : ROUTER_PATHS.MENTOR_FORM,
-    );
-    setDashboardLink(
-      userAuth.userData.type === "student"
-        ? ROUTER_PATHS.STUDENT_DASHBOARD
-        : ROUTER_PATHS.MENTOR_DASHBOARD,
-    );
   };
 
   const onLogin = (auth: ILocalStorageAuthObj) => {
     setIsAuthenticated(true);
     setUserType(auth.userData.type);
+    setIsRegistered(auth.isRegistered);
     updateAuth(auth);
   };
 
@@ -191,6 +187,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsAuthenticated(false);
     setIsRegistered(false);
     setUserAuth(DEFAULT_AUTH_OBJ);
+
+    navigate("/");
   };
 
   // Load the profile once

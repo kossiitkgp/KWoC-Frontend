@@ -1,0 +1,41 @@
+.block-btn {
+  font-family: inherit;
+  background-color: #ffffff;
+  outline: none;
+  border: none;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 3px 2px 0px 2px #6a6a6a;
+  text-decoration: none;
+
+  &.icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &.red {
+    background-color: #d80f0f;
+    color: #fff;
+  }
+
+  &.blue {
+    background-color: #0e5dc5;
+    color: #fff;
+  }
+
+  &.green {
+    background-color: #0aa445;
+    color: #fff;
+  }
+
+  &:disabled {
+    background-color: #c4c4c4;
+    color: #6a6a6a;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}

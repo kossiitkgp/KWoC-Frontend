@@ -1,0 +1,45 @@
+.timeline-section {
+  max-width: 540px;
+  margin: 120px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+  & h1 {
+    margin: 0 auto;
+    text-align: center;
+    color: var(--color-primary);
+    font-weight: 900;
+    font-size: 70px;
+    font-style: italic;
+  }
+
+  & h2 {
+    margin: 20px auto;
+    text-align: center;
+    color: white;
+    font-weight: 800;
+    font-size: 24px;
+  }
+
+  & .timeline {
+    width: 100%;
+    margin: 80px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-section {
+    width: 80vw;
+
+    & h1 {
+      font-size: 36px;
+    }
+
+    & h2 {
+      font-size: 20px;
+    }
+
+  }
+}

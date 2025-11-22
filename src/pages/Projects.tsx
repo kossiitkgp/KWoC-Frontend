@@ -1,93 +1,119 @@
 import { useEffect, useState } from "react";
-import { MdCancel } from "react-icons/md";
-import ProjectCard from "../components/ProjectCard";
+import "../styles/projects.css";
+import { IProject } from "../util/types";
 import { makeRequest } from "../util/backend";
-import { IEndpointTypes } from "../util/types";
-import { shuffle } from "../util/shuffle";
-import Fuse from "fuse.js";
-import SpinnerLoader from "../components/SpinnerLoader";
-import { IconContext } from "react-icons";
-import "../styles/Projects.css";
-import { PROJECTS_STARTED } from "../util/constants";
+import { FaUsers } from "react-icons/fa";
+import Button from "../components/Button";
+
+const PROJECTS_STARTED = import.meta.env.VITE_PROJECTS_STARTED === "true";
 
 function Projects() {
-  const [projects, setProjects] = useState<
-    IEndpointTypes["project"]["response"]
-  >([]);
-  const [error, setError] = useState<string | null>(null);
-
-  const [query, setQuery] = useState("");
-
-  const onQueryChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
-  };
-
-  const fuse = new Fuse(projects, {
-    keys: ["name", "description", "tags"],
-  });
-
-  const results = fuse.search(query);
-
-  const searchResults =
-    query !== "" ? results.map((result) => result.item) : projects;
+  const [projects, setProjects] = useState<IProject[]>([]);
+  const [status, setStatus] = useState<"loading" | "fetched" | "failed">(
+    "loading",
+  );
 
   useEffect(() => {
-    makeRequest("project", "get")
-      .then((response) => {
+    async function fetchProjects() {
+      try {
+        const response = await makeRequest("project", "get");
         if (response.is_ok) {
-          setProjects(shuffle(response.response));
+          setProjects(response.response);
+          setStatus("fetched");
         } else {
-          setError("Error fetching projects.");
-          console.log(response.response);
+          console.error("Error fetching projects:", response.response);
+          setStatus("failed");
         }
-      })
-      .catch((e) => {
-        setError("Error fetching projects.");
-        console.log(e);
-      });
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+        setStatus("failed");
+      }
+    }
+
+    if (PROJECTS_STARTED) {
+      fetchProjects();
+    } else {
+      setStatus("fetched");
+    }
   }, []);
 
   return (
-    <div className="projects-container">
-      <h1 className="projects-title">Projects</h1>
+    <div className="projects-page">
+      <h1>Projects</h1>
+
       {PROJECTS_STARTED ? (
         <>
-          <div className="search-container">
-            <div className="search-bar">
-              <input
-                className="search-input"
-                type="text"
-                placeholder="Search for projects by name or topic"
-                onChange={onQueryChangeHandler}
-                value={query}
-              />
-              {query !== "" && (
-                <button onClick={() => setQuery("")} className="search-cancel">
-                  <IconContext.Provider value={{ size: "1.6rem" }}>
-                    <MdCancel />
-                  </IconContext.Provider>
-                </button>
-              )}
+          {status === "loading" && <p>Loading projects...</p>}
+          {status === "failed" && (
+            <div className="error-message">
+              <p>Failed to load projects. Please try again later.</p>
             </div>
-          </div>
-          {error !== null ? (
-            <p className="error-message">{error}</p>
-          ) : projects.length > 0 ? (
-            <div className="projects-grid">
-              {searchResults.map((project, i) => (
-                <ProjectCard
-                  key={i}
-                  project={project}
-                  setQuery={(query) => setQuery(query)}
-                />
+          )}
+          {status === "fetched" && projects.length === 0 && (
+            <p>No projects available at the moment.</p>
+          )}
+          {status === "fetched" && projects.length > 0 && (
+            <div className="projects-list">
+              {projects.map((project) => (
+                <div key={project.id} className="project-item">
+                  <h2>{project.name}</h2>
+                  <p className="description">{project.description}</p>
+                  <div className="mentors">
+                    <div className="mentor">
+                      <FaUsers className="icon" />
+                      <div className="label">Mentor:</div>
+                      <a
+                        href={"https://github.com/" + project.mentor.username}
+                        target="_blank"
+                        className="name"
+                      >
+                        @{project.mentor.username}
+                      </a>
+                    </div>
+
+                    <div className="mentor">
+                      <FaUsers className="icon" />
+                      <div className="label">Co-Mentor:</div>
+                      {project.secondary_mentor.username ? (
+                        <a
+                          href={
+                            "https://github.com/" +
+                            project.secondary_mentor.username
+                          }
+                          target="_blank"
+                          className="name"
+                        >
+                          @{project.secondary_mentor.username}
+                        </a>
+                      ) : (
+                        "None"
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="tags">
+                    {project.tags.map((tag, index) => (
+                      <span key={index} className="tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="actions">
+                    <a href={project.repo_link} target="_blank" rel="noreferrer">
+                      <Button className="blue">View Repo</Button>
+                    </a>
+                    <a href={project.comm_channel} target="_blank" rel="noreferrer">
+                      <Button className="green">Communication Channel</Button>
+                    </a>
+                  </div>
+                </div>
               ))}
             </div>
-          ) : (
-            <SpinnerLoader />
           )}
         </>
       ) : (
-        <h2>Stay Tuned!</h2>
+        <p className="stay-tuned">Stay Tuned!</p>
       )}
     </div>
   );

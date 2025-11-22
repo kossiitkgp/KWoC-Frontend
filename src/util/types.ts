@@ -69,6 +69,16 @@ export interface IEndpointTypes {
     request: IProjectReg | IProjectEdit;
     response: IProject[];
   };
+  "project/unapproved": {
+    request: null;
+    response: IProject[];
+  };
+  isadmin: {
+    request: null;
+    response: {
+      is_admin: boolean;
+    };
+  };
   "mentor/dashboard": {
     request: null;
     response: {
@@ -89,6 +99,10 @@ export interface IEndpointTypes {
   [route: `project/${number}`]: {
     request: null;
     response: IProject;
+  };
+  [route: `project/${number}/approve`]: {
+    request: null;
+    response: IHTTPMessage;
   };
 }
 

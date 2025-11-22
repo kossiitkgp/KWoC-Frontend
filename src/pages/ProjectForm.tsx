@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
 import Form from "../components/Form";
 import { useAuthContext } from "../util/auth";
-import {
-  DISCORD_INVITE,
-  REGISTRATIONS_OPEN,
-  ROUTER_PATHS,
-} from "../util/constants";
+import { DISCORD_INVITE, REG_OPEN, ROUTER_PATHS } from "../util/constants";
 import { useNavigate, useParams } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 import { IProject } from "../util/types";
-import SpinnerLoader from "../components/SpinnerLoader";
-import "../styles/ProjectForm.css";
 
 function ProjectForm(props: { isEditing?: boolean }) {
   const isEditing = props.isEditing ?? false;
@@ -25,12 +19,12 @@ function ProjectForm(props: { isEditing?: boolean }) {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!isEditing && !REGISTRATIONS_OPEN) {
-      navigate(ROUTER_PATHS.HOME);
+    if (!isEditing && !REG_OPEN) {
+      navigate("/");
     }
 
     if (!authContext.isAuthenticated) {
-      navigate(ROUTER_PATHS.HOME);
+      navigate("/");
     } else if (!authContext.isRegistered) {
       navigate(authContext.formLink);
     } else if (authContext.userData.type !== "mentor") {
@@ -164,7 +158,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
           }}
         />
       ) : (
-        <SpinnerLoader />
+        <p>Loading...</p>
       )}
     </div>
   );
