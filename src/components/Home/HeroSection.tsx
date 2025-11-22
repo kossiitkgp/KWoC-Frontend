@@ -69,7 +69,10 @@ function HeroSection() {
       {/* discord */}
       <div className="discord">
         <a href={DISCORD_INVITE} target="_blank" rel="noreferrer">
-          <img src="https://avatars.githubusercontent.com/u/1965106?v=4" alt="discord" />
+          <img
+            src="https://avatars.githubusercontent.com/u/1965106?v=4"
+            alt="discord"
+          />
           Join our Discord server
         </a>
       </div>
