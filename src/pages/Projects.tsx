@@ -100,10 +100,18 @@ function Projects() {
                   </div>
 
                   <div className="actions">
-                    <a href={project.repo_link} target="_blank" rel="noreferrer">
+                    <a
+                      href={project.repo_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <Button className="blue">View Repo</Button>
                     </a>
-                    <a href={project.comm_channel} target="_blank" rel="noreferrer">
+                    <a
+                      href={project.comm_channel}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <Button className="green">Communication Channel</Button>
                     </a>
                   </div>

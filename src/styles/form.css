@@ -5,7 +5,7 @@
 }
 
 .form-container {
-  background-color: #0b1220; 
+  background-color: #0b1220;
   padding: 2rem;
   border-radius: 0.75rem;
   box-shadow: 0 4px 20px rgba(2, 6, 23, 0.7);
@@ -21,26 +21,26 @@
     color: #e6eef8;
     margin-bottom: 1.5rem;
   }
-  
+
   .text-red-500 {
     color: #f87171;
   }
-  
+
   .text-primary {
     color: #60a5fa;
   }
-  
+
   .text-gray-300 {
     color: #9ca3af;
   }
-  
+
   .flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1.25rem;
   }
-  
+
   .icon-size {
     margin-right: 10px;
     fill: #94a3b8;
@@ -72,31 +72,30 @@
         font-size: 1rem;
         transition: border-color 0.2s;
       }
-      
+
       & input:focus {
         border-color: #6366f1;
         outline: none;
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
       }
-      
+
       & input:disabled {
         background-color: #111827;
         color: #6b7280;
       }
-      
+
       & input::placeholder {
         color: #9ca3af;
       }
-  
     }
   }
-  
+
   .button-container {
     display: flex;
     justify-content: space-between;
     margin-top: 1.5rem;
   }
-  
+
   .form-button {
     height: 2.5rem;
     padding: 0 1.25rem;
@@ -109,28 +108,28 @@
       transform 0.2s ease-in-out;
     font-weight: 600;
   }
-  
+
   .button:hover {
     background-color: #4f46e5;
   }
-  
+
   /* Disabled button styling */
   .button:disabled {
     background-color: #2f3740;
     color: #9ca3af;
     cursor: not-allowed;
   }
-  
+
   /* Cancel button styles */
   .cancel-button {
     background-color: #ef4444;
     color: #fee2e2;
   }
-  
+
   .cancel-button:hover {
     background-color: #dc2626;
   }
-  
+
   /* Static warning message styling */
   .staticMessageContainer {
     display: flex;
@@ -140,14 +139,12 @@
     font-weight: 600;
     margin-bottom: 1rem;
   }
-  
+
   .staticMessageContainer .icon-size {
     fill: #f87171;
     margin-right: 0.5rem;
   }
 }
-
-
 
 /* Responsive Design */
 @media (max-width: 768px) {

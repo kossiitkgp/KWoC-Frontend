@@ -22,7 +22,9 @@ function Button({
 }) {
   const btn = (
     <button
-      className={["block-btn", icon && "icon", to ? "" : className, variant].filter((x) => x).join(" ")}
+      className={["block-btn", icon && "icon", to ? "" : className, variant]
+        .filter((x) => x)
+        .join(" ")}
       onClick={onClick}
       type={type}
       disabled={disabled}
@@ -32,7 +34,11 @@ function Button({
   );
 
   if (to) {
-    return <Link to={to} className={className}>{btn}</Link>;
+    return (
+      <Link to={to} className={className}>
+        {btn}
+      </Link>
+    );
   }
 
   return btn;

@@ -106,10 +106,9 @@
       flex: 1;
       margin: 20px 0;
 
-
       & h3 {
         font-size: 20px;
-        color: var(--color-primary);  
+        color: var(--color-primary);
         margin: 0;
         font-weight: 600;
       }
@@ -189,7 +188,7 @@
         flex-direction: column;
         gap: 20px;
       }
-    } 
+    }
 
     & .links {
       flex-direction: column;

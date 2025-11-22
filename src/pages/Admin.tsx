@@ -10,7 +10,7 @@ function AdminDashboard() {
   const [unapproved, setUnapproved] = useState<IProject[]>([]);
   const [errMessage, setErrMessage] = useState<string>("");
   const [successMessage, setSuccessMessage] = useState<string>("");
-  
+
   const auth = useAuthContext();
   const navigate = useNavigate();
 
@@ -29,7 +29,12 @@ function AdminDashboard() {
   };
 
   const approveProject = async (projectId: number) => {
-    const res = await makeRequest(`project/${projectId}/approve`, "post", null, auth.jwt);
+    const res = await makeRequest(
+      `project/${projectId}/approve`,
+      "post",
+      null,
+      auth.jwt,
+    );
     if (res.is_ok) {
       updateUnapprovedProjects();
       setSuccessMessage("Project approved successfully.");
@@ -38,7 +43,7 @@ function AdminDashboard() {
       console.error("Failed to approve project", res.response.message);
       setErrMessage(res.response.message);
     }
-  }
+  };
 
   useEffect(() => {
     if (!auth.isAuthenticated) {
@@ -68,7 +73,8 @@ function AdminDashboard() {
                 <p>{project.description}</p>
                 <p>
                   <strong>Mentor:</strong> {project.mentor.name} (
-                  <a className="mentor-link"
+                  <a
+                    className="mentor-link"
                     href={"https://github.com/" + project.mentor.username}
                     target="_blank"
                     rel="noreferrer"
@@ -82,9 +88,12 @@ function AdminDashboard() {
                 <a href={project.repo_link} target="_blank" rel="noreferrer">
                   <Button className="blue">View Repo</Button>
                 </a>
-                <Button className="green" onClick={
-                  () => approveProject(project.id)
-                }>Approve</Button>
+                <Button
+                  className="green"
+                  onClick={() => approveProject(project.id)}
+                >
+                  Approve
+                </Button>
               </div>
             </div>
           ))

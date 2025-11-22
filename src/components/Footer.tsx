@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import "../styles/footer.css";
 import { DISCORD_INVITE } from "../util/constants";
 
-function Footer() { // TODO: fix links
+function Footer() {
+  // TODO: fix links
   return (
     <div className="footer">
       <div className="link-content">

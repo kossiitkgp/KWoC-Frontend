@@ -93,9 +93,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
               <span className="text-gray-300">{props.staticMessage}</span>
             </p>
           )}
-          <div className="inputs">
-            {Object.values(inputs)}
-          </div>
+          <div className="inputs">{Object.values(inputs)}</div>
           <div className="button-container">
             <div className="mb-2 text-center">
               <Button

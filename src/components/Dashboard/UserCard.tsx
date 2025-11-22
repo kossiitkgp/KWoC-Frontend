@@ -31,7 +31,9 @@ function UserCard({
         <Button to={auth.formLink} className="blue">
           Edit Profile
         </Button>
-        <Button onClick={handleSignOut} className="red">Sign Out</Button>
+        <Button onClick={handleSignOut} className="red">
+          Sign Out
+        </Button>
       </div>
     </div>
   );

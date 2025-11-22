@@ -23,11 +23,7 @@ function MentorProjectCard({
     <div key={id} className="mentor-project-card">
       <div className="top">
         <h3>{name}</h3>
-        <span
-          className={
-            "status-badge " + (project_status ? "approved" : "")
-          }
-        >
+        <span className={"status-badge " + (project_status ? "approved" : "")}>
           {project_status ? "Approved" : "Awaiting Approval"}
         </span>
       </div>

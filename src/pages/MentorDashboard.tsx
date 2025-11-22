@@ -127,13 +127,24 @@ function MentorDashboard() {
             <a href={MENTOR_MANUAL} target="_blank" rel="noreferrer">
               <div className="resource">
                 <img src={kwoc_logo} alt="KWoC Logo" />
-                <p><strong>KWoC Mentor Manual</strong></p>
+                <p>
+                  <strong>KWoC Mentor Manual</strong>
+                </p>
               </div>
             </a>
             {MentorResources.map((resource) => (
-              <a href={resource.url} key={resource.message} target="_blank" rel="noreferrer">
+              <a
+                href={resource.url}
+                key={resource.message}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <div className="resource">
-                  {resource.avatar ? <img src={resource.avatar} alt={resource.message} /> : <IoDocument className="icon" size="30px"/>}
+                  {resource.avatar ? (
+                    <img src={resource.avatar} alt={resource.message} />
+                  ) : (
+                    <IoDocument className="icon" size="30px" />
+                  )}
                   <p>{resource.message}</p>
                 </div>
               </a>

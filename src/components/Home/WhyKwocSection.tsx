@@ -4,7 +4,9 @@ import "../../styles/Home/whyKwoc.css";
 function WhyKwocSection() {
   return (
     <div className="whyKwoc">
-      <h1>Why <span className="hl">KWOC</span>?</h1>
+      <h1>
+        Why <span className="hl">KWOC</span>?
+      </h1>
       <section className="cards">
         {data.map((item, index) => (
           <Card
@@ -16,8 +18,7 @@ function WhyKwocSection() {
       </section>
     </div>
   );
-};
-
+}
 
 interface CardProps {
   heading: string;
@@ -31,7 +32,6 @@ function Card({ heading, description }: CardProps) {
       <p>{description}</p>
     </div>
   );
-};
-
+}
 
 export default WhyKwocSection;

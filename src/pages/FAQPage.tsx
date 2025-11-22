@@ -28,15 +28,17 @@ function FAQPage() {
       </div>
     </div>
   );
-};
+}
 
-
-function FaqBox({ question, answer }: FAQItem){
+function FaqBox({ question, answer }: FAQItem) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={"faqBox"}>
-      <div className={`faqQuestion ${isOpen ? "open" : ""}`} onClick={() => setIsOpen(!isOpen)}>
+      <div
+        className={`faqQuestion ${isOpen ? "open" : ""}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
         <h3>{question}</h3>
         <span className="faqToggle">{isOpen ? "−" : "+"}</span>
       </div>
@@ -50,6 +52,6 @@ function FaqBox({ question, answer }: FAQItem){
       )}
     </div>
   );
-};
+}
 
 export default FAQPage;

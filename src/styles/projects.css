@@ -41,7 +41,7 @@
       margin: 0;
       color: var(--color-primary);
     }
-    
+
     & .description {
       font-size: 18px;
       margin: 0;
@@ -54,7 +54,7 @@
       display: flex;
       flex-direction: column;
       gap: 5px;
-      
+
       & .mentor {
         display: flex;
         align-items: center;
@@ -100,7 +100,6 @@
     }
   }
 }
-
 
 @media (max-width: 768px) {
   .projects-page {
