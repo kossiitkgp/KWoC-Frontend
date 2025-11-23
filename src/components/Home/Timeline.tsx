@@ -6,6 +6,8 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import EVENTS from "../../data/timeline.json";
 import "../../styles/Home/timeline.css";
 
+const SHOW_TIMELINE = false;
+
 gsap.registerPlugin(ScrollTrigger, Draggable, MotionPathPlugin);
 gsap.defaults({ ease: "none", duration: 2 });
 
@@ -24,6 +26,7 @@ const DOT_LOCATIONS: Coordinate[] = [
 
 function Timeline() {
   useEffect(() => {
+    if (!SHOW_TIMELINE) return;
     const linePath = document.querySelector("#timeline-line") as SVGPathElement;
     const len = linePath.getTotalLength();
 
@@ -74,44 +77,49 @@ function Timeline() {
   return (
     <div className="timeline-section" id="timeline">
       <h1>Timeline</h1>
-      <h2>Stay on Track!</h2>
-      <div className="timeline flex justify-center mb-1/10 px-5">
-        <svg
-          id="timeline-svg"
-          className="w-full md:w-7/12 lg:w-4/12"
-          viewBox="0 0 400 1760"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ width: "90%" }}
-        >
-          {EVENTS.map((event, i) => (
-            <TimelineEvent
-              key={i}
-              date={event.date}
-              event={event.event}
-              y_level={DOT_LOCATIONS[i][1]}
-              x_range={[
-                i % 2 === 0 ? DOT_LOCATIONS[i][0] : 0,
-                i % 2 === 0 ? 382 : DOT_LOCATIONS[i][0],
-              ]}
-              alignRight={i % 2 === 0}
-            />
-          ))}
+      {!SHOW_TIMELINE && <h2>Coming soon!</h2>}
+      {SHOW_TIMELINE && (
+        <>
+          <h2>Stay on Track!</h2>
+          <div className="timeline flex justify-center mb-1/10 px-5">
+            <svg
+              id="timeline-svg"
+              className="w-full md:w-7/12 lg:w-4/12"
+              viewBox="0 0 400 1760"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style={{ width: "90%" }}
+            >
+              {EVENTS.map((event, i) => (
+                <TimelineEvent
+                  key={i}
+                  date={event.date}
+                  event={event.event}
+                  y_level={DOT_LOCATIONS[i][1]}
+                  x_range={[
+                    i % 2 === 0 ? DOT_LOCATIONS[i][0] : 0,
+                    i % 2 === 0 ? 382 : DOT_LOCATIONS[i][0],
+                  ]}
+                  alignRight={i % 2 === 0}
+                />
+              ))}
 
-          <TheLine d="M39.5 34.5 C340.333 188.333 403.5 260.5 286.5 334 C115.03 441.718 56.9995 485.5 56.9995 518.5 C56.9995 639 608 716.5 267 842 C171 877.331 -74.3463 984.362 160 1107.5 C435 1252 493.162 1227.01 137 1412 C-53 1510.69 110 1576 380.5 1734" />
+              <TheLine d="M39.5 34.5 C340.333 188.333 403.5 260.5 286.5 334 C115.03 441.718 56.9995 485.5 56.9995 518.5 C56.9995 639 608 716.5 267 842 C171 877.331 -74.3463 984.362 160 1107.5 C435 1252 493.162 1227.01 137 1412 C-53 1510.69 110 1576 380.5 1734" />
 
-          {DOT_LOCATIONS.map(([x, y], i) => (
-            <TimelineDot
-              key={i}
-              id={i}
-              cx={x}
-              cy={y}
-              r={i === 0 ? 15 : 7.5}
-              visible={i === 0}
-            />
-          ))}
-        </svg>
-      </div>
+              {DOT_LOCATIONS.map(([x, y], i) => (
+                <TimelineDot
+                  key={i}
+                  id={i}
+                  cx={x}
+                  cy={y}
+                  r={i === 0 ? 15 : 7.5}
+                  visible={i === 0}
+                />
+              ))}
+            </svg>
+          </div>
+        </>
+      )}
     </div>
   );
 }
