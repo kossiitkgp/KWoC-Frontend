@@ -10,6 +10,7 @@ import {
 import { UserType } from "../../util/types";
 
 const REGISTRATIONS_OPEN = import.meta.env.VITE_REGISTRATIONS_OPEN === "true";
+const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN === "true";
 
 function HeroSection() {
   const auth = useAuthContext();
@@ -29,32 +30,35 @@ function HeroSection() {
         </span>{" "}
         2025
       </div>
-      {REGISTRATIONS_OPEN && (
-        <div className="actions">
-          {auth.isAuthenticated ? (
-            <Button to={auth.isRegistered ? auth.dashboardLink : auth.formLink}>
-              Go to Dashboard
-            </Button>
-          ) : (
-            <>
+
+      <div className="actions">
+        {auth.isAuthenticated ? (
+          <Button to={auth.isRegistered ? auth.dashboardLink : auth.formLink}>
+            Go to Dashboard
+          </Button>
+        ) : (
+          <>
+            {REGISTRATIONS_OPEN && (
               <Button
                 onClick={() => {
                   handleLogin("student");
                 }}
               >
-                Student Login
+                Student Sign-up
               </Button>
+            )}
+            {(REGISTRATIONS_OPEN || MENTOR_REG_OPEN) && (
               <Button
                 onClick={() => {
                   handleLogin("mentor");
                 }}
               >
-                Mentor Login
+                Mentor Sign-up
               </Button>
-            </>
-          )}
-        </div>
-      )}
+            )}
+          </>
+        )}
+      </div>
 
       {/* manual links */}
       <div className="manual-links">

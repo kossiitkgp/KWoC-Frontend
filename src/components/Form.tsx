@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useRef, useState } from "react";
 import { RiErrorWarningFill } from "react-icons/ri";
 import "../styles/form.css";
 import Button from "./Button";
@@ -62,13 +62,20 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
     default_responses[name] = inputProps[name].defaultValue ?? "";
     inputs.push(<FormInput key={name} {...inputProps[name]} />);
   }
+  const formRef = useRef<HTMLFormElement>(null);
 
   return (
     <div className="centered-container">
       <div className="form-container">
         <form
+          ref={formRef}
           onSubmit={async (e) => {
             e.preventDefault();
+            if (!formRef.current) return;
+            if (!formRef.current.checkValidity()) {
+              formRef.current.reportValidity();
+              return;
+            }
             if ((responsesChanged || props.submitWithoutChange) && !disabled) {
               const isOk = await props.onSubmit(responses);
               setResponsesChanged(!isOk);
@@ -102,7 +109,6 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
                 disabled={
                   (!responsesChanged && !props.submitWithoutChange) || disabled
                 }
-                onClick={() => props.onSubmit(responses)}
               >
                 Submit
               </Button>
