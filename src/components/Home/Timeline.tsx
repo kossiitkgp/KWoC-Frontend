@@ -6,7 +6,7 @@ import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import EVENTS from "../../data/timeline.json";
 import "../../styles/Home/timeline.css";
 
-const SHOW_TIMELINE = false;
+const SHOW_TIMELINE = true;
 
 gsap.registerPlugin(ScrollTrigger, Draggable, MotionPathPlugin);
 gsap.defaults({ ease: "none", duration: 2 });
