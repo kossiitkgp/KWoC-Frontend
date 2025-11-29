@@ -19,8 +19,9 @@
 
   .projects-list {
     display: grid;
+    margin: 0 auto;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: calc(3 * 300px + 2 * 20px);
+    max-width: calc(3 * 350px + 2 * 20px);
     gap: 20px;
   }
 
