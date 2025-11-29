@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Form from "../components/Form";
 import { useAuthContext } from "../util/auth";
-import { DISCORD_INVITE, REG_OPEN, ROUTER_PATHS } from "../util/constants";
+import { DISCORD_INVITE, ROUTER_PATHS } from "../util/constants";
 import { useNavigate, useParams } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 import { IProject } from "../util/types";
+
+const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN == "true";
 
 function ProjectForm(props: { isEditing?: boolean }) {
   const isEditing = props.isEditing ?? false;
@@ -19,7 +21,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!isEditing && !REG_OPEN) {
+    if (!isEditing && !MENTOR_REG_OPEN) {
       navigate("/");
     }
 

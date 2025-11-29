@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles/constants.css";
 import { AuthProvider } from "./util/auth";
-import { REG_OPEN, ROUTER_PATHS } from "./util/constants";
+import { ROUTER_PATHS } from "./util/constants";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Galaxy from "./components/Galaxy";
@@ -14,6 +14,8 @@ import StudentDashboard from "./pages/StudentDashboard";
 import MentorDashboard from "./pages/MentorDashboard";
 import AdminDashboard from "./pages/Admin";
 import ProjectForm from "./pages/ProjectForm";
+
+const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN == "true";
 
 function App() {
   return (
@@ -47,7 +49,7 @@ function App() {
 
             <Route path="/admin" element={<AdminDashboard />} />
 
-            {REG_OPEN && (
+            {MENTOR_REG_OPEN && (
               <>
                 <Route
                   path={"/project/form"}

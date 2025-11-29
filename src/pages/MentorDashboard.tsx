@@ -6,13 +6,14 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/mentor-dashboard.css";
 import UserCard from "../components/Dashboard/UserCard";
 import { FaPlus } from "react-icons/fa";
-import { MENTOR_MANUAL, REG_OPEN } from "../util/constants";
+import { MENTOR_MANUAL } from "../util/constants";
 import MentorProjectCard from "../components/Dashboard/MentorProjectCard";
 import { FaCodeCommit, FaCodePullRequest } from "react-icons/fa6";
 import { IoApps, IoAppsOutline, IoDocument } from "react-icons/io5";
 import MentorResources from "../data/mentorResources.json";
 import kwoc_logo from "../assets/kwoc_logo.png";
 
+const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN == "true";
 type MentorDashData = IEndpointTypes["mentor/dashboard"]["response"];
 
 function MentorDashboard() {
@@ -80,7 +81,7 @@ function MentorDashboard() {
               {data.projects.map((project) => (
                 <MentorProjectCard key={project.id} {...project} />
               ))}
-              {REG_OPEN && (
+              {MENTOR_REG_OPEN && (
                 <Link
                   to="/project/form"
                   className="mentor-project-card add-project-card"
@@ -91,7 +92,7 @@ function MentorDashboard() {
               )}
             </div>
           }
-          {!REG_OPEN && data.projects.length == 0 && <p>Stay tuned!</p>}
+          {!MENTOR_REG_OPEN && data.projects.length == 0 && <p>Stay tuned!</p>}
 
           <h2>Statistics</h2>
           <div className="stats">

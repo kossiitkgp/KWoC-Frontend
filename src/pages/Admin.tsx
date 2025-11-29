@@ -83,6 +83,16 @@ function AdminDashboard() {
                   </a>
                   )
                 </p>
+                <p>
+                  <strong>Communication Channel:</strong>{" "}
+                  <a
+                    href={project.comm_channel}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {project.comm_channel}
+                  </a>
+                </p>
               </div>
               <div className="actions">
                 <a href={project.repo_link} target="_blank" rel="noreferrer">
