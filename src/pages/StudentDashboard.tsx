@@ -16,6 +16,8 @@ import LinesChanged from "../components/LinesChanged";
 import StudentResources from "../data/studentResources.json";
 import { IoDocument } from "react-icons/io5";
 import Button from "../components/Button";
+import { getLanguage, Language } from "../util/languages";
+import { getPRDetails } from "../util/pull-request";
 
 type StudentDashData = IEndpointTypes["student/dashboard"]["response"];
 
@@ -63,6 +65,15 @@ function StudentDashboard() {
     fetchData();
   }, []);
 
+  const languagesUsed = [
+    ...new Set(
+      data?.languages_used
+        .map(getLanguage)
+        .filter(Boolean)
+        .map((l) => l?.extensions?.[0]) ?? [],
+    ),
+  ];
+
   return (
     <div className="student-dash dashboard">
       {data ? (
@@ -87,11 +98,21 @@ function StudentDashboard() {
             </div>
             <div className="stat-card">
               <h3>Languages Used</h3>
-              <p>
+              <div className="languages-used">
                 {data.languages_used.length === 0
                   ? "None"
-                  : data.languages_used.join(", ")}
-              </p>
+                  : languagesUsed
+                      .map((l) => getLanguage(l!)!)
+                      .map((lang: Language) => (
+                        <div key={lang.extensions[0]} className="language">
+                          <div
+                            className="language-color"
+                            style={{ backgroundColor: lang.color }}
+                          />
+                          {lang.name}
+                        </div>
+                      ))}
+              </div>
             </div>
           </div>
 
@@ -150,7 +171,20 @@ function StudentDashboard() {
               )}
 
               <h3>Merged Pull Requests</h3>
-              {data.pull_count === 0 ? <p>None</p> : data.pulls.join(", ")}
+              <div className="pulls">
+                {data.pull_count === 0 ? (
+                  <p>None</p>
+                ) : (
+                  data.pulls.map((url) => {
+                    const pr = getPRDetails(url);
+                    return (
+                      <a href={url} target="_blank" rel="noreferrer">
+                        {pr.owner}/{pr.repo}#{pr.number}
+                      </a>
+                    );
+                  })
+                )}
+              </div>
             </div>
           </div>
 

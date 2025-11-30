@@ -57,6 +57,26 @@
           }
         }
       }
+
+      & .languages-used {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        & .language {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          border-radius: 5px;
+          font-size: 14px;
+
+          & .language-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+          }
+        }
+      }
     }
   }
 
@@ -116,6 +136,29 @@
       & p {
         margin: 0;
       }
+
+      .projects-worked {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+
+        & a {
+          &:hover {
+            color: var(--color-secondary);
+          }
+        }
+      }
+
+      & .pulls {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 20px;
+        row-gap: 10px;
+
+        & a {
+          color: #90d5ff;
+        }
+      }
     }
   }
 
@@ -142,7 +185,7 @@
       & p {
         font-size: 18px;
         margin: 0;
-        text-align: justify;
+        text-align: center;
         flex: 1;
         color: #a0a0a0;
       }
