@@ -30,7 +30,7 @@ Hi :wave: there, welcome to KWoC React project. We are glad that you considered 
 
 First install all the dependencies using pnpm (:warning: not npm​) by running `$ pnpm` in the root directory.
 
-Everything including building and serving locally is pre-configured in the `package.json` file. You can run the command `$pnpm start` to start a live server.
+Everything including building and serving locally is pre-configured in the `package.json` file. You can run the command `$pnpm dev` to start a live server.
 
 ## Workspace Setup
 
