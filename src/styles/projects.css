@@ -102,6 +102,30 @@
   }
 }
 
+
+
+.search-bar-container {
+    display: flex;
+    justify-content: center; 
+    margin: 20px 0 30px;
+}
+
+.project-search-input {
+    width: 100%; 
+    max-width: 600px; 
+    padding: 12px 18px;
+    border: 2px solid;
+    border-radius: 8px; 
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.project-search-input:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); 
+    outline: none;
+}
+
 @media (max-width: 768px) {
   .projects-page {
     width: 90vw;
