@@ -123,6 +123,22 @@ function ProjectForm(props: { isEditing?: boolean }) {
             setError(null);
             setInfo(null);
 
+            // Ensure minimum 3 tags when tags are provided
+            const tagsArray =
+              responses.tags
+                ? responses.tags
+                    .split(",")
+                    .map((t) => t.trim())
+                    .filter((t) => t.length > 0)
+                : [];
+
+            if (tagsArray.length > 0 && tagsArray.length < 3) {
+              setError(
+                "Minimum 3 tags required! (e.g: javascript, html, css)",
+              );
+              return false;
+            }
+
             try {
               setLoading(true);
               const res = await makeRequest(
@@ -132,9 +148,13 @@ function ProjectForm(props: { isEditing?: boolean }) {
                   ...responses,
                   secondary_mentor_username:
                     responses.secondary_mentor_username ?? "",
-                  tags: responses.tags !== "" ? responses.tags.split(",") : [],
+                  tags: tagsArray,
                   mentor_username: authContext.userData.username,
-                  id: isEditing ? (id ? parseInt(id) : undefined) : undefined,
+                  id: isEditing
+                    ? id
+                      ? parseInt(id)
+                      : undefined
+                    : undefined,
                 },
                 authContext.jwt,
               );
@@ -154,7 +174,6 @@ function ProjectForm(props: { isEditing?: boolean }) {
               console.log(e);
               setError("An unexpected error occurred.");
               setLoading(false);
-
               return false;
             }
           }}
