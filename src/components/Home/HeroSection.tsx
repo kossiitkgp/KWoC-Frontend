@@ -11,14 +11,24 @@ import { UserType } from "../../util/types";
 
 const REGISTRATIONS_OPEN = import.meta.env.VITE_REGISTRATIONS_OPEN === "true";
 const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN === "true";
+// Generate random OAuth state for CSRF protection (#216)
+const generateRandomState = () => {
+  const array = new Uint8Array(32);
+  crypto.getRandomValues(array);
+  return btoa(String.fromCharCode(...array)).replace(/[^a-zA-Z0-9]/g, '').slice(0, 43);
+};
+
 
 function HeroSection() {
   const auth = useAuthContext();
 
-  const handleLogin = (userType: string) => {
-    auth.setUserType(userType as UserType);
-    window.location.href = GITHUB_OAUTH_URL;
-  };
+ const handleLogin = (userType: string) => {
+  auth.setUserType(userType as UserType);
+  const randomState = generateRandomState();
+  const oauthUrl = `${GITHUB_OAUTH_URL}&state=${randomState}`;
+  window.location.href = oauthUrl;
+};
+
 
   return (
     <div className="hero">
