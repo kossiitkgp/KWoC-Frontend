@@ -28,6 +28,17 @@ function StudentDashboard() {
   );
   const auth = useAuthContext();
   const navigate = useNavigate();
+  // Share stats - Issue #13
+const shareStats = (platform: string) => {
+  const url = window.location.href;
+  if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=My KWoC stats: ${data?.pull_count} PRs!&url=${encodeURIComponent(url)}`, '_blank');
+  if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
+  if (platform === 'copy') {
+    navigator.clipboard.writeText(url);
+    alert('Copied!');
+  }
+};
+
 
   useEffect(() => {
     async function fetchData() {
@@ -254,6 +265,32 @@ function StudentDashboard() {
         </div>
       )}
     </div>
+              {/* Share Stats Section - Issue #13 */}
+          <div className="share-stats">
+            <h3>Share Your Stats ✨</h3>
+            <p>Show off your KWoC contributions!</p>
+            <div className="share-buttons">
+              <button 
+                className="share-btn twitter" 
+                onClick={() => shareStats('twitter')}
+              >
+                📱 Twitter
+              </button>
+              <button 
+                className="share-btn linkedin" 
+                onClick={() => shareStats('linkedin')}
+              >
+                💼 LinkedIn
+              </button>
+              <button 
+                className="share-btn copy" 
+                onClick={() => shareStats('copy')}
+              >
+                🔗 Copy Link
+              </button>
+            </div>
+          </div>
+
   );
 }
 
