@@ -124,13 +124,14 @@ function ProjectForm(props: { isEditing?: boolean }) {
             setError(null);
             setInfo(null);
 
+            // REQUIRE minimum 3 tags (NO empty tags allowed)
             const tagsArray = responses.tags
               .split(",")
               .map((t) => t.trim())
               .filter((t) => t.length > 0);
 
             if (tagsArray.length < 3) {
-              setError("At least 3 tags are required.");
+              setError("Minimum 3 tags required! (e.g: javascript, html, css)");
               return false;
             }
 
