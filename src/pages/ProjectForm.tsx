@@ -82,29 +82,30 @@ function ProjectForm(props: { isEditing?: boolean }) {
             },
             repo_link: {
               field: "Repository Link",
-              required: true,
+              required: "https://github.com/kossiitkgp/KWoC-Frontend",
               type: "url",
               placeholder: "https://github.com/kossiitkgp/KWoC-Frontend",
               defaultValue: isEditing ? projectInfo?.repo_link : undefined,
             },
             comm_channel: {
-              field: "Communication Channel",
+              field: "Communication Channel *",
               required: true,
               type: "url",
               placeholder: DISCORD_INVITE,
               defaultValue: isEditing ? projectInfo?.comm_channel : undefined,
             },
             readme_link: {
-              field: "README Link",
+              field: "README Link *",
               required: true,
               type: "url",
               placeholder: "https://github.com/kossiitkgp/KWoC-Frontend#readme",
               defaultValue: isEditing ? projectInfo?.readme_link : undefined,
             },
             tags: {
-              field: "Tags (Optional)",
+              field: "Tags * (e.g: javascript, html, css)",
+              required: true,
               type: "text",
-              placeholder: "javascript,html,css",
+              placeholder: "javascript, html, css",
               defaultValue: isEditing ? projectInfo?.tags.join(",") : undefined,
             },
             secondary_mentor_username: {
@@ -123,6 +124,17 @@ function ProjectForm(props: { isEditing?: boolean }) {
             setError(null);
             setInfo(null);
 
+            // REQUIRE minimum 3 tags (NO empty tags allowed)
+            const tagsArray = responses.tags
+              .split(",")
+              .map((t) => t.trim())
+              .filter((t) => t.length > 0);
+
+            if (tagsArray.length < 3) {
+              setError("Minimum 3 tags required! (e.g: javascript, html, css)");
+              return false;
+            }
+
             try {
               setLoading(true);
               const res = await makeRequest(
@@ -132,7 +144,7 @@ function ProjectForm(props: { isEditing?: boolean }) {
                   ...responses,
                   secondary_mentor_username:
                     responses.secondary_mentor_username ?? "",
-                  tags: responses.tags !== "" ? responses.tags.split(",") : [],
+                  tags: tagsArray,
                   mentor_username: authContext.userData.username,
                   id: isEditing ? (id ? parseInt(id) : undefined) : undefined,
                 },
@@ -154,7 +166,6 @@ function ProjectForm(props: { isEditing?: boolean }) {
               console.log(e);
               setError("An unexpected error occurred.");
               setLoading(false);
-
               return false;
             }
           }}
