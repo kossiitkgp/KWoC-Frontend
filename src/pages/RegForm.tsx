@@ -16,19 +16,26 @@ function RegForm({ isStudent }: { isStudent: boolean }) {
   const [isRegistering, setIsRegistering] = useState(false);
   const registrationsOpen = import.meta.env.VITE_REGISTRATIONS_OPEN;
 
-  useEffect(() => {
-    setIsRegistering(!authContext.isRegistered);
+useEffect(() => {
+  setIsRegistering(!authContext.isRegistered);
 
-    if (isRegistering && !registrationsOpen) {
-      navigate("/");
-    }
-    if (!authContext.isAuthenticated) {
-      navigate("/");
-    }
-    if (authContext.userData.type !== userType) {
-      navigate("/");
-    }
-  }, []);
+  // #236 FIX: Logout new users when registration closed
+  if (!authContext.isRegistered && !registrationsOpen) {
+    authContext.onLogout();
+    navigate("/");
+    return;
+  }
+
+  if (!authContext.isAuthenticated) {
+    navigate("/");
+    return;
+  }
+  if (authContext.userData.type !== userType) {
+    navigate("/");
+    return;
+  }
+}, [authContext.isAuthenticated, authContext.isRegistered, authContext.userData.type, userType]);  // ← FIXED deps
+
 
   const title = isRegistering
     ? `Complete ${userType[0].toUpperCase() + userType.slice(1)} Registration`
