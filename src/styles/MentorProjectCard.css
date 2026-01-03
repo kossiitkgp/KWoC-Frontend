@@ -83,6 +83,32 @@
     }
   }
 
+  /* #223 NEW: Remarks Section */
+  & .project-remarks {
+    margin: 12px 0;
+    padding: 10px;
+    background: rgba(100, 116, 139, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+
+    & .remarks-header {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgb(148, 163, 184);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    & .remarks-text {
+      font-size: 13px;
+      line-height: 1.4;
+      color: rgb(125, 126, 127);
+      margin: 0;
+      word-break: break-word;
+    }
+  }
+
   & .stats {
     display: flex;
     gap: 15px;
