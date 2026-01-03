@@ -64,6 +64,7 @@ function MentorProjectCard({
           )}
         </div>
       </div>
+
       <div className="stats">
         <div className="stat">
           <FaCodeCommit className="icon" />
