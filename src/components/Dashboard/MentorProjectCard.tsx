@@ -19,6 +19,10 @@ function MentorProjectCard({
   description,
   secondary_mentor,
 }: IProjectDashboardInfo) {
+  // Calculate total activity score (NEW LOGIC)
+  const totalActivity = commit_count + pull_count;
+  const isActiveProject = totalActivity > 0;
+  
   return (
     <div key={id} className="mentor-project-card">
       <div className="top">
@@ -66,12 +70,12 @@ function MentorProjectCard({
       </div>
 
       <div className="stats">
-        <div className="stat">
+        <div className={`stat ${isActiveProject ? "active" : "inactive"}`}>
           <FaCodeCommit className="icon" />
           <h4 className="stat-label">Commits</h4>
           <div className="stat-value">{commit_count}</div>
         </div>
-        <div className="stat">
+        <div className={`stat ${isActiveProject ? "active" : "inactive"}`}>
           <FaCodePullRequest className="icon" />
           <h4 className="stat-label">Pull Requests</h4>
           <div className="stat-value">{pull_count}</div>
