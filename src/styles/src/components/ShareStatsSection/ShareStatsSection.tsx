@@ -1,4 +1,5 @@
 import React from "react";
+import ShareStatsSection from "../components/ShareStatsSection/ShareStatsSection";
 
 interface ShareStatsProps {
   title?: string;
@@ -172,6 +173,10 @@ const ShareStatsSection: React.FC<ShareStatsProps> = ({
             Copy Link
           </button>
         </div>
+        <ShareStatsSection
+  title="Share Your KWoC Journey!"
+  description="Help inspire others to contribute to open source"/>
+
       </div>
     </>
   );
