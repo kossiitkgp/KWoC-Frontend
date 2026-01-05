@@ -22,12 +22,18 @@ const generateRandomState = () => {
 function HeroSection() {
   const auth = useAuthContext();
 
- const handleLogin = (userType: string) => {
+const handleLogin = (userType: string) => {
   auth.setUserType(userType as UserType);
   const randomState = generateRandomState();
+
+  // Store state and timestamp in localStorage for OAuth verification (#246)
+  localStorage.setItem("oauthState", randomState);
+  localStorage.setItem("oauthStateTimestamp", Date.now().toString());
+
   const oauthUrl = `${GITHUB_OAUTH_URL}&state=${randomState}`;
   window.location.href = oauthUrl;
 };
+
 
 
   return (
