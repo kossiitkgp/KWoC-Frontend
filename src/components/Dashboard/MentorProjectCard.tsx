@@ -5,6 +5,10 @@ import { FaCodeCommit, FaCodePullRequest } from "react-icons/fa6";
 import "../../styles/MentorProjectCard.css";
 import LinesChanged from "../LinesChanged";
 
+interface MentorProjectCardProps extends IProjectDashboardInfo {
+  remarks?: string; // NEW - Add remarks prop
+}
+
 function MentorProjectCard({
   id,
   name,
@@ -18,7 +22,12 @@ function MentorProjectCard({
   tags,
   description,
   secondary_mentor,
-}: IProjectDashboardInfo) {
+  remarks, // NEW - Destructure remarks
+}: MentorProjectCardProps) {
+  // Calculate total activity score (NEW LOGIC)
+  const totalActivity = commit_count + pull_count;
+  const isActiveProject = totalActivity > 0;
+  
   return (
     <div key={id} className="mentor-project-card">
       <div className="top">
@@ -64,13 +73,22 @@ function MentorProjectCard({
           )}
         </div>
       </div>
+
+      {/* NEW - Remarks Section UI */}
+      {remarks && (
+        <div className="project-remarks">
+          <div className="remarks-header">Remarks</div>
+          <p className="remarks-text">{remarks}</p>
+        </div>
+      )}
+
       <div className="stats">
-        <div className="stat">
+        <div className={`stat ${isActiveProject ? "active" : "inactive"}`}>
           <FaCodeCommit className="icon" />
           <h4 className="stat-label">Commits</h4>
           <div className="stat-value">{commit_count}</div>
         </div>
-        <div className="stat">
+        <div className={`stat ${isActiveProject ? "active" : "inactive"}`}>
           <FaCodePullRequest className="icon" />
           <h4 className="stat-label">Pull Requests</h4>
           <div className="stat-value">{pull_count}</div>
@@ -96,3 +114,4 @@ function MentorProjectCard({
 }
 
 export default MentorProjectCard;
+
