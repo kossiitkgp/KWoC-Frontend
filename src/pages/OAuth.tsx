@@ -29,7 +29,7 @@ function OAuth() {
 
 
     if (receivedState !== storedState) {
-      console.error("Something went wrong. Please try logging in again.", {
+      console.error("CSRF ATTACK DETECTED: OAuth state mismatch!", {
         received: receivedState,
         stored: storedState,
       });
