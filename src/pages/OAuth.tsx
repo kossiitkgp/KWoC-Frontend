@@ -8,36 +8,36 @@ function OAuth() {
   const [err, setErr] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // Validate OAuth state (CSRF protection)
+ 
   const validateOAuthState = (): boolean => {
     const urlParams = new URLSearchParams(location.search);
     const receivedState = urlParams.get("state");
     const storedState = localStorage.getItem("oauthState");
     const timestamp = localStorage.getItem("oauthStateTimestamp");
 
-    // Check 1: State received from URL
+    
     if (!receivedState) {
-      setErr("No state parameter in OAuth callback. Please try logging in again.");
+      setErr("Please try logging in again.");
       return false;
     }
 
-    // Check 2: State was stored in localStorage
+   
     if (!storedState) {
-      setErr("No stored OAuth state found. Your session may have expired.");
+      setErr("Please try logging in again. Your session may have expired.");
       return false;
     }
 
-    // Check 3: States match (prevents CSRF attacks)
+
     if (receivedState !== storedState) {
-      console.error("CSRF ATTACK DETECTED: OAuth state mismatch!", {
+      console.error("Something went wrong. Please try logging in again.", {
         received: receivedState,
         stored: storedState,
       });
-      setErr("CSRF attack detected! OAuth state mismatch. Please try logging in again.");
+      setErr("Something went wrong. Please try logging in again.");
       return false;
     }
 
-    // Check 4: State not expired (10 minutes = 600000 ms)
+  
     const stateAge = Date.now() - parseInt(timestamp!);
     const STATE_EXPIRY_TIME = 600000; // 10 minutes
 
@@ -56,7 +56,7 @@ function OAuth() {
     return true;
   };
 
-  // Cleanup OAuth state from localStorage
+
   const cleanupOAuthState = () => {
     localStorage.removeItem("oauthState");
     localStorage.removeItem("oauthStateTimestamp");
@@ -64,7 +64,7 @@ function OAuth() {
   };
 
   const loginHandler = async (oauthCode: string) => {
-    // Assuming type is already set when login is started
+   
     const userType = authContext.userData.type;
     try {
       const authRes = await makeRequest("oauth", "post", {
@@ -89,13 +89,13 @@ function OAuth() {
           },
         });
 
-        // Cleanup OAuth state after successful login
+       
         cleanupOAuthState();
       }
     } catch (e) {
       setErr("Error connecting to the server. Please try again later.");
       console.log(e);
-      // Cleanup on error too
+    
       cleanupOAuthState();
     }
   };
@@ -103,7 +103,7 @@ function OAuth() {
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
 
-    // Check for code
+   
     if (urlParams.get("code") === null) {
       setErr("No OAuth code found. Redirecting to home page.");
       cleanupOAuthState();
@@ -111,16 +111,16 @@ function OAuth() {
       return;
     }
 
-    // Validate OAuth state (NEW - prevents CSRF attacks)
+   
     if (!validateOAuthState()) {
-      // Error message is already set by validateOAuthState()
+     
       cleanupOAuthState();
-      // Redirect to home after 2 seconds to let user see error
+      
       setTimeout(() => navigate("/"), 2000);
       return;
     }
 
-    // State is valid, proceed with login
+
     loginHandler(urlParams.get("code") as string);
   }, []);
 
