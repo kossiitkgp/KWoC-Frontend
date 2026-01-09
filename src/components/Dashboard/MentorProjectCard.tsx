@@ -21,7 +21,7 @@ function MentorProjectCard({
   description,
   secondary_mentor,
 }: MentorProjectCardProps) {
-  // Calculate total activity score
+ 
   const totalActivity = commit_count + pull_count;
   const isActiveProject = totalActivity > 0;
   
