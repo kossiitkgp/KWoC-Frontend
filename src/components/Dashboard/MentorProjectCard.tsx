@@ -5,9 +5,7 @@ import { FaCodeCommit, FaCodePullRequest } from "react-icons/fa6";
 import "../../styles/MentorProjectCard.css";
 import LinesChanged from "../LinesChanged";
 
-interface MentorProjectCardProps extends IProjectDashboardInfo {
-  remarks?: string; // NEW - Add remarks prop
-}
+interface MentorProjectCardProps extends IProjectDashboardInfo {}
 
 function MentorProjectCard({
   id,
@@ -22,9 +20,8 @@ function MentorProjectCard({
   tags,
   description,
   secondary_mentor,
-  remarks, // NEW - Destructure remarks
 }: MentorProjectCardProps) {
-  // Calculate total activity score (NEW LOGIC)
+  // Calculate total activity score
   const totalActivity = commit_count + pull_count;
   const isActiveProject = totalActivity > 0;
   
@@ -32,9 +29,16 @@ function MentorProjectCard({
     <div key={id} className="mentor-project-card">
       <div className="top">
         <h3>{name}</h3>
-        <span className={"status-badge " + (project_status ? "approved" : "")}>
-          {project_status ? "Approved" : "Awaiting Approval"}
-        </span>
+        <div className="status-badges">
+          <span className={"status-badge " + (project_status ? "approved" : "")}>
+            {project_status ? "Approved" : "Awaiting Approval"}
+          </span>
+          {isActiveProject && (
+            <span className="activity-badge">
+              Active
+            </span>
+          )}
+        </div>
       </div>
       <p className="description">{description}</p>
       <div className="tags">
@@ -74,14 +78,6 @@ function MentorProjectCard({
         </div>
       </div>
 
-      {/* NEW - Remarks Section UI */}
-      {remarks && (
-        <div className="project-remarks">
-          <div className="remarks-header">Remarks</div>
-          <p className="remarks-text">{remarks}</p>
-        </div>
-      )}
-
       <div className="stats">
         <div className={`stat ${isActiveProject ? "active" : "inactive"}`}>
           <FaCodeCommit className="icon" />
@@ -114,4 +110,3 @@ function MentorProjectCard({
 }
 
 export default MentorProjectCard;
-
