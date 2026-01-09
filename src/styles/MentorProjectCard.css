@@ -7,47 +7,87 @@
   border: 1px solid rgba(71, 85, 105, 0.4);
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(15, 23, 42, 0.4);
+    border-color: rgba(71, 85, 105, 0.6);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
 
   & .top {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    justify-content: space-between;
+    margin-bottom: 18px;
 
     & h3 {
       margin: 0;
       font-size: 28px;
       color: var(--color-primary);
+      flex: 1;
+    }
+
+    & .status-badges {
+      display: flex;
+      gap: 8px;
+      align-items: center;
     }
 
     & .status-badge {
-      margin-left: auto;
-      padding: 4px 10px;
+      padding: 6px 12px;
       border-radius: 12px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       background: rgba(245, 158, 11, 0.15);
       color: rgb(252, 211, 77);
       border: 1px solid rgba(251, 191, 36, 0.4);
+      white-space: nowrap;
+      transition: all 0.2s ease;
 
       &.approved {
         background: rgba(16, 185, 129, 0.15);
         color: rgb(110, 231, 183);
         border: 1px solid rgba(52, 211, 153, 0.4);
       }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    & .activity-badge {
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(34, 197, 94, 0.15);
+      color: rgb(134, 239, 172);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      animation: pulse-subtle 2s ease-in-out infinite;
+      white-space: nowrap;
     }
   }
 
   & .tags {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 
     & .tag {
       display: inline-block;
       background: rgba(100, 116, 139, 0.2);
-      padding: 4px 10px;
+      padding: 5px 11px;
       border-radius: 8px;
       font-size: 12px;
       margin-right: 8px;
+      margin-bottom: 6px;
       border: 1px solid rgba(100, 116, 139, 0.2);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(100, 116, 139, 0.3);
+        border-color: rgba(100, 116, 139, 0.4);
+      }
     }
   }
 
@@ -55,99 +95,131 @@
     font-size: 14px;
     margin: 0;
     color: rgb(148, 163, 184);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     display: -webkit-box;
     line-clamp: 1;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1.5;
   }
 
   & .mentors {
     font-size: 13px;
     color: rgb(125, 126, 127);
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 7px;
 
     & .mentor {
       display: flex;
-      align-items: end;
+      align-items: center;
       gap: 8px;
+
+      & .icon {
+        color: var(--color-primary);
+        opacity: 0.7;
+        font-size: 14px;
+      }
+
+      & .label {
+        font-size: 12px;
+        color: rgb(148, 163, 184);
+        font-weight: 500;
+      }
 
       & .name {
         color: var(--color-primary);
         text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+          text-decoration: underline;
+          opacity: 0.8;
+        }
       }
-    }
-  }
-
-  /* #223 NEW: Remarks Section */
-  & .project-remarks {
-    margin: 12px 0;
-    padding: 10px;
-    background: rgba(100, 116, 139, 0.1);
-    border-radius: 8px;
-    border-left: 4px solid var(--color-primary);
-
-    & .remarks-header {
-      font-size: 12px;
-      font-weight: 600;
-      color: rgb(148, 163, 184);
-      margin-bottom: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    & .remarks-text {
-      font-size: 13px;
-      line-height: 1.4;
-      color: rgb(125, 126, 127);
-      margin: 0;
-      word-break: break-word;
     }
   }
 
   & .stats {
     display: flex;
-    gap: 15px;
+    gap: 12px;
+    margin-bottom: 16px;
 
     & .stat {
       background: rgba(71, 85, 105, 0.2);
       flex: 1;
-      padding: 8px 10px;
-      border-radius: 8px;
+      padding: 12px;
+      border-radius: 10px;
       border: 1px solid rgba(71, 85, 105, 0.4);
       margin: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
-
-      & .stat-label {
-        font-size: 12px;
-        color: rgb(148, 163, 184);
-        margin: 0;
-      }
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      cursor: default;
 
       & .icon {
         color: rgb(148, 163, 184);
+        font-size: 18px;
+      }
+
+      & .stat-label {
+        font-size: 11px;
+        color: rgb(148, 163, 184);
+        margin: 0;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
       }
 
       & .stat-label::after {
-        content: ":";
+        display: none;
       }
 
       & .stat-value {
-        font-size: 18px;
-        font-weight: 600;
+        font-size: 22px;
+        font-weight: 700;
         margin: 0;
+        color: var(--color-primary);
+      }
+
+      &.active {
+        background: rgba(34, 197, 94, 0.1);
+        border-color: rgba(74, 222, 128, 0.3);
+
+        & .icon {
+          color: rgb(134, 239, 172);
+        }
+
+        & .stat-value {
+          color: rgb(134, 239, 172);
+        }
+
+        &:hover {
+          background: rgba(34, 197, 94, 0.15);
+          border-color: rgba(74, 222, 128, 0.5);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+        }
+      }
+
+      &.inactive {
+        opacity: 0.6;
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
   }
 
   & .actions {
-    margin-top: 15px;
+    margin-top: 18px;
     display: flex;
     gap: 10px;
 
@@ -159,7 +231,23 @@
 
       & button {
         width: 100%;
+        transition: all 0.2s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
       }
     }
+  }
+}
+
+/* Subtle pulse animation for active badge */
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
   }
 }
