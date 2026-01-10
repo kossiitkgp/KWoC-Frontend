@@ -3,38 +3,15 @@ import "../../styles/Home/hero.css";
 import { useAuthContext } from "../../util/auth";
 import {
   DISCORD_INVITE,
-  GITHUB_OAUTH_URL,
   MENTOR_MANUAL,
   STUDENT_MANUAL,
 } from "../../util/constants";
-import { UserType } from "../../util/types";
 
 const REGISTRATIONS_OPEN = import.meta.env.VITE_REGISTRATIONS_OPEN === "true";
 const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN === "true";
-// Generate random OAuth state for CSRF protection (#216)
-const generateRandomState = () => {
-  const array = new Uint8Array(32);
-  crypto.getRandomValues(array);
-  return btoa(String.fromCharCode(...array)).replace(/[^a-zA-Z0-9]/g, '').slice(0, 43);
-};
-
 
 function HeroSection() {
   const auth = useAuthContext();
-
-const handleLogin = (userType: string) => {
-  auth.setUserType(userType as UserType);
-  const randomState = generateRandomState();
-
-  // Store state and timestamp in localStorage for OAuth verification (#246)
-  localStorage.setItem("oauthState", randomState);
-  localStorage.setItem("oauthStateTimestamp", Date.now().toString());
-
-  const oauthUrl = `${GITHUB_OAUTH_URL}&state=${randomState}`;
-  window.location.href = oauthUrl;
-};
-
-
 
   return (
     <div className="hero">
@@ -57,7 +34,7 @@ const handleLogin = (userType: string) => {
             {REGISTRATIONS_OPEN && (
               <Button
                 onClick={() => {
-                  handleLogin("student");
+                  auth.handleOAuthLogin("student");
                 }}
               >
                 Student Sign-up
@@ -66,7 +43,7 @@ const handleLogin = (userType: string) => {
             {(REGISTRATIONS_OPEN || MENTOR_REG_OPEN) && (
               <Button
                 onClick={() => {
-                  handleLogin("mentor");
+                  auth.handleOAuthLogin("mentor");
                 }}
               >
                 Mentor Sign-up
