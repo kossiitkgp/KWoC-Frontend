@@ -19,7 +19,7 @@ function RegForm({ isStudent }: { isStudent: boolean }) {
 useEffect(() => {
   setIsRegistering(!authContext.isRegistered);
 
-  // #236 FIX: Logout new users when registration closed
+ 
   if (!authContext.isRegistered && !registrationsOpen) {
     authContext.onLogout();
     navigate("/");
