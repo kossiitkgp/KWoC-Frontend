@@ -21,7 +21,7 @@ import { getPRDetails } from "../util/pull-request";
 
 type StudentDashData = IEndpointTypes["student/dashboard"]["response"];
 
-function StudentDashboard() {
+function StudentDashboard(): JSX.Element {
   const [data, setData] = useState<StudentDashData | null>(null);
   const [status, setStatus] = useState<"loading" | "fetched" | "failed">(
     "loading",
@@ -63,7 +63,7 @@ function StudentDashboard() {
     }
 
     fetchData();
-  }, []);
+  }, [auth, navigate]);
 
   const languagesUsed = [
     ...new Set(
@@ -83,11 +83,11 @@ function StudentDashboard() {
           <div className="stats">
             <div className="stat-card">
               <h3>Total PRs</h3>
-              <p>{data.pull_count}</p>
+             <p>{data.pull_count.toLocaleString()}</p>
             </div>
             <div className="stat-card">
               <h3>Total Commits</h3>
-              <p>{data.commit_count}</p>
+             <p>{data.commit_count.toLocaleString()}</p>
             </div>
             <div className="stat-card">
               <h3>Lines Changed</h3>
@@ -158,15 +158,16 @@ function StudentDashboard() {
                 <p>None</p>
               ) : (
                 <div className="projects-worked">
-                  {data.projects_worked.map((project) => (
-                    <a
-                      href={project.repo_link}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {project.name}
-                    </a>
-                  ))}
+                 {data.projects_worked.map((project) => (
+  
+                          key={project.repo_link}
+                          href={project.repo_link}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {project.name}
+                        </a>
+                      ))}
                 </div>
               )}
 
@@ -178,7 +179,7 @@ function StudentDashboard() {
                   data.pulls.map((url) => {
                     const pr = getPRDetails(url);
                     return (
-                      <a href={url} target="_blank" rel="noreferrer">
+                      <a key={url} href={url} target="_blank" rel="noreferrer">
                         {pr.owner}/{pr.repo}#{pr.number}
                       </a>
                     );
@@ -245,7 +246,7 @@ function StudentDashboard() {
             </div>
           </div>
         </>
-      ) : status == "loading" ? (
+      ) : status === "loading" ? (
         <p>Loading your dashboard...</p>
       ) : (
         <div className="error-message">
