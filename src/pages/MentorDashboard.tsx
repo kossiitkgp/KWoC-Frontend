@@ -13,10 +13,10 @@ import { IoApps, IoAppsOutline, IoDocument } from "react-icons/io5";
 import MentorResources from "../data/mentorResources.json";
 import kwoc_logo from "../assets/kwoc_logo.png";
 
-const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN == "true";
+const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN === "true";
 type MentorDashData = IEndpointTypes["mentor/dashboard"]["response"];
 
-function MentorDashboard() {
+function MentorDashboard(): JSX.Element {
   const [data, setData] = useState<MentorDashData | null>(null);
   const [status, setStatus] = useState<"loading" | "fetched" | "failed">(
     "loading",
@@ -58,16 +58,16 @@ function MentorDashboard() {
     }
 
     fetchData();
-  }, []);
+}, [auth, navigate]);
 
   const commit_count = data?.projects.reduce(
-    (acc, project) => acc + project.commit_count,
-    0,
-  );
-  const pull_count = data?.projects.reduce(
-    (acc, project) => acc + project.pull_count,
-    0,
-  );
+  (acc, project) => acc + (project.commit_count || 0),
+  0,
+) || 0;
+const pull_count = data?.projects.reduce(
+  (acc, project) => acc + (project.pull_count || 0),
+  0,
+) || 0;
 
   return (
     <div className="mentor-dash dashboard">
@@ -92,24 +92,24 @@ function MentorDashboard() {
               )}
             </div>
           }
-          {!MENTOR_REG_OPEN && data.projects.length == 0 && <p>Stay tuned!</p>}
+          {!MENTOR_REG_OPEN && data.projects.length === 0 && <p>Stay tuned!</p>}
 
           <h2>Statistics</h2>
           <div className="stats">
             <div className="stat">
               <FaCodeCommit className="icon" />
               <h4 className="stat-label">Total Commits</h4>
-              <div className="stat-value">{commit_count}</div>
+             <div className="stat-value">{commit_count?.toLocaleString()}</div>
             </div>
             <div className="stat">
               <FaCodePullRequest className="icon" />
               <h4 className="stat-label">Total Pull Requests</h4>
-              <div className="stat-value">{pull_count}</div>
+             <div className="stat-value">{pull_count?.toLocaleString()}</div>
             </div>
             <div className="stat">
               <IoApps className="icon" />
               <h4 className="stat-label">Total Projects</h4>
-              <div className="stat-value">{data.projects.length}</div>
+             <div className="stat-value">{data.projects.length.toLocaleString()}</div>
             </div>
             <div className="stat">
               <IoAppsOutline className="icon" />
@@ -152,7 +152,7 @@ function MentorDashboard() {
             ))}
           </div>
         </>
-      ) : status == "loading" ? (
+     ) : status === "loading" ? (
         <p>Loading your dashboard...</p>
       ) : (
         <div className="error-message">
