@@ -15,11 +15,11 @@ import MentorDashboard from "./pages/MentorDashboard";
 import AdminDashboard from "./pages/Admin";
 import ProjectForm from "./pages/ProjectForm";
 
-const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN == "true";
+const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN === "true";
 
-function App() {
+function App(): JSX.Element {
   return (
-    <div className="App">
+   <div className="App" role="main">
       <BrowserRouter>
         <AuthProvider>
           <Galaxy />
