@@ -19,7 +19,7 @@ const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN === "true";
 
 function App(): JSX.Element {
   return (
-   <div className="App" role="main">
+    <div className="App" role="main">
       <BrowserRouter>
         <AuthProvider>
           <Galaxy />
