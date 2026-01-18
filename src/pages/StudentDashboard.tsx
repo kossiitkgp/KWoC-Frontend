@@ -7,9 +7,11 @@ import "../styles/student-dashboard.css";
 import UserCard from "../components/Dashboard/UserCard";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import {
+  BLOG_FORMID,
   DISCORD_INVITE,
   END_EVALS_ENDED,
   MID_EVALS_ENDED,
+  REPORT_SUBMISSION_OPEN,
   STUDENT_MANUAL,
 } from "../util/constants";
 import LinesChanged from "../components/LinesChanged";
@@ -188,6 +190,20 @@ function StudentDashboard(): JSX.Element {
               </div>
             </div>
           </div>
+
+          {data.passed_end_evals && REPORT_SUBMISSION_OPEN && (
+            <div className="report-submission">
+              <h2>Submit Your Report</h2>
+              <p>
+                Congratulations on passing your end evaluations! You are now
+                eligible to submit your final report. Please ensure that your
+                report is submitted before the deadline.
+              </p>
+              <a href={`https://docs.google.com/forms/d/e/${BLOG_FORMID}/viewform`} target="_blank" className="green">
+                Submit Report
+              </a>
+            </div>
+          )}
 
           <h2>Resources</h2>
           <div className="resources">
