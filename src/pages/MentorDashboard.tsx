@@ -58,16 +58,18 @@ function MentorDashboard(): JSX.Element {
     }
 
     fetchData();
-}, [auth, navigate]);
+  }, [auth, navigate]);
 
-  const commit_count = data?.projects.reduce(
-  (acc, project) => acc + (project.commit_count || 0),
-  0,
-) || 0;
-const pull_count = data?.projects.reduce(
-  (acc, project) => acc + (project.pull_count || 0),
-  0,
-) || 0;
+  const commit_count =
+    data?.projects.reduce(
+      (acc, project) => acc + (project.commit_count || 0),
+      0,
+    ) || 0;
+  const pull_count =
+    data?.projects.reduce(
+      (acc, project) => acc + (project.pull_count || 0),
+      0,
+    ) || 0;
 
   return (
     <div className="mentor-dash dashboard">
@@ -99,17 +101,19 @@ const pull_count = data?.projects.reduce(
             <div className="stat">
               <FaCodeCommit className="icon" />
               <h4 className="stat-label">Total Commits</h4>
-             <div className="stat-value">{commit_count?.toLocaleString()}</div>
+              <div className="stat-value">{commit_count?.toLocaleString()}</div>
             </div>
             <div className="stat">
               <FaCodePullRequest className="icon" />
               <h4 className="stat-label">Total Pull Requests</h4>
-             <div className="stat-value">{pull_count?.toLocaleString()}</div>
+              <div className="stat-value">{pull_count?.toLocaleString()}</div>
             </div>
             <div className="stat">
               <IoApps className="icon" />
               <h4 className="stat-label">Total Projects</h4>
-             <div className="stat-value">{data.projects.length.toLocaleString()}</div>
+              <div className="stat-value">
+                {data.projects.length.toLocaleString()}
+              </div>
             </div>
             <div className="stat">
               <IoAppsOutline className="icon" />
@@ -152,7 +156,7 @@ const pull_count = data?.projects.reduce(
             ))}
           </div>
         </>
-     ) : status === "loading" ? (
+      ) : status === "loading" ? (
         <p>Loading your dashboard...</p>
       ) : (
         <div className="error-message">
