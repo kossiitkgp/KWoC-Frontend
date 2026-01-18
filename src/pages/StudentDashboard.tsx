@@ -21,7 +21,7 @@ import { getPRDetails } from "../util/pull-request";
 
 type StudentDashData = IEndpointTypes["student/dashboard"]["response"];
 
-function StudentDashboard() {
+function StudentDashboard(): JSX.Element {
   const [data, setData] = useState<StudentDashData | null>(null);
   const [status, setStatus] = useState<"loading" | "fetched" | "failed">(
     "loading",
@@ -29,15 +29,18 @@ function StudentDashboard() {
   const auth = useAuthContext();
   const navigate = useNavigate();
 
-  // Share stats - Issue #13 [attached_file:1]
-  const shareStats = (platform: string) => {
-    const url = window.location.href;
-    if (platform === 'twitter') window.open(`https://twitter.com/intent/tweet?text=My KWoC stats: ${data?.pull_count} PRs!&url=${encodeURIComponent(url)}`, '_blank');
-    if (platform === 'linkedin') window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`, '_blank');
-    if (platform === 'copy') {
-      navigator.clipboard.writeText(url);
-      alert('Copied!');
-    }
+  const handleShareStats = (platform: "twitter" | "linkedin"): void => {
+    if (!data) return;
+
+    const kwocUrl = "https://kwoc.kossiitkgp.org";
+    const statsText = `I just contributed to open source through KWoC 2025! ${data.pull_count} PRs merged, ${data.commit_count} commits made. Join me in contributing! 🚀`;
+
+    const shareUrls = {
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(statsText)}&url=${encodeURIComponent(kwocUrl)}&hashtags=KWoC2024,OpenSource,KOSS`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(kwocUrl)}`,
+    };
+
+    window.open(shareUrls[platform], "_blank", "noopener,noreferrer");
   };
 
   useEffect(() => {
@@ -74,7 +77,7 @@ function StudentDashboard() {
     }
 
     fetchData();
-  }, []);
+  }, [auth, navigate]);
 
   const languagesUsed = [
     ...new Set(
@@ -94,11 +97,11 @@ function StudentDashboard() {
           <div className="stats">
             <div className="stat-card">
               <h3>Total PRs</h3>
-              <p>{data.pull_count}</p>
+              <p>{data.pull_count.toLocaleString()}</p>
             </div>
             <div className="stat-card">
               <h3>Total Commits</h3>
-              <p>{data.commit_count}</p>
+              <p>{data.commit_count.toLocaleString()}</p>
             </div>
             <div className="stat-card">
               <h3>Lines Changed</h3>
@@ -170,7 +173,8 @@ function StudentDashboard() {
               ) : (
                 <div className="projects-worked">
                   {data.projects_worked.map((project) => (
-                    <a
+                    
+                      key={project.repo_link}
                       href={project.repo_link}
                       target="_blank"
                       rel="noreferrer"
@@ -189,7 +193,7 @@ function StudentDashboard() {
                   data.pulls.map((url) => {
                     const pr = getPRDetails(url);
                     return (
-                      <a href={url} target="_blank" rel="noreferrer">
+                      <a key={url} href={url} target="_blank" rel="noreferrer">
                         {pr.owner}/{pr.repo}#{pr.number}
                       </a>
                     );
@@ -202,7 +206,7 @@ function StudentDashboard() {
           <h2>Resources</h2>
           <div className="resources">
             {StudentResources.map((resource) => (
-              <a
+              
                 href={resource.url}
                 key={resource.message}
                 target="_blank"
@@ -254,35 +258,52 @@ function StudentDashboard() {
                 Discord
               </Button>
             </div>
-          </div>
-
-          {/* Share Stats Section - Issue #13 [attached_file:1] */}
-          <div className="share-stats">
-            <h3>Share Your Stats ✨</h3>
-            <p>Show off your KWoC contributions!</p>
-            <div className="share-buttons">
-              <button 
-                className="share-btn twitter" 
-                onClick={() => shareStats('twitter')}
-              >
-                📱 Twitter
-              </button>
-              <button 
-                className="share-btn linkedin" 
-                onClick={() => shareStats('linkedin')}
-              >
-                💼 LinkedIn
-              </button>
-              <button 
-                className="share-btn copy" 
-                onClick={() => shareStats('copy')}
-              >
-                🔗 Copy Link
-              </button>
+            <div className="link-card">
+              <h3>Share Your Journey</h3>
+              <p>
+                Inspire others by sharing your open source contributions on
+                social media. Help spread the word about KWoC!
+              </p>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                <button
+                  onClick={() => handleShareStats("twitter")}
+                  className="blue"
+                  style={{
+                    padding: "10px 20px",
+                    backgroundColor: "#1DA1F2",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                  }}
+                  aria-label="Share your KWoC stats on Twitter"
+                >
+                  Share on Twitter
+                </button>
+                <button
+                  onClick={() => handleShareStats("linkedin")}
+                  className="blue"
+                  style={{
+                    padding: "10px 20px",
+                    backgroundColor: "#0A66C2",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                  }}
+                  aria-label="Share your KWoC stats on LinkedIn"
+                >
+                  Share on LinkedIn
+                </button>
+              </div>
             </div>
           </div>
         </>
-      ) : status == "loading" ? (
+      ) : status === "loading" ? (
         <p>Loading your dashboard...</p>
       ) : (
         <div className="error-message">
