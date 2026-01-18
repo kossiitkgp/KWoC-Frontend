@@ -199,7 +199,11 @@ function StudentDashboard(): JSX.Element {
                 eligible to submit your final report. Please ensure that your
                 report is submitted before the deadline.
               </p>
-              <a href={`https://docs.google.com/forms/d/e/${BLOG_FORMID}/viewform`} target="_blank" className="green">
+              <a
+                href={`https://docs.google.com/forms/d/e/${BLOG_FORMID}/viewform`}
+                target="_blank"
+                className="green"
+              >
                 Submit Report
               </a>
             </div>
