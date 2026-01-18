@@ -83,11 +83,11 @@ function StudentDashboard(): JSX.Element {
           <div className="stats">
             <div className="stat-card">
               <h3>Total PRs</h3>
-             <p>{data.pull_count.toLocaleString()}</p>
+              <p>{data.pull_count.toLocaleString()}</p>
             </div>
             <div className="stat-card">
               <h3>Total Commits</h3>
-             <p>{data.commit_count.toLocaleString()}</p>
+              <p>{data.commit_count.toLocaleString()}</p>
             </div>
             <div className="stat-card">
               <h3>Lines Changed</h3>
@@ -158,17 +158,16 @@ function StudentDashboard(): JSX.Element {
                 <p>None</p>
               ) : (
                 <div className="projects-worked">
-                 {data.projects_worked.map((project) => (
-                  <a 
-  
-                          key={project.repo_link}
-                          href={project.repo_link}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {project.name}
-                        </a>
-                      ))}
+                  {data.projects_worked.map((project) => (
+                    <a
+                      key={project.repo_link}
+                      href={project.repo_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {project.name}
+                    </a>
+                  ))}
                 </div>
               )}
 
