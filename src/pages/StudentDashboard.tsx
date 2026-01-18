@@ -159,6 +159,7 @@ function StudentDashboard(): JSX.Element {
               ) : (
                 <div className="projects-worked">
                  {data.projects_worked.map((project) => (
+                  <a 
   
                           key={project.repo_link}
                           href={project.repo_link}
