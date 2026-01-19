@@ -19,16 +19,26 @@ function RegForm({ isStudent }: { isStudent: boolean }) {
   useEffect(() => {
     setIsRegistering(!authContext.isRegistered);
 
-    if (isRegistering && !registrationsOpen) {
+    if (!authContext.isRegistered && !registrationsOpen) {
+      authContext.onLogout();
       navigate("/");
+      return;
     }
+
     if (!authContext.isAuthenticated) {
       navigate("/");
+      return;
     }
     if (authContext.userData.type !== userType) {
       navigate("/");
+      return;
     }
-  }, []);
+  }, [
+    authContext.isAuthenticated,
+    authContext.isRegistered,
+    authContext.userData.type,
+    userType,
+  ]);
 
   const title = isRegistering
     ? `Complete ${userType[0].toUpperCase() + userType.slice(1)} Registration`
