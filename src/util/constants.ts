@@ -14,7 +14,10 @@ export enum ROUTER_PATHS {
 export const REG_OPEN = import.meta.env.VITE_REGISTRATIONS_OPEN == "true";
 export const MID_EVALS_ENDED = import.meta.env.VITE_MID_EVALS_ENDED == "true";
 export const END_EVALS_ENDED = import.meta.env.VITE_END_EVALS_ENDED == "true";
+export const REPORT_SUBMISSION_OPEN =
+  import.meta.env.VITE_REPORT_SUBMISSION_OPEN == "true";
 export const DISCORD_INVITE = "https://discord.gg/N5mbR2RDyw";
 
 export const STUDENT_MANUAL = `https://drive.google.com/file/d/1VgDyagBGBxGS9tM-9WeoDJXqS9p5G5Cf/view?usp=drive_link`;
 export const MENTOR_MANUAL = `https://drive.google.com/file/d/1eCsTBrt80h61z97XYhlk0Mmt4Y0odsxV/view?usp=drive_link`;
+export const BLOG_FORMID = `1FAIpQLSd0faRqE1c9zQrdKUvkjyP7zsS6L4GgNjRSgXfm3kBRPBtuGw`;

@@ -191,6 +191,40 @@
       }
     }
   }
+
+  & .report-submission {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+
+    & h2 {
+      font-size: 20px;
+      color: var(--color-primary);
+      margin: 0 0 10px 0;
+    }
+
+    & p {
+      margin: 0 0 15px 0;
+    }
+
+    & a {
+      background-color: #48bb78;
+      padding: 10px 20px;
+      border: none;
+      display: inline-block;
+      color: black;
+      font-weight: 600;
+      margin: 5px 0 0 0;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        background-color: #38a169;
+      }
+    }
+  }
 }
 
 .passed {

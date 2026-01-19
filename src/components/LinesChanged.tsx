@@ -28,7 +28,7 @@ function LinesChanged({
       className="lines-changed"
       title={`${lines_added} lines added and ${lines_removed} lines removed`}
     >
-      <div className="added-lines-text">+ {lines_added}</div>
+      <div className="added-lines-text">+ {lines_added.toLocaleString()}</div>
       <div className="bar">
         <div
           className="added-lines-bar"
@@ -39,7 +39,9 @@ function LinesChanged({
           style={{ width: `${removedPercentage}%` }}
         ></div>
       </div>
-      <div className="removed-lines-text">- {lines_removed}</div>
+      <div className="removed-lines-text">
+        - {lines_removed.toLocaleString()}
+      </div>
     </div>
   );
 }

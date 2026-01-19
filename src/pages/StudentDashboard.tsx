@@ -7,9 +7,11 @@ import "../styles/student-dashboard.css";
 import UserCard from "../components/Dashboard/UserCard";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import {
+  BLOG_FORMID,
   DISCORD_INVITE,
   END_EVALS_ENDED,
   MID_EVALS_ENDED,
+  REPORT_SUBMISSION_OPEN,
   STUDENT_MANUAL,
 } from "../util/constants";
 import LinesChanged from "../components/LinesChanged";
@@ -21,7 +23,7 @@ import { getPRDetails } from "../util/pull-request";
 
 type StudentDashData = IEndpointTypes["student/dashboard"]["response"];
 
-function StudentDashboard() {
+function StudentDashboard(): JSX.Element {
   const [data, setData] = useState<StudentDashData | null>(null);
   const [status, setStatus] = useState<"loading" | "fetched" | "failed">(
     "loading",
@@ -63,7 +65,7 @@ function StudentDashboard() {
     }
 
     fetchData();
-  }, []);
+  }, [auth, navigate]);
 
   const languagesUsed = [
     ...new Set(
@@ -83,11 +85,11 @@ function StudentDashboard() {
           <div className="stats">
             <div className="stat-card">
               <h3>Total PRs</h3>
-              <p>{data.pull_count}</p>
+              <p>{data.pull_count.toLocaleString()}</p>
             </div>
             <div className="stat-card">
               <h3>Total Commits</h3>
-              <p>{data.commit_count}</p>
+              <p>{data.commit_count.toLocaleString()}</p>
             </div>
             <div className="stat-card">
               <h3>Lines Changed</h3>
@@ -160,6 +162,7 @@ function StudentDashboard() {
                 <div className="projects-worked">
                   {data.projects_worked.map((project) => (
                     <a
+                      key={project.repo_link}
                       href={project.repo_link}
                       target="_blank"
                       rel="noreferrer"
@@ -178,7 +181,7 @@ function StudentDashboard() {
                   data.pulls.map((url) => {
                     const pr = getPRDetails(url);
                     return (
-                      <a href={url} target="_blank" rel="noreferrer">
+                      <a key={url} href={url} target="_blank" rel="noreferrer">
                         {pr.owner}/{pr.repo}#{pr.number}
                       </a>
                     );
@@ -187,6 +190,24 @@ function StudentDashboard() {
               </div>
             </div>
           </div>
+
+          {data.passed_end_evals && REPORT_SUBMISSION_OPEN && (
+            <div className="report-submission">
+              <h2>Submit Your Report</h2>
+              <p>
+                Congratulations on passing your end evaluations! You are now
+                eligible to submit your final report. Please ensure that your
+                report is submitted before the deadline.
+              </p>
+              <a
+                href={`https://docs.google.com/forms/d/e/${BLOG_FORMID}/viewform`}
+                target="_blank"
+                className="green"
+              >
+                Submit Report
+              </a>
+            </div>
+          )}
 
           <h2>Resources</h2>
           <div className="resources">
@@ -245,7 +266,7 @@ function StudentDashboard() {
             </div>
           </div>
         </>
-      ) : status == "loading" ? (
+      ) : status === "loading" ? (
         <p>Loading your dashboard...</p>
       ) : (
         <div className="error-message">
