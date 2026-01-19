@@ -3,13 +3,24 @@ import { useAuthContext } from "../util/auth";
 import { useNavigate } from "react-router-dom";
 import { makeRequest } from "../util/backend";
 
-function OAuth() {
+function OAuth(): JSX.Element {
   const authContext = useAuthContext();
   const [err, setErr] = useState<string | null>(null);
   const navigate = useNavigate();
 
+ 
+  const validateState = (incomingState: string | null): boolean => {
+    const storedState = sessionStorage.getItem("oauth_state");
+    if (!incomingState || !storedState || incomingState !== storedState) {
+      setErr("Invalid OAuth state. Possible security issue.");
+      sessionStorage.removeItem("oauth_state");
+      return false;
+    }
+    sessionStorage.removeItem("oauth_state"); 
+    return true;
+  };
+
   const loginHandler = async (oauthCode: string) => {
-    // Assuming type is already set when login is started
     const userType = authContext.userData.type;
     try {
       const authRes = await makeRequest("oauth", "post", {
@@ -21,7 +32,6 @@ function OAuth() {
         setErr(authRes.response.message);
       } else {
         const auth = authRes.response;
-
         authContext.onLogin({
           jwt: auth.jwt,
           isRegistered: !auth.is_new_user,
@@ -42,12 +52,20 @@ function OAuth() {
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
+    const code = urlParams.get("code");
+    const state = urlParams.get("state");
 
-    if (urlParams.get("code") === null) {
+    
+    if (!validateState(state)) {
+      navigate("/");
+      return;
+    }
+
+    if (code === null) {
       setErr("No OAuth code found. Redirecting to home page.");
       navigate("/");
     } else {
-      loginHandler(urlParams.get("code") as string);
+      loginHandler(code);
     }
   }, []);
 
@@ -59,10 +77,18 @@ function OAuth() {
         navigate(authContext.formLink);
       }
     }
-  }, [authContext.isAuthenticated, authContext.isRegistered]);
+  }, [authContext.isAuthenticated, authContext.isRegistered, authContext.dashboardLink, authContext.formLink, navigate]);
 
   return (
-    <div>{err !== null ? <div>redirecting...</div> : <div>{err}</div>}</div>
+    <div role="status" aria-live="polite">
+      {err !== null ? (
+        <div className="error-message" role="alert">
+          {err}
+        </div>
+      ) : (
+        <div>Authenticating...</div>
+      )}
+    </div>
   );
 }
 
