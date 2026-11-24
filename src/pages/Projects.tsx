@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import "../styles/projects.css";
 import { IProject } from "../util/types";
 import { makeRequest } from "../util/backend";
@@ -12,6 +12,8 @@ function Projects() {
   const [status, setStatus] = useState<"loading" | "fetched" | "failed">(
     "loading",
   );
+
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     async function fetchProjects() {
@@ -37,24 +39,62 @@ function Projects() {
     }
   }, []);
 
+  
+  const filteredProjects = useMemo(() => {
+    if (!searchText) {
+      return projects; 
+    }
+
+    const lowercasedSearchText = searchText.toLowerCase().trim();
+
+    return projects.filter(project => {
+      // a. प्रोजेक्ट के tags (टैग्स) में सर्च करें
+      const tagsMatch = project.tags.some((tag: string) => 
+        tag.toLowerCase().includes(lowercasedSearchText)
+      );
+
+     
+      const nameMatch = project.name.toLowerCase().includes(lowercasedSearchText);
+
+      return tagsMatch || nameMatch;
+    });
+  }, [projects, searchText]);
+
+
   return (
     <div className="projects-page">
       <h1>Projects</h1>
 
       {PROJECTS_STARTED ? (
         <>
+         
+          <div className="search-bar-container">
+            <input
+              type="text"
+              placeholder="Search by tag, language, or name..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              className="project-search-input" 
+            />
+          </div>
+       
+
           {status === "loading" && <p>Loading projects...</p>}
           {status === "failed" && (
             <div className="error-message">
               <p>Failed to load projects. Please try again later.</p>
             </div>
           )}
-          {status === "fetched" && projects.length === 0 && (
-            <p>No projects available at the moment.</p>
+        
+          {status === "fetched" && filteredProjects.length === 0 && (
+            <p>No projects found matching your search term.</p>
           )}
-          {status === "fetched" && projects.length > 0 && (
+          
+          {/* filteredProjects को रेंडर करें */}
+          {status === "fetched" && filteredProjects.length > 0 && (
             <div className="projects-list">
-              {projects.map((project) => (
+           
+              {filteredProjects.map((project) => ( 
                 <div key={project.id} className="project-item">
                   <h2>{project.name}</h2>
                   <p className="description">{project.description}</p>
