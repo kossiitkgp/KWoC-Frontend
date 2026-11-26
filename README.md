@@ -28,7 +28,7 @@
 
   <p align="center">
   <!-- UPDATE -->
-    <i>frontend for KWoC 2025</i>
+    <i>frontend for KWoC 2026</i>
     <br />
     <a href="#table-of-contents"><strong>Get Started »</strong></a>
     <br />

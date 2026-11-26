@@ -45,7 +45,7 @@ function HeroSection() {
         <span className="highlight">
           Winter <br /> of Code
         </span>{" "}
-        2025
+        2026
       </div>
 
       <div className="actions">
