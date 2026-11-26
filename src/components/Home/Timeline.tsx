@@ -1,207 +1,216 @@
-import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Draggable } from "gsap/Draggable";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-import EVENTS from "../../data/timeline.json";
-import "../../styles/Home/timeline.css";
+import { useEffect, useMemo, useRef, useState } from "react";
+import Snow from "../Snow";
+import TimelineScene from "./TimelineScene";
+import { KWOC_MILESTONES, getMilestoneCameraPositions } from "../../data/kwocTimeline";
+import { getTravelStrength, VOID_RANGE, VOID_START } from "../../data/kwocTimelineConfig";
+import { cardVisibility, clamp, DUNES, layerPose } from "../../data/winterJourney";
+import "../../styles/Home/season-timeline.css";
 
-const SHOW_TIMELINE = true;
-
-gsap.registerPlugin(ScrollTrigger, Draggable, MotionPathPlugin);
-gsap.defaults({ ease: "none", duration: 2 });
-
-type Coordinate = [number, number];
-
-const DOT_LOCATIONS: Coordinate[] = [
-  [32.5, 28.5],
-  [339.5, 277.5],
-  [57.5, 520.5],
-  [378.5, 763.5],
-  [62.5, 1007.5],
-  [384.5, 1249.5],
-  [54.5, 1492.5],
-  [380.5, 1734.5],
-];
-
+/**
+ * Homepage-embedded, scroll-driven winter journey based on the 2026 demo.
+ * The section pins the landscape while the visitor scrolls through milestones.
+ */
 function Timeline() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const hintRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const voidRef = useRef<HTMLDivElement>(null);
+  const [isActive, setIsActive] = useState(false);
+
+  const milestonePositions = useMemo(
+    () => getMilestoneCameraPositions(KWOC_MILESTONES),
+    [],
+  );
+
   useEffect(() => {
-    if (!SHOW_TIMELINE) return;
-    const linePath = document.querySelector("#timeline-line") as SVGPathElement;
-    const len = linePath.getTotalLength();
+    const section = sectionRef.current;
+    const stage = stageRef.current;
+    if (!section || !stage) return;
 
-    linePath.style.strokeDasharray = `${len} ${len}`;
-    linePath.style.strokeDashoffset = `${len}`;
+    const layers = Array.from(
+      stage.querySelectorAll<HTMLElement>(".season-timeline__layer"),
+    );
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const strength = getTravelStrength();
+    let target = 0;
+    let current = 0;
+    let frame = 0;
+    let lastFrameTime = 0;
+    let active = false;
 
-    let pulses = gsap.timeline({
-      defaults: {
-        duration: 0.5,
-        autoAlpha: 1,
-        fill: "#ffe336",
-        scale: 1.5,
-        transformOrigin: "center",
-        ease: "elastic(1.5, 1)",
+    const render = (progress: number) => {
+      const camera = progress * DUNES * strength;
+      const voidProgress = clamp((camera - VOID_START) / VOID_RANGE);
+
+      for (const layer of layers) {
+        const index = Number(layer.dataset.index);
+        const pose = layerPose(index, camera);
+        layer.style.transform = pose.transform;
+        layer.style.visibility = pose.hidden ? "hidden" : "visible";
+        const mountainFade =
+          index === 2 ? 1 - clamp((pose.q - 0.3) / 0.7) : 1;
+        layer.style.opacity =
+          index <= 2 ? String((1 - voidProgress) * mountainFade) : "1";
+      }
+
+      if (voidRef.current) {
+        voidRef.current.style.opacity = String(voidProgress);
+      }
+
+      KWOC_MILESTONES.forEach((_, index) => {
+        const card = cardRefs.current[index];
+        if (!card) return;
+        const visibility = cardVisibility(index, camera, milestonePositions);
+        card.style.opacity = String(visibility);
+        card.style.transform = `translate3d(0,${(1 - visibility) * 24}px,0)`;
+        card.style.pointerEvents = visibility > 0.6 ? "auto" : "none";
+        card.setAttribute("aria-hidden", String(visibility <= 0.6));
+      });
+
+      if (hintRef.current) {
+        hintRef.current.style.opacity = String(1 - clamp(camera / 0.25));
+      }
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleY(${progress})`;
+        progressRef.current.parentElement?.setAttribute(
+          "aria-valuenow",
+          String(Math.round(progress * 100)),
+        );
+      }
+    };
+
+    const animate = (now: number) => {
+      frame = 0;
+      const delta = Math.min((now - lastFrameTime) / 1000, 0.05);
+      lastFrameTime = now;
+      current = reduceMotion
+        ? target
+        : current + (target - current) * (1 - Math.exp(-delta * 8));
+      if (Math.abs(target - current) < 0.00005) current = target;
+      render(current);
+
+      // Do not keep a permanent RAF alive while the user is idle.
+      if (Math.abs(target - current) >= 0.00005) {
+        frame = window.requestAnimationFrame(animate);
+      }
+    };
+
+    const scheduleRender = () => {
+      if (!active) return;
+      if (reduceMotion) {
+        current = target;
+        render(current);
+        return;
+      }
+      if (!frame) {
+        lastFrameTime = performance.now();
+        frame = window.requestAnimationFrame(animate);
+      }
+    };
+
+    const readScroll = () => {
+      const scrollableDistance = Math.max(1, section.offsetHeight - window.innerHeight);
+      const sectionProgress = -section.getBoundingClientRect().top / scrollableDistance;
+      target = clamp(sectionProgress);
+      scheduleRender();
+    };
+
+    const onResize = () => readScroll();
+    const onScroll = () => readScroll();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        active = entry.isIntersecting;
+        setIsActive(active);
+        if (active) {
+          window.addEventListener("scroll", onScroll, { passive: true });
+          window.addEventListener("resize", onResize);
+          readScroll();
+        } else {
+          window.removeEventListener("scroll", onScroll);
+          window.removeEventListener("resize", onResize);
+          if (frame) window.cancelAnimationFrame(frame);
+          frame = 0;
+        }
       },
-    });
+      { rootMargin: "80px 0px" },
+    );
 
-    const ANIMATED_DOTS = DOT_LOCATIONS.slice(1);
-    const final_dot_y = ANIMATED_DOTS[ANIMATED_DOTS.length - 1][1];
-
-    for (let i of ANIMATED_DOTS.keys()) {
-      pulses = pulses.to(
-        `#tl-dot${i + 1}`,
-        {},
-        ANIMATED_DOTS[i][1] / final_dot_y,
-      );
-    }
-
-    const main = gsap
-      .timeline({
-        defaults: { duration: 1 },
-        scrollTrigger: {
-          trigger: "#timeline-svg",
-          scrub: true,
-          start: "top 200",
-          end: "bottom",
-        },
-      })
-      .to("#timeline-line", { strokeDashoffset: 0 }, 0)
-      .add(pulses, 0);
+    observer.observe(section);
+    render(0);
 
     return () => {
-      main.kill();
-      pulses.kill();
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+      if (frame) window.cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [milestonePositions]);
 
   return (
-    <div className="timeline-section" id="timeline">
-      <h1>Timeline</h1>
-      {!SHOW_TIMELINE && <h2>Coming soon!</h2>}
-      {SHOW_TIMELINE && (
-        <>
-          <h2>Stay on Track!</h2>
-          <div className="timeline flex justify-center mb-1/10 px-5">
-            <svg
-              id="timeline-svg"
-              className="w-full md:w-7/12 lg:w-4/12"
-              viewBox="0 0 400 1760"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              style={{ width: "90%" }}
-            >
-              {EVENTS.map((event, i) => (
-                <TimelineEvent
-                  key={i}
-                  date={event.date}
-                  event={event.event}
-                  y_level={DOT_LOCATIONS[i][1]}
-                  x_range={[
-                    i % 2 === 0 ? DOT_LOCATIONS[i][0] : 0,
-                    i % 2 === 0 ? 382 : DOT_LOCATIONS[i][0],
-                  ]}
-                  alignRight={i % 2 === 0}
-                />
-              ))}
+    <section
+      className="season-timeline"
+      id="timeline"
+      ref={sectionRef}
+      aria-label="KWoC program timeline"
+    >
+      <div className="season-timeline__sticky">
+        <TimelineScene ref={stageRef} />
+        <div className="season-timeline__veil" aria-hidden="true" />
+        <Snow density={70} paused={!isActive} />
+        <div className="season-timeline__void" ref={voidRef} aria-hidden="true" />
 
-              <TheLine d="M39.5 34.5 C340.333 188.333 403.5 260.5 286.5 334 C115.03 441.718 56.9995 485.5 56.9995 518.5 C56.9995 639 608 716.5 267 842 C171 877.331 -74.3463 984.362 160 1107.5 C435 1252 493.162 1227.01 137 1412 C-53 1510.69 110 1576 380.5 1734" />
+        <div className="season-timeline__hint" ref={hintRef}>
+          <span className="season-timeline__eyebrow">
+            <span className="season-timeline__dot" /> KWoC timeline
+          </span>
+          <h2>
+            Scroll to travel
+            <br />
+            <span>through the winter.</span>
+          </h2>
+          <p>
+            Follow the milestones from the first project listings to the final results.
+          </p>
+          <span className="season-timeline__scroll-note">SCROLL TO EXPLORE ↓</span>
+        </div>
 
-              {DOT_LOCATIONS.map(([x, y], i) => (
-                <TimelineDot
-                  key={i}
-                  id={i}
-                  cx={x}
-                  cy={y}
-                  r={i === 0 ? 15 : 7.5}
-                  visible={i === 0}
-                />
-              ))}
-            </svg>
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
+        {KWOC_MILESTONES.map((milestone, index) => (
+          <article
+            className={`season-timeline__card${index % 2 === 1 ? " is-right" : ""}`}
+            key={milestone.id}
+            ref={(element) => {
+              cardRefs.current[index] = element;
+            }}
+            aria-label={`${milestone.label}: ${milestone.title}`}
+            aria-hidden="true"
+          >
+            <span className="season-timeline__eyebrow">{milestone.label}</span>
+            {milestone.date && (
+              <time className="season-timeline__date">{milestone.date}</time>
+            )}
+            <h3>{milestone.title}</h3>
+            <p>{milestone.text}</p>
+          </article>
+        ))}
 
-function TimelineEvent({
-  date,
-  event,
-  y_level,
-  x_range,
-  alignRight,
-}: {
-  date: string;
-  event: string;
-  y_level: number;
-  x_range: Coordinate;
-  alignRight?: boolean;
-}) {
-  const text_x = alignRight ? x_range[1] : x_range[0];
-
-  return (
-    <>
-      <path
-        d={`M ${x_range[0]} ${y_level} H ${x_range[1]}`}
-        stroke="#808080"
-        strokeWidth="2.5"
-      />
-      <text
-        x={text_x}
-        y={y_level}
-        fill="white"
-        fontWeight="500"
-        letterSpacing="0em"
-        textAnchor={alignRight ? "end" : "start"}
-      >
-        <tspan fontSize="25" dy={-10} x={text_x}>
-          {date}
-        </tspan>
-        <tspan fontSize="15" dy={30} x={text_x}>
-          {event}
-        </tspan>
-      </text>
-    </>
-  );
-}
-
-function TimelineDot({
-  id,
-  cx,
-  cy,
-  r,
-  visible,
-}: {
-  id: number;
-  cx: number;
-  cy: number;
-  r: number;
-  visible?: boolean;
-}) {
-  return (
-    <circle
-      id={`tl-dot${id}`}
-      visibility={visible ? undefined : "hidden"}
-      cx={cx}
-      cy={cy}
-      r={r}
-      fill="#ffe336"
-    />
-  );
-}
-
-function TheLine({ d }: { d: string }) {
-  return (
-    <>
-      <path d={d} stroke="#808080" strokeWidth="10" strokeLinecap="round" />
-      <path
-        id="timeline-line"
-        d={d}
-        stroke="white"
-        strokeWidth="10"
-        strokeLinecap="round"
-      />
-    </>
+        <div
+          className="season-timeline__progress"
+          role="progressbar"
+          aria-label="Timeline scroll progress"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={0}
+        >
+          <div ref={progressRef} />
+        </div>
+        <span className="season-timeline__counter" aria-hidden="true">
+          {String(KWOC_MILESTONES.length).padStart(2, "0")} MILESTONES
+        </span>
+      </div>
+    </section>
   );
 }
 

@@ -7,13 +7,21 @@ import "../styles/student-dashboard.css";
 import UserCard from "../components/Dashboard/UserCard";
 import { HiOutlineDocumentReport } from "react-icons/hi";
 import {
+  FiArrowUpRight,
+  FiBookOpen,
+  FiFolder,
+  FiMessageSquare,
+} from "react-icons/fi";
+import {
   BLOG_FORMID,
   DISCORD_INVITE,
   END_EVALS_ENDED,
   MID_EVALS_ENDED,
   REPORT_SUBMISSION_OPEN,
-  STUDENT_MANUAL,
+  STUDENT_MANUAL_DARK,
+  STUDENT_MANUAL_LIGHT,
 } from "../util/constants";
+import { useTheme } from "../components/ThemeContext";
 import LinesChanged from "../components/LinesChanged";
 import StudentResources from "../data/studentResources.json";
 import { IoDocument } from "react-icons/io5";
@@ -29,6 +37,7 @@ function StudentDashboard(): JSX.Element {
     "loading",
   );
   const auth = useAuthContext();
+  const { theme } = useTheme();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -74,6 +83,33 @@ function StudentDashboard(): JSX.Element {
         .filter(Boolean)
         .map((l) => l?.extensions?.[0]) ?? [],
     ),
+  ];
+
+  const otherLinks = [
+    {
+      title: "Projects",
+      icon: <FiFolder size={22} />,
+      description:
+        "Discover exciting projects that you can contribute to and collaborate on. Each project is an opportunity to apply your skills, learn new technologies, and make a real impact.",
+      buttonLabel: "View Projects",
+      to: "/projects",
+    },
+    {
+      title: "Student's Manual",
+      icon: <FiBookOpen size={22} />,
+      description:
+        "Download the KWoC Student's Manual for comprehensive information about the program's structure, guidelines and expectations.",
+      buttonLabel: "Student Manual",
+      to: theme === "day" ? STUDENT_MANUAL_LIGHT : STUDENT_MANUAL_DARK,
+    },
+    {
+      title: "Stay Connected",
+      icon: <FiMessageSquare size={22} />,
+      description:
+        "Connect with fellow participants, mentors and organisers. Join our discord server to engage in discussions, seek help, and stay updated on the latest program announcements.",
+      buttonLabel: "Discord",
+      to: DISCORD_INVITE,
+    },
   ];
 
   return (
@@ -210,60 +246,59 @@ function StudentDashboard(): JSX.Element {
           )}
 
           <h2>Resources</h2>
-          <div className="resources">
+          <div className="student-resources-grid">
             {StudentResources.map((resource) => (
               <a
                 href={resource.url}
                 key={resource.message}
                 target="_blank"
                 rel="noreferrer"
+                className="student-resource-box"
               >
-                <div className="resource">
+                <span className="resource-link-content">
                   {resource.avatar ? (
-                    <img src={resource.avatar} alt={resource.message} />
+                    <img
+                      src={resource.avatar}
+                      alt={resource.message}
+                      className={
+                        resource.noAvatarRounding ? "unrounded" : undefined
+                      }
+                    />
                   ) : (
-                    <IoDocument className="icon" size="30px" />
+                    <IoDocument className="icon" size="28px" />
                   )}
-                  <p>{resource.message}</p>
-                </div>
+                  <span>{resource.message}</span>
+                </span>
+                <FiArrowUpRight
+                  className="resource-link-arrow"
+                  aria-hidden="true"
+                />
               </a>
             ))}
           </div>
 
           <h2>Other Links</h2>
           <div className="links">
-            <div className="link-card">
-              <h3>Projects</h3>
-              <p>
-                Discover exciting projects that you can contribute to and
-                collaborate on. Each project is an opportunity to apply your
-                skills, learn new technologies, and make a real impact.
-              </p>
-              <Button to="/projects" className="blue">
-                View Projects
-              </Button>
-            </div>
-            <div className="link-card">
-              <h3>Student's Manual</h3>
-              <p>
-                Download the KWoC Student's Manual for comprehensive information
-                about the program's structure, guidelines and expectations.
-              </p>
-              <Button to={STUDENT_MANUAL} className="blue">
-                Student Manual
-              </Button>
-            </div>
-            <div className="link-card">
-              <h3>Stay Connected</h3>
-              <p>
-                Connect with fellow participants, mentors and organisers. Join
-                our discord server to engage in discussions, seek help, and stay
-                updated on the latest program announcements.
-              </p>
-              <Button to={DISCORD_INVITE} className="blue">
-                Discord
-              </Button>
-            </div>
+            {otherLinks.map((link, index) => (
+              <div className="link-card" key={link.title}>
+                <div className="card-top">
+                  <span className="card-icon" aria-hidden="true">
+                    {link.icon}
+                  </span>
+                  <span className="card-num" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3>{link.title}</h3>
+                <p>{link.description}</p>
+                <div className="card-actions">
+                  <Button to={link.to} className="blue">
+                    {link.buttonLabel}
+                  </Button>
+                </div>
+                <div className="card-line" aria-hidden="true" />
+              </div>
+            ))}
           </div>
         </>
       ) : status === "loading" ? (

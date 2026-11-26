@@ -1,6 +1,10 @@
 :root {
-  --font-main: "Inter", sans-serif;
+  --font-main: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-accent: "Hi Melody", cursive;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -8,8 +12,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--page);
+  color: var(--ink);
 }
 
 * {
@@ -17,6 +21,7 @@ body {
 }
 
 .App {
+  position: relative;
   min-height: 100vh;
   overflow-x: hidden;
   display: flex;
@@ -37,8 +42,87 @@ button {
   font: inherit;
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid #71bdec;
+  outline-offset: 4px;
+}
+
+/* Fixed winter vector landscape + snow background */
+.winter-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  overflow: hidden;
+}
+
+.stage {
+  position: absolute;
+  width: max(100%, calc(100svh * 1.78879));
+  height: max(100%, calc(100vw / 1.78879));
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 1660 / 928;
+}
+
+.theme {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.65s ease;
+  opacity: 0;
+}
+
+.theme.active {
+  opacity: 1;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    linear-gradient(180deg, rgba(2, 19, 42, 0.52), rgba(6, 28, 55, 0.35)),
+    linear-gradient(90deg, rgba(3, 22, 45, 0.25), transparent 70%);
+  pointer-events: none;
+}
+
+html[data-theme="day"] .veil {
+  background:
+    linear-gradient(180deg, rgba(238, 249, 250, 0.35), rgba(228, 241, 243, 0.3)),
+    linear-gradient(90deg, rgba(234, 246, 249, 0.23), transparent 70%);
+}
+
+#snow {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 .hl {
-  color: #63b6e4;
+  color: var(--accent);
 }
 
 .bold {
@@ -46,17 +130,37 @@ button {
 }
 
 .error-message {
-  background-color: #330000;
-  border: 1px solid #ff4d4d;
+  background-color: rgba(220, 38, 38, 0.14);
+  border: 1px solid var(--danger);
   padding: 5px 20px;
-  border-radius: 5px;
-  color: #ff4d4d;
+  border-radius: 8px;
+  color: var(--danger);
 }
 
 .success-message {
-  background-color: #003300;
-  border: 1px solid #4dff4d;
+  background-color: rgba(22, 163, 74, 0.14);
+  border: 1px solid var(--success);
   padding: 5px 20px;
-  border-radius: 5px;
-  color: #4dff4d;
+  border-radius: 8px;
+  color: var(--success);
+}
+
+@media (max-width: 850px) {
+  .stage {
+    left: 43%;
+  }
+}
+
+@media (max-width: 500px) {
+  .stage {
+    left: 30%;
+    width: max(100%, calc(100svh * 1.78879));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }

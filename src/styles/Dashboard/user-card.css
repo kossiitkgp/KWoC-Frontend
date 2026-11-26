@@ -9,7 +9,8 @@
     height: 120px;
     object-fit: cover;
     margin-right: 20px;
-    background-color: gray;
+    background-color: var(--chip-bg);
+    border: 2px solid var(--line);
   }
 
   & .details {
@@ -21,12 +22,13 @@
   & h2 {
     font-size: 40px;
     margin: 0;
+    color: var(--ink);
   }
 
   & p {
     font-size: 18px;
     margin: 0;
-    color: gray;
+    color: var(--muted);
   }
 
   & .actions {

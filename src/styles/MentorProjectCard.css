@@ -1,12 +1,8 @@
 .mentor-project-card {
   padding: 24px 18px;
-
-  background: rgba(15, 23, 42, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(71, 85, 105, 0.4);
+  background: var(--panel);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 
   & .top {
     display: flex;
@@ -16,7 +12,7 @@
     & h3 {
       margin: 0;
       font-size: 28px;
-      color: var(--color-primary);
+      color: var(--accent);
     }
 
     & .status-badge {
@@ -26,12 +22,12 @@
       font-size: 12px;
       font-weight: 600;
       background: rgba(245, 158, 11, 0.15);
-      color: rgb(252, 211, 77);
+      color: var(--warning);
       border: 1px solid rgba(251, 191, 36, 0.4);
 
       &.approved {
         background: rgba(16, 185, 129, 0.15);
-        color: rgb(110, 231, 183);
+        color: var(--success);
         border: 1px solid rgba(52, 211, 153, 0.4);
       }
     }
@@ -42,19 +38,20 @@
 
     & .tag {
       display: inline-block;
-      background: rgba(100, 116, 139, 0.2);
+      background: var(--chip-bg);
+      color: var(--ink);
       padding: 4px 10px;
       border-radius: 8px;
       font-size: 12px;
       margin-right: 8px;
-      border: 1px solid rgba(100, 116, 139, 0.2);
+      border: 1px solid var(--line);
     }
   }
 
   & .description {
     font-size: 14px;
     margin: 0;
-    color: rgb(148, 163, 184);
+    color: var(--muted);
     margin-bottom: 12px;
     display: -webkit-box;
     line-clamp: 1;
@@ -65,7 +62,7 @@
 
   & .mentors {
     font-size: 13px;
-    color: rgb(125, 126, 127);
+    color: var(--muted);
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
@@ -77,7 +74,7 @@
       gap: 8px;
 
       & .name {
-        color: var(--color-primary);
+        color: var(--accent);
         text-decoration: none;
       }
     }
@@ -88,11 +85,11 @@
     gap: 15px;
 
     & .stat {
-      background: rgba(71, 85, 105, 0.2);
+      background: var(--chip-bg);
       flex: 1;
       padding: 8px 10px;
       border-radius: 8px;
-      border: 1px solid rgba(71, 85, 105, 0.4);
+      border: 1px solid var(--line);
       margin: 0;
       display: flex;
       align-items: center;
@@ -100,12 +97,12 @@
 
       & .stat-label {
         font-size: 12px;
-        color: rgb(148, 163, 184);
+        color: var(--muted);
         margin: 0;
       }
 
       & .icon {
-        color: rgb(148, 163, 184);
+        color: var(--muted);
       }
 
       & .stat-label::after {
@@ -115,6 +112,7 @@
       & .stat-value {
         font-size: 18px;
         font-weight: 600;
+        color: var(--ink);
         margin: 0;
       }
     }

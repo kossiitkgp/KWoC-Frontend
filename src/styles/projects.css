@@ -6,7 +6,7 @@
     text-align: center;
     font-size: 54px;
     margin: 40px 0;
-    /* color: var(--color-primary); */
+    color: var(--ink);
   }
 
   .stay-tuned {
@@ -14,7 +14,7 @@
     font-size: 24px;
     font-style: italic;
     font-weight: 500;
-    color: var(--color-secondary);
+    color: var(--accent);
   }
 
   .projects-list {
@@ -28,8 +28,8 @@
   .project-item {
     padding: 24px;
     border-radius: 12px;
-    background-color: rgba(15, 23, 42, 0.7);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    background: var(--panel);
+    border: 1px solid var(--line);
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -40,13 +40,14 @@
     & h2 {
       font-size: 24px;
       margin: 0;
-      color: var(--color-primary);
+      color: var(--accent);
     }
 
     & .description {
       font-size: 18px;
       margin: 0;
       flex: 1;
+      color: var(--muted);
     }
 
     & .mentors {
@@ -55,6 +56,7 @@
       display: flex;
       flex-direction: column;
       gap: 5px;
+      color: var(--muted);
 
       & .mentor {
         display: flex;
@@ -62,7 +64,7 @@
         gap: 8px;
 
         & .name {
-          color: var(--color-primary);
+          color: var(--accent);
           text-decoration: none;
         }
       }
@@ -76,12 +78,13 @@
 
       & .tag {
         display: inline-block;
-        background: rgba(100, 116, 139, 0.2);
+        background: var(--chip-bg);
+        color: var(--ink);
         padding: 4px 10px;
         border-radius: 8px;
         font-size: 12px;
         margin-right: 8px;
-        border: 1px solid rgba(100, 116, 139, 0.2);
+        border: 1px solid var(--line);
       }
     }
 

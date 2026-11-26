@@ -5,7 +5,7 @@
 
   & .added-lines-text {
     font-size: 12px;
-    color: rgb(110, 231, 183);
+    color: var(--success);
     margin-right: 10px;
     text-align: left;
     white-space: nowrap;
@@ -19,7 +19,7 @@
 
   & .added-lines-bar {
     height: 7px;
-    background: rgb(110, 231, 183);
+    background: var(--success);
     border-radius: 5px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -27,7 +27,7 @@
 
   & .removed-lines-bar {
     height: 7px;
-    background: #f44336;
+    background: var(--danger);
     border-radius: 5px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -35,7 +35,7 @@
 
   & .removed-lines-text {
     font-size: 12px;
-    color: #f44336;
+    color: var(--danger);
     margin-left: 10px;
     text-align: right;
     white-space: nowrap;

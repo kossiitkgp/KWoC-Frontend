@@ -1,4 +1,39 @@
 :root {
-  --color-primary: #63b6e4;
-  --color-secondary: #ffe335;
+  color-scheme: dark;
+  --ink: #f7fbff;
+  --muted: #c3d9f1;
+  --accent: #b8e3ff;
+  --panel: rgba(8, 29, 58, 0.67);
+  --line: rgba(211, 235, 255, 0.25);
+  --button: #d9efff;
+  --buttonink: #09294a;
+  --page: #061c37;
+
+  --color-primary: var(--accent);
+  --color-secondary: #78c8ee;
+  --input-bg: rgba(4, 18, 38, 0.65);
+  --chip-bg: rgba(211, 235, 255, 0.1);
+  --success: #68d391;
+  --warning: #fcd34d;
+  --danger: #f87171;
+}
+
+html[data-theme="day"] {
+  color-scheme: light;
+  --ink: #0b222e;
+  --muted: #1a3e4f;
+  --accent: #144659;
+  --panel: rgba(247, 252, 251, 0.84);
+  --line: rgba(20, 62, 80, 0.26);
+  --button: #204f61;
+  --buttonink: #ffffff;
+  --page: #e4f1f3;
+
+  --color-primary: var(--accent);
+  --color-secondary: #144659;
+  --input-bg: rgba(255, 255, 255, 0.82);
+  --chip-bg: rgba(20, 70, 89, 0.1);
+  --success: #15803d;
+  --warning: #b45309;
+  --danger: #b91c1c;
 }

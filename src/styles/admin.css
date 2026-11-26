@@ -5,13 +5,14 @@
   & h1 {
     font-size: 2.5rem;
     margin-bottom: 0.4rem;
-    color: var(--color-secondary);
+    color: var(--accent);
     text-align: center;
   }
 
   & .subtitle {
     text-align: center;
     margin-bottom: 2rem;
+    color: var(--muted);
   }
 
   & .project-list {
@@ -21,9 +22,9 @@
 
     & .project-card {
       padding: 20px;
-      border-radius: 8px;
-      background-color: #1a1a1a;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      background: var(--panel);
+      border: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -31,15 +32,16 @@
       & h2 {
         margin: 0;
         font-size: 1.5rem;
-        color: var(--color-primary);
+        color: var(--accent);
       }
 
       & p {
         margin: 0.5rem 0 0;
+        color: var(--muted);
       }
 
       & .mentor-link {
-        color: #888;
+        color: var(--accent);
         text-decoration: none;
 
         &:hover {

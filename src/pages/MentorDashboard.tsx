@@ -6,12 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/mentor-dashboard.css";
 import UserCard from "../components/Dashboard/UserCard";
 import { FaPlus } from "react-icons/fa";
-import { MENTOR_MANUAL } from "../util/constants";
+import { MENTOR_MANUAL_DARK, MENTOR_MANUAL_LIGHT } from "../util/constants";
+import { useTheme } from "../components/ThemeContext";
 import MentorProjectCard from "../components/Dashboard/MentorProjectCard";
 import { FaCodeCommit, FaCodePullRequest } from "react-icons/fa6";
-import { IoApps, IoAppsOutline, IoDocument } from "react-icons/io5";
+import { FiArrowUpRight, FiCode, FiUsers } from "react-icons/fi";
+import { IoApps, IoAppsOutline } from "react-icons/io5";
 import MentorResources from "../data/mentorResources.json";
-import kwoc_logo from "../assets/kwoc_logo.png";
 
 const MENTOR_REG_OPEN = import.meta.env.VITE_MENTOR_REG_OPEN === "true";
 type MentorDashData = IEndpointTypes["mentor/dashboard"]["response"];
@@ -22,6 +23,7 @@ function MentorDashboard(): JSX.Element {
     "loading",
   );
   const auth = useAuthContext();
+  const { theme } = useTheme();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -70,6 +72,29 @@ function MentorDashboard(): JSX.Element {
       (acc, project) => acc + (project.pull_count || 0),
       0,
     ) || 0;
+
+  const resourceCategories = [
+    {
+      title: "Documentation",
+      icon: <FiCode />,
+      items: MentorResources.filter(
+        (resource) => resource.category === "Documentation",
+      ),
+    },
+    {
+      title: "Mentoring",
+      icon: <FiUsers />,
+      items: [
+        {
+          message: "KWoC Mentor Manual",
+          url: theme === "day" ? MENTOR_MANUAL_LIGHT : MENTOR_MANUAL_DARK,
+        },
+        ...MentorResources.filter(
+          (resource) => resource.category === "Mentoring",
+        ),
+      ],
+    },
+  ];
 
   return (
     <div className="mentor-dash dashboard">
@@ -128,33 +153,37 @@ function MentorDashboard(): JSX.Element {
           </div>
 
           <h2>Resources</h2>
-          <div className="resources">
-            <a href={MENTOR_MANUAL} target="_blank" rel="noreferrer">
-              <div className="resource">
-                <img src={kwoc_logo} alt="KWoC Logo" />
-                <p>
-                  <strong>KWoC Mentor Manual</strong>
-                </p>
-              </div>
-            </a>
-            {MentorResources.map((resource) => (
-              <a
-                href={resource.url}
-                key={resource.message}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div className="resource">
-                  {resource.avatar ? (
-                    <img src={resource.avatar} alt={resource.message} />
-                  ) : (
-                    <IoDocument className="icon" size="30px" />
-                  )}
-                  <p>{resource.message}</p>
+          <section className="mentor-resources">
+            <div className="resources-columns">
+              {resourceCategories.map(({ title, icon, items }) => (
+                <div className="resource-column" key={title}>
+                  <div className="resource-category-header">
+                    <span className="resource-category-icon" aria-hidden="true">
+                      {icon}
+                    </span>
+                    <h3>{title}</h3>
+                  </div>
+                  <div className="resource-links">
+                    {items.map((resource) => (
+                      <a
+                        href={resource.url}
+                        key={resource.message}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="resource-link"
+                      >
+                        <span>{resource.message}</span>
+                        <FiArrowUpRight
+                          className="resource-link-arrow"
+                          aria-hidden="true"
+                        />
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </a>
-            ))}
-          </div>
+              ))}
+            </div>
+          </section>
         </>
       ) : status === "loading" ? (
         <p>Loading your dashboard...</p>

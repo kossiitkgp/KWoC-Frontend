@@ -1,0 +1,7 @@
+/* Layout for the dedicated Timeline navigation tab. */
+.timeline-page { width: 100%; flex: 1; }
+.timeline-page__intro { position: relative; z-index: 1; width: min(100% - 40px, 1080px); margin: clamp(42px, 7vh, 88px) auto 24px; text-align: center; }
+.timeline-page__eyebrow { color: var(--accent); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.18em; }
+.timeline-page__intro h1 { margin: 12px 0 8px; color: var(--ink); font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1.05; }
+.timeline-page__intro p { max-width: 620px; margin: 0 auto; color: var(--muted); font-size: clamp(0.95rem, 1.5vw, 1.1rem); }
+@media (max-width: 600px) { .timeline-page__intro { margin-top: 34px; } }

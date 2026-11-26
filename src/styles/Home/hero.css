@@ -1,23 +1,30 @@
 .hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  min-height: calc(100svh - 94px);
+  padding: 24px 24px 48px;
   text-align: center;
+  background: transparent;
 
   & .quote {
     font-family: var(--font-accent);
-    font-size: 32px;
+    font-size: 30px;
+    color: var(--muted);
+    margin-bottom: 6px;
   }
 
   & .title {
-    font-size: 80px;
+    font-size: clamp(42px, 5.2vw, 72px);
     font-weight: 900;
-    margin-bottom: 40px;
+    line-height: 1.08;
+    margin-bottom: 20px;
+    color: var(--ink);
 
     & .highlight {
-      color: #63b6e4;
+      color: var(--accent);
     }
   }
 
@@ -25,49 +32,163 @@
     display: flex;
     gap: 20px;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0.75rem;
   }
 
   .manual-links {
     display: flex;
     gap: 2.5rem;
-    margin-top: 2rem;
+    margin-top: 0.75rem;
   }
 
-  .manual-links a {
-    color: rgba(255, 255, 255, 0.8);
+  .manual-links a,
+  .manual-links .manual-link {
+    color: var(--muted);
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
     transition: all 0.3s ease;
     position: relative;
-    padding-bottom: 4px;
+    padding: 0 0 4px;
+    cursor: pointer;
   }
 
-  .manual-links a::after {
+  .manual-links a::after,
+  .manual-links .manual-link::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #64b5f6, #42a5f5);
+    background: var(--accent);
     transition: width 0.3s ease;
   }
 
-  .manual-links a:hover {
-    color: #64b5f6;
+  .manual-links a:hover,
+  .manual-links .manual-link:hover {
+    color: var(--ink);
   }
 
-  .manual-links a:hover::after {
+  .manual-links a:hover::after,
+  .manual-links .manual-link:hover::after {
     width: 100%;
+  }
+
+  .manual-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(2, 10, 24, 0.6);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  .manual-modal {
+    width: min(400px, 100%);
+    background: var(--page);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px 24px;
+    text-align: left;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+
+  .manual-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .manual-modal-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .manual-modal-close {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .manual-modal-close:hover {
+    background: var(--panel);
+    color: var(--ink);
+  }
+
+  .manual-modal-subtitle {
+    margin: 0 0 18px;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+
+  .manual-theme-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .manual-theme-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .manual-theme-option.dark {
+    background: #081d3a;
+    color: #f7fbff;
+  }
+
+  .manual-theme-option.light {
+    background: #f7fcfb;
+    color: #0b222e;
+  }
+
+  .manual-theme-option:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+  }
+
+  .manual-theme-icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    flex-shrink: 0;
+    background-color: currentColor;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
   }
 
   .discord {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+    margin-top: 1.25rem;
   }
 
   .discord img {
@@ -77,8 +198,9 @@
   }
 
   .discord a {
-    background: #272a2f;
-    color: white;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--ink);
     padding: 14px 20px;
     display: flex;
     font-weight: 500;
@@ -89,14 +211,14 @@
   }
 
   .discord a:hover {
-    background: #0c538d;
-    transform: scale(1.05);
+    background: var(--button);
+    color: var(--buttonink);
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 1.5rem;
+    padding: 4.5rem 1.5rem 4rem;
 
     & .title {
       font-size: 36px;
