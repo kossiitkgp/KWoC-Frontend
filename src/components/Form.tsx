@@ -36,7 +36,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 
   const disabled = props.disabled ?? false;
 
-  for (let name in props.fields) {
+  for (const name in props.fields) {
     inputProps[name] = {
       ...props.fields[name],
       onChange: (value) => {
@@ -47,7 +47,7 @@ function Form<S extends InputSettings>(props: IFormProps<S>) {
 
         setResponses(newResponses);
 
-        for (let name in newResponses) {
+        for (const name in newResponses) {
           if (newResponses[name] !== default_responses[name]) {
             setResponsesChanged(true);
             return;

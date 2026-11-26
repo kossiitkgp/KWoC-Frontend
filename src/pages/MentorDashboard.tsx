@@ -86,7 +86,7 @@ function MentorDashboard(): JSX.Element {
       icon: <FiUsers />,
       items: [
         {
-          message: "KWoC Mentor Manual",
+          message: "KWoC Mentor's Manual",
           url: theme === "day" ? MENTOR_MANUAL_LIGHT : MENTOR_MANUAL_DARK,
         },
         ...MentorResources.filter(

@@ -11,13 +11,15 @@ type P = {
   phase: number;
   drift: number;
 };
-type Props = { density: number; paused: boolean };
+// Number of flakes on each snowy scene. Set to 0 to disable snowfall.
+const SNOWFLAKE_COUNT = 90;
+type Props = { paused: boolean };
 
-export default function Snow({ density, paused }: Props) {
+export default function Snow({ paused }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
-  const live = useRef({ density, paused, theme: "night" });
+  const live = useRef({ paused, theme: "night" });
   const { theme } = useTheme();
-  live.current = { density, paused, theme };
+  live.current = { paused, theme };
 
   useEffect(() => {
     const canvas = ref.current!;
@@ -27,6 +29,7 @@ export default function Snow({ density, paused }: Props) {
       h = 0,
       last = 0,
       raf = 0;
+    if (!ctx || SNOWFLAKE_COUNT <= 0) return;
     let parts: P[] = [];
     const make = (randomY = true): P => {
       const z = Math.random();
@@ -49,7 +52,7 @@ export default function Snow({ density, paused }: Props) {
       canvas.width = Math.round(w * d);
       canvas.height = Math.round(h * d);
       ctx.setTransform(d, 0, 0, d, 0, 0);
-      parts = Array.from({ length: 180 }, () => make());
+      parts = Array.from({ length: SNOWFLAKE_COUNT }, () => make());
     };
     const ro = new ResizeObserver(resize);
     ro.observe(host);
@@ -59,8 +62,8 @@ export default function Snow({ density, paused }: Props) {
       const dt = Math.min((t - last) / 1000 || 0, 0.04);
       last = t;
       ctx.clearRect(0, 0, w, h);
-      const { density: n, paused: p0, theme: th } = live.current;
-      for (let i = 0; i < n; i++) {
+      const { paused: p0, theme: th } = live.current;
+      for (let i = 0; i < parts.length; i++) {
         let p = parts[i];
         if (!p0) {
           p.y += p.s * dt;

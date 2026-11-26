@@ -8,7 +8,7 @@ async function makeBackendRequest(
   endpoint: string,
   method: AllowedBackendMethods,
   jwt: string | null,
-  body: Object | null,
+  body: object | null,
 ): Promise<Response> {
   const headers: {
     "Content-Type"?: string;
@@ -70,7 +70,7 @@ export async function makeRequest<E extends keyof IEndpointTypes>(
       status_code: response.status,
       response: await response.json(),
     };
-  } catch (e) {
+  } catch {
     return {
       is_ok: false,
       status_code: response.status,

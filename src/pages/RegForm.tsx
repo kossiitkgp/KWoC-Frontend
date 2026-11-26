@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../util/auth";
 import { useEffect, useState } from "react";
-import Form from "../components/Form";
+import Form, { type InputSettings } from "../components/Form";
 import { makeRequest } from "../util/backend";
 
 function RegForm({ isStudent }: { isStudent: boolean }) {
@@ -14,7 +14,8 @@ function RegForm({ isStudent }: { isStudent: boolean }) {
   const userType = isStudent ? "student" : "mentor";
 
   const [isRegistering, setIsRegistering] = useState(false);
-  const registrationsOpen = import.meta.env.VITE_REGISTRATIONS_OPEN;
+  const registrationsOpen = import.meta.env.VITE_REGISTRATIONS_OPEN === "true" ||
+    (!isStudent && import.meta.env.VITE_MENTOR_REG_OPEN === "true");
 
   useEffect(() => {
     setIsRegistering(!authContext.isRegistered);
@@ -44,7 +45,7 @@ function RegForm({ isStudent }: { isStudent: boolean }) {
     ? `Complete ${userType[0].toUpperCase() + userType.slice(1)} Registration`
     : "Edit Your Information";
 
-  const fields: any = {
+  const fields: InputSettings = {
     name: {
       field: "Name",
       placeholder: "Jane Doe",
@@ -87,9 +88,8 @@ function RegForm({ isStudent }: { isStudent: boolean }) {
         }
         fields={fields}
         onCancel={() => {
-          isRegistering
-            ? authContext.onLogout()
-            : navigate(authContext.dashboardLink);
+          if (isRegistering) authContext.onLogout();
+          else navigate(authContext.dashboardLink);
         }}
         onSubmit={async (responses) => {
           setError(null);

@@ -159,7 +159,7 @@ function Timeline() {
       <div className="season-timeline__sticky">
         <TimelineScene ref={stageRef} />
         <div className="season-timeline__veil" aria-hidden="true" />
-        <Snow density={70} paused={!isActive} />
+        <Snow paused={!isActive} />
         <div className="season-timeline__void" ref={voidRef} aria-hidden="true" />
 
         <div className="season-timeline__hint" ref={hintRef}>

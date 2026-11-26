@@ -25,8 +25,9 @@ function ScrollToHash() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if (pathname.toLowerCase().replace(/\/+$/, "") === "/timeline") return;
     if (hash) {
-      document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: "smooth" });
     } else {
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     }
@@ -37,7 +38,7 @@ function ScrollToHash() {
 
 function AppShell() {
   const { pathname } = useLocation();
-  const isTimeline = pathname === "/timeline";
+  const isTimeline = pathname.toLowerCase().replace(/\/+$/, "") === "/timeline";
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   return (
@@ -47,7 +48,7 @@ function AppShell() {
         <div className="winter-bg" aria-hidden="true">
           <Scene />
           <div className="veil" />
-          <Snow density={90} paused={reducedMotion} />
+          <Snow paused={reducedMotion} />
         </div>
       )}
       {!isTimeline && <Header />}

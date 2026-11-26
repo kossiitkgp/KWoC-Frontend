@@ -99,7 +99,7 @@ function StudentDashboard(): JSX.Element {
       icon: <FiBookOpen size={22} />,
       description:
         "Download the KWoC Student's Manual for comprehensive information about the program's structure, guidelines and expectations.",
-      buttonLabel: "Student Manual",
+      buttonLabel: "Student's Manual",
       to: theme === "day" ? STUDENT_MANUAL_LIGHT : STUDENT_MANUAL_DARK,
     },
     {

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import Button from "../components/Button";
 import { ThemeButton } from "../components/Header";
 import Scene from "../components/Scene";
@@ -6,18 +6,13 @@ import Snow from "../components/Snow";
 import {
   cardVisibility,
   clamp,
-  DUNES,
   layerPose,
   thanksVisibility,
 } from "../data/journey";
 import { milestones } from "../data/timeline";
-import { getStrength, VOID_RANGE, VOID_START } from "../data/timelineConfig";
+import { cameraDistance, eventProgress, FOLLOW_RATE, VOID_RANGE, VOID_START } from "../data/timelineConfig";
 import "../styles/timeline-page.css";
 
-/**
- * Scroll-driven flight over the dunes. Scroll progress p (0..1) becomes a camera distance
- * c = p x DUNES x strength; data/journey.ts turns c into a pose for every layer.
- */
 export default function Timeline() {
   const stageRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
@@ -26,12 +21,12 @@ export default function Timeline() {
   const barRef = useRef<HTMLDivElement>(null);
   const voidRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const layers: HTMLElement[] = Array.from(
       stageRef.current!.querySelectorAll<HTMLElement>(".layer"),
     );
     const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const strength = getStrength();
+
     let target = 0,
       cur = 0,
       raf = 0,
@@ -43,7 +38,7 @@ export default function Timeline() {
     };
 
     const render = (p: number) => {
-      const c = p * DUNES * strength;
+      const c = cameraDistance(p);
       const voidK = clamp((c - VOID_START) / VOID_RANGE);
       for (const el of layers) {
         const idx = Number(el.dataset.index);
@@ -57,15 +52,17 @@ export default function Timeline() {
       milestones.forEach((_, i) => {
         const el = cardRefs.current[i];
         if (!el) return;
-        const k = cardVisibility(i, c);
+        const k = cardVisibility(i, c) * clamp(p / 0.015);
+        el.inert = k <= 0.6;
         el.style.opacity = String(k);
         el.style.transform = `translate3d(0,${(1 - k) * 24}px,0)`;
         el.style.pointerEvents = k > 0.6 ? "auto" : "none";
       });
       if (hintRef.current)
-        hintRef.current.style.opacity = String(1 - clamp(c / 0.15));
+        hintRef.current.style.opacity = String(1 - clamp(p / 0.015));
       if (thanksRef.current) {
         const tk = thanksVisibility(c);
+        thanksRef.current.inert = tk <= 0.6;
         thanksRef.current.style.opacity = String(tk);
         thanksRef.current.style.transform = `translate3d(-50%, calc(-50% + ${(1 - tk) * 24}px), 0)`;
         thanksRef.current.style.pointerEvents = tk > 0.6 ? "auto" : "none";
@@ -76,14 +73,16 @@ export default function Timeline() {
     const loop = (now: number) => {
       const dt = Math.min((now - last) / 1000, 0.05);
       last = now;
-      cur = reduce ? target : cur + (target - cur) * (1 - Math.exp(-dt * 8));
+      cur = reduce ? target : cur + (target - cur) * (1 - Math.exp(-dt * FOLLOW_RATE));
       if (Math.abs(target - cur) < 0.00005) cur = target;
       render(cur);
       raf = requestAnimationFrame(loop);
     };
 
-    window.scrollTo(0, 0);
-    readScroll();
+    const scrollRange = Math.max(0, document.documentElement.scrollHeight - innerHeight);
+    target = cur = eventProgress();
+    window.scrollTo({ top: target * scrollRange, behavior: "instant" });
+    render(cur);
     addEventListener("scroll", readScroll, { passive: true });
     addEventListener("resize", readScroll);
     raf = requestAnimationFrame(loop);
@@ -99,7 +98,7 @@ export default function Timeline() {
       <div className="tl-fixed">
         <Scene ref={stageRef} />
         <div className="veil" />
-        <Snow density={90} paused={false} />
+        <Snow paused={matchMedia("(prefers-reduced-motion: reduce)").matches} />
         <div className="tl-void" ref={voidRef} aria-hidden="true" />
 
         <header className="tl-top">
@@ -142,7 +141,7 @@ export default function Timeline() {
 
             <div className="tl-rail-bottom" aria-hidden="true" />
             <div className="tl-body">
-              <div className="tl-date">{m.date}</div>
+              <div className="tl-date">{new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(m.date))}</div>
               <p>{m.text}</p>
             </div>
           </article>

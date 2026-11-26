@@ -1,3 +1,4 @@
+import { getLocalISODate, getSeasonPosition } from "../data/seasonTheme";
 import { layerFiles, layerUrl } from "../theme/layers";
 import { useTheme, type ThemeName } from "./ThemeContext";
 
@@ -5,7 +6,9 @@ const THEMES: ThemeName[] = ["night", "day"];
 
 /** Shared, decorative 2026 landscape. The app keeps one copy behind all routes. */
 export default function SceneBackdrop() {
-  const { theme, seasonPosition } = useTheme();
+  const { theme } = useTheme();
+
+  const seasonPosition = getSeasonPosition(getLocalISODate());
 
   return (
     <div

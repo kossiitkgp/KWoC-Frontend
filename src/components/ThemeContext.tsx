@@ -7,6 +7,8 @@ import {
 } from "react";
 import type { ThemeName } from "../data/layers";
 
+export type { ThemeName } from "../data/layers";
+
 type Ctx = { theme: ThemeName; toggle: () => void };
 const ThemeCtx = createContext<Ctx>({ theme: "night", toggle: () => {} });
 export const useTheme = () => useContext(ThemeCtx);

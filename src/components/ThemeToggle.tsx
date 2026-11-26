@@ -1,14 +1,14 @@
 import { useTheme } from "./ThemeContext";
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggle } = useTheme();
   const nextTheme = theme === "night" ? "light" : "dark";
 
   return (
     <button
       className="theme-toggle"
       type="button"
-      onClick={toggleTheme}
+      onClick={toggle}
       aria-label={`Switch to ${nextTheme} mode`}
       title={`Switch to ${nextTheme} mode`}
     >
