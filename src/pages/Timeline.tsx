@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, type CSSProperties } from "react";
 import Button from "../components/Button";
 import { ThemeButton } from "../components/Header";
 import Scene from "../components/Scene";
@@ -10,15 +10,37 @@ import {
   thanksVisibility,
 } from "../data/journey";
 import { milestones } from "../data/timeline";
-import { cameraDistance, eventProgress, FOLLOW_RATE, VOID_RANGE, VOID_START } from "../data/timelineConfig";
+import {
+  cameraDistance,
+  currentMilestoneIndex,
+  eventProgress,
+  FOLLOW_RATE,
+  VOID_RANGE,
+  VOID_START,
+} from "../data/timelineConfig";
 import "../styles/timeline-page.css";
+
+type TimelineCardStyle = CSSProperties & { "--tl-marker-y": string };
+type TimelineOverviewStyle = CSSProperties & {
+  "--tl-event-count": number;
+  "--tl-event-inset": string;
+};
+
+const dateLabel = (date: string) =>
+  new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(date));
 
 export default function Timeline() {
   const stageRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLElement | null)[]>([]);
+  const eventRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const overviewProgressRef = useRef<HTMLSpanElement>(null);
   const thanksRef = useRef<HTMLDivElement>(null);
   const hintRef = useRef<HTMLDivElement>(null);
-  const barRef = useRef<HTMLDivElement>(null);
   const voidRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -30,7 +52,8 @@ export default function Timeline() {
     let target = 0,
       cur = 0,
       raf = 0,
-      last = performance.now();
+      last = performance.now(),
+      displayedMilestoneIndex = -1;
 
     const readScroll = () => {
       const max = document.documentElement.scrollHeight - innerHeight;
@@ -40,6 +63,7 @@ export default function Timeline() {
     const render = (p: number) => {
       const c = cameraDistance(p);
       const voidK = clamp((c - VOID_START) / VOID_RANGE);
+
       for (const el of layers) {
         const idx = Number(el.dataset.index);
         const pose = layerPose(idx, c);
@@ -48,7 +72,9 @@ export default function Timeline() {
         const fade = idx === 2 ? 1 - clamp((pose.q - 0.3) / 0.7) : 1;
         el.style.opacity = idx <= 2 ? String((1 - voidK) * fade) : "1";
       }
+
       if (voidRef.current) voidRef.current.style.opacity = String(voidK);
+
       milestones.forEach((_, i) => {
         const el = cardRefs.current[i];
         if (!el) return;
@@ -58,8 +84,29 @@ export default function Timeline() {
         el.style.transform = `translate3d(0,${(1 - k) * 24}px,0)`;
         el.style.pointerEvents = k > 0.6 ? "auto" : "none";
       });
+
+      const activeIndex = currentMilestoneIndex(p);
+      if (activeIndex !== displayedMilestoneIndex) {
+        eventRefs.current.forEach((item, i) => {
+          if (!item) return;
+          const isCurrent = i === activeIndex;
+          item.classList.toggle("is-current", isCurrent);
+          item.classList.toggle("is-complete", i < activeIndex);
+          if (isCurrent) item.setAttribute("aria-current", "step");
+          else item.removeAttribute("aria-current");
+        });
+
+        if (overviewProgressRef.current) {
+          const progress =
+            milestones.length > 1 ? activeIndex / (milestones.length - 1) : 1;
+          overviewProgressRef.current.style.transform = `scaleX(${progress})`;
+        }
+        displayedMilestoneIndex = activeIndex;
+      }
+
       if (hintRef.current)
         hintRef.current.style.opacity = String(1 - clamp(p / 0.015));
+
       if (thanksRef.current) {
         const tk = thanksVisibility(c);
         thanksRef.current.inert = tk <= 0.6;
@@ -67,7 +114,6 @@ export default function Timeline() {
         thanksRef.current.style.transform = `translate3d(-50%, calc(-50% + ${(1 - tk) * 24}px), 0)`;
         thanksRef.current.style.pointerEvents = tk > 0.6 ? "auto" : "none";
       }
-      if (barRef.current) barRef.current.style.transform = `scaleY(${p})`;
     };
 
     const loop = (now: number) => {
@@ -86,6 +132,7 @@ export default function Timeline() {
     addEventListener("scroll", readScroll, { passive: true });
     addEventListener("resize", readScroll);
     raf = requestAnimationFrame(loop);
+
     return () => {
       cancelAnimationFrame(raf);
       removeEventListener("scroll", readScroll);
@@ -108,6 +155,38 @@ export default function Timeline() {
           <ThemeButton />
         </header>
 
+        <nav className="tl-overview" aria-label="KWoC event timeline">
+          <div
+            className="tl-overview-inner"
+            style={
+              {
+                "--tl-event-count": milestones.length,
+                "--tl-event-inset": `${50 / milestones.length}%`,
+              } as TimelineOverviewStyle
+            }
+          >
+            <div className="tl-overview-track" aria-hidden="true">
+              <span ref={overviewProgressRef} />
+            </div>
+            <ol className="tl-overview-list">
+              {milestones.map((m, i) => (
+                <li
+                  className={`tl-overview-item${i === 0 ? " is-current" : ""}`}
+                  key={m.title}
+                  aria-current={i === 0 ? "step" : undefined}
+                  ref={(el) => {
+                    eventRefs.current[i] = el;
+                  }}
+                >
+                  <span className="tl-overview-dot" aria-hidden="true" />
+                  <span className="tl-overview-title">{m.title}</span>
+                  <time dateTime={m.date}>{dateLabel(m.date)}</time>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </nav>
+
         <div className="tl-hint" ref={hintRef}>
           <span className="tl-kicker">
             <span className="tl-kicker-line" aria-hidden="true" />
@@ -125,24 +204,25 @@ export default function Timeline() {
           <article
             className="tl-card"
             key={m.title}
+            style={
+              {
+                "--tl-marker-y": `${22 + (i / Math.max(1, milestones.length - 1)) * 56}%`,
+              } as TimelineCardStyle
+            }
             ref={(el) => {
               cardRefs.current[i] = el;
             }}
           >
-            <div className="tl-rail-top" aria-hidden="true" />
-            <span className="tl-stage">{m.stage}</span>
-
-            <div className="tl-rail-node" aria-hidden="true">
-              <span className="tl-rail-seg" />
-              <span className="tl-node" />
-              <span className="tl-rail-seg" />
+            <div className="tl-card-rail" aria-hidden="true">
+              <span className="tl-card-marker" />
             </div>
-            <h2>{m.title}</h2>
-
-            <div className="tl-rail-bottom" aria-hidden="true" />
-            <div className="tl-body">
-              <div className="tl-date">{new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(m.date))}</div>
-              <p>{m.text}</p>
+            <div className="tl-card-content">
+              <span className="tl-stage">{m.stage}</span>
+              <h2>{m.title}</h2>
+              <div className="tl-body">
+                <div className="tl-date">{dateLabel(m.date)}</div>
+                <p>{m.text}</p>
+              </div>
             </div>
           </article>
         ))}
@@ -158,10 +238,6 @@ export default function Timeline() {
           <Button variant="secondary" to="/">
             ← Back to Home
           </Button>
-        </div>
-
-        <div className="tl-progress" aria-hidden="true">
-          <div ref={barRef} />
         </div>
       </div>
       <div className="tl-spacer" aria-hidden="true" />

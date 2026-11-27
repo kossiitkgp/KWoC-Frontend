@@ -12,7 +12,7 @@ type P = {
   drift: number;
 };
 // Number of flakes on each snowy scene. Set to 0 to disable snowfall.
-const SNOWFLAKE_COUNT = 90;
+const SNOWFLAKE_COUNT = 150;
 type Props = { paused: boolean };
 
 export default function Snow({ paused }: Props) {

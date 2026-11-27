@@ -16,6 +16,15 @@ export function eventProgress(now = Date.now()) {
   return clamp((now - start) / (end - start));
 }
 
+// Keep the top event overview in sync with the date/scroll position.
+export function currentMilestoneIndex(progress: number) {
+  const p = clamp(progress);
+  const next = stops.findIndex(stop => stop > p);
+  return next < 1
+    ? milestones.length - 1
+    : Math.min(next - 1, milestones.length - 1);
+}
+
 export function cameraDistance(progress: number) {
   const p = clamp(progress);
   const next = stops.findIndex(stop => stop > p);
