@@ -22,13 +22,11 @@ export function ThemeButton() {
       aria-label={`Switch to ${theme === "night" ? "day" : "night"} theme`}
       title="Switch day/night"
     >
-      <span
+      <img
+        src={icon}
         className="theme-toggle-icon"
+        alt=""
         aria-hidden="true"
-        style={{
-          WebkitMaskImage: `url(${icon})`,
-          maskImage: `url(${icon})`,
-        }}
       />
     </button>
   );

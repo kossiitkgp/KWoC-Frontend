@@ -5,26 +5,18 @@ import arrowUpIcon from "../assets/arrowup.svg";
 import arrowDownIcon from "../assets/arrowdown.svg";
 import "../styles/faq.css";
 
-const maskStyle = (icon: string) => ({
-  WebkitMaskImage: `url(${icon})`,
-  maskImage: `url(${icon})`,
-});
-
 function SnowflakeIcon() {
   return (
-    <span
-      className="faqSnowflake"
-      style={maskStyle(snowflakeIcon)}
-      aria-hidden="true"
-    />
+    <img src={snowflakeIcon} className="faqSnowflake" alt="" aria-hidden="true" />
   );
 }
 
 function ChevronIcon({ open }: { open: boolean }) {
   return (
-    <span
+    <img
+      src={open ? arrowUpIcon : arrowDownIcon}
       className="faqToggle"
-      style={maskStyle(open ? arrowUpIcon : arrowDownIcon)}
+      alt=""
       aria-hidden="true"
     />
   );

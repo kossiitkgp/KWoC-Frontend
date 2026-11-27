@@ -40,13 +40,7 @@ function Card({ index, heading, description }: CardProps) {
     <div className="card">
       <div className="card-top">
         <span className="card-icon" aria-hidden="true">
-          <span
-            className="card-icon-svg"
-            style={{
-              WebkitMaskImage: `url(${icon})`,
-              maskImage: `url(${icon})`,
-            }}
-          />
+          <img src={icon} className="card-icon-svg" alt="" aria-hidden="true" />
         </span>
         <span className="card-num" aria-hidden="true">
           {number}
