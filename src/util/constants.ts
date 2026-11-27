@@ -18,8 +18,8 @@ export const REPORT_SUBMISSION_OPEN =
   import.meta.env.VITE_REPORT_SUBMISSION_OPEN == "true";
 export const DISCORD_INVITE = "https://discord.gg/N5mbR2RDyw";
 
-export const MENTOR_MANUAL_LIGHT = `https://drive.google.com/file/d/1aycdxrY3Hky24Yh_2ZuUttJ9hdraz8UV/view?usp=sharing`;
-export const MENTOR_MANUAL_DARK = `https://drive.google.com/file/d/15J3Aasmd-X8xC_j4iVzldmQjAgXsI6Hk/view?usp=sharing`
-export const STUDENT_MANUAL_DARK = `https://drive.google.com/file/d/1b1KlFpJICiy6r3JVCulmeJ50zQAW7ZHA/view?usp=sharing`
-export const STUDENT_MANUAL_LIGHT = `https://drive.google.com/file/d/1Teev6o6uFs6Jy3TbXpHe_l3PUi_yjp--/view?usp=sharing`;
+export const MENTOR_MANUAL_LIGHT = `https://drive.google.com/file/d/1iXDPfQEHPsB2uoihaQSsoHnW-CX1O00l/view?usp=sharing`;
+export const MENTOR_MANUAL_DARK = `https://drive.google.com/file/d/15G1FL7dN8RhcO_rH_APYL78BOX-JexaR/view?usp=sharing`;
+export const STUDENT_MANUAL_DARK = `https://drive.google.com/file/d/1aATiJBfuSxvz-0SjnheVAvdOyAhlXqQJ/view?usp=sharing`;
+export const STUDENT_MANUAL_LIGHT = `https://drive.google.com/file/d/1DrU_dwahTulN2KepJKKE3fx1PX9KAh98/view?usp=sharing`;
 export const BLOG_FORMID = `1FAIpQLSd0faRqE1c9zQrdKUvkjyP7zsS6L4GgNjRSgXfm3kBRPBtuGw`;
