@@ -153,8 +153,30 @@ html[data-theme="day"] .veil {
 
 @media (max-width: 500px) {
   .stage {
-    left: 30%;
-    width: max(100%, calc(100svh * 1.78879));
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+    aspect-ratio: auto;
+    transform: none;
+  }
+
+  /* Extend the sky behind the landscape, matching the SVG's exact top-edge colour. */
+  html[data-theme="day"] .theme.active {
+    background: linear-gradient(180deg, #9fc6d2 0%, #b1d4dd 100%);
+  }
+
+  html[data-theme="night"] .theme.active {
+    background: linear-gradient(180deg, #020f2b 0%, #031d3e 100%);
+  }
+
+  /* Preserve the SVG aspect ratio and align every scene layer to the bottom. */
+  .layer {
+    inset: auto auto 0 0;
+    display: block;
+    width: 100%;
+    height: auto;
   }
 }
 
